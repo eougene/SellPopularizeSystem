@@ -63,7 +63,6 @@ dependencies {
     //图片框架
     //okhttp网络请求框架
     //volley网络请求框架
-    //material design
     //compile 'com.bigkoo:pickerview:2.1.1'
     //compile 'se.emilsjolander.stickylistheaders:library:2.1.0'
     compile 'com.android.support:support-v4:25.1.0'
