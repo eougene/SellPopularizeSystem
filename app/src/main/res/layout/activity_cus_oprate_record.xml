@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rlContent"
+    tools:context="com.yd.org.sellpopularizesystem.activity.SaleRecordActivity">
+    <!-- <view
+         android:layout_width="match_parent"
+         android:layout_height="0.5dp"
+         android:background="@color/setting_bac"/>-->
+    <FrameLayout
+        android:id="@+id/flContent"
+        style="@style/MatchMatch"
+        android:background="@color/white">
+
+        <include layout="@layout/base_listview" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/tvDes"
+        style="@style/WrapWrap"
+        android:layout_marginTop="@dimen/padding_margin_35"
+        android:layout_centerHorizontal="true"
+        android:text="客户没有EOI,点击右上角充值"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+</RelativeLayout>

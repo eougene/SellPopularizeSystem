@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlReserver"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yd.org.sellpopularizesystem.activity.ReserveActivity">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray" />
+
+    <com.yd.org.sellpopularizesystem.myView.BounceScrollView
+        style="@style/MatchWrap"
+        android:layout_marginTop="0.5dp"
+        android:background="@color/shallow_gray">
+
+        <LinearLayout
+            style="@style/MatchWrap"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    style="@style/WrapWrap"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:text="萨达萨达"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReNameOne"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
+                    android:layout_toRightOf="@+id/tvPrice"
+                    android:text="-"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReNameTwo"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
+                    android:layout_toRightOf="@+id/tvReNameOne"
+                    android:text="萨达萨达"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="价格"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvRePrice"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="类型"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvRetype"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="Available For FIRB"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReFirb"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="销售"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReSale"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="0.0"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_6">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="有效期"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvValidity"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="2017/03/31"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rlRecus"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="客户"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReCus"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="jinliu"
+                    android:textColor="#ff0000"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rlReLawyer"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_8"
+                android:paddingTop="@dimen/padding_margin_8">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:text="客户律师"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <ImageView
+                    android:id="@+id/ivReLawyer"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/add"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReLawyer"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="@dimen/tv_size_12"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rlReGoal"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="购房目的"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvReGoal"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="未知"
+                    android:textColor="#0000ff"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <RelativeLayout
+                android:id="@+id/rlPayType"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
+
+                <TextView
+                    android:id="@+id/tvPay"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="支付"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvRePay"
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_toRightOf="@+id/tvPay"
+                    android:text="$0000"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvRePayType"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="请选择支付方式"
+                    android:textColor="#0000ff"
+                    android:textSize="@dimen/tv_size_12" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="60dp">
+
+                <ImageView
+                    android:id="@+id/ivCertificate"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="@dimen/padding_margin_10"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    android:background="@color/home_custom" />
+
+                <TextView
+                    android:id="@+id/tvCertificate"
+                    style="@style/WrapWrap"
+                    android:layout_centerInParent="true"
+                    android:text="上传凭证"
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_30"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/padding_margin_4"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btReSubmit"
+            style="@style/WrapWrap"
+            android:background="@color/home_scale"
+            android:paddingBottom="@dimen/padding_margin_4"
+            android:paddingTop="@dimen/padding_margin_4"
+            android:text="提交"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</RelativeLayout>

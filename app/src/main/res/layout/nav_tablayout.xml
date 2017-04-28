@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:drawableTop="@drawable/nav_tabhome_selector"
+        android:text="主页"
+        android:textSize="@dimen/tv_size_12"
+        android:textColor="@drawable/tabtextcolor_select"
+        />
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="@dimen/padding_margin_4"
+        android:drawableTop="@drawable/nav_tabmessage_selector"
+        android:text="消息"
+        android:textSize="@dimen/tv_size_12"
+        android:textColor="@drawable/tabtextcolor_select"
+        />
+
+    <TextView
+        android:id="@+id/tvSetting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:drawableTop="@drawable/nav_tabset_selector"
+        android:gravity="center"
+        android:paddingTop="@dimen/padding_margin_4"
+        android:text="设置中心"
+        android:textColor="@drawable/tabtextcolor_select"
+        android:textSize="@dimen/tv_size_12" />
+</LinearLayout>

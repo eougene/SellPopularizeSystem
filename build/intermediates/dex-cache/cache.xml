@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\SocialSDK_WeiXin_Full.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="bcbf2f7dcaf210de5e57532f28a64d5a4e7ceb0b">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_Full_1cf43399eb02b92ba51cd7138565cd05f580c749.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_shareboard.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c127e89b7c59c26574dbd2e6e1b52d62fbcc6705">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_shareboard_2eaf3ea8784c62610d161a5a35277dbdab706287.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_net.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1aa11c64ffb61549c2314a2eaf109eb26d34cd7b">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_net_2c2c1c4fc47708bb201387df8739d24ed849aafe.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_api.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2da3c1332d13d3e29069e2144dec29ef0608f1f">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_api_2a26b798fb3e819bf689471734d22f775e7eb4ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_tool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1b54d64ceb6e0e720f54f48178d9f797c2133ebc">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_tool_03f3781526b281fca065aba5b9970fa227e3ebb6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\pinyin4j-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\pinyin4j-2.5.0_1bf1e3b700bb2aa15a4099b3f6ae771e9b03c439.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6c8bf896e0d23f4003b9a3cab4bff9af9adefda">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\IndoorscapeAlbumPlugin_1207438738a4966a06ed657c90aae29159178179.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_shareview.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4fe119e1f116394b75f1fca2e0f76709a66900ea">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_shareview_903c7dedd13aabef982c8709ea15f0cefe9db48f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e53b14e9054757ca7a1cb3527ed7752e5d4d2444">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\BaiduLBS_Android_e8723f05d801924fe76b63ead0aec10a33a4c4d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\SocialSDK_WeChat_Simplify.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7d158ad96c9a17df4e5457a5e714bb4664ee4588">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\SocialSDK_WeChat_Simplify_a83dd2deaec3f65da9a8d9370781e13d2b34e17e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_shareboard_widget.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="61b8863b887e4c87ca69bb9a8ae2c89102fbee5e">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_shareboard_widget_35a4b64df7971d70186974f644e06d788047bff0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\afinal_0.5_bin.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="89729e3bc7f76890363b10e1e0dc5e57964c7807">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\afinal_0.5_bin_e6d181c0fd01a26c33907e582e466287eccd98c2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\photoView.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7aedf5c1917e8e0c1a66f8ebda54db666776f52d">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\photoView_0eedd71417bf60ca9f0ef1ade744e1a2b3e60d94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\hejin\.android\build-cache\98c45de9daa2914914bdd2775289f6c9712ba456\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3bdf77dbe58e0ec53a0178de532372e7c00859b9">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\classes_ccb2fbff553e91df6e95292e7a42445143474369.jar" />
+    </item>
+
+</items>

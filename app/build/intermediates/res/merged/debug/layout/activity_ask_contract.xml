@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/shallow_gray"
+    tools:context="com.yd.org.sellpopularizesystem.activity.AskContractActivity">
+
+    <LinearLayout
+        android:id="@+id/llContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_6">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/salaId"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+
+            <TextView
+                android:id="@+id/tvSaleId"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="93"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_6">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/saleprice"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+
+            <TextView
+                android:id="@+id/tvSalePrice"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="au0.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_6">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="@string/custome"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+
+            <TextView
+                android:id="@+id/tvCustomeName"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="au0.00"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            style="@style/MatchWrap"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_6">
+
+            <TextView
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="销售请求单"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12" />
+
+            <TextView
+                android:id="@+id/tvSaleAskBill"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:text="请确认通知单内容"
+                android:textColor="#007AFF"
+                android:textSize="@dimen/tv_size_12" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/llContent"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/remark"
+            style="@style/WrapWrap"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_8"
+            android:text="备注"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_12" />
+
+        <EditText
+            android:id="@+id/etRemark"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="start"
+            android:layout_alignParentEnd="true"
+            android:layout_alignTop="@+id/remark"
+            android:layout_marginLeft="@dimen/padding_margin_6"
+            android:layout_marginRight="@dimen/padding_margin_6"
+            android:layout_toRightOf="@+id/remark"
+            android:background="@drawable/edittext_bac" />
+        <RelativeLayout
+            android:id="@+id/rlSure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etRemark"
+            android:layout_alignLeft="@+id/etRemark"
+            >
+        <CheckBox
+            android:button="@null"
+            android:id="@+id/tvDot"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginTop="@dimen/padding_margin_6"
+            android:checked="true"
+            android:background="@drawable/checkbox_selector"
+             />
+
+        <TextView
+            android:id="@+id/tvAgree"
+            style="@style/WrapWrap"
+            android:layout_alignTop="@+id/tvDot"
+            android:layout_marginLeft="@dimen/padding_margin_4"
+            android:layout_toRightOf="@+id/tvDot"
+            android:text="我已确认在通知单内的支付信息"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_12" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_margin_35"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_margin_4"
+        android:paddingTop="@dimen/padding_margin_6">
+
+        <Button
+            android:id="@+id/btConSubmit"
+            style="@style/WrapWrap"
+            android:background="@color/home_scale"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_margin_6"
+            android:paddingTop="@dimen/padding_margin_6"
+            android:text="提交"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_12" />
+    </RelativeLayout>
+</RelativeLayout>

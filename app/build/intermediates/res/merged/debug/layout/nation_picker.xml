@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MatchWrap"
+    android:paddingTop="@dimen/padding_margin_10"
+    android:background="@color/setting_bac"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:background="@color/search_edit_bac">
+
+
+            <com.yd.org.sellpopularizesystem.myView.SearchEditText
+                android:id="@+id/etNationSearch"
+                style="@style/editTextStyle"
+
+                 />
+            <!--<TextView
+                android:id="@+id/box_btn_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="3"
+                android:gravity="center"
+                android:text="国家"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_12" />-->
+
+            <!--<TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/box_btn_ok"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+               android:padding="@dimen/padding_margin_10"
+                android:text="@string/ok"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_15" />-->
+
+    </RelativeLayout>
+
+
+    <LinearLayout style="@style/MatchMatch">
+
+        <ListView
+            android:id="@+id/lvNation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="#000000"
+            android:divider="#e3e3e3"
+            android:dividerHeight="1.0dp"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:scrollingCache="false"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+</LinearLayout>

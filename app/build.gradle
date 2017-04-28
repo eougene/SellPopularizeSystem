@@ -1,0 +1,107 @@
+apply plugin: 'com.android.application'
+
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "com.yd.org.sellpopularizesystem"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            keyAlias 'Wingaid'
+            keyPassword '123456'
+            storeFile file('E:/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storePassword '123456'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['jniLibs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //网络加载
+    //解解数据
+    //三级联动
+    //网路请求
+    compile files('libs/afinal_0.5_bin.jar')
+    //拼音排序
+    compile files('libs/pinyin4j-2.5.0.jar')
+    //图片缩放
+    compile files('libs/photoView.jar')
+    // compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.0.2'
+    compile files('libs/SocialSDK_WeiXin_Full.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    //图片框架
+    //okhttp网络请求框架
+    //volley网络请求框架
+    //material design
+    //compile 'com.bigkoo:pickerview:2.1.1'
+    //compile 'se.emilsjolander.stickylistheaders:library:2.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.contrarywind:Android-PickerView:3.2.4'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
+    compile 'com.android.support:design:25.3.0'
+    compile 'com.github.davidpizarro:pickerui:1.0.1'
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap">
+
+    <LinearLayout
+        android:id="@+id/titleViewParent_ll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/shallow_gray"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/backLinearLayout"
+                style="@style/MatchMatch"
+                android:scaleType="centerInside"
+                android:src="@mipmap/backbt"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_tv_size" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/rightSearchLinearLayout"
+                style="@style/MatchMatch"
+                android:layout_centerInParent="true"
+                android:scaleType="centerInside"
+                android:src="@mipmap/searchgraybt"
+                />
+
+
+            <TextView
+                android:id="@+id/rightTitle"
+                style="@style/MatchMatch"
+                android:gravity="center"
+                android:text="title"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"
+                android:visibility="gone" />
+            <TextView
+                android:id="@+id/tvSelect"
+                style="@style/WrapWrap"
+                android:gravity="center"
+                android:paddingLeft="@dimen/padding_margin_10"
+                android:paddingRight="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_4"
+                android:paddingBottom="@dimen/padding_margin_4"
+                android:layout_centerVertical="true"
+                android:text="@string/select"
+                android:textColor="@color/white"
+                android:background="@drawable/button_bac"
+                android:textSize="@dimen/tv_size_15"
+                android:visibility="gone"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</FrameLayout>

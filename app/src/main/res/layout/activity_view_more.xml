@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llProdet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        style="@style/MatchWrap"
+        android:background="@color/black"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_margin_4"
+        android:paddingTop="@dimen/padding_margin_4">
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:gravity="center"
+            android:text="区域"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvHouseType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:text="房型"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingLeft="@dimen/padding_margin_4"
+            android:text="面积"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingRight="@dimen/padding_margin_8"
+            android:text="价格"
+            android:textColor="@color/white" />
+        <TextView
+            android:id="@+id/tvHousePhoto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="@dimen/padding_margin_8"
+            android:text="房型图"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvHouseDetail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:drawSelectorOnTop="true"
+        android:listSelector="@color/home_scale_t"></ListView>
+
+</LinearLayout>

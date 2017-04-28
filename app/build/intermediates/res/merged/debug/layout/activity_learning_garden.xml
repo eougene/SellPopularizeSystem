@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/base_header_main"
+        layout="@layout/base_header_main">
+
+    </include>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/setting_bac"/>
+
+
+    <LinearLayout
+        android:background="@color/white"
+        style="@style/MatchWrap"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/studyLineaLayout"
+            style="@style/AutoWrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/studyRadion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:checked="true"
+                android:clickable="false"
+                android:drawableLeft="@drawable/study_checkradio"
+                android:drawablePadding="@dimen/padding_margin_10"
+                android:focusable="true"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/study"
+                android:textColor="@color/home_custom"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <View
+                android:id="@+id/studyView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/home_custom"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/checkLineaLayout"
+            style="@style/AutoWrap"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/checkRadion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:clickable="false"
+                android:drawableLeft="@drawable/study_rad"
+                android:drawablePadding="@dimen/padding_margin_10"
+                android:focusable="true"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/check"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+            <View
+                android:id="@+id/checkView"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:background="@color/white"
+        style="@style/MatchMatch">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/studyViewPager"
+            style="@style/MatchMatch"
+            android:flipInterval="30"/>
+
+    </FrameLayout>
+
+</LinearLayout>

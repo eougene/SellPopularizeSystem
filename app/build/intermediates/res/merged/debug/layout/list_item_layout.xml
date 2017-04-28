@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <ImageView
+            android:id="@+id/prductImageView"
+            style="@style/MatchMatch"
+            android:background="@color/home_scale"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:id="@+id/productName"
+            style="@style/MatchWrap"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginLeft="@dimen/padding_margin_50"
+            android:layout_marginRight="@dimen/padding_margin_50"
+            android:gravity="center_horizontal"
+            android:maxLines="2"
+            android:textColor="@color/white"
+            android:textSize="@dimen/one_tv_size"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/productDescription"
+            style="@style/MatchWrap"
+            android:layout_above="@+id/productName"
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_20"
+            android:layout_marginTop="@dimen/padding_margin_12"
+            android:maxLines="4"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_12" />
+
+
+    </RelativeLayout>
+
+    <com.yd.org.sellpopularizesystem.myView.ChildListView
+        android:id="@+id/lvSubItem"
+        style="@style/MatchWrap"
+        android:divider="@color/setting_bac"
+        android:dividerHeight="0.5dp">
+
+    </com.yd.org.sellpopularizesystem.myView.ChildListView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/setting_bac" />
+
+    <RelativeLayout
+        android:id="@+id/rlViewAll"
+        style="@style/MatchWrap">
+        <TextView
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:drawablePadding="@dimen/padding_margin_4"
+            android:drawableRight="@mipmap/more"
+            android:text="查看所有"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_10" />
+    </RelativeLayout>
+
+
+</LinearLayout>

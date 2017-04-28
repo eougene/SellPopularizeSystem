@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yd.org.sellpopularizesystem"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="25" />
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 读取手机存储内容 -->
+    <uses-permission android:name="android.permission.READER_EXTERNAL_STORAGE" />
+    <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 改变网络状态 -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <!-- 改变wifi状态 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 读取日志权限 -->
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <!-- 用于读取手机当前的状态 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 设置 -->
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <!-- 富媒体需要声明的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <!-- 适配Android N系统必需的ContentProvider写权限声明，写权限包含应用包名 -->
+    <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.cheerychina.ipisa" />
+
+    <!-- 向系统日历读写权限 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <!-- 开启摄像头权限 -->
+    <uses-feature android:name="android.hardware.camera" />
+    <!-- 开启摄像头自动对焦权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <!-- 更改配置权限 -->
+    <uses-permission android:name="andorid.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+
+    <!-- OpenGLES 2.0 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.0" />
+
+    <application
+        android:name="com.yd.org.sellpopularizesystem.application.BaseApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/app"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/ActivtyTheme" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="3XChLmpeetI7hA0vunMEozM4TTUDfBZZ" />
+
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.StartActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.CustomeActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ScaleActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.LoginActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.HomeActiviyt" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.GuideActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.LearningGardenActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SettingActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.CustomDetailedActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name="com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.StudyDetailaActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ScaleDeltaileActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SearchActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SearchResultActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ScalListActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.InvestigationActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ExaminationActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.GradeActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.NotificationActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.InformationContentActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SaleRecordActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.MapActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.TestLayoutActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58d4aa41b27b0a46e000015c" >
+            <meta-data
+                android:name="UMENG_CHANNEL"
+                android:value="Umeng" />
+        </meta-data>
+
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.TestActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ReserveActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.AskContractActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.CusOprateRecordActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.DialogOptionActivity"
+            android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.FilterActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.SelectConditionActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerAddActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

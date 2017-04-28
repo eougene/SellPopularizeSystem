@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch"
+    android:background="@color/search_edit_bac">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/padding_margin_6"
+        style="@style/MatchWrap"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            style="@style/WrapWrap"
+            android:padding="@dimen/padding_margin_14">
+
+            <TextView
+                android:id="@+id/ordP"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/old_password"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <EditText
+                android:id="@+id/oldPassWord"
+                style="@style/MatchWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@id/ordP"
+                android:background="@null"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_4"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_margin_16"
+            android:background="@color/search_edit_bac">
+
+        </View>
+
+        <RelativeLayout
+            style="@style/WrapWrap"
+            android:padding="@dimen/padding_margin_14">
+
+            <TextView
+                android:id="@+id/newP"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/new_password"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <EditText
+                android:id="@+id/newPassWord"
+                style="@style/MatchWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@id/newP"
+                android:background="@null"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_4"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/setting_bac">
+
+        </View>
+
+        <RelativeLayout
+            style="@style/WrapWrap"
+            android:padding="@dimen/padding_margin_14">
+
+            <TextView
+                android:id="@+id/sureP"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/sure_password"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <EditText
+                android:id="@+id/surePassWord"
+                style="@style/MatchWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@id/sureP"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_4"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/setting_bac">
+
+        </View>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        style="@style/MatchWrap"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/sureChangeTextview"
+            android:layout_width="@dimen/padding_margin_100"
+            android:layout_height="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginTop="@dimen/padding_margin_6"
+            android:background="@drawable/button"
+            android:gravity="center"
+            android:text="@string/sure"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_15"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

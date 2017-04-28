@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rlMessage"
+        style="@style/MatchWrap"
+        android:padding="@dimen/padding_margin_10">
+
+        <TextView
+            style="@style/WrapWrap"
+            android:id="@+id/tvMessageTitle"
+            android:layout_centerVertical="true"
+            android:text="efewfgrgrsg"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"/>
+        <TextView
+            android:id="@+id/tvPoint"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_toLeftOf="@+id/ivIndicator"
+            android:layout_marginRight="5dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/circle_shape"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_08" />
+
+        <ImageView
+            android:id="@+id/ivIndicator"
+            style="@style/WrapWrap"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/rightarrow"/>
+    </RelativeLayout>
+</LinearLayout>
