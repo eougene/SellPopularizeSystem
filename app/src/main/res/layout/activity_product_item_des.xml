@@ -434,7 +434,6 @@
                     android:drawableTop="@mipmap/shoppping"
                     android:gravity="center"
                     android:text="预定"
-                    android:alpha="0.5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
 
