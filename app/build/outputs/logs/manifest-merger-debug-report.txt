@@ -161,13 +161,13 @@ MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\he
 MERGED from [com.android.support:design:25.3.0] C:\Users\hejin\.android\build-cache\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:transition:25.3.0] C:\Users\hejin\.android\build-cache\9e70a6cd1a7407bee1ba10e55e861ad1fb3db290\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\hejin\.android\build-cache\66f8f648531307d2f477af0b41530a1532d73526\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\hejin\.android\build-cache\d2744413cf6cb09385d2750ad205aaecb124184a\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\hejin\.android\build-cache\0bb52fc8d022e43acca43277ab4cd2c2d6d9423f\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\hejin\.android\build-cache\93a08b467edfd85b490f7f3a9ed95b91c30ec1d4\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\hejin\.android\build-cache\38d4649df227ff2ca923188653f62f8c6ea4f4b6\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\hejin\.android\build-cache\8f830046d76949d4057bfe4738d29a62417a47c9\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\hejin\.android\build-cache\d785c817ac4f54968b885d0689fd83df5cbe98c1\output\AndroidManifest.xml:29:5-20
 	android:label
 		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:73:9-41
@@ -403,15 +403,16 @@ MERGED from [com.android.support:recyclerview-v7:25.3.0] C:\Users\hejin\.android
 MERGED from [com.android.support:transition:25.3.0] C:\Users\hejin\.android\build-cache\9e70a6cd1a7407bee1ba10e55e861ad1fb3db290\output\AndroidManifest.xml:20:5-44
 MERGED from [com.github.davidpizarro:pickerui:1.0.1] C:\Users\hejin\.android\build-cache\305a579897769cab97b3e616dbe22fac2ee5da97\output\AndroidManifest.xml:6:5-8:41
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\hejin\.android\build-cache\66f8f648531307d2f477af0b41530a1532d73526\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:20:5-43
+MERGED from [se.emilsjolander:stickylistheaders:2.7.0] C:\Users\hejin\.android\build-cache\98c45de9daa2914914bdd2775289f6c9712ba456\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.jude:rollviewpager:1.4.6] C:\Users\hejin\.android\build-cache\8c3efe0008103edbd23e677d137c89f338527f58\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\hejin\.android\build-cache\d2744413cf6cb09385d2750ad205aaecb124184a\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\hejin\.android\build-cache\0bb52fc8d022e43acca43277ab4cd2c2d6d9423f\output\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\hejin\.android\build-cache\93a08b467edfd85b490f7f3a9ed95b91c30ec1d4\output\AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\hejin\.android\build-cache\38d4649df227ff2ca923188653f62f8c6ea4f4b6\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\hejin\.android\build-cache\8f830046d76949d4057bfe4738d29a62417a47c9\output\AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:20:5-43
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\hejin\.android\build-cache\d785c817ac4f54968b885d0689fd83df5cbe98c1\output\AndroidManifest.xml:21:5-23:58
-MERGED from [se.emilsjolander:stickylistheaders:2.7.0] C:\Users\hejin\.android\build-cache\98c45de9daa2914914bdd2775289f6c9712ba456\output\AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.0] C:\Users\hejin\.android\build-cache\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -431,13 +432,13 @@ ADDED from [com.android.support:design:25.3.0] C:\Users\hejin\.android\build-cac
 MERGED from [com.android.support:recyclerview-v7:25.3.0] C:\Users\hejin\.android\build-cache\4443522328473e4afe7db2df1ca7ded72ef8f9de\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:transition:25.3.0] C:\Users\hejin\.android\build-cache\9e70a6cd1a7407bee1ba10e55e861ad1fb3db290\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:appcompat-v7:25.3.0] C:\Users\hejin\.android\build-cache\66f8f648531307d2f477af0b41530a1532d73526\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:support-v4:25.3.0] C:\Users\hejin\.android\build-cache\d2744413cf6cb09385d2750ad205aaecb124184a\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-fragment:25.3.0] C:\Users\hejin\.android\build-cache\0bb52fc8d022e43acca43277ab4cd2c2d6d9423f\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-media-compat:25.3.0] C:\Users\hejin\.android\build-cache\93a08b467edfd85b490f7f3a9ed95b91c30ec1d4\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-ui:25.3.0] C:\Users\hejin\.android\build-cache\38d4649df227ff2ca923188653f62f8c6ea4f4b6\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.0] C:\Users\hejin\.android\build-cache\8f830046d76949d4057bfe4738d29a62417a47c9\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\035d6d7cc6c566617050659f1b2fec2973b3e85b\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.0] C:\Users\hejin\.android\build-cache\abb7c2b7e6bd21515daa0b40c344c494eec2c51e\output\AndroidManifest.xml:22:5-24:34
 MERGED from [com.android.support:support-compat:25.3.0] C:\Users\hejin\.android\build-cache\d785c817ac4f54968b885d0689fd83df5cbe98c1\output\AndroidManifest.xml:25:5-27:34
 	android:value
 		ADDED from [com.android.support:design:25.3.0] C:\Users\hejin\.android\build-cache\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\output\AndroidManifest.xml:27:9-31

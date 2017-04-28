@@ -3,12 +3,30 @@
 
     <item
         is-multidex="false"
+        jar="C:\Users\hejin\.android\build-cache\8c3efe0008103edbd23e677d137c89f338527f58\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5369e56159e8bd94b665f90390f262d26a57e73a">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\classes_206b4821bf2548a011cf52781aacfa7250ef70ae.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="E:\SellPopularizeSystem\app\libs\SocialSDK_WeiXin_Full.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="bcbf2f7dcaf210de5e57532f28a64d5a4e7ceb0b">
         <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\SocialSDK_WeiXin_Full_1cf43399eb02b92ba51cd7138565cd05f580c749.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\IndoorscapeAlbumPlugin.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6c8bf896e0d23f4003b9a3cab4bff9af9adefda">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\IndoorscapeAlbumPlugin_1207438738a4966a06ed657c90aae29159178179.jar" />
     </item>
     <item
         is-multidex="false"
@@ -36,33 +54,6 @@
         revision="25.0.2"
         sha1="f2da3c1332d13d3e29069e2144dec29ef0608f1f">
         <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_api_2a26b798fb3e819bf689471734d22f775e7eb4ed.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\SellPopularizeSystem\app\libs\umeng_social_tool.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="1b54d64ceb6e0e720f54f48178d9f797c2133ebc">
-        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_tool_03f3781526b281fca065aba5b9970fa227e3ebb6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\SellPopularizeSystem\app\libs\pinyin4j-2.5.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\pinyin4j-2.5.0_1bf1e3b700bb2aa15a4099b3f6ae771e9b03c439.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="E:\SellPopularizeSystem\app\libs\IndoorscapeAlbumPlugin.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b6c8bf896e0d23f4003b9a3cab4bff9af9adefda">
-        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\IndoorscapeAlbumPlugin_1207438738a4966a06ed657c90aae29159178179.jar" />
     </item>
     <item
         is-multidex="false"
@@ -99,6 +90,24 @@
         revision="25.0.2"
         sha1="61b8863b887e4c87ca69bb9a8ae2c89102fbee5e">
         <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_shareboard_widget_35a4b64df7971d70186974f644e06d788047bff0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\umeng_social_tool.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1b54d64ceb6e0e720f54f48178d9f797c2133ebc">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\umeng_social_tool_03f3781526b281fca065aba5b9970fa227e3ebb6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="E:\SellPopularizeSystem\app\libs\pinyin4j-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="E:\SellPopularizeSystem\app\build\intermediates\pre-dexed\debug\pinyin4j-2.5.0_1bf1e3b700bb2aa15a4099b3f6ae771e9b03c439.jar" />
     </item>
     <item
         is-multidex="false"

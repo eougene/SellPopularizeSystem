@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\anim\\downtoup_in_anim.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\anim\\downtoup_in_anim.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\anim\\alpha_launch_ui.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\anim\\alpha_launch_ui.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\anim\\downtoup_in_anim.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\anim\\downtoup_in_anim.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_in.xml",

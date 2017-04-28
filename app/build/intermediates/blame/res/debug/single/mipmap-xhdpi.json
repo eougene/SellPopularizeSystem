@@ -120,12 +120,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\loginbackground.png"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\contracttool.png",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\contracttool.png"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\videotool.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\videotool.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\contracttool.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\contracttool.png"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\share_wechat.png",

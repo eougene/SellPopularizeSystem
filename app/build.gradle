@@ -78,6 +78,7 @@ dependencies {
     compile 'com.android.support:design:25.3.0'
     compile 'com.github.davidpizarro:pickerui:1.0.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    compile 'com.jude:rollviewpager:1.4.6'
 }
 
 
