@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.r0adkll.slidr.Slidr;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -30,6 +31,8 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 设置右滑动返回
+        Slidr.attach(this);
         setContentView(R.layout.activity_base);
         setImmerseLayout(findViewById(R.id.base_header_layout));
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
