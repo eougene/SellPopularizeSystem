@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rlReserver"
     android:layout_width="match_parent"
@@ -13,8 +13,10 @@
         android:background="@color/gray" />
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
-        style="@style/MatchWrap"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_marginTop="0.5dp"
+        android:layout_weight="1"
         android:background="@color/shallow_gray">
 
         <LinearLayout
@@ -357,17 +359,64 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivBpay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bpay" />
+
+                <ImageView
+                    android:id="@+id/ivWeixin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_toRightOf="@+id/ivBpay"
+                    android:src="@mipmap/alipay" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_toRightOf="@+id/ivWeixin"
+                    android:src="@mipmap/weichatpay" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_10"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/ivBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/dollar" />
+
+                <ImageView
+                    android:id="@+id/ivWallet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_toRightOf="@+id/ivBank"
+                    android:src="@mipmap/wallet" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_marginLeft="60dp">
 
                 <ImageView
                     android:id="@+id/ivCertificate"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/padding_margin_10"
                     android:layout_weight="1"
-                    android:scaleType="centerInside"
-                    android:background="@color/home_custom" />
+                    android:background="@color/home_custom"
+                    android:scaleType="centerInside" />
 
                 <TextView
                     android:id="@+id/tvCertificate"
@@ -396,4 +445,4 @@
             android:text="提交"
             android:textColor="@color/white" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>
