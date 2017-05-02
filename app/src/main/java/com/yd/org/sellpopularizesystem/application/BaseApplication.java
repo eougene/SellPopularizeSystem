@@ -13,6 +13,7 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 
 
 /**
