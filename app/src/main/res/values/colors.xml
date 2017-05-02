@@ -37,6 +37,6 @@
     <color name="scale_tab2">#e04f52</color>
     <color name="scale_tab3">#db5f43</color>
     <color name="scale_tab4">#db7042</color>
-
+    <color name="bg_full_image">#ff000000</color>
 
 </resources>
