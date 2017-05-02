@@ -42,7 +42,7 @@ public class ProductDetailBean extends Domine{
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean extends Domine{
         /**
          * product_id : 16
          * company_id : 1
@@ -200,7 +200,7 @@ public class ProductDetailBean extends Domine{
         private String video_url;
         private String contract_url;
         private List<ImageContent> img_content;
-        private List<String> img_urls;
+        private List<ImgUrl> img_urls;
         private List<FileContent> file_content;
 
         public int getProduct_id() {
@@ -811,11 +811,11 @@ public class ProductDetailBean extends Domine{
             this.img_content = img_content;
         }
 
-        public List<String> getImg_urls() {
+        public List<ImgUrl> getImg_urls() {
             return img_urls;
         }
 
-        public void setImg_urls(List<String> img_urls) {
+        public void setImg_urls(List<ImgUrl> img_urls) {
             this.img_urls = img_urls;
         }
 
