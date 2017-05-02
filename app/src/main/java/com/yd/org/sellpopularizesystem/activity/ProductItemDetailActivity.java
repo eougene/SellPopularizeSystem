@@ -42,6 +42,7 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
+import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.FormatFlagsConversionMismatchException;
@@ -248,13 +249,19 @@ public class ProductItemDetailActivity extends BaseActivity {
 
                     break;
                 case R.id.tvVideo:
-
+                    if (tvVideo.getAlpha()==1.0f){
+                        bun=new Bundle();
+                        bun.putSerializable("prs",prs);
+                        ActivitySkip.forward(ProductItemDetailActivity.this,VideoActivity.class,bun);
+                    }
                     break;
                 case R.id.tvOrder:
                     bun=new Bundle();
                     bun.putString("productId",resultBean.getProduct_id()+"");
                     bun.putString("title",resultBean.getProduct_name());
                     bun.putString("pidatopsla","pidatopsla");
+                    bun.putSerializable("prs",prs);
+                    Log.e("prs", "onClick: "+prs.getImg_content().size());
                     ActivitySkip.forward(ProductItemDetailActivity.this,ProductSubunitListActivity.class,bun);
                     break;
                 case R.id.tvFloor:

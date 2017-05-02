@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSubUnitDet;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSubunitListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
@@ -54,7 +56,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private String page = "1";
     //从产品中点击预订跳转标志
     private String flag = "";
-
+    private ProductDetailBean.ResultBean prs;
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -68,7 +70,8 @@ public class ProductSubunitListActivity extends BaseActivity {
         bean = bundle.get("bean");
         product_id = (String) bundle.get("productId");
         flag = (String) bundle.get("pidatopsla");
-        if (flag.equals("pidatopsla")) {
+        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
+        if (flag!=null && flag.equals("pidatopsla")) {
             string = (String) bundle.get("title");
             setTitle(string);
             getListData();
@@ -197,13 +200,20 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         private Bundle bund;
-
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.rightTitle:
                     break;
                 case R.id.ivHousePic:
+                    bund=new Bundle();
+                    if (prs.getImg_content()==null){
+                        Log.e("ivHousePic", "onClick: "+"该项目没有图片");
+                    }
+                    if (prs!=null && prs.getImg_content().size()!=0){
+                        bund.putSerializable("img_content", (Serializable) prs.getImg_content());
+                       ActivitySkip.forward(ProductSubunitListActivity.this,ImageShowActivity.class,bund);
+                    }
                     break;
                 case R.id.rlPop:
                     if (mCustomePopuWindow != null) {
