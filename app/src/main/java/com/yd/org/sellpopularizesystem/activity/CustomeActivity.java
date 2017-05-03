@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -90,7 +91,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     protected int setContentView() {
-
+        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_custome;
     }
 

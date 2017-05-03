@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -199,22 +200,27 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.etFirb:
                     firbSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
+                //EOI
                 case R.id.tvEoi:
                     bundle.putString("custocora","custoeoi");
                     ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
                     break;
+                //拜访
                 case R.id.tvVisit:
                     bundle.putString("custocora","custovisit");
                     ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
                     break;
+                //预约
                 case  R.id.tvReserve:
                     bundle.putString("custocora","custoreser");
                     ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
                     break;
+                //推广记录
                 case R.id.tvExpandRe:
                     bundle.putString("custocora","custoexpand");
                     ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
                     break;
+                //购房记录
                 case R.id.tvPurchaseRe:
                     bundle.putString("custocora","custopurchase");
                     ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
@@ -225,6 +231,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
     @Override
     protected int setContentView() {
+        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_custom_detailed;
     }
 

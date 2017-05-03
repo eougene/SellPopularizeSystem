@@ -1,11 +1,13 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,9 +36,9 @@ public class CusOprateRecordActivity extends BaseActivity {
     private String customeId;
     private Bundle bundle;
     private String flag;
-
     @Override
     protected int setContentView() {
+        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_cus_oprate_record;
     }
 
@@ -58,10 +60,10 @@ public class CusOprateRecordActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     if (flag.equals("custovisit")){
-                        bundle.putString("visit","visit");
+                        bundle.putString("cora","visit");
                         ActivitySkip.forward(CusOprateRecordActivity.this,DialogOptionActivity.class, bundle);
                     }else if (flag.equals("custoreser")){
-                        bundle.putString("reserver","reserver");
+                        bundle.putString("cora","reserver");
                         ActivitySkip.forward(CusOprateRecordActivity.this,DialogOptionActivity.class, bundle);
                     }
                     //addOpratePopWin.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM,0,0);

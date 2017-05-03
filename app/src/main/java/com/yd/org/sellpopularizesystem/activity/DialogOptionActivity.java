@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,27 +39,37 @@ import java.util.Date;
 import java.util.List;
 
 public class DialogOptionActivity extends AppCompatActivity {
-    private EditText etReserTime, etRemindTime, etReserContent;
-    private TextView tvSubmit;
+    private EditText etReserTime, etRemindTime, etReserContent, etVistTitle, etVistContent;
+    private TextView tvSubmit, tvVistTime;
     private int intType;
+    private FrameLayout flOperate;
     private OptionsPickerView pvCustomTime;
     private WheelOptions wheelOptions;
     private CommonPopuWindow pvCustomTimePop;
     private List weeks = new ArrayList<String>();
     private List hours = new ArrayList<String>();
     private List minutes = new ArrayList<String>();
-    private Date date1;
     private String[] reservDate;
     private long reserverTime = 0;
     private long reminderTime = 0;
+    private String strFlag;
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_oprate_popwin_view);
+        flOperate = (FrameLayout) findViewById(R.id.flOprate);
         getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         getWindow().setGravity(Gravity.TOP);
-        initViews();
+        strFlag = getIntent().getExtras().getString("cora");
+        if (strFlag.equals("reserver")) {
+            setContentId(R.layout.reserver_operate_view);
+            initReserverViews();
+        } else if (strFlag.equals("visit")) {
+            setContentId(R.layout.visit_operate_view);
+            initVisitViews();
+        }
         //初始化自定义选择器的数据
         initOptionData();
         //初始化自定义选择器
@@ -66,13 +77,29 @@ public class DialogOptionActivity extends AppCompatActivity {
         setListener();
     }
 
-    private void initViews() {
-        etReserTime = (EditText) findViewById(R.id.etReserTime);
+    private void setContentId(int layoutId) {
+        flOperate.addView(LayoutInflater.from(this).inflate(layoutId, null));
+    }
+
+    private void initVisitViews() {
+        View view = LayoutInflater.from(this).inflate(R.layout.visit_operate_view, null);
+        etVistTitle = (EditText) view.findViewById(R.id.etVistTitle);
+        tvVistTime = (TextView) view.findViewById(R.id.tvVisitTime);
+        Calendar tvCa=Calendar.getInstance();
+        tvVistTime.setText(tvCa.get(Calendar.MONTH)+"/"+tvCa.get(Calendar.DAY_OF_MONTH)
+                +getString(R.string.blank_space)+tvCa.get(Calendar.HOUR)+":"+tvCa.get(Calendar.MINUTE));
+        etVistContent = (EditText) view.findViewById(R.id.etVistContent);
+        tvSubmit = (TextView) view.findViewById(R.id.tvVisitSubmit);
+    }
+
+    private void initReserverViews() {
+        View view = LayoutInflater.from(this).inflate(R.layout.reserver_operate_view, null);
+        etReserTime = (EditText) view.findViewById(R.id.etReserTime);
         etReserTime.requestFocus();
         intType = etReserTime.getInputType();
-        etRemindTime = (EditText) findViewById(R.id.etRemindTime);
-        etReserContent = (EditText) findViewById(R.id.etRemarkContent);
-        tvSubmit = (TextView) findViewById(R.id.tvSubmit);
+        etRemindTime = (EditText) view.findViewById(R.id.etRemindTime);
+        etReserContent = (EditText) view.findViewById(R.id.etRemarkContent);
+        tvSubmit = (TextView) view.findViewById(R.id.tvSubmit);
     }
 
     private void initOptionData() {
@@ -151,25 +178,32 @@ public class DialogOptionActivity extends AppCompatActivity {
                 tvFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (!TextUtils.isEmpty(etReserTime.getText()) && !TextUtils.isEmpty(etReserTime.getText())) {
-                            Log.e("TAG", "onClick: " + "已经执行");
+                        if (strFlag.equals("reserver")){
+                            if (!TextUtils.isEmpty(etReserTime.getText()) && !TextUtils.isEmpty(etReserTime.getText())) {
+                                Log.e("TAG", "onClick: " + "已经执行");
+                                pvCustomTime.returnData();
+                            } else {
+                                pvCustomTime.returnData();
+                                pvCustomTime.show();
+                            }
+                        }else {
                             pvCustomTime.returnData();
-                        } else {
-                            pvCustomTime.returnData();
-                            pvCustomTime.show();
                         }
+
                     }
                 });
 
                 ivUp.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (etReserTime.isFocused()) {
-                            etReserContent.requestFocus();
-                        } else if (etRemindTime.isFocused()) {
-                            etReserTime.requestFocus();
-                        } else if (etReserContent.isFocused()) {
-                            etRemindTime.requestFocus();
+                        if (strFlag.equals("reserver")) {
+                            if (etReserTime.isFocused()) {
+                                etReserContent.requestFocus();
+                            } else if (etRemindTime.isFocused()) {
+                                etReserTime.requestFocus();
+                            } else if (etReserContent.isFocused()) {
+                                etRemindTime.requestFocus();
+                            }
                         }
                     }
                 });
@@ -177,12 +211,14 @@ public class DialogOptionActivity extends AppCompatActivity {
                 ivDown.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (etReserTime.isFocused()) {
-                            etRemindTime.requestFocus();
-                        } else if (etRemindTime.isFocused()) {
-                            etReserContent.requestFocus();
-                        } else if (etReserContent.isFocused()) {
-                            etReserTime.requestFocus();
+                        if (strFlag.equals("reserver")) {
+                            if (etReserTime.isFocused()) {
+                                etRemindTime.requestFocus();
+                            } else if (etRemindTime.isFocused()) {
+                                etReserContent.requestFocus();
+                            } else if (etReserContent.isFocused()) {
+                                etReserTime.requestFocus();
+                            }
                         }
                     }
                 });
@@ -223,51 +259,53 @@ public class DialogOptionActivity extends AppCompatActivity {
         ca.set(ca.get(Calendar.YEAR), ca.get(Calendar.MONTH), ca.get(Calendar.DAY_OF_MONTH), ca.get(Calendar.HOUR_OF_DAY), ca.get(Calendar.MINUTE), 0);
         long currentTime = ca.getTimeInMillis();
         Log.e("tag", "currentTime: " + currentTime);
-        if (etReserTime.isFocused()) {
-            if (!TextUtils.isEmpty(etRemindTime.getText())) {
-                reminderTime = getTimeMillis(etRemindTime);
-            }
-            ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
-            Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
-            Log.e("TAG", "setText: " + ca.getTime());
-            reserverTime = ca.getTimeInMillis();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            String str = sdf.format(ca.getTime());
-            Log.e("tag", "reserverTime: " + reserverTime + "\n" + str);
-            if (reserverTime < currentTime) {
-                ToasShow.showToastBottom(DialogOptionActivity.this, "预约时间必须大于当前时间");
-            } /*else if (reserverTime<) {
-
-            }*/ else {
-                etReserTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
-                        + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
-                etReserTime.setInputType(intType);
-                etReserTime.setSelection(etReserTime.getText().length());
-                etRemindTime.requestFocus();
-            }
-
-        } else if (etRemindTime.isFocused()) {
-            ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
-            reminderTime = ca.getTimeInMillis();
-            Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
-            Log.e("TAG", "setText: " + ca.getTime() + ca.getTimeInMillis());
-            if (!TextUtils.isEmpty(etReserTime.getText())) {
-                reserverTime = getTimeMillis(etReserTime);
-                if (reminderTime > reserverTime) {
-                    Log.e("tag", "currentTime: " + reminderTime);
-                    Log.e("tag", "reminderTime: " + reserverTime);
-                    ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
-                } else if (reminderTime < currentTime) {
-                    Log.e("tag", "currentTime: " + reminderTime);
-                    Log.e("tag", "reminderTime: " + currentTime);
-                    ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
+        if (strFlag.equals("reserver")) {
+            if (etReserTime.isFocused()) {
+                if (!TextUtils.isEmpty(etRemindTime.getText())) {
+                    reminderTime = getTimeMillis(etRemindTime);
+                }
+                ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
+                Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
+                Log.e("TAG", "setText: " + ca.getTime());
+                reserverTime = ca.getTimeInMillis();
+                String str = sdf.format(ca.getTime());
+                Log.e("tag", "reserverTime: " + reserverTime + "\n" + str);
+                if (reserverTime < currentTime) {
+                    ToasShow.showToastBottom(DialogOptionActivity.this, "预约时间必须大于当前时间");
                 } else {
-                    etRemindTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
+                    etReserTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
                             + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
-                    etRemindTime.setInputType(intType);
-                    etRemindTime.setSelection(etRemindTime.getText().length());
+                    etReserTime.setInputType(intType);
+                    etReserTime.setSelection(etReserTime.getText().length());
+                    etRemindTime.requestFocus();
+                }
+
+            } else if (etRemindTime.isFocused()) {
+                ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
+                reminderTime = ca.getTimeInMillis();
+                Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
+                Log.e("TAG", "setText: " + ca.getTime() + ca.getTimeInMillis());
+                if (!TextUtils.isEmpty(etReserTime.getText())) {
+                    reserverTime = getTimeMillis(etReserTime);
+                    if (reminderTime > reserverTime) {
+                        Log.e("tag", "currentTime: " + reminderTime);
+                        Log.e("tag", "reminderTime: " + reserverTime);
+                        ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
+                    } else if (reminderTime < currentTime) {
+                        Log.e("tag", "currentTime: " + reminderTime);
+                        Log.e("tag", "reminderTime: " + currentTime);
+                        ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
+                    } else {
+                        etRemindTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
+                                + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
+                        etRemindTime.setInputType(intType);
+                        etRemindTime.setSelection(etRemindTime.getText().length());
+                    }
                 }
             }
+        } else {
+            tvVistTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
+                    + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
         }
     }
 
@@ -278,7 +316,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         String[] reservTime = new String[2];
         ;
         if (view instanceof EditText) {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String[] reserv = ((EditText) view).getText().toString().trim().split("\\s+");//根据03/14 08:29形式拆分
             Log.e("reserv", "getTimeMillis: " + reserv[1] + ((EditText) view).getText().toString().trim());
             reservDate = reserv[0].split("\\/");//得到03 14
@@ -349,9 +387,15 @@ public class DialogOptionActivity extends AppCompatActivity {
                     pvCustomTime.setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))));
                     pvCustomTime.show();
                     break;
+                case R.id.tvVisitTime:
+                    Log.e("tvVisitTime", "onClick: ");
+                    pvCustomTime.show();
+                    break;
                 case R.id.tvSubmit:
-                    submit();
-                    ToasShow.showToastCenter(DialogOptionActivity.this,"提交成功");
+                    if (strFlag.equals("reserver")) {
+                        submit();
+                        ToasShow.showToastCenter(DialogOptionActivity.this, "提交成功");
+                    }
                     finish();
                     break;
             }
@@ -437,9 +481,9 @@ public class DialogOptionActivity extends AppCompatActivity {
         diff = reserverTime - reminderTime;
         days = diff / (1000 * 60 * 60 * 24);
         //hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
-        hours=diff / (1000 * 60 * 60 );
+        hours = diff / (1000 * 60 * 60);
         //mins = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
-        mins=diff/(1000 * 60);
+        mins = diff / (1000 * 60);
         Log.e("diff", "getGapTime: " + diff);
         Log.e("diff", "getGapTime: " + days);
         Log.e("diff", "getGapTime: " + hours);
@@ -461,8 +505,12 @@ public class DialogOptionActivity extends AppCompatActivity {
     }
 
     private void setListener() {
-        etReserTime.setOnClickListener(mOnclickListener);
-        etRemindTime.setOnClickListener(mOnclickListener);
+        if (strFlag.equals("reserver")){
+            etReserTime.setOnClickListener(mOnclickListener);
+            etRemindTime.setOnClickListener(mOnclickListener);
+        }else {
+            tvVistTime.setOnClickListener(mOnclickListener);
+        }
         tvSubmit.setOnClickListener(mOnclickListener);
     }
 
