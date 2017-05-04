@@ -34,11 +34,11 @@ public class LastFragmentView extends BaseFragmentView {
     public TextView tvEnd;
     private String type = null;
     private String studyId ;
-    public static LastFragmentView getInstnce(String type,int studyId) {
+    public static LastFragmentView getInstnce(String type,String studyId) {
         LastFragmentView photoViewFragment = new LastFragmentView();
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
-        bundle.putString("study_id", studyId+"");
+        bundle.putString("study_id", studyId);
         photoViewFragment.setArguments(bundle);
         return photoViewFragment;
     }
@@ -87,7 +87,7 @@ public class LastFragmentView extends BaseFragmentView {
         http.addHeader("Content-Type","application/x-www-form-urlencoded");
         AjaxParams ajaxParams=new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("study_id",studyId);
+        ajaxParams.put("study_id",studyId.equals("")?"":studyId);
         Log.e(TAG, "submit: "+studyId);
         http.post(Contants.STUDY_COMPLETE, ajaxParams, new AjaxCallBack<String>() {
             @Override
