@@ -192,6 +192,7 @@
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/submit"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -207,6 +208,7 @@
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="无法确定"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_15" />
         </LinearLayout>

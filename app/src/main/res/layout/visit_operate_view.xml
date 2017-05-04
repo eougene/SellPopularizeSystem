@@ -42,6 +42,7 @@
                 android:layout_weight="1.4"
                 android:background="@drawable/editbac"
                 android:hint="请输入标题"
+                android:layout_marginLeft="@dimen/padding_margin_4"
                 android:paddingBottom="@dimen/padding_margin_8"
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_8"
