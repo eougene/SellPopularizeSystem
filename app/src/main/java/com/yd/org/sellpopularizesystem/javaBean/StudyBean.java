@@ -74,7 +74,7 @@ public class StudyBean extends Domine {
          * paper_id : null
          */
 
-        private int study_id;
+        private String study_id;
         private int company_id;
         private String study_title;
         private int type_id;
@@ -93,11 +93,11 @@ public class StudyBean extends Domine {
         private int sort;
         private Object paper_id;
 
-        public int getStudy_id() {
+        public String getStudy_id() {
             return study_id;
         }
 
-        public void setStudy_id(int study_id) {
+        public void setStudy_id(String study_id) {
             this.study_id = study_id;
         }
 
