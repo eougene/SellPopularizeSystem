@@ -82,6 +82,15 @@ public class ExpandView extends FrameLayout {
             startAnimation(mExpandAnimation);
         }
     }
+
+    public boolean ismIsExpand() {
+        return mIsExpand;
+    }
+
+    public void setmIsExpand(boolean mIsExpand) {
+        this.mIsExpand = mIsExpand;
+    }
+
     public boolean isExpand() {
         return mIsExpand;
     }
