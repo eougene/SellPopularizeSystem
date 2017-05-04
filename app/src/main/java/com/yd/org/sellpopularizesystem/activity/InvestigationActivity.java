@@ -41,7 +41,7 @@ public class InvestigationActivity extends BaseActivity {
         etAddress= (EditText) findViewById(R.id.etAddress);
         ivCustomePhoto= (CircleImageView) findViewById(R.id.ivHeadPhoto);
         CustomBean.ResultBean resultBean = BaseApplication.getInstance().getResultBean();
-        tvCustomeName.setText(resultBean.getTrue_name());
+        tvCustomeName.setText(resultBean.getTrue_name().equals("")?"":resultBean.getTrue_name());
         etContact.setText(resultBean.getMobile());
         etAddress.setText((String) resultBean.getAddress());
          int size=MyUtils.px2dip(this,115f);

@@ -15,10 +15,13 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,9 +30,20 @@ import com.bigkoo.pickerview.lib.WheelView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.bigkoo.pickerview.view.WheelOptions;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
+
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,19 +51,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.jar.JarEntry;
 
 public class DialogOptionActivity extends AppCompatActivity {
     private EditText etReserTime, etRemindTime, etReserContent, etVistTitle, etVistContent;
-    private TextView tvSubmit, tvVistTime;
+    private TextView tvSubmit, tvVistTime, tvVisitSubmit;
     private int intType;
+    private RelativeLayout rlDoaPop;
     private FrameLayout flOperate;
+    private LinearLayout llEoibac;
     private OptionsPickerView pvCustomTime;
     private WheelOptions wheelOptions;
-    private CommonPopuWindow pvCustomTimePop;
     private List weeks = new ArrayList<String>();
     private List hours = new ArrayList<String>();
     private List minutes = new ArrayList<String>();
-    private String[] reservDate;
     private long reserverTime = 0;
     private long reminderTime = 0;
     private String strFlag;
@@ -60,14 +76,15 @@ public class DialogOptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_oprate_popwin_view);
         flOperate = (FrameLayout) findViewById(R.id.flOprate);
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+        lp.x = MyUtils.getStatusBarHeight(this);
+        getWindow().setAttributes(lp);
         getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         getWindow().setGravity(Gravity.TOP);
         strFlag = getIntent().getExtras().getString("cora");
         if (strFlag.equals("reserver")) {
-            setContentId(R.layout.reserver_operate_view);
             initReserverViews();
         } else if (strFlag.equals("visit")) {
-            setContentId(R.layout.visit_operate_view);
             initVisitViews();
         }
         //初始化自定义选择器的数据
@@ -77,19 +94,16 @@ public class DialogOptionActivity extends AppCompatActivity {
         setListener();
     }
 
-    private void setContentId(int layoutId) {
-        flOperate.addView(LayoutInflater.from(this).inflate(layoutId, null));
-    }
-
     private void initVisitViews() {
         View view = LayoutInflater.from(this).inflate(R.layout.visit_operate_view, null);
         etVistTitle = (EditText) view.findViewById(R.id.etVistTitle);
         tvVistTime = (TextView) view.findViewById(R.id.tvVisitTime);
-        Calendar tvCa=Calendar.getInstance();
-        tvVistTime.setText(tvCa.get(Calendar.MONTH)+"/"+tvCa.get(Calendar.DAY_OF_MONTH)
-                +getString(R.string.blank_space)+tvCa.get(Calendar.HOUR)+":"+tvCa.get(Calendar.MINUTE));
+        Calendar tvCa = Calendar.getInstance();
+        tvVistTime.setText(String.format("%02d", tvCa.get(Calendar.MONTH) + 1) + "/" + String.format("%02d", tvCa.get(Calendar.DAY_OF_MONTH))
+                + getString(R.string.blank_space) + tvCa.get(Calendar.HOUR_OF_DAY) + ":" + tvCa.get(Calendar.MINUTE));
         etVistContent = (EditText) view.findViewById(R.id.etVistContent);
-        tvSubmit = (TextView) view.findViewById(R.id.tvVisitSubmit);
+        tvVisitSubmit = (TextView) view.findViewById(R.id.tvVisitSubmit);
+        flOperate.addView(view);
     }
 
     private void initReserverViews() {
@@ -100,6 +114,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         etRemindTime = (EditText) view.findViewById(R.id.etRemindTime);
         etReserContent = (EditText) view.findViewById(R.id.etRemarkContent);
         tvSubmit = (TextView) view.findViewById(R.id.tvSubmit);
+        flOperate.addView(view);
     }
 
     private void initOptionData() {
@@ -178,7 +193,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                 tvFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (strFlag.equals("reserver")){
+                        if (strFlag.equals("reserver")) {
                             if (!TextUtils.isEmpty(etReserTime.getText()) && !TextUtils.isEmpty(etReserTime.getText())) {
                                 Log.e("TAG", "onClick: " + "已经执行");
                                 pvCustomTime.returnData();
@@ -186,7 +201,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                                 pvCustomTime.returnData();
                                 pvCustomTime.show();
                             }
-                        }else {
+                        } else {
                             pvCustomTime.returnData();
                         }
 
@@ -229,14 +244,16 @@ public class DialogOptionActivity extends AppCompatActivity {
         LinearLayout llOptionPicker = (LinearLayout) view.findViewById(R.id.optionspicker);
         wheelOptions = new WheelOptions(llOptionPicker, false);
         pvCustomTime.setNPicker(weeks, hours, minutes);
-        //让控件延时显示
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                pvCustomTime.show();
-            }
-        }, 200);
+        if (strFlag.equals("reserver")) {
+            //让控件延时显示
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    pvCustomTime.show();
+                }
+            }, 200);
+        }
 
     }
 
@@ -388,19 +405,57 @@ public class DialogOptionActivity extends AppCompatActivity {
                     pvCustomTime.show();
                     break;
                 case R.id.tvVisitTime:
-                    Log.e("tvVisitTime", "onClick: ");
                     pvCustomTime.show();
                     break;
+                case R.id.tvVisitSubmit:
+                    submitVisit();
+                    break;
                 case R.id.tvSubmit:
-                    if (strFlag.equals("reserver")) {
-                        submit();
-                        ToasShow.showToastCenter(DialogOptionActivity.this, "提交成功");
-                    }
+                    submit();
+                    ToasShow.showToastCenter(DialogOptionActivity.this, "提交成功");
                     finish();
                     break;
             }
         }
     };
+
+    private void submitVisit() {
+        if (TextUtils.isEmpty(etVistTitle.getText().toString())) {
+            ToasShow.showToastBottom(DialogOptionActivity.this, "请输入标题");
+        } else {
+            FinalHttp fh = new FinalHttp();
+            AjaxParams ajaxParams = new AjaxParams();
+            ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+            ajaxParams.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
+            ajaxParams.put("title", etVistTitle.getText().toString());
+            ajaxParams.put("content", etVistTitle.toString());
+            ajaxParams.put("visit_time", tvVistTime.getText().toString());
+            fh.post(Contants.NEW_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    super.onSuccess(s);
+                    try {
+                        JSONObject json = new JSONObject(s);
+                        if (json.getString("code").equals("1")) {
+                            ToasShow.showToastBottom(DialogOptionActivity.this, json.getString("msg"));
+                            finish();
+                            Log.e("tag1", "onSuccess: " + json.getString("msg"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.e("tag2", "onSuccess: " + e.getMessage());
+                    }
+                }
+
+                @Override
+                public void onFailure(Throwable t, int errorNo, String strMsg) {
+                    super.onFailure(t, errorNo, strMsg);
+                    Log.e("tag", "onSuccess: " + errorNo);
+                }
+            });
+        }
+
+    }
 
     private void submit() {
         if (TextUtils.isEmpty(etReserTime.getText().toString())) {
@@ -505,13 +560,14 @@ public class DialogOptionActivity extends AppCompatActivity {
     }
 
     private void setListener() {
-        if (strFlag.equals("reserver")){
+        if (strFlag.equals("reserver")) {
             etReserTime.setOnClickListener(mOnclickListener);
             etRemindTime.setOnClickListener(mOnclickListener);
-        }else {
+            tvSubmit.setOnClickListener(mOnclickListener);
+        } else if (strFlag.equals("visit")) {
             tvVistTime.setOnClickListener(mOnclickListener);
+            tvVisitSubmit.setOnClickListener(mOnclickListener);
         }
-        tvSubmit.setOnClickListener(mOnclickListener);
     }
 
 }

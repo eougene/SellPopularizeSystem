@@ -510,6 +510,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 } else {
                     SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                     CustomBean.ResultBean resultBean = viewHolder.resultBean;
+                    BaseApplication app = BaseApplication.getInstance();
+                    app.setResultBean(resultBean);
                     bundle.putSerializable("custome", resultBean);
                     bundle.putString("add", "list");
                     ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);

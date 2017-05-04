@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.fragment.LastFragmentView;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.StudyBean;
 import com.yd.org.sellpopularizesystem.viewpage.HackyViewPager;
 import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
@@ -42,6 +43,7 @@ public class StudyDetailaActivity extends FragmentActivity {
 
         }
     };
+    private ProductDetailBean.ResultBean prs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class StudyDetailaActivity extends FragmentActivity {
 
         Bundle bundle = getIntent().getExtras();
         resultBean = (StudyBean.ResultBean) bundle.getSerializable("study");
-
+        prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
         //
         picList = new ArrayList<>();
         picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-001.jpg");
@@ -68,15 +70,17 @@ public class StudyDetailaActivity extends FragmentActivity {
 
 
         //
-        for (int i = 0; i < picList.size()+1; i++) {
-            if(i==picList.size()){
-                fragmentList.add(i,LastFragmentView.getInstnce(ExtraName.INVISIBILITY,resultBean.getStudy_id()));
-            }else {
+        for (int i = 0; i < picList.size() + 1; i++) {
+            if (i == picList.size()) {
+                if (resultBean != null) {
+                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
+                } else if (prs != null) {
+                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
+                }
+            } else {
                 fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i)));
             }
         }
-
-
     }
 
     private void setViewPager() {
@@ -111,7 +115,7 @@ public class StudyDetailaActivity extends FragmentActivity {
 
 
         //事件
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jude.rollviewpager.HintView;
+import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
@@ -29,6 +30,7 @@ import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.utils.Log;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -63,6 +65,8 @@ public class ProductItemDetailActivity extends BaseActivity {
     private String string;
     private static Bitmap bitmap;
     public int images;
+    private Bundle bun;
+
     @Override
     protected int setContentView() {
         //hideRightImagview();
@@ -148,6 +152,7 @@ public class ProductItemDetailActivity extends BaseActivity {
         //自定义指示器图片
         //rpv.setHintView(new IconHintView(this,R.mipmap.dian_true,R.mipmap.dian_false));
         rpv.setHintView(new ColorPointHintView(this, Color.WHITE,Color.parseColor("#7F7F7F")));
+        rpv.setOnItemClickListener(mOnItemClickListener);
         tvId= getViewById(R.id.tvId);
         tvProdes=getViewById(R.id.tvProdes);
         tvIsSalingNum= getViewById(R.id.tvIsSalingNum);
@@ -191,6 +196,7 @@ public class ProductItemDetailActivity extends BaseActivity {
                 ProductDetailBean pdb= gson.fromJson(s,ProductDetailBean.class);
                 if (pdb.getCode().equals("1")){
                     prs=pdb.getResult();
+                    BaseApplication.getInstance().setPrs(prs);
                     //轮播控件适配器
                     rpv.setAdapter(new NormalAdapter(rpv));
                     tvId.setText(prs.getProduct_id()+"");
@@ -211,7 +217,8 @@ public class ProductItemDetailActivity extends BaseActivity {
                     tvCashDesposit.setText(prs.getFirb_exchange_deposit());
                     tvSubscription.setText(prs.getMin_reservation_fee());
                     controlColor();
-
+                    bun = new Bundle();
+                    bun.putSerializable("prs",prs);
                 }
             }
 
@@ -241,7 +248,6 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     View.OnClickListener mOnClickListener=new View.OnClickListener() {
-        Bundle bun;
         @Override
         public void onClick(View v) {
             switch (v.getId()){
@@ -250,17 +256,14 @@ public class ProductItemDetailActivity extends BaseActivity {
                     break;
                 case R.id.tvVideo:
                     if (tvVideo.getAlpha()==1.0f){
-                        bun=new Bundle();
                         bun.putSerializable("prs",prs);
                         ActivitySkip.forward(ProductItemDetailActivity.this,VideoActivity.class,bun);
                     }
                     break;
                 case R.id.tvOrder:
-                    bun=new Bundle();
                     bun.putString("productId",resultBean.getProduct_id()+"");
                     bun.putString("title",resultBean.getProduct_name());
                     bun.putString("pidatopsla","pidatopsla");
-                    bun.putSerializable("prs",prs);
                     Log.e("prs", "onClick: "+prs.getImg_content().size());
                     ActivitySkip.forward(ProductItemDetailActivity.this,ProductSubunitListActivity.class,bun);
                     break;
@@ -274,6 +277,12 @@ public class ProductItemDetailActivity extends BaseActivity {
 
                     break;
             }
+        }
+    };
+    OnItemClickListener mOnItemClickListener=new OnItemClickListener() {
+        @Override
+        public void onItemClick(int position) {
+            ActivitySkip.forward(ProductItemDetailActivity.this,ScaleDeltaileActivity.class,bun);
         }
     };
     @Override

@@ -17,8 +17,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
+import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -40,7 +42,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btCancel;
     private int pos;
     private RelativeLayout rlPop;
-    private TextView tvLocation, tvHouseType, tvArea, tvPrice, tvSelect;
+    private TextView tvSelect,
+            tvIntroduce,tvVideo,tvFloor,tvContract,tvFile;
     private ListView lvHouseDetail;
     private ImageView ivSearch;
     private View mView;
@@ -57,6 +60,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     //从产品中点击预订跳转标志
     private String flag = "";
     private ProductDetailBean.ResultBean prs;
+    private Bundle bund;
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -71,6 +75,9 @@ public class ProductSubunitListActivity extends BaseActivity {
         product_id = (String) bundle.get("productId");
         flag = (String) bundle.get("pidatopsla");
         prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
+        if (prs==null){
+            getItemProductDetail();
+        }
         if (flag!=null && flag.equals("pidatopsla")) {
             string = (String) bundle.get("title");
             setTitle(string);
@@ -105,11 +112,12 @@ public class ProductSubunitListActivity extends BaseActivity {
         tvSelect.setOnClickListener(mOnClickListener);
         //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
-        tvLocation = getViewById(R.id.tvLocation);
-        tvHouseType = getViewById(R.id.tvHouseType);
-        tvArea = getViewById(R.id.tvArea);
-        tvPrice = getViewById(R.id.tvPrice);
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
+        tvIntroduce=getViewById(R.id.tvIntroduce);
+        tvVideo=getViewById(R.id.tvVideo);
+        tvFloor=getViewById(R.id.tvFloor);
+        tvContract=getViewById(R.id.tvContract);
+        tvFile=getViewById(R.id.tvFile);
 
         mCustomePopuWindow = new CustomePopuWindow(ProductSubunitListActivity.this, mOnClickListener);
         mView = mCustomePopuWindow.getContentView();
@@ -199,20 +207,36 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        private Bundle bund;
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.rightTitle:
                     break;
                 case R.id.ivHousePic:
-                    bund=new Bundle();
-                    if (prs.getImg_content()==null){
-                        Log.e("ivHousePic", "onClick: "+"该项目没有图片");
+                    if (bund==null){
+                        bund=new Bundle();
                     }
-                    if (prs!=null && prs.getImg_content().size()!=0){
+                  /*  if (prs!=null){
+                        if (prs.getImg_content()==null||prs.getImg_content().size()==0){
+                            Log.e("ivHousePic", "onClick: "+"该项目没有图片");
+
+                        }
+                    }*/
+
+                    if (prs!=null && prs.getImg_content().size()>0){
                         bund.putSerializable("img_content", (Serializable) prs.getImg_content());
                        ActivitySkip.forward(ProductSubunitListActivity.this,ImageShowActivity.class,bund);
+                    }else {
+                        if (BaseApplication.getInstance().getPrs()!=null && BaseApplication.getInstance().getPrs().getProduct_id()==Integer.parseInt(product_id)){
+                            prs=BaseApplication.getInstance().getPrs();
+                            if (prs.getImg_content().size()>0){
+                                bund.putSerializable("img_content", (Serializable) prs.getImg_content());
+                                ActivitySkip.forward(ProductSubunitListActivity.this,ImageShowActivity.class,bund);
+                            }
+
+                        }else {
+                            getItemProductDetail();
+                        }
                     }
                     break;
                 case R.id.rlPop:
@@ -244,6 +268,52 @@ public class ProductSubunitListActivity extends BaseActivity {
             }
         }
     };
+
+    private void getItemProductDetail() {
+        showDialog();
+        FinalHttp fh=new FinalHttp();
+        AjaxParams ajaxParams=new AjaxParams();
+        ajaxParams.put("product_id",product_id);
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                closeDialog();
+                Gson gson = new Gson();
+                ProductDetailBean pdb= gson.fromJson(s,ProductDetailBean.class);
+                if (pdb.getCode().equals("1")){
+                    prs=pdb.getResult();
+                    BaseApplication.getInstance().setPrs(prs);
+                    controlColor();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+
+    }
+
+    private void controlColor() {
+        if (prs.getDescription_url()!=null){
+            tvIntroduce.setAlpha(1.0f);
+        }
+        if (prs.getVideo_url()!=null){
+            tvVideo.setAlpha(1.0f);
+        }
+        if (prs.getImg_content()!=null && prs.getImg_content().size()>0){
+            tvFloor.setAlpha(1.0f);
+        }
+        if (prs.getContract_url()!=null && !prs.getContract_url().equals("")){
+            tvContract.setAlpha(1.0f);
+        }
+        if (prs.getFile_content()!=null && prs.getFile_content().size()>0){
+            tvFile.setAlpha(1.0f);
+        }
+    }
 
     @Override
     public void setListener() {

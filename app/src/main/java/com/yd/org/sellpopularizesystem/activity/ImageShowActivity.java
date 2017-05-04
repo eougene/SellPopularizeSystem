@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class ImageShowActivity extends AppCompatActivity {
     private void initData() {
         imgContent = (List<ImageContent>) getIntent().getSerializableExtra("img_content");
         if (imgContent!=null && imgContent.size()>0){
+            Log.e("imgContent", "initData: "+imgContent.size());
             for (int i = 0; i < imgContent.size(); i++) {
                 imgUrls.add(Contants.DOMAIN +"/"+imgContent.get(i).getUrl());
             }
