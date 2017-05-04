@@ -13,6 +13,7 @@ import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 
 
@@ -24,6 +25,7 @@ public class BaseApplication extends Application {
     private static BaseApplication mApp;
     private RequestQueue queue;
     private CustomBean.ResultBean resultBean;
+    private ProductDetailBean.ResultBean prs;
     public BaseApplication() {
         mApp = this;
     }
@@ -42,6 +44,14 @@ public class BaseApplication extends Application {
 
     public void setResultBean(CustomBean.ResultBean resultBean) {
         this.resultBean = resultBean;
+    }
+
+    public ProductDetailBean.ResultBean getPrs() {
+        return prs;
+    }
+
+    public void setPrs(ProductDetailBean.ResultBean prs) {
+        this.prs = prs;
     }
 
     @Override
