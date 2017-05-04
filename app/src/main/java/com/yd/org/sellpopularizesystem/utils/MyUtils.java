@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Environment;
@@ -723,5 +724,12 @@ public class MyUtils {
         WindowManager wm = context.getWindowManager();
         int height = wm.getDefaultDisplay().getHeight();
         return height;
+    }
+    public static int getStatusHeight(Activity context){
+        Rect rectangle= new Rect();
+        context.getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
+        //高度为rectangle.top-0仍为rectangle.top
+       // Log.e("WangJ", "状态栏-方法3:" + rectangle.top);
+        return rectangle.top;
     }
 }
