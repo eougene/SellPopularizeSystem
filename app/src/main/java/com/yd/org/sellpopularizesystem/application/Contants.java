@@ -68,8 +68,14 @@ public class Contants {
     public  static final String APPLY_CONTRACT = DOMAIN +"/index.php/app/order/ask_ontract";
     //取消订单
     public  static final String ORDER_CANCEL = DOMAIN +"/index.php/app/order/cancel_order";
+    //拜访记录列表
+    public  static final String VISIT_RECORD_LIST=DOMAIN +"/index.php/appv2/user/visit_log_list";
     //新增拜访记录
     public  static final String NEW_VISIT_RECORDER = DOMAIN+"/index.php/app/user/add_visit_log";
+    //eoi充值
+    public  static final String EOI_RECHARGE = DOMAIN +"/index.php/appv2/eoi/create_eoi";
+    //eoi列表
+    public  static final String EOI_LIST =DOMAIN +"/index.php/appv2/eoi/eoi_list";
     /**
      * 用户文件夹
      */
