@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rlDoaPop"
-    style="@style/MatchMatch">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchWrap">
+
 
     <LinearLayout
-        android:id="@+id/llMethodContent"
+        android:id="@+id/llPhotoChoose"
         style="@style/MatchWrap"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
+
+        <!-- <Button
+             android:id="@+id/photoAlbumButton"
+             style="@style/MatchWrap"
+             android:layout_marginLeft="@dimen/padding_margin_20"
+             android:layout_marginRight="@dimen/padding_margin_20"
+             android:background="@drawable/base_square"
+             android:text="@string/photofromalbum"
+             android:textColor="@color/light_blue"
+             android:textSize="@dimen/tv_size_15" />-->
         <LinearLayout
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/padding_margin_20"
@@ -18,52 +27,51 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/btDoaCash"
+                android:id="@+id/btFromCamera"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_margin_35"
                 android:layout_marginLeft="@dimen/padding_margin_20"
                 android:layout_marginRight="@dimen/padding_margin_20"
-                android:background="@drawable/base_square"
-                android:text="@string/recash"
+                android:background="@drawable/button_click"
+                android:text="@string/photo"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/shallow_gray" />
 
             <Button
-                android:id="@+id/btDoaTransfer"
+                android:id="@+id/btFromAlbum"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_margin_35"
                 android:layout_marginLeft="@dimen/padding_margin_20"
                 android:layout_marginRight="@dimen/padding_margin_20"
-                android:background="@drawable/base_square"
-                android:text="@string/transfer"
+                android:background="@drawable/button_click"
+                android:text="@string/photofromalbum"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/btDoaCancel"
+            android:id="@+id/btPhotoCancel"
             android:layout_width="match_parent"
             android:layout_height="@dimen/padding_margin_35"
             android:layout_marginBottom="@dimen/padding_margin_10"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_20"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="@drawable/base_square"
+            android:background="@drawable/button_click"
             android:text="@string/cancel"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/tv_size_15" />
     </LinearLayout>
+
     <LinearLayout
-        android:id="@+id/llSpace"
-        android:layout_above="@+id/llMethodContent"
+        android:id="@+id/llChooseSpace"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
-    </LinearLayout>
+        android:layout_above="@+id/llPhotoChoose"
+        android:orientation="vertical"></LinearLayout>
 </RelativeLayout>

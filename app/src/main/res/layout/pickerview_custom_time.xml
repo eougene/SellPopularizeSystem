@@ -33,6 +33,7 @@
             android:padding="8dp"
             android:src="@mipmap/down" />
         <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
