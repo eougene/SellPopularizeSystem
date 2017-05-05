@@ -58,9 +58,7 @@ public class DialogOptionActivity extends AppCompatActivity {
     private EditText etReserTime, etRemindTime, etReserContent, etVistTitle, etVistContent;
     private TextView tvSubmit, tvVistTime, tvVisitSubmit;
     private int intType;
-    private RelativeLayout rlDoaPop;
     private FrameLayout flOperate;
-    private LinearLayout llEoibac;
     private OptionsPickerView pvCustomTime;
     private WheelOptions wheelOptions;
     private List weeks = new ArrayList<String>();
@@ -190,6 +188,10 @@ public class DialogOptionActivity extends AppCompatActivity {
                 TextView tvFinish = (TextView) v.findViewById(R.id.tv_finish);
                 ImageView ivUp = (ImageView) v.findViewById(R.id.ivUp);
                 ImageView ivDown = (ImageView) v.findViewById(R.id.ivDown);
+                TextView tvTitle= (TextView) v.findViewById(R.id.tvTitle);
+                if (strFlag.equals("visit")){
+                    tvTitle.setVisibility(View.GONE);
+                }
                 tvFinish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
