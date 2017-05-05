@@ -72,7 +72,7 @@ public class BitmapUtil {
     public static void gotoSysPic(Activity act, int resultCode) {
         Intent getImageIntent = new Intent(Intent.ACTION_GET_CONTENT);
         getImageIntent.addCategory(Intent.CATEGORY_OPENABLE);
-        getImageIntent.setType("image/*");
+        getImageIntent.setType("image/*");//调用的是系统图库
         //getImageIntent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         act.startActivityForResult(getImageIntent, resultCode);
     }
