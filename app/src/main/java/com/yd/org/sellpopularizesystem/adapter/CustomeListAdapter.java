@@ -2,6 +2,9 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.opengl.GLException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
@@ -20,6 +24,7 @@ import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.utils.ACache;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +40,12 @@ public class CustomeListAdapter extends BaseAdapter {
     private ViewHolder holder;
     private List tempChilds = new ArrayList<>();
     private String str, mTempStr;
-
+    private ACache aCache;
+    private int pos;
     public CustomeListAdapter(Activity mContext) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
+        aCache=ACache.get(mContext);
     }
 
     @Override
@@ -67,8 +74,9 @@ public class CustomeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView( int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
+        pos=position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             holder = viewHolder;
@@ -82,7 +90,31 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.productListBean = list.get(position);
-        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
+        //Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
+        final ViewHolder viewHolder1 = viewHolder;
+        if (aCache.getAsBitmap(list.get(position).getThumb())!=null){
+                viewHolder1.prductImageView.setImageBitmap(aCache.getAsBitmap(list.get(position).getThumb()));
+        }else {
+            Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    viewHolder1.prductImageView.setImageBitmap(bitmap);
+                    ACache aCache=ACache.get(mContext);
+                    aCache.put(list.get(pos).getThumb(),bitmap,ACache.TIME_HOUR);
+                }
+
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
+
+                }
+
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                }
+            });
+        }
+
         final String title = list.get(position).getProduct_name().trim();
         final String product_id = list.get(position).getProduct_id()+"";
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());

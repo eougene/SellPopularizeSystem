@@ -57,6 +57,10 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         notifyDataSetChanged();
     }
 
+    public void addMore(List<CustomBean.ResultBean> datas) {
+        this.list.addAll(datas);
+        notifyDataSetChanged();
+    }
 
     public int getCount() {
 
@@ -111,7 +115,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             } else {
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
-            viewHolder.tvTitle.setText(list.get(position).getTrue_name());
+            viewHolder.tvTitle.setText(list.get(position).getEn_name());
             if (TextUtils.isEmpty(list.get(position).getHead_img())) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
