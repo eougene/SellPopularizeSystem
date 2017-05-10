@@ -62,7 +62,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private int page = 1;
     // private String flag = "default";
     private SideBar sideBar;
-    private TextView dialog;
+    private TextView dialog,tvNoMessage;
     private SortGroupMemberAdapter adapter;
     private CommonAdapter lawyerAdapter;
     private List<LawyerBean.ResultBean> lawyersData = new ArrayList<>();
@@ -160,7 +160,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         titleLayout = getViewById(R.id.title_layout);
         title = getViewById(R.id.title_layout_catalog);
         tvNofriends = getViewById(R.id.noInfomation);
-
+        tvNoMessage=getViewById(R.id.noInfomation);
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
 
@@ -211,8 +211,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             for (int i = 0; i < date.size(); i++) {
                 CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
                 // 汉字转换成拼音
-                if (!TextUtils.isEmpty(sortModel.getTrue_name())) {
-                    String pinyin = characterParser.getSelling(sortModel.getTrue_name());
+                if (!TextUtils.isEmpty(sortModel.getEn_name())) {
+                    String pinyin = characterParser.getSelling(sortModel.getEn_name());
                     String sortString = pinyin.substring(0, 1).toUpperCase();
                     // 正则表达式，判断首字母是否是英文字母
                     if (sortString.matches("[A-Z]")) {
@@ -331,7 +331,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
         Gson gson = new Gson();
         if (str1.equals(ExtraName.TORESVER)) {
-
             LawyerBean lawyerBean = gson.fromJson(json, LawyerBean.class);
             if (lawyerBean.getCode() == 1) {
                 lawyersData = filledData(lawyerBean.getResult());
@@ -339,7 +338,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
             if (isRefresh) {
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-
                 // 根据a-z进行排序源数据
                 Collections.sort(SourceDateList, pinyinComparator);
                 adapter = new SortGroupMemberAdapter(this, "null");
@@ -347,25 +345,28 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addData(SourceDateList, lawyersData);
-
         } else {
             CustomBean product = gson.fromJson(json, CustomBean.class);
             if (product.getCode() == 1) {
-                SourceDateList = filledData(product.getResult());
+                if (product.getMsg().equals("暂无数据")){
+                    tvNoMessage.setVisibility(View.VISIBLE);
+                }else {
+                    SourceDateList = filledData(product.getResult());
+                }
+
             }
             if (isRefresh) {
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-
                 // 根据a-z进行排序源数据
                 Collections.sort(SourceDateList, pinyinComparator);
                 adapter = new SortGroupMemberAdapter(this, "custome");
+                adapter.addData(SourceDateList, lawyersData);
                 listView.setAdapter(adapter);
+            }else {
+                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                adapter.addMore(SourceDateList);
+                Log.e("TAG", "jsonParse: " + SourceDateList.size());
             }
-            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-            adapter.addData(SourceDateList, lawyersData);
-
-            Log.e("TAG", "jsonParse: " + SourceDateList.size());
-
         }
     }
 
