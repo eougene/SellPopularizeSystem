@@ -24,6 +24,9 @@
         <attr name="noEmpty" format="boolean" />
         <attr name="isEnable" format="boolean" />
     </declare-styleable>
-
+    <!--自定义listview属性-->
+    <declare-styleable name="slidingitemlistview">
+        <attr name="right_width" format="dimension"></attr>
+    </declare-styleable>
 
 </resources>
