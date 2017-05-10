@@ -6,6 +6,7 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -36,6 +37,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
     private int page = 1;
     private List<ExamlineBean.ResultBean> productData = new ArrayList<>();
     private ExamineAdapter adapter;
+    private TextView tvNoMessage;
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -61,6 +63,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
         //下拉加载
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
+        tvNoMessage=getViewById(R.id.noInfomation);
         listView = getViewById(R.id.content_view);
         listView.setDividerHeight(10);
 
@@ -104,7 +107,11 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
         Gson gson = new Gson();
         ExamlineBean product = gson.fromJson(json, ExamlineBean.class);
         if (product.getCode().equals("1")) {
-            productData = product.getResult();
+            if (product.getMsg().equals("暂无数据")){
+                tvNoMessage.setVisibility(View.VISIBLE);
+            }else {
+                productData = product.getResult();
+            }
         }
         if (isRefresh) {
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);

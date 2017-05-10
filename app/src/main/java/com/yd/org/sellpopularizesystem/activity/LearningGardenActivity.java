@@ -154,7 +154,7 @@ public class LearningGardenActivity extends FragmentActivity {
             studyView.setBackgroundColor(ContextCompat.getColor(this,R.color.home_custom));
             checkView.setBackgroundColor(ContextCompat.getColor(this,R.color.gray));
             studyRadion.setTextColor(ContextCompat.getColor(this,R.color.home_custom));
-            checkRadion.setTextColor(getResources().getColor(R.color.gray));
+            checkRadion.setTextColor(ContextCompat.getColor(this,R.color.gray));
 
         } else {
             studyRadion.setChecked(false);

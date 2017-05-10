@@ -51,7 +51,6 @@ public class ProductSubunitListActivity extends BaseActivity {
     private CommonAdapter adapter;
     private Object bean;
     private ProSubUnitClassifyBean childBean;
-    private PopupWindow pdPopuWindow;
     private CustomePopuWindow mCustomePopuWindow;
     private String bedRoomNum;
     private String product_id;
@@ -209,6 +208,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            bund=new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
                     break;
@@ -245,24 +245,30 @@ public class ProductSubunitListActivity extends BaseActivity {
                     }
                     break;
                 case R.id.btViewDetail:
-                    if (bund == null) {
-                        bund = new Bundle();
+                    if (bund != null) {
                         bund.putSerializable("item", data.get(pos));
+                        ActivitySkip.forward(ProductSubunitListActivity.this, ProductSubItemDetailActivity.class, bund);
+                        mCustomePopuWindow.dismiss();
                     }
-                    ActivitySkip.forward(ProductSubunitListActivity.this, ProductSubItemDetailActivity.class, bund);
-                    mCustomePopuWindow.dismiss();
                     break;
                 case R.id.btRemain:
-                    if (bund == null) {
-                        bund = new Bundle();
+                    if (bund != null) {
                         bund.putSerializable("item", data.get(pos));
+                        ActivitySkip.forward(ProductSubunitListActivity.this, ReserveActivity.class, bund);
+                        mCustomePopuWindow.dismiss();
                     }
-                    ActivitySkip.forward(ProductSubunitListActivity.this, ReserveActivity.class, bund);
-                    mCustomePopuWindow.dismiss();
                     break;
                 case R.id.btCancel:
                     if (mCustomePopuWindow != null) {
                         mCustomePopuWindow.dismiss();
+                    }
+                    break;
+                case R.id.tvVideo:
+                    if (bund!=null){
+                        if (tvVideo.getAlpha()==1.0f){
+                            bund.putSerializable("prs",prs);
+                            ActivitySkip.forward(ProductSubunitListActivity.this,VideoActivity.class,bund);
+                        }
                     }
                     break;
             }

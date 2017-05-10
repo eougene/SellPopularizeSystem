@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.r0adkll.slidr.Slidr;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
+import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 /**
@@ -27,12 +28,13 @@ public abstract class BaseActivity extends Activity {
     private TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
-
+    private ACache aCache;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // 设置右滑动返回
-        Slidr.attach(this);
+        //Slidr.attach(this);
+        aCache=ACache.get(this);
         setContentView(R.layout.activity_base);
         setImmerseLayout(findViewById(R.id.base_header_layout));
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
@@ -58,11 +60,19 @@ public abstract class BaseActivity extends Activity {
 
     }
 
+    public ACache getaCache() {
+        return aCache;
+    }
+
+    public void setaCache(ACache aCache) {
+        this.aCache = aCache;
+    }
+
     protected void setImmerseLayout(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
             window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             int statusBarHeight = MyUtils.getStatusBarHeight(this.getBaseContext());
             view.setPadding(0, statusBarHeight, 0, 0);
         }

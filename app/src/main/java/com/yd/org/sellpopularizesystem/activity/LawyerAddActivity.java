@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -32,6 +33,7 @@ public class LawyerAddActivity extends BaseActivity {
     protected int setContentView() {
         setTitle("律师信息");
         setRightTitle(R.string.customdetaild_save,mSaveOnClickListener);
+        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_lawyer_add;
     }
 

@@ -45,7 +45,7 @@ import java.util.Map;
 
 public class SettingFragment extends BaseFragmentView {
     private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord;
-    private TextView  cancelLoginTv, versionTv,tvUserName;
+    private TextView cancelLoginTv, versionTv, tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -78,6 +78,7 @@ public class SettingFragment extends BaseFragmentView {
         }
         acountPopupWindow.showAtLocation(getActivity().findViewById(R.id.bindAccountRel), Gravity.BOTTOM, 50, 50);
     }
+
     View.OnClickListener mItemClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -148,20 +149,20 @@ public class SettingFragment extends BaseFragmentView {
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("type","wechat");
-        ajaxParams.put("openid",openId);
+        ajaxParams.put("type", "wechat");
+        ajaxParams.put("openid", openId);
         http.post(Contants.WEXIN_URL_STRING, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-                Log.e("TAG", "onSuccess: "+ s);
+                Log.e("TAG", "onSuccess: " + s);
                 try {
-                    JSONObject json=new JSONObject(s);
-                    if (json.get("code").equals("1")){
+                    JSONObject json = new JSONObject(s);
+                    if (json.get("code").equals("1")) {
                         acountPopupWindow.dismiss();
-                    }else{
-                        String str=json.getString("msg");
-                        ToasShow.showToastBottom(getActivity(),str);
+                    } else {
+                        String str = json.getString("msg");
+                        ToasShow.showToastBottom(getActivity(), str);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -177,17 +178,18 @@ public class SettingFragment extends BaseFragmentView {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-            setContentView(R.layout.activity_setting);
+        setContentView(R.layout.activity_setting);
+        setStatusTransparent();
         initWidget();
     }
 
     private void initWidget() {
-        ivCustomePhoto=getViewById(R.id.ivCustomePhoto);
+        ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
         changePassWordRel = getViewById(R.id.changePassWordRel);
         bindAccountRel = getViewById(R.id.bindAccountRel);
         rlSaleRecord = getViewById(R.id.saleRecord);
-        tvUserName=getViewById(R.id.tvCustomeName);
-        tvUserName.setText(SharedPreferencesHelps.getSurName()+SharedPreferencesHelps.getFirstName());
+        tvUserName = getViewById(R.id.tvCustomeName);
+        tvUserName.setText(SharedPreferencesHelps.getSurName() + SharedPreferencesHelps.getFirstName());
         //settiing_noticTv = getViewById(R.id.settiing_noticTv);
         cancelLoginTv = getViewById(R.id.cancelLoginTv);
         versionTv = getViewById(R.id.versionTv);

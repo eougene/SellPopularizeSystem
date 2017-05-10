@@ -64,6 +64,7 @@ public class HomeFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.home_fragment);
+        setStatusTransparent();
         initWidget();
         getHomeData();
     }
