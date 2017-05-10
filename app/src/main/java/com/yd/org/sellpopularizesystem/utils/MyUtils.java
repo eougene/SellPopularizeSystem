@@ -19,6 +19,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -437,11 +438,10 @@ public class MyUtils {
      * @param time   时间戳
      * @return
      */
-    public String date2String(String format, long time) {
+    public static String date2String(String format, long time) {
         Date d = new Date(time);
         SimpleDateFormat sf = new SimpleDateFormat(format);
         return sf.format(d);
-
 
     }
 
@@ -708,6 +708,11 @@ public class MyUtils {
             result = context.getResources().getDimensionPixelSize(resourceId);
         }
         return result;
+    }
+    //将dp转化为px
+    public static  int dp2px(Context context,int dp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
+                context.getResources().getDisplayMetrics());
     }
 
     public static int dip2px(Context context, float dipValue) {

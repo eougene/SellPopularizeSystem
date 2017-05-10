@@ -75,7 +75,7 @@ public class VisitRecord extends Domine{
         private String title;
         private int customer_id;
         private String content;
-        private int add_time;
+        private long add_time;
         private int visit_time;
         private int update_time;
         private String add_ip;
@@ -131,7 +131,7 @@ public class VisitRecord extends Domine{
             this.content = content;
         }
 
-        public int getAdd_time() {
+        public long getAdd_time() {
             return add_time;
         }
 
