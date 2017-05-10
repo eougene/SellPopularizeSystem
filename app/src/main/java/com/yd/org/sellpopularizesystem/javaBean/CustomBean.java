@@ -106,7 +106,11 @@ public class CustomBean extends Domine {
         private String customer_nick;
         private String head_img;
         private String true_name;
+        private String surname;
+        private String first_name;
+        private String en_name;
         private int sex;
+        private String title;
         private int birth_date;
         private int age;
         private String mobile;
@@ -114,6 +118,7 @@ public class CustomBean extends Domine {
         private String city;
         private String area;
         private Object address;
+        private String zip_code;
         private Object  open_id;
         private Object  wechat_number;
         private String wechat_nick;
@@ -121,9 +126,9 @@ public class CustomBean extends Domine {
         private Object  qq_number;
         private String e_mail;
         private String job;
-        private String surname;
         private int income;
         private Object family_name;
+        private String family_first_name;
         private Object family_relationship;
         private Object family_mobile;
         private int sign_number;
@@ -140,10 +145,11 @@ public class CustomBean extends Domine {
         private String add_admin;
         private int add_user;
         private int is_del;
+        private int is_firb;
         private int status;
-        private int id;
+        /*private int id;
         private int user_id;
-        private int sort;
+        private int sort;*/
 
 
 
@@ -194,8 +200,32 @@ public class CustomBean extends Domine {
             this.true_name = true_name;
         }
 
+        public String getFirst_name() {
+            return first_name;
+        }
+
+        public void setFirst_name(String first_name) {
+            this.first_name = first_name;
+        }
+
+        public String getEn_name() {
+            return en_name;
+        }
+
+        public void setEn_name(String en_name) {
+            this.en_name = en_name;
+        }
+
         public int getSex() {
             return sex;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public void setSex(int sex) {
@@ -252,6 +282,14 @@ public class CustomBean extends Domine {
 
         public Object getAddress() {
             return address;
+        }
+
+        public String getZip_code() {
+            return zip_code;
+        }
+
+        public void setZip_code(String zip_code) {
+            this.zip_code = zip_code;
         }
 
         public void setAddress(Object address) {
@@ -336,6 +374,14 @@ public class CustomBean extends Domine {
 
         public void setFamily_name(Object family_name) {
             this.family_name = family_name;
+        }
+
+        public String getFamily_first_name() {
+            return family_first_name;
+        }
+
+        public void setFamily_first_name(String family_first_name) {
+            this.family_first_name = family_first_name;
         }
 
         public Object getFamily_relationship() {
@@ -466,6 +512,14 @@ public class CustomBean extends Domine {
             this.is_del = is_del;
         }
 
+        public int getIs_firb() {
+            return is_firb;
+        }
+
+        public void setIs_firb(int is_firb) {
+            this.is_firb = is_firb;
+        }
+
         public int getStatus() {
             return status;
         }
@@ -474,7 +528,7 @@ public class CustomBean extends Domine {
             this.status = status;
         }
 
-        public int getId() {
+       /* public int getId() {
             return id;
         }
 
@@ -496,6 +550,6 @@ public class CustomBean extends Domine {
 
         public void setSort(int sort) {
             this.sort = sort;
-        }
+        }*/
     }
 }
