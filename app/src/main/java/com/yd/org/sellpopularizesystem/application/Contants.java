@@ -29,7 +29,7 @@ public class Contants {
     //获取产品子单元详情
     public static final String PRODUCT_SUBUNIT_DETAIL= DOMAIN + "/index.php/app/product/product_childs_info";
     //获取客户列表
-    public static final String CUSTOMER_LIST = DOMAIN + "/index.php/app/customer/customer_list";
+    public static final String CUSTOMER_LIST = DOMAIN + "/index.php/appv2/customer/customer_list";
     //获取律师列表
     public static final String LAWYER_LIST = DOMAIN + "/index.php/app/lawyer/lawyer_list";
     //获取学习列表
@@ -72,6 +72,8 @@ public class Contants {
     public  static final String VISIT_RECORD_LIST=DOMAIN +"/index.php/appv2/user/visit_log_list";
     //新增拜访记录
     public  static final String NEW_VISIT_RECORDER = DOMAIN+"/index.php/app/user/add_visit_log";
+    //修改拜访记录
+    public  static final String UPDATE_VISIT_RECORDER=DOMAIN+"/index.php/appv2/user/edit_visit_log";
     //eoi充值
     public  static final String EOI_RECHARGE = DOMAIN +"/index.php/appv2/eoi/create_eoi";
     //eoi列表

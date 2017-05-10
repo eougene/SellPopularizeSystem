@@ -141,7 +141,7 @@ public class ViewHolder {
         return this;
     }
 
-    public ViewHolder setText(int viewId) {
+    public ViewHolder setText(int tvVisitTime, int viewId) {
         TextView view = getView(viewId);
         view.setVisibility(View.GONE);
         return this;
