@@ -128,5 +128,7 @@
     <string name="blank_space">&#160;&#160;</string>
     <string name="single_blank_space">&#160;</string>
     <string name="clear">清除</string>
+    <string name="alipay">支付宝</string>
+    <string name="wechatpay">微信</string>
 
 </resources>
