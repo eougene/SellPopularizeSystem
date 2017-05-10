@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch"
-    android:background="@color/search_edit_bac"
+    android:background="@color/home_scale"
     android:orientation="vertical">
 
     <RelativeLayout
         style="@style/MatchAuto"
         android:layout_weight="1"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="true"
         android:background="@color/home_scale"
         android:gravity="center">
 
@@ -36,7 +38,8 @@
 
     <RelativeLayout
         style="@style/MatchAuto"
-        android:layout_weight="3">
+        android:layout_weight="3"
+        android:background="@color/search_edit_bac">
 
         <LinearLayout
             style="@style/MatchWrap"

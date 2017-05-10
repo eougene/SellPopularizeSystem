@@ -7,37 +7,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/tvVisitTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:layout_centerVertical="true"
-            android:text="这是标题"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:layout_marginBottom="@dimen/padding_margin_10"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
-
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:layout_centerVertical="true"
-            android:orientation="vertical">
+            android:id="@+id/llLeft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvVisitTime"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/tvVisitTitle"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:text="内容"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="@dimen/padding_margin_10"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginTop="@dimen/padding_margin_10"
+                android:layout_weight="0.3"
+                android:text="这是时间"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvVisitTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:layout_toRightOf="@+id/tvVisitTitle"
+                    android:text="标题"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <TextView
+                    android:id="@+id/tvVisitContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:layout_toRightOf="@+id/tvVisitTitle"
+                    android:text="内容"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12" />
+            </LinearLayout>
         </LinearLayout>
+
+        <!--<LinearLayout
+            android:id="@+id/llRightDel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/padding_margin_4"
+                android:paddingLeft="@dimen/padding_margin_10"
+                android:paddingRight="@dimen/padding_margin_10"
+                android:paddingTop="4dp"
+                android:text="删除"
+                android:textColor="#fff"
+                android:textSize="16sp" />
+        </LinearLayout>-->
+
     </LinearLayout>
+
 </LinearLayout>
