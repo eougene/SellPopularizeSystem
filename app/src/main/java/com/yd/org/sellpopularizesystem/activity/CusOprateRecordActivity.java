@@ -5,8 +5,10 @@ import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,12 +18,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -35,13 +39,22 @@ import com.hp.hpl.sparta.xpath.ThisNodeTest;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
+import com.yd.org.sellpopularizesystem.adapter.SlidingListviewAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
+import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
+import com.yd.org.sellpopularizesystem.internal.Pullable;
+import com.yd.org.sellpopularizesystem.internal.PullableListView;
+import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenu;
+import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuCreator;
+import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
+import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
 import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
+import com.yd.org.sellpopularizesystem.myView.SlidingItemListView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -65,29 +78,39 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CusOprateRecordActivity extends BaseActivity {
+public class CusOprateRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private String customeId;
     private Bundle bundle;
     private String flag;
-    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit;
-    private EditText etCertificateTime;
+    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit, tvDes,tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
+    private EditText etCertificateTime, etVistTitle, etVistContent;
     private Button btDoacash, btDoaTransfer, btDoaCancel, btFromCamera, btFromAlbum, btPhotoCancel;
-    private ImageView ivCertificate;
+    private ImageView ivCertificate,ivCash,ivIdCard,ivAlipay,ivWechatPay;
     private String picPath;
     private LinearLayout llSpace, llCertificate, llChooseSpace;
-    private Dialog dialog, methodDialog, optionDialog;
-    private List weeks;
-    private List hours;
-    private List minutes;
+    private Dialog eoiDialog, methodDialog, optionDialog;
+    private List<String> weeks;
+    private List<String> hours;
+    private List<String> minutes;
     private CommonAdapter visitAdapter;
     private OptionsPickerView pvCustomTime;
+    private SwipeMenuListView listView;
+    private PullToRefreshLayout ptrl;
+    private int page = 1;
+    private String number = "5";
+    private Dialog visitDilog;
+    private VisitRecord.ResultBean visitRecord;
+    private static CusOprateRecordActivity cusOprateRecordActivity;
+    private List<VisitRecord.ResultBean> vrrb;
 
     @Override
     protected int setContentView() {
+        cusOprateRecordActivity = this;
         setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_cus_oprate_record;
     }
@@ -97,11 +120,13 @@ public class CusOprateRecordActivity extends BaseActivity {
         bundle = getIntent().getExtras();
         flag = bundle.getString("custocora");
         customeId = (String) bundle.get("customeId");
+        initWidgets();
         Log.e("TAG", "initView: " + customeId);
         if (flag.equals("custovisit") || flag.equals("custoreser")) {
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
-                getVisitData();
+                initVisitDilaog();
+                getVisitData(page);
             } else if (flag.equals("custoreser")) {
                 setTitle(getString(R.string.yuyue));
                 getReservertData();
@@ -134,32 +159,59 @@ public class CusOprateRecordActivity extends BaseActivity {
             setRightTitle(R.string.recharge, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    dialog = new Dialog(CusOprateRecordActivity.this);
-                    dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    dialog.setContentView(R.layout.eoi_operate_view);
-                    Window dialogWindow = dialog.getWindow();
+                    eoiDialog = new Dialog(CusOprateRecordActivity.this);
+                    eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                    eoiDialog.setContentView(R.layout.eoi_operate_view);
+                    Window dialogWindow = eoiDialog.getWindow();
                     WindowManager.LayoutParams lp = dialogWindow.getAttributes();
                     lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
                     dialogWindow.setAttributes(lp);
                     dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
-                    dialog.show();
-                    initDialogViews(dialog);
+                    eoiDialog.show();
+                    initDialogViews(eoiDialog);
                 }
             });
 
         }
     }
 
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == ExtraName.UPDATE && flag.equals("custovisit")) {
+                getVisitData(page);
+            }
+        }
+    };
+
+    private void initWidgets() {
+        listView = getViewById(R.id.content_view);
+        tvDes = getViewById(R.id.tvDes);
+        tvNoMessage=getViewById(R.id.noInfomation);
+        ptrl = getViewById(R.id.refresh_view);
+        ptrl.setOnRefreshListener(this);
+
+    }
+
     private void initDialogViews(Dialog dialog) {
         tvMoneyNum = (TextView) dialog.findViewById(R.id.tvMoneyNum);
         tvPayMethod = (TextView) dialog.findViewById(R.id.tvPayMethod);
         tvEoiSubmit = (TextView) dialog.findViewById(R.id.tvEoiSubmit);
+        ivCash= (ImageView) dialog.findViewById(R.id.ivCash);
+        ivIdCard= (ImageView) dialog.findViewById(R.id.ivIdCard);
+        ivAlipay= (ImageView) dialog.findViewById(R.id.ivAlipay);
+        ivWechatPay= (ImageView) dialog.findViewById(R.id.ivWeixinPay);
         llCertificate = (LinearLayout) dialog.findViewById(R.id.llCertificate);
-        etCertificateTime = (EditText) dialog.findViewById(R.id.etUploadTime);
+       // etCertificateTime = (EditText) dialog.findViewById(R.id.tvUploadTime);
         ivCertificate = (ImageView) dialog.findViewById(R.id.ivCertificate);
-        tvPayMethod.setOnClickListener(mOnClickListener);
+        ivCash.setOnClickListener(mOnClickListener);
+        ivIdCard.setOnClickListener(mOnClickListener);
+        ivAlipay.setOnClickListener(mOnClickListener);
+        ivWechatPay.setOnClickListener(mOnClickListener);
+        //tvPayMethod.setOnClickListener(mOnClickListener);
         tvEoiSubmit.setOnClickListener(mOnClickListener);
-        etCertificateTime.setOnClickListener(mOnClickListener);
+        //etCertificateTime.setOnClickListener(mOnClickListener);
         ivCertificate.setOnClickListener(mOnClickListener);
         //初始化自定义选择器的数据
         initOptionData();
@@ -306,15 +358,18 @@ public class CusOprateRecordActivity extends BaseActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tvPayMethod:
-                    initPayMethodDialog();
+                   // initPayMethodDialog();
                     //payMethodPop.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent),Gravity.BOTTOM, 0,0);
                     break;
                 case R.id.tvEoiSubmit:
                     if (picPath != null) {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, "请上传支付凭证");
+                    } else if (llCertificate.getVisibility() == View.GONE) {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请选择支付方式");
                     } else if (TextUtils.isEmpty(etCertificateTime.getText())) {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, "请填写凭证转账时间");
                     } else {
+                        //提交eoi
                         submitEoi();
                     }
                     break;
@@ -332,20 +387,43 @@ public class CusOprateRecordActivity extends BaseActivity {
                     }
                     methodDialog.dismiss();
                     break;
-                case R.id.etUploadTime:
+                /*case R.id.etUploadTime:
                     pvCustomTime.show();
+                    break;*/
+                case R.id.ivCash:
+                    if (llCertificate.getVisibility()==View.GONE){
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.recash));
+                    break;
+                case R.id.ivIdCard:
+                    if (llCertificate.getVisibility()==View.GONE){
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.transfer));
+                    break;
+                case R.id.ivAlipay:
+                    tvPayMethod.setText(R.string.alipay);
+                    tvMoneyNum.setText("￥ 2000.00");
+                    break;
+                case R.id.ivWeixinPay:
+                    tvPayMethod.setText(R.string.wechatpay);
+                    tvMoneyNum.setText("￥ 2000.00");
                     break;
                 case R.id.ivCertificate:
-                    initOptionDialog();
-                    break;
-                case R.id.btFromCamera:
-                    optionDialog.dismiss();
+                    //initOptionDialog();
                     BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
                     break;
-                case R.id.btFromAlbum:
+               /* case R.id.btFromCamera:
+                    optionDialog.dismiss();
+                    BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                    break;*/
+                /*case R.id.btFromAlbum:
                     optionDialog.dismiss();
                     BitmapUtil.gotoSysPic(CusOprateRecordActivity.this, ExtraName.ALBUM_PICTURE);
-                    break;
+                    break;*/
                 case R.id.btPhotoCancel:
                     optionDialog.dismiss();
                     break;
@@ -358,9 +436,50 @@ public class CusOprateRecordActivity extends BaseActivity {
                 case R.id.llChooseSpace:
                     optionDialog.dismiss();
                     break;
+                case R.id.tvVisitSubmit:
+                    if (etVistTitle.getText().toString().equals(visitRecord.getTitle().toString()) && etVistContent.getText().toString().equals(visitRecord.getContent().toString())) {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请您改动内容后再提交");
+                    } else {
+                        updateVisit();
+                    }
+                    break;
             }
         }
     };
+
+    private void updateVisit() {
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("v_log_id", visitRecord.getV_log_id() + "");
+        ajaxParams.put("customer_id", customeId);
+        ajaxParams.put("title", etVistTitle.getText().toString());
+        ajaxParams.put("content", etVistContent.getText().toString());
+        fh.post(Contants.UPDATE_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                try {
+                    JSONObject json = new JSONObject(s);
+                    if (json.getString("code").equals("1")) {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+                        handler.sendEmptyMessage(ExtraName.UPDATE);
+                        visitDilog.dismiss();
+                    } else {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+                        visitDilog.dismiss();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
 
     private void initOptionDialog() {
         optionDialog = new Dialog(CusOprateRecordActivity.this, R.style.ActionSheetDialogStyle);
@@ -478,35 +597,77 @@ public class CusOprateRecordActivity extends BaseActivity {
 
     @Override
     public void setListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (flag.equals("custovisit")) {
+                    visitRecord = (VisitRecord.ResultBean) visitAdapter.getItem(position);
+                    visitDilog.show();
+                    tvVisitTile.setText("详情");
+                    etVistTitle.setText(visitRecord.getTitle());
+                    tvVisitTime.setText(MyUtils.date2String("MM/dd mm:hh", visitRecord.getAdd_time() * 1000));
+                    etVistContent.setText(visitRecord.getContent());
+                    tvVisitSubmit.setText("更新");
+                    tvVisitSubmit.setOnClickListener(mOnClickListener);
+                }
+            }
+        });
+
 
     }
 
-    private void getVisitData() {
+    private void initVisitDilaog() {
+        visitDilog = new Dialog(CusOprateRecordActivity.this);
+        visitDilog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        visitDilog.setContentView(R.layout.visit_operate_view);
+        Window dialogWindow = visitDilog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
+        dialogWindow.setAttributes(lp);
+        dialogWindow.setGravity(Gravity.CENTER);
+        initVisitDilaogViews(visitDilog);
+    }
+
+    private void initVisitDilaogViews(Dialog visitDilog) {
+        tvVisitTile = (TextView) visitDilog.findViewById(R.id.tvVisitTile);
+        etVistTitle = (EditText) visitDilog.findViewById(R.id.etVistTitle);
+        tvVisitTime = (TextView) visitDilog.findViewById(R.id.tvVisitTime);
+        etVistContent = (EditText) visitDilog.findViewById(R.id.etVistContent);
+        tvVisitSubmit = (TextView) visitDilog.findViewById(R.id.tvVisitSubmit);
+    }
+
+    private void getVisitData(int page) {
         showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id",customeId);
-        ajaxParams.put("page","");
-        ajaxParams.put("number","");
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("customer_id", customeId);
+        ajaxParams.put("page", String.valueOf(page));
+        ajaxParams.put("number", number);
         fh.get(Contants.VISIT_RECORD_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 closeDialog();
                 super.onSuccess(s);
-                Gson gson=new Gson();
-                VisitRecord visitRecord=gson.fromJson(s,VisitRecord.class);
-                if (visitRecord.getResult().size()>0){
-                    List<VisitRecord.ResultBean> vrrb=new ArrayList<VisitRecord.ResultBean>();
-                    vrrb=visitRecord.getResult();
-                    visitAdapter=new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this,vrrb,R.layout.visit_listview_item_layout) {
-
-
+                Log.e("tag", "onSuccess: " + s);
+                Gson gson = new Gson();
+                VisitRecord visitRecord = gson.fromJson(s, VisitRecord.class);
+                if (visitRecord.getResult().size() > 0) {
+                    vrrb = new ArrayList<VisitRecord.ResultBean>();
+                    vrrb = visitRecord.getResult();
+                    visitAdapter = new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this, vrrb, R.layout.visit_listview_item_layout) {
                         @Override
                         public void convert(ViewHolder holder, VisitRecord.ResultBean item) {
-
+                            holder.setText(R.id.tvVisitTime, MyUtils.date2String("yyyy/MM/dd", Long.valueOf(item.getAdd_time() + "000")));
+                            holder.setText(R.id.tvVisitTitle, item.getTitle());
+                            holder.setText(R.id.tvVisitContent, item.getContent());
                         }
                     };
+                    //visitAdapter=new SlidingListviewAdapter(CusOprateRecordActivity.this,vrrb,listView.getRightViewWidth());
+                    listView.setAdapter(visitAdapter);
+                    initMenuListView();
+                }else {
+                    tvNoMessage.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -514,6 +675,43 @@ public class CusOprateRecordActivity extends BaseActivity {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
+
+    private void initMenuListView() {
+        //创建一个SwipeMenuCreator供ListView使用
+        SwipeMenuCreator creator = new SwipeMenuCreator() {
+            @Override
+            public void create(SwipeMenu menu) {
+                //创建一个侧滑菜单
+                SwipeMenuItem deleteItem = new SwipeMenuItem(CusOprateRecordActivity.this);
+                //给该侧滑菜单设置背景
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
+                //设置宽度
+                deleteItem.setWidth(MyUtils.dp2px(CusOprateRecordActivity.this, 80));
+                //设置文字
+                deleteItem.setTitle("删除");
+                //字体大小
+                deleteItem.setTitleSize(16);
+                //字体颜色
+                deleteItem.setTitleColor(Color.WHITE);
+                //加入到侧滑菜单中
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        listView.setMenuCreator(creator);
+        //侧滑菜单的相应事件
+        listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
+                switch (index) {
+                    case 0://第一个添加的菜单的响应时间(打开)
+                        vrrb.remove(position);
+                        visitAdapter.notifyDataSetChanged();
+                        break;
+                }
+                return false;
             }
         });
     }
@@ -572,4 +770,17 @@ public class CusOprateRecordActivity extends BaseActivity {
             }
         }
     }
+
+    @Override
+    public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        page = 1;
+        getVisitData(page);
+    }
+
+    @Override
+    public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+        page++;
+        getVisitData(page);
+    }
+
 }
