@@ -69,8 +69,10 @@ public class Contants {
     public  static final String ORDER_DETAIL =DOMAIN +"/index.php/app/order/order_info";
     //申请合同
     public  static final String APPLY_CONTRACT = DOMAIN +"/index.php/app/order/ask_ontract";
+    //修改订单
+    public  static final String UPDATE_ORDER=DOMAIN +"/index.php/appv2/order/edit_order";
     //取消订单
-    public  static final String ORDER_CANCEL = DOMAIN +"/index.php/app/order/cancel_order";
+    public  static final String ORDER_CANCEL = DOMAIN +"/index.php/appv2/order/cancel_order";
     //拜访记录列表
     public  static final String VISIT_RECORD_LIST=DOMAIN +"/index.php/appv2/user/visit_log_list";
     //新增拜访记录
