@@ -21,13 +21,15 @@ public class Contants {
     //获取推广筛选数据
     public static final String SCALE_SEARCH = DOMAIN + "/index.php/app/product/product_search_option";
     //获取产品推广筛选数据
-    public static final String PRODUCT_LIST = DOMAIN + "/index.php/app/product/product_list_v2";
+    public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
+
+    //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
     public static final String PRODUCT_DETAIL = DOMAIN + "/index.php/app/product/product_info";
     //获取产品子单元列表
-    public static final String PRODUCT_SUBUNIT_LIST = DOMAIN + "/index.php/app/product/product_childs_list";
+    public static final String PRODUCT_SUBUNIT_LIST = DOMAIN + "/index.php/appv2/product/product_childs_list";
     //获取产品子单元详情
-    public static final String PRODUCT_SUBUNIT_DETAIL= DOMAIN + "/index.php/app/product/product_childs_info";
+    public static final String PRODUCT_SUBUNIT_DETAIL= DOMAIN + "/index.php/appv2/product/product_childs_info";
     //获取客户列表
     public static final String CUSTOMER_LIST = DOMAIN + "/index.php/appv2/customer/customer_list";
     //获取律师列表
@@ -59,7 +61,8 @@ public class Contants {
     //提交已读
     public  static final String SUBMIT_READED=DOMAIN +"/index.php/app/notice/have_read";
     //创建订单
-    public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
+    //public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
+    public  static final String CREAT_ORDER =DOMAIN +"/index.php/appv2/order/create_order";
     //查询订单列表
     public  static final String INQUIRE_ORDER_LIST =DOMAIN +"/index.php/app/order/order_list";
     //订单详情
@@ -71,9 +74,19 @@ public class Contants {
     //拜访记录列表
     public  static final String VISIT_RECORD_LIST=DOMAIN +"/index.php/appv2/user/visit_log_list";
     //新增拜访记录
-    public  static final String NEW_VISIT_RECORDER = DOMAIN+"/index.php/app/user/add_visit_log";
+    public  static final String NEW_VISIT_RECORDER = DOMAIN+"/index.php/appv2/user/add_visit_log";
     //修改拜访记录
     public  static final String UPDATE_VISIT_RECORDER=DOMAIN+"/index.php/appv2/user/edit_visit_log";
+    //删除拜访记录
+    public  static final String REMOVE_VISIT_RECORD=DOMAIN+"/index.php/appv2/user/delete_visit_log";
+    //新增预约记录
+    public  static final String NEW_RESERVER_RECORDER=DOMAIN+"/index.php/appv2/user/add_order_log";
+    //预约记录
+    public  static final String RESERVER_RECORDER_LIST=DOMAIN +"/index.php/appv2/user/order_log_list";
+    //修改预约记录
+    public  static final String UPDATE_RESERVER_RECORDER=DOMAIN+"/index.php/appv2/user/edit_order_log";
+    //删除预约记录
+    public  static final String REMOVE_RESERVER_RECORD=DOMAIN+"/index.php/appv2/user/delete_order_log";
     //eoi充值
     public  static final String EOI_RECHARGE = DOMAIN +"/index.php/appv2/eoi/create_eoi";
     //eoi列表

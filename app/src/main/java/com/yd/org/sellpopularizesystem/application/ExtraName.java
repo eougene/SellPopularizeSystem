@@ -34,6 +34,8 @@ public class ExtraName {
     public static final int UPDATE=0x010;
     public static final String VISIBILITY="1";
     public static final String INVISIBILITY="2";
+    //充值成功
+    public static final int SUCCESS=0x011;
     //点击销售推广跳转customeactivity标志
     public static final String SCALETOCUSTOME="from_scale_to_custome";
     //点击律师列表跳转预约列表

@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.widget.TabHost;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -15,6 +16,7 @@ import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.utils.ACache;
 
 
 /**
@@ -26,6 +28,7 @@ public class BaseApplication extends Application {
     private RequestQueue queue;
     private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
+    private ACache aCache;
     public BaseApplication() {
         mApp = this;
     }
@@ -54,6 +57,14 @@ public class BaseApplication extends Application {
         this.prs = prs;
     }
 
+    public ACache getaCache() {
+        return aCache;
+    }
+
+    public void setaCache(ACache aCache) {
+        this.aCache = aCache;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -62,6 +73,7 @@ public class BaseApplication extends Application {
         queue= Volley.newRequestQueue(mApp);
         PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
         SDKInitializer.initialize(this);
+        aCache=ACache.get(this);
         bindService(new Intent(this, com.baidu.location.f.class), new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
