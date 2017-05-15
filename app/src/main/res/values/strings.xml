@@ -131,5 +131,6 @@
     <string name="alipay">支付宝</string>
     <string name="wechatpay">微信</string>
     <string name="zhifu">支付</string>
+    <string name="updateorder">修改订单</string>
 
 </resources>
