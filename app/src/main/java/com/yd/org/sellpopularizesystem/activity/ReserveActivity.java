@@ -489,7 +489,7 @@ public class ReserveActivity extends BaseActivity {
                 case ExtraName.RESERVE_TO_CUSTOME:
                     lawBean = data.getExtras();
                     CustomBean.ResultBean cun = (CustomBean.ResultBean) lawBean.getSerializable("custome");
-                    tvReCus.setText(cun.getTrue_name());
+                    tvReCus.setText(cun.getEn_name());
                     customeId = cun.getCustomer_id() + "";
                     tvReCus.setTextColor(Color.RED);
                     break;

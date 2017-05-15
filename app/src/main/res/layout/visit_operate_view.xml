@@ -85,6 +85,8 @@
             android:layout_marginLeft="@dimen/padding_margin_4"
             android:layout_marginRight="@dimen/padding_margin_4"
             android:layout_marginTop="@dimen/padding_margin_4"
+            android:textSize="@dimen/tv_size_12"
+            android:textColor="@color/black"
             android:background="@drawable/edittext_yuyue_bac"
             android:gravity="start" />
 

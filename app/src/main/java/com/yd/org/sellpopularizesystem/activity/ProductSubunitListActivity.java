@@ -28,6 +28,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductSubUnitDet;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSubunitListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
@@ -42,8 +43,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btCancel;
     private int pos;
     private RelativeLayout rlPop;
-    private TextView tvSelect,tvNoInfo,
-            tvIntroduce,tvVideo,tvFloor,tvContract,tvFile;
+    private TextView tvSelect, tvNoInfo,
+            tvIntroduce, tvVideo, tvFloor, tvContract, tvFile;
     private ListView lvHouseDetail;
     private ImageView ivSearch;
     private View mView;
@@ -54,12 +55,13 @@ public class ProductSubunitListActivity extends BaseActivity {
     private CustomePopuWindow mCustomePopuWindow;
     private String bedRoomNum;
     private String product_id;
-    private String string="";
+    private String string = "";
     private String page = "1";
     //从产品中点击预订跳转标志
     private String flag = "";
     private ProductDetailBean.ResultBean prs;
     private Bundle bund;
+
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -73,11 +75,11 @@ public class ProductSubunitListActivity extends BaseActivity {
         bean = bundle.get("bean");
         product_id = (String) bundle.get("productId");
         flag = (String) bundle.get("pidatopsla");
-        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
-        if (prs==null){
+        prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
+        if (prs == null) {
             getItemProductDetail();
         }
-        if (flag!=null && flag.equals("pidatopsla")) {
+        if (flag != null && flag.equals("pidatopsla")) {
             string = (String) bundle.get("title");
             setTitle(string);
             getListData();
@@ -112,12 +114,12 @@ public class ProductSubunitListActivity extends BaseActivity {
         //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
-        tvIntroduce=getViewById(R.id.tvIntroduce);
-        tvNoInfo=getViewById(R.id.tvNoInfo);
-        tvVideo=getViewById(R.id.tvVideo);
-        tvFloor=getViewById(R.id.tvFloor);
-        tvContract=getViewById(R.id.tvContract);
-        tvFile=getViewById(R.id.tvFile);
+        tvIntroduce = getViewById(R.id.tvIntroduce);
+        tvNoInfo = getViewById(R.id.tvNoInfo);
+        tvVideo = getViewById(R.id.tvVideo);
+        tvFloor = getViewById(R.id.tvFloor);
+        tvContract = getViewById(R.id.tvContract);
+        tvFile = getViewById(R.id.tvFile);
 
         mCustomePopuWindow = new CustomePopuWindow(ProductSubunitListActivity.this, mOnClickListener);
         mView = mCustomePopuWindow.getContentView();
@@ -133,7 +135,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_id", product_id== null?"":product_id);
+        ajaxParams.put("product_id", product_id == null ? "" : product_id);
         ajaxParams.put("page", page);
         ajaxParams.put("number", 10 + "");
         ajaxParams.put("provice", "");
@@ -171,9 +173,9 @@ public class ProductSubunitListActivity extends BaseActivity {
         Gson gson = new Gson();
         ProductSubunitListBean pslb = gson.fromJson(s, ProductSubunitListBean.class);
         data = pslb.getResult();
-        if (data.size()>0){
+        if (data.size() > 0) {
             setAdapter();
-        }else {
+        } else {
             tvNoInfo.setVisibility(View.VISIBLE);
         }
 
@@ -205,7 +207,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 holder.setText(R.id.tvBathroom, item.getBathroom());
                 holder.setText(R.id.tvCarSquare, item.getCar_space());
                 holder.setText(R.id.tvHouseSquare, item.getBuilding_area());
-                holder.setText(R.id.tvDetailPrice, item.getPrice());
+                holder.setText(R.id.tvDetailPrice, "$" + getString(R.string.single_blank_space) + MyUtils.addComma(item.getPrice().split("\\.")[0]));
             }
         };
         lvHouseDetail.setAdapter(adapter);
@@ -214,13 +216,13 @@ public class ProductSubunitListActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            bund=new Bundle();
+            bund = new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
                     break;
                 case R.id.ivHousePic:
-                    if (bund==null){
-                        bund=new Bundle();
+                    if (bund == null) {
+                        bund = new Bundle();
                     }
                   /*  if (prs!=null){
                         if (prs.getImg_content()==null||prs.getImg_content().size()==0){
@@ -229,18 +231,18 @@ public class ProductSubunitListActivity extends BaseActivity {
                         }
                     }*/
 
-                    if (prs!=null && prs.getImg_content().size()>0){
+                    if (prs != null && prs.getImg_content().size() > 0) {
                         bund.putSerializable("img_content", (Serializable) prs.getImg_content());
-                       ActivitySkip.forward(ProductSubunitListActivity.this,ImageShowActivity.class,bund);
-                    }else {
-                        if (BaseApplication.getInstance().getPrs()!=null && BaseApplication.getInstance().getPrs().getProduct_id()==Integer.parseInt(product_id)){
-                            prs=BaseApplication.getInstance().getPrs();
-                            if (prs.getImg_content().size()>0){
+                        ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
+                    } else {
+                        if (BaseApplication.getInstance().getPrs() != null && BaseApplication.getInstance().getPrs().getProduct_id() == Integer.parseInt(product_id)) {
+                            prs = BaseApplication.getInstance().getPrs();
+                            if (prs.getImg_content().size() > 0) {
                                 bund.putSerializable("img_content", (Serializable) prs.getImg_content());
-                                ActivitySkip.forward(ProductSubunitListActivity.this,ImageShowActivity.class,bund);
+                                ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
                             }
 
-                        }else {
+                        } else {
                             getItemProductDetail();
                         }
                     }
@@ -270,10 +272,10 @@ public class ProductSubunitListActivity extends BaseActivity {
                     }
                     break;
                 case R.id.tvVideo:
-                    if (bund!=null){
-                        if (tvVideo.getAlpha()==1.0f){
-                            bund.putSerializable("prs",prs);
-                            ActivitySkip.forward(ProductSubunitListActivity.this,VideoActivity.class,bund);
+                    if (bund != null) {
+                        if (tvVideo.getAlpha() == 1.0f) {
+                            bund.putSerializable("prs", prs);
+                            ActivitySkip.forward(ProductSubunitListActivity.this, VideoActivity.class, bund);
                         }
                     }
                     break;
@@ -283,9 +285,9 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     private void getItemProductDetail() {
         showDialog();
-        FinalHttp fh=new FinalHttp();
-        AjaxParams ajaxParams=new AjaxParams();
-        ajaxParams.put("product_id",product_id);
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("product_id", product_id);
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
@@ -293,9 +295,9 @@ public class ProductSubunitListActivity extends BaseActivity {
                 super.onSuccess(s);
                 closeDialog();
                 Gson gson = new Gson();
-                ProductDetailBean pdb= gson.fromJson(s,ProductDetailBean.class);
-                if (pdb.getCode().equals("1")){
-                    prs=pdb.getResult();
+                ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
+                if (pdb.getCode().equals("1")) {
+                    prs = pdb.getResult();
                     BaseApplication.getInstance().setPrs(prs);
                     controlColor();
                 }
@@ -310,19 +312,19 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     private void controlColor() {
-        if (prs.getDescription_url()!=null){
+        if (prs.getDescription_url() != null) {
             tvIntroduce.setAlpha(1.0f);
         }
-        if (prs.getVideo_url()!=null){
+        if (prs.getVideo_url() != null) {
             tvVideo.setAlpha(1.0f);
         }
-        if (prs.getImg_content()!=null && prs.getImg_content().size()>0){
+        if (prs.getImg_content() != null && prs.getImg_content().size() > 0) {
             tvFloor.setAlpha(1.0f);
         }
-        if (prs.getContract_url()!=null && !prs.getContract_url().equals("")){
+        if (prs.getContract_url() != null && !prs.getContract_url().equals("")) {
             tvContract.setAlpha(1.0f);
         }
-        if (prs.getFile_content()!=null && prs.getFile_content().size()>0){
+        if (prs.getFile_content() != null && prs.getFile_content().size() > 0) {
             tvFile.setAlpha(1.0f);
         }
     }

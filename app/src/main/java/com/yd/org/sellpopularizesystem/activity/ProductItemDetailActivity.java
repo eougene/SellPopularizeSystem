@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
@@ -275,7 +276,10 @@ public class ProductItemDetailActivity extends BaseActivity {
                     }
                     break;
                 case R.id.tvFloor:
-
+                    if (resultBean != null){
+                        bun.putSerializable("floorListData", (Serializable) prs.getImg_content());
+                        ActivitySkip.forward(ProductItemDetailActivity.this,BuildingPlanActivity.class,bun);
+                    }
                     break;
                 case R.id.tvContract:
 

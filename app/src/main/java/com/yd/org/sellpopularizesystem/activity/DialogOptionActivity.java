@@ -107,7 +107,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         initOptionPicker();
         setListener();
     }
-
+    //初始化拜访界面控件
     private void initVisitViews() {
         View view = LayoutInflater.from(this).inflate(R.layout.visit_operate_view, null);
         etVistTitle = (EditText) view.findViewById(R.id.etVistTitle);
@@ -554,7 +554,8 @@ public class DialogOptionActivity extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
-                            ToasShow.showToastBottom(DialogOptionActivity.this, json.getString("msg"));
+                            ToasShow.showToastCenter(DialogOptionActivity.this, json.getString("msg"));
+                            CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
                             finish();
                             Log.e("tag1", "onSuccess: " + json.getString("msg"));
                         }

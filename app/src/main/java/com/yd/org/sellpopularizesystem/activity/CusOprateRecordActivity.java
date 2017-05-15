@@ -654,8 +654,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         @Override
                         public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
                             holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + "");
-                            if (item.getEoi_moneycheck_time().equals("")) {
-                                holder.setText(R.id.tvEoiStatusDes, "凭证已经上传,正在审核");
+                            if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==6||item.getPayment_method()==7)){
+                                holder.setText(R.id.tvEoiStatusDes, "尚未付款");
+                            }else if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==1||item.getPayment_method()==4)) {
+                                holder.setText(R.id.tvEoiStatusDes, "凭证已上传,正在审核");
                             } else if (item.getCancel_apply_status() == 1) {
                                 holder.setText(R.id.tvEoiStatusDes, "退款申请正在审核");
                             } else {
@@ -753,9 +755,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     };
                     //visitAdapter=new SlidingListviewAdapter(CusOprateRecordActivity.this,vrrb,listView.getRightViewWidth());
                     listView.setAdapter(visitAdapter);
+                    if (tvDes.getVisibility()==View.VISIBLE){
+                        tvDes.setVisibility(View.GONE);
+                    }
                     initMenuListView();
                 } else {
-                    tvNoMessage.setVisibility(View.VISIBLE);
+                    tvDes.setVisibility(View.VISIBLE);
+                    tvDes.setText("没有相关信息");
                 }
 
             }
@@ -800,6 +806,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 int vlog_id=vrrb.get(position).getV_log_id();
                                 vrrb.remove(position);
                                 visitAdapter.notifyDataSetChanged();
+                                if (vrrb.size()==0){
+                                    tvDes.setVisibility(View.VISIBLE);
+                                }
                                 removeVistOrResRecord(vlog_id);
                             }
                         }else if (flag.equals("custoreser")){
@@ -808,6 +817,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 int log_id=rbList.get(position).getO_log_id();
                                 rbList.remove(position);
                                 subscribeAdapter.notifyDataSetChanged();
+                                if (rbList.size()==0){
+                                  tvDes.setVisibility(View.VISIBLE);
+                                }
                                 removeVistOrResRecord(log_id);
                             }
                         }

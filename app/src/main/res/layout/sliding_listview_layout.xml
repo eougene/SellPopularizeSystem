@@ -25,9 +25,10 @@
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:gravity="center_horizontal"
+        android:layout_gravity="center"
         android:text="没有相关信息"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/tv_size_12"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_size_15"
         android:visibility="gone" />
 
 

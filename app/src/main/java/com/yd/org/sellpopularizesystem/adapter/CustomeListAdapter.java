@@ -227,9 +227,9 @@ public class CustomeListAdapter extends BaseAdapter {
             holder1.childBean = childs.get(position);
             //Log.e("TAG", "getView: " + holder1.childBean.getBathroom());
             holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
-                    String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price()))).split("\\.")[0] + "k"
+                    MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price()))/1000).split("\\.")[0]) + "k"
                     + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
-                    + mContext.getString(R.string.single_blank_space) + String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price()))).split("\\.")[0] + "k");
+                    + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price()))/1000).split("\\.")[0]) + "k");
             holder1.tvHouse.setText(holder1.childBean.getBedroom());
             holder1.tvBathroom.setText(holder1.childBean.getBathroom());
             holder1.tvCar.setText(holder1.childBean.getCar_space());
