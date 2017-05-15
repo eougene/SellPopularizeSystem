@@ -79,7 +79,6 @@ public class BitmapUtil {
 
     //根据uri获取图片路径
     public static String getImagePath(Activity act, Uri selectedPhotoUri, String selection, String[] selectionArgs) {
-        Log.e("TAG", "getImagePath: ");
         String picPath = "null";
         String id = null;
         if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.KITKAT) {
@@ -90,6 +89,10 @@ public class BitmapUtil {
             return str;
         } else {
             Log.e("content", selectedPhotoUri.toString());
+            if (selectedPhotoUri.toString().startsWith("content://media/external/images/media/")){
+                String str = getDataColumn(act, selectedPhotoUri, null, null);
+                return str;
+            }
             if (DocumentsContract.isDocumentUri(act, selectedPhotoUri)) {
                 if (isExternalStorageDocument(selectedPhotoUri)) {
                     String docId = DocumentsContract.getDocumentId(selectedPhotoUri);
@@ -134,7 +137,6 @@ public class BitmapUtil {
 
 
     private static String getDataColumn(Activity act, Uri selectedPhotoUri, String selection, String[] selectionArgs) {
-        Log.e("tag", "getDataColumn: " + selectedPhotoUri.toString());
         String strPicPath = null;
         String[] proj = {MediaStore.Images.Media.DATA};
         Cursor cr = act.getContentResolver().query(selectedPhotoUri, proj, selection, selectionArgs, null);
@@ -145,7 +147,6 @@ public class BitmapUtil {
         //picFile = new File(String.valueOf(selectedPhotoUri));
         //最后根据索引值获取图片路径
         strPicPath = cr.getString(column_index);
-        Log.e("tag", "getDataColumn: " + strPicPath);
         cr.close();
         return strPicPath;
     }
@@ -407,16 +408,26 @@ public class BitmapUtil {
      * @param path   图片的路径
      */
     public static Bitmap reviewPicRotate(Bitmap bitmap, String path) {
+        Bitmap returnBm = null;
         int degree = getPicRotate(path);
         if (degree != 0) {
+            // 根据旋转角度，生成旋转矩阵
             Matrix m = new Matrix();
             int width = bitmap.getWidth();
             int height = bitmap.getHeight();
             m.setRotate(degree); // 旋转angle度
+            // 将原始图片按照旋转矩阵进行旋转，并得到新的图片
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, m, true);// 从新生成图片
+        }
+        if (returnBm == null) {
+            returnBm = bitmap;
+        }
+        if (bitmap != returnBm) {
+            bitmap.recycle();
         }
         return bitmap;
     }
+
 
     /**
      * 读取图片文件旋转的角度
@@ -427,7 +438,9 @@ public class BitmapUtil {
     public static int getPicRotate(String path) {
         int degree = 0;
         try {
+            // 从指定路径下读取图片，并获取其EXIF信息
             ExifInterface exifInterface = new ExifInterface(path);
+            // 获取图片的旋转信息
             int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
             switch (orientation) {
                 case ExifInterface.ORIENTATION_ROTATE_90:
