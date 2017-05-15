@@ -62,12 +62,28 @@
             android:textColor="@color/white" />
     </LinearLayout>
 
-    <ListView
-        android:id="@+id/lvHouseDetail"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:listSelector="@color/home_scale"></ListView>
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/lvHouseDetail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:listSelector="@color/home_scale">
+        </ListView>
+        <TextView
+            android:id="@+id/tvNoInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="暂无数据"
+            android:textSize="@dimen/tv_size_15"
+            android:textColor="@color/black"
+            android:visibility="gone"/>
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -123,9 +139,9 @@
                     android:drawableTop="@mipmap/shoppping"
                     android:gravity="center"
                     android:text="预定"
-                    android:visibility="gone"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/tvFloor"

@@ -9,8 +9,9 @@
     <fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard
         android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="match_parent"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
         ></fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard>
+
 </LinearLayout>

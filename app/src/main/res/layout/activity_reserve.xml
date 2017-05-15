@@ -181,17 +181,18 @@
                     android:textSize="@dimen/tv_size_12" />
             </RelativeLayout>
 
-            <View
+            <!--<View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray" />-->
 
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingTop="@dimen/padding_margin_6"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -360,7 +361,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivBpay"
@@ -388,7 +390,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:gravity="center">
+                android:gravity="center"
+                android:visibility="gone">
                 <ImageView
                     android:id="@+id/ivBank"
                     android:layout_width="wrap_content"
@@ -407,7 +410,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginLeft="60dp">
+                android:layout_marginLeft="60dp"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivCertificate"
@@ -416,7 +420,8 @@
                     android:layout_marginTop="@dimen/padding_margin_10"
                     android:layout_weight="1"
                     android:background="@color/home_custom"
-                    android:scaleType="centerInside" />
+                    android:scaleType="centerInside"
+                    />
 
                 <TextView
                     android:id="@+id/tvCertificate"
