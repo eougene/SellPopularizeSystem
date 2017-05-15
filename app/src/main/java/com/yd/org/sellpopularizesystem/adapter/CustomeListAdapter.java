@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.opengl.GLException;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +43,11 @@ public class CustomeListAdapter extends BaseAdapter {
     private ViewHolder holder;
     private List tempChilds = new ArrayList<>();
     private String str, mTempStr;
-    private ACache aCache;
     private int pos;
+
     public CustomeListAdapter(Activity mContext) {
         this.mContext = mContext;
         this.inflater = LayoutInflater.from(mContext);
-        aCache=ACache.get(mContext);
     }
 
     @Override
@@ -74,9 +76,9 @@ public class CustomeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView( int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        pos=position;
+        pos = position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             holder = viewHolder;
@@ -91,32 +93,35 @@ public class CustomeListAdapter extends BaseAdapter {
         }
         viewHolder.productListBean = list.get(position);
         //Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
-        final ViewHolder viewHolder1 = viewHolder;
-        if (aCache.getAsBitmap(list.get(position).getThumb())!=null){
-                viewHolder1.prductImageView.setImageBitmap(aCache.getAsBitmap(list.get(position).getThumb()));
-        }else {
-            Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    viewHolder1.prductImageView.setImageBitmap(bitmap);
-                    ACache aCache=ACache.get(mContext);
-                    aCache.put(list.get(pos).getThumb(),bitmap,ACache.TIME_HOUR);
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
+        final ViewHolder finalViewHolder1 = viewHolder;
+        if (!MyUtils.getInstance().isNetworkConnected(mContext)){
+            if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb())!=null){
+                viewHolder.prductImageView.setImageBitmap(ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb()));
+            }else {
+                ToasShow.showToastCenter(mContext,"当前处于无网络状态");
+            }
         }
+        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                finalViewHolder1.prductImageView.setImageBitmap(bitmap);
+                if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb())==null){
+                    ScaleActivity.scaleActivity.aCache.put(list.get(pos).getThumb(),bitmap,ACache.TIME_HOUR);
+                }
+            }
 
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+            }
+        });
         final String title = list.get(position).getProduct_name().trim();
-        final String product_id = list.get(position).getProduct_id()+"";
+        final String product_id = list.get(position).getProduct_id() + "";
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.childs = list.get(position).getChilds();
         /*tempChilds.clear();
@@ -125,15 +130,15 @@ public class CustomeListAdapter extends BaseAdapter {
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
         final ViewHolder finalViewHolder = viewHolder;
         //点击查看单个item
-        viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean,ProductItemDetailActivity.class,title,product_id));
+        viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
         //点击查看所有
-        viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs,ProductSubunitListActivity.class,title,product_id));
+        viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
         //产品子单元listview点击
         viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
                 //Log.e("position***", "position:" + positions);
-                ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class,title,product_id);
+                ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
             }
         });
 
@@ -145,21 +150,23 @@ public class CustomeListAdapter extends BaseAdapter {
         private Class<?> mClass;
         private String title;
         private String productId;
-        public MyOnClick(Object mObject, Class<?> mClass, String title,String productId) {
+
+        public MyOnClick(Object mObject, Class<?> mClass, String title, String productId) {
             this.mObject = mObject;
             this.mClass = mClass;
             this.title = title;
             this.productId = productId;
         }
+
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.prductImageView:
-                    ScaleActivity.scaleActivity.goTo(mObject, mClass, title,productId);
+                    ScaleActivity.scaleActivity.goTo(mObject, mClass, title, productId);
                     //Log.e("str", "onClick: " + title);
                     break;
                 case R.id.rlViewAll:
-                    ScaleActivity.scaleActivity.goTo(mObject, mClass, title,productId);
+                    ScaleActivity.scaleActivity.goTo(mObject, mClass, title, productId);
                     //Log.e("str", "onClick** " + title);
                     break;
 
@@ -219,10 +226,10 @@ public class CustomeListAdapter extends BaseAdapter {
             }
             holder1.childBean = childs.get(position);
             //Log.e("TAG", "getView: " + holder1.childBean.getBathroom());
-            holder1.tvPriceRange.setText("$"+mContext.getString(R.string.single_blank_space)+
-                    String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price()))).split("\\.")[0]+"k"
-                    +mContext.getString(R.string.single_blank_space)+"to"+mContext.getString(R.string.single_blank_space)+"$"
-                    +mContext.getString(R.string.single_blank_space)+String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price()))).split("\\.")[0]+"k");
+            holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
+                    String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price()))).split("\\.")[0] + "k"
+                    + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
+                    + mContext.getString(R.string.single_blank_space) + String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price()))).split("\\.")[0] + "k");
             holder1.tvHouse.setText(holder1.childBean.getBedroom());
             holder1.tvBathroom.setText(holder1.childBean.getBathroom());
             holder1.tvCar.setText(holder1.childBean.getCar_space());
