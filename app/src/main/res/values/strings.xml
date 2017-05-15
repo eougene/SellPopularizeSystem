@@ -130,5 +130,6 @@
     <string name="clear">清除</string>
     <string name="alipay">支付宝</string>
     <string name="wechatpay">微信</string>
+    <string name="zhifu">支付</string>
 
 </resources>
