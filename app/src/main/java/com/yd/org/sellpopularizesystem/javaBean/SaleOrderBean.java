@@ -124,9 +124,14 @@ public class SaleOrderBean extends Domine {
         private String add_time;
         private String order_money_url;
         private String pay_time;
+        private String order_money_upload_time;
         private String order_moneycheck_time;
         private int order_money_status;
+        private int sales_advice_is_true;
+        private int sales_advice_status;
         private int contract_apply_time;
+        private String contract_unsigned_url;
+        private String unsign_upload_time;
         private int contract_apply_check_time;
         private int contract_apply_status;
         private String buy_money_url;
