@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
@@ -18,8 +19,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,6 +41,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -52,13 +57,16 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
     private TextView tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate;
-    private ImageView ivReLawyer, ivCertificate;
+    private TextView tvTitleDes,tvMoneyNum, tvPayMethod, tvEoiSubmit;
+    private ImageView ivReLawyer, ivCertificate,ivCash,ivIdCard,ivAlipay,ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
     private ProductChildBean bean;
     private LawyerBean.ResultBean lawBean;
@@ -77,6 +85,9 @@ public class ReserveActivity extends BaseActivity {
     private String imagePath;
     private String picPath;
     private String customeId;
+    private Dialog payMethodDialog;
+    private LinearLayout llCertificate;
+    private String payment_method;
 
     @Override
     protected int setContentView() {
@@ -97,7 +108,7 @@ public class ReserveActivity extends BaseActivity {
         tvValidity = (TextView) findViewById(R.id.tvValidity);
         tvReCus = (TextView) findViewById(R.id.tvReCus);
         ivReLawyer = (ImageView) findViewById(R.id.ivReLawyer);
-        ivCertificate = (ImageView) findViewById(R.id.ivCertificate);
+        //ivCertificate = (ImageView) findViewById(R.id.ivCertificate);
         rlRecus = (RelativeLayout) findViewById(R.id.rlRecus);
         rlReLawyer = (RelativeLayout) findViewById(R.id.rlReLawyer);
         tvReLawyer = (TextView) findViewById(R.id.tvReLawyer);
@@ -116,6 +127,8 @@ public class ReserveActivity extends BaseActivity {
                 return R.layout.reserver_paytype_popwindow;
             }
         };
+        initPayMethodDialog();
+
         setPhotoPopuWindow = new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
             @Override
             protected int getLayoutId() {
@@ -147,6 +160,39 @@ public class ReserveActivity extends BaseActivity {
         initData();
     }
 
+    private void initPayMethodDialog() {
+        payMethodDialog=new Dialog(this);
+        payMethodDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        payMethodDialog.setContentView(R.layout.eoi_operate_view);
+        Window dialogWindow = payMethodDialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.x = MyUtils.getStatusBarHeight(this);
+        dialogWindow.setAttributes(lp);
+        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        initPayMethodDialogViews();
+    }
+
+    private void initPayMethodDialogViews() {
+        tvTitleDes= (TextView) payMethodDialog.findViewById(R.id.tvTitleDes);
+        tvTitleDes.setText(R.string.zhifu);
+        tvMoneyNum = (TextView) payMethodDialog.findViewById(R.id.tvMoneyNum);
+        tvPayMethod = (TextView) payMethodDialog.findViewById(R.id.tvPayMethod);
+        tvEoiSubmit = (TextView) payMethodDialog.findViewById(R.id.tvEoiSubmit);
+        ivCash= (ImageView) payMethodDialog.findViewById(R.id.ivCash);
+        ivIdCard= (ImageView) payMethodDialog.findViewById(R.id.ivIdCard);
+        ivAlipay= (ImageView) payMethodDialog.findViewById(R.id.ivAlipay);
+        ivWechatPay= (ImageView) payMethodDialog.findViewById(R.id.ivWeixinPay);
+        llCertificate = (LinearLayout) payMethodDialog.findViewById(R.id.llCertificate);
+        ivCertificate = (ImageView) payMethodDialog.findViewById(R.id.ivCertificate);
+        ivCash.setOnClickListener(mOnClickListener);
+        ivIdCard.setOnClickListener(mOnClickListener);
+        ivAlipay.setOnClickListener(mOnClickListener);
+        ivWechatPay.setOnClickListener(mOnClickListener);
+        tvEoiSubmit.setOnClickListener(mOnClickListener);
+        ivCertificate.setOnClickListener(mOnClickListener);
+    }
+
     private void initData() {
         tvRePrice.setText(bean.getPrice());
         tvRetype.setText(bean.getFloor_type());
@@ -167,7 +213,7 @@ public class ReserveActivity extends BaseActivity {
         ivReLawyer.setOnClickListener(mOnClickListener);
         tvReGoal.setOnClickListener(mOnClickListener);
         tvRePayType.setOnClickListener(mOnClickListener);
-        ivCertificate.setOnClickListener(mOnClickListener);
+       // ivCertificate.setOnClickListener(mOnClickListener);
         rlRecus.setOnClickListener(mOnClickListener);
         rlReLawyer.setOnClickListener(mOnClickListener);
         tvReLawyer.setOnClickListener(mOnClickListener);
@@ -217,7 +263,8 @@ public class ReserveActivity extends BaseActivity {
                     mCustomePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.rlPayType:
-                    rePayTypePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                   // rePayTypePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    payMethodDialog.show();
                     break;
                 case R.id.rlPop:
                     mCustomePopuWindow.dismiss();
@@ -270,9 +317,57 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.btReSubmit:
                     getInfo();
                     break;
-                case R.id.ivCertificate:
-                    setPhotoPopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+
+                case R.id.ivCash:
+                    if (llCertificate.getVisibility()==View.GONE){
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.recash));
+                    payment_method="1";
                     break;
+                case R.id.ivIdCard:
+                    if (llCertificate.getVisibility()==View.GONE){
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.transfer));
+                    payment_method="4";
+                    break;
+                case R.id.ivAlipay:
+                    if (llCertificate.getVisibility()==View.VISIBLE){
+                        llCertificate.setVisibility(View.GONE);
+                    }
+                    tvPayMethod.setText(R.string.alipay);
+                    tvMoneyNum.setText("￥ 2000.00");
+                    payment_method="6";
+                    break;
+                case R.id.ivWeixinPay:
+                    if (llCertificate.getVisibility()==View.VISIBLE){
+                        llCertificate.setVisibility(View.GONE);
+                    }
+                    tvPayMethod.setText(R.string.wechatpay);
+                    tvMoneyNum.setText("￥ 2000.00");
+                    payment_method="7";
+                    break;
+                case R.id.ivCertificate:
+                    //setPhotoPopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                    break;
+                case R.id.tvEoiSubmit:
+                    if (tvMoneyNum.getText().equals("-")){
+                        ToasShow.showToastCenter(ReserveActivity.this,"请选择支付方式");
+                    }else if (llCertificate.getVisibility()==View.VISIBLE){
+                        if (picPath == null) {
+                            ToasShow.showToastCenter(ReserveActivity.this, "请上传支付凭证");
+                        }
+                    } else {
+                        tvRePay.setText(tvMoneyNum.getText().toString());
+                        tvRePayType.setText(tvPayMethod.getText());
+                        payMethodDialog.dismiss();
+                    }
+                    break;
+
                 case R.id.btFromCamera:
                     setPhotoPopuWindow.dismiss();
                     BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
@@ -291,12 +386,10 @@ public class ReserveActivity extends BaseActivity {
 
     private void getInfo() {
 
-        String payment_method = (String) tvRePayType.getText();
-
         if (lawyer_id == -1) {
             ToasShow.showToastBottom(this, getString(R.string.lawyer_id));
             return;
-        } else if (payment_method.equals("请选择支付方式")) {
+        } else if (tvRePayType.getText().equals(getString(R.string.pay_method))) {
             ToasShow.showToastBottom(this, getString(R.string.pay_method));
             return;
         } else if (TextUtils.isEmpty(picPath)) {
@@ -320,11 +413,13 @@ public class ReserveActivity extends BaseActivity {
             ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("lawyer_id", lawyer_id + "");
             ajaxParams.put("payment_method", payment_method);
-            ajaxParams.put("payment_amount", bean.getPrice());
+            ajaxParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
             File picFile = new File(picPath);
             ajaxParams.put("file", picFile);
+            ajaxParams.put("pay_time","");
             ajaxParams.put("currency", bean.getCurrency());
             ajaxParams.put("purchaseReason", (String) tvReGoal.getText());
+            ajaxParams.put("eoi_id",bean.getIs_eoi()+"");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -355,6 +450,13 @@ public class ReserveActivity extends BaseActivity {
                 closeDialog();
             }
         });
+    }
+
+    private String getDigitalFromString(String s) {
+        String regEx="[^0-9]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(s);
+        return m.replaceAll("").trim();
     }
 
     class CustomePopuWindow extends CommonPopuWindow {

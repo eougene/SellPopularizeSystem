@@ -42,7 +42,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btCancel;
     private int pos;
     private RelativeLayout rlPop;
-    private TextView tvSelect,
+    private TextView tvSelect,tvNoInfo,
             tvIntroduce,tvVideo,tvFloor,tvContract,tvFile;
     private ListView lvHouseDetail;
     private ImageView ivSearch;
@@ -113,6 +113,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
         tvIntroduce=getViewById(R.id.tvIntroduce);
+        tvNoInfo=getViewById(R.id.tvNoInfo);
         tvVideo=getViewById(R.id.tvVideo);
         tvFloor=getViewById(R.id.tvFloor);
         tvContract=getViewById(R.id.tvContract);
@@ -132,7 +133,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_id", product_id);
+        ajaxParams.put("product_id", product_id== null?"":product_id);
         ajaxParams.put("page", page);
         ajaxParams.put("number", 10 + "");
         ajaxParams.put("provice", "");
@@ -170,7 +171,12 @@ public class ProductSubunitListActivity extends BaseActivity {
         Gson gson = new Gson();
         ProductSubunitListBean pslb = gson.fromJson(s, ProductSubunitListBean.class);
         data = pslb.getResult();
-        setAdapter();
+        if (data.size()>0){
+            setAdapter();
+        }else {
+            tvNoInfo.setVisibility(View.VISIBLE);
+        }
+
     }
 
     private void setAdapter() {

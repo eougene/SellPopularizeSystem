@@ -3,12 +3,20 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
+import android.content.ClipData;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -24,8 +32,8 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
-
 
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -37,6 +45,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.hp.hpl.sparta.xpath.ThisNodeTest;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.SlidingListviewAdapter;
@@ -51,7 +60,9 @@ import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenu;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuCreator;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
+import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
+import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.myView.SlidingItemListView;
@@ -80,6 +91,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.IllegalFormatCodePointException;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -87,17 +99,17 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private String customeId;
     private Bundle bundle;
     private String flag;
-    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit, tvDes,tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
+    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit, tvDes, tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
     private EditText etCertificateTime, etVistTitle, etVistContent;
     private Button btDoacash, btDoaTransfer, btDoaCancel, btFromCamera, btFromAlbum, btPhotoCancel;
-    private ImageView ivCertificate,ivCash,ivIdCard,ivAlipay,ivWechatPay;
+    private ImageView ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private String picPath;
     private LinearLayout llSpace, llCertificate, llChooseSpace;
     private Dialog eoiDialog, methodDialog, optionDialog;
     private List<String> weeks;
     private List<String> hours;
     private List<String> minutes;
-    private CommonAdapter visitAdapter;
+    private CommonAdapter visitAdapter, eoiAdapter,subscribeAdapter;
     private OptionsPickerView pvCustomTime;
     private SwipeMenuListView listView;
     private PullToRefreshLayout ptrl;
@@ -105,8 +117,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private String number = "5";
     private Dialog visitDilog;
     private VisitRecord.ResultBean visitRecord;
-    private static CusOprateRecordActivity cusOprateRecordActivity;
+    public static CusOprateRecordActivity cusOprateRecordActivity;
     private List<VisitRecord.ResultBean> vrrb;
+    private String payment_method;
+    private Uri imgUri;
+    private List<SubscribeListBean.ResultBean> rbList;
 
     @Override
     protected int setContentView() {
@@ -166,6 +181,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     WindowManager.LayoutParams lp = dialogWindow.getAttributes();
                     lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
                     dialogWindow.setAttributes(lp);
+                    dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
                     dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
                     eoiDialog.show();
                     initDialogViews(eoiDialog);
@@ -181,6 +197,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             super.handleMessage(msg);
             if (msg.what == ExtraName.UPDATE && flag.equals("custovisit")) {
                 getVisitData(page);
+            }else if (msg.what == ExtraName.UPDATE && flag.equals("custoreser")){
+                getReservertData();
+            }else if (msg.what == ExtraName.SUCCESS) {
+                getEoiData();
             }
         }
     };
@@ -188,7 +208,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void initWidgets() {
         listView = getViewById(R.id.content_view);
         tvDes = getViewById(R.id.tvDes);
-        tvNoMessage=getViewById(R.id.noInfomation);
+        tvNoMessage = getViewById(R.id.noInfomation);
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
 
@@ -198,12 +218,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         tvMoneyNum = (TextView) dialog.findViewById(R.id.tvMoneyNum);
         tvPayMethod = (TextView) dialog.findViewById(R.id.tvPayMethod);
         tvEoiSubmit = (TextView) dialog.findViewById(R.id.tvEoiSubmit);
-        ivCash= (ImageView) dialog.findViewById(R.id.ivCash);
-        ivIdCard= (ImageView) dialog.findViewById(R.id.ivIdCard);
-        ivAlipay= (ImageView) dialog.findViewById(R.id.ivAlipay);
-        ivWechatPay= (ImageView) dialog.findViewById(R.id.ivWeixinPay);
+        ivCash = (ImageView) dialog.findViewById(R.id.ivCash);
+        ivIdCard = (ImageView) dialog.findViewById(R.id.ivIdCard);
+        ivAlipay = (ImageView) dialog.findViewById(R.id.ivAlipay);
+        ivWechatPay = (ImageView) dialog.findViewById(R.id.ivWeixinPay);
         llCertificate = (LinearLayout) dialog.findViewById(R.id.llCertificate);
-       // etCertificateTime = (EditText) dialog.findViewById(R.id.tvUploadTime);
+        // etCertificateTime = (EditText) dialog.findViewById(R.id.tvUploadTime);
         ivCertificate = (ImageView) dialog.findViewById(R.id.ivCertificate);
         ivCash.setOnClickListener(mOnClickListener);
         ivIdCard.setOnClickListener(mOnClickListener);
@@ -358,20 +378,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tvPayMethod:
-                   // initPayMethodDialog();
+                    // initPayMethodDialog();
                     //payMethodPop.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent),Gravity.BOTTOM, 0,0);
-                    break;
-                case R.id.tvEoiSubmit:
-                    if (picPath != null) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请上传支付凭证");
-                    } else if (llCertificate.getVisibility() == View.GONE) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请选择支付方式");
-                    } else if (TextUtils.isEmpty(etCertificateTime.getText())) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请填写凭证转账时间");
-                    } else {
-                        //提交eoi
-                        submitEoi();
-                    }
                     break;
                 case R.id.btDoaCash:
                     tvPayMethod.setText(btDoacash.getText());
@@ -390,32 +398,61 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 /*case R.id.etUploadTime:
                     pvCustomTime.show();
                     break;*/
+                //eoi充值
                 case R.id.ivCash:
-                    if (llCertificate.getVisibility()==View.GONE){
+                    if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
                     tvMoneyNum.setText("$ 300.00");
                     tvPayMethod.setText(getString(R.string.recash));
+                    payment_method = "1";
                     break;
                 case R.id.ivIdCard:
-                    if (llCertificate.getVisibility()==View.GONE){
+                    if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
                     tvMoneyNum.setText("$ 300.00");
                     tvPayMethod.setText(getString(R.string.transfer));
+                    payment_method = "4";
                     break;
                 case R.id.ivAlipay:
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        llCertificate.setVisibility(View.GONE);
+                    }
                     tvPayMethod.setText(R.string.alipay);
                     tvMoneyNum.setText("￥ 2000.00");
+                    payment_method = "6";
                     break;
                 case R.id.ivWeixinPay:
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        llCertificate.setVisibility(View.GONE);
+                    }
                     tvPayMethod.setText(R.string.wechatpay);
                     tvMoneyNum.setText("￥ 2000.00");
+                    payment_method = "7";
                     break;
                 case R.id.ivCertificate:
                     //initOptionDialog();
-                    BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                    //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                    takePhoto();
+                    //BitmapUtil.gotoSysPic(CusOprateRecordActivity.this,ExtraName.ALBUM_PICTURE);
                     break;
+                case R.id.tvEoiSubmit:
+                    Log.e("submitEoi", "onClick: " + "submitEoi");
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        if (picPath == null) {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, "请上传支付凭证");
+                        }
+                    }
+                    if (tvMoneyNum.getText().equals("-")) {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请选择支付方式");
+                    } else {
+                        //提交eoi
+                        Log.e("submitEoi", "onClick: " + "submitEoi");
+                        submitEoi();
+                    }
+                    break;
+
                /* case R.id.btFromCamera:
                     optionDialog.dismiss();
                     BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
@@ -446,6 +483,21 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             }
         }
     };
+
+    private void takePhoto() {
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            ContentValues contentValues = new ContentValues(2);
+            //如果想拍完存在系统相机的默认目录,改为
+            contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, UUID.randomUUID().toString() + ".jpg");
+            contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+            contentValues.put(MediaStore.Images.Media.SIZE, 1024 * 200);
+            imgUri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imgUri);
+            startActivityForResult(cameraIntent, ExtraName.TAKE_PICTURE);
+        }
+
+    }
 
     private void updateVisit() {
         FinalHttp fh = new FinalHttp();
@@ -535,13 +587,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         try {
             ajaxParams.put("client", customeId);
             ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("payment_method", "1");
+            ajaxParams.put("payment_method", payment_method);
             ajaxParams.put("payment_amount", tvMoneyNum.getText().toString());
             File picFile = new File(picPath);
             ajaxParams.put("file", picFile);
-            ajaxParams.put("pay_time", etCertificateTime.getText().toString());
-            ajaxParams.put("currency", tvMoneyNum.getText().toString());
+            ajaxParams.put("pay_time", "");
+            ajaxParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
             ajaxParams.put("purchaseReason", "");
+            Log.e("ajax", "submitEoi: " + customeId + "\n" + payment_method + "\n" + tvMoneyNum.getText().toString() + picPath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -553,6 +606,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+                        if (json.getString("msg").equals("充值成功")) {
+                            eoiDialog.dismiss();
+                            handler.sendEmptyMessage(ExtraName.SUCCESS);
+                            json.getString("trust_account_id");
+                        }
                     } else {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
                     }
@@ -571,6 +629,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void getEoiData() {
+        showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -585,7 +644,32 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                closeDialog();
+                Gson gson = new Gson();
+                EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
+                if (eoilistBean.getResult().size() > 0) {
+                    List<EoilistBean.ResultBean> eoiList = eoilistBean.getResult();
+                    eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
+                        @Override
+                        public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
+                            holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + "");
+                            if (item.getEoi_moneycheck_time().equals("")) {
+                                holder.setText(R.id.tvEoiStatusDes, "凭证已经上传,正在审核");
+                            } else if (item.getCancel_apply_status() == 1) {
+                                holder.setText(R.id.tvEoiStatusDes, "退款申请正在审核");
+                            } else {
+                                holder.setText(R.id.tvEoiStatusDes, "尚未付款");
+                            }
+                        }
+                    };
+                    listView.setAdapter(eoiAdapter);
+                    if (tvDes.getVisibility() == View.VISIBLE) {
+                        tvDes.setVisibility(View.GONE);
+                    }
+                } else {
+                    tvDes.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -605,10 +689,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     visitDilog.show();
                     tvVisitTile.setText("详情");
                     etVistTitle.setText(visitRecord.getTitle());
-                    tvVisitTime.setText(MyUtils.date2String("MM/dd mm:hh", visitRecord.getAdd_time() * 1000));
+                    tvVisitTime.setText(MyUtils.date2String("MM/dd HH:mm", visitRecord.getAdd_time() * 1000));
                     etVistContent.setText(visitRecord.getContent());
                     tvVisitSubmit.setText("更新");
                     tvVisitSubmit.setOnClickListener(mOnClickListener);
+                } else if (flag.equals("custoreser")) {
+                    Bundle bun=new Bundle();
+                    bun.putSerializable("subrb",rbList.get(position));
+                    ActivitySkip.forward(CusOprateRecordActivity.this,DialogOptionActivity.class,bun);
                 }
             }
         });
@@ -666,7 +754,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     //visitAdapter=new SlidingListviewAdapter(CusOprateRecordActivity.this,vrrb,listView.getRightViewWidth());
                     listView.setAdapter(visitAdapter);
                     initMenuListView();
-                }else {
+                } else {
                     tvNoMessage.setVisibility(View.VISIBLE);
                 }
 
@@ -707,8 +795,22 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0://第一个添加的菜单的响应时间(打开)
-                        vrrb.remove(position);
-                        visitAdapter.notifyDataSetChanged();
+                        if (flag.equals("custovisit")){
+                            if (vrrb.size()>0){
+                                int vlog_id=vrrb.get(position).getV_log_id();
+                                vrrb.remove(position);
+                                visitAdapter.notifyDataSetChanged();
+                                removeVistOrResRecord(vlog_id);
+                            }
+                        }else if (flag.equals("custoreser")){
+                            if (rbList.size()>0){
+                                Log.e("size", "onMenuItemClick: "+rbList.size()+"\n"+position );
+                                int log_id=rbList.get(position).getO_log_id();
+                                rbList.remove(position);
+                                subscribeAdapter.notifyDataSetChanged();
+                                removeVistOrResRecord(log_id);
+                            }
+                        }
                         break;
                 }
                 return false;
@@ -716,8 +818,84 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         });
     }
 
-    private void getReservertData() {
+    private void removeVistOrResRecord(int id) {
+        showDialog();
+        String strUrl="";
+        FinalHttp fh=new FinalHttp();
+        AjaxParams ajaxParams=new AjaxParams();
+        if (flag.equals("custovisit")){
+            ajaxParams.put("v_log_id",id+"");
+            strUrl=Contants.REMOVE_VISIT_RECORD;
+        }else if (flag.equals("custoreser")){
+            ajaxParams.put("o_log_id",id+"");
+            strUrl=Contants.REMOVE_RESERVER_RECORD;
+        }
 
+        fh.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                closeDialog();
+                try {
+                    JSONObject json=new JSONObject(s);
+                    if (json.getString("code").equals("1")){
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this,json.getString("msg"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
+
+    private void getReservertData() {
+        showDialog();
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("customer_id", customeId);
+        ajaxParams.put("page", String.valueOf(page));
+        ajaxParams.put("number", number);
+        fh.get(Contants.RESERVER_RECORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                closeDialog();
+                Gson gson=new Gson();
+                SubscribeListBean slb=gson.fromJson(s,SubscribeListBean.class);
+                if (slb.getCode().equals("1")){
+                    if (slb.getResult().size()>0){
+                        rbList = slb.getResult();
+                        subscribeAdapter=new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList,R.layout.reserver_listview_item_layout) {
+                            @Override
+                            public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
+                                holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time()*1000));
+                                holder.setText(R.id.tvSubscribeContent, item.getContent());
+                            }
+                        };
+                        listView.setAdapter(subscribeAdapter);
+                        if (tvDes.getVisibility()==View.VISIBLE){
+                            tvDes.setVisibility(View.GONE);
+                        }
+                        initMenuListView();
+                    }else {
+                        tvDes.setVisibility(View.VISIBLE);
+                        tvDes.setText("没有相关信息");
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+
+            }
+        });
     }
 
     private void getExpandReData() {
@@ -735,7 +913,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             switch (requestCode) {
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
-                    File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
+                   /* File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
                     if (cameraFile.exists()) {
                         // copy 照片到指定目录下
                         String path = BitmapUtil.getCacheDir(this);
@@ -743,20 +921,50 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         if (!dir.exists()) {
                             dir.mkdirs();
                         }
-                        File picFile = new File(dir, System.currentTimeMillis() + "jpg");
-                        Log.e("picFile", picFile.getAbsolutePath());
+                       File picFile = new File(dir, System.currentTimeMillis() + ".jpg");
+
                         try {
-                            BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(picFile));
-                            cameraFile.delete();
+                           // BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(picFile));
+                            //cameraFile.delete();
                             picPath = picFile.getAbsolutePath();
-                            Picasso.with(this).load(picFile).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
+                            Log.e("picFile", picPath);
+                            Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").resize(100, 100).into(ivCertificate);
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
-                    }
+                    }*/
+                    try {
+                        if (null != data && null != data.getData()) {
+                            picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+                            ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                        } else {
+                            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imgUri));
+                            Log.e("Authority", "onActivityResult: " + imgUri + "\n" + imgUri.getAuthority());
+                            picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, imgUri, null, null);
+                            Log.e("picPath", "onActivityResult: " + picPath);
+                            ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                            /*Picasso.with(this).load(picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(new Target() {
+                                @Override
+                                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                                    ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                                }
 
+                                @Override
+                                public void onBitmapFailed(Drawable errorDrawable) {
+
+                                }
+
+                                @Override
+                                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                                }
+                            });*/
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    // Log.e("imgUri2", "onActivityResult: "+imgUri+"\n"+imgUri.getPath()+"\n"+data.getData()+"\n"+data.getData().getPath());
                     break;
                 //从相册选取图片
                 case ExtraName.ALBUM_PICTURE:

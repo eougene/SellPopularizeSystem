@@ -50,22 +50,25 @@ import java.util.ArrayList;
 import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
 
+import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+
 public class ProductItemDetailActivity extends BaseActivity {
-    private TextView tvId,tvProdes,tvIsSalingNum,tvHasSaledNum,tvFirbNum,tvEoiTime,
-            tvSaleDeadTime,tvCloseDate,tvMemo,tvProjectPro,tvSupplier,tvLawyer,
-            tvBuilder,tvDespositHolder,tvForeignMoney,tvCashDesposit,tvSubscription,
-            tvIntroduce,tvVideo,tvOrder,tvFloor,tvContract,tvFile;
+    private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
+            tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
+            tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
+            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile;
     private ImageView ivCart;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     ProductDetailBean.ResultBean prs;
-    private List childs=new ArrayList();
+    private List childs = new ArrayList();
     private UMShareListener mUmShareListener;
     private ShareAction mShareAction;
     private String string;
     private static Bitmap bitmap;
     public int images;
-    private Bundle bun;
+    private Bundle bun= new Bundle();;
+    private String product_id;
 
     @Override
     protected int setContentView() {
@@ -76,9 +79,10 @@ public class ProductItemDetailActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        Bundle bundle=getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         string = bundle.getString("productName");
         resultBean = (ProductListBean.ResultBean) bundle.getSerializable("bean");
+        product_id = String.valueOf(resultBean.getProduct_id());
         childs.addAll(resultBean.getChilds());
         setTitle(string);
         initViews();
@@ -102,7 +106,7 @@ public class ProductItemDetailActivity extends BaseActivity {
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
             public void onShare(int id) {
-                switch (id){
+                switch (id) {
                     case 1://微信
                         shareToMedia(SHARE_MEDIA.WEIXIN);
                         //mShareAction.open();
@@ -117,75 +121,75 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     private void shareToMedia(SHARE_MEDIA share_MEDIA) {
-                    final UMWeb web=new UMWeb("http://www.maclandgroup.com/");
-                    web.setTitle(string);
-                    web.setDescription(resultBean.getProduct_name());
-                    Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
-                        @Override
-                        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                            ProductItemDetailActivity.bitmap=bitmap;
-                        }
+        final UMWeb web = new UMWeb("http://www.maclandgroup.com/");
+        web.setTitle(string);
+        web.setDescription(resultBean.getProduct_name());
+        Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                ProductItemDetailActivity.bitmap = bitmap;
+            }
 
-                        @Override
-                        public void onBitmapFailed(Drawable errorDrawable) {
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
 
-                        }
+            }
 
-                        @Override
-                        public void onPrepareLoad(Drawable placeHolderDrawable) {
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
 
-                        }
-                    });
-                    web.setThumb(new UMImage(ProductItemDetailActivity.this, Contants.DOMAIN + "/" +resultBean.getThumb()));
-                    Log.e("TAG", "shareToMedia: "+Contants.DOMAIN +resultBean.getThumb());
-                    mShareAction.setPlatform(share_MEDIA).setCallback(mUmShareListener).withMedia(web).share();
+            }
+        });
+        web.setThumb(new UMImage(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + resultBean.getThumb()));
+        Log.e("TAG", "shareToMedia: " + Contants.DOMAIN + resultBean.getThumb());
+        mShareAction.setPlatform(share_MEDIA).setCallback(mUmShareListener).withMedia(web).share();
     }
 
     private void initViews() {
-       // ivCart= (ImageView) findViewById(R.id.ivCustomePhoto);
+        // ivCart= (ImageView) findViewById(R.id.ivCustomePhoto);
         //轮播图控件
-        rpv=getViewById(R.id.rpv);
+        rpv = getViewById(R.id.rpv);
         //设置轮播时间间隔
         rpv.setPlayDelay(3000);
         //设置轮播动画持续时间
         rpv.setAnimationDurtion(500);
         //自定义指示器图片
         //rpv.setHintView(new IconHintView(this,R.mipmap.dian_true,R.mipmap.dian_false));
-        rpv.setHintView(new ColorPointHintView(this, Color.WHITE,Color.parseColor("#7F7F7F")));
+        rpv.setHintView(new ColorPointHintView(this, Color.WHITE, Color.parseColor("#7F7F7F")));
         rpv.setOnItemClickListener(mOnItemClickListener);
-        tvId= getViewById(R.id.tvId);
-        tvProdes=getViewById(R.id.tvProdes);
-        tvIsSalingNum= getViewById(R.id.tvIsSalingNum);
-        tvHasSaledNum= getViewById(R.id.tvHasSaledNum);
-        tvFirbNum= getViewById(R.id.tvFirbNum);
-        tvEoiTime= getViewById(R.id.tvEoiTime);
-        tvSaleDeadTime= getViewById(R.id.tvSaleDeadTime);
-        tvCloseDate= getViewById(R.id.tvCloseDate);
-        tvMemo= getViewById(R.id.tvMemo);
-        tvProjectPro= getViewById(R.id.tvProjectPro);
-        tvSupplier= getViewById(R.id.tvSupplier);
-        tvBuilder= getViewById(R.id.tvBuilder);
-        tvLawyer= getViewById(R.id.tvLawyer);
-        tvDespositHolder= getViewById(R.id.tvDespositHolder);
-        tvForeignMoney= getViewById(R.id.tvForeignMoney);
-        tvCashDesposit= getViewById(R.id.tvCashDesposit);
-        tvSubscription= getViewById(R.id.tvSubscription);
-        tvIntroduce=getViewById(R.id.tvIntroduce);
-        tvVideo=getViewById(R.id.tvVideo);
-        tvOrder=getViewById(R.id.tvOrder);
-        tvFloor=getViewById(R.id.tvFloor);
-        tvContract=getViewById(R.id.tvContract);
-        tvFile=getViewById(R.id.tvFile);
-        mUmShareListener=new CustomShareListener(this);
-        mShareAction=new ShareAction(ProductItemDetailActivity.this);
+        tvId = getViewById(R.id.tvId);
+        tvProdes = getViewById(R.id.tvProdes);
+        tvIsSalingNum = getViewById(R.id.tvIsSalingNum);
+        tvHasSaledNum = getViewById(R.id.tvHasSaledNum);
+        tvFirbNum = getViewById(R.id.tvFirbNum);
+        tvEoiTime = getViewById(R.id.tvEoiTime);
+        tvSaleDeadTime = getViewById(R.id.tvSaleDeadTime);
+        tvCloseDate = getViewById(R.id.tvCloseDate);
+        tvMemo = getViewById(R.id.tvMemo);
+        tvProjectPro = getViewById(R.id.tvProjectPro);
+        tvSupplier = getViewById(R.id.tvSupplier);
+        tvBuilder = getViewById(R.id.tvBuilder);
+        tvLawyer = getViewById(R.id.tvLawyer);
+        tvDespositHolder = getViewById(R.id.tvDespositHolder);
+        tvForeignMoney = getViewById(R.id.tvForeignMoney);
+        tvCashDesposit = getViewById(R.id.tvCashDesposit);
+        tvSubscription = getViewById(R.id.tvSubscription);
+        tvIntroduce = getViewById(R.id.tvIntroduce);
+        tvVideo = getViewById(R.id.tvVideo);
+        tvOrder = getViewById(R.id.tvOrder);
+        tvFloor = getViewById(R.id.tvFloor);
+        tvContract = getViewById(R.id.tvContract);
+        tvFile = getViewById(R.id.tvFile);
+        mUmShareListener = new CustomShareListener(this);
+        mShareAction = new ShareAction(ProductItemDetailActivity.this);
 
     }
 
     private void initData() {
         showDialog();
-        FinalHttp fh=new FinalHttp();
-        AjaxParams ajaxParams=new AjaxParams();
-        ajaxParams.put("product_id",resultBean.getProduct_id()+"");
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("product_id", resultBean.getProduct_id() + "");
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
@@ -193,20 +197,20 @@ public class ProductItemDetailActivity extends BaseActivity {
                 super.onSuccess(s);
                 closeDialog();
                 Gson gson = new Gson();
-                ProductDetailBean pdb= gson.fromJson(s,ProductDetailBean.class);
-                if (pdb.getCode().equals("1")){
-                    prs=pdb.getResult();
+                ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
+                if (pdb.getCode().equals("1")) {
+                    prs = pdb.getResult();
                     BaseApplication.getInstance().setPrs(prs);
                     //轮播控件适配器
                     rpv.setAdapter(new NormalAdapter(rpv));
-                    tvId.setText(prs.getProduct_id()+"");
+                    tvId.setText(prs.getProduct_id() + "");
                     tvProdes.setText(prs.getDescription());
-                    tvIsSalingNum.setText(prs.getSell_number()+"");
-                    tvHasSaledNum.setText(prs.getSign_number()+"");
-                    tvFirbNum.setText(prs.getFirb_number()+"");
-                    tvEoiTime.setText(prs.getEoi_open_time()+"");
-                    tvSaleDeadTime.setText(prs.getStop_sales_time()+"");
-                    tvCloseDate.setText(prs.getSettlement_time()+"");
+                    tvIsSalingNum.setText(prs.getSell_number() + "");
+                    tvHasSaledNum.setText(prs.getSign_number() + "");
+                    tvFirbNum.setText(prs.getFirb_number() + "");
+                    tvEoiTime.setText(prs.getEoi_open_time() + "");
+                    tvSaleDeadTime.setText(prs.getStop_sales_time() + "");
+                    tvCloseDate.setText(prs.getSettlement_time() + "");
                     tvMemo.setText(prs.getPreview_memo());
                     tvProjectPro.setText(prs.getProduct_type());
                     tvSupplier.setText(prs.getVendor());
@@ -217,8 +221,7 @@ public class ProductItemDetailActivity extends BaseActivity {
                     tvCashDesposit.setText(prs.getFirb_exchange_deposit());
                     tvSubscription.setText(prs.getMin_reservation_fee());
                     controlColor();
-                    bun = new Bundle();
-                    bun.putSerializable("prs",prs);
+                    bun.putSerializable("prs", prs);
                 }
             }
 
@@ -230,42 +233,46 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     private void controlColor() {
-        if (prs.getDescription_url()!=null){
-                tvIntroduce.setAlpha(1.0f);
+        if (prs.getDescription_url() != null) {
+            tvIntroduce.setAlpha(1.0f);
         }
-        if (prs.getVideo_url()!=null){
+        if (prs.getVideo_url() != null) {
             tvVideo.setAlpha(1.0f);
         }
-        if (prs.getImg_content()!=null && prs.getImg_content().size()>0){
+        if (prs.getImg_content() != null && prs.getImg_content().size() > 0) {
             tvFloor.setAlpha(1.0f);
         }
-        if (prs.getContract_url()!=null && !prs.getContract_url().equals("")){
+        if (prs.getContract_url() != null && !prs.getContract_url().equals("")) {
             tvContract.setAlpha(1.0f);
         }
-        if (prs.getFile_content()!=null && prs.getFile_content().size()>0){
+        if (prs.getFile_content() != null && prs.getFile_content().size() > 0) {
             tvFile.setAlpha(1.0f);
         }
     }
 
-    View.OnClickListener mOnClickListener=new View.OnClickListener() {
+    View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.tvIntroduce:
 
                     break;
                 case R.id.tvVideo:
-                    if (tvVideo.getAlpha()==1.0f){
+                    /*if (tvVideo.getAlpha()==1.0f){
                         bun.putSerializable("prs",prs);
                         ActivitySkip.forward(ProductItemDetailActivity.this,VideoActivity.class,bun);
-                    }
+                    }*/
+                    ActivitySkip.forward(ProductItemDetailActivity.this, VideoActivity.class);
+                    // JCVideoPlayer.JCAutoFullscreenListener.class.
                     break;
                 case R.id.tvOrder:
-                    bun.putString("productId",resultBean.getProduct_id()+"");
-                    bun.putString("title",resultBean.getProduct_name());
-                    bun.putString("pidatopsla","pidatopsla");
-                    Log.e("prs", "onClick: "+prs.getImg_content().size());
-                    ActivitySkip.forward(ProductItemDetailActivity.this,ProductSubunitListActivity.class,bun);
+                    if (resultBean != null) {
+                        bun.putString("productId",product_id==null?"":product_id );
+                        bun.putString("title", resultBean.getProduct_name());
+                        bun.putString("pidatopsla", "pidatopsla");
+                        //Log.e("prs", "onClick: " + prs.getImg_content().size());
+                        ActivitySkip.forward(ProductItemDetailActivity.this, ProductSubunitListActivity.class, bun);
+                    }
                     break;
                 case R.id.tvFloor:
 
@@ -279,12 +286,13 @@ public class ProductItemDetailActivity extends BaseActivity {
             }
         }
     };
-    OnItemClickListener mOnItemClickListener=new OnItemClickListener() {
+    OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(int position) {
-            ActivitySkip.forward(ProductItemDetailActivity.this,ScaleDeltaileActivity.class,bun);
+            ActivitySkip.forward(ProductItemDetailActivity.this, ScaleDeltaileActivity.class, bun);
         }
     };
+
     @Override
     public void setListener() {
         /*ivCart.setOnClickListener(new View.OnClickListener() {
@@ -303,7 +311,7 @@ public class ProductItemDetailActivity extends BaseActivity {
         tvFile.setOnClickListener(mOnClickListener);
     }
 
-    private  class CustomShareListener implements UMShareListener {
+    private class CustomShareListener implements UMShareListener {
 
         private WeakReference<ProductItemDetailActivity> mActivity;
 
@@ -318,8 +326,8 @@ public class ProductItemDetailActivity extends BaseActivity {
 
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            ToasShow.showToastCenter(ProductItemDetailActivity.this,"分享成功");
-            if (bitmap!=null){
+            ToasShow.showToastCenter(ProductItemDetailActivity.this, "分享成功");
+            if (bitmap != null) {
                 bitmap.recycle();
             }
         }
@@ -327,10 +335,17 @@ public class ProductItemDetailActivity extends BaseActivity {
         @Override
         public void onError(SHARE_MEDIA platform, Throwable t) {
             if (t != null) {
+                String expName = t.getMessage();
+                if (expName.contains("没有安装应用")) {
+                    ToasShow.showToastCenter(ProductItemDetailActivity.this, "抱歉，您的客户端没有安装该应用");
+                } else {
+                    ToasShow.showToastCenter(ProductItemDetailActivity.this, "抱歉，分享失败");
+                    Log.e("tag", "onError: " + t.getMessage());
+                    ;
+                }
 
-                ToasShow.showToastCenter(ProductItemDetailActivity.this,"抱歉，分享失败");
             }
-            if (bitmap!=null){
+            if (bitmap != null) {
                 bitmap.recycle();
             }
         }
@@ -338,7 +353,7 @@ public class ProductItemDetailActivity extends BaseActivity {
         @Override
         public void onCancel(SHARE_MEDIA platform) {
             Toast.makeText(mActivity.get(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
-            if (bitmap!=null){
+            if (bitmap != null) {
                 bitmap.recycle();
             }
         }
@@ -348,10 +363,11 @@ public class ProductItemDetailActivity extends BaseActivity {
         public NormalAdapter(RollPagerView viewPager) {
             super(viewPager);
         }
+
         @Override
         public View getView(ViewGroup container, int position) {
             ImageView view = new ImageView(container.getContext());
-            Picasso.with(ProductItemDetailActivity.this).load(Contants.DOMAIN + "/"+ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL()).into(view);
+            Picasso.with(ProductItemDetailActivity.this).load(Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL()).into(view);
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return view;
@@ -362,10 +378,11 @@ public class ProductItemDetailActivity extends BaseActivity {
             return ProductItemDetailActivity.this.prs.getImg_content().size();
         }
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        UMShareAPI.get(this).onActivityResult(requestCode,resultCode,data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

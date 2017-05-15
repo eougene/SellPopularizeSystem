@@ -32,8 +32,10 @@ import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
+import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -44,6 +46,7 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.nio.channels.Channels;
 import java.util.ArrayList;
@@ -62,7 +65,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private int page = 1;
     // private String flag = "default";
     private SideBar sideBar;
-    private TextView dialog,tvNoMessage;
+    private TextView dialog, tvNoMessage;
     private SortGroupMemberAdapter adapter;
     private CommonAdapter lawyerAdapter;
     private List<LawyerBean.ResultBean> lawyersData = new ArrayList<>();
@@ -108,14 +111,32 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         //从预订界面点击客户律师跳转
         // str1 = bundle.getString("lawyer");
         if (str1 != null && str1.equals(ExtraName.SCALETOCUSTOME)) {
-            getCustomeListData(true, page);
+            if (!MyUtils.getInstance().isNetworkConnected(this)) {
+                String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
+                if (jsonStr != null) {
+                    jsonParse(jsonStr, true);
+                } else {
+                    ToasShow.showToastCenter(this, "当前无网络");
+                }
+            } else {
+                getCustomeListData(true, page);
+            }
 
         } else if (str1.equals(ExtraName.TORESVER)) {
             setTitle(getString(R.string.lawyer));
             // String id = bundle.getString("id");
             getLawyerListData("", true);
         } else {
-            getCustomeListData(true, page);
+            if (!MyUtils.getInstance().isNetworkConnected(this)) {
+                String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
+                if (jsonStr != null) {
+                    jsonParse(jsonStr, true);
+                } else {
+                    ToasShow.showToastCenter(this, "当前无网络");
+                }
+            } else {
+                getCustomeListData(true, page);
+            }
         }
         setListener();
     }
@@ -160,7 +181,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         titleLayout = getViewById(R.id.title_layout);
         title = getViewById(R.id.title_layout_catalog);
         tvNofriends = getViewById(R.id.noInfomation);
-        tvNoMessage=getViewById(R.id.noInfomation);
+        tvNoMessage = getViewById(R.id.noInfomation);
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
 
@@ -237,7 +258,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private void filterData(String filterStr) {
         if (str1.equals(ExtraName.TORESVER)) {
-            Log.e("tag", "filterData: "+filterDateList.size());
+            Log.e("tag", "filterData: " + filterDateList.size());
             filterDateList = new ArrayList<LawyerBean.ResultBean>();
             //filterDateList.addAll(filterDateList);
         } else {
@@ -245,7 +266,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 /*filterDateList = new ArrayList<CustomBean.ResultBean>();
                 filterDateList = SourceDateList;*/
                 tvNofriends.setVisibility(View.GONE);
-                adapter.updateListView(SourceDateList,null);
+                adapter.updateListView(SourceDateList, null);
             } else {
                 filterDateList = new ArrayList<CustomBean.ResultBean>();
                 for (CustomBean.ResultBean sortModel : SourceDateList) {
@@ -311,6 +332,9 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
                 Log.e("客户内容", "s:" + s);
                 if (null != s) {
+                    if (BaseApplication.getInstance().getaCache().getAsString("customer_list") == null) {
+                        BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_HOUR);
+                    }
                     jsonParse(s, b);
                 } else {
                     ToasShow.showToastBottom(CustomeActivity.this, "无数据");
@@ -321,7 +345,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
                 closeDialog();
-
             }
         });
 
@@ -348,22 +371,26 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         } else {
             CustomBean product = gson.fromJson(json, CustomBean.class);
             if (product.getCode() == 1) {
-                if (product.getMsg().equals("暂无数据")){
+                if (product.getMsg().equals("暂无数据")) {
                     tvNoMessage.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     SourceDateList = filledData(product.getResult());
                 }
 
             }
             if (isRefresh) {
-                ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)){
+                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+                }
                 // 根据a-z进行排序源数据
                 Collections.sort(SourceDateList, pinyinComparator);
                 adapter = new SortGroupMemberAdapter(this, "custome");
                 adapter.addData(SourceDateList, lawyersData);
                 listView.setAdapter(adapter);
-            }else {
-                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+            } else {
+                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)){
+                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                }
                 adapter.addMore(SourceDateList);
                 Log.e("TAG", "jsonParse: " + SourceDateList.size());
             }
@@ -373,7 +400,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void setListener() {
-        Log.e("sourceData", "setListener: "+SourceDateList.size());
+        Log.e("sourceData", "setListener: " + SourceDateList.size());
         if (str1.equals(ExtraName.SCALETOCUSTOME) || str1.equals(ExtraName.TORESVER)) {
             changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
                 @Override
@@ -473,7 +500,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (searchEditText.getText().toString().length()==0){
+                if (searchEditText.getText().toString().length() == 0) {
                     adapter.updateListView(SourceDateList, null);
                 }
             }

@@ -18,10 +18,18 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         playerStandard= (JCVideoPlayerStandard) findViewById(R.id.video);
-        Bundle bundle = getIntent().getExtras();
-        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
-       playerStandard.setUp((String) prs.getVideo_url(),JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"123");
+        /*Bundle bundle = getIntent().getExtras();
+        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");*/
+      // playerStandard.setUp((String) prs.getVideo_url(),JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"123");
         //playerStandard.thumbImageView.setImageURI(Uri.parse());
+        //视频url
+        String videoUrl="http://www.maclandgroup.com/video/2016.10.18_Macland_Video_2016.mp4";
+        //设置视频地址
+        playerStandard.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,"视频介绍");
+        //直接进入全屏
+        playerStandard.startFullscreen(this, JCVideoPlayerStandard.class, videoUrl, "");
+        //点击播放按钮播放
+        playerStandard.startButton.performClick();
     }
 
     @Override
