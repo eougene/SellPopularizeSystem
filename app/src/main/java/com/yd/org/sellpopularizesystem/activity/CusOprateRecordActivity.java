@@ -95,7 +95,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     @Override
     protected int setContentView() {
         cusOprateRecordActivity = this;
-        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_cus_oprate_record;
     }
 

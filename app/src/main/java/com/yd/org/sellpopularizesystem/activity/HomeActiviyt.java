@@ -1,14 +1,17 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
@@ -20,7 +23,10 @@ import com.yd.org.sellpopularizesystem.fragment.SettingFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
+
+import java.util.Locale;
 
 public class HomeActiviyt extends FragmentActivity implements View.OnClickListener {
     public static HomeActiviyt homeActiviyt;
@@ -35,6 +41,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 MessageCountBean messageCountBean = (MessageCountBean) msg.obj;
+                Log.e("消息个数**","count:"+messageCountBean.count);
 
                 //有消息
                 if (messageCountBean.state.equals("1")) {
@@ -66,14 +73,13 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //获取系统语言
+        Locale locale = Locale.getDefault();
+        String language = locale.getLanguage();
+        //选择语言
+        showLanguage(language);
         homeActiviyt = this;
-
-        //无title
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_home_activiyt_1);
         inintView();
         setSelect(0);
@@ -87,6 +93,25 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
 
     }
 
+    /**
+     * 设置语言
+     *
+     * @param language
+     */
+    protected void showLanguage(String language) {
+        //设置应用语言类型
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        DisplayMetrics dm = resources.getDisplayMetrics();
+        if (language.equals("zh")) {
+            config.locale = Locale.SIMPLIFIED_CHINESE;
+        } else {
+            config.locale = Locale.ENGLISH;
+        }
+        resources.updateConfiguration(config, dm);
+        //保存设置语言的类型
+        SharedPreferencesHelps.setLanguage(language);
+    }
 
     private void inintView() {
         tvHome = (TextView) findViewById(R.id.tvHome);
@@ -188,6 +213,34 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         Log.e("GetuiSdkDemo", "onStop()");
         super.onStop();
 
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //根据语言判断是否重启HomeActivity
+        String LAN = SharedPreferencesHelps.getLanguage();
+        Locale locale = Locale.getDefault();
+        String language = locale.getLanguage();
+        Log.e("语言————————", language);
+        if (!language.equals("")) {
+            if (!LAN.equals(language)) {
+                freshView();//重新启动HomeActivity
+
+            }
+        }
+        showLanguage(language);
+    }
+
+
+    /**
+     * 重新启动,更新系统语言
+     */
+    private void freshView() {
+        Intent intent = new Intent(this, HomeActiviyt.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
 
     }
 

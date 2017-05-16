@@ -49,6 +49,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile project(':android-pdf')
     //网络加载
     //解解数据
     //三级联动

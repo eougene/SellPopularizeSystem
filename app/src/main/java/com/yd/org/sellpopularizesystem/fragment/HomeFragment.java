@@ -165,7 +165,7 @@ public class HomeFragment extends BaseFragmentView {
 
     private void initWidget() {
         //消息管理
-        rlBefore =getViewById(R.id.rlBefore);
+        rlBefore = getViewById(R.id.rlBefore);
         //资料
         saleLinearLayyout = getViewById(R.id.saleLinearLayyout);
         //客户管理

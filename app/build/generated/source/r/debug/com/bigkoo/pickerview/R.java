@@ -43,26 +43,26 @@ public final class R {
         public static final int selector_pickerview_btn = 0x7f0200e4;
     }
     public static final class id {
-        public static final int btnCancel = 0x7f0f0262;
-        public static final int btnSubmit = 0x7f0f00ee;
+        public static final int btnCancel = 0x7f0f0260;
+        public static final int btnSubmit = 0x7f0f00ed;
         public static final int center = 0x7f0f0034;
-        public static final int content_container = 0x7f0f027f;
-        public static final int day = 0x7f0f02d0;
-        public static final int hour = 0x7f0f02d1;
+        public static final int content_container = 0x7f0f027d;
+        public static final int day = 0x7f0f02ce;
+        public static final int hour = 0x7f0f02cf;
         public static final int left = 0x7f0f0039;
-        public static final int min = 0x7f0f02d2;
-        public static final int month = 0x7f0f02cf;
-        public static final int options1 = 0x7f0f02ca;
-        public static final int options2 = 0x7f0f02cb;
-        public static final int options3 = 0x7f0f02cc;
-        public static final int optionspicker = 0x7f0f02c9;
-        public static final int outmost_container = 0x7f0f027e;
+        public static final int min = 0x7f0f02d0;
+        public static final int month = 0x7f0f02cd;
+        public static final int options1 = 0x7f0f02c8;
+        public static final int options2 = 0x7f0f02c9;
+        public static final int options3 = 0x7f0f02ca;
+        public static final int optionspicker = 0x7f0f02c7;
+        public static final int outmost_container = 0x7f0f027c;
         public static final int right = 0x7f0f003a;
-        public static final int rv_topbar = 0x7f0f0261;
-        public static final int second = 0x7f0f02d3;
-        public static final int timepicker = 0x7f0f02cd;
-        public static final int tvTitle = 0x7f0f01d2;
-        public static final int year = 0x7f0f02ce;
+        public static final int rv_topbar = 0x7f0f025f;
+        public static final int second = 0x7f0f02d1;
+        public static final int timepicker = 0x7f0f02cb;
+        public static final int tvTitle = 0x7f0f01d0;
+        public static final int year = 0x7f0f02cc;
     }
     public static final class integer {
         public static final int animation_default_duration = 0x7f0c0003;
@@ -74,14 +74,14 @@ public final class R {
         public static final int pickerview_time = 0x7f04009b;
     }
     public static final class string {
-        public static final int pickerview_cancel = 0x7f080032;
-        public static final int pickerview_day = 0x7f080033;
-        public static final int pickerview_hours = 0x7f080034;
-        public static final int pickerview_minutes = 0x7f080035;
-        public static final int pickerview_month = 0x7f080036;
-        public static final int pickerview_seconds = 0x7f080037;
-        public static final int pickerview_submit = 0x7f080038;
-        public static final int pickerview_year = 0x7f080039;
+        public static final int pickerview_cancel = 0x7f080075;
+        public static final int pickerview_day = 0x7f080076;
+        public static final int pickerview_hours = 0x7f080077;
+        public static final int pickerview_minutes = 0x7f080078;
+        public static final int pickerview_month = 0x7f080079;
+        public static final int pickerview_seconds = 0x7f08007a;
+        public static final int pickerview_submit = 0x7f08007b;
+        public static final int pickerview_year = 0x7f08007c;
     }
     public static final class style {
         public static final int custom_dialog2 = 0x7f0a01a1;

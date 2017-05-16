@@ -152,14 +152,22 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             informationContents = bean.getResult();
 
         }
-
+        int is_read = 0;
         if (bean.getTotal_number() > 0) {
             if (cate_id == 4) {
-                Message message = new Message();
-                message.what = 0;
-                message.obj = String.valueOf(bean.getTotal_number());
-                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+                for (int i = 0; i < informationContents.size(); i++) {
+                    if (informationContents.get(i).getIs_read() != 1) {
+                        is_read += 1;
+                    }
+                }
+                if (is_read > 0) {
+                    Message message = new Message();
+                    message.what = 0;
+                    message.obj = String.valueOf(is_read);
+                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                    NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+                }
+
             }
         }
 
@@ -192,14 +200,12 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 } else {
                     //预定推送消息
                     if (resultBean.getCate_id() == cate_id) {
-                        deleteNoticeLog(resultBean.getId() + "", position);
-                        //系统消息查看详情
-                    } else {
                         Bundle bundle = new Bundle();
                         bundle.putString("title", resultBean.getTitle());
                         bundle.putString("notice_id", resultBean.getId() + "");
                         bundle.putString("data", resultBean.getContent());
                         ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
+
                     }
                 }
             }
@@ -220,7 +226,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         FinalHttp finalHttp = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        // ajaxParams.put("notice_id", notice_id);
+        ajaxParams.put("notice_id", notice_id);
         finalHttp.get(Contants.DELETE_NOTICE, ajaxParams, new AjaxCallBack<String>() {
 
             @Override

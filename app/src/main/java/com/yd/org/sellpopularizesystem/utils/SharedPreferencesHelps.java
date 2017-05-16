@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.utils;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
@@ -125,6 +124,18 @@ public class SharedPreferencesHelps {
     public synchronized static final String getUserName() {
         return getPreferences().getString(ExtraName.USER_NAME, "null");
     }
+
+    public synchronized static final void setLanguage(String language) {
+        getPreferences().edit().putString("language", language).commit();
+    }
+
+    public synchronized static final String getLanguage() {
+        return getPreferences().getString("language", "null");
+    }
+
+
+
+
 
     /**
      * 保存用户密码
