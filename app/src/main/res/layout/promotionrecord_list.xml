@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_margin_14"
+        android:layout_marginRight="@dimen/padding_margin_14">
+
+        <TextView
+            android:id="@+id/tvPromDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/padding_margin_16"
+            android:paddingTop="@dimen/padding_margin_16"
+            android:text="2015/05/05"
+            android:textSize="@dimen/tv_size_12"/>
+
+
+        <TextView
+            android:id="@+id/tvPromTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_margin_30"
+            android:layout_toLeftOf="@+id/tvPromLong"
+            android:layout_toRightOf="@+id/tvPromDate"
+            android:paddingBottom="@dimen/padding_margin_16"
+            android:paddingTop="@dimen/padding_margin_16"
+            android:text="2015/05/05"
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/tv_size_12"/>
+
+        <TextView
+            android:id="@+id/tvPromLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="@dimen/padding_margin_16"
+            android:paddingTop="@dimen/padding_margin_16"
+            android:text="10miao"
+            android:textSize="@dimen/tv_size_12"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
