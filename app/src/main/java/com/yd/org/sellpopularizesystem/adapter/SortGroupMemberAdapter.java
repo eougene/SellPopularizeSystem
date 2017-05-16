@@ -17,7 +17,6 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexer {
@@ -103,6 +102,8 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
 
         if (flag.equals("custome")) {
+
+
             viewHolder.resultBean = list.get(position);
             // 根据position获取分类的首字母的Char ascii值
             int section = getSectionForPosition(position);
@@ -115,11 +116,10 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             } else {
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
-            viewHolder.tvTitle.setText(list.get(position).getEn_name());
-            if (TextUtils.isEmpty(list.get(position).getHead_img())) {
+            viewHolder.tvTitle.setText(list.get(position).getFirst_name() + list.get(position).getSurname() + "");
+            if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
-
                 Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).into(viewHolder.imageView);
             }
 
@@ -164,9 +164,9 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
     @Override
     public int getSectionForPosition(int position) {
-        if (flag.equals("custome")){
+        if (flag.equals("custome")) {
             return list.get(position).getSortLetters().charAt(0);
-        }else {
+        } else {
             return data.get(position).getSortLetters().charAt(0);
         }
 
@@ -178,10 +178,10 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
     public int getPositionForSection(int section) {
         String sortStr;
         for (int i = 0; i < getCount(); i++) {
-            if (flag.equals("custome")){
+            if (flag.equals("custome")) {
                 sortStr = list.get(i).getSortLetters();
-            }else {
-               sortStr = data.get(i).getSortLetters();
+            } else {
+                sortStr = data.get(i).getSortLetters();
             }
 
             char firstChar = sortStr.toUpperCase().charAt(0);
