@@ -48,6 +48,10 @@
     <string msgid="311697239335516384" name="common_open_on_phone">"Abrir no smartphone"</string>
     <string msgid="3156914698180786012" name="common_signin_button_text">"Fazer login"</string>
     <string msgid="1483290677806110088" name="common_signin_button_text_long">"Fazer login com o Google"</string>
+    <string name="no_url">Sem Vídeo</string>
     <string msgid="146198913615257606" name="search_menu_title">"Pesquisar"</string>
     <string msgid="2869576371154716097" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="tips_not_wifi">Você está usando a rede móvel, você deseja mesmo ver o video?</string>
+    <string name="tips_not_wifi_cancel">Parar</string>
+    <string name="tips_not_wifi_confirm">Continuar</string>
 </resources>

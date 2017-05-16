@@ -10,7 +10,9 @@
     <com.yd.org.sellpopularizesystem.viewpage.HackyViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:id="@+id/backImageView"

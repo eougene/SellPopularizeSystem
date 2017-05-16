@@ -7,9 +7,7 @@
         android:fromXScale="1.0"
         android:fromYScale="1.0"
         android:pivotX="0.0"
-        android:pivotY="50%"
-
-        />
+        android:pivotY="100%" />
 </set>
     <!--android:fromXDelta="100%"
         android:fromYDelta="100%"

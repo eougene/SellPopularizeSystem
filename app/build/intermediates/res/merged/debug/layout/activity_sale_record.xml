@@ -4,13 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.yd.org.sellpopularizesystem.activity.SaleRecordActivity">
-   <!-- <view
+    <View
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/setting_bac"/>-->
+        android:background="@color/setting_bac"/>
     <FrameLayout
         android:id="@+id/flSale"
         style="@style/MatchMatch"
+        android:layout_below="@+id/line"
         android:background="@color/white">
 
         <include layout="@layout/base_listview" />

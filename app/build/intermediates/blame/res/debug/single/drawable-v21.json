@@ -1,34 +1,34 @@
 [
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_bottom_navigation_item_background.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\\output\\res\\drawable-v21\\design_bottom_navigation_item_background.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_show_password.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\\output\\res\\drawable-v21\\avd_show_password.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
+        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable-v21/avd_hide_password.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\notification_action_background.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\66f8f648531307d2f477af0b41530a1532d73526\\output\\res\\drawable-v21\\notification_action_background.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
+        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\avd_hide_password.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\\output\\res\\drawable-v21\\avd_hide_password.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-v21/notification_action_background.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_btn_colored_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\66f8f648531307d2f477af0b41530a1532d73526\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
+        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable-v21/design_password_eye.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\design_password_eye.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\b355f1c525084eb9ea8cd0ee1c43c5910f91516d\\output\\res\\drawable-v21\\design_password_eye.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
+        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable-v21/avd_show_password.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\66f8f648531307d2f477af0b41530a1532d73526\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\66f8f648531307d2f477af0b41530a1532d73526\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-v21/abc_btn_colored_material.xml"
     }
 ]

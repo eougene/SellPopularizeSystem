@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "outputFile": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 117
                 },
                 "from": {
-                    "file": "C:\\Users\\hejin\\.android\\build-cache\\66f8f648531307d2f477af0b41530a1532d73526\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "file": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

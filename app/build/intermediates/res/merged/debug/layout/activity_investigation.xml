@@ -149,7 +149,8 @@
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
-                <EditText
+                <TextView
+                    android:id="@+id/edtTime"
                     style="@style/MatchWrap"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
@@ -192,6 +193,7 @@
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/submit"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -207,6 +209,7 @@
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="无法确定"
+                android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_15" />
         </LinearLayout>

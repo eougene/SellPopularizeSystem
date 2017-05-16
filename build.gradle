@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-            classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.2'
 
     }
 }
@@ -18,4 +18,13 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        maven {
+            url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/"
+        }
+    }
 }

@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="stickylistheaders-2.7.0">
     <CLASSES>
-      <root url="file://$USER_HOME$/.android/build-cache/98c45de9daa2914914bdd2775289f6c9712ba456/output/res" />
-      <root url="jar://$USER_HOME$/.android/build-cache/98c45de9daa2914914bdd2775289f6c9712ba456/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/24add8f57840b3f02b8ee3b904e13db8739c38c5/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/24add8f57840b3f02b8ee3b904e13db8739c38c5/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

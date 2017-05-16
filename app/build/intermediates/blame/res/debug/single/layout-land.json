@@ -1,10 +1,14 @@
 [
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_study_detaila.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout-land\\activity_study_detaila.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-land/activity_video.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout-land/activity_video.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-land\\activity_scale_deltaile.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout-land\\activity_scale_deltaile.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-land/activity_scale_deltaile.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout-land/activity_scale_deltaile.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-land/activity_study_detaila.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout-land/activity_study_detaila.xml"
     }
 ]

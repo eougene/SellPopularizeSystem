@@ -59,6 +59,21 @@
     <uses-permission android:name="andorid.permission.CHANGE_CONFIGURATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK" />
 
+    <!-- 个推 -->
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <!-- 支持iBeancon 需要蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 浮动通知权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="getui.permission.GetuiService.com.yd.org.sellpopularizesystem" />
+
+    <permission
+        android:name="getui.permission.GetuiService.com.yd.org.sellpopularizesystem"
+        android:protectionLevel="normal" />
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -74,6 +89,8 @@
     <meta-data
         android:name="android.support.VERSION"
         android:value="25.3.0" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.yd.org.sellpopularizesystem.application.BaseApplication"
@@ -155,14 +172,105 @@
             android:name="com.yd.org.sellpopularizesystem.activity.DialogOptionActivity"
             android:theme="@style/DialogStyle"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.BuildingPlanActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.FilterActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.SelectConditionActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerAddActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.ImageShowActivity" />
+
+        <!-- 个推 -->
+        <meta-data
+            android:name="PUSH_APPID"
+            android:value="vyh75woAJs5tv7iz3fHoh4" />
+        <meta-data
+            android:name="PUSH_APPKEY"
+            android:value="nvFs64bF0a9AfmMzlfP2r5" />
+        <meta-data
+            android:name="PUSH_APPSECRET"
+            android:value="urxKlbbHjR6FVpqd3OSvB2" />
+
+        <!-- 配置SDK核心服务 -->
+        <!-- 用户自定义服务继承自GTIntentService,作为SDK与APP桥梁服务,用来接收各种消息和命令回复 -->
+        <service android:name="com.yd.org.sellpopularizesystem.getui.IntentService" />
+
+        <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.yd.org.sellpopularizesystem.getui.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice" >
+        </service>
+
+        <!-- 个推结束 -->
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.CommissionActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.OldProjectActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.InvestigateListActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity" >
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.FileActivity" >
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.PDFActivity" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version" /> <!-- 配置SDK核心服务 -->
+        <service
+            android:name="com.igexin.sdk.PushService"
+            android:exported="true"
+            android:label="NotificationCenter"
+            android:process=":pushservice" >
+            <intent-filter>
+                <action android:name="com.igexin.sdk.action.service.message" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name="com.igexin.sdk.PushReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="com.igexin.sdk.action.refreshls" />
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.igexin.sdk.PushActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.igexin.sdk.GActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:process=":pushservice"
+            android:taskAffinity="com.igexin.sdk.PushActivityTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.igexin.download.DownloadService"
+            android:process=":pushservice" />
+
+        <receiver android:name="com.igexin.download.DownloadReceiver" >
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="com.igexin.download.DownloadProvider"
+            android:authorities="downloads.com.yd.org.sellpopularizesystem"
+            android:exported="true"
+            android:process=":pushservice" />
     </application>
 
 </manifest>

@@ -1,4 +1,7 @@
-#Fri Apr 28 18:16:38 CST 2017
-base.0=E\:\\SellPopularizeSystem\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
+#Mon May 15 19:15:31 CST 2017
+base.0=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5b4246ccc611d9c2058d2b563263461eafe4f1d3
+renamed.1=classes2.dex
 renamed.0=classes.dex
-file.0=E\:\\SellPopularizeSystem\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+file.1=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c262de185f6c60c6f9b8c3d19f2685b2cf2a2d6e/classes.dex
+base.1=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c262de185f6c60c6f9b8c3d19f2685b2cf2a2d6e
+file.0=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5b4246ccc611d9c2058d2b563263461eafe4f1d3/classes.dex

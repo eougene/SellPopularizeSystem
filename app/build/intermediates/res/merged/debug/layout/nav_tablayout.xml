@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:padding="@dimen/padding_margin_4">
+
     <TextView
         android:id="@+id/tvHome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
         android:drawableTop="@drawable/nav_tabhome_selector"
+        android:gravity="center"
         android:text="主页"
-        android:textSize="@dimen/tv_size_12"
         android:textColor="@drawable/tabtextcolor_select"
+        android:textSize="@dimen/tv_size_12"
         />
-    <TextView
-        android:id="@+id/tvMessage"
+
+    <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:paddingTop="@dimen/padding_margin_4"
-        android:drawableTop="@drawable/nav_tabmessage_selector"
-        android:text="消息"
-        android:textSize="@dimen/tv_size_12"
-        android:textColor="@drawable/tabtextcolor_select"
-        />
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:drawableTop="@drawable/nav_tabmessage_selector"
+            android:gravity="center"
+            android:paddingTop="@dimen/padding_margin_4"
+            android:text="消息"
+            android:textColor="@drawable/tabtextcolor_select"
+            android:textSize="@dimen/tv_size_12"
+            />
+
+        <TextView
+            android:id="@+id/tvMessageCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/padding_margin_35"
+            android:background="@drawable/circle_shape"
+            android:gravity="center"
+            android:text="99"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_10"/>
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tvSetting"
@@ -36,5 +61,5 @@
         android:paddingTop="@dimen/padding_margin_4"
         android:text="设置中心"
         android:textColor="@drawable/tabtextcolor_select"
-        android:textSize="@dimen/tv_size_12" />
+        android:textSize="@dimen/tv_size_12"/>
 </LinearLayout>
