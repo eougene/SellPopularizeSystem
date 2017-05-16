@@ -1,4 +1,4 @@
-<resources xmlns:android="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/tools" xmlns:tools="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -6,6 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="ActivtyTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/default_animation</item>
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
     <style name="DialogStyle" parent="Theme.AppCompat.Dialog">
@@ -49,15 +57,9 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
-    <style name="ActivtyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/white</item>
-        <item name="android:windowAnimationStyle">@style/default_animation</item>
-        <item name="android:windowBackground">@color/transparent</item>
-       <!-- <item name="android:windowTranslucentStatus">true</item>-->
-    </style>
 
-    <style name="dialogWindowAnim" parent="android:Animation" mce_bogus="1">
+
+    <style name="dialogWindowAnim" mce_bogus="1" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/dialog_exit</item>
     </style>
@@ -109,13 +111,16 @@
         <item name="android:backgroundDimEnabled">false</item>
 
     </style>
+
     <style name="full_image_progress_text">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textColor">#ffeeeeee</item>
     </style>
+
     <style name="full_image_progressbar" parent="@android:style/Widget.ProgressBar.Large">
         <item name="android:indeterminateDrawable">@drawable/progress_large_holo</item>
     </style>
+
     <style name="full_image_retry_text">
         <item name="android:textSize">15.0sp</item>
         <item name="android:textColor">#ffeeeeee</item>

@@ -11,8 +11,8 @@ public class AnnouncementBean {
     /**
      * code : 1
      * msg : 成功获取公告列表
-     * total_number : 2
-     * result : [{"notice_id":6,"company_id":1,"cate_id":3,"notice_title":"efewfgrgrsg","push_type":2,"content":"rgwqgwertew","add_time":1484888824,"add_admin":4,"add_ip":"117.84.183.178","status":0,"id":18,"user_id":100014,"is_read":0,"sort":99},{"notice_id":8,"company_id":1,"cate_id":2,"notice_title":"寄意寒星荃不察","push_type":1,"content":"非法俄反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复反反复复吩咐","add_time":1487403022,"add_admin":4,"add_ip":"117.84.182.119","status":0,"id":21,"user_id":100014,"is_read":0,"sort":99}]
+     * total_number : 1
+     * result : [{"id":61,"cate_id":4,"notice_info_id":0,"user_id":"100014","client_id":"6a983a60fdc032a8167c506c485417bda88a58c6af55e35b9cc7f9a304e493a5","title":"订单创建成功，订单号为：172","content":"","status":1,"is_xunhuan":0,"xunhuan_time":0,"add_time":1493344283,"fasong_time":0,"read_time":1493361005,"about_id":172,"about_table":"product_orders","is_read":1,"is_del":0}]
      */
 
     private String code;
@@ -54,51 +54,49 @@ public class AnnouncementBean {
 
     public static class ResultBean {
         /**
-         * notice_id : 6
-         * company_id : 1
-         * cate_id : 3
-         * notice_title : efewfgrgrsg
-         * push_type : 2
-         * content : rgwqgwertew
-         * add_time : 1484888824
-         * add_admin : 4
-         * add_ip : 117.84.183.178
-         * status : 0
-         * id : 18
+         * id : 61
+         * cate_id : 4
+         * notice_info_id : 0
          * user_id : 100014
-         * is_read : 0
-         * sort : 99
+         * client_id : 6a983a60fdc032a8167c506c485417bda88a58c6af55e35b9cc7f9a304e493a5
+         * title : 订单创建成功，订单号为：172
+         * content :
+         * status : 1
+         * is_xunhuan : 0
+         * xunhuan_time : 0
+         * add_time : 1493344283
+         * fasong_time : 0
+         * read_time : 1493361005
+         * about_id : 172
+         * about_table : product_orders
+         * is_read : 1
+         * is_del : 0
          */
 
-        private int notice_id;
-        private int company_id;
-        private int cate_id;
-        private String notice_title;
-        private int push_type;
-        private String content;
-        private int add_time;
-        private int add_admin;
-        private String add_ip;
-        private int status;
         private int id;
-        private int user_id;
+        private int cate_id;
+        private int notice_info_id;
+        private String user_id;
+        private String client_id;
+        private String title;
+        private String content;
+        private int status;
+        private int is_xunhuan;
+        private int xunhuan_time;
+        private int add_time;
+        private int fasong_time;
+        private int read_time;
+        private int about_id;
+        private String about_table;
         private int is_read;
-        private int sort;
+        private int is_del;
 
-        public int getNotice_id() {
-            return notice_id;
+        public int getId() {
+            return id;
         }
 
-        public void setNotice_id(int notice_id) {
-            this.notice_id = notice_id;
-        }
-
-        public int getCompany_id() {
-            return company_id;
-        }
-
-        public void setCompany_id(int company_id) {
-            this.company_id = company_id;
+        public void setId(int id) {
+            this.id = id;
         }
 
         public int getCate_id() {
@@ -109,20 +107,36 @@ public class AnnouncementBean {
             this.cate_id = cate_id;
         }
 
-        public String getNotice_title() {
-            return notice_title;
+        public int getNotice_info_id() {
+            return notice_info_id;
         }
 
-        public void setNotice_title(String notice_title) {
-            this.notice_title = notice_title;
+        public void setNotice_info_id(int notice_info_id) {
+            this.notice_info_id = notice_info_id;
         }
 
-        public int getPush_type() {
-            return push_type;
+        public String getUser_id() {
+            return user_id;
         }
 
-        public void setPush_type(int push_type) {
-            this.push_type = push_type;
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getClient_id() {
+            return client_id;
+        }
+
+        public void setClient_id(String client_id) {
+            this.client_id = client_id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public String getContent() {
@@ -133,30 +147,6 @@ public class AnnouncementBean {
             this.content = content;
         }
 
-        public int getAdd_time() {
-            return add_time;
-        }
-
-        public void setAdd_time(int add_time) {
-            this.add_time = add_time;
-        }
-
-        public int getAdd_admin() {
-            return add_admin;
-        }
-
-        public void setAdd_admin(int add_admin) {
-            this.add_admin = add_admin;
-        }
-
-        public String getAdd_ip() {
-            return add_ip;
-        }
-
-        public void setAdd_ip(String add_ip) {
-            this.add_ip = add_ip;
-        }
-
         public int getStatus() {
             return status;
         }
@@ -165,20 +155,60 @@ public class AnnouncementBean {
             this.status = status;
         }
 
-        public int getId() {
-            return id;
+        public int getIs_xunhuan() {
+            return is_xunhuan;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setIs_xunhuan(int is_xunhuan) {
+            this.is_xunhuan = is_xunhuan;
         }
 
-        public int getUser_id() {
-            return user_id;
+        public int getXunhuan_time() {
+            return xunhuan_time;
         }
 
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
+        public void setXunhuan_time(int xunhuan_time) {
+            this.xunhuan_time = xunhuan_time;
+        }
+
+        public int getAdd_time() {
+            return add_time;
+        }
+
+        public void setAdd_time(int add_time) {
+            this.add_time = add_time;
+        }
+
+        public int getFasong_time() {
+            return fasong_time;
+        }
+
+        public void setFasong_time(int fasong_time) {
+            this.fasong_time = fasong_time;
+        }
+
+        public int getRead_time() {
+            return read_time;
+        }
+
+        public void setRead_time(int read_time) {
+            this.read_time = read_time;
+        }
+
+        public int getAbout_id() {
+            return about_id;
+        }
+
+        public void setAbout_id(int about_id) {
+            this.about_id = about_id;
+        }
+
+        public String getAbout_table() {
+            return about_table;
+        }
+
+        public void setAbout_table(String about_table) {
+            this.about_table = about_table;
         }
 
         public int getIs_read() {
@@ -189,12 +219,12 @@ public class AnnouncementBean {
             this.is_read = is_read;
         }
 
-        public int getSort() {
-            return sort;
+        public int getIs_del() {
+            return is_del;
         }
 
-        public void setSort(int sort) {
-            this.sort = sort;
+        public void setIs_del(int is_del) {
+            this.is_del = is_del;
         }
     }
 }

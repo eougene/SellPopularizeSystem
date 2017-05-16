@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.fragment;
 
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -10,12 +9,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 /**
  * Created by bai on 2017/1/10.
@@ -115,18 +111,8 @@ public abstract class BaseFragmentView extends Fragment {
 
     protected void setContentView(@LayoutRes int layoutResID) {
         mContentView = LayoutInflater.from(getActivity()).inflate(layoutResID, null);
-        //setStatusTransparent();
     }
 
-    public void setStatusTransparent() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getActivity().getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            int statusBarHeight = MyUtils.getStatusBarHeight(getContext());
-            mContentView.setPadding(0, statusBarHeight, 0, 0);
-        }
-    }
 
     /**
      * 初始化View控件

@@ -14,7 +14,7 @@
 
         <com.yd.org.sellpopularizesystem.internal.PullableListView
             android:id="@+id/content_view"
-            style="@style/MatchMatch" />
+            style="@style/MatchMatch"/>
 
         <include layout="@layout/load_more" />
 
@@ -24,8 +24,8 @@
         android:id="@+id/noInfomation"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:gravity="center_horizontal"
         android:layout_gravity="center"
+        android:gravity="center_horizontal|center_vertical"
         android:text="没有相关信息"
         android:textColor="@color/black"
         android:textSize="@dimen/tv_size_15"

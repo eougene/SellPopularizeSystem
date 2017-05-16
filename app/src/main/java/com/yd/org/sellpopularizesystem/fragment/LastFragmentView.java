@@ -10,13 +10,10 @@ import android.widget.Toast;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.activity.InvestigationActivity;
-import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
-import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -62,9 +59,12 @@ public class LastFragmentView extends BaseFragmentView {
             @Override
             public void onClick(View v) {
 
+                //开始调研
                 if(type.equals(ExtraName.VISIBILITY)){
                     intent = new Intent(getActivity(), InvestigationActivity.class);
                     getActivity().startActivity(intent);
+
+                    //提交完成学习
                 }else{
                     submit();
 
@@ -73,6 +73,7 @@ public class LastFragmentView extends BaseFragmentView {
             }
         });
 
+        //结束推广
         tvEnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +84,7 @@ public class LastFragmentView extends BaseFragmentView {
     }
 
     private void submit() {
+        showLoadingDialog();
         FinalHttp http=new FinalHttp();
         http.addHeader("Content-Type","application/x-www-form-urlencoded");
         AjaxParams ajaxParams=new AjaxParams();
@@ -93,6 +95,7 @@ public class LastFragmentView extends BaseFragmentView {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                dismissLoadingDialog();
                 try {
                     JSONObject json=new JSONObject(s);
                     if(json.getString("code").equals("1")){
@@ -112,6 +115,7 @@ public class LastFragmentView extends BaseFragmentView {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                dismissLoadingDialog();
             }
         });
     }

@@ -9,7 +9,7 @@ public class CustomeDetailedBean extends Domine {
     /**
      * code : 1
      * msg : 成功获取客户信息
-     * result : {"customer_id":76,"company_id":1,"customer_nick":null,"head_img":"public/uploads/head_img/170207/201702071030505941.jpg","true_name":"客户一","sex":0,"birth_date":0,"age":null,"mobile":"15345678901","province":"","city":"","area":"","address":null,"open_id":null,"wechat_number":null,"wechat_nick":"","wechat_img":"","qq_number":null,"e_mail":"","job":null,"income":0,"family_name":null,"family_relationship":null,"family_mobile":null,"sign_number":0,"card_id":null,"passport_id":null,"passport_country":null,"card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1484815607,"update_time":1486434650,"add_ip":"180.114.133.77","add_admin":"4","add_user":0,"is_del":0,"status":0}
+     * result : {"customer_id":3691,"company_id":1,"customer_nick":null,"head_img":"","true_name":null,"surname":"handiwork","first_name":"handheld","en_name":"handiwork","sex":0,"title":"","birth_date":2011,"age":null,"mobile":"123456789","country":"安道尔共和国","province":"安徽省安庆市枞阳县  ","city":"","area":"","address":"bsjsjskekk2","zip_code":"123456789","openid":null,"wechat_number":"1191884034","wechat_nick":"","wechat_img":"","qq_number":"1191884034","e_mail":"","job":"hh","income":1,"family_name":"xdd1","family_first_name":"John","family_relationship":"pengyyou","family_mobile":"0896523147","sign_number":0,"card_id":"0987655443221","passport_id":"安道尔共和国","passport_country":"安道尔共和国","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1494464522,"update_time":1494465964,"add_ip":"101.81.231.191","add_admin":null,"add_user":100048,"is_del":0,"is_firb":0,"status":0}
      */
 
     private String code;
@@ -42,44 +42,52 @@ public class CustomeDetailedBean extends Domine {
 
     public static class ResultBean {
         /**
-         * customer_id : 76
+         * customer_id : 3691
          * company_id : 1
          * customer_nick : null
-         * head_img : public/uploads/head_img/170207/201702071030505941.jpg
-         * true_name : 客户一
+         * head_img :
+         * true_name : null
+         * surname : handiwork
+         * first_name : handheld
+         * en_name : handiwork
          * sex : 0
-         * birth_date : 0
+         * title :
+         * birth_date : 2011
          * age : null
-         * mobile : 15345678901
-         * province :
+         * mobile : 123456789
+         * country : 安道尔共和国
+         * province : 安徽省安庆市枞阳县
          * city :
          * area :
-         * address : null
-         * open_id : null
-         * wechat_number : null
+         * address : bsjsjskekk2
+         * zip_code : 123456789
+         * openid : null
+         * wechat_number : 1191884034
          * wechat_nick :
          * wechat_img :
-         * qq_number : null
+         * qq_number : 1191884034
          * e_mail :
-         * job : null
-         * income : 0
-         * family_name : null
-         * family_relationship : null
-         * family_mobile : null
+         * job : hh
+         * income : 1
+         * family_name : xdd1
+         * family_first_name : John
+         * family_relationship : pengyyou
+         * family_mobile : 0896523147
          * sign_number : 0
-         * card_id : null
-         * passport_id : null
-         * passport_country : null
+         * card_id : 0987655443221
+         * passport_id : 安道尔共和国
+         * passport_country : 安道尔共和国
          * card_validity : null
          * is_experience : 0
          * flight_date : null
          * flight_number : null
-         * add_time : 1484815607
-         * update_time : 1486434650
-         * add_ip : 180.114.133.77
-         * add_admin : 4
-         * add_user : 0
+         * add_time : 1494464522
+         * update_time : 1494465964
+         * add_ip : 101.81.231.191
+         * add_admin : null
+         * add_user : 100048
          * is_del : 0
+         * is_firb : 0
          * status : 0
          */
 
@@ -87,35 +95,37 @@ public class CustomeDetailedBean extends Domine {
         private int company_id;
         private Object customer_nick;
         private String head_img;
-        private String true_name;
+        private Object true_name;
+        private String surname;
         private String first_name;
         private String en_name;
         private int sex;
+        private String title;
         private int birth_date;
         private Object age;
         private String mobile;
+        private String country;
         private String province;
         private String city;
         private String area;
-        private Object address;
+        private String address;
         private String zip_code;
-        private Object open_id;
-        private Object wechat_number;
+        private Object openid;
+        private String wechat_number;
         private String wechat_nick;
         private String wechat_img;
-        private Object qq_number;
+        private String qq_number;
         private String e_mail;
-        private Object job;
+        private String job;
         private int income;
-        private String surname;
-        private Object family_name;
+        private String family_name;
         private String family_first_name;
-        private Object family_relationship;
-        private Object family_mobile;
+        private String family_relationship;
+        private String family_mobile;
         private int sign_number;
-        private Object card_id;
-        private Object passport_id;
-        private Object passport_country;
+        private String card_id;
+        private String passport_id;
+        private String passport_country;
         private Object card_validity;
         private int is_experience;
         private Object flight_date;
@@ -123,11 +133,12 @@ public class CustomeDetailedBean extends Domine {
         private int add_time;
         private int update_time;
         private String add_ip;
-        private String add_admin;
+        private Object add_admin;
         private int add_user;
         private int is_del;
         private int is_firb;
         private int status;
+
         public int getCustomer_id() {
             return customer_id;
         }
@@ -160,8 +171,20 @@ public class CustomeDetailedBean extends Domine {
             this.head_img = head_img;
         }
 
-        public String getTrue_name() {
+        public Object getTrue_name() {
             return true_name;
+        }
+
+        public void setTrue_name(Object true_name) {
+            this.true_name = true_name;
+        }
+
+        public String getSurname() {
+            return surname;
+        }
+
+        public void setSurname(String surname) {
+            this.surname = surname;
         }
 
         public String getFirst_name() {
@@ -180,16 +203,20 @@ public class CustomeDetailedBean extends Domine {
             this.en_name = en_name;
         }
 
-        public void setTrue_name(String true_name) {
-            this.true_name = true_name;
-        }
-
         public int getSex() {
             return sex;
         }
 
         public void setSex(int sex) {
             this.sex = sex;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public int getBirth_date() {
@@ -216,6 +243,14 @@ public class CustomeDetailedBean extends Domine {
             this.mobile = mobile;
         }
 
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
+        }
+
         public String getProvince() {
             return province;
         }
@@ -240,11 +275,11 @@ public class CustomeDetailedBean extends Domine {
             this.area = area;
         }
 
-        public Object getAddress() {
+        public String getAddress() {
             return address;
         }
 
-        public void setAddress(Object address) {
+        public void setAddress(String address) {
             this.address = address;
         }
 
@@ -256,19 +291,19 @@ public class CustomeDetailedBean extends Domine {
             this.zip_code = zip_code;
         }
 
-        public Object getOpen_id() {
-            return open_id;
+        public Object getOpenid() {
+            return openid;
         }
 
-        public void setOpen_id(Object open_id) {
-            this.open_id = open_id;
+        public void setOpenid(Object openid) {
+            this.openid = openid;
         }
 
-        public Object getWechat_number() {
+        public String getWechat_number() {
             return wechat_number;
         }
 
-        public void setWechat_number(Object wechat_number) {
+        public void setWechat_number(String wechat_number) {
             this.wechat_number = wechat_number;
         }
 
@@ -288,11 +323,11 @@ public class CustomeDetailedBean extends Domine {
             this.wechat_img = wechat_img;
         }
 
-        public Object getQq_number() {
+        public String getQq_number() {
             return qq_number;
         }
 
-        public void setQq_number(Object qq_number) {
+        public void setQq_number(String qq_number) {
             this.qq_number = qq_number;
         }
 
@@ -304,11 +339,11 @@ public class CustomeDetailedBean extends Domine {
             this.e_mail = e_mail;
         }
 
-        public Object getJob() {
+        public String getJob() {
             return job;
         }
 
-        public void setJob(Object job) {
+        public void setJob(String job) {
             this.job = job;
         }
 
@@ -316,20 +351,16 @@ public class CustomeDetailedBean extends Domine {
             return income;
         }
 
-        public String getSurname() {
-            return surname;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
-        }
-
         public void setIncome(int income) {
             this.income = income;
         }
 
-        public Object getFamily_name() {
+        public String getFamily_name() {
             return family_name;
+        }
+
+        public void setFamily_name(String family_name) {
+            this.family_name = family_name;
         }
 
         public String getFamily_first_name() {
@@ -340,23 +371,19 @@ public class CustomeDetailedBean extends Domine {
             this.family_first_name = family_first_name;
         }
 
-        public void setFamily_name(Object family_name) {
-            this.family_name = family_name;
-        }
-
-        public Object getFamily_relationship() {
+        public String getFamily_relationship() {
             return family_relationship;
         }
 
-        public void setFamily_relationship(Object family_relationship) {
+        public void setFamily_relationship(String family_relationship) {
             this.family_relationship = family_relationship;
         }
 
-        public Object getFamily_mobile() {
+        public String getFamily_mobile() {
             return family_mobile;
         }
 
-        public void setFamily_mobile(Object family_mobile) {
+        public void setFamily_mobile(String family_mobile) {
             this.family_mobile = family_mobile;
         }
 
@@ -368,27 +395,27 @@ public class CustomeDetailedBean extends Domine {
             this.sign_number = sign_number;
         }
 
-        public Object getCard_id() {
+        public String getCard_id() {
             return card_id;
         }
 
-        public void setCard_id(Object card_id) {
+        public void setCard_id(String card_id) {
             this.card_id = card_id;
         }
 
-        public Object getPassport_id() {
+        public String getPassport_id() {
             return passport_id;
         }
 
-        public void setPassport_id(Object passport_id) {
+        public void setPassport_id(String passport_id) {
             this.passport_id = passport_id;
         }
 
-        public Object getPassport_country() {
+        public String getPassport_country() {
             return passport_country;
         }
 
-        public void setPassport_country(Object passport_country) {
+        public void setPassport_country(String passport_country) {
             this.passport_country = passport_country;
         }
 
@@ -448,11 +475,11 @@ public class CustomeDetailedBean extends Domine {
             this.add_ip = add_ip;
         }
 
-        public String getAdd_admin() {
+        public Object getAdd_admin() {
             return add_admin;
         }
 
-        public void setAdd_admin(String add_admin) {
+        public void setAdd_admin(Object add_admin) {
             this.add_admin = add_admin;
         }
 

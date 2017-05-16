@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -18,9 +18,9 @@ import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
+import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
-import com.yd.org.sellpopularizesystem.activity.SettingActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
@@ -48,6 +48,7 @@ public class SettingFragment extends BaseFragmentView {
     private TextView cancelLoginTv, versionTv, tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
+    private RelativeLayout rlCommission;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -67,6 +68,10 @@ public class SettingFragment extends BaseFragmentView {
                 //注销登录
                 case R.id.cancelLoginTv:
                     logOut();
+                    break;
+                //我的佣金
+                case R.id.rlCommission:
+                    ActivitySkip.forward(getActivity(), CommissionActivity.class);
                     break;
             }
         }
@@ -113,13 +118,12 @@ public class SettingFragment extends BaseFragmentView {
     UMAuthListener authListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
-            Toast.makeText(getActivity(), "开始", Toast.LENGTH_LONG).show();
+            Log.e("开始授权", "platform:" + platform);
         }
 
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-
-            Toast.makeText(getActivity(), "成功了", Toast.LENGTH_LONG).show();
+            Log.e("授权成功", "platform:" + platform);
             String openId = data.get("openid");
             SharedPreferencesHelps.setOpenId(openId);
             String temp = "";
@@ -127,7 +131,10 @@ public class SettingFragment extends BaseFragmentView {
                 temp = temp + key + " : " + data.get(key) + "\n";
             }*/
             Log.e("data***", "openId:" + openId);
-            sendBindAccount(openId);
+
+
+            getWeiXinInfo(data.get("access_token"), data.get("openId"));
+
 
         }
 
@@ -144,17 +151,66 @@ public class SettingFragment extends BaseFragmentView {
         }
     };
 
-    private void sendBindAccount(String openId) {
+
+    /**
+     * 获取微信用户信息  unionid
+     *
+     * @param access_token
+     * @param opendid
+     */
+    public void getWeiXinInfo(String access_token, final String opendid) {
+
+        final FinalHttp fh = new FinalHttp();
+        fh.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid, new AjaxCallBack<String>() {
+
+            @Override
+            public void onSuccess(String content) {
+                Log.e("获取微信数据*******", "new String(arg2):" + content);
+
+                if (content != null) {
+
+                    try {
+                        JSONObject UseJson = new JSONObject(content);
+                        if (!TextUtils.isEmpty(UseJson.optString("unionid"))) {
+                            sendBindAccount(opendid, UseJson.optString("unionid"));
+                        } else {
+                            ToasShow.showToastCenter(getContext(), "绑定失败");
+                            return;
+                        }
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                ToasShow.showToastCenter(getContext(), "网络异常");
+            }
+        });
+
+
+    }
+
+    private void sendBindAccount(String openId, String unionid) {
+        showLoadingDialog();
         FinalHttp http = new FinalHttp();
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("type", "wechat");
         ajaxParams.put("openid", openId);
+        ajaxParams.put("unionid", unionid);
         http.post(Contants.WEXIN_URL_STRING, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                acountPopupWindow.dismiss();
+                dismissLoadingDialog();
                 Log.e("TAG", "onSuccess: " + s);
                 try {
                     JSONObject json = new JSONObject(s);
@@ -162,7 +218,7 @@ public class SettingFragment extends BaseFragmentView {
                         acountPopupWindow.dismiss();
                     } else {
                         String str = json.getString("msg");
-                        ToasShow.showToastBottom(getActivity(), str);
+                        ToasShow.showToastBottom(getActivity(), json.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -172,6 +228,8 @@ public class SettingFragment extends BaseFragmentView {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                ToasShow.showToastCenter(getContext(), "网络异常");
+                dismissLoadingDialog();
             }
         });
     }
@@ -179,11 +237,13 @@ public class SettingFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_setting);
-        setStatusTransparent();
         initWidget();
     }
 
     private void initWidget() {
+
+        rlCommission = getViewById(R.id.rlCommission);
+        rlCommission.setOnClickListener(mOnClickListener);
         ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
         changePassWordRel = getViewById(R.id.changePassWordRel);
         bindAccountRel = getViewById(R.id.bindAccountRel);

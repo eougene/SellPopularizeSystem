@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * 学习园地
+ */
 public class StudyFragment extends BaseFragmentView implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
@@ -45,15 +48,14 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
     }
 
     private void getStudyListData(final boolean b, int page) {
-       // String url = Contants.STUDY_LIST + "user_id=" + SharedPreferencesHelps.getUserID() + "&page=" + page + "&number=10";
         showLoadingDialog();
         final FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams=new AjaxParams();
+        AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
         ajaxParams.put("number", "10");
 
-        fh.get(Contants.STUDY_LIST,ajaxParams,new AjaxCallBack<String>() {
+        fh.get(Contants.STUDY_LIST, ajaxParams, new AjaxCallBack<String>() {
 
             @Override
             public void onSuccess(String s) {
@@ -104,9 +106,13 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 StyudyAdapter.HolderView holderView = (StyudyAdapter.HolderView) view.getTag();
                 StudyBean.ResultBean resultBean = holderView.productListBean;
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("study", resultBean);
-                ActivitySkip.forward(getActivity(), StudyDetailaActivity.class, bundle);
+
+                if (resultBean.getCan_study() == 1) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("study", resultBean);
+                    ActivitySkip.forward(getActivity(), StudyDetailaActivity.class, bundle);
+                }
+
             }
         });
 

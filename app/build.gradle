@@ -11,12 +11,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "vyh75woAJs5tv7iz3fHoh4",
+                GETUI_APP_KEY   : "nvFs64bF0a9AfmMzlfP2r5",
+                GETUI_APP_SECRET: "urxKlbbHjR6FVpqd3OSvB2",
+                PACKAGE_NAMW    : applicationId
+        ]
     }
     signingConfigs {
         release {
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('E:/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storeFile file('/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }
@@ -88,33 +94,6 @@ dependencies {
     compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.r0adkll:slidableactivity:2.0.5'
+    compile 'com.getui:sdk:2.10.2.0'
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -132,5 +132,13 @@
     <string name="wechatpay">微信</string>
     <string name="zhifu">支付</string>
     <string name="updateorder">修改订单</string>
+    <string name="delete">删除</string>
+    <string name="commission">我的佣金</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="old_pr">往期项目</string>
+    <string name="investigate_list">调研</string>
+    <string name="commissiondetails">佣金详情</string>
+    <string name="file_act">文件</string>
+    <string name="contract">合同</string>
 
 </resources>
