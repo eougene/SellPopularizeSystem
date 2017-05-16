@@ -1,15 +1,10 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.SimpleAdapter;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -27,10 +22,8 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class NotificationActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView listView;
@@ -101,7 +94,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
             adapter = new CommonAdapter<AnnouncementBean.ResultBean>(this, informationContents, R.layout.notification_listview_item) {
                 @Override
                 public void convert(ViewHolder holder, AnnouncementBean.ResultBean item) {
-                    holder.setText(R.id.tvMessageTitle, item.getNotice_title());
+                    holder.setText(R.id.tvMessageTitle, item.getTitle());
                     if (item.getIs_read()==1){
                             holder.getView(R.id.tvPoint).setVisibility(View.INVISIBLE);
                     }else{
@@ -125,8 +118,8 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle=new Bundle() ;
                 bundle.putString("data",informationContents.get(position).getContent());
-                bundle.putString("title",informationContents.get(position).getNotice_title());
-                bundle.putString("notice_id",informationContents.get(position).getNotice_id()+"");
+                bundle.putString("title",informationContents.get(position).getTitle());
+                bundle.putString("notice_id",informationContents.get(position).getId()+"");
                 ActivitySkip.forward(NotificationActivity.this, InformationContentActivity.class,bundle);
             }
         });

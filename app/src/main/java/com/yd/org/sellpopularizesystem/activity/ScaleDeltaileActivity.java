@@ -1,24 +1,21 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.ViewPagerAdapter;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.fragment.LastFragmentView;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -34,18 +31,21 @@ import java.util.List;
 
 import static com.yd.org.sellpopularizesystem.R.id.viewPager;
 
+/**
+ * 图片视频语音
+ */
 public class ScaleDeltaileActivity extends FragmentActivity {
     private HackyViewPager hackyViewPager;
     private ViewPager smallViewPager;
     private ViewGroup lastPagerView;
-    private ArrayList<String> picList;
+    private ArrayList<String> picList = new ArrayList<>();
     private ProductListBean.ResultBean productListBean;
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
     private ViewpagerAdapter vpAdapter;
-    private LinearLayout llClick,llAll;
+    private LinearLayout llClick, llAll;
     private ExpandView mExpandView;
     private List<View> viewList;
-    private ImageView backImageView,mTrangle;
+    private ImageView backImageView, mTrangle;
     private ProductDetailBean.ResultBean prs;
     private Animation mCollapseAnimation;
     private Animation mExpandAnimation;
@@ -67,15 +67,14 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         setContentView(R.layout.activity_scale_deltaile);
         Bundle bundle = getIntent().getExtras();
         //productListBean = (ProductListBean.ResultBean) bundle.getSerializable("scale");
-       // Log.e("获取数据***", "productListBean:" + productListBean.getProduct_id());
+        // Log.e("获取数据***", "productListBean:" + productListBean.getProduct_id());
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
-        lastPagerView= (ViewGroup) getLayoutInflater().inflate(R.layout.last_pager_layout,null);
-        picList = new ArrayList<>();
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-001.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-002.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-003.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-004.jpg");
-        picList.add("http://img.ivsky.com/img/tupian/pre/201511/16/chongwugou.jpg");
+        lastPagerView = (ViewGroup) getLayoutInflater().inflate(R.layout.last_pager_layout, null);
+        Log.e("picList**", "picList:" + prs.getImg_content().size());
+        for (int i = 0; i <prs.getImg_content().size(); i++) {
+            picList.add(Contants.DOMAIN + "/" + prs.getImg_content().get(i).getThumbURL());
+
+        }
         initData();
         setSmallViewPage();
 
@@ -89,26 +88,26 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         mExpandView = (ExpandView) findViewById(R.id.vp_layout);
         mExpandView.setContentView();
         //vpLayout= (LinearLayout) findViewById(R.id.vp_layout);
-        llClick= (LinearLayout) findViewById(R.id.llClick);
-        llAll= (LinearLayout) findViewById(R.id.llAll);
-        mTrangle= (ImageView) findViewById(R.id.ivTrangle);
+        llClick = (LinearLayout) findViewById(R.id.llClick);
+        llAll = (LinearLayout) findViewById(R.id.llAll);
+        mTrangle = (ImageView) findViewById(R.id.ivTrangle);
         smallViewPager = (ViewPager) findViewById(R.id.viewpagers);
 
         viewList = new ArrayList<View>();
-        for (int i = 0; i < picList.size()+1; i++) {
-            if(i==picList.size()){
+        for (int i = 0; i < picList.size() + 1; i++) {
+            if (i == picList.size()) {
                 /*if (prs != null) {
                     fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
                 }*/
                 //viewList.add(i,lastPagerView);
-            }else {
+            } else {
                 ImageView imageView = new ImageView(this);
                 imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
                 Picasso.with(this).load(picList.get(i)).into(imageView);
                 viewList.add(i, imageView);
             }
         }
-        smallViewPager.setAdapter(new ViewPagerAdapter(ScaleDeltaileActivity.this,viewList));
+        smallViewPager.setAdapter(new ViewPagerAdapter(ScaleDeltaileActivity.this, viewList));
         smallViewPager.setOffscreenPageLimit(4);
         ScaleAlphaPageTransformer mScaleAlphaPageTransformer = new ScaleAlphaPageTransformer();
         mScaleAlphaPageTransformer.setType(true, true);
@@ -169,8 +168,8 @@ public class ScaleDeltaileActivity extends FragmentActivity {
                     //LayoutAnimationController lac=new LayoutAnimationController(mCollapseAnimation);
                     llAll.startAnimation(mCollapseAnimation);*/
                     mTrangle.setImageResource(R.mipmap.up_arrow);
-                   // mExpandView.setmIsExpand(false);
-                }else {
+                    // mExpandView.setmIsExpand(false);
+                } else {
                     mExpandView.expand();
                     /*mExpandAnimation= AnimationUtils.loadAnimation(ScaleDeltaileActivity.this,R.anim.expand_anim);
                     mExpandAnimation.setAnimationListener(new Animation.AnimationListener() {
@@ -206,12 +205,12 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         backImageView = (ImageView) findViewById(R.id.backImageView);
         hackyViewPager = (HackyViewPager) findViewById(viewPager);
 
-        for (int i = 0; i < picList.size()+1; i++) {
-                if(i== picList.size()){
-                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY,"0"));
-                }else {
-                    fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i)));
-                }
+        for (int i = 0; i < picList.size() + 1; i++) {
+            if (i == picList.size()) {
+                fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, "0"));
+            } else {
+                fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i)));
+            }
         }
         backImageView.setOnClickListener(onClickListener);
         vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentList, null);
@@ -236,5 +235,6 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         });
 
     }
+
 
 }

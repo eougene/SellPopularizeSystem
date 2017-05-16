@@ -2,12 +2,9 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.usage.UsageEvents;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
-import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -65,19 +62,16 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.Map;
 
@@ -87,19 +81,22 @@ import javax.xml.parsers.SAXParserFactory;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 
+/**
+ * 客户信息详情页面
+ */
 public class CustomDetailedActivity extends BaseActivity {
-    String TAG = CustomDetailedActivity.class.getSimpleName();
+    private String TAG = CustomDetailedActivity.class.getSimpleName();
     private CircleImageView customeIcon;
     private EditText edCustomeTrueName, edcustmomeDetailedBie, edCustomeMobile,
             edcustmomeDetailedWeChat, edcustmomeDetailedQQ, edcustmomeDetailedCity,
             edcustmomeDetailedAddress, edcustmomeDetailedEmail, edcustmomeDetailedWeJob,
             edcustmomeDetailedSalary, edcustmomeDetailedCard, edcustmomeDetailedPassPort,
             edcustmomeDetailedNationality, edcustmomeDetailedKinsfolk, edcustmomeDetailedRelation,
-            edcustmomeDetailedPhone, edZipCode, etNationSearch, etFirb;
+            edcustmomeDetailedPhone, edZipCode, etNationSearch, etFirb, etFistName, etEnglishName, etLn, etNation;
     //国家选择列表
     private ListView lvNation;
     private ImageView ivDelete, ivPhone, ivEmail;
-    private TextView tvEoi,tvVisit,tvReserver,tvExpandRe,tvPurchase;
+    private TextView tvEoi, tvVisit, tvReserver, tvExpandRe, tvPurchase;
     private LinearLayout llOperate;
     private MyPopupwindow myPopupwindow;
     private List<CountrySortModel> mAllCountryList;
@@ -107,7 +104,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private PopupWindow addrPopWindow, nationSelectPopWindow, firbSelectPopWindow;
     private CustomBean.ResultBean resultBean;
     private String tag, imagePath;
-    private CustomeDetailedBean.ResultBean userInfo;
+
     private String strUrl;
     /**
      * 与选择地址相关
@@ -147,18 +144,22 @@ public class CustomDetailedActivity extends BaseActivity {
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Bundle bundle=new Bundle();
-            bundle.putString("customeId",resultBean.getCustomer_id()+"");
+            Bundle bundle = new Bundle();
+            if (null != resultBean) {
+                bundle.putString("customeId", resultBean.getCustomer_id() + "");
+            }
+
             switch (view.getId()) {
                 //日期选择
                 case R.id.edcustmomeDetailedBie:
                     pvTime.show();
                     break;
+                //拍照
                 case R.id.ivPhone:
                     if (TextUtils.isEmpty(edCustomeMobile.getText())) {
                         return;
                     } else {
-                        Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+edCustomeMobile.getText().toString()));
+                        Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + edCustomeMobile.getText().toString()));
                         if (ActivityCompat.checkSelfPermission(CustomDetailedActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                             // TODO: Consider calling
                             //    ActivityCompat#requestPermissions
@@ -172,11 +173,12 @@ public class CustomDetailedActivity extends BaseActivity {
                         startActivity(intentPhone);
                     }
                     break;
+                //邮件
                 case R.id.ivEmail:
-                    if (TextUtils.isEmpty(edCustomeMobile.getText())){
+                    if (TextUtils.isEmpty(edCustomeMobile.getText())) {
                         return;
-                    }else{
-                        Uri uri=Uri.parse("mailto:"+edcustmomeDetailedEmail.getText().toString());
+                    } else {
+                        Uri uri = Uri.parse("mailto:" + edcustmomeDetailedEmail.getText().toString());
                         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                         //intent.putExtra(Intent.EXTRA_CC, email); // 抄送人
                         intent.putExtra(Intent.EXTRA_SUBJECT, "这是邮件的主题部分"); // 主题
@@ -202,28 +204,30 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //EOI
                 case R.id.tvEoi:
-                    bundle.putString("custocora","custoeoi");
-                    ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
+                    bundle.putString("custocora", "custoeoi");
+                    ActivitySkip.forward(CustomDetailedActivity.this, CusOprateRecordActivity.class, bundle);
                     break;
                 //拜访
                 case R.id.tvVisit:
-                    bundle.putString("custocora","custovisit");
-                    ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
+                    bundle.putString("custocora", "custovisit");
+                    ActivitySkip.forward(CustomDetailedActivity.this, CusOprateRecordActivity.class, bundle);
                     break;
                 //预约
-                case  R.id.tvReserve:
-                    bundle.putString("custocora","custoreser");
-                    ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
+                case R.id.tvReserve:
+                    bundle.putString("custocora", "custoreser");
+                    ActivitySkip.forward(CustomDetailedActivity.this, CusOprateRecordActivity.class, bundle);
                     break;
                 //推广记录
                 case R.id.tvExpandRe:
-                    bundle.putString("custocora","custoexpand");
-                    ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
+                    bundle.putString("custocora", "custoexpand");
+                    bundle.putSerializable("customer_id",resultBean);
+                    ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
                 //购房记录
                 case R.id.tvPurchaseRe:
-                    bundle.putString("custocora","custopurchase");
-                    ActivitySkip.forward(CustomDetailedActivity.this,CusOprateRecordActivity.class,bundle);
+                    bundle.putString("custocora", "custopurchase");
+                    bundle.putSerializable("customer_id",resultBean);
+                    ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
             }
         }
@@ -231,7 +235,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
     @Override
     protected int setContentView() {
-        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_custom_detailed;
     }
 
@@ -243,9 +246,11 @@ public class CustomDetailedActivity extends BaseActivity {
 
         if (!TextUtils.isEmpty(bundle.getString("add"))) {
             tag = bundle.getString("add");
+            //添加客户
             if (tag.equals("add")) {
                 setTitle(R.string.custome_add);
                 llOperate.setVisibility(View.GONE);
+                //更新客户
             } else {
                 setTitle(R.string.customdetaild_title);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("custome");
@@ -257,20 +262,26 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
     }
-    OptionsPickerView.Builder builder=new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+
+    OptionsPickerView.Builder builder = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
         @Override
         public void onOptionsSelect(int options1, int options2, int options3, View v) {
 
         }
     });
+
     private void setCountry() {
         pvOptions = new OptionsPickerView(builder);
     }
 
 
     private void Views() {
+        etNation = getViewById(R.id.etNation);
+        etLn = getViewById(R.id.etLn);
         customeIcon = getViewById(R.id.customeIcon);
         edCustomeTrueName = getViewById(R.id.edCustomeTrueName);
+        etFistName = getViewById(R.id.etFistName);
+        etEnglishName = getViewById(R.id.etEnglishName);
         edcustmomeDetailedBie = getViewById(R.id.edcustmomeDetailedBie);
         edCustomeMobile = getViewById(R.id.edCustomeMobile);
         ivPhone = getViewById(R.id.ivPhone);
@@ -280,7 +291,7 @@ public class CustomDetailedActivity extends BaseActivity {
         edcustmomeDetailedAddress = getViewById(R.id.edcustmomeDetailedAddress);
         edZipCode = getViewById(R.id.edcustmeZipCode);
         edcustmomeDetailedEmail = getViewById(R.id.edcustmomeDetailedEmail);
-        ivEmail=getViewById(R.id.ivEmail);
+        ivEmail = getViewById(R.id.ivEmail);
         edcustmomeDetailedWeJob = getViewById(R.id.edcustmomeDetailedWeJob);
         edcustmomeDetailedSalary = getViewById(R.id.edcustmomeDetailedSalary);
         edcustmomeDetailedCard = getViewById(R.id.edcustmomeDetailedCard);
@@ -289,13 +300,13 @@ public class CustomDetailedActivity extends BaseActivity {
         edcustmomeDetailedKinsfolk = getViewById(R.id.edcustmomeDetailedKinsfolk);
         edcustmomeDetailedRelation = getViewById(R.id.edcustmomeDetailedRelation);
         edcustmomeDetailedPhone = getViewById(R.id.edcustmomeDetailedPhone);
-        etFirb=getViewById(R.id.etFirb);
-        llOperate=getViewById(R.id.llOperate);
-        tvEoi=getViewById(R.id.tvEoi);
-        tvVisit=getViewById(R.id.tvVisit);
-        tvReserver=getViewById(R.id.tvReserve);
-        tvExpandRe=getViewById(R.id.tvExpandRe);
-        tvPurchase=getViewById(R.id.tvPurchaseRe);
+        etFirb = getViewById(R.id.etFirb);
+        llOperate = getViewById(R.id.llOperate);
+        tvEoi = getViewById(R.id.tvEoi);
+        tvVisit = getViewById(R.id.tvVisit);
+        tvReserver = getViewById(R.id.tvReserve);
+        tvExpandRe = getViewById(R.id.tvExpandRe);
+        tvPurchase = getViewById(R.id.tvPurchaseRe);
         mAllCountryList = new ArrayList<CountrySortModel>();
         pinyinComparator = new CountryComparator();
         countryChangeUtil = new GetCountryNameSort();
@@ -305,7 +316,7 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void setTimePicker() {
-        TimePickerView.Builder builder=new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+        TimePickerView.Builder builder = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
                 edcustmomeDetailedBie.setText(MyUtils.getTime(date));
@@ -357,24 +368,177 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
+
+    /**
+     * 设置客户信息
+     *
+     * @param customeDetailedBean
+     */
     private void setInfo(CustomeDetailedBean customeDetailedBean) {
-        Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).into(customeIcon);
-        edCustomeTrueName.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getTrue_name()) ? (customeDetailedBean.getResult().getTrue_name() + "") : "");
-        edcustmomeDetailedBie.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") ? customeDetailedBean.getResult().getBirth_date() + "" : "");
-        edCustomeMobile.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getMobile() + "") ? customeDetailedBean.getResult().getMobile() + "" : "");
-        edcustmomeDetailedWeChat.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getWechat_number() + "") ? customeDetailedBean.getResult().getWechat_number() + "" : "");
-        edcustmomeDetailedQQ.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getQq_number() + "") ? customeDetailedBean.getResult().getQq_number() + "" : "");
-        edcustmomeDetailedCity.setText(customeDetailedBean.getResult().getProvince() + " " + customeDetailedBean.getResult().getCity() + " " + customeDetailedBean.getResult().getArea() + "");
-        edcustmomeDetailedAddress.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getAddress() + "") ? customeDetailedBean.getResult().getAddress() + "" : "");
-        edcustmomeDetailedEmail.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "") ? customeDetailedBean.getResult().getE_mail() + "" : "");
-        edcustmomeDetailedWeJob.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getJob() + "") ? customeDetailedBean.getResult().getJob() + "" : "");
-        edcustmomeDetailedSalary.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getIncome() + "") ? customeDetailedBean.getResult().getIncome() + "" : "");
-        edcustmomeDetailedCard.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getCard_validity() + "") ? customeDetailedBean.getResult().getCard_validity() + "" : "");
-        edcustmomeDetailedPassPort.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getPassport_id() + "") ? customeDetailedBean.getResult().getPassport_id() + "" : "");
-        edcustmomeDetailedNationality.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getPassport_country() + "") ? customeDetailedBean.getResult().getPassport_country() + "" : "");
-        edcustmomeDetailedKinsfolk.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_name() + "") ? customeDetailedBean.getResult().getFamily_name() + "" : "");
-        edcustmomeDetailedRelation.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_relationship() + "") ? customeDetailedBean.getResult().getFamily_relationship() + "" : "");
-        edcustmomeDetailedPhone.setText(!TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_mobile() + "") ? customeDetailedBean.getResult().getFamily_mobile() + "" : "");
+        //设置头像
+        if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
+            Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).into(customeIcon);
+        }
+
+
+        //姓
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getSurname())) {
+            edCustomeTrueName.setText("");
+        } else {
+            edCustomeTrueName.setText(customeDetailedBean.getResult().getSurname());
+
+        }
+
+        //名
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFirst_name())) {
+            etFistName.setText("");
+        } else {
+            etFistName.setText(customeDetailedBean.getResult().getFirst_name());
+        }
+
+
+        //英文名
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getEn_name())) {
+            etEnglishName.setText("");
+        } else {
+            etEnglishName.setText(customeDetailedBean.getResult().getEn_name());
+        }
+
+        //生日
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || customeDetailedBean.getResult().getBirth_date() == 0) {
+            edcustmomeDetailedBie.setText("");
+        } else {
+            edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date() + "");
+        }
+
+        //电话
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getMobile())) {
+            edCustomeMobile.setText("");
+        } else {
+            edCustomeMobile.setText(customeDetailedBean.getResult().getMobile());
+        }
+
+        //邮箱
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail())) {
+            edcustmomeDetailedEmail.setText("");
+        } else {
+            edcustmomeDetailedEmail.setText(customeDetailedBean.getResult().getE_mail());
+        }
+
+        //微信号
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getWechat_number())) {
+            edcustmomeDetailedWeChat.setText("");
+        } else {
+            edcustmomeDetailedWeChat.setText(customeDetailedBean.getResult().getWechat_number());
+        }
+
+        //QQ号
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getQq_number())) {
+            edcustmomeDetailedQQ.setText("");
+        } else {
+            edcustmomeDetailedQQ.setText(customeDetailedBean.getResult().getQq_number());
+        }
+
+
+        //国家地区
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
+            edcustmomeDetailedNationality.setText("");
+        } else {
+            edcustmomeDetailedNationality.setText(customeDetailedBean.getResult().getCountry());
+        }
+
+        //省市区
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getProvince())) {
+            edcustmomeDetailedCity.setText("");
+        } else {
+            edcustmomeDetailedCity.setText(customeDetailedBean.getResult().getProvince());
+        }
+
+        //联系地址
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAddress())) {
+            edcustmomeDetailedAddress.setText("");
+        } else {
+            edcustmomeDetailedAddress.setText(customeDetailedBean.getResult().getAddress());
+        }
+
+        //邮编
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getZip_code())) {
+            edZipCode.setText("");
+        } else {
+            edZipCode.setText(customeDetailedBean.getResult().getZip_code());
+        }
+
+        //是否是FIRB 0未知 1是  2否
+        if (customeDetailedBean.getResult().getIs_firb() == 1) {
+            etFirb.setText("是");
+        } else if (customeDetailedBean.getResult().getIs_firb() == 2) {
+            etFirb.setText("否");
+        } else {
+            etFirb.setText("未知");
+        }
+
+        //职业
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getJob())) {
+            edcustmomeDetailedWeJob.setText("");
+        } else {
+            edcustmomeDetailedWeJob.setText(customeDetailedBean.getResult().getJob());
+        }
+
+        //年薪
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getIncome() + "") || customeDetailedBean.getResult().getIncome() == 0) {
+            edcustmomeDetailedSalary.setText("");
+        } else {
+            edcustmomeDetailedSalary.setText(customeDetailedBean.getResult().getIncome() + "");
+        }
+
+        //省份证
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCard_id())) {
+            edcustmomeDetailedCard.setText("");
+        } else {
+            edcustmomeDetailedCard.setText(customeDetailedBean.getResult().getCard_id());
+        }
+
+        //护照
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getPassport_id())) {
+            edcustmomeDetailedPassPort.setText("");
+        } else {
+            edcustmomeDetailedPassPort.setText(customeDetailedBean.getResult().getPassport_id());
+        }
+
+        //国籍
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getPassport_country())) {
+            etNation.setText("");
+        } else {
+            etNation.setText(customeDetailedBean.getResult().getPassport_country());
+        }
+
+        //亲属姓
+
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_name())) {
+            edcustmomeDetailedKinsfolk.setText("");
+        } else {
+            edcustmomeDetailedKinsfolk.setText(customeDetailedBean.getResult().getFamily_name());
+        }
+        //亲属名
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_first_name())) {
+            etLn.setText("");
+        } else {
+            etLn.setText(customeDetailedBean.getResult().getFamily_first_name());
+        }
+
+        //关系
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_relationship())) {
+            edcustmomeDetailedRelation.setText("");
+        } else {
+            edcustmomeDetailedRelation.setText(customeDetailedBean.getResult().getFamily_relationship());
+        }
+
+        //亲属手机号码
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_mobile())) {
+            edcustmomeDetailedPhone.setText("");
+        } else {
+            edcustmomeDetailedPhone.setText(customeDetailedBean.getResult().getFamily_mobile());
+        }
 
 
     }
@@ -590,9 +754,9 @@ public class CustomDetailedActivity extends BaseActivity {
         }.start();
 
         //FIRB选择视图
-        firbPwView=LayoutInflater.from(this).inflate(R.layout.firb_popuwindow,null);
-        RelativeLayout rlFirb= (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
-        btUnknown= (Button) firbPwView.findViewById(R.id.btUnknown);
+        firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
+        RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
+        btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
         btSure = (Button) firbPwView.findViewById(R.id.btSure);
         btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
         firbSelectPopWindow = new PopupWindow(firbPwView,
@@ -649,21 +813,24 @@ public class CustomDetailedActivity extends BaseActivity {
         tvReserver.setOnClickListener(onClickListener);
         tvExpandRe.setOnClickListener(onClickListener);
         tvPurchase.setOnClickListener(onClickListener);
+
+        //添加数据
         if (tag.equals("add")) {
             setRightTitle(R.string.customdetaild_add, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getEditTextData();
-                    updateOrAddUserInfo(ADD);
+                    getEditTextData(ADD);
+
                 }
             });
+
+            //更新数据
         } else {
             setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    showDialog();
-                    getEditTextData();
-                    updateOrAddUserInfo(UPDATE);
+                    getEditTextData(UPDATE);
+
                 }
             });
         }
@@ -683,115 +850,241 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
-    private void updateOrAddUserInfo(String updateOrAdd) {
+    private void updateOrAddUserInfo(
+            final String updateOrAdd, String surname, String first_name, String en_name,
+            String birth_date, String mobile, String country, String province, String city, String area,
+            String address, String e_mail, String job, String income, String card_id, String passport_id,
+            String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
+            String zip_code, String is_firb, String wechat_number, String qq_number) {
+        showDialog();
+
+
+        //更新
+        if (updateOrAdd.equals(ADD)) {
+            strUrl = Contants.NEW_CUSTOME;
+        } else {
+            strUrl = Contants.UPDATE_CUSTOME;
+        }
+
+
         FinalHttp http = new FinalHttp();
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
-                /*Field[] field = userInfo.getClass().getDeclaredFields();
-
-                for (int i = 0; i < field.length; i++) {
-                    Field fs = field[i];
-                    fs.setAccessible(true);
-                    String type = fs.getType().toString();
-                    if (type.endsWith("int")) {
-                        try {
-                            if(fs.get(userInfo)!=null){
-                                ajaxParams.put(fs.getName(), (String) fs.get(userInfo));
-                            }
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    continue;
-                }*/
-
-        try {
-            File file = new File(imagePath);
-            if (updateOrAdd.equals(ADD)) {
-                ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-                ajaxParams.put("file", file);
-            }
-            ajaxParams.put("customer_id", userInfo.getCustomer_id() + "");
-            ajaxParams.put("surname", userInfo.getSurname());
-            ajaxParams.put("first_name", userInfo.getFirst_name());
-            ajaxParams.put("en_name", userInfo.getEn_name());
-            ajaxParams.put("birth_date", userInfo.getBirth_date() + "");
-            ajaxParams.put("mobile", userInfo.getMobile());
-            ajaxParams.put("province", userInfo.getProvince());
-            ajaxParams.put("city", userInfo.getCity());
-            ajaxParams.put("area", userInfo.getArea());
-            ajaxParams.put("address", (String) userInfo.getAddress());
-            ajaxParams.put("e_mail", userInfo.getE_mail());
-            ajaxParams.put("income", userInfo.getIncome() + "");
-            ajaxParams.put("wechat_number", (String) userInfo.getWechat_number());
-            ajaxParams.put("qq_number", (String) userInfo.getQq_number());
-            ajaxParams.put("job", (String) userInfo.getJob());
-            if (updateOrAdd.equals(ADD)) {
-                ajaxParams.put("card_id", (String) userInfo.getCard_id());
-            }
-            ajaxParams.put("passport_id", (String) userInfo.getPassport_id());
-            ajaxParams.put("passport_country", (String) userInfo.getPassport_country());
-            ajaxParams.put("family_name", (String) userInfo.getFamily_name());
-            if (updateOrAdd.equals(ADD)) {
-                ajaxParams.put("family_first_name", userInfo.getFamily_first_name());
-                ajaxParams.put("family_relationship", (String) userInfo.getFamily_relationship());
-                ajaxParams.put("family_mobile", (String) userInfo.getFamily_mobile());
-            }
-            ajaxParams.put("zip_code", userInfo.getZip_code());
-            if (updateOrAdd.equals(ADD)) {
-                ajaxParams.put("is_firb", userInfo.getIs_firb() + "");
-            }
-            if (updateOrAdd.equals(ADD)) {
-                strUrl = Contants.NEW_CUSTOME;
-            } else {
-                strUrl = Contants.UPDATE_CUSTOME;
-            }
-
-            http.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onSuccess(String s) {
-                    super.onSuccess(s);
-                    closeDialog();
-                    Log.e("", "onSuccess: " + s);
-                }
-
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    super.onFailure(t, errorNo, strMsg);
-                    closeDialog();
-                    ToasShow.showToastBottom(CustomDetailedActivity.this, "提交失败");
-                    Log.e("", "onSuccess: " + errorNo);
-                }
-
-            });
-        } catch (FileNotFoundException e) {
-            Log.e("", "onSuccess: " + e.getMessage());
-            e.printStackTrace();
-
+        //如果只添加用户,需要userID
+        if (updateOrAdd.equals(ADD)) {
+            ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        } else {
+            ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
         }
+        //用户名
+        ajaxParams.put("surname", surname);
+        ajaxParams.put("first_name", first_name);
+        ajaxParams.put("en_name", en_name);
+        ajaxParams.put("birth_date", birth_date);
+        ajaxParams.put("mobile", mobile);
+        ajaxParams.put("country", country);
+        ajaxParams.put("province", province);
+        ajaxParams.put("city", city);
+        ajaxParams.put("area", area);
+        ajaxParams.put("address", address);
+        ajaxParams.put("e_mail", e_mail);
+        ajaxParams.put("job", job);
+        ajaxParams.put("income", income);
+        ajaxParams.put("card_id", card_id);
+        ajaxParams.put("family_first_name", family_first_name);
+        ajaxParams.put("family_relationship", family_relationship);
+        ajaxParams.put("family_mobile", family_mobile);
+        ajaxParams.put("is_firb", is_firb);
+        ajaxParams.put("passport_id", passport_id);
+        ajaxParams.put("passport_country", passport_country);
+        ajaxParams.put("family_name", family_name);
+        ajaxParams.put("zip_code", zip_code);
+        ajaxParams.put("wechat_number", wechat_number);
+        ajaxParams.put("qq_number", qq_number);
+
+        Log.e("生日**", "bir:" + birth_date);
+        //Log.e("头像", "file:" + file.getAbsolutePath());
+        http.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                closeDialog();
+                if (updateOrAdd.equals(ADD)) {
+                    ToasShow.showToastCenter(CustomDetailedActivity.this, "添加成功");
+                } else {
+                    ToasShow.showToastCenter(CustomDetailedActivity.this, "更新成功");
+                }
+                CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                finish();
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+                closeDialog();
+                ToasShow.showToastBottom(CustomDetailedActivity.this, "提交失败");
+            }
+
+        });
+
+
     }
 
-    private void getEditTextData() {
-        userInfo = new CustomeDetailedBean.ResultBean();
-        userInfo.setTrue_name(!TextUtils.isEmpty(edCustomeTrueName.getText().toString()) ? edCustomeTrueName.getText().toString() : "null");
-        userInfo.setBirth_date(!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString()) ? (Integer.parseInt(edcustmomeDetailedBie.getText().toString())) : 000);
-        userInfo.setMobile(!TextUtils.isEmpty(edCustomeMobile.getText().toString()) ? edCustomeMobile.getText().toString() : "null");
-        userInfo.setProvince(!TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString()) ? edcustmomeDetailedCity.getText().toString() : "null");
-        //String[] str = edcustmomeDetailedCity.getText().toString().split("\\s+");
-        userInfo.setProvince("null");
-        userInfo.setCity("null");
-        userInfo.setArea("null");
-        userInfo.setAddress(!TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString()) ? edcustmomeDetailedAddress.getText().toString() : "null");
-        userInfo.setE_mail(!TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString()) ? edcustmomeDetailedEmail.getText().toString() : "null");
-        userInfo.setJob(!TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString()) ? edcustmomeDetailedWeJob.getText().toString() : "null");
-        userInfo.setIncome(!TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString()) ? (Integer.parseInt(edcustmomeDetailedSalary.getText().toString())) : 000);
-        userInfo.setCard_id(!TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString()) ? edcustmomeDetailedCard.getText().toString() : "null");
-        userInfo.setPassport_id(!TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString()) ? edcustmomeDetailedPassPort.getText().toString() : "null");
-        userInfo.setPassport_country(!TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString()) ? edcustmomeDetailedNationality.getText().toString() : "null");
-        userInfo.setFamily_name(!TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString()) ? edcustmomeDetailedKinsfolk.getText().toString() : "null");
-        userInfo.setFamily_relationship(!TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString()) ? edcustmomeDetailedRelation.getText().toString() : "null");
-        userInfo.setFamily_mobile(!TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString()) ? edcustmomeDetailedPhone.getText().toString() : "null");
-        userInfo.setZip_code(!TextUtils.isEmpty(edZipCode.getText().toString()) ? edZipCode.getText().toString() : "null");
+
+    private void getEditTextData(String updateOrAdd) {
+        String surname = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", province = "", city = "", area = "", address = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
+                passport_country = "", family_name = "", family_first_name = "", family_relationship = "", family_mobile = "",
+                zip_code = "", is_firb = "", wechat_number = "", qq_number = "";
+        //姓
+        if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
+            surname = edCustomeTrueName.getText().toString().trim();
+        } else {
+            ToasShow.showToastCenter(this, "姓不能为空");
+            return;
+        }
+
+        //名
+        if (!TextUtils.isEmpty(etFistName.getText().toString().trim())) {
+            first_name = etFistName.getText().toString().trim();
+        } else {
+            ToasShow.showToastCenter(this, "名不能为空");
+            return;
+        }
+
+
+        //英文名称
+        if (!TextUtils.isEmpty(etEnglishName.getText().toString().trim())) {
+            en_name = etEnglishName.getText().toString().trim();
+        } else {
+            ToasShow.showToastCenter(this, "英文名不能为空");
+            return;
+        }
+
+        //生日
+        if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
+            birth_date = edcustmomeDetailedBie.getText().toString().trim();
+        }
+
+        //电话,//邮件
+        if (TextUtils.isEmpty(edCustomeMobile.getText().toString().trim()) && TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())) {
+            ToasShow.showToastCenter(this, "手机,邮箱至少一项不能为空");
+            return;
+        } else {
+
+            if (!TextUtils.isEmpty(edCustomeMobile.getText().toString().trim())) {
+                mobile = edCustomeMobile.getText().toString().trim();
+            }
+
+            if (!TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())) {
+                e_mail = edcustmomeDetailedEmail.getText().toString().trim();
+            }
+
+        }
+
+
+        //国籍或地区
+        if (!TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim())) {
+            country = edcustmomeDetailedNationality.getText().toString().trim();
+        }
+
+        //省
+        if (!TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString())) {
+            province = edcustmomeDetailedCity.getText().toString();
+            //市区
+            city = "";
+            area = "";
+        }
+
+        //联系地址
+        if (!TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString())) {
+            address = edcustmomeDetailedAddress.getText().toString();
+
+        }
+
+        //工作
+        if (!TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim())) {
+            job = edcustmomeDetailedWeJob.getText().toString().trim();
+        }
+
+        //收入
+        if (!TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString().trim())) {
+            income = edcustmomeDetailedSalary.getText().toString().trim();
+        }
+
+        //证件号
+        if (!TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())) {
+            card_id = edcustmomeDetailedCard.getText().toString().trim();
+        }
+
+        //护照
+        if (!TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString().trim())) {
+            passport_id = edcustmomeDetailedPassPort.getText().toString().trim();
+        }
+
+        //国籍
+        if (!TextUtils.isEmpty(etNation.getText().toString().trim())) {
+            passport_country = etNation.getText().toString().trim();
+        }
+
+
+        //亲属姓
+        if (!TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString().trim())) {
+            family_name = edcustmomeDetailedKinsfolk.getText().toString().trim();
+        }
+
+        //名
+        if (!TextUtils.isEmpty(etLn.getText().toString().trim())) {
+            family_first_name = etLn.getText().toString().trim();
+        }
+
+        //关系
+        if (!TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString().trim())) {
+            family_relationship = edcustmomeDetailedRelation.getText().toString().trim();
+        }
+
+        //电话
+        if (!TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString().trim())) {
+            family_mobile = edcustmomeDetailedPhone.getText().toString().trim();
+        }
+
+        //邮编
+        if (!TextUtils.isEmpty(edZipCode.getText().toString().trim())) {
+            zip_code = edZipCode.getText().toString().trim();
+        } else {
+            ToasShow.showToastCenter(this, "邮编不能为空");
+            return;
+        }
+
+
+        //是否是FIRB
+        if (!TextUtils.isEmpty(etFirb.getText().toString().trim())) {
+
+            if (etFirb.getText().toString().trim().equals("是")) {
+                is_firb = "1";
+            } else if (etFirb.getText().toString().trim().equals("否")) {
+                is_firb = "2";
+            } else {
+                is_firb = "0";
+            }
+        }
+
+        //微信
+        if (!TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString())) {
+            wechat_number = edcustmomeDetailedWeChat.getText().toString();
+        }
+        //qq
+        if (!TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString())) {
+            qq_number = edcustmomeDetailedQQ.getText().toString();
+        }
+
+
+        updateOrAddUserInfo(updateOrAdd, surname, first_name, en_name,
+                birth_date, mobile, country, province, city, area,
+                address, e_mail, job, income, card_id, passport_id,
+                passport_country, family_name, family_first_name, family_relationship, family_mobile,
+                zip_code, is_firb, wechat_number, qq_number);
+
 
     }
 
@@ -881,11 +1174,13 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
                 // 裁剪图片
-                case ExtraName.CROP_IMAGE:
+                case CROP_IMAGE:
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
-                        Log.e("图片路径**", "paht:" + imagePath);
                         Picasso.with(this).load("file://" + imagePath).into(customeIcon);
+                        if (null != imagePath) {
+                            changeHeadImage(imagePath);
+                        }
                     } else {
                     }
 
@@ -954,6 +1249,34 @@ public class CustomDetailedActivity extends BaseActivity {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private void changeHeadImage(String imageURL) {
+
+        showDialog();
+        try {
+            FinalHttp finalHttp = new FinalHttp();
+            AjaxParams ajaxParams = new AjaxParams();
+            ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
+            File file = new File(imageURL);
+            ajaxParams.put("file", file);
+
+            finalHttp.post(Contants.UPDATE_HEADIMAGE, ajaxParams, new AjaxCallBack<String>() {
+
+                @Override
+                public void onFailure(Throwable t, int errorNo, String strMsg) {
+                    closeDialog();
+                }
+
+                @Override
+                public void onSuccess(String s) {
+                    closeDialog();
+                }
+            });
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

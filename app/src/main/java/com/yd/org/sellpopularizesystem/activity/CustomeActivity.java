@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -13,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -22,13 +23,11 @@ import com.yd.org.sellpopularizesystem.adapter.SortGroupMemberAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.custom.CharacterParser;
 import com.yd.org.sellpopularizesystem.custom.PinyinComparator;
 import com.yd.org.sellpopularizesystem.custom.SideBar;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
-import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
@@ -51,15 +50,14 @@ import java.io.Serializable;
 import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
 
 
 /**
  * 客户管理
  */
 public class CustomeActivity extends BaseActivity implements SectionIndexer, PullToRefreshLayout.OnRefreshListener {
+    public static CustomeActivity customeActivity;
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     private int page = 1;
@@ -91,6 +89,14 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     //用以判断跳转不同界面
     String str1 = "default";
     private List filterDateList;
+    public Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                getCustomeListData(true, 1);
+            }
+        }
+    };
 
     @Override
     protected int setContentView() {
@@ -100,6 +106,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void initView() {
+        customeActivity = this;
         setTitle(getResources().getString(R.string.home_custom));
         initViews();
         Intent intent = getIntent();
@@ -232,8 +239,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             for (int i = 0; i < date.size(); i++) {
                 CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
                 // 汉字转换成拼音
-                if (!TextUtils.isEmpty(sortModel.getEn_name())) {
-                    String pinyin = characterParser.getSelling(sortModel.getEn_name());
+                if (!TextUtils.isEmpty(sortModel.getFirst_name())) {
+                    String pinyin = characterParser.getSelling(sortModel.getFirst_name());
                     String sortString = pinyin.substring(0, 1).toUpperCase();
                     // 正则表达式，判断首字母是否是英文字母
                     if (sortString.matches("[A-Z]")) {
@@ -270,7 +277,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             } else {
                 filterDateList = new ArrayList<CustomBean.ResultBean>();
                 for (CustomBean.ResultBean sortModel : SourceDateList) {
-                    String name = sortModel.getTrue_name();
+                    String name = sortModel.getFirst_name();
                     if (name.indexOf(filterStr.toString()) != -1
                             || characterParser.getSelling(name).startsWith(
                             filterStr)) {
@@ -319,7 +326,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     private void getCustomeListData(final boolean b, int page) {
         showDialog();
-        //String url = Contants.CUSTOMER_LIST + "user_id=" + SharedPreferencesHelps.getUserID() + "&page=" + page + "&number=20";
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
@@ -391,6 +397,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)){
                     ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                 }
+                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                 adapter.addMore(SourceDateList);
                 Log.e("TAG", "jsonParse: " + SourceDateList.size());
             }
@@ -547,6 +554,47 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
         });
 
+
+        //删除
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
+                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
+                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
+
+                    deleteCustomer(resultBean);
+
+                }
+
+
+                return false;
+            }
+        });
+
+    }
+
+    private void deleteCustomer(CustomBean.ResultBean resultBean) {
+        showDialog();
+
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
+
+        finalHttp.post(Contants.USER_CUSTOMER_DEL, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                closeDialog();
+            }
+        });
     }
 
 

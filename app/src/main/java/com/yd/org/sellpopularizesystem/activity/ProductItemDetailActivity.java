@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v4.view.ViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -14,13 +12,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.jude.rollviewpager.HintView;
 import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
-import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
-import com.jude.rollviewpager.hintview.IconHintView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 import com.umeng.socialize.ShareAction;
@@ -33,7 +28,6 @@ import com.umeng.socialize.utils.Log;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
@@ -48,10 +42,7 @@ import net.tsz.afinal.http.AjaxParams;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.List;
-
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
 public class ProductItemDetailActivity extends BaseActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
@@ -68,7 +59,8 @@ public class ProductItemDetailActivity extends BaseActivity {
     private String string;
     private static Bitmap bitmap;
     public int images;
-    private Bundle bun= new Bundle();;
+    private Bundle bun = new Bundle();
+    ;
     private String product_id;
 
     @Override
@@ -90,13 +82,6 @@ public class ProductItemDetailActivity extends BaseActivity {
         clickRightImageView(R.mipmap.share, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //打开分享面板（自己定制界面，不使用友盟默认）
-               /*new Thread(new Runnable() {
-                   @Override
-                   public void run() {
-
-                   }
-               });*/
                 openShareDialog();
             }
         });
@@ -222,7 +207,6 @@ public class ProductItemDetailActivity extends BaseActivity {
                     tvCashDesposit.setText(prs.getFirb_exchange_deposit());
                     tvSubscription.setText(prs.getMin_reservation_fee());
                     controlColor();
-                    bun.putSerializable("prs", prs);
                 }
             }
 
@@ -254,10 +238,13 @@ public class ProductItemDetailActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
             switch (v.getId()) {
+                //介绍
                 case R.id.tvIntroduce:
 
                     break;
+                //视频
                 case R.id.tvVideo:
                     /*if (tvVideo.getAlpha()==1.0f){
                         bun.putSerializable("prs",prs);
@@ -266,26 +253,35 @@ public class ProductItemDetailActivity extends BaseActivity {
                     ActivitySkip.forward(ProductItemDetailActivity.this, VideoActivity.class);
                     // JCVideoPlayer.JCAutoFullscreenListener.class.
                     break;
+                //预定
                 case R.id.tvOrder:
                     if (resultBean != null) {
-                        bun.putString("productId",product_id==null?"":product_id );
+                        bun.putString("productId", product_id == null ? "" : product_id);
                         bun.putString("title", resultBean.getProduct_name());
                         bun.putString("pidatopsla", "pidatopsla");
                         //Log.e("prs", "onClick: " + prs.getImg_content().size());
                         ActivitySkip.forward(ProductItemDetailActivity.this, ProductSubunitListActivity.class, bun);
                     }
                     break;
+                //平面图
                 case R.id.tvFloor:
                     if (resultBean != null){
                         bun.putSerializable("floorListData", (Serializable) prs.getImg_content());
                         ActivitySkip.forward(ProductItemDetailActivity.this,BuildingPlanActivity.class,bun);
                     }
                     break;
+                //合同
                 case R.id.tvContract:
+                    bun.putSerializable("file", prs);
+                    bun.putString("key","Contract");
+                    ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
 
                     break;
+                //文件
                 case R.id.tvFile:
-
+                    bun.putString("key","File");
+                    bun.putSerializable("file", prs);
+                    ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
                     break;
             }
         }
@@ -293,6 +289,9 @@ public class ProductItemDetailActivity extends BaseActivity {
     OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(int position) {
+            ActivitySkip.forward(ProductItemDetailActivity.this, ScaleDeltaileActivity.class, bun);
+            bun = new Bundle();
+            bun.putSerializable("prs", prs);
             ActivitySkip.forward(ProductItemDetailActivity.this, ScaleDeltaileActivity.class, bun);
         }
     };

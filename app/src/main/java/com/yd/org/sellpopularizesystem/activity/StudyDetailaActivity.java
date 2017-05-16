@@ -4,19 +4,27 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.fragment.LastFragmentView;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.StudyBean;
+import com.yd.org.sellpopularizesystem.javaBean.StudyInfoBean;
 import com.yd.org.sellpopularizesystem.viewpage.HackyViewPager;
 import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
 import com.yd.org.sellpopularizesystem.viewpage.ViewpagerAdapter;
+
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,12 +34,14 @@ import java.util.List;
  */
 public class StudyDetailaActivity extends FragmentActivity {
     private StudyBean.ResultBean resultBean;
-    private ArrayList<String> picList;
+    private List<StudyInfoBean.ResultBean> picList = new ArrayList<>();
     private ImageView backImageView;
     private HackyViewPager viewPager;
     private ViewpagerAdapter vpAdapter;
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
     private ImageView[] tips;
+
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -50,7 +60,7 @@ public class StudyDetailaActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_study_detaila);
         initView();
-        setViewPager();
+
 
     }
 
@@ -60,36 +70,20 @@ public class StudyDetailaActivity extends FragmentActivity {
         Bundle bundle = getIntent().getExtras();
         resultBean = (StudyBean.ResultBean) bundle.getSerializable("study");
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
-        //
-        picList = new ArrayList<>();
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-001.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-002.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-003.jpg");
-        picList.add("http://img.ivsky.com/img/bizhi/pre/201601/27/february_2016-004.jpg");
-        picList.add("http://img.ivsky.com/img/tupian/pre/201511/16/chongwugou.jpg");
 
 
-        //
-        for (int i = 0; i < picList.size() + 1; i++) {
-            if (i == picList.size()) {
-                if (resultBean != null) {
-                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
-                } else if (prs != null) {
-                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
-                }
-            } else {
-                fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i)));
-            }
-        }
+        getInfo(resultBean.getStudy_id());
+
+
     }
 
-    private void setViewPager() {
+    private void setViewPager(List<Fragment> fragmentLists) {
 
         backImageView = (ImageView) findViewById(R.id.backImageView);
         backImageView.setOnClickListener(onClickListener);
         //
         viewPager = (HackyViewPager) findViewById(R.id.viewPager);
-        vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentList, null);
+        vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentLists, null);
 
         viewPager.setAdapter(vpAdapter);
         viewPager.setCurrentItem(0);
@@ -97,7 +91,7 @@ public class StudyDetailaActivity extends FragmentActivity {
         //设置小圆点
 
         ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
-        tips = new ImageView[fragmentList.size()];
+        tips = new ImageView[fragmentLists.size()];
         for (int i = 0; i < tips.length; i++) {
             ImageView imageView = new ImageView(this);
             tips[i] = imageView;
@@ -148,6 +142,50 @@ public class StudyDetailaActivity extends FragmentActivity {
                 tips[i].setBackgroundResource(R.mipmap.dian_false);
             }
         }
+    }
+
+    private void getInfo(String study_id) {
+
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("study_id", study_id);
+        finalHttp.get(Contants.STUDY_INFO, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+
+            }
+
+            @Override
+            public void onSuccess(String sting) {
+
+                Log.e("string", "string:" + sting);
+
+                if (null != sting) {
+                    Gson gson = new Gson();
+                    StudyInfoBean studyBean = gson.fromJson(sting, StudyInfoBean.class);
+
+                    if (studyBean.getCode().equals("1")) {
+                        picList = studyBean.getResult();
+                        //
+                        for (int i = 0; i < picList.size() + 1; i++) {
+                            if (i == picList.size()) {
+                                if (resultBean != null) {
+                                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
+                                } else if (prs != null) {
+                                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
+                                }
+                            } else {
+                                fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl()));
+                            }
+                        }
+
+                        setViewPager(fragmentList);
+                    }
+                }
+
+            }
+        });
+
     }
 
 }

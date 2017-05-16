@@ -1,25 +1,17 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.BroadcastReceiver;
-import android.content.ClipData;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -29,43 +21,28 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
-
 import com.bigkoo.pickerview.OptionsPickerView;
-import com.bigkoo.pickerview.TimePickerView;
-import com.bigkoo.pickerview.lib.WheelView;
 import com.bigkoo.pickerview.listener.CustomListener;
-import com.bigkoo.pickerview.view.WheelOptions;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.hp.hpl.sparta.xpath.ThisNodeTest;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.adapter.SlidingListviewAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
-import com.yd.org.sellpopularizesystem.internal.Pullable;
-import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenu;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuCreator;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
 import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
-import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
-import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
-import com.yd.org.sellpopularizesystem.myView.SlidingItemListView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -80,20 +57,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CusOprateRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private String customeId;
@@ -109,7 +78,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private List<String> weeks;
     private List<String> hours;
     private List<String> minutes;
-    private CommonAdapter visitAdapter, eoiAdapter,subscribeAdapter;
+    private CommonAdapter visitAdapter, eoiAdapter, subscribeAdapter;
     private OptionsPickerView pvCustomTime;
     private SwipeMenuListView listView;
     private PullToRefreshLayout ptrl;
@@ -159,15 +128,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     //addOpratePopWin.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM,0,0);
                 }
             });
-        } else if (flag.equals("custoexpand") || flag.equals("custopurchase")) {
-            hideRightImagview();
-            if (flag.equals("custoexpand")) {
-                setTitle(getString(R.string.expandre));
-                getExpandReData();
-            } else if (flag.equals("custopurchase")) {
-                setTitle(getString(R.string.housepurchase));
-                getHousePurData();
-            }
         } else {
             setTitle("EOI");
             getEoiData();
@@ -197,9 +157,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             super.handleMessage(msg);
             if (msg.what == ExtraName.UPDATE && flag.equals("custovisit")) {
                 getVisitData(page);
-            }else if (msg.what == ExtraName.UPDATE && flag.equals("custoreser")){
+            } else if (msg.what == ExtraName.UPDATE && flag.equals("custoreser")) {
                 getReservertData();
-            }else if (msg.what == ExtraName.SUCCESS) {
+            } else if (msg.what == ExtraName.SUCCESS) {
                 getEoiData();
             }
         }
@@ -696,9 +656,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     tvVisitSubmit.setText("更新");
                     tvVisitSubmit.setOnClickListener(mOnClickListener);
                 } else if (flag.equals("custoreser")) {
-                    Bundle bun=new Bundle();
-                    bun.putSerializable("subrb",rbList.get(position));
-                    ActivitySkip.forward(CusOprateRecordActivity.this,DialogOptionActivity.class,bun);
+                    Bundle bun = new Bundle();
+                    bun.putSerializable("subrb", rbList.get(position));
+                    ActivitySkip.forward(CusOprateRecordActivity.this, DialogOptionActivity.class, bun);
                 }
             }
         });
@@ -801,9 +761,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
                 switch (index) {
                     case 0://第一个添加的菜单的响应时间(打开)
-                        if (flag.equals("custovisit")){
-                            if (vrrb.size()>0){
-                                int vlog_id=vrrb.get(position).getV_log_id();
+                        if (flag.equals("custovisit")) {
+                            if (vrrb.size() > 0) {
+                                int vlog_id = vrrb.get(position).getV_log_id();
                                 vrrb.remove(position);
                                 visitAdapter.notifyDataSetChanged();
                                 if (vrrb.size()==0){
@@ -811,10 +771,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 }
                                 removeVistOrResRecord(vlog_id);
                             }
-                        }else if (flag.equals("custoreser")){
-                            if (rbList.size()>0){
-                                Log.e("size", "onMenuItemClick: "+rbList.size()+"\n"+position );
-                                int log_id=rbList.get(position).getO_log_id();
+                        } else if (flag.equals("custoreser")) {
+                            if (rbList.size() > 0) {
+                                Log.e("size", "onMenuItemClick: " + rbList.size() + "\n" + position);
+                                int log_id = rbList.get(position).getO_log_id();
                                 rbList.remove(position);
                                 subscribeAdapter.notifyDataSetChanged();
                                 if (rbList.size()==0){
@@ -832,15 +792,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void removeVistOrResRecord(int id) {
         showDialog();
-        String strUrl="";
-        FinalHttp fh=new FinalHttp();
-        AjaxParams ajaxParams=new AjaxParams();
-        if (flag.equals("custovisit")){
-            ajaxParams.put("v_log_id",id+"");
-            strUrl=Contants.REMOVE_VISIT_RECORD;
-        }else if (flag.equals("custoreser")){
-            ajaxParams.put("o_log_id",id+"");
-            strUrl=Contants.REMOVE_RESERVER_RECORD;
+        String strUrl = "";
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        if (flag.equals("custovisit")) {
+            ajaxParams.put("v_log_id", id + "");
+            strUrl = Contants.REMOVE_VISIT_RECORD;
+        } else if (flag.equals("custoreser")) {
+            ajaxParams.put("o_log_id", id + "");
+            strUrl = Contants.REMOVE_RESERVER_RECORD;
         }
 
         fh.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
@@ -849,9 +809,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 super.onSuccess(s);
                 closeDialog();
                 try {
-                    JSONObject json=new JSONObject(s);
-                    if (json.getString("code").equals("1")){
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this,json.getString("msg"));
+                    JSONObject json = new JSONObject(s);
+                    if (json.getString("code").equals("1")) {
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -878,24 +838,24 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 closeDialog();
-                Gson gson=new Gson();
-                SubscribeListBean slb=gson.fromJson(s,SubscribeListBean.class);
-                if (slb.getCode().equals("1")){
-                    if (slb.getResult().size()>0){
+                Gson gson = new Gson();
+                SubscribeListBean slb = gson.fromJson(s, SubscribeListBean.class);
+                if (slb.getCode().equals("1")) {
+                    if (slb.getResult().size() > 0) {
                         rbList = slb.getResult();
-                        subscribeAdapter=new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList,R.layout.reserver_listview_item_layout) {
+                        subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
                             @Override
                             public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
-                                holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time()*1000));
+                                holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time() * 1000));
                                 holder.setText(R.id.tvSubscribeContent, item.getContent());
                             }
                         };
                         listView.setAdapter(subscribeAdapter);
-                        if (tvDes.getVisibility()==View.VISIBLE){
+                        if (tvDes.getVisibility() == View.VISIBLE) {
                             tvDes.setVisibility(View.GONE);
                         }
                         initMenuListView();
-                    }else {
+                    } else {
                         tvDes.setVisibility(View.VISIBLE);
                         tvDes.setText("没有相关信息");
                     }
@@ -910,13 +870,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         });
     }
 
-    private void getExpandReData() {
-
-    }
-
-    private void getHousePurData() {
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,26 +1,19 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.utils.SocializeUtils;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -28,7 +21,6 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.BindAcountPopupWindow;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -41,14 +33,12 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-import static com.yd.org.sellpopularizesystem.R.id.dialog;
-
 /**
  * 设置中心
  */
 public class SettingActivity extends BaseActivity {
-    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord;
-    private TextView settiing_noticTv, cancelLoginTv, versionTv,tvUserName;
+    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord, rlTeam;
+    private TextView settiing_noticTv, cancelLoginTv, versionTv, tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -70,6 +60,10 @@ public class SettingActivity extends BaseActivity {
                 //注销登录
                 case R.id.cancelLoginTv:
                     logOut();
+                    break;
+                //我的团队
+                case R.id.rlTeam:
+
                     break;
             }
         }
@@ -117,8 +111,9 @@ public class SettingActivity extends BaseActivity {
         changePassWordRel = getViewById(R.id.changePassWordRel);
         bindAccountRel = getViewById(R.id.bindAccountRel);
         rlSaleRecord = getViewById(R.id.saleRecord);
-        tvUserName=getViewById(R.id.tvCustomeName);
-        tvUserName.setText(SharedPreferencesHelps.getSurName()+SharedPreferencesHelps.getFirstName());
+        rlTeam = getViewById(R.id.rlTeam);
+        tvUserName = getViewById(R.id.tvCustomeName);
+        tvUserName.setText(SharedPreferencesHelps.getSurName() + SharedPreferencesHelps.getFirstName());
         //settiing_noticTv = getViewById(R.id.settiing_noticTv);
         cancelLoginTv = getViewById(R.id.cancelLoginTv);
         versionTv = getViewById(R.id.versionTv);
@@ -139,6 +134,7 @@ public class SettingActivity extends BaseActivity {
         bindAccountRel.setOnClickListener(mOnClickListener);
         cancelLoginTv.setOnClickListener(mOnClickListener);
         rlSaleRecord.setOnClickListener(mOnClickListener);
+        rlTeam.setOnClickListener(mOnClickListener);
     }
 
     public String getVersion() {
@@ -211,20 +207,20 @@ public class SettingActivity extends BaseActivity {
         http.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("type","wechat");
-        ajaxParams.put("openid",openId);
+        ajaxParams.put("type", "wechat");
+        ajaxParams.put("openid", openId);
         http.post(Contants.WEXIN_URL_STRING, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-                Log.e("TAG", "onSuccess: "+ s);
+                Log.e("TAG", "onSuccess: " + s);
                 try {
-                    JSONObject json=new JSONObject(s);
-                    if (json.get("code").equals("1")){
+                    JSONObject json = new JSONObject(s);
+                    if (json.get("code").equals("1")) {
                         acountPopupWindow.dismiss();
-                    }else{
-                        String str=json.getString("msg");
-                        ToasShow.showToastBottom(SettingActivity.this,str);
+                    } else {
+                        String str = json.getString("msg");
+                        ToasShow.showToastBottom(SettingActivity.this, str);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
