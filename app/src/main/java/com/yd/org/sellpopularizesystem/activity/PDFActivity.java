@@ -1,10 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.graphics.Canvas;
-import android.widget.Toast;
-
 import com.lidong.pdf.PDFView;
-import com.lidong.pdf.listener.OnDrawListener;
 import com.lidong.pdf.listener.OnLoadCompleteListener;
 import com.lidong.pdf.listener.OnPageChangeListener;
 import com.yd.org.sellpopularizesystem.R;
@@ -13,7 +9,7 @@ import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 public class PDFActivity extends BaseActivity implements OnPageChangeListener
-        , OnLoadCompleteListener, OnDrawListener {
+        , OnLoadCompleteListener {
     private PDFView pdfView;
     private FileContent fileContent;
 
@@ -49,7 +45,7 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
      */
     private void displayFromFile1(String fileUrl, String fileName) {
 
-        pdfView.fileFromLocalStorage(this, this, this, fileUrl, fileName);   //设置pdf文件地址
+        pdfView.fileFromLocalStorage(this, this, fileUrl, fileName);   //设置pdf文件地址
 
     }
 
@@ -73,15 +69,8 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
     @Override
     public void loadComplete(int nbPages) {
         closeDialog();
-        Toast.makeText(PDFActivity.this, "加载完成" + nbPages, Toast.LENGTH_SHORT).show();
-
-        ToasShow.showToastBottom(PDFActivity.this, "加载完成" + nbPages);
     }
 
-    @Override
-    public void onLayerDrawn(Canvas canvas, float pageWidth, float pageHeight, int displayedPage) {
-        // Toast.makeText( MainActivity.this ,  "pageWidth= " + pageWidth + "
-        // pageHeight= " + pageHeight + " displayedPage="  + displayedPage , Toast.LENGTH_SHORT).show();
-    }
+
 
 }
