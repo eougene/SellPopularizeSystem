@@ -50,7 +50,7 @@ public class FilterActivity extends BaseActivity {
     }
 
     private void initSetting() {
-        setTitle("筛选");
+        setTitle(R.string.select);
         setColor(Color.BLACK);
         setBaseLayoutBackground(Color.WHITE);
         /*setRightTitleBackground(R.drawable.button_bac,Color.WHITE);
