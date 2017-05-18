@@ -331,7 +331,7 @@ public class ProductItemDetailActivity extends BaseActivity {
 
         @Override
         public void onResult(SHARE_MEDIA platform) {
-            ToasShow.showToastCenter(ProductItemDetailActivity.this, "分享成功");
+            ToasShow.showToastCenter(ProductItemDetailActivity.this, getString(R.string.sharesuccess));
             if (bitmap != null) {
                 bitmap.recycle();
             }
@@ -341,10 +341,10 @@ public class ProductItemDetailActivity extends BaseActivity {
         public void onError(SHARE_MEDIA platform, Throwable t) {
             if (t != null) {
                 String expName = t.getMessage();
-                if (expName.contains("没有安装应用")) {
-                    ToasShow.showToastCenter(ProductItemDetailActivity.this, "抱歉，您的客户端没有安装该应用");
+                if (expName.contains(getString(R.string.noinstallapp))) {
+                    ToasShow.showToastCenter(ProductItemDetailActivity.this, getString(R.string.clientnoinstallapp));
                 } else {
-                    ToasShow.showToastCenter(ProductItemDetailActivity.this, "抱歉，分享失败");
+                    ToasShow.showToastCenter(ProductItemDetailActivity.this, getString(R.string.sharefail));
                     Log.e("tag", "onError: " + t.getMessage());
                     ;
                 }
@@ -357,7 +357,7 @@ public class ProductItemDetailActivity extends BaseActivity {
 
         @Override
         public void onCancel(SHARE_MEDIA platform) {
-            Toast.makeText(mActivity.get(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mActivity.get(), platform + getString(R.string.sharecancel), Toast.LENGTH_SHORT).show();
             if (bitmap != null) {
                 bitmap.recycle();
             }

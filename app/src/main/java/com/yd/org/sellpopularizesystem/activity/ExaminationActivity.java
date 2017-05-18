@@ -55,7 +55,7 @@ public class ExaminationActivity extends BaseActivity {
     @Override
     public void initView() {
 
-        setTitle("考核");
+        setTitle(R.string.check);
         hideRightImagview();
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 提交按钮
@@ -117,11 +117,11 @@ public class ExaminationActivity extends BaseActivity {
             //answer.setAnswerContent(set);
             //多选和单选
             if (questions.get(i).getType() == 3) {
-                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + "(多选题)");
+                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + getString(R.string.mutilatequestion));
             } else if (questions.get(i).getType() == 1) {
-                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + "(是非题)");
+                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + getString(R.string.yesornoquestion));
             } else if (questions.get(i).getType() == 2) {
-                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + "(单选题)");
+                questionTitle.setText((i + 1) + "." + questions.get(i).getCheck_title() + getString(R.string.singlequestion));
             }
             the_answer_list = questions.get(i).getOptions();
             for (int j = 0; j < the_answer_list.size(); j++) {
@@ -319,7 +319,7 @@ public class ExaminationActivity extends BaseActivity {
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 Log.e("提交失败", "s:" + errorNo + "strMsg:" + strMsg);
                 closeDialog();
-                ToasShow.showToastBottom(ExaminationActivity.this, "提交失败!");
+                ToasShow.showToastBottom(ExaminationActivity.this, getString(R.string.submitfail));
             }
         });
 

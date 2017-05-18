@@ -21,7 +21,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         Bundle bundle=getIntent().getExtras();
         bean= (ProductChildBean) bundle.get("item");
         hideRightImagview();
-        setTitle("项目详情");
+        setTitle(getString(R.string.projectdetail));
         tvItStatus= (TextView) findViewById(R.id.tvItStatus);
         tvItPrice= (TextView) findViewById(R.id.tvItPrice);
         tvItType= (TextView) findViewById(R.id.tvItType);
