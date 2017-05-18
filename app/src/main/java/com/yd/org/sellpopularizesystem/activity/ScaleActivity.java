@@ -8,16 +8,13 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.auth.AccountChangeEvent;
 import com.google.gson.Gson;
-
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
 import com.yd.org.sellpopularizesystem.adapter.ScaleCityAdapter;
@@ -26,7 +23,6 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.CityBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ACache;
@@ -39,12 +35,7 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONObject;
-
-import java.io.FileNotFoundException;
 import java.io.Serializable;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -173,7 +164,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     Log.e("TAG", "retrun**: ");
                     if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
                         String jsonStr = aCache.getAsString("product_list_json");
-                        Log.e("tag1", "handleMessage: "+jsonStr);
+                        Log.e("tag1", "handleMessage: " + jsonStr);
                         jsonParse(jsonStr, true);
                     } else {
                         getProductListData(true, page, null, null, null, null);
@@ -186,8 +177,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 price = psu.getPrice();
                 Log.e("tag", "handleMessage: " + area + house + space + space);
                 if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-                    ToasShow.showToastCenter(ScaleActivity.this,"当前无网络");
-                }else {
+                    ToasShow.showToastCenter(ScaleActivity.this, "当前无网络");
+                } else {
                     getProductListData(true, page, space, price, house, area);
                 }
 
@@ -222,16 +213,16 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         //加载筛选数据
         //getProductSearch();
         //获取产品数据
-        if (!MyUtils.getInstance().isNetworkConnected(this)){
+        if (!MyUtils.getInstance().isNetworkConnected(this)) {
             String jsonStr = aCache.getAsString("product_list_json");
-            if (jsonStr!=null){
-                Log.e("tag1", "initView: "+jsonStr);
+            if (jsonStr != null) {
+                Log.e("tag1", "initView: " + jsonStr);
                 jsonParse(jsonStr, true);
-            }else {
-                ToasShow.showToastCenter(this,getString(R.string.nonetwork));
+            } else {
+                ToasShow.showToastCenter(this, getString(R.string.nonetwork));
             }
 
-        }else {
+        } else {
             getProductListData(true, page, space, price, house, area);
         }
         //初始化view
@@ -507,18 +498,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         fh.get(Contants.PRODUCT_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-
-                Log.e("sss", "ajax:" + ajaxParams.toString());
-
-                Log.e("获取推广数据", "s:" + s);
                 super.onSuccess(s);
                 closeDialog();
                 if (null != s) {
                     if (aCache != null) {
-                        if (aCache.getAsString("product_list_json")!=null){
-                            aCache.put("product_list_json", s, ACache.TIME_HOUR);
-                            Log.e("tag2", "onSuccess: "+aCache.getAsString("product_list_json"));
-                        }
+                        aCache.put("product_list_json", s, ACache.TIME_HOUR);
                     }
                     jsonParse(s, boool);
                 }
@@ -542,16 +526,15 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         if (product.getCode().equals("1")) {
             productData = product.getResult();
             tvProjectNum.setText("共" + productData.size() + "个项目" + getString(R.string.single_blank_space) + strSelect);
-            Log.d("数据长度", "jsonParse: " + productData.size());
         }
         if (isRefresh) {
-            if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)){
+            if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             }
-            adapter = new CustomeListAdapter(ScaleActivity.this);
+            adapter = new CustomeListAdapter(ScaleActivity.this, isRefresh);
             listView.setAdapter(adapter);
         }
-        if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)){
+        if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         }
         adapter.addData(productData);
