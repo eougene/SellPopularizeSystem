@@ -36,6 +36,7 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
@@ -181,9 +182,9 @@ public class CustomDetailedActivity extends BaseActivity {
                         Uri uri = Uri.parse("mailto:" + edcustmomeDetailedEmail.getText().toString());
                         Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
                         //intent.putExtra(Intent.EXTRA_CC, email); // 抄送人
-                        intent.putExtra(Intent.EXTRA_SUBJECT, "这是邮件的主题部分"); // 主题
-                        intent.putExtra(Intent.EXTRA_TEXT, "这是邮件的正文部分"); // 正文
-                        startActivity(Intent.createChooser(intent, "请选择邮件类应用"));
+                        intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.emailtopic)); // 主题
+                        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.emailcontent)); // 正文
+                        startActivity(Intent.createChooser(intent, getString(R.string.chooseemailapp)));
                     }
 
                     break;
@@ -241,9 +242,7 @@ public class CustomDetailedActivity extends BaseActivity {
     @Override
     public void initView() {
         Views();
-
         Bundle bundle = getIntent().getExtras();
-
         if (!TextUtils.isEmpty(bundle.getString("add"))) {
             tag = bundle.getString("add");
             //添加客户
@@ -256,6 +255,11 @@ public class CustomDetailedActivity extends BaseActivity {
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("custome");
                 getCustomInfo(resultBean);
             }
+        }
+        if (bundle.getString(ExtraName.SCALETOCUSTOME)!=null){
+            setTitle(R.string.customdetaild_title);
+            resultBean = BaseApplication.getInstance().getResultBean();
+            getCustomInfo(resultBean);
         }
         initProviceSelectView();
         setTimePicker();
@@ -716,7 +720,7 @@ public class CustomDetailedActivity extends BaseActivity {
             public void onClick(View v) {
                 isAddrChoosed = true;
                 String addr = mCurrentProviceName + mCurrentCityName;
-                if (!mCurrentDistrictName.equals("其他")) {
+                if (!mCurrentDistrictName.equals(getString(R.string.other))) {
                     addr += mCurrentDistrictName;
                 }
                 edcustmomeDetailedCity.setText(addr);
@@ -784,7 +788,7 @@ public class CustomDetailedActivity extends BaseActivity {
         btSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etFirb.setText("是");
+                etFirb.setText(getString(R.string.yes));
                 firbSelectPopWindow.dismiss();
             }
         });
@@ -792,7 +796,7 @@ public class CustomDetailedActivity extends BaseActivity {
         btFalse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etFirb.setText("否");
+                etFirb.setText(getString(R.string.no));
                 firbSelectPopWindow.dismiss();
             }
         });
@@ -910,9 +914,9 @@ public class CustomDetailedActivity extends BaseActivity {
                 super.onSuccess(s);
                 closeDialog();
                 if (updateOrAdd.equals(ADD)) {
-                    ToasShow.showToastCenter(CustomDetailedActivity.this, "添加成功");
+                    ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.addsuccess));
                 } else {
-                    ToasShow.showToastCenter(CustomDetailedActivity.this, "更新成功");
+                    ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.updatesuccess));
                 }
                 CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
                 finish();
@@ -923,7 +927,7 @@ public class CustomDetailedActivity extends BaseActivity {
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
                 closeDialog();
-                ToasShow.showToastBottom(CustomDetailedActivity.this, "提交失败");
+                ToasShow.showToastBottom(CustomDetailedActivity.this, getString(R.string.submitfail));
             }
 
         });
@@ -940,7 +944,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
             surname = edCustomeTrueName.getText().toString().trim();
         } else {
-            ToasShow.showToastCenter(this, "姓不能为空");
+            ToasShow.showToastCenter(this, getString(R.string.fistnamenonull));
             return;
         }
 
@@ -948,7 +952,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(etFistName.getText().toString().trim())) {
             first_name = etFistName.getText().toString().trim();
         } else {
-            ToasShow.showToastCenter(this, "名不能为空");
+            ToasShow.showToastCenter(this, getString(R.string.lastnamenonull));
             return;
         }
 
@@ -957,7 +961,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(etEnglishName.getText().toString().trim())) {
             en_name = etEnglishName.getText().toString().trim();
         } else {
-            ToasShow.showToastCenter(this, "英文名不能为空");
+            ToasShow.showToastCenter(this, getString(R.string.englishnamenonull));
             return;
         }
 
@@ -968,7 +972,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //电话,//邮件
         if (TextUtils.isEmpty(edCustomeMobile.getText().toString().trim()) && TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())) {
-            ToasShow.showToastCenter(this, "手机,邮箱至少一项不能为空");
+            ToasShow.showToastCenter(this, getString(R.string.teleonenonull));
             return;
         } else {
 
@@ -1052,7 +1056,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(edZipCode.getText().toString().trim())) {
             zip_code = edZipCode.getText().toString().trim();
         } else {
-            ToasShow.showToastCenter(this, "邮编不能为空");
+            ToasShow.showToastCenter(this, getString(R.string.nonullpostcode));
             return;
         }
 
@@ -1060,9 +1064,9 @@ public class CustomDetailedActivity extends BaseActivity {
         //是否是FIRB
         if (!TextUtils.isEmpty(etFirb.getText().toString().trim())) {
 
-            if (etFirb.getText().toString().trim().equals("是")) {
+            if (etFirb.getText().toString().trim().equals(getString(R.string.yes))) {
                 is_firb = "1";
-            } else if (etFirb.getText().toString().trim().equals("否")) {
+            } else if (etFirb.getText().toString().trim().equals(getString(R.string.no))) {
                 is_firb = "2";
             } else {
                 is_firb = "0";

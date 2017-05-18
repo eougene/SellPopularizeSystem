@@ -282,7 +282,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 setText(cal, options1, options2, options3);
             }
-        }).setTitleText("凭证上传时间").setTitleColor(R.color.black)
+        }).setTitleText(getString(R.string.uploadetime)).setTitleColor(R.color.black)
                 .setCyclic(true, true, true)/*.setOutSideCancelable(false)*/
                 .setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))))
                 .isDialog(true);
@@ -294,7 +294,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 TextView tvTitle = (TextView) v.findViewById(R.id.tvTitle);
                 ImageView ivUp = (ImageView) v.findViewById(R.id.ivUp);
                 ImageView ivDown = (ImageView) v.findViewById(R.id.ivDown);
-                tvTitle.setText("凭证上传时间");
+                tvTitle.setText(getString(R.string.uploadetime));
                 ivUp.setVisibility(View.GONE);
                 ivDown.setVisibility(View.GONE);
                 tvFinish.setOnClickListener(new View.OnClickListener() {
@@ -322,7 +322,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 m.find();
                 String newStr = m.group();*/
         String[] nums = new String[2];
-        if (str1.equals("今天")) {
+        if (str1.equals(getString(R.string.today))) {
             nums[0] = String.format("%02d", cal.get(Calendar.MONTH) + 1);
             nums[1] = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH));
         } else {
@@ -400,11 +400,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     Log.e("submitEoi", "onClick: " + "submitEoi");
                     if (llCertificate.getVisibility() == View.VISIBLE) {
                         if (picPath == null) {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, "请上传支付凭证");
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.picpath));
                         }
                     }
                     if (tvMoneyNum.getText().equals("-")) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请选择支付方式");
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.pay_method));
                     } else {
                         //提交eoi
                         Log.e("submitEoi", "onClick: " + "submitEoi");
@@ -434,7 +434,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     break;
                 case R.id.tvVisitSubmit:
                     if (etVistTitle.getText().toString().equals(visitRecord.getTitle().toString()) && etVistContent.getText().toString().equals(visitRecord.getContent().toString())) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, "请您改动内容后再提交");
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.tips));
                     } else {
                         updateVisit();
                     }
@@ -565,10 +565,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                        if (json.getString("msg").equals("充值成功")) {
+                        if (json.getString("msg").equals(getString(R.string.rechargesuccess))) {
                             eoiDialog.dismiss();
                             handler.sendEmptyMessage(ExtraName.SUCCESS);
-                            json.getString("trust_account_id");
+                            Log.e("tag", "trust_account_id: "+ json.getString("trust_account_id"));
                         }
                     } else {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
@@ -614,13 +614,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
                             holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + "");
                             if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==6||item.getPayment_method()==7)){
-                                holder.setText(R.id.tvEoiStatusDes, "尚未付款");
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
                             }else if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==1||item.getPayment_method()==4)) {
-                                holder.setText(R.id.tvEoiStatusDes, "凭证已上传,正在审核");
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
                             } else if (item.getCancel_apply_status() == 1) {
-                                holder.setText(R.id.tvEoiStatusDes, "退款申请正在审核");
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
                             } else {
-                                holder.setText(R.id.tvEoiStatusDes, "尚未付款");
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
                             }
                         }
                     };
@@ -648,11 +648,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 if (flag.equals("custovisit")) {
                     visitRecord = (VisitRecord.ResultBean) visitAdapter.getItem(position);
                     visitDilog.show();
-                    tvVisitTile.setText("详情");
+                    tvVisitTile.setText(getString(R.string.details));
                     etVistTitle.setText(visitRecord.getTitle());
                     tvVisitTime.setText(MyUtils.date2String("MM/dd HH:mm", visitRecord.getAdd_time() * 1000));
                     etVistContent.setText(visitRecord.getContent());
-                    tvVisitSubmit.setText("更新");
+                    tvVisitSubmit.setText(getString(R.string.update));
                     tvVisitSubmit.setOnClickListener(mOnClickListener);
                 } else if (flag.equals("custoreser")) {
                     Bundle bun = new Bundle();
@@ -720,7 +720,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     initMenuListView();
                 } else {
                     tvDes.setVisibility(View.VISIBLE);
-                    tvDes.setText("没有相关信息");
+                    tvDes.setText(getString(R.string.noinformation));
                 }
 
             }
@@ -744,7 +744,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 //设置宽度
                 deleteItem.setWidth(MyUtils.dp2px(CusOprateRecordActivity.this, 80));
                 //设置文字
-                deleteItem.setTitle("删除");
+                deleteItem.setTitle(getString(R.string.delete));
                 //字体大小
                 deleteItem.setTitleSize(16);
                 //字体颜色
@@ -856,7 +856,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         initMenuListView();
                     } else {
                         tvDes.setVisibility(View.VISIBLE);
-                        tvDes.setText("没有相关信息");
+                        tvDes.setText(getString(R.string.noinformation));
                     }
                 }
             }

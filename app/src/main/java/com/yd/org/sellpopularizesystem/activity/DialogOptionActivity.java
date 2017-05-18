@@ -130,7 +130,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         etReserContent = (EditText) view.findViewById(R.id.etRemarkContent);
         tvSubmit = (TextView) view.findViewById(R.id.tvSubmit);
         if (slbRb != null) {
-            tvResDes.setText("详情");
+            tvResDes.setText(R.string.details);
             etReserTime.setText(resTime);
             etRemindTime.setText(remindTime);
             etReserContent.setText(strContent);
@@ -174,7 +174,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             }
             for (int j = 1; j < days; j++) {
                 if (i == mMon && j == mDay) {
-                    weeks.add("今天");
+                    weeks.add(R.string.today);
                 } else {
                     String dayOfWeek = getdayOfWeek(ca, i, j);
                     String str = i + "月" + j + "日" + "周" + dayOfWeek;
@@ -200,7 +200,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 setText(cal, options1, options2, options3);
             }
-        }).setTitleText("请在指定时间完成").setTitleColor(R.color.black)
+        }).setTitleText(getString(R.string.doneinpecifi)).setTitleColor(R.color.black)
                 .setCyclic(true, true, true)/*.setOutSideCancelable(false)*/
                 .setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))))
                 .isDialog(true);
@@ -300,7 +300,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                 m.find();
                 String newStr = m.group();*/
         String[] nums = new String[2];
-        if (str1.equals("今天")) {
+        if (str1.equals(R.string.today)) {
             nums[0] = String.format("%02d", cal.get(Calendar.MONTH) + 1);
             nums[1] = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH));
         } else {
@@ -322,7 +322,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                     String str = sdf.format(ca.getTime());
                     Log.e("tag", "reserverTime: " + reserverTime + "\n" + str);
                     if (reserverTime < currentTime) {
-                        ToasShow.showToastBottom(DialogOptionActivity.this, "预约时间必须大于当前时间");
+                        ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.datetimemust));
                     } else {
                         etReserTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
                                 + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
@@ -341,11 +341,11 @@ public class DialogOptionActivity extends AppCompatActivity {
                         if (reminderTime > reserverTime) {
                             Log.e("tag", "currentTime: " + reminderTime);
                             Log.e("tag", "reminderTime: " + reserverTime);
-                            ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
+                            ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.datetimemustlarge));
                         } else if (reminderTime < currentTime) {
                             Log.e("tag", "currentTime: " + reminderTime);
                             Log.e("tag", "reminderTime: " + currentTime);
-                            ToasShow.showToastBottom(DialogOptionActivity.this, "提醒时间必须小于预约时间且大于当前时间");
+                            ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.datetimemustlarge));
                         } else {
                             etRemindTime.setText(String.format("%02d", Integer.parseInt(nums[0])) + "/"
                                     + String.format("%02d", Integer.parseInt(nums[1])) + getString(R.string.blank_space) + str2 + ":" + str3);
@@ -436,7 +436,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(etRemindTime.getText())) {
                         etRemindTime.setInputType(InputType.TYPE_NULL);
                     }
-                    pvCustomTime.setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))));
+                    pvCustomTime.setSelectOptions(weeks.indexOf(getString(R.string.today)), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))));
                     pvCustomTime.show();
                     break;
                 case R.id.tvVisitTime:
@@ -453,7 +453,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                         if (etReserTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm",slbRb.getOrder_time()*1000))
                                 && etRemindTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm",slbRb.getCue_time()*1000))
                                 && etReserContent.getText().toString().equals(slbRb.getContent())){
-                            ToasShow.showToastCenter(DialogOptionActivity.this,"请您改动内容后再提交");
+                            ToasShow.showToastCenter(DialogOptionActivity.this,getString(R.string.tips));
                         }else {
                             updateReseverInfo();
                         }
@@ -538,7 +538,7 @@ public class DialogOptionActivity extends AppCompatActivity {
 
     private void submitVisit() {
         if (TextUtils.isEmpty(etVistTitle.getText().toString())) {
-            ToasShow.showToastBottom(DialogOptionActivity.this, "请输入标题");
+            ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.writetitle));
         } else {
             FinalHttp fh = new FinalHttp();
             AjaxParams ajaxParams = new AjaxParams();
@@ -577,9 +577,9 @@ public class DialogOptionActivity extends AppCompatActivity {
 
     private void submitToCalendar() {
         if (TextUtils.isEmpty(etReserTime.getText().toString())) {
-            ToasShow.showToastBottom(DialogOptionActivity.this, "请设置预约时间");
+            ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.setdatetime));
         } else if (TextUtils.isEmpty(etRemindTime.getText().toString())) {
-            ToasShow.showToastBottom(DialogOptionActivity.this, "请设置提醒时间,必须早于预约时间");
+            ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.setremindertime));
         } else {
             //获取日历账户id
             Log.e("TAG", "submit: " + reserverTime + "\n" + reminderTime);
@@ -590,11 +590,11 @@ public class DialogOptionActivity extends AppCompatActivity {
                 userCursor.moveToLast();
                 calId = userCursor.getString(userCursor.getColumnIndex("_id"));
             } else {
-                Toast.makeText(this, "没有账户，请先添加账户", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.noaccount, Toast.LENGTH_SHORT).show();
                 return;
             }
             ContentValues event = new ContentValues();
-            event.put("title", "预约申请");
+            event.put("title", getString(R.string.askdate));
             if (!TextUtils.isEmpty(etReserContent.getText())) {
                 event.put("description", etReserContent.getText().toString());
             }

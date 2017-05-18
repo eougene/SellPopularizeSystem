@@ -115,7 +115,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (jsonStr != null) {
                     jsonParse(jsonStr, true);
                 } else {
-                    ToasShow.showToastCenter(this, "当前无网络");
+                    ToasShow.showToastCenter(this, getString(R.string.nonetwork));
                 }
             } else {
                 getCustomeListData(true, page);
@@ -131,7 +131,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (jsonStr != null) {
                     jsonParse(jsonStr, true);
                 } else {
-                    ToasShow.showToastCenter(this, "当前无网络");
+                    ToasShow.showToastCenter(this, getString(R.string.nonetwork));
                 }
             } else {
                 getCustomeListData(true, page);
@@ -335,7 +335,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     }
                     jsonParse(s, b);
                 } else {
-                    ToasShow.showToastBottom(CustomeActivity.this, "无数据");
+                    ToasShow.showToastBottom(CustomeActivity.this, getString(R.string.nodata));
                 }
             }
 
@@ -369,7 +369,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         } else {
             CustomBean product = gson.fromJson(json, CustomBean.class);
             if (product.getCode() == 1) {
-                if (product.getMsg().equals("暂无数据")) {
+                if (product.getMsg().equals(getString(R.string.nodata))) {
                     tvNoMessage.setVisibility(View.VISIBLE);
                 } else {
                     SourceDateList = filledData(product.getResult());
@@ -555,7 +555,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
                     SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                     CustomBean.ResultBean resultBean = viewHolder.resultBean;
-
                     deleteCustomer(resultBean);
 
                 }
