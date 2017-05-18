@@ -24,6 +24,7 @@ import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
 import com.yd.org.sellpopularizesystem.adapter.LawyerAdapter;
 import com.yd.org.sellpopularizesystem.adapter.SortGroupMemberAdapter;
+import com.yd.org.sellpopularizesystem.adapter.TeamAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
@@ -34,6 +35,7 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
+import com.yd.org.sellpopularizesystem.javaBean.TeamBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.CharacterParserUtil;
@@ -41,6 +43,8 @@ import com.yd.org.sellpopularizesystem.utils.CountryComparator;
 import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
 import com.yd.org.sellpopularizesystem.utils.GetLawyerNameSort;
 import com.yd.org.sellpopularizesystem.utils.LawyerComparator;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.TeamComparator;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -57,8 +61,15 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
     private SearchEditText searchEditText;
     //private CommonAdapter lawyerAdapter;
     private LawyerAdapter lawyerAdapter;
+    private TeamAdapter teamAdapter;
+    //律师组集合
     private List<Lawyer.ResultBean> lawyerGroupListData = new ArrayList<Lawyer.ResultBean>();
+    //律师集合
     private List<Lawyer.ResultBean.LawyerListBean> lawyerListData = new ArrayList<Lawyer.ResultBean.LawyerListBean>();
+    //团队集合
+    private List<TeamBean.ResultBean.SubBeanX>  teamGroupListData=new ArrayList<TeamBean.ResultBean.SubBeanX>();
+    //团队成员集合
+    private List<TeamBean.ResultBean.SubBeanX.SubBean>  teamListData=new ArrayList<TeamBean.ResultBean.SubBeanX.SubBean>();
     /**
      * 分组的布局
      */
@@ -77,12 +88,15 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
     private GetLawyerNameSort countryChangeUtil;
     private CharacterParserUtil characterParserUtil;
     private LawyerComparator pinyinComparator;
+    private TeamComparator teamComparator;
     private List<CountrySortModel> mAllCountryList;
     public static LawyerActivity lawyerActivity;
+    private String strTeam;
+
     @Override
     protected int setContentView() {
-        lawyerActivity=this;
-        setTitle("选择律师");
+        lawyerActivity = this;
+        setTitle(getString(R.string.selectlawyer));
         changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,19 +119,53 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
         listView = getViewById(R.id.content_view);
         mAllCountryList = new ArrayList<CountrySortModel>();
         pinyinComparator = new LawyerComparator();
+        teamComparator=new TeamComparator();
         countryChangeUtil = new GetLawyerNameSort();
         characterParserUtil = new CharacterParserUtil();
-        getLawyerListData("", true);
+        strTeam = getIntent().getExtras().getString("team");
+        if (strTeam != null && strTeam.equals("team")) {
+            getTeamListData("", true);
+        } else {
+            getLawyerListData("", true);
+        }
     }
-        Handler handler=new Handler(){
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == ExtraName.UPDATE) {
+                getLawyerListData("", true);
+            }
+        }
+    };
+
+    /**
+     * 获取我的团队列表
+     */
+    private void getTeamListData(String s, final boolean b) {
+        showDialog();
+        FinalHttp http = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        http.get(Contants.TEAM_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                if (msg.what==ExtraName.UPDATE){
-                    getLawyerListData("", true);
+            public void onSuccess(String s) {
+                super.onSuccess(s);
+                closeDialog();
+                if (null != s) {
+                    //jsonParse(s);
+                    jsonParse(s, b);
                 }
             }
-        };
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
+
     /**
      * 获取律师列表
      */
@@ -151,18 +199,31 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
 
     private void jsonParse(String json, boolean isRefresh) {
         Gson gson = new Gson();
-        Lawyer lawyerBean = gson.fromJson(json, Lawyer.class);
-        if (lawyerBean.getCode() == 1) {
-            lawyerGroupListData = lawyerBean.getResult();
-            Log.e("TAG1", "jsonParse: " + lawyerGroupListData.size());
-            for (int i = 0; i < lawyerGroupListData.size(); i++) {
-                //cout+= lawyerGroupListData.get(i).getLawyer_list().size();
-                for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {
-                    Lawyer.ResultBean.LawyerListBean lawyer = lawyerGroupListData.get(i).getLawyer_list().get(j);
+        if (strTeam == null) {
+            Lawyer lawyerBean = gson.fromJson(json, Lawyer.class);
+            if (lawyerBean.getCode() == 1) {
+                lawyerGroupListData = lawyerBean.getResult();
+                Log.e("TAG1", "jsonParse: " + lawyerGroupListData.size());
+                for (int i = 0; i < lawyerGroupListData.size(); i++) {
+                    //cout+= lawyerGroupListData.get(i).getLawyer_list().size();
+                    for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {
+                        Lawyer.ResultBean.LawyerListBean lawyer = lawyerGroupListData.get(i).getLawyer_list().get(j);
                 /*if (lawyerListData.size()==0||lawyerListData.size()==(cout-(lawyerGroupListData.get(i).getLawyer_list().size()))){
                     lawyer.setFirst(true);
                 }*/
-                    lawyerListData.add(lawyer);
+                        lawyerListData.add(lawyer);
+                    }
+                }
+            }
+        }else {
+            TeamBean tb=gson.fromJson(json, TeamBean.class);
+            if (tb.getCode().equals("1")){
+                teamGroupListData.addAll(tb.getResult().getSub());
+                for (int i = 0; i <teamGroupListData.size(); i++) {
+                    for (int j = 0; j <teamGroupListData.get(i).getSub().size() ; j++) {
+                        TeamBean.ResultBean.SubBeanX.SubBean sb=teamGroupListData.get(i).getSub().get(j);
+                        teamListData.add(sb);
+                    }
                 }
             }
         }
@@ -182,9 +243,14 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
                     holder.setText(R.id.tvName, item.getLawyer_id() + item.getFirst_name() + item.getSurname());
                 }
             };*/
-            Collections.sort(lawyerListData, pinyinComparator);
-            lawyerAdapter = new LawyerAdapter(LawyerActivity.this, lawyerListData);
-            listView.setAdapter(lawyerAdapter);
+            if (strTeam == null){
+                Collections.sort(lawyerListData, pinyinComparator);
+                lawyerAdapter = new LawyerAdapter(LawyerActivity.this, lawyerListData);
+                listView.setAdapter(lawyerAdapter);
+            }else {
+                Collections.sort(teamListData, teamComparator);
+
+            }
             setListener();
         } else {
             lawyerAdapter.notifyDataSetChanged();
@@ -273,7 +339,7 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
         clickRightImageView(R.mipmap.addim, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivitySkip.forward(LawyerActivity.this,LawyerAddActivity.class);
+                ActivitySkip.forward(LawyerActivity.this, LawyerAddActivity.class);
             }
         });
     }

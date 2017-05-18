@@ -31,7 +31,7 @@ public class LawyerAddActivity extends BaseActivity {
 
     @Override
     protected int setContentView() {
-        setTitle("律师信息");
+        setTitle(getString(R.string.lawyerinformation));
         setRightTitle(R.string.customdetaild_save,mSaveOnClickListener);
         setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_lawyer_add;

@@ -25,7 +25,7 @@ public class BuildingPlanActivity extends BaseActivity {
     @Override
     protected int setContentView() {
         hideRightImagview();
-        setTitle("平面图");
+        setTitle(R.string.floorphoto);
         return R.layout.activity_building_plan;
     }
 
