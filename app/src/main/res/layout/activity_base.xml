@@ -3,17 +3,22 @@
               android:id="@+id/parent_container"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white"
               android:orientation="vertical">
 
     <include
         android:id="@+id/base_header_layout"
         layout="@layout/base_header_main"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/search_edit_bac"/>
+
 
     <FrameLayout
         android:id="@+id/llcontent"
         style="@style/MatchMatch"
+        android:background="@color/white"
         android:orientation="vertical"
         android:visibility="visible"/>
 

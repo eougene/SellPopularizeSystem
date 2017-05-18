@@ -44,7 +44,7 @@
             android:layout_marginRight="@dimen/padding_margin_35"
             android:background="@drawable/circle_shape"
             android:gravity="center"
-            android:text="99"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_10"/>
 

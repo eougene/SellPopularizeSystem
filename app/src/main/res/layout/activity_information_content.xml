@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yd.org.sellpopularizesystem.activity.InformationContentActivity">
+    android:background="@color/search_edit_bac"
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/tvInformContent"
         style="@style/MatchWrap"
-        android:layout_marginLeft="5dp"/>
+        android:layout_marginLeft="@dimen/padding_margin_20"
+        android:layout_marginTop="@dimen/padding_margin_20"/>
 </LinearLayout>

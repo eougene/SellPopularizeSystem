@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -28,12 +29,17 @@ public class InformationContentActivity extends BaseActivity {
     public void initView() {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        String str = bundle.getString("data", "没取到值");
+        String str = bundle.getString("data", "");
         String title = bundle.getString("title");
         String userId = bundle.getString("notice_id", "null");
         tvInformContent = (TextView) findViewById(R.id.tvInformContent);
-        tvInformContent.setText(str);
-        setTitle(title);
+        if (TextUtils.isEmpty(str)){
+            tvInformContent.setText(title);
+        }else {
+            tvInformContent.setText(str);
+        }
+
+        setTitle("消息详情");
         hideRightImagview();
         commitNotice(userId);
 

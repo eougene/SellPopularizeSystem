@@ -1,23 +1,18 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.r0adkll.slidr.Slidr;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.ACache;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 /**
  * Created by bai on 2017/1/10.
@@ -29,18 +24,17 @@ public abstract class BaseActivity extends Activity {
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
     private ACache aCache;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 设置右滑动返回
-        //Slidr.attach(this);
-        aCache=ACache.get(this);
+        aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
-        setImmerseLayout(findViewById(R.id.base_header_layout));
+
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
-        llBaseLayout=getViewById(R.id.titleViewParent_ll);
+        llBaseLayout = getViewById(R.id.titleViewParent_ll);
         rightRtitle = getViewById(R.id.rightTitle);
         //左边图片
         backLinearLayou = getViewById(R.id.backLinearLayout);
@@ -66,16 +60,6 @@ public abstract class BaseActivity extends Activity {
 
     public void setaCache(ACache aCache) {
         this.aCache = aCache;
-    }
-
-    protected void setImmerseLayout(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            int statusBarHeight = MyUtils.getStatusBarHeight(this.getBaseContext());
-            view.setPadding(0, statusBarHeight, 0, 0);
-        }
     }
 
 
@@ -119,12 +103,14 @@ public abstract class BaseActivity extends Activity {
     public void setTitle(String resId) {
         tvTitle.setText(resId);
     }
+
     /**
      * 设置标题颜色
      */
     public void setColor(int resId) {
         tvTitle.setTextColor(resId);
     }
+
     /**
      * 设置基本布局背景色
      */
@@ -148,6 +134,7 @@ public abstract class BaseActivity extends Activity {
         rightSearchLinearLayout.setImageResource(resId);
         rightSearchLinearLayout.setOnClickListener(onClickListener);
     }
+
     //设置右上角标题
     public void setRightTitle(int resId, View.OnClickListener onClickListener) {
         rightSearchLinearLayout.setVisibility(View.GONE);
@@ -155,17 +142,20 @@ public abstract class BaseActivity extends Activity {
         rightRtitle.setText(resId);
         rightRtitle.setOnClickListener(onClickListener);
     }
+
     //设置右上角标题背景色
-    public void setRightTitleBackground(int drawableId,int colorId){
+    public void setRightTitleBackground(int drawableId, int colorId) {
         rightSearchLinearLayout.setVisibility(View.GONE);
         rightRtitle.setVisibility(View.VISIBLE);
         rightRtitle.setTextColor(colorId);
         rightRtitle.setBackgroundResource(drawableId);
     }
-    public void changeLeftImageView(int resId,View.OnClickListener onClickListener){
+
+    public void changeLeftImageView(int resId, View.OnClickListener onClickListener) {
         backLinearLayou.setImageResource(resId);
         backLinearLayou.setOnClickListener(onClickListener);
     }
+
     /**
      * 隐藏右边图标
      */
@@ -181,7 +171,7 @@ public abstract class BaseActivity extends Activity {
         @Override
         public void onClick(View v) {
             finish();
-            overridePendingTransition(0,R.anim.left_to_right_out);
+            overridePendingTransition(0, R.anim.left_to_right_out);
         }
     };
 
@@ -241,7 +231,10 @@ public abstract class BaseActivity extends Activity {
             loading_Dialog.dismiss();
         }
 
+
     }
+
+
 
 
 }

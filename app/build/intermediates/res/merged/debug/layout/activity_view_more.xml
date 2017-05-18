@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llProdet"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:id="@+id/llProdet"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_weight="0.8"
             android:gravity="center"
             android:text="区域"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvHouseType"
@@ -29,7 +29,7 @@
             android:layout_weight="1.2"
             android:gravity="center"
             android:text="房型"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvArea"
@@ -39,7 +39,7 @@
             android:gravity="center"
             android:paddingLeft="@dimen/padding_margin_4"
             android:text="面积"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvPrice"
@@ -49,7 +49,7 @@
             android:gravity="center"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="价格"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvHousePhoto"
@@ -59,7 +59,7 @@
             android:gravity="right"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="房型图"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -74,14 +74,15 @@
             android:layout_weight="1"
             android:listSelector="@color/home_scale">
         </ListView>
+
         <TextView
             android:id="@+id/tvNoInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="暂无数据"
-            android:textSize="@dimen/tv_size_15"
             android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_15"
             android:visibility="gone"/>
     </RelativeLayout>
 
@@ -112,9 +113,11 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/introtool"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="介绍"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvVideo"
@@ -125,9 +128,11 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/videotool"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="视频"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvOrder"
@@ -138,10 +143,12 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/shoppping"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="预定"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvFloor"
@@ -152,9 +159,11 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/floorstool"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="平面图"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvContract"
@@ -165,9 +174,11 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/contracttool"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="合同"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvFile"
@@ -178,9 +189,11 @@
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/othertool"
                     android:gravity="center"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="文件"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
             </LinearLayout>
         </com.yd.org.sellpopularizesystem.myView.ElasticHorizontalScrollView>
     </LinearLayout>

@@ -180,7 +180,6 @@ public class ProductItemDetailActivity extends BaseActivity {
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
                 closeDialog();
                 Gson gson = new Gson();
                 ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
@@ -212,7 +211,8 @@ public class ProductItemDetailActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                showDialog();
+                ToasShow.showToastCenter(ProductItemDetailActivity.this, strMsg);
             }
         });
     }
@@ -246,12 +246,10 @@ public class ProductItemDetailActivity extends BaseActivity {
                     break;
                 //视频
                 case R.id.tvVideo:
-                    /*if (tvVideo.getAlpha()==1.0f){
-                        bun.putSerializable("prs",prs);
-                        ActivitySkip.forward(ProductItemDetailActivity.this,VideoActivity.class,bun);
-                    }*/
-                    ActivitySkip.forward(ProductItemDetailActivity.this, VideoActivity.class);
-                    // JCVideoPlayer.JCAutoFullscreenListener.class.
+                    if (tvVideo.getAlpha() == 1.0f) {
+                        bun.putSerializable("prs", prs);
+                        ActivitySkip.forward(ProductItemDetailActivity.this, VideoActivity.class, bun);
+                    }
                     break;
                 //预定
                 case R.id.tvOrder:
@@ -265,23 +263,28 @@ public class ProductItemDetailActivity extends BaseActivity {
                     break;
                 //平面图
                 case R.id.tvFloor:
-                    if (resultBean != null){
-                        bun.putSerializable("floorListData", (Serializable) prs.getImg_content());
-                        ActivitySkip.forward(ProductItemDetailActivity.this,BuildingPlanActivity.class,bun);
+                    if (resultBean != null) {
+                        if (tvFloor.getAlpha() == 1.0f) {
+                            bun.putSerializable("floorListData", (Serializable) prs.getImg_content());
+                            ActivitySkip.forward(ProductItemDetailActivity.this, BuildingPlanActivity.class, bun);
+                        }
                     }
                     break;
                 //合同
                 case R.id.tvContract:
-                    bun.putSerializable("file", prs);
-                    bun.putString("key","Contract");
-                    ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
-
+                    if (tvContract.getAlpha() == 1.0f) {
+                        bun.putSerializable("file", prs);
+                        bun.putString("key", "Contract");
+                        ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
+                    }
                     break;
                 //文件
                 case R.id.tvFile:
-                    bun.putString("key","File");
-                    bun.putSerializable("file", prs);
-                    ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
+                    if (tvFile.getAlpha() == 1.0f) {
+                        bun.putString("key", "File");
+                        bun.putSerializable("file", prs);
+                        ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
+                    }
                     break;
             }
         }
@@ -289,7 +292,6 @@ public class ProductItemDetailActivity extends BaseActivity {
     OnItemClickListener mOnItemClickListener = new OnItemClickListener() {
         @Override
         public void onItemClick(int position) {
-            ActivitySkip.forward(ProductItemDetailActivity.this, ScaleDeltaileActivity.class, bun);
             bun = new Bundle();
             bun.putSerializable("prs", prs);
             ActivitySkip.forward(ProductItemDetailActivity.this, ScaleDeltaileActivity.class, bun);

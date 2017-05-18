@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,8 +69,7 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         // Log.e("获取数据***", "productListBean:" + productListBean.getProduct_id());
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
         lastPagerView = (ViewGroup) getLayoutInflater().inflate(R.layout.last_pager_layout, null);
-        Log.e("picList**", "picList:" + prs.getImg_content().size());
-        for (int i = 0; i <prs.getImg_content().size(); i++) {
+        for (int i = 0; i < prs.getImg_content().size(); i++) {
             picList.add(Contants.DOMAIN + "/" + prs.getImg_content().get(i).getThumbURL());
 
         }
@@ -209,7 +207,7 @@ public class ScaleDeltaileActivity extends FragmentActivity {
             if (i == picList.size()) {
                 fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, "0"));
             } else {
-                fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i)));
+                fragmentList.add(PhotoViewFragment.getInstnce(picList.get(i), ""));
             }
         }
         backImageView.setOnClickListener(onClickListener);

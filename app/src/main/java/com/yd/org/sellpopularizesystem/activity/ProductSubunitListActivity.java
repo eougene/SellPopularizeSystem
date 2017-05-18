@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -20,11 +18,9 @@ import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
-import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductSubUnitDet;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSubunitListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
@@ -115,11 +111,15 @@ public class ProductSubunitListActivity extends BaseActivity {
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
         tvIntroduce = getViewById(R.id.tvIntroduce);
+        tvIntroduce.setOnClickListener(mOnClickListener);
         tvNoInfo = getViewById(R.id.tvNoInfo);
         tvVideo = getViewById(R.id.tvVideo);
         tvFloor = getViewById(R.id.tvFloor);
+        tvFloor.setOnClickListener(mOnClickListener);
         tvContract = getViewById(R.id.tvContract);
+        tvContract.setOnClickListener(mOnClickListener);
         tvFile = getViewById(R.id.tvFile);
+        tvFile.setOnClickListener(mOnClickListener);
 
         mCustomePopuWindow = new CustomePopuWindow(ProductSubunitListActivity.this, mOnClickListener);
         mView = mCustomePopuWindow.getContentView();
@@ -271,12 +271,44 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+
+                //视频
                 case R.id.tvVideo:
                     if (bund != null) {
                         if (tvVideo.getAlpha() == 1.0f) {
                             bund.putSerializable("prs", prs);
                             ActivitySkip.forward(ProductSubunitListActivity.this, VideoActivity.class, bund);
                         }
+                    }
+                    break;
+
+                //介绍
+                case R.id.tvIntroduce:
+                    break;
+
+                //平面图
+                case R.id.tvFloor:
+                    if (tvFloor.getAlpha() == 1.0f) {
+                        bund.putSerializable("floorListData", (Serializable) prs.getImg_content());
+                        ActivitySkip.forward(ProductSubunitListActivity.this, BuildingPlanActivity.class, bund);
+                    }
+                    break;
+
+                //合同
+                case R.id.tvContract:
+                    if (tvContract.getAlpha() == 1.0f) {
+                        bund.putSerializable("file", prs);
+                        bund.putString("key", "Contract");
+                        ActivitySkip.forward(ProductSubunitListActivity.this, FileActivity.class, bund);
+                    }
+                    break;
+
+                //文件
+                case R.id.tvFile:
+                    if (tvFile.getAlpha() == 1.0f) {
+                        bund.putString("key", "File");
+                        bund.putSerializable("file", prs);
+                        ActivitySkip.forward(ProductSubunitListActivity.this, FileActivity.class, bund);
                     }
                     break;
             }

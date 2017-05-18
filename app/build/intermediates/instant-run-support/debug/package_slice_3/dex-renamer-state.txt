@@ -1,4 +1,4 @@
-#Mon May 15 19:15:31 CST 2017
+#Wed May 17 17:41:10 CST 2017
 base.0=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3
 renamed.0=classes.dex
 file.0=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex

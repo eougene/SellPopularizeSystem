@@ -14,11 +14,6 @@
             style="@style/MatchWrap"
             android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/setting_bac"/>
-
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"

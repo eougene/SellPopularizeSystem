@@ -99,7 +99,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text="99"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -139,7 +139,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text="99"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -178,7 +178,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text="99"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -217,7 +217,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text="99"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>

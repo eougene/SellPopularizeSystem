@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -42,12 +41,6 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.FileNotFoundException;
-import java.io.Serializable;
-import java.nio.channels.Channels;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -100,7 +93,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     protected int setContentView() {
-        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_custome;
     }
 

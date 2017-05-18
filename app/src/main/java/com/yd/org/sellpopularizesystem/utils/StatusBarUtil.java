@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 
 import com.yd.org.sellpopularizesystem.R;
 
-
 /**
  * Created by Jaeger on 16/2/14.
  * <p>
@@ -256,7 +255,7 @@ public class StatusBarUtil {
      * @param statusBarAlpha 状态栏透明度
      */
     public static void setColorForDrawerLayout(Activity activity, DrawerLayout drawerLayout, @ColorInt int color,
-                                               int statusBarAlpha) {
+        int statusBarAlpha) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             return;
         }

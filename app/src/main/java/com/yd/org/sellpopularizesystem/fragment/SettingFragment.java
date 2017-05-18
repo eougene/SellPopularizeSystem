@@ -61,7 +61,7 @@ public class SettingFragment extends BaseFragmentView {
                 case R.id.bindAccountRel:
                     bindAccountRel();
                     break;
-                //通知
+                //销售记录
                 case R.id.saleRecord:
                     ActivitySkip.forward(getActivity(), SaleRecordActivity.class);
                     break;

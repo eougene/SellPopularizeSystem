@@ -199,6 +199,7 @@ ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/Androi
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:82:9-32
 application
 ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:84:5-207:19
+MERGED from [SellPopularizeSystem:android-pdf:unspecified] /Users/e-dot/Documents/e-dot/SellPopularizeSystem/android-pdf/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/e-dot/.android/build-cache/74ab709aa4c3d40a768985f046529ea178494117/output/AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/e-dot/.android/build-cache/ce2ce393b11124e124f847190ffee946ac7874c0/output/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/e-dot/.android/build-cache/b51b85f0c18ea7946035525b64bfc3f586c178da/output/AndroidManifest.xml:9:5-20
@@ -512,6 +513,8 @@ ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/Androi
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:205:19-55
 uses-sdk
 INJECTED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [SellPopularizeSystem:android-pdf:unspecified] /Users/e-dot/Documents/e-dot/SellPopularizeSystem/android-pdf/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex:rxandroid:1.1.0] /Users/e-dot/.android/build-cache/bd07e8789618aa0816409360a9db1e0fd3aadbf7/output/AndroidManifest.xml:19:5-43
 MERGED from [com.contrarywind:Android-PickerView:3.2.4] /Users/e-dot/.android/build-cache/927ea1ca6ec1ad6530bcebdc51313262a762305d/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/e-dot/.android/build-cache/74ab709aa4c3d40a768985f046529ea178494117/output/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/AndroidManifest.xml:18:5-42

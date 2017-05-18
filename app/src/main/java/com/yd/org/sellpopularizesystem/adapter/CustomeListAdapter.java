@@ -3,8 +3,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.opengl.GLException;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
+import com.squareup.picasso.Transformation;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
+import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
@@ -40,13 +38,11 @@ public class CustomeListAdapter extends BaseAdapter {
     private Context mContext;
     private List<ProductListBean.ResultBean> list = new ArrayList<>();// 数据
     private LayoutInflater inflater;
-    private ViewHolder holder;
-    private List tempChilds = new ArrayList<>();
-    private String str, mTempStr;
-    private int pos;
+    private boolean isBoolean;
 
-    public CustomeListAdapter(Activity mContext) {
+    public CustomeListAdapter(Activity mContext,boolean isBoolean) {
         this.mContext = mContext;
+        this.isBoolean=isBoolean;
         this.inflater = LayoutInflater.from(mContext);
     }
 
@@ -78,13 +74,10 @@ public class CustomeListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        pos = position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            holder = viewHolder;
             convertView = inflater.inflate(R.layout.list_item_layout, null);
             viewHolder.prductImageView = (ImageView) convertView.findViewById(R.id.prductImageView);
-            viewHolder.ivIslock = (ImageView) convertView.findViewById(R.id.ivIslock);
             viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
             viewHolder.lvSubItem = (ListView) convertView.findViewById(R.id.lvSubItem);
             viewHolder.rlViewAll = (RelativeLayout) convertView.findViewById(R.id.rlViewAll);
@@ -92,66 +85,70 @@ public class CustomeListAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         viewHolder.productListBean = list.get(position);
-        //Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
-        final ViewHolder finalViewHolder1 = viewHolder;
-        if (!MyUtils.getInstance().isNetworkConnected(mContext)){
-            if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb())!=null){
-                viewHolder.prductImageView.setImageBitmap(ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb()));
-            }else {
-                ToasShow.showToastCenter(mContext,"当前处于无网络状态");
+
+        if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
+            if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) != null) {
+                viewHolder.prductImageView.setImageBitmap(ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()));
+            } else {
+                ToasShow.showToastCenter(mContext, "当前处于无网络状态");
             }
+        } else {
+
+            Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).transform(new CropSquareTransformation(position)).into(viewHolder.prductImageView);
         }
 
-        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                finalViewHolder1.prductImageView.setImageBitmap(bitmap);
-                if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(pos).getThumb())==null){
-                    ScaleActivity.scaleActivity.aCache.put(list.get(pos).getThumb(),bitmap,ACache.TIME_HOUR);
-                }
-            }
-
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
-
-            }
-
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-            }
-        });
-        if (list.get(position).getIs_study()==1){
-            viewHolder.ivIslock.setVisibility(View.VISIBLE);
-
-        }
         final String title = list.get(position).getProduct_name().trim();
         final String product_id = list.get(position).getProduct_id() + "";
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.childs = list.get(position).getChilds();
         /*tempChilds.clear();
         tempChilds.addAll(viewHolder.childs);*/
-        if (list.get(position).getIs_study()==1){
-            viewHolder.lvSubItem.setVisibility(View.GONE);
-            viewHolder.rlViewAll.setVisibility(View.GONE);
-        }else {
-            viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
-            final ViewHolder finalViewHolder = viewHolder;
-            //点击查看单个item
-            viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
-            //点击查看所有
-            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
-            //产品子单元listview点击
-            viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
-                    //Log.e("position***", "position:" + positions);
-                    ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
-                }
-            });
-        }
+
+        viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
+        final ViewHolder finalViewHolder = viewHolder;
+        //点击查看单个item
+        viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
+        //点击查看所有
+        viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
+        //产品子单元listview点击
+        viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
+                //Log.e("position***", "position:" + positions);
+                ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
+            }
+        });
+
         return convertView;
+    }
+
+    /**
+     * 自定义接口
+     */
+    public class CropSquareTransformation implements Transformation {
+        private int position;
+
+        public CropSquareTransformation(int position) {
+            this.position = position;
+
+        }
+
+        @Override
+        public Bitmap transform(Bitmap source) {
+            Log.e("source**", position + "position:" + source);
+
+            if (isBoolean&&ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) == null) {
+                ScaleActivity.scaleActivity.aCache.put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
+            }
+            return source;
+        }
+
+        @Override
+        public String key() {
+            return "square()";
+        }
     }
 
     private class MyOnClick implements View.OnClickListener {
@@ -172,20 +169,17 @@ public class CustomeListAdapter extends BaseAdapter {
             switch (v.getId()) {
                 case R.id.prductImageView:
                     ScaleActivity.scaleActivity.goTo(mObject, mClass, title, productId);
-                    //Log.e("str", "onClick: " + title);
                     break;
                 case R.id.rlViewAll:
                     ScaleActivity.scaleActivity.goTo(mObject, mClass, title, productId);
-                    //Log.e("str", "onClick** " + title);
                     break;
 
             }
         }
     }
 
-    class ViewHolder {
+    public class ViewHolder {
         private ImageView prductImageView;
-        private ImageView ivIslock;
         private TextView productName, productDescription;
         private ListView lvSubItem;
         private RelativeLayout rlViewAll;
@@ -206,7 +200,6 @@ public class CustomeListAdapter extends BaseAdapter {
 
         @Override
         public int getCount() {
-            //Log.e("TAG", "getCount: " + childs.size());
             return childs.size();
         }
 
@@ -235,11 +228,10 @@ public class CustomeListAdapter extends BaseAdapter {
                 holder1 = (Holder1) convertView.getTag();
             }
             holder1.childBean = childs.get(position);
-            //Log.e("TAG", "getView: " + holder1.childBean.getBathroom());
             holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
-                    MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price()))/1000).split("\\.")[0]) + "k"
+                    MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000).split("\\.")[0]) + "k"
                     + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
-                    + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price()))/1000).split("\\.")[0]) + "k");
+                    + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
             holder1.tvHouse.setText(holder1.childBean.getBedroom());
             holder1.tvBathroom.setText(holder1.childBean.getBathroom());
             holder1.tvCar.setText(holder1.childBean.getCar_space());
