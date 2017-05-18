@@ -173,7 +173,6 @@ public class HomeFragment extends BaseFragmentView {
         //学习园地
         studyLinearLayout = getViewById(R.id.studyLinearLayout);
 
-
         tvScaleSource = getViewById(R.id.tvScaleSource);
         tvNewAddSource = getViewById(R.id.tvNewAddSource);
         tvCustomNumber = getViewById(R.id.tvCustomNumber);
@@ -181,7 +180,6 @@ public class HomeFragment extends BaseFragmentView {
         tvStydyDatumCount = getViewById(R.id.tvStydyDatumCount);
         tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
         tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
-
 
         //渐变动画
         homeGradient = getViewById(R.id.homeGradient);
