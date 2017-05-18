@@ -84,6 +84,7 @@ public class CustomeListAdapter extends BaseAdapter {
             holder = viewHolder;
             convertView = inflater.inflate(R.layout.list_item_layout, null);
             viewHolder.prductImageView = (ImageView) convertView.findViewById(R.id.prductImageView);
+            viewHolder.ivIslock = (ImageView) convertView.findViewById(R.id.ivIslock);
             viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
             viewHolder.lvSubItem = (ListView) convertView.findViewById(R.id.lvSubItem);
             viewHolder.rlViewAll = (RelativeLayout) convertView.findViewById(R.id.rlViewAll);
@@ -101,6 +102,7 @@ public class CustomeListAdapter extends BaseAdapter {
                 ToasShow.showToastCenter(mContext,"当前处于无网络状态");
             }
         }
+
         Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -120,28 +122,35 @@ public class CustomeListAdapter extends BaseAdapter {
 
             }
         });
+        if (list.get(position).getIs_study()==1){
+            viewHolder.ivIslock.setVisibility(View.VISIBLE);
+
+        }
         final String title = list.get(position).getProduct_name().trim();
         final String product_id = list.get(position).getProduct_id() + "";
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.childs = list.get(position).getChilds();
         /*tempChilds.clear();
         tempChilds.addAll(viewHolder.childs);*/
-
-        viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
-        final ViewHolder finalViewHolder = viewHolder;
-        //点击查看单个item
-        viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
-        //点击查看所有
-        viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
-        //产品子单元listview点击
-        viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
-                //Log.e("position***", "position:" + positions);
-                ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
-            }
-        });
-
+        if (list.get(position).getIs_study()==1){
+            viewHolder.lvSubItem.setVisibility(View.GONE);
+            viewHolder.rlViewAll.setVisibility(View.GONE);
+        }else {
+            viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
+            final ViewHolder finalViewHolder = viewHolder;
+            //点击查看单个item
+            viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
+            //点击查看所有
+            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
+            //产品子单元listview点击
+            viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
+                    //Log.e("position***", "position:" + positions);
+                    ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
+                }
+            });
+        }
         return convertView;
     }
 
@@ -176,6 +185,7 @@ public class CustomeListAdapter extends BaseAdapter {
 
     class ViewHolder {
         private ImageView prductImageView;
+        private ImageView ivIslock;
         private TextView productName, productDescription;
         private ListView lvSubItem;
         private RelativeLayout rlViewAll;

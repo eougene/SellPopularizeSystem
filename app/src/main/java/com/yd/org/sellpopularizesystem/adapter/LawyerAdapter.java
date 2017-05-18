@@ -67,12 +67,9 @@ public class LawyerAdapter extends BaseAdapter implements SectionIndexer{
 
     /**
      * 当ListView数据发生变化时,调用此方法来更新ListView
-     *
      * @param list
      */
     public void updateListView(List<Lawyer.ResultBean.LawyerListBean> list) {
-
-
         if (list == null) {
             this.tasks = new ArrayList<>();
         } else {

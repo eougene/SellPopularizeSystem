@@ -182,11 +182,14 @@ public class ProductListBean extends Domine {
         private String state;
         private String postcode;
         private String country;
+        private int is_study;
+        private String study_id;
         private int up_time;
         private String up_ip;
         private int up_admin;
         private int sell_number;
         private int sign_number;
+        private  String share_url;
         private int status;
         private String product_name;
         private Object description;
@@ -697,6 +700,22 @@ public class ProductListBean extends Domine {
             this.country = country;
         }
 
+        public int getIs_study() {
+            return is_study;
+        }
+
+        public void setIs_study(int is_study) {
+            this.is_study = is_study;
+        }
+
+        public String getStudy_id() {
+            return study_id;
+        }
+
+        public void setStudy_id(String study_id) {
+            this.study_id = study_id;
+        }
+
         public int getUp_time() {
             return up_time;
         }
@@ -735,6 +754,14 @@ public class ProductListBean extends Domine {
 
         public void setSign_number(int sign_number) {
             this.sign_number = sign_number;
+        }
+
+        public String getShare_url() {
+            return share_url;
+        }
+
+        public void setShare_url(String share_url) {
+            this.share_url = share_url;
         }
 
         public int getStatus() {

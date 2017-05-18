@@ -116,7 +116,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             } else {
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
-            viewHolder.tvTitle.setText(list.get(position).getFirst_name() + list.get(position).getSurname() + "");
+            viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
             if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
