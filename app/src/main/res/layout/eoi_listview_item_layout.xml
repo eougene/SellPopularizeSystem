@@ -19,7 +19,7 @@
                 android:layout_marginBottom="@dimen/padding_margin_12"
                 android:layout_marginLeft="@dimen/padding_margin_16"
                 android:layout_marginTop="@dimen/padding_margin_12"
-                android:text="编号"
+                android:text="@string/bianhao"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -32,7 +32,7 @@
                     android:layout_marginRight="@dimen/padding_margin_4"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:text="标题"
+                    android:text="@string/title"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12" />
 

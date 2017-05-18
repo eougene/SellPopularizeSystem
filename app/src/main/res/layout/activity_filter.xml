@@ -23,7 +23,7 @@
                 android:id="@+id/tvMessageTitle"
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
-                android:text="区域"
+                android:text="@string/area"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -34,7 +34,7 @@
                 android:layout_marginRight="@dimen/padding_margin_6"
                 android:layout_toLeftOf="@+id/ivIndicator"
                 android:gravity="center"
-                android:text="不限"
+                android:text="@string/nolimit"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -60,7 +60,7 @@
             <TextView
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
-                android:text="房型"
+                android:text="@string/housetype"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -71,7 +71,7 @@
                 android:layout_marginRight="@dimen/padding_margin_6"
                 android:layout_toLeftOf="@+id/ivHtIndicator"
                 android:gravity="center"
-                android:text="不限"
+                android:text="@string/nolimit"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -134,7 +134,7 @@
             <TextView
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
-                android:text="价格"
+                android:text="@string/price"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -145,7 +145,7 @@
                 android:layout_marginRight="@dimen/padding_margin_6"
                 android:layout_toLeftOf="@+id/ivPriceIndicator"
                 android:gravity="center"
-                android:text="不限"
+                android:text="@string/nolimit"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -172,7 +172,7 @@
         android:gravity="center"
         android:paddingBottom="@dimen/padding_margin_8"
         android:paddingTop="@dimen/padding_margin_8"
-        android:text="搜索"
+        android:text="@string/search"
         android:textColor="@color/white"
         android:textSize="@dimen/tv_size_12" />
 </RelativeLayout>

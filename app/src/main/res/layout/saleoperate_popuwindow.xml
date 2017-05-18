@@ -36,7 +36,7 @@
                 android:id="@+id/btPayIntention"
                 style="@style/MatchWrap"
                 android:background="@drawable/base_square"
-                android:text="支付意向金"
+                android:text="@string/payintentmoney"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
             <View

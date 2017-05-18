@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:gravity="left"
-                android:text="标题"
+                android:text="@string/title"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:gravity="right"
-                android:text="日期"
+                android:text="@string/time"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -120,7 +120,7 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="@dimen/padding_margin_10"
                 android:gravity="right"
-                android:text="金额"
+                android:text="@string/money"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>

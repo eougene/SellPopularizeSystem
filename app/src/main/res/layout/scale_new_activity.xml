@@ -96,7 +96,7 @@
                 android:layout_height="@dimen/padding_margin_35"
                 android:layout_marginRight="@dimen/padding_margin_6"
                 android:background="@drawable/button_bac"
-                android:text="搜索"
+                android:text="@string/search"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_12" />
         </LinearLayout>

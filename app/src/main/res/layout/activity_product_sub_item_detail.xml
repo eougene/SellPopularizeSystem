@@ -16,7 +16,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="状态"
+            android:text="@string/state"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -25,7 +25,7 @@
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:text="在售"
+            android:text="@string/issaling"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </RelativeLayout>
@@ -45,7 +45,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="价格"
+            android:text="@string/price"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -74,7 +74,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="类型"
+            android:text="@string/type"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -83,7 +83,7 @@
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:text="未知"
+            android:text="@string/unknown"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </RelativeLayout>
@@ -103,7 +103,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="批号"
+            android:text="@string/batchnum"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -112,7 +112,7 @@
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:text="萨达"
+            android:text="@string/theme"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </RelativeLayout>
@@ -132,7 +132,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="单元号"
+            android:text="@string/unitnum"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -141,7 +141,7 @@
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:text="萨达"
+            android:text="@string/theme"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </RelativeLayout>
@@ -161,7 +161,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="楼层类型"
+            android:text="@string/floortype"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -190,7 +190,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="楼层"
+            android:text="@string/floor"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -219,7 +219,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="房型"
+            android:text="@string/housetype"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -296,7 +296,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="浴室套间数"
+            android:text="@string/bathroomnum"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -325,7 +325,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="朝向"
+            android:text="@string/direction"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -354,7 +354,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="套内面积"
+            android:text="@string/areanum"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -383,7 +383,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="套外面积"
+            android:text="@string/outsidearea"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -392,7 +392,7 @@
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:text="0.00"
+            android:text="@string/doublezero"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </RelativeLayout>
@@ -412,7 +412,7 @@
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
-            android:text="总面积"
+            android:text="@string/totalarea"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 

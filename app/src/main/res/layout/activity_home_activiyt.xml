@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/padding_margin_4"
-                        android:text="共有0个推广素材"
+                        android:text="@string/promotematerial"
                         android:textColor="@color/white"
                         android:textSize="@dimen/tv_size_08" />
 
@@ -83,7 +83,7 @@
                         android:id="@+id/tvNewAddSource"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="本周新增0个"
+                        android:text="@string/_0"
                         android:textColor="@color/white"
                         android:textSize="@dimen/tv_size_08" />
 
@@ -154,7 +154,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="您有0位客户"
+                                android:text="@string/customernum"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/tv_size_08" />
 
@@ -162,7 +162,7 @@
                                 android:id="@+id/tvNewCustomNumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="本月新增0位"
+                                android:text="@string/localmonth"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/tv_size_08" />
 
@@ -228,7 +228,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="共有0个学习资料"
+                                android:text="@string/zerostudymaterial"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/tv_size_08" />
 
@@ -236,7 +236,7 @@
                                 android:id="@+id/tvNotCompleteCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="您有0个考核未完成"
+                                android:text="@string/checknum"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/tv_size_08" />
 
@@ -293,7 +293,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="您还有0条未读信息"
+                                android:text="@string/unread"
                                 android:textColor="@color/white"
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>

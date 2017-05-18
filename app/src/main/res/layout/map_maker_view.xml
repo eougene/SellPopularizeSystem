@@ -10,6 +10,6 @@
         android:gravity="center"
         android:maxEms="5"
         android:background="@color/setting_bac"
-        android:text="测试"
+        android:text="@string/test"
         android:textColor="@color/black"/>
 </LinearLayout>

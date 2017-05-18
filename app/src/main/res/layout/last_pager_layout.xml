@@ -11,14 +11,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
-        android:text="开始调研"
+        android:text="@string/startinves"
          />
 
     <TextView
         android:id="@+id/tvEndInvestigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="结束推广"
+        android:text="@string/finishpromote"
         android:textColor="#ffffff"
         android:layout_marginLeft="20dp"/>
 </LinearLayout>

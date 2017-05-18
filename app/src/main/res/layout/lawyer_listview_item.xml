@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/padding_margin_4"
-            android:text="测试"
+            android:text="@string/test"
             android:textSize="@dimen/tv_size_12" />
     </LinearLayout>
 </LinearLayout>

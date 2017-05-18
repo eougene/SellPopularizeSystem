@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="佣金1"
+            android:text="@string/commission1"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="佣金2"
+            android:text="@string/commission2"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="佣金3"
+            android:text="@string/commission3"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:gravity="center"
-            android:text="总金额"
+            android:text="@string/totalmoney"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 

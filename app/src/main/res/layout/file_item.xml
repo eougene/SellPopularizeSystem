@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_margin_30"
-            android:text="title"
+            android:text="@string/tit"
             android:textSize="@dimen/tv_size_12"/>
 
         <ImageView

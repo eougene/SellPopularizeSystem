@@ -26,7 +26,7 @@
         android:layout_height="30dp"
         android:gravity="center_horizontal"
         android:layout_gravity="center"
-        android:text="没有相关信息"
+        android:text="@string/noinformation"
         android:textColor="@color/black"
         android:textSize="@dimen/tv_size_15"
         android:visibility="gone" />

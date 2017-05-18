@@ -29,7 +29,7 @@
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="律师行"
+                android:text="@string/lawyerraw"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="联系地址"
+                android:text="@string/addressnopoint"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -116,7 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="姓"
+                android:text="@string/firstname"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -154,7 +154,7 @@
                     android:id="@+id/tvFirstName"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="名"
+                    android:text="@string/lastname"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -200,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="电话"
+                android:text="@string/telephone"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -243,7 +243,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="邮箱"
+                android:text="@string/email"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15" />
 

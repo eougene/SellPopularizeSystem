@@ -24,7 +24,7 @@
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_4"
             android:paddingTop="@dimen/padding_margin_4"
-            android:text="这是标题"
+            android:text="@string/thisistitle"
             android:textColor="@color/white" />
     </RelativeLayout>
 </LinearLayout>

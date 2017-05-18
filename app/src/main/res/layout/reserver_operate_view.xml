@@ -21,7 +21,7 @@
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_4"
             android:paddingTop="@dimen/padding_margin_4"
-            android:text="添加"
+            android:text="@string/add"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/tv_size_12" />
 
@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:hint="请选择预约时间"
+            android:hint="@string/selectdatetime"
             android:paddingBottom="@dimen/padding_margin_8"
             android:paddingLeft="@dimen/padding_margin_6"
             android:paddingTop="@dimen/padding_margin_8"
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:hint="请指定时间提醒"
+            android:hint="@string/reminder"
             android:paddingBottom="@dimen/padding_margin_8"
             android:paddingLeft="@dimen/padding_margin_6"
             android:paddingTop="@dimen/padding_margin_8"
@@ -72,7 +72,7 @@
             style="@style/WrapWrap"
             android:layout_marginLeft="@dimen/padding_margin_4"
             android:layout_marginTop="@dimen/padding_margin_4"
-            android:text="备注"
+            android:text="@string/remark"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
 
@@ -97,7 +97,7 @@
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_8"
             android:paddingTop="@dimen/padding_margin_8"
-            android:text="提交"
+            android:text="@string/submit"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12" />
     </LinearLayout>

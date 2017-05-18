@@ -5,9 +5,9 @@
 
     <LinearLayout
         style="@style/MatchWrap"
+        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/padding_margin_10"
-        android:orientation="vertical">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             style="@style/MatchWrap"
@@ -16,41 +16,36 @@
             android:background="@drawable/base_square"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/photoAlbumButton"
+            <Button
+                android:id="@+id/btSelecCus"
                 style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
-                android:layout_marginTop="@dimen/padding_margin_8"
-                android:gravity="center"
-                android:text="@string/bindthreeaccount"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:background="@drawable/button_click"
+                android:text="@string/selectcus"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/tv_size_15" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/padding_margin_6"
-                android:background="@color/setting_bac"
-                />
+                android:background="@color/setting_bac" />
 
             <Button
-                android:id="@+id/bindAcount"
+                android:id="@+id/btEditCusInfo"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
-                android:text="@string/setting_bindweixinaccount"
+                android:background="@drawable/button_click"
+                android:text="@string/editcusinfo"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/btCusCancel"
             style="@style/MatchWrap"
             android:layout_marginBottom="@dimen/padding_margin_10"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_20"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="@drawable/base_square"
+            android:background="@drawable/button_click"
             android:text="@string/cancel"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/tv_size_15" />

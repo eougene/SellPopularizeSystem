@@ -31,7 +31,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="客户名字"
+                android:text="@string/customename"
                 android:textColor="@color/white" />
         </LinearLayout>
     </RelativeLayout>
@@ -148,7 +148,7 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="我的佣金"
+                    android:text="@string/mycommission"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -177,7 +177,7 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="我的团队"
+                    android:text="@string/myteam"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -227,7 +227,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/padding_margin_6"
                 android:padding="@dimen/padding_margin_6"
-                android:text="Ver:1.0.0"
+                android:text="@string/ver_1_0_0"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_12" />
 

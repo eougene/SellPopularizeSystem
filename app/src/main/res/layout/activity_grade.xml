@@ -26,40 +26,40 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="共:" />
+            android:text="@string/totaldes" />
 
         <TextView
             android:id="@+id/tvCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:text="6题" />
+            android:text="@string/questionnum" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_12"
-            android:text="回答正确:" />
+            android:text="@string/replyright" />
 
         <TextView
             android:id="@+id/tvSureCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:text="0题" />
+            android:text="@string/zero" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_12"
-            android:text="正确率:" />
+            android:text="@string/accuracy" />
 
         <TextView
             android:id="@+id/tvAccuracy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:text="0.00%" />
+            android:text="@string/percent" />
     </LinearLayout>
 
 </LinearLayout>

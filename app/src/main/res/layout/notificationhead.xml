@@ -18,7 +18,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:paddingLeft="@dimen/padding_margin_10"
-            android:text="全选"
+            android:text="@string/selectall"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/tv_size_12"
             android:visibility="invisible"/>
@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="订单"
+                android:text="@string/order"
                 android:textColor="@color/yellowish"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -99,7 +99,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text=""
+                android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -126,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="小组"
+                android:text="@string/team"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -139,7 +139,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text=""
+                android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -165,7 +165,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="公司"
+                android:text="@string/company"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -178,7 +178,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text=""
+                android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
@@ -204,7 +204,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="系统"
+                android:text="@string/system"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -217,7 +217,7 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:background="@drawable/circle_shape"
                 android:gravity="center"
-                android:text=""
+                android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>

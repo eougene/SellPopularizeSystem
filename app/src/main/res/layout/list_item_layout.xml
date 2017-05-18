@@ -42,7 +42,13 @@
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12" />
 
-
+        <ImageView
+            android:id="@+id/ivIslock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/lock"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <com.yd.org.sellpopularizesystem.myView.ChildListView
@@ -61,6 +67,7 @@
     <RelativeLayout
         android:id="@+id/rlViewAll"
         style="@style/MatchWrap">
+
         <TextView
             style="@style/WrapWrap"
             android:layout_alignParentRight="true"
@@ -70,7 +77,7 @@
             android:layout_marginTop="@dimen/padding_margin_10"
             android:drawablePadding="@dimen/padding_margin_4"
             android:drawableRight="@mipmap/more"
-            android:text="查看所有"
+            android:text="@string/seeall"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_10" />
     </RelativeLayout>
