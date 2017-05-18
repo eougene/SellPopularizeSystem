@@ -48,7 +48,7 @@ public class SearchActivity extends Activity {
           switch (v.getId()){
               case R.id.tvCancel:
                   cleanHistory();
-                  tvCancel.setText("历史记录已经清除");
+                  tvCancel.setText(R.string.historyclear);
                   break;
               case  R.id.tvSearchCancel:
                   finish();
@@ -88,7 +88,7 @@ public class SearchActivity extends Activity {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     // 隐藏软键盘
                     save();
-                    tvSearchTitle.setText("项目");
+                    tvSearchTitle.setText(R.string.project);
                     tvCancel.setVisibility(View.GONE);
                     lv.setVisibility(View.GONE);
                     rlNoResullt.setVisibility(View.VISIBLE);
@@ -151,7 +151,7 @@ public class SearchActivity extends Activity {
         };
         lv.setAdapter(adapter);
         } else {
-            tvCancel.setText("无历史记录");
+            tvCancel.setText(R.string.nohistoryrecord);
             //tvCancel.setVisibility(View.GONE);
             tvCancel.setClickable(false);
 
@@ -190,7 +190,7 @@ public class SearchActivity extends Activity {
         listStrings.clear();
         adapter.notifyDataSetChanged();
         tvCancel.setClickable(false);
-        Toast.makeText(this, "清除成功", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.clearsuccess, Toast.LENGTH_SHORT).show();
     }
 
 

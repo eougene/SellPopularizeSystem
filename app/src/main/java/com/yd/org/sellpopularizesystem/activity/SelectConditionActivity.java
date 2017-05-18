@@ -35,22 +35,22 @@ public class SelectConditionActivity extends BaseActivity {
         initStting();
         str = getIntent().getExtras().getString("fatosca");
         if (str.equals("area")){
-            setTitle("区域");
+            setTitle(R.string.area);
             llHouseType.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("housetype")){
-            setTitle("房型");
+            setTitle(R.string.housetype);
             rgArea.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("type")){
-            setTitle("类型");
+            setTitle(R.string.type);
             rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("price")){
-            setTitle("价格");
+            setTitle(R.string.price);
             rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
