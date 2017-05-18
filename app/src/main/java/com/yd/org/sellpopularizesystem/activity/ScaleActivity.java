@@ -449,39 +449,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private void getProductListData(final boolean boool, int page, String space, String price, String house, String area) {
 
         Log.e("筛选内容**", "space:" + space + "price:" + price + " house:" + house + "area:" + area);
-        //String url = Contants.PRODUCT_LIST + "user_id=" + SharedPreferencesHelps.getUserID() + "&page=" + page + "&number=10";
-
         showDialog();
-        /*//创建okHttpClient对象
-        OkHttpClient httpClient = new OkHttpClient();
-        //创建一个Request
-        Request request = new Request.Builder().url(url).build();
-        Call call = httpClient.newCall(request);
-        //请求加入调度
-        call.enqueue(new Callback() {
-            //onResponse方法工作在子线程中
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                final String json = response.body().string();
 
-                if (null != json) {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            Log.e("json", "" + json);
-                            closeDialog();
-                            jsonParse(json, boool);
-                        }
-                    });
-                }
-            }
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-                closeDialog();
-            }
-        });*/
 
         final FinalHttp fh = new FinalHttp();
         final AjaxParams ajaxParams = new AjaxParams();
@@ -502,7 +471,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 closeDialog();
                 if (null != s) {
                     if (aCache != null) {
-                        aCache.put("product_list_json", s, ACache.TIME_HOUR);
+                        if (boool) {
+                            aCache.put("product_list_json", s, ACache.TIME_HOUR);
+                        }
                     }
                     jsonParse(s, boool);
                 }
@@ -512,7 +483,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-
                 closeDialog();
             }
         });

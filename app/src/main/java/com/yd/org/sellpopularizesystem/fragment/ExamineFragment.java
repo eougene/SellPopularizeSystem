@@ -5,18 +5,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.activity.ExaminationActivity;
 import com.yd.org.sellpopularizesystem.adapter.ExamineAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
-import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
@@ -63,14 +60,13 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
         //下拉加载
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
-        tvNoMessage=getViewById(R.id.noInfomation);
+        tvNoMessage = getViewById(R.id.noInfomation);
         listView = getViewById(R.id.content_view);
         listView.setDividerHeight(10);
 
     }
 
     private void getStudyListData(final boolean b, int page) {
-        //String url = Contants.CHECK_LIST + "user_id=" + SharedPreferencesHelps.getUserID() + "&page=" + page + "&number=10";
         showLoadingDialog();
         final FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
@@ -107,10 +103,9 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
         Gson gson = new Gson();
         ExamlineBean product = gson.fromJson(json, ExamlineBean.class);
         if (product.getCode().equals("1")) {
-            if (product.getMsg().equals("暂无数据")){
+            productData = product.getResult();
+            if (isRefresh && product.getMsg().equals("暂无数据")) {
                 tvNoMessage.setVisibility(View.VISIBLE);
-            }else {
-                productData = product.getResult();
             }
         }
         if (isRefresh) {

@@ -105,10 +105,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Bundle bundle = intent.getExtras();
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
-        //点击客户管理传来的
-        // str1 = bundle.getString(ExtraName.TOCUSTOME);
-        //从预订界面点击客户律师跳转
-        // str1 = bundle.getString("lawyer");
         if (str1 != null && str1.equals(ExtraName.SCALETOCUSTOME)) {
             if (!MyUtils.getInstance().isNetworkConnected(this)) {
                 String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
@@ -151,15 +147,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("customer_id", "");
+        ajaxParams.put("number", "20");
         http.get(Contants.LAWYER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-
-                Log.e("律师信息**", "s:" + s);
                 closeDialog();
                 if (null != s) {
-                    //jsonParse(s);
                     jsonParse(s, b);
                 }
 
@@ -330,7 +324,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
                 Log.e("客户内容", "s:" + s);
                 if (null != s) {
-                    if (BaseApplication.getInstance().getaCache().getAsString("customer_list") == null) {
+                    if (b) {
                         BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_HOUR);
                     }
                     jsonParse(s, b);
@@ -351,6 +345,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void jsonParse(String json, boolean isRefresh) {
 
         Gson gson = new Gson();
+        //律师
         if (str1.equals(ExtraName.TORESVER)) {
             LawyerBean lawyerBean = gson.fromJson(json, LawyerBean.class);
             if (lawyerBean.getCode() == 1) {
@@ -367,17 +362,16 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addData(SourceDateList, lawyersData);
         } else {
+
+            //客户信息
             CustomBean product = gson.fromJson(json, CustomBean.class);
             if (product.getCode() == 1) {
-                if (product.getMsg().equals(getString(R.string.nodata))) {
-                    tvNoMessage.setVisibility(View.VISIBLE);
-                } else {
-                    SourceDateList = filledData(product.getResult());
-                }
+                SourceDateList = filledData(product.getResult());
+                Log.e("tag**1", "tag:" + SourceDateList.size());
 
             }
             if (isRefresh) {
-                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)){
+                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                 }
                 // 根据a-z进行排序源数据
@@ -386,7 +380,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 adapter.addData(SourceDateList, lawyersData);
                 listView.setAdapter(adapter);
             } else {
-                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)){
+                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
                     ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                 }
                 ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
@@ -434,49 +428,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 }
             }
         });
-
-//        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
-//            @Override
-//            public void onScrollStateChanged(AbsListView view, int scrollState) {
-//            }
-//
-//            @Override
-//            public void onScroll(AbsListView view, int firstVisibleItem,
-//                                 int visibleItemCount, int totalItemCount) {
-//                int section = getSectionForPosition(firstVisibleItem);
-//                int nextSection = getSectionForPosition(firstVisibleItem + 1);
-//                int nextSecPosition = getPositionForSection(+nextSection);
-//                if (firstVisibleItem != lastFirstVisibleItem) {
-//                    ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) titleLayout
-//                            .getLayoutParams();
-//                    params.topMargin = 0;
-//                    titleLayout.setLayoutParams(params);
-//                    title.setText(SourceDateList.get(
-//                            getPositionForSection(section)).getSortLetters());
-//
-//                }
-//                if (nextSecPosition == firstVisibleItem + 1) {
-//                    View childView = view.getChildAt(0);
-//                    if (childView != null) {
-//                        int titleHeight = titleLayout.getHeight();
-//                        int bottom = childView.getBottom();
-//                        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) titleLayout
-//                                .getLayoutParams();
-//                        if (bottom < titleHeight) {
-//                            float pushedDistance = bottom - titleHeight;
-//                            params.topMargin = (int) pushedDistance;
-//                            titleLayout.setLayoutParams(params);
-//                        } else {
-//                            if (params.topMargin != 0) {
-//                                params.topMargin = 0;
-//                                titleLayout.setLayoutParams(params);
-//                            }
-//                        }
-//                    }
-//                }
-//                lastFirstVisibleItem = firstVisibleItem;
-//            }
-//        });
 
 
         // 根据输入框输入值的改变来过滤搜索

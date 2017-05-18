@@ -35,6 +35,7 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
     private List<StudyBean.ResultBean> productData = new ArrayList<>();
     private StyudyAdapter adapter;
     private TextView tvNoMessage;
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_study);
@@ -42,7 +43,7 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
-        tvNoMessage=getViewById(R.id.noInfomation);
+        tvNoMessage = getViewById(R.id.noInfomation);
         getStudyListData(true, page);
 
     }
@@ -81,11 +82,10 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
         Gson gson = new Gson();
         StudyBean product = gson.fromJson(json, StudyBean.class);
         if (product.getCode().equals("1")) {
-            if (product.getMsg().equals("暂无数据")){
+            if (isRefresh && product.getMsg().equals("暂无数据")) {
                 tvNoMessage.setVisibility(View.VISIBLE);
-            }else {
-                productData = product.getResult();
             }
+            productData = product.getResult();
         }
         if (isRefresh) {
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
