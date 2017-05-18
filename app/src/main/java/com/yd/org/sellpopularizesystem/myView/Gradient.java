@@ -119,7 +119,6 @@ public class Gradient extends RelativeLayout {
                 //解决点击事件的冲突
                 for (int j = 0; j < size; j++) {
 
-
                     if (j == i) {
                         imageViews.get(i).setClickable(true);
 
