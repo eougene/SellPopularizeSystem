@@ -6,28 +6,25 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.2"
-    timestamp="1494925535803"
+    timestamp="1495018993964"
     token="7596098457005102897"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="916" />
+        duration="423" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="7" />
+        duration="4" />
     <task
         name="verifier"
-        duration="2" />
+        duration="0" />
 
     <artifact
-        location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-        type="SPLIT" />
-    <artifact
-        location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+        location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
         type="SPLIT" />
     <artifact
         location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/outputs/apk/app-debug.apk"
@@ -35,7 +32,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1494922679841"
+        timestamp="1495014058030"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
@@ -44,25 +41,25 @@
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
-            type="SPLIT" />
-        <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
@@ -76,24 +73,26 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1494925341385"
+        timestamp="1495016097458"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1495018706608"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/outputs/apk/app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1494925535803"
+        timestamp="1495018993964"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
             type="SPLIT" />
         <artifact
             location="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/outputs/apk/app-debug.apk"

@@ -180,7 +180,6 @@ public class ProductItemDetailActivity extends BaseActivity {
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
                 closeDialog();
                 Gson gson = new Gson();
                 ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
@@ -212,7 +211,8 @@ public class ProductItemDetailActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                showDialog();
+                ToasShow.showToastCenter(ProductItemDetailActivity.this, strMsg);
             }
         });
     }

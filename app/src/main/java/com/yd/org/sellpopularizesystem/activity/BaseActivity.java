@@ -28,10 +28,8 @@ public abstract class BaseActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 设置右滑动返回
         aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
-
 
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
         // 标题
@@ -236,8 +234,7 @@ public abstract class BaseActivity extends Activity {
 
     }
 
-    public void setStatusBar() {
 
-    }
+
 
 }

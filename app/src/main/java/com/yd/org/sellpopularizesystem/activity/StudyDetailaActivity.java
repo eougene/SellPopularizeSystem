@@ -175,7 +175,7 @@ public class StudyDetailaActivity extends FragmentActivity {
                                     fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
                                 }
                             } else {
-                                fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl()));
+                                fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl(), studyBean.getResult().get(i).getDetail_title()));
                             }
                         }
 

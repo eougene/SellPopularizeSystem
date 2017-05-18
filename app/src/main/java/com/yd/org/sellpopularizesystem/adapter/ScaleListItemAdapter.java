@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +94,7 @@ public class ScaleListItemAdapter extends BaseAdapter {
         } else {
             holder = (HolderView) convertView.getTag();
         }
+
         holder.lockImageView.setVisibility(View.GONE);
         Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.studyDisImageView);
         holder.descriptionTextView.setText(resultBean.getProduct_name());

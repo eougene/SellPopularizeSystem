@@ -41,7 +41,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 MessageCountBean messageCountBean = (MessageCountBean) msg.obj;
-                Log.e("消息个数**","count:"+messageCountBean.count);
+                Log.e("消息个数**", "count:" + messageCountBean.count);
 
                 //有消息
                 if (messageCountBean.state.equals("1")) {
@@ -73,14 +73,14 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        homeActiviyt = this;
         //获取系统语言
         Locale locale = Locale.getDefault();
         String language = locale.getLanguage();
         //选择语言
         showLanguage(language);
-        homeActiviyt = this;
         setContentView(R.layout.activity_home_activiyt_1);
+
         inintView();
         setSelect(0);
 

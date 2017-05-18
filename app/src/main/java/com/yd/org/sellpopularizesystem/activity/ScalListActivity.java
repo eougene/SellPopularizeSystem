@@ -1,17 +1,10 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.content.pm.ActivityInfo;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.ScaleListItemAdapter;
@@ -30,6 +23,9 @@ import net.tsz.afinal.http.AjaxParams;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 客户推广
+ */
 public class ScalListActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private ProductListBean.ResultBean resultBean;
     private PullableListView listView;
@@ -68,8 +64,6 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
         showDialog();
         final FinalHttp fh = new FinalHttp();
         final AjaxParams ajaxParams = new AjaxParams();
-
-       // String url = "http://www.wingaid.com/index.php/app/product/product_childs_list?user_id=100014&page=1&number=10&product_name&provice&city&town&address&bedroom&bathroom&car_space&has_study&ensuite&level&price=0~100000000&internal=0~100000000&external=0~100000000&building_area=0~100000000";
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("product_name", resultBean.getProduct_name());
         ajaxParams.put("provice", resultBean.getProvice());
@@ -92,13 +86,10 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
         ajaxParams.put("page", page + "");
         ajaxParams.put("number", "10");
 
-        fh.get(Contants.SCALE_LIST,ajaxParams, new AjaxCallBack<String>() {
+        fh.get(Contants.SCALE_LIST, ajaxParams, new AjaxCallBack<String>() {
 
             @Override
             public void onSuccess(String s) {
-
-                //Log.e("sss", "ajax:" + ajaxParams.toString());
-
                 Log.e("获取推广List数据", "s:" + s);
                 super.onSuccess(s);
                 closeDialog();
