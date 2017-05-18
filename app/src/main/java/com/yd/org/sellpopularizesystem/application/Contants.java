@@ -40,6 +40,8 @@ public class Contants {
     public static final String USER_CUSTOMER_DEL = DOMAIN + "/index.php/appv2/user/user_customer_del";
     //获取律师列表
     public static final String LAWYER_LIST = DOMAIN + "/index.php/app/lawyer/lawyer_list";
+    //获取我的团队列表
+    public static final String TEAM_LIST = DOMAIN + "/index.php/appv2/user/my_team_users";
     //获取学习列表
     public static final String STUDY_LIST = DOMAIN + "/index.php/app/study/study_list";
     //获取学习完成反馈
@@ -78,9 +80,12 @@ public class Contants {
     //提交已读
     public static final String SUBMIT_READED = DOMAIN + "/index.php/app/notice/have_read";
     //创建订单
-
     //public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
+    //支付宝支付接口
+    public static final String ALIPAY_INTERFACE = DOMAIN + "/index.php/api/index/alipay";
+    //微信支付接口
+    public static final String WEICHAT_INTERFACE = DOMAIN + "/index.php/api/index/wxpay";
     //查询订单列表
     public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/app/order/order_list";
     //订单详情
