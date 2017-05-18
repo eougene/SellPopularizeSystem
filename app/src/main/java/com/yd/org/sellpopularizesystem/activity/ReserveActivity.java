@@ -71,11 +71,11 @@ public class ReserveActivity extends BaseActivity {
     private ProductChildBean bean;
     private LawyerBean.ResultBean lawBean;
     private int lawyer_id = -1;
-    private View mView, mPayTypeView, msetPhotoView;
-    private Button btReUnknow, btReinv, btReSelf, btRefoin, btReCancel, btCash, btCredit, btDesposit,
-            btTransfer, btCheck, btReTypeCancel, btReSubmit, btFromCamera, btFromAlbum, btPhotoCancel;
+    private View mView, mPayTypeView, msetPhotoView,mCusSelectView;
+    private Button btReUnknow, btReinv, btReSelf, btRefoin, btReCancel, btCash, btCredit, btDesposit,btTransfer,
+            btCheck, btReTypeCancel, btReSubmit, btFromCamera, btFromAlbum, btPhotoCancel,btSelecCus,btEditCusInfo,btCusCancel;
     private CustomePopuWindow mCustomePopuWindow;
-    private CommonPopuWindow rePayTypePopuWindow, setPhotoPopuWindow;
+    private CommonPopuWindow rePayTypePopuWindow, setPhotoPopuWindow,cusSelectPop;
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -121,6 +121,12 @@ public class ReserveActivity extends BaseActivity {
 
         mCustomePopuWindow = new CustomePopuWindow(ReserveActivity.this, mOnClickListener);
         mView = mCustomePopuWindow.getContentView();
+        cusSelectPop=new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
+            @Override
+            protected int getLayoutId() {
+                return R.layout.reserve_activity_cusselect_pop;
+            }
+        };
         rePayTypePopuWindow = new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
             @Override
             protected int getLayoutId() {
@@ -135,8 +141,13 @@ public class ReserveActivity extends BaseActivity {
                 return R.layout.reserve_activity_setphoto_popwindow;
             }
         };
+        mCusSelectView=cusSelectPop.getContentView();
         msetPhotoView = setPhotoPopuWindow.getContentView();
         mPayTypeView = rePayTypePopuWindow.getContentView();
+
+        btSelecCus= (Button) mCusSelectView.findViewById(R.id.btSelecCus);
+        btEditCusInfo= (Button) mCusSelectView.findViewById(R.id.btEditCusInfo);
+        btCusCancel= (Button) mCusSelectView.findViewById(R.id.btCusCancel);
 
         rlPop = (RelativeLayout) mView.findViewById(R.id.rlPop);
         btReUnknow = (Button) mView.findViewById(R.id.btReUnknow);
@@ -199,16 +210,19 @@ public class ReserveActivity extends BaseActivity {
         //tvReFirb.setText(bean.get);
         tvReSale.setText(bean.getSales_commission_type() + "");
         tvValidity.setText(bean.getPrice());
-        String true_name = BaseApplication.getInstance().getResultBean().getTrue_name();
+        String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
         customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";
-        if (true_name != null) {
-            tvReCus.setText(true_name);
+        if (en_name != null) {
+            tvReCus.setText(BaseApplication.getInstance().getResultBean().getSurname()+BaseApplication.getInstance().getResultBean().getFirst_name());
         }
 
     }
 
     @Override
     public void setListener() {
+        btSelecCus.setOnClickListener(mOnClickListener);
+        btEditCusInfo.setOnClickListener(mOnClickListener);
+        btCusCancel.setOnClickListener(mOnClickListener);
         tvReCus.setOnClickListener(mOnClickListener);
         ivReLawyer.setOnClickListener(mOnClickListener);
         tvReGoal.setOnClickListener(mOnClickListener);
@@ -248,9 +262,22 @@ public class ReserveActivity extends BaseActivity {
 
             switch (v.getId()) {
                 case R.id.rlRecus:
+                    cusSelectPop.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    break;
+                case R.id.btSelecCus:
                     bun.putString(ExtraName.SCALETOCUSTOME, ExtraName.TORESVER_TOCUSTOME);
                     ActivitySkip.forward(ReserveActivity.this, CustomeActivity.class, ExtraName.RESERVE_TO_CUSTOME, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
+                    cusSelectPop.dismiss();
+                    break;
+                case R.id.btEditCusInfo:
+                    bun.putString(ExtraName.SCALETOCUSTOME, ExtraName.TORESVER_TOCUSTOME);
+                    ActivitySkip.forward(ReserveActivity.this,CustomDetailedActivity.class,bun);
+                    overridePendingTransition(R.anim.enter_anim, 0);
+                    cusSelectPop.dismiss();
+                    break;
+                case R.id.btCusCancel:
+                    cusSelectPop.dismiss();
                     break;
                 case R.id.rlReLawyer:
                     bun.putString(ExtraName.RESVERTOLAWYER, ExtraName.TORESVER);
@@ -356,10 +383,10 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 case R.id.tvEoiSubmit:
                     if (tvMoneyNum.getText().equals("-")){
-                        ToasShow.showToastCenter(ReserveActivity.this,"请选择支付方式");
+                        ToasShow.showToastCenter(ReserveActivity.this,getString(R.string.paytype));
                     }else if (llCertificate.getVisibility()==View.VISIBLE){
                         if (picPath == null) {
-                            ToasShow.showToastCenter(ReserveActivity.this, "请上传支付凭证");
+                            ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.picpath));
                         }
                     } else {
                         tvRePay.setText(tvMoneyNum.getText().toString());
@@ -434,6 +461,10 @@ public class ReserveActivity extends BaseActivity {
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
                         ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+                        Log.e("tag", "onSuccess: "+json.getString("msg"));
+                        Bundle bundle=new Bundle();
+                        bundle.putString("payurlId",json.getString("trust_account_id"));
+                        ActivitySkip.forward(ReserveActivity.this,PaymentQrActivity.class,bundle);
                         finish();
                     } else {
                         ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));

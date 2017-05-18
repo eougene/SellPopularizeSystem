@@ -170,7 +170,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     holder.setText(R.id.tvBathroom, item.getProduct_info().getBathroom());
                     holder.setText(R.id.tvCarSquare, item.getProduct_info().getCar_space());*/
                     holder.setText(R.id.tvSalePrice, item.getProduct_info().getCurrency() + item.getProduct_info().getPrice());
-                    holder.setText(R.id.tvSaleName, item.getCustomer_first_name() + item.getCustomer_surname());
+                    holder.setText(R.id.tvSaleName, item.getCustomer_surname() +getString(R.string.single_blank_space)+item.getCustomer_first_name());
                     if (saleAdapter.getmCurrentItem() == holder.getPosition() && isClick()) {
                         holder.setView(R.id.tvStatus, ContextCompat.getColor(SaleRecordActivity.this, R.color.transparent));
                         holder.getConvertView().setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this, R.color.home_scale));
@@ -181,7 +181,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     if (item.getStatus()!=11){
                         //合同状态判断
                         if(item.getContract_apply_status()==0){
-                            holder.setText(R.id.tvStatus,"意向金凭证已经上传\n请申请合同");
+                            holder.setText(R.id.tvStatus,getString(R.string.nopayintent));
                         }else if(item.getContract_apply_status()==1){
                             holder.setText(R.id.tvStatus,"正在申请合同\n请等待管理员审核");
                         }else if(item.getContract_apply_status()==2){
@@ -244,6 +244,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     submitOrderUpdate(orderId);
                     break;
                 case R.id.btOrderCancel:
+                    sobRbData.get(pos).setCancel_apply_status(1);
+                    saleAdapter.notifyDataSetChanged();
                     canceOrder(orderId);
                     mSalePopuwindow.dismiss();
                     break;
@@ -316,7 +318,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 resetSalePopView();
-                mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER,0,0);
+                if (sobRbData.get(position).getCancel_apply_status()!=1){
+                    mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER,0,0);
+                }
                 orderId = sobRbData.get(position).getProduct_orders_id();
                 //saleAdapter.getView(position,)
                 pos = position;
@@ -325,16 +329,16 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 //tvText.setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this,R.color.transparent));
                 tvText.setBackground(null);
                 saleAdapter.setCurrentItem(position);
-                if (sobRbData.get(pos).getContract_apply_status()==1){
+                if (sobRbData.get(position).getContract_apply_status()==1){
                     saleAdapter.setClick(true);
                     saleAdapter.notifyDataSetChanged();
                 }else{
                     saleAdapter.setClick(true);
                     saleAdapter.notifyDataSetChanged();
-                    if (sobRbData.get(pos).getContract_apply_status()==0){
+                    if (sobRbData.get(position).getContract_apply_status()==0){
                             btApplyContract.setVisibility(View.GONE);
                     }
-                    if (sobRbData.get(pos).getOrder_money_status()==2){
+                    if (sobRbData.get(position).getOrder_money_status()==2){
                         btApplyContract.setVisibility(View.GONE);
                         btPayIntention.setVisibility(View.GONE);
                         btOrderCancel.setVisibility(View.GONE);
