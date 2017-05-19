@@ -11,7 +11,7 @@ public class Contants {
     //public static final String DOMAIN = "http://crm.vxda.cn";
     public static final String DOMAIN = "https://www.wingaid.com";
     //首页数据
-   // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
+    // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
     //登录
     public static final String HOME_LOGIN = DOMAIN + "/index.php/app/login/index";
@@ -78,7 +78,8 @@ public class Contants {
     //删除预定消息提示
     public static final String DELETE_NOTICE = DOMAIN + "/index.php/app/notice/del_notice_logs";
     //提交已读
-    public static final String SUBMIT_READED = DOMAIN + "/index.php/app/notice/have_read";
+    //public static final String SUBMIT_READED = DOMAIN + "/index.php/app/notice/have_read";
+    public static final String SUBMIT_READED = DOMAIN + "/index.php/appv2/notice/have_read";
     //创建订单
     //public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
@@ -124,22 +125,16 @@ public class Contants {
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //佣金
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
-
-
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
-
-
     /**
      * 用户文件夹
      */
     public static final String USER_PATH = "USER/user";
-
     /**
      * 缓存文件夹目录
      */
     public static final String CACHE_PATH = "cache";
-
     //微信相关
     public static final String WEXIN_APP_ID = "wxaaa583d7b2f02dc3";
     public static final String WEXIN_APP_SECRET = "856425a0db943831154d248d32c761c2";

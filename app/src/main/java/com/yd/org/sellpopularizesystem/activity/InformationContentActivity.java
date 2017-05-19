@@ -17,8 +17,6 @@ import org.json.JSONObject;
 
 public class InformationContentActivity extends BaseActivity {
     private TextView tvInformContent;
-    private String strContent;
-
     @Override
     protected int setContentView() {
         return R.layout.activity_information_content;
@@ -32,8 +30,8 @@ public class InformationContentActivity extends BaseActivity {
         String title = bundle.getString("title");
         String userId = bundle.getString("notice_id", "null");
         tvInformContent = (TextView) findViewById(R.id.tvInformContent);
-        tvInformContent.setText(str);
-        setTitle(title);
+        tvInformContent.setText(title+"\n"+str);
+        setTitle("消息详情");
         hideRightImagview();
         commitNotice(userId);
 
@@ -44,11 +42,10 @@ public class InformationContentActivity extends BaseActivity {
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("notice_id", str);
+        ajaxParams.put("notice_logs_id", str);
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
                 closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
@@ -61,7 +58,6 @@ public class InformationContentActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
                 closeDialog();
             }
         });

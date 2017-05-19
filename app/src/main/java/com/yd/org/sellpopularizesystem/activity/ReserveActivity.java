@@ -449,10 +449,9 @@ public class ReserveActivity extends BaseActivity {
             ajaxParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
             if (null != picPath && !picPath.equals("")) {
                 File picFile = new File(picPath);
-                        Log.e("picPath*00*","picPath:"+picPath);
                 ajaxParams.put("file", picFile);
             }
-            ajaxParams.put("pay_time", System.currentTimeMillis()+"");
+            ajaxParams.put("pay_time", System.currentTimeMillis() + "");
             ajaxParams.put("currency", bean.getCurrency());
             ajaxParams.put("purchaseReason", (String) tvReGoal.getText());
             ajaxParams.put("eoi_id", bean.getIs_eoi() + "");
