@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/parent_container"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+    android:id="@+id/parent_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--这个是隐藏的布局，然后通过动态的设置高度达到效果-->
+    <LinearLayout
+        android:id="@+id/ll_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#e7abff"
+        android:orientation="vertical"
+        android:visibility="gone"></LinearLayout>
 
     <include
         android:id="@+id/base_header_layout"
-        layout="@layout/base_header_main"/>
+        layout="@layout/base_header_main" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/search_edit_bac"/>
+        android:background="@color/search_edit_bac" />
 
 
     <FrameLayout
@@ -20,7 +29,7 @@
         style="@style/MatchMatch"
         android:background="@color/white"
         android:orientation="vertical"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
 
 </LinearLayout>

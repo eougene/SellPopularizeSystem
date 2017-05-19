@@ -111,8 +111,6 @@ public class NotificationFragment extends BaseFragmentView {
                         setNotific(fragmentID, message);
                         array = 0;
                     }
-
-
                     break;
 
                 //删除
@@ -139,7 +137,6 @@ public class NotificationFragment extends BaseFragmentView {
                         message.arg1 = array;
                         setNotific(fragmentID, message);
                         array = 0;
-
                     }
 
 
@@ -177,10 +174,8 @@ public class NotificationFragment extends BaseFragmentView {
                     tvBrief.setTextColor(getResources().getColor(R.color.yellowish));
                     viewBriefSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
-
                     tvCompany.setTextColor(getResources().getColor(R.color.black));
                     viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
-
 
                     tvSystem.setTextColor(getResources().getColor(R.color.black));
                     viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));

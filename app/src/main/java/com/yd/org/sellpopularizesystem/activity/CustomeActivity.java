@@ -58,13 +58,10 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private SideBar sideBar;
     private TextView dialog, tvNoMessage;
     private SortGroupMemberAdapter adapter;
-    private CommonAdapter lawyerAdapter;
     private List<LawyerBean.ResultBean> lawyersData = new ArrayList<>();
     private LinearLayout titleLayout;
     private TextView title, tvNofriends;
     private SearchEditText searchEditText;
-    //输入内容选择相关
-    private GetCountryNameSort countryChangeUtil;
     /**
      * 上次第一个可见元素，用于滚动时记录标识。
      */
@@ -117,10 +114,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 getCustomeListData(true, page);
             }
 
-        } else if (str1.equals(ExtraName.TORESVER)) {
-            setTitle(getString(R.string.lawyer));
-            // String id = bundle.getString("id");
-            getLawyerListData("", true);
         } else {
             if (!MyUtils.getInstance().isNetworkConnected(this)) {
                 String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
@@ -134,38 +127,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
         }
         setListener();
-    }
-
-
-    /**
-     * 获取律师列表
-     *
-     * @param customeId
-     */
-    private void getLawyerListData(String customeId, final boolean b) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("customer_id", "");
-        ajaxParams.put("number", "20");
-        http.get(Contants.LAWYER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, b);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-
-            }
-
-        });
     }
 
     private void initViews() {
@@ -199,49 +160,27 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private List filledData(List date) {
         List list = new ArrayList();
-
-        if (str1.equals(ExtraName.TORESVER)) {
-            List<LawyerBean.ResultBean> mlawSortList = new ArrayList<LawyerBean.ResultBean>();
-            for (int i = 0; i < date.size(); i++) {
-                LawyerBean.ResultBean sortModel = (LawyerBean.ResultBean) date.get(i);
-                // 汉字转换成拼音
-                if (!TextUtils.isEmpty(sortModel.getLawyer_name())) {
-                    String pinyin = characterParser.getSelling(sortModel.getLawyer_name());
-                    String sortString = pinyin.substring(0, 1).toUpperCase();
-                    // 正则表达式，判断首字母是否是英文字母
-                    if (sortString.matches("[A-Z]")) {
-                        sortModel.setSortLetters(sortString.toUpperCase());
-                    } else {
-                        sortModel.setSortLetters("#");
-                    }
-                    mlawSortList.add(sortModel);
+        List<CustomBean.ResultBean> mSortList = new ArrayList<CustomBean.ResultBean>();
+        for (int i = 0; i < date.size(); i++) {
+            CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
+            // 汉字转换成拼音
+            if (!TextUtils.isEmpty(sortModel.getFirst_name())) {
+                String pinyin = characterParser.getSelling(sortModel.getFirst_name());
+                String sortString = pinyin.substring(0, 1).toUpperCase();
+                // 正则表达式，判断首字母是否是英文字母
+                if (sortString.matches("[A-Z]")) {
+                    sortModel.setSortLetters(sortString.toUpperCase());
+                } else {
+                    sortModel.setSortLetters("#");
                 }
-            }
-            list.clear();
-            list.addAll(mlawSortList);
-            return list;
-        } else {
-            List<CustomBean.ResultBean> mSortList = new ArrayList<CustomBean.ResultBean>();
-            for (int i = 0; i < date.size(); i++) {
-                CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
-                // 汉字转换成拼音
-                if (!TextUtils.isEmpty(sortModel.getFirst_name())) {
-                    String pinyin = characterParser.getSelling(sortModel.getFirst_name());
-                    String sortString = pinyin.substring(0, 1).toUpperCase();
-                    // 正则表达式，判断首字母是否是英文字母
-                    if (sortString.matches("[A-Z]")) {
-                        sortModel.setSortLetters(sortString.toUpperCase());
-                    } else {
-                        sortModel.setSortLetters("#");
-                    }
 
-                    mSortList.add(sortModel);
-                }
+                mSortList.add(sortModel);
             }
-            list.clear();
-            list.addAll(mSortList);
-            return list;
         }
+        list.clear();
+        list.addAll(mSortList);
+        return list;
+
     }
 
     /**
@@ -250,28 +189,23 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      * @param filterStr
      */
     private void filterData(String filterStr) {
-        if (str1.equals(ExtraName.TORESVER)) {
-            Log.e("tag", "filterData: " + filterDateList.size());
-            filterDateList = new ArrayList<LawyerBean.ResultBean>();
-            //filterDateList.addAll(filterDateList);
-        } else {
-            if (TextUtils.isEmpty(filterStr)) {
+        if (TextUtils.isEmpty(filterStr)) {
                 /*filterDateList = new ArrayList<CustomBean.ResultBean>();
                 filterDateList = SourceDateList;*/
-                tvNofriends.setVisibility(View.GONE);
-                adapter.updateListView(SourceDateList, null);
-            } else {
-                filterDateList = new ArrayList<CustomBean.ResultBean>();
-                for (CustomBean.ResultBean sortModel : SourceDateList) {
-                    String name = sortModel.getFirst_name();
-                    if (name.indexOf(filterStr.toString()) != -1
-                            || characterParser.getSelling(name).startsWith(
-                            filterStr)) {
-                        filterDateList.add(sortModel);
-                    }
+            tvNofriends.setVisibility(View.GONE);
+            adapter.updateListView(SourceDateList, null);
+        } else {
+            filterDateList = new ArrayList<CustomBean.ResultBean>();
+            for (CustomBean.ResultBean sortModel : SourceDateList) {
+                String name = sortModel.getFirst_name();
+                if (name.indexOf(filterStr.toString()) != -1
+                        || characterParser.getSelling(name).startsWith(
+                        filterStr)) {
+                    filterDateList.add(sortModel);
                 }
             }
         }
+
         // 根据a-z进行排序
         Collections.sort(filterDateList, pinyinComparator);
         adapter.updateListView(filterDateList, lawyersData);
@@ -345,49 +279,31 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void jsonParse(String json, boolean isRefresh) {
 
         Gson gson = new Gson();
-        //律师
-        if (str1.equals(ExtraName.TORESVER)) {
-            LawyerBean lawyerBean = gson.fromJson(json, LawyerBean.class);
-            if (lawyerBean.getCode() == 1) {
-                lawyersData = filledData(lawyerBean.getResult());
-                Log.e("TAG1", "jsonParse: " + lawyersData.size());
-            }
-            if (isRefresh) {
+        //客户信息
+        CustomBean product = gson.fromJson(json, CustomBean.class);
+        if (product.getCode() == 1) {
+            SourceDateList = filledData(product.getResult());
+            Log.e("tag**1", "tag:" + SourceDateList.size());
+
+        }
+        if (isRefresh) {
+            if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                // 根据a-z进行排序源数据
-                Collections.sort(SourceDateList, pinyinComparator);
-                adapter = new SortGroupMemberAdapter(this, "null");
-                listView.setAdapter(adapter);
+            }
+            // 根据a-z进行排序源数据
+            Collections.sort(SourceDateList, pinyinComparator);
+            adapter = new SortGroupMemberAdapter(this, "custome");
+            adapter.addData(SourceDateList, lawyersData);
+            listView.setAdapter(adapter);
+        } else {
+            if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
+                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             }
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-            adapter.addData(SourceDateList, lawyersData);
-        } else {
-
-            //客户信息
-            CustomBean product = gson.fromJson(json, CustomBean.class);
-            if (product.getCode() == 1) {
-                SourceDateList = filledData(product.getResult());
-                Log.e("tag**1", "tag:" + SourceDateList.size());
-
-            }
-            if (isRefresh) {
-                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
-                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                }
-                // 根据a-z进行排序源数据
-                Collections.sort(SourceDateList, pinyinComparator);
-                adapter = new SortGroupMemberAdapter(this, "custome");
-                adapter.addData(SourceDateList, lawyersData);
-                listView.setAdapter(adapter);
-            } else {
-                if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
-                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-                }
-                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-                adapter.addMore(SourceDateList);
-                Log.e("TAG", "jsonParse: " + SourceDateList.size());
-            }
+            adapter.addMore(SourceDateList);
+            Log.e("TAG", "jsonParse: " + SourceDateList.size());
         }
+
     }
 
 
@@ -463,6 +379,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
                 Bundle bundle = new Bundle();
+                //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
                     SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
@@ -471,14 +388,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     app.setResultBean(resultBean);
                     ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
                     finish();
-                } else if (str1.equals(ExtraName.TORESVER)) {
-                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                    LawyerBean.ResultBean lawBean = viewHolder.m;
-                    Intent i = new Intent();
-                    i.putExtra("lawyer", lawBean);
-                    setResult(Activity.RESULT_OK, i);
-                    finish();
-                } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
+                } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
                     SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                     CustomBean.ResultBean lawBean = viewHolder.resultBean;
                     Intent i = new Intent();
@@ -510,7 +420,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
                 }
 
-
                 return false;
             }
         });
@@ -519,7 +428,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     private void deleteCustomer(CustomBean.ResultBean resultBean) {
         showDialog();
-
         FinalHttp finalHttp = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -531,7 +439,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
 
             }
-
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 closeDialog();
