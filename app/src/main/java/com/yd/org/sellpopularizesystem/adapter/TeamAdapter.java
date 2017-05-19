@@ -5,13 +5,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ListView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.PagerDetailsBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.TeamBean;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,47 +25,14 @@ import java.util.List;
 
 public class TeamAdapter extends BaseAdapter implements SectionIndexer {
     private LayoutInflater layoutInflater;
-    private List<TeamBean.ResultBean.SubBeanX.SubBean> tasks;
-    private int[] sectionIndices;
-    private String[] sectionHeaders;
+    private List<TeamBean.ResultBean.SubBeanX> tasks;
     private Context mContext;
 
-    public TeamAdapter(Context context, List<TeamBean.ResultBean.SubBeanX.SubBean> tasks) {
+    public TeamAdapter(Context context, List<TeamBean.ResultBean.SubBeanX> tasks) {
         this.mContext = context;
         layoutInflater = LayoutInflater.from(context);
         this.tasks = tasks;
-        sectionIndices = getSectionIndices();
-        sectionHeaders = getSectionHeaders();
-    }
 
-    public void refresh(List<TeamBean.ResultBean.SubBeanX.SubBean> tasks) {
-        this.tasks = tasks;
-        sectionIndices = getSectionIndices();
-        sectionHeaders = getSectionHeaders();
-        notifyDataSetChanged();
-    }
-
-    public int[] getSectionIndices() {
-        List<Integer> sectionIndices = new ArrayList<Integer>();
-        sectionIndices.add(1);
-        int count = 0;
-        for (int i = 1; i < tasks.size(); i++) {
-            //count += tasks.get(i - 1).getSub();
-            sectionIndices.add(count);
-        }
-        int[] sections = new int[sectionIndices.size()];
-        for (int i = 0; i < sectionIndices.size(); i++) {
-            sections[i] = sectionIndices.get(i);
-        }
-        return sections;
-    }
-
-    public String[] getSectionHeaders() {
-        String[] sectionHeaders = new String[tasks.size()];
-        for (int i = 0; i < tasks.size(); i++) {
-            sectionHeaders[i] = tasks.get(i).getSurname() + mContext.getString(R.string.single_blank_space) + tasks.get(i).getFirstname();
-        }
-        return sectionHeaders;
     }
 
     /**
@@ -70,9 +40,7 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
      *
      * @param list
      */
-    public void updateListView(List<TeamBean.ResultBean.SubBeanX.SubBean> list) {
-
-
+    public void updateListView(List<TeamBean.ResultBean.SubBeanX> list) {
         if (list == null) {
             this.tasks = new ArrayList<>();
         } else {
@@ -101,21 +69,24 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
         ViewHolder viewHolder;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = layoutInflater.inflate(R.layout.lawyer_listview_item, null);
-            viewHolder.tvTeamName = (TextView) convertView.findViewById(R.id.law_firm);
-            viewHolder.tvTeamMemberName = (TextView) convertView.findViewById(R.id.tvName);
+            convertView = layoutInflater.inflate(R.layout.team_listview_item_layout, null);
+            viewHolder.tvTeamName = (TextView) convertView.findViewById(R.id.tvTeamName);
+            viewHolder.lvTeamMember = (ListView) convertView.findViewById(R.id.lvTeamMember);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        int sec = getSectionForPosition(position);
-        if (position == getPositionForSection(sec)) {
-            viewHolder.tvTeamName.setVisibility(View.VISIBLE);
-            //viewHolder.tvTeamMemberName.setText(tasks.get(position).get);
+        viewHolder.subBeanX = tasks.get(position);
+        viewHolder.tvTeamName.setText(viewHolder.subBeanX.getSurname() + mContext.getString(R.string.single_blank_space) + viewHolder.subBeanX.getFirstname());
+        if (tasks.get(position).getSub() != null && tasks.get(position).getSub().size() > 0) {
+            if (viewHolder.lvTeamMember.getVisibility()==View.GONE){
+                viewHolder.lvTeamMember.setVisibility(View.VISIBLE);
+            }
+            viewHolder.childs = tasks.get(position).getSub();
+            viewHolder.lvTeamMember.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
         } else {
-            viewHolder.tvTeamName.setVisibility(View.GONE);
+            viewHolder.lvTeamMember.setVisibility(View.GONE);
         }
-        viewHolder.tvTeamMemberName.setText(tasks.get(position).getSurname() + tasks.get(position).getFirstname());
         return convertView;
     }
 
@@ -136,6 +107,58 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
 
     class ViewHolder {
         TextView tvTeamName;
-        TextView tvTeamMemberName;
+        ListView lvTeamMember;
+        TeamBean.ResultBean.SubBeanX subBeanX;
+        List<TeamBean.ResultBean.SubBeanX.SubBean> childs = new ArrayList<>();
+    }
+
+    //内层listview适配器
+    class ItemAdapter extends BaseAdapter {
+        private Context mItemContext;
+        private List<TeamBean.ResultBean.SubBeanX.SubBean> childs = new ArrayList<>();
+        private LayoutInflater inflater;
+
+        public ItemAdapter(Context mContext, List<TeamBean.ResultBean.SubBeanX.SubBean> childs) {
+            this.mItemContext = mContext;
+            this.childs = childs;
+            this.inflater = LayoutInflater.from(mItemContext);
+        }
+
+        @Override
+        public int getCount() {
+            return childs.size();
+        }
+
+        @Override
+        public TeamBean.ResultBean.SubBeanX.SubBean getItem(int position) {
+            return childs.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            TeamMemberViewHolder teamMemberViewHolder = null;
+            if (convertView == null) {
+                teamMemberViewHolder = new TeamMemberViewHolder();
+                convertView = inflater.inflate(R.layout.team_listview_item_sublay, null);
+                teamMemberViewHolder.tvTeamMemberName = (TextView) convertView.findViewById(R.id.tvTeamMemberName);
+                convertView.setTag(teamMemberViewHolder);
+            } else {
+                teamMemberViewHolder = (TeamMemberViewHolder) convertView.getTag();
+            }
+            teamMemberViewHolder.subBean = childs.get(position);
+            teamMemberViewHolder.tvTeamMemberName.setText(teamMemberViewHolder.subBean.getSurname() +
+                    mItemContext.getString(R.string.single_blank_space) + teamMemberViewHolder.subBean.getFirstname());
+            return convertView;
+        }
+
+        class TeamMemberViewHolder {
+            private TextView tvTeamMemberName;
+            private TeamBean.ResultBean.SubBeanX.SubBean subBean;
+        }
     }
 }
