@@ -388,4 +388,7 @@
     <string name="selectcus">选择客户</string>
     <string name="editcusinfo">编辑客户信息</string>
     <string name="nopayintent">尚未支付意向金\n请付款</string>
+    <string name="bedroom">卧室</string>
+    <string name="bathroom">浴室</string>
+    <string name="carport">车库</string>
 </resources>

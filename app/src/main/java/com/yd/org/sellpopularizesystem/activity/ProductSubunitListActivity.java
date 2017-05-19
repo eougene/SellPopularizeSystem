@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
@@ -57,7 +58,10 @@ public class ProductSubunitListActivity extends BaseActivity {
     private String flag = "";
     private ProductDetailBean.ResultBean prs;
     private Bundle bund;
-
+    //筛选
+    private OptionsPickerView optionsPickerView;
+    private List houseTypes = new ArrayList<String>();
+    private List numbers = new ArrayList<String>();
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -128,6 +132,26 @@ public class ProductSubunitListActivity extends BaseActivity {
         btViewDetail = (Button) mView.findViewById(R.id.btViewDetail);
         btRemain = (Button) mView.findViewById(R.id.btRemain);
         btCancel = (Button) mView.findViewById(R.id.btCancel);
+        initOptionData();
+        initOptionsPickerView();
+    }
+
+    private void initOptionData() {
+        houseTypes.add(getString(R.string.bedroom));
+        houseTypes.add(getString(R.string.bathroom));
+        houseTypes.add(getString(R.string.carport));
+        numbers.add(getString(R.string.nolimit));
+        numbers.add("1");numbers.add("1.5");numbers.add("2");numbers.add("2.5");
+    }
+
+    private void initOptionsPickerView() {
+        OptionsPickerView.Builder builder=new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+
+            }
+        }).setTitleColor(R.color.black)
+                .setCyclic(true, true, true).setSelectOptions(houseTypes.indexOf(getString(R.string.bedroom)),numbers.indexOf(getString(R.string.nolimit)));
     }
 
     private void getListData() {
@@ -219,6 +243,9 @@ public class ProductSubunitListActivity extends BaseActivity {
             bund = new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
+                    break;
+                case R.id.tvSelect:
+
                     break;
                 case R.id.ivHousePic:
                     if (bund == null) {
