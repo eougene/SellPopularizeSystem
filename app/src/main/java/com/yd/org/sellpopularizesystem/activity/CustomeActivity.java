@@ -173,7 +173,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 } else {
                     sortModel.setSortLetters("#");
                 }
-
                 mSortList.add(sortModel);
             }
         }
