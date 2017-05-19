@@ -755,6 +755,7 @@ public class MyUtils {
         int height = wm.getDefaultDisplay().getHeight();
         return height;
     }
+    //获取状态栏高度
     public static int getStatusHeight(Activity context){
         Rect rectangle= new Rect();
         context.getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);

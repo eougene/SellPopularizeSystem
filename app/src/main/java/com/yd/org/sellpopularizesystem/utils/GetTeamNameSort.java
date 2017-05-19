@@ -76,14 +76,24 @@ public class GetTeamNameSort {
      *            需要查询的List
      * @return 查询结果
      */
-    public List<TeamBean.ResultBean.SubBeanX.SubBean> search(String str, List<TeamBean.ResultBean.SubBeanX.SubBean> list) {
-        List<TeamBean.ResultBean.SubBeanX.SubBean> filterList = new ArrayList<TeamBean.ResultBean.SubBeanX.SubBean>();// 过滤后的list
+    public List<TeamBean.ResultBean.SubBeanX> search(String str, List<TeamBean.ResultBean.SubBeanX> list) {
+        List<TeamBean.ResultBean.SubBeanX> filterList = new ArrayList<TeamBean.ResultBean.SubBeanX>();// 过滤后的list
         // if (str.matches("^([0-9]|[/+])*$")) {// 正则表达式 匹配号码
         if (str.matches("^([0-9]|[/+]).*")) {// 正则表达式 匹配以数字或者加号开头的字符串(包括了带空格及-分割的号码)
             String simpleStr = str.replaceAll("\\-|\\s", "");
-            for (TeamBean.ResultBean.SubBeanX.SubBean contact : list) {
-                if (contact.getId()+"" != null ) {
-                    if (contact.getId()==Integer.parseInt(simpleStr)) {
+            for (TeamBean.ResultBean.SubBeanX contact : list) {
+                if (contact.getId() + "" != null) {
+                    /*if (contact.getSub() != null) {
+                        for (int i = 0; i < contact.getSub().size(); i++) {
+                            if (contact.getSub().get(i).getId() == Integer.parseInt(simpleStr)) {
+                                if (!filterList.contains(contact)) {
+                                    filterList.add(contact);
+                                }
+                                //continue;
+                            }
+                        }
+                    }*/
+                    if (contact.getId() == Integer.parseInt(simpleStr)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
@@ -91,15 +101,27 @@ public class GetTeamNameSort {
                 }
             }
         } else {
-            for (TeamBean.ResultBean.SubBeanX.SubBean contact : list) {
+            for (TeamBean.ResultBean.SubBeanX contact : list) {
                 if (contact.getSurname() != null || contact.getFirstname() != null) {
-                    if (contact.getFirstname().indexOf(str)!=-1 || contact.getSurname().indexOf(str)!=-1 ||
+                    if (contact.getFirstname().indexOf(str) != -1 || contact.getSurname().indexOf(str) != -1 ||
                             CharacterParserUtil.getInstance().getSelling(contact.getFirstname()).startsWith(str)
-                            ||CharacterParserUtil.getInstance().getSelling(contact.getSurname()).startsWith(str)){
+                            || CharacterParserUtil.getInstance().getSelling(contact.getSurname()).startsWith(str)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
                     }
+                    /*if (contact.getSub() != null) {
+                        for (int i = 0; i < contact.getSub().size(); i++) {
+                            if (contact.getSub().get(i).getFirstname().indexOf(str) != -1 || contact.getSub().get(i).getSurname().indexOf(str) != -1
+                                    || CharacterParserUtil.getInstance().getSelling(contact.getSub().get(i).getFirstname()).startsWith(str)
+                                    || CharacterParserUtil.getInstance().getSelling(contact.getSub().get(i).getSurname()).startsWith(str)) {
+                                if (!filterList.contains(contact)) {
+                                    filterList.add(contact);
+                                }
+                               //continue;
+                            }
+                        }
+                    }*/
                     // 姓名全匹配,姓名首字母简拼匹配,姓名全字母匹配
                     if (contact.getFirstname().toLowerCase(Locale.CHINESE).contains(
                             str.toLowerCase(Locale.CHINESE))) {
@@ -107,7 +129,7 @@ public class GetTeamNameSort {
                             filterList.add(contact);
                         }
                     }
-                    if (contact.getCommission().indexOf(str)!=-1){
+                    if (contact.getCommission().indexOf(str) != -1) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
