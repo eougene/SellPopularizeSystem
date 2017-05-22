@@ -170,7 +170,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     holder.setText(R.id.tvCarSquare, item.getProduct_info().getCar_space());*/
                     holder.setText(R.id.tvSalePrice, item.getProduct_info().getCurrency() + item.getProduct_info().getPrice());
                     holder.setText(R.id.tvSaleName, item.getCustomer_surname() +getString(R.string.single_blank_space)+item.getCustomer_first_name());
-                    if (saleAdapter.getmCurrentItem() == holder.getPosition() && isClick()) {
+                    if (saleAdapter.getmCurrentItem()==item.getProduct_orders_id()) {
                         holder.setView(R.id.tvStatus, ContextCompat.getColor(SaleRecordActivity.this, R.color.transparent));
                         holder.getConvertView().setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this, R.color.home_scale));
                     } else {
@@ -199,14 +199,23 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         if (item.getCancel_apply_status()==2){
                             holder.setText(R.id.tvStatus,"订单已取消");
                         }
-                        if (item.getOrder_money_status()==2 && item.getContract_apply_status()==0){
-                            holder.setText(R.id.tvStatus,"意向金已支付\n请申请合同");
+                        if (item.getOrder_money_status()==2 ){
+                            if (item.getContract_apply_status()==0){
+                                holder.setText(R.id.tvStatus,"意向金已支付\n请申请合同");
+                            }
+                            if (item.getContract_apply_status()==1){
+                                holder.setText(R.id.tvStatus,"正在申请合同\n请等待管理员审核");
+                            }
+                            if (item.getContract_apply_status()==2){
+                                holder.setText(R.id.tvStatus,"请上传合同首页\n请上传首付款凭证");
+                            }
                         }
                     }else if (item.getStatus()==11){
                         holder.setText(R.id.tvStatus,"订单已完成");
                     }
                 }
             };
+            saleAdapter.setCurrentItem(0);
             lvSaleRecord.setAdapter(saleAdapter);
         }else{
             saleAdapter.addMore(sobRbData);
@@ -330,6 +339,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 resetSalePopView();
+                saleAdapter.setCurrentItem(sobRbData.get(position).getProduct_orders_id());
+                saleAdapter.notifyDataSetChanged();
                 if (sobRbData.get(position).getCancel_apply_status()!=1 && sobRbData.get(position).getCancel_apply_status()!=2){
                     Log.e("Cancel_apply_status", "onItemClick: "+ sobRbData.get(position).getCancel_apply_status());
                     orderId = sobRbData.get(position).getProduct_orders_id();
@@ -339,13 +350,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     TextView tvText = (TextView) view.findViewById(R.id.tvStatus);
                     //tvText.setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this,R.color.transparent));
                     tvText.setBackground(null);
-                    saleAdapter.setCurrentItem(position);
-                    if (sobRbData.get(position).getContract_apply_status()==1){
-                        saleAdapter.setClick(true);
-                        saleAdapter.notifyDataSetChanged();
-                    }else{
-                        saleAdapter.setClick(true);
-                        saleAdapter.notifyDataSetChanged();
                         if (sobRbData.get(position).getOrder_money_status()==1){
                             btApplyContract.setVisibility(View.GONE);
                         }
@@ -358,7 +362,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                                 btPayIntention.setVisibility(View.GONE);
                             }
                         }
-                    }
                     mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER,0,0);
                 }
 
@@ -384,7 +387,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
-
+        page=1;
+        getSaleData(page, 10, true);
     }
 
     @Override
