@@ -76,10 +76,11 @@ public class Contants {
     // public static final String SYSTEM_ANNOUNCEMENT = DOMAIN + "/index.php/app/notice/index";
     public static final String SYSTEM_ANNOUNCEMENT = DOMAIN + "/index.php/appv2/notice/index";
     //删除预定消息提示
-    public static final String DELETE_NOTICE = DOMAIN + "/index.php/app/notice/del_notice_logs";
+    // public static final String DELETE_NOTICE = DOMAIN + "/index.php/app/notice/del_notice_logs";
+    public static final String DELETE_NOTICE = DOMAIN + "/index.php/appv2/notice/del_notice_logs";
     //提交已读
-    //public static final String SUBMIT_READED = DOMAIN + "/index.php/app/notice/have_read";
-    public static final String SUBMIT_READED = DOMAIN + "/index.php/appv2/notice/have_read";
+    public static final String SUBMIT_READED = DOMAIN + "/index.php/app/notice/have_read";
+
     //创建订单
     //public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
@@ -87,6 +88,8 @@ public class Contants {
     public static final String ALIPAY_INTERFACE = DOMAIN + "/index.php/api/index/alipay";
     //微信支付接口
     public static final String WEICHAT_INTERFACE = DOMAIN + "/index.php/api/index/wxpay";
+    //请求合同
+    public static final String ASK_ONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontract";
     //查询订单列表
     public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/app/order/order_list";
     //订单详情

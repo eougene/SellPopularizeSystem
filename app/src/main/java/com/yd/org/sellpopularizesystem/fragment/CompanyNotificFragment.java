@@ -18,6 +18,7 @@ import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -88,12 +89,32 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
                 //删除
                 case 2:
 
-                    // deleteNoticeLog();
+                    deleteNoticeLog(isSelected());
                     break;
             }
         }
     };
+    /**
+     * 判断是否选中
+     *
+     * @param
+     */
 
+    private String isSelected() {
+        StringBuffer stringBuffer = new StringBuffer();
+        if (informationContents.size() > 0) {
+            for (int i = 0; i < informationContents.size(); i++) {
+                if (adapter.getIsSelected().get(i)) {
+                    stringBuffer.append(informationContents.get(i).getId() + ",");
+                }
+
+                Log.e("是不选中**", "i:==" + i + "is:" + adapter.getIsSelected().get(i));
+            }
+            return stringBuffer.toString();
+        }
+
+        return null;
+    }
 
     public static CompanyNotificFragment getInstnce(int cate_id) {
         CompanyNotificFragment notificFragmen = new CompanyNotificFragment();
@@ -208,16 +229,11 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
                     adapter.getIsSelected().put(position, holder.check_box.isChecked());
                 } else {
                     //预定推送消息
-                    if (resultBean.getCate_id() == cate_id) {
-                        deleteNoticeLog(resultBean.getId() + "", position);
-                        //系统消息查看详情
-                    } else {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("title", resultBean.getTitle());
-                        bundle.putString("notice_id", resultBean.getId() + "");
-                        bundle.putString("data", resultBean.getContent());
-                        ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
-                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putString("title", resultBean.getTitle());
+                    bundle.putString("notice_id", resultBean.getId() + "");
+                    bundle.putString("data", resultBean.getContent());
+                    ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
                 }
             }
 
@@ -230,14 +246,14 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
      * 删除预定通知
      *
      * @param notice_id
-     * @param postion
+     * @param
      */
-    private void deleteNoticeLog(String notice_id, final int postion) {
+    private void deleteNoticeLog(String notice_id) {
         showLoadingDialog();
         FinalHttp finalHttp = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        // ajaxParams.put("notice_id", notice_id);
+        ajaxParams.put("notice_logs_id", notice_id);
         finalHttp.get(Contants.DELETE_NOTICE, ajaxParams, new AjaxCallBack<String>() {
 
             @Override
@@ -252,11 +268,12 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
                 dismissLoadingDialog();
                 Gson g = new Gson();
                 ErrorBean e = g.fromJson(s, ErrorBean.class);
+                ToasShow.showToastCenter(getActivity(), e.getMsg());
                 if (e.getCode().equals("1")) {
-                    informationContents.remove(postion);
-                    adapter.notifyDataSetChanged();
                     //发送消息数目
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    getData(1, true, cate_id);
+
 
                 }
 

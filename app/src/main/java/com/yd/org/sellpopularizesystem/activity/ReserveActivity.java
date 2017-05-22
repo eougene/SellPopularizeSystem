@@ -340,6 +340,8 @@ public class ReserveActivity extends BaseActivity {
                     getInfo();
                     break;
 
+
+                //现金
                 case R.id.ivCash:
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
@@ -348,6 +350,7 @@ public class ReserveActivity extends BaseActivity {
                     tvPayMethod.setText(getString(R.string.recash));
                     payment_method = "1";
                     break;
+                //银行转账
                 case R.id.ivIdCard:
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
@@ -356,6 +359,7 @@ public class ReserveActivity extends BaseActivity {
                     tvPayMethod.setText(getString(R.string.transfer));
                     payment_method = "4";
                     break;
+                //支付宝
                 case R.id.ivAlipay:
                     if (llCertificate.getVisibility() == View.VISIBLE) {
                         llCertificate.setVisibility(View.GONE);
@@ -364,6 +368,7 @@ public class ReserveActivity extends BaseActivity {
                     tvMoneyNum.setText("￥ 2000.00");
                     payment_method = "6";
                     break;
+                //微信
                 case R.id.ivWeixinPay:
                     if (llCertificate.getVisibility() == View.VISIBLE) {
                         llCertificate.setVisibility(View.GONE);
@@ -378,14 +383,10 @@ public class ReserveActivity extends BaseActivity {
 
                 //提交支付
                 case R.id.tvEoiSubmit:
-                    Log.e("支付0**", "picPath:" + picPath);
                     if (tvMoneyNum.getText().equals("-")) {
                         ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.paytype));
-                        Log.e("支付1**", "picPath:" + picPath);
                     } else if (llCertificate.getVisibility() == View.VISIBLE) {
-                        Log.e("支付2**", "picPath:" + picPath);
                         if (picPath == null) {
-                            Log.e("支付3**", "picPath:" + picPath);
                             ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.picpath));
                         } else {
                             tvRePay.setText(tvMoneyNum.getText().toString());
@@ -393,7 +394,6 @@ public class ReserveActivity extends BaseActivity {
                             payMethodDialog.dismiss();
                         }
                     } else {
-                        Log.e("支付4**", "picPath:" + picPath);
                         tvRePay.setText(tvMoneyNum.getText().toString());
                         tvRePayType.setText(tvPayMethod.getText());
                         payMethodDialog.dismiss();
@@ -417,16 +417,22 @@ public class ReserveActivity extends BaseActivity {
     };
 
     private void getInfo() {
-
         if (lawyer_id == -1) {
             ToasShow.showToastBottom(this, getString(R.string.lawyer_id));
             return;
         } else if (tvRePayType.getText().equals(getString(R.string.pay_method))) {
+
             ToasShow.showToastBottom(this, getString(R.string.pay_method));
+
             return;
-        } else if (TextUtils.isEmpty(picPath)) {
+
+        } else if (TextUtils.isEmpty(picPath) && !payment_method.equals("6") && !payment_method.equals("7")) {
+
             ToasShow.showToastBottom(this, getString(R.string.picpath));
+            Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
+
+
         } else {
             commit(payment_method);
         }
@@ -434,7 +440,7 @@ public class ReserveActivity extends BaseActivity {
 
     }
 
-    private void commit(String payment_method) {
+    private void commit(final String payment_method) {
 
         try {
             showDialog();
@@ -467,9 +473,9 @@ public class ReserveActivity extends BaseActivity {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
                             ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-                            Log.e("tag", "onSuccess: " + json.getString("msg"));
                             Bundle bundle = new Bundle();
                             bundle.putString("payurlId", json.getString("trust_account_id"));
+                            bundle.putString("payment_method", payment_method);
                             ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
                             finish();
                         } else {
@@ -568,23 +574,17 @@ public class ReserveActivity extends BaseActivity {
                 //从相册选取图片
                 case ExtraName.ALBUM_PICTURE:
                     Uri selectedPhotoUri = null;
-                    //File picFile= null;
                     selectedPhotoUri = data.getData();
-                    Log.e("tag", "onActivityResult: " + selectedPhotoUri.toString());
                     picPath = BitmapUtil.getImagePath(ReserveActivity.this, selectedPhotoUri, null, null);
-                    Log.e("tag", "onActivityResult: " + picPath);
                     if (mCrop) {
                         CropImage(picPath);
                     } else {
-                        /*Bitmap mBitmap = BitmapUtil.getThumbnail(this, selectedPhotoUri, ivCertificate.getWidth(), ivCertificate.getHeight());
-                        ivCertificate.setImageBitmap(mBitmap);*/
                         Picasso.with(this).load(selectedPhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
                     }
                     // 裁剪图片
                 case ExtraName.CROP_IMAGE:
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
-                        Log.e("图片路径**", "paht:" + imagePath);
                         Picasso.with(this).load("file://" + imagePath).into(ivCertificate);
                         tvCertificate.setVisibility(View.GONE);
                     } else {

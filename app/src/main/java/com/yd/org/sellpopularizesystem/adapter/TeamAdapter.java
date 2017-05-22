@@ -10,11 +10,7 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
-import com.yd.org.sellpopularizesystem.javaBean.PagerDetailsBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.TeamBean;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,9 +73,9 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.subBeanX = tasks.get(position);
-        viewHolder.tvTeamName.setText(viewHolder.subBeanX.getSurname() + mContext.getString(R.string.single_blank_space) + viewHolder.subBeanX.getFirstname());
+        viewHolder.tvTeamName.setText(viewHolder.subBeanX.getSurname() + mContext.getString(R.string.single_blank_space) + viewHolder.subBeanX.getFirstname() + " " + "- $0");
         if (tasks.get(position).getSub() != null && tasks.get(position).getSub().size() > 0) {
-            if (viewHolder.lvTeamMember.getVisibility()==View.GONE){
+            if (viewHolder.lvTeamMember.getVisibility() == View.GONE) {
                 viewHolder.lvTeamMember.setVisibility(View.VISIBLE);
             }
             viewHolder.childs = tasks.get(position).getSub();
@@ -152,7 +148,7 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
             }
             teamMemberViewHolder.subBean = childs.get(position);
             teamMemberViewHolder.tvTeamMemberName.setText(teamMemberViewHolder.subBean.getSurname() +
-                    mItemContext.getString(R.string.single_blank_space) + teamMemberViewHolder.subBean.getFirstname());
+                    mItemContext.getString(R.string.single_blank_space) + teamMemberViewHolder.subBean.getFirstname() + " " + "- $0");
             return convertView;
         }
 

@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +24,7 @@ public class AskContractActivity extends BaseActivity {
     private TextView tvSaleAskBill;
     private RelativeLayout rlSure;
     private CheckBox cbSure;
-    private String orderId;
+    private String orderId,sale_advice_url;
 
     @Override
     protected int setContentView() {
@@ -38,6 +37,7 @@ public class AskContractActivity extends BaseActivity {
         hideRightImagview();
         Bundle bundle=getIntent().getExtras();
         orderId = bundle.getString("orderId");
+        sale_advice_url=bundle.getString("sale_advice_url");
         tvSaleAskBill=getViewById(R.id.tvSaleAskBill);
         rlSure=getViewById(R.id.rlSure);
         cbSure=getViewById(R.id.tvDot);
@@ -49,7 +49,10 @@ public class AskContractActivity extends BaseActivity {
         tvSaleAskBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivitySkip.forward(AskContractActivity.this,SaleReceiveNoticeActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("orderId", orderId + "");
+                bundle.putString("sale_advice_url", sale_advice_url);
+                ActivitySkip.forward(AskContractActivity.this,SaleReceiveNoticeActivity.class,bundle);
             }
         });
 

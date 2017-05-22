@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.RelativeLayout;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -23,14 +22,10 @@ import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class NotificationActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
-    private RelativeLayout rlMessage;
-    private List<Map<String, Object>> messages = new ArrayList<Map<String, Object>>();
-    //private Map<String,Object> map=new HashMap<String,Object>();
     private List<AnnouncementBean.ResultBean> informationContents = new ArrayList<>();
     private CommonAdapter adapter;
     private int page = 1;
@@ -42,15 +37,15 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
 
     @Override
     public void initView() {
+        hideRightImagview();
         setTitle(getResources().getString(R.string.setting_notification));
         //下拉加载
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
-        rlMessage = (RelativeLayout) getViewById(R.id.rlMessage);
-        hideRightImagview();
+
         getData(1, true);
-        //SimpleAdapter simpleAdapter=new SimpleAdapter(this,messages,R.layout.notification_listview_item,R.id.tvMessageTitle,)
+
     }
 
     private void getData(int page, final boolean isRefresh) {
@@ -60,7 +55,6 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
         ajaxParams.put("number", "10");
-        //String url = "https://www.wingaid.com/index.php/app/notice/index?user_id=100014&page=" + page + "&number=10";
         fh.get(Contants.SYSTEM_ANNOUNCEMENT,ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -90,7 +84,6 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
 
         if (isRefresh) {
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-            //ArrayAdapter arrayAdapter=new ArrayAdapter(this,R.layout.notification_listview_item,informationContents);
             adapter = new CommonAdapter<AnnouncementBean.ResultBean>(this, informationContents, R.layout.notification_listview_item) {
                 @Override
                 public void convert(ViewHolder holder, AnnouncementBean.ResultBean item) {

@@ -7,9 +7,10 @@
     <LinearLayout
         android:id="@+id/llMethodContent"
         style="@style/MatchWrap"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
+
         <LinearLayout
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/padding_margin_20"
@@ -21,28 +22,24 @@
                 android:id="@+id/btDoaCash"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_margin_35"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
                 android:background="@drawable/base_square"
                 android:text="@string/recash"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/setting_bac"/>
 
             <Button
                 android:id="@+id/btDoaTransfer"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/padding_margin_35"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
                 android:background="@drawable/base_square"
                 android:text="@string/transfer"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
         </LinearLayout>
 
         <Button
@@ -56,13 +53,14 @@
             android:background="@drawable/base_square"
             android:text="@string/cancel"
             android:textColor="@color/light_blue"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/llSpace"
-        android:layout_above="@+id/llMethodContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/llMethodContent"
         android:orientation="vertical"
         >
     </LinearLayout>

@@ -8,7 +8,6 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.SortGroupMemberAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -32,7 +30,6 @@ import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -54,18 +51,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     private int page = 1;
-    // private String flag = "default";
     private SideBar sideBar;
-    private TextView dialog, tvNoMessage;
+    private TextView dialog;
     private SortGroupMemberAdapter adapter;
     private List<LawyerBean.ResultBean> lawyersData = new ArrayList<>();
     private LinearLayout titleLayout;
-    private TextView title, tvNofriends;
+    private TextView tvNofriends;
     private SearchEditText searchEditText;
-    /**
-     * 上次第一个可见元素，用于滚动时记录标识。
-     */
-    private int lastFirstVisibleItem = -1;
     /**
      * 汉字转换成拼音的类
      */
@@ -133,9 +125,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
         searchEditText = getViewById(R.id.activity_main_input_edittext);
         titleLayout = getViewById(R.id.title_layout);
-        title = getViewById(R.id.title_layout_catalog);
         tvNofriends = getViewById(R.id.noInfomation);
-        tvNoMessage = getViewById(R.id.noInfomation);
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
 
@@ -160,12 +150,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private List filledData(List date) {
         List list = new ArrayList();
-        List<CustomBean.ResultBean> mSortList = new ArrayList<CustomBean.ResultBean>();
+        List<CustomBean.ResultBean> mSortList = new ArrayList<>();
         for (int i = 0; i < date.size(); i++) {
             CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
             // 汉字转换成拼音
-            if (!TextUtils.isEmpty(sortModel.getFirst_name())) {
-                String pinyin = characterParser.getSelling(sortModel.getFirst_name());
+            if (!TextUtils.isEmpty(sortModel.getSurname())) {
+                String pinyin = characterParser.getSelling(sortModel.getSurname());
                 String sortString = pinyin.substring(0, 1).toUpperCase();
                 // 正则表达式，判断首字母是否是英文字母
                 if (sortString.matches("[A-Z]")) {
@@ -189,17 +179,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private void filterData(String filterStr) {
         if (TextUtils.isEmpty(filterStr)) {
-                /*filterDateList = new ArrayList<CustomBean.ResultBean>();
-                filterDateList = SourceDateList;*/
             tvNofriends.setVisibility(View.GONE);
             adapter.updateListView(SourceDateList, null);
         } else {
-            filterDateList = new ArrayList<CustomBean.ResultBean>();
+            filterDateList = new ArrayList<>();
             for (CustomBean.ResultBean sortModel : SourceDateList) {
-                String name = sortModel.getFirst_name();
-                if (name.indexOf(filterStr.toString()) != -1
-                        || characterParser.getSelling(name).startsWith(
-                        filterStr)) {
+                String name = sortModel.getSurname();
+                if (name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr) || characterParser.getSelling(name).startsWith(filterStr.toUpperCase())) {
                     filterDateList.add(sortModel);
                 }
             }
@@ -208,9 +194,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         // 根据a-z进行排序
         Collections.sort(filterDateList, pinyinComparator);
         adapter.updateListView(filterDateList, lawyersData);
-        if (filterDateList.size() == 0) {
-            tvNofriends.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -223,8 +206,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     @Override
     public int getSectionForPosition(int position) {
-
-        Log.e("onCreat***", "position:" + position + "data:" + SourceDateList.size());
         return SourceDateList.get(position).getSortLetters().charAt(0);
 
     }
@@ -255,7 +236,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 closeDialog();
-                Log.e("客户内容", "s:" + s);
                 if (null != s) {
                     if (b) {
                         BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_HOUR);
@@ -276,14 +256,11 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     }
 
     private void jsonParse(String json, boolean isRefresh) {
-
         Gson gson = new Gson();
         //客户信息
         CustomBean product = gson.fromJson(json, CustomBean.class);
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
-            Log.e("tag**1", "tag:" + SourceDateList.size());
-
         }
         if (isRefresh) {
             if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
@@ -300,7 +277,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addMore(SourceDateList);
-            Log.e("TAG", "jsonParse: " + SourceDateList.size());
         }
 
     }
@@ -308,8 +284,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void setListener() {
-        Log.e("sourceData", "setListener: " + SourceDateList.size());
-        if (str1.equals(ExtraName.SCALETOCUSTOME) || str1.equals(ExtraName.TORESVER)) {
+        if (str1.equals(ExtraName.SCALETOCUSTOME)) {
             changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -438,6 +413,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
 
             }
+
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 closeDialog();

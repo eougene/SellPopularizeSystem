@@ -29,8 +29,6 @@
             <Button
                 android:id="@+id/btViewDetail"
                 style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
                 android:background="@drawable/base_square"
                 android:text="@string/viewdetail"
                 android:textColor="@color/light_blue"
@@ -44,8 +42,6 @@
             <Button
                 android:id="@+id/btRemain"
                 style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
                 android:background="@drawable/base_square"
                 android:text="@string/remain"
                 android:textColor="@color/light_blue"

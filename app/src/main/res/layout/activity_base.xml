@@ -5,15 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--这个是隐藏的布局，然后通过动态的设置高度达到效果-->
-    <LinearLayout
-        android:id="@+id/ll_bar"
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#e7abff"
-        android:orientation="vertical"
-        android:visibility="gone"></LinearLayout>
-
     <include
         android:id="@+id/base_header_layout"
         layout="@layout/base_header_main" />

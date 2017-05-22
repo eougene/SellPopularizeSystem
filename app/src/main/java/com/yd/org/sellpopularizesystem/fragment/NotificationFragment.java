@@ -87,7 +87,6 @@ public class NotificationFragment extends BaseFragmentView {
                         deleteNotification.setVisibility(View.VISIBLE);
                         //标识符
                         type = 1;
-
                         //发送消息,通知
                         message = new Message();
                         message.what = 1;
@@ -180,7 +179,7 @@ public class NotificationFragment extends BaseFragmentView {
                     tvSystem.setTextColor(getResources().getColor(R.color.black));
                     viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    cate_id = 17;
+                    cate_id = 3;
                     initFragment2(cate_id);
 
                     break;
@@ -201,7 +200,7 @@ public class NotificationFragment extends BaseFragmentView {
                     tvSystem.setTextColor(getResources().getColor(R.color.black));
                     viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    cate_id = 15;
+                    cate_id = 2;
                     initFragment3(cate_id);
                     break;
                 //系统
@@ -221,7 +220,7 @@ public class NotificationFragment extends BaseFragmentView {
                     tvSystem.setTextColor(getResources().getColor(R.color.yellowish));
                     viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
-                    cate_id = 16;
+                    cate_id = 1;
                     initFragment4(cate_id);
                     break;
             }

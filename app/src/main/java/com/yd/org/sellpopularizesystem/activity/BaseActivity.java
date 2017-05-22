@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -33,7 +34,6 @@ public abstract class BaseActivity extends Activity {
         super.onCreate(savedInstanceState);
         aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
-        initState();
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
@@ -50,6 +50,7 @@ public abstract class BaseActivity extends Activity {
         //初始化布局文件
         if (setContentView() != 0) {
             BaseSetContentView(setContentView());
+            setImmerseLayout(getViewById(R.id.base_header_layout));
             initView();
             setListener();
 
@@ -57,24 +58,6 @@ public abstract class BaseActivity extends Activity {
 
     }
 
-    private void initState() {
-        //当系统版本为4.4或者4.4以上时可以使用沉浸式状态栏
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //透明状态栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //透明导航栏
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            //
-            LinearLayout linear_bar = (LinearLayout) findViewById(R.id.ll_bar);
-            linear_bar.setVisibility(View.VISIBLE);
-            //获取到状态栏的高度
-            int statusHeight = MyUtils.getStatusBarHeight(BaseActivity.this);
-            //动态的设置隐藏布局的高度
-            LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) linear_bar.getLayoutParams();
-            params.height = statusHeight;
-            linear_bar.setLayoutParams(params);
-        }
-    }
 
     public ACache getaCache() {
         return aCache;
@@ -257,6 +240,14 @@ public abstract class BaseActivity extends Activity {
     }
 
 
-
+    protected void setImmerseLayout(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window window = getWindow();
+            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            int statusBarHeight = MyUtils.getStatusBarHeight(this.getBaseContext());
+            view.setPadding(0, statusBarHeight, 0, 0);
+        }
+    }
 
 }

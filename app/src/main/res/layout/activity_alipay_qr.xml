@@ -4,19 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity">
-    <View
-        android:id="@+id/v"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+    android:orientation="vertical">
+
+
     <WebView
         android:id="@+id/wvQr"
-        android:layout_below="@+id/v"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/scanalipayqr"/>
     </WebView>
+
+    <TextView
+        android:id="@+id/tvPaymentMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/padding_margin_50"
+        android:textSize="@dimen/tv_size_15"/>
+
 </RelativeLayout>

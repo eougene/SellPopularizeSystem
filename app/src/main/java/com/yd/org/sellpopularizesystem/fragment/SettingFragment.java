@@ -19,8 +19,8 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
-import com.yd.org.sellpopularizesystem.activity.LawyerActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
+import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -45,7 +45,7 @@ import java.util.Map;
  */
 
 public class SettingFragment extends BaseFragmentView {
-    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord,rlTeam;
+    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord, rlTeam;
     private TextView cancelLoginTv, versionTv, tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
@@ -74,10 +74,9 @@ public class SettingFragment extends BaseFragmentView {
                 case R.id.rlCommission:
                     ActivitySkip.forward(getActivity(), CommissionActivity.class);
                     break;
+                //我的团队
                 case R.id.rlTeam:
-                    Bundle bundle=new Bundle();
-                    bundle.putString("team","team");
-                    ActivitySkip.forward(getActivity(), LawyerActivity.class,bundle);
+                    ActivitySkip.forward(getActivity(), MyTeamActivity.class);
                     break;
             }
         }
@@ -95,12 +94,6 @@ public class SettingFragment extends BaseFragmentView {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.bindAcount:
-//                    if (OauthHelper.isAuthenticated(SettingActivity.this, SHARE_MEDIA.WEIXIN)) {
-//                        mController.deleteOauth(SettingActivity.this, SHARE_MEDIA.WEIXIN, null);
-//                        Log.e("log", "--- SHARE_MEDIA.WEIXIN----已授权------");
-//                    } else {
-//                        Log.e("log", "--- SHARE_MEDIA.WEIXIN-----未授权------");
-//                    }
 
                     UMShareAPI.get(getActivity()).doOauthVerify(getActivity(), SHARE_MEDIA.WEIXIN, authListener);
 
@@ -250,7 +243,7 @@ public class SettingFragment extends BaseFragmentView {
 
         rlCommission = getViewById(R.id.rlCommission);
         rlCommission.setOnClickListener(mOnClickListener);
-        rlTeam= getViewById(R.id.rlTeam);
+        rlTeam = getViewById(R.id.rlTeam);
         rlTeam.setOnClickListener(mOnClickListener);
         ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
         changePassWordRel = getViewById(R.id.changePassWordRel);

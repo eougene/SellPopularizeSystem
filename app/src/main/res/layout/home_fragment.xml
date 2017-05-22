@@ -71,7 +71,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/sale_pro"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -80,7 +80,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/zeropromotematerial"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
@@ -88,7 +88,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/newadd"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -130,7 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_study"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -139,7 +139,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/zerostudy"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
@@ -147,7 +147,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/zerocheck"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -194,8 +194,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/home_custom"
-                                android:textColor="@color/black"
+                                android:text="@string/home_scale"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -204,7 +204,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/zerocus"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
@@ -212,7 +212,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/zeronewadd"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -254,7 +254,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/oldproject"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -262,7 +262,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_setting_en"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>
 
@@ -273,7 +273,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/zerounread"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>
 

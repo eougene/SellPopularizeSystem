@@ -12,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.igexin.sdk.PushManager;
@@ -24,6 +23,7 @@ import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.Locale;
@@ -41,8 +41,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 MessageCountBean messageCountBean = (MessageCountBean) msg.obj;
-                Log.e("消息个数**", "count:" + messageCountBean.count);
-
                 //有消息
                 if (messageCountBean.state.equals("1")) {
                     tvMessageCount.setVisibility(View.VISIBLE);
@@ -64,7 +62,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             String mess = (String) msg.obj;
-            Log.e("mess***", "mess:" + mess);
             showToas(mess);
 
         }
@@ -79,8 +76,8 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         String language = locale.getLanguage();
         //选择语言
         showLanguage(language);
-        setContentView(R.layout.activity_home_activiyt_1);
-
+        setContentView(R.layout.activity_home_activiyt);
+        StatusBarUtil.setTranslucentForImageView(homeActiviyt,null);
         inintView();
         setSelect(0);
 
@@ -137,12 +134,9 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.tvHome:
                 setSelect(0);
-                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                        WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 break;
             case R.id.tvMessage:
                 setSelect(1);
-                this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
                 break;
             case R.id.tvSetting:
                 setSelect(2);
@@ -204,13 +198,11 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
      */
     @Override
     public void onDestroy() {
-        Log.e("GetuiSdkDemo", "onDestroy()");
         super.onDestroy();
     }
 
     @Override
     public void onStop() {
-        Log.e("GetuiSdkDemo", "onStop()");
         super.onStop();
 
 
@@ -262,4 +254,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         return super.onKeyDown(keyCode, event);
 
     }
+
+
 }

@@ -22,7 +22,7 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
     @Override
     public void initView() {
         hideRightImagview();
-        showDialog();
+
         fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
         setTitle(fileContent.getDetail_name());
 
@@ -44,7 +44,7 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
      * @param fileName
      */
     private void displayFromFile1(String fileUrl, String fileName) {
-
+        showDialog();
         pdfView.fileFromLocalStorage(this, this, fileUrl, fileName);   //设置pdf文件地址
 
     }
@@ -70,7 +70,6 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
     public void loadComplete(int nbPages) {
         closeDialog();
     }
-
 
 
 }

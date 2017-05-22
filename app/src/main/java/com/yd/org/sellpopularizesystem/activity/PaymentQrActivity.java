@@ -1,8 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -19,7 +19,9 @@ import org.json.JSONObject;
 public class PaymentQrActivity extends BaseActivity {
     private WebView wvQr;
     private String strId;
-    private String qrcodeUrl;
+    private String qrcodeUrl, payment_method;
+    private TextView tvPaymentMethod;
+    private String url = "";
 
 
     @Override
@@ -32,7 +34,17 @@ public class PaymentQrActivity extends BaseActivity {
     @Override
     public void initView() {
         strId = getIntent().getExtras().getString("payurlId");
+        payment_method = getIntent().getExtras().getString("payment_method");
         wvQr = getViewById(R.id.wvQr);
+        tvPaymentMethod = getViewById(R.id.tvPaymentMethod);
+
+        if (payment_method.equals("6")) {
+            tvPaymentMethod.setText(R.string.scanalipayqr);
+            url = Contants.ALIPAY_INTERFACE;
+        } else if (payment_method.equals("7")) {
+            tvPaymentMethod.setText(R.string.scanalipayqrwx);
+            url = Contants.WEICHAT_INTERFACE;
+        }
         getQrcodeUrl(strId);
     }
 
@@ -40,7 +52,7 @@ public class PaymentQrActivity extends BaseActivity {
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("trust_account_id", strId);
-        fh.post(Contants.ALIPAY_INTERFACE, ajaxParams, new AjaxCallBack<String>() {
+        fh.post(url, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
@@ -50,13 +62,8 @@ public class PaymentQrActivity extends BaseActivity {
                         ToasShow.showToastCenter(PaymentQrActivity.this, json.getString("msg"));
                         if (json.getString("msg").equals("预下单成功")) {
                             qrcodeUrl = json.getString("qrcode");
-
-                            Log.e("支付***", "qrcodeUrl:" + qrcodeUrl);
-
-
                             //声明WebSettings子类
                             WebSettings webSettings = wvQr.getSettings();
-
                             //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
                             webSettings.setJavaScriptEnabled(true);
 

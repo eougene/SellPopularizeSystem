@@ -3,12 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity">
-    <com.yd.org.sellpopularizesystem.myView.BounceScrollView
-        style="@style/MatchMatch">
-        <ImageView
-            style="@style/WrapWrap"
-            android:src="@mipmap/guild3"/>
-    </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
+    android:layout_height="match_parent">
+
+    <com.lidong.pdf.PDFView
+        android:id="@+id/pdfView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <WebView
+        android:id="@+id/wvQr"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </WebView>
+
+
 </RelativeLayout>

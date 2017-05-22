@@ -155,4 +155,5 @@ public abstract class BaseFragmentView extends Fragment {
         }
     }
 
+
 }
