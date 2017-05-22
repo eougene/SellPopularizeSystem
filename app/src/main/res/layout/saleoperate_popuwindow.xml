@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch">
 
 
@@ -15,71 +14,78 @@
             android:layout_marginLeft="@dimen/padding_margin_50"
             android:layout_marginRight="@dimen/padding_margin_50"
             android:layout_marginTop="@dimen/padding_margin_50"
-            android:layout_centerInParent="true"
             android:background="@drawable/base_square"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btApplyContract"
+            <LinearLayout
                 style="@style/MatchWrap"
-                android:background="@drawable/pop_button_upcircle_bac"
-                android:text="@string/apply_contract"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/setting_bac"
-                />
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_margin_10">
 
-            <Button
-                android:id="@+id/btPayIntention"
-                style="@style/MatchWrap"
-                android:background="@color/white"
-                android:text="@string/payintentmoney"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/setting_bac"
-                />
+                <Button
+                    android:id="@+id/btApplyContract"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/apply_contract"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15" />
 
-            <Button
-                android:id="@+id/btOrderCancel"
-                style="@style/MatchWrap"
-                android:background="@color/white"
-                android:text="@string/cancel_oder"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/setting_bac"
-                />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/setting_bac" />
 
-            <Button
-                android:id="@+id/btOrderUpdate"
-                style="@style/MatchWrap"
-                android:background="@color/white"
-                android:text="@string/updateorder"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/setting_bac"
-                />
+                <Button
+                    android:id="@+id/btPayIntention"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/payintentmoney"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15" />
 
-            <Button
-                android:id="@+id/btSaleCancel"
-                style="@style/MatchWrap"
-                android:background="@drawable/pop_button_downcircle_bac"
-                android:text="@string/sale_cancel"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_15" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/setting_bac" />
+
+                <Button
+                    android:id="@+id/btOrderCancel"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/cancel_oder"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/setting_bac" />
+
+                <Button
+                    android:id="@+id/btOrderUpdate"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/updateorder"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/setting_bac" />
+
+                <Button
+                    android:id="@+id/btSaleCancel"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/sale_cancel"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15" />
+            </LinearLayout>
+
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>
