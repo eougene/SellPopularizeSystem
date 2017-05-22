@@ -22,7 +22,7 @@
             <Button
                 android:id="@+id/btApplyContract"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
+                android:background="@drawable/pop_button_upcircle_bac"
                 android:text="@string/apply_contract"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
@@ -35,7 +35,7 @@
             <Button
                 android:id="@+id/btPayIntention"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
+                android:background="@color/white"
                 android:text="@string/payintentmoney"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
@@ -48,7 +48,7 @@
             <Button
                 android:id="@+id/btOrderCancel"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
+                android:background="@color/white"
                 android:text="@string/cancel_oder"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
@@ -61,7 +61,7 @@
             <Button
                 android:id="@+id/btOrderUpdate"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
+                android:background="@color/white"
                 android:text="@string/updateorder"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
@@ -74,7 +74,7 @@
             <Button
                 android:id="@+id/btSaleCancel"
                 style="@style/MatchWrap"
-                android:background="@drawable/base_square"
+                android:background="@drawable/pop_button_downcircle_bac"
                 android:text="@string/sale_cancel"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
