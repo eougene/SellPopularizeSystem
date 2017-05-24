@@ -51,6 +51,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     private ProSubUnitClassifyBean childBean;
     private CustomePopuWindow mCustomePopuWindow;
     private String bedRoomNum;
+    private String bathRoomNum = "";
+    private String carSpace = "";
     private String product_id;
     private String string = "";
     private String page = "1";
@@ -62,6 +64,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private OptionsPickerView optionsPickerView;
     private List houseTypes = new ArrayList<String>();
     private List numbers = new ArrayList<String>();
+
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -137,23 +140,48 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     private void initOptionData() {
+        //筛选卧室,浴室,车库
         houseTypes.add(getString(R.string.bedroom));
         houseTypes.add(getString(R.string.bathroom));
         houseTypes.add(getString(R.string.carport));
         numbers.add(getString(R.string.nolimit));
-        numbers.add("1");numbers.add("1.5");numbers.add("2");numbers.add("2.5");
+        //筛选数据
+        for (int i = 1; i < 10; i++) {
+            numbers.add(String.valueOf(i));
+            if (i != 9) {
+                numbers.add(String.valueOf(i + 0.5));
+            }
+        }
     }
 
     private void initOptionsPickerView() {
-        OptionsPickerView.Builder builder=new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+        OptionsPickerView.Builder builder = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-
+                String strHouseType = (String) houseTypes.get(options1);
+                String strNum = numbers.get(options2).equals(getString(R.string.nolimit)) ? "" : (String) numbers.get(options2);
+                if (strHouseType.equals(getString(R.string.bedroom))) {
+                    bedRoomNum = strNum;
+                    bathRoomNum = "";
+                    carSpace = "";
+                } else if (houseTypes.get(options1).equals(getString(R.string.bathroom))) {
+                    bedRoomNum = "";
+                    bathRoomNum = strNum;
+                    carSpace = "";
+                } else if (houseTypes.get(options1).equals(getString(R.string.carport))) {
+                    carSpace = strNum;
+                    bedRoomNum = "";
+                    bathRoomNum = "";
+                }
+                getListData();
             }
         }).setTitleColor(R.color.black)
-                .setCyclic(true, true, true).setSelectOptions(houseTypes.indexOf(getString(R.string.bedroom)),numbers.indexOf(getString(R.string.nolimit)));
+                .setCyclic(false, false, true).setSelectOptions(houseTypes.indexOf(getString(R.string.bedroom)), numbers.indexOf(getString(R.string.nolimit)));
+        optionsPickerView = new OptionsPickerView(builder);
+        optionsPickerView.setNPicker(houseTypes, numbers, null);
     }
 
+    //获取子单元列表数据
     private void getListData() {
         showDialog();
         FinalHttp fh = new FinalHttp();
@@ -167,8 +195,8 @@ public class ProductSubunitListActivity extends BaseActivity {
         ajaxParams.put("town", "");
         ajaxParams.put("address", "");
         ajaxParams.put("bedroom", bedRoomNum == null ? "" : bedRoomNum);
-        ajaxParams.put("bathroom", "");
-        ajaxParams.put("car_space", "");
+        ajaxParams.put("bathroom", bathRoomNum);
+        ajaxParams.put("car_space", carSpace);
         ajaxParams.put("has_study", "");
         ajaxParams.put("ensuite", "");
         ajaxParams.put("level", "");
@@ -198,8 +226,14 @@ public class ProductSubunitListActivity extends BaseActivity {
         ProductSubunitListBean pslb = gson.fromJson(s, ProductSubunitListBean.class);
         data = pslb.getResult();
         if (data.size() > 0) {
+            if (tvNoInfo.getVisibility() == View.VISIBLE) {
+                tvNoInfo.setVisibility(View.GONE);
+            }
             setAdapter();
         } else {
+            Log.e("data", "parseJson: " + adapter.getmDatas().size());
+            adapter.CleaDates(data);
+            Log.e("data**", "parseJson: " + adapter.getmDatas().size());
             tvNoInfo.setVisibility(View.VISIBLE);
         }
 
@@ -243,21 +277,20 @@ public class ProductSubunitListActivity extends BaseActivity {
             bund = new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
+
                     break;
                 case R.id.tvSelect:
-
+                    optionsPickerView.show();
                     break;
                 case R.id.ivHousePic:
                     if (bund == null) {
                         bund = new Bundle();
                     }
-                  /*  if (prs!=null){
+                  /*if (prs!=null){
                         if (prs.getImg_content()==null||prs.getImg_content().size()==0){
                             Log.e("ivHousePic", "onClick: "+"该项目没有图片");
-
                         }
                     }*/
-
                     if (prs != null && prs.getImg_content().size() > 0) {
                         bund.putSerializable("img_content", (Serializable) prs.getImg_content());
                         ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
@@ -268,7 +301,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                                 bund.putSerializable("img_content", (Serializable) prs.getImg_content());
                                 ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
                             }
-
                         } else {
                             getItemProductDetail();
                         }
@@ -298,7 +330,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
-
                 //视频
                 case R.id.tvVideo:
                     if (bund != null) {
@@ -308,11 +339,9 @@ public class ProductSubunitListActivity extends BaseActivity {
                         }
                     }
                     break;
-
                 //介绍
                 case R.id.tvIntroduce:
                     break;
-
                 //平面图
                 case R.id.tvFloor:
                     if (tvFloor.getAlpha() == 1.0f) {
@@ -320,7 +349,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                         ActivitySkip.forward(ProductSubunitListActivity.this, BuildingPlanActivity.class, bund);
                     }
                     break;
-
                 //合同
                 case R.id.tvContract:
                     if (tvContract.getAlpha() == 1.0f) {
@@ -329,7 +357,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                         ActivitySkip.forward(ProductSubunitListActivity.this, FileActivity.class, bund);
                     }
                     break;
-
                 //文件
                 case R.id.tvFile:
                     if (tvFile.getAlpha() == 1.0f) {

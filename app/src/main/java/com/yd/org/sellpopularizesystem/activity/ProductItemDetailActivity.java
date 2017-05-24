@@ -1,10 +1,13 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -89,6 +92,13 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     private void openShareDialog() {
+        if(Build.VERSION.SDK_INT>=23){
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,
+             Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE,
+             Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
+            ActivityCompat.requestPermissions(this,mPermissionList,123);
+        }
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
             public void onShare(int id) {
@@ -101,6 +111,8 @@ public class ProductItemDetailActivity extends BaseActivity {
                         shareToMedia(SHARE_MEDIA.WEIXIN_CIRCLE);
                         //mShareAction.open();
                         break;
+                    case 3://facebook
+                        shareToMedia(SHARE_MEDIA.FACEBOOK);
                 }
             }
         }).show();
