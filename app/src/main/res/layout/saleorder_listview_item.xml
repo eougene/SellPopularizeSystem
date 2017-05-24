@@ -160,7 +160,7 @@
             android:layout_marginBottom="@dimen/padding_margin_4"
             android:layout_marginRight="@dimen/padding_margin_4"
             android:layout_marginTop="@dimen/padding_margin_4"
-            android:background="@color/home_scale_d"
+            android:background="@color/home_scale"
             android:gravity="center"
             android:text="@string/askcontract"
             android:textColor="@color/white"
