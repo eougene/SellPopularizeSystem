@@ -2,12 +2,10 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,14 +15,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
@@ -48,9 +43,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.breadCrumbShortTitle;
-import static android.R.attr.order;
-
 public class SaleRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView lvSaleRecord;
     private PullToRefreshLayout ptrlSaleRecord;
@@ -66,6 +58,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private CommonPopuWindow mSalePopuwindow, mUpdatePop;
     private Dialog mUpdateDialog;
     private int orderId, pos;
+    private  String sale_advice_url;
     public static SaleRecordActivity sra;
 
     public Handler handler = new Handler() {
@@ -245,6 +238,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         public void onClick(View v) {
             Bundle bundle = new Bundle();
             bundle.putString("orderId", orderId + "");
+            bundle.putString("sale_advice_url", sale_advice_url);
             switch (v.getId()) {
                 //点击pop内容区之外pop消失
                 case R.id.llSalePop:
@@ -376,6 +370,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
                 if (sobRbData.get(position).getCancel_apply_status() != 1 && sobRbData.get(position).getCancel_apply_status() != 2) {
                     orderId = sobRbData.get(position).getProduct_orders_id();
+                    sale_advice_url=sobRbData.get(position).getSale_advice_url();
                     //saleAdapter.getView(position,)
                     pos = position;
                     Log.e("TAG", "onItemClick: " + pos);

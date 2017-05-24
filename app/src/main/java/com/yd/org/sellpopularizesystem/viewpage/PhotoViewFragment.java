@@ -1,17 +1,22 @@
 package com.yd.org.sellpopularizesystem.viewpage;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.lidong.pdf.PDFView;
-import com.lidong.pdf.listener.OnLoadCompleteListener;
-import com.lidong.pdf.listener.OnPageChangeListener;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
+import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.fragment.BaseFragmentView;
+import com.yd.org.sellpopularizesystem.utils.PDFUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
+import java.io.File;
+
+import pdfinterface.OnFileListener;
 import uk.co.senab.photoview.PhotoView;
 
 public class PhotoViewFragment extends BaseFragmentView implements OnPageChangeListener
@@ -45,7 +50,7 @@ public class PhotoViewFragment extends BaseFragmentView implements OnPageChangeL
             photoIm.setVisibility(View.GONE);
             pdfView.setVisibility(View.VISIBLE);
 
-            displayFromFile1(url, title + ".pdf");
+            displayFromFile1(url, "pvf_" + title + ".pdf");
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
             pdfView.setVisibility(View.GONE);
@@ -79,8 +84,24 @@ public class PhotoViewFragment extends BaseFragmentView implements OnPageChangeL
      * @param fileName
      */
     private void displayFromFile1(String fileUrl, String fileName) {
+        try {
+            showLoadingDialog();
+            PDFUtils.fileFromLocalStorage(fileUrl, fileName, new OnFileListener() {
+                @Override
+                public void setFile(File file) {
+                    pdfView.fromUri(Uri.fromFile(file))
+                            .defaultPage(1)
+                            .onPageChange(PhotoViewFragment.this)
+                            .swipeVertical(true)
+                            .showMinimap(false)
+                            .enableAnnotationRendering(true)
+                            .onLoad(PhotoViewFragment.this)
+                            .load();
+                }
+            });
+        } catch (Exception e) {
 
-        pdfView.fileFromLocalStorage(this, this, fileUrl, fileName);   //设置pdf文件地址
+        }
 
     }
 

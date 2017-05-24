@@ -473,10 +473,12 @@ public class ReserveActivity extends BaseActivity {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
                             ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-                            Bundle bundle = new Bundle();
-                            bundle.putString("payurlId", json.getString("trust_account_id"));
-                            bundle.putString("payment_method", payment_method);
-                            ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
+                            if (payment_method.equals("6") || payment_method.equals(7)) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("payurlId", json.getString("trust_account_id"));
+                                bundle.putString("payment_method", payment_method);
+                                ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
+                            }
                             finish();
                         } else {
                             ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));

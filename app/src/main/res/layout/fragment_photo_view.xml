@@ -9,14 +9,13 @@
         android:id="@+id/photoIm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:visibility="gone"/>
+        android:scaleType="fitXY"/>
 
-    <com.lidong.pdf.PDFView
+    <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"/>
+        android:layout_height="match_parent"/>
+
 
 
 </RelativeLayout>

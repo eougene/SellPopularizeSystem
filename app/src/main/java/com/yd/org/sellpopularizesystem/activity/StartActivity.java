@@ -10,7 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 

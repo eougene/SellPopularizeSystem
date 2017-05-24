@@ -1,12 +1,19 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import com.lidong.pdf.PDFView;
-import com.lidong.pdf.listener.OnLoadCompleteListener;
-import com.lidong.pdf.listener.OnPageChangeListener;
+import android.net.Uri;
+
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
+import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.FileContent;
+import com.yd.org.sellpopularizesystem.utils.PDFUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
+
+import java.io.File;
+
+import pdfinterface.OnFileListener;
 
 public class PDFActivity extends BaseActivity implements OnPageChangeListener
         , OnLoadCompleteListener {
@@ -27,7 +34,7 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
         setTitle(fileContent.getDetail_name());
 
         pdfView = (PDFView) findViewById(R.id.pdfView);
-        displayFromFile1(Contants.DOMAIN + "/" + fileContent.getUrl(), fileContent.getDetail_name() + ".pdf");
+        displayFromFile1(Contants.DOMAIN + "/" + fileContent.getUrl(), "pdfa_"+ fileContent.getProduct_id() + ".pdf");
 
 
     }
@@ -44,8 +51,24 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
      * @param fileName
      */
     private void displayFromFile1(String fileUrl, String fileName) {
-        showDialog();
-        pdfView.fileFromLocalStorage(this, this, fileUrl, fileName);   //设置pdf文件地址
+        try {
+            showDialog();
+            PDFUtils.fileFromLocalStorage(fileUrl, fileName, new OnFileListener() {
+                @Override
+                public void setFile(File file) {
+                    pdfView.fromUri(Uri.fromFile(file))
+                            .defaultPage(1)
+                            .onPageChange(PDFActivity.this)
+                            .swipeVertical(true)
+                            .showMinimap(false)
+                            .enableAnnotationRendering(true)
+                            .onLoad(PDFActivity.this)
+                            .load();
+                }
+            });
+        } catch (Exception e) {
+
+        }
 
     }
 
@@ -60,6 +83,7 @@ public class PDFActivity extends BaseActivity implements OnPageChangeListener
         ToasShow.showToastBottom(PDFActivity.this, page +
                 "/" + pageCount);
     }
+
 
     /**
      * 加载完成回调
