@@ -58,6 +58,13 @@ public class ShareDialog extends Dialog {
                 dismiss();
             }
         });
+        findViewById(R.id.ivFacebook).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.onShare(3);
+                dismiss();
+            }
+        });
         findViewById(R.id.tvCancelShare).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
