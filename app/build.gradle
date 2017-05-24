@@ -22,7 +22,7 @@ android {
         release {
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('E:/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storeFile file('/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }
@@ -49,7 +49,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':android-pdf')
     //网络加载
     //解解数据
     //三级联动
@@ -98,4 +97,15 @@ dependencies {
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     compile 'com.r0adkll:slidableactivity:2.0.5'
     compile 'com.getui:sdk:2.10.2.0'
+    compile 'com.github.barteksc:android-pdf-viewer:1.4.0'
+
+
+    //pdf
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxjava:1.1.0'
+    compile 'io.reactivex:rxandroid:1.1.0'
+
+
 }
