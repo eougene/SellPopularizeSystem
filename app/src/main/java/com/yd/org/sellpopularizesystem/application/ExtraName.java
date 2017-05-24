@@ -45,6 +45,10 @@ public class ExtraName {
     //点击跳转预定界面
     public static final String TORESVER ="to_resver";
     public static final String TORESVER_TOCUSTOME ="to_resvercustome";
+    //上传合同
+    public static final String UPLOAD_CONTRACT="upload_contract";
+    //上传首付款
+    public static final String UPLOAD_FIRST_COMMISSION="upload_first_commission";
     //日历事件相关url
     public static final String CALANDERURL = "content://com.android.calendar/calendars";
     public static final String CALANDEREVENTURL = "content://com.android.calendar/events";

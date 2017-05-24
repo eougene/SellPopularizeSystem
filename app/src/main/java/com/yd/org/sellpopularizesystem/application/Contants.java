@@ -90,6 +90,10 @@ public class Contants {
     public static final String WEICHAT_INTERFACE = DOMAIN + "/index.php/api/index/wxpay";
     //请求合同
     public static final String ASK_ONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontract";
+    //上传合同图片
+    public static final String UPLOAD_CONTRACT_PHOTO = DOMAIN + "/index.php/appv2/order/upload_contract";
+    //上传首付款凭证
+    public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
     //查询订单列表
     public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //订单详情
