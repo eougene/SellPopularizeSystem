@@ -91,7 +91,7 @@ public class Contants {
     //请求合同
     public static final String ASK_ONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontract";
     //查询订单列表
-    public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/app/order/order_list";
+    public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //订单详情
     public static final String ORDER_DETAIL = DOMAIN + "/index.php/app/order/order_info";
     //申请合同
