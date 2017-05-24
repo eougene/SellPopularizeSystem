@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.myView;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
-import android.webkit.ClientCertRequest;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -28,13 +27,6 @@ public class WebViewClientBase extends WebViewClient {
         //handler.cancel(); 默认的处理方式，WebView变成空白页
         handler.proceed();//接受证书
         //handleMessage(Message msg); 其他处理
-    }
-
-    @Override
-    public void onReceivedClientCertRequest(WebView view, ClientCertRequest request) {
-
-        request.cancel();
-
     }
 
     @Override

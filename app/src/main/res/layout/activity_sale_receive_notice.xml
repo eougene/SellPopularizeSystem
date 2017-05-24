@@ -5,18 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.lidong.pdf.PDFView
+
+
+    <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        />
-
-    <WebView
-        android:id="@+id/wvQr"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </WebView>
-
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

@@ -1,23 +1,28 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.lidong.pdf.PDFView;
-import com.lidong.pdf.listener.OnLoadCompleteListener;
-import com.lidong.pdf.listener.OnPageChangeListener;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
+import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.FileAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.PDFUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import pdfinterface.OnFileListener;
 
 public class FileActivity extends BaseActivity implements OnPageChangeListener
         , OnLoadCompleteListener {
@@ -58,7 +63,7 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
 
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            displayFromFile1(Contants.DOMAIN + "/" + prs.getContract_url(), prs.getProduct_id()+prs.getProduct_name() + ".pdf");
+            displayFromFile1(Contants.DOMAIN + "/" + prs.getContract_url(), "fa_"+prs.getProduct_id()+ ".pdf");
 
 
         }
@@ -91,7 +96,24 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
      */
     private void displayFromFile1(String fileUrl, String fileName) {
 
-        pdfView.fileFromLocalStorage(this, this, fileUrl, fileName);   //设置pdf文件地址
+        try {
+            showDialog();
+            PDFUtils.fileFromLocalStorage(fileUrl, fileName, new OnFileListener() {
+                @Override
+                public void setFile(File file) {
+                    pdfView.fromUri(Uri.fromFile(file))
+                            .defaultPage(1)
+                            .onPageChange(FileActivity.this)
+                            .swipeVertical(true)
+                            .showMinimap(false)
+                            .enableAnnotationRendering(true)
+                            .onLoad(FileActivity.this)
+                            .load();
+                }
+            });
+        } catch (Exception e) {
+
+        }
 
     }
 

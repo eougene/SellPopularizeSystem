@@ -1,27 +1,34 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
+import android.util.Log;
+import android.widget.Toast;
 
-import com.lidong.pdf.PDFView;
-import com.lidong.pdf.listener.OnLoadCompleteListener;
-import com.lidong.pdf.listener.OnPageChangeListener;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
+import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
+import com.shockwave.pdfium.PdfDocument;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.myView.WebViewClientBase;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.yd.org.sellpopularizesystem.utils.PDFUtils;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+
+import java.io.File;
+import java.util.List;
+
+import pdfinterface.OnFileListener;
+
+import static com.android.volley.VolleyLog.TAG;
 
 public class SaleReceiveNoticeActivity extends BaseActivity implements OnPageChangeListener
         , OnLoadCompleteListener {
 
     private PDFView pdfView;
     private String sale_advice_url, orderId;
-    private WebView wvQr;
 
 
     @Override
@@ -37,53 +44,45 @@ public class SaleReceiveNoticeActivity extends BaseActivity implements OnPageCha
         Bundle bundle = getIntent().getExtras();
         orderId = bundle.getString("orderId");
         sale_advice_url = bundle.getString("sale_advice_url");
-        wvQr = getViewById(R.id.wvQr);
-//        pdfView = (PDFView) findViewById(R.id.pdfView);
-//        displayFromFile1(sale_advice_url, orderId + "crm.pdf");
+        pdfView = (PDFView) findViewById(R.id.pdfView);
 
-        setWebView();
+        displayFromFile1(sale_advice_url, "srna_" + orderId + ".pdf");
 
-
-    }
-    private void setWebView(){
-        //声明WebSettings子类
-        WebSettings webSettings = wvQr.getSettings();
-        //如果访问的页面中要与Javascript交互，则webview必须设置支持Javascript
-        webSettings.setJavaScriptEnabled(true);
-
-        //设置自适应屏幕，两者合用
-        webSettings.setUseWideViewPort(true); //将图片调整到适合webview的大小
-        webSettings.setLoadWithOverviewMode(true); // 缩放至屏幕的大小
-
-        //缩放操作
-        webSettings.setSupportZoom(true); //支持缩放，默认为true。是下面那个的前提。
-        webSettings.setBuiltInZoomControls(true); //设置内置的缩放控件。若为false，则该WebView不可缩放
-        webSettings.setDisplayZoomControls(false); //隐藏原生的缩放控件
-
-        //其他细节操作
-        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK); //关闭webview中缓存
-        webSettings.setAllowFileAccess(true); //设置可以访问文件
-        webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
-        webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
-        webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
-        wvQr.loadUrl(sale_advice_url);
-        wvQr.setWebViewClient(new WebViewClientBase(SaleReceiveNoticeActivity.this));
-    }
-
-
-    @Override
-    public void setListener() {
 
     }
 
     /**
      * 获取打开网络的pdf文件
      *
-     * @param
+     * @param fileUrl
+     * @param fileName
      */
-    private void displayFromFile1(String fileUrl, String fileNamee) {
-        showDialog();
-        pdfView.fileFromLocalStorage(this, this, fileUrl, fileNamee);   //设置pdf文件地址
+    private void displayFromFile1(String fileUrl, String fileName) {
+        try {
+            showDialog();
+            PDFUtils.fileFromLocalStorage(fileUrl, fileName, new OnFileListener() {
+                @Override
+                public void setFile(File file) {
+                    pdfView.fromUri(Uri.fromFile(file))
+                            .defaultPage(1)
+                            .onPageChange(SaleReceiveNoticeActivity.this)
+                            .swipeVertical(true)
+                            .showMinimap(false)
+                            .enableAnnotationRendering(true)
+                            .onLoad(SaleReceiveNoticeActivity.this)
+                            .load();
+                }
+            });
+        } catch (Exception e) {
+
+        }
+
+    }
+
+
+    @Override
+    public void setListener() {
+
     }
 
     /**
@@ -94,8 +93,19 @@ public class SaleReceiveNoticeActivity extends BaseActivity implements OnPageCha
      */
     @Override
     public void onPageChanged(int page, int pageCount) {
-        ToasShow.showToastBottom(SaleReceiveNoticeActivity.this, page +
-                "/" + pageCount);
+        Toast.makeText(SaleReceiveNoticeActivity.this, page + "/" + pageCount, Toast.LENGTH_SHORT).show();
+        printBookmarksTree(pdfView.getTableOfContents(), "-");
+    }
+
+    public void printBookmarksTree(List<PdfDocument.Bookmark> tree, String sep) {
+        for (PdfDocument.Bookmark b : tree) {
+
+            Log.e(TAG, String.format("%s %s, p %d", sep, b.getTitle(), b.getPageIdx()));
+
+            if (b.hasChildren()) {
+                printBookmarksTree(b.getChildren(), sep + "-");
+            }
+        }
     }
 
     /**
@@ -107,6 +117,7 @@ public class SaleReceiveNoticeActivity extends BaseActivity implements OnPageCha
     public void loadComplete(int nbPages) {
         closeDialog();
     }
+
 
     /**
      * 请求合同
