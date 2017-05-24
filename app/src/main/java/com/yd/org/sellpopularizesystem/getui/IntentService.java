@@ -1,13 +1,20 @@
 package com.yd.org.sellpopularizesystem.getui;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Message;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
 import com.igexin.sdk.GTIntentService;
 import com.igexin.sdk.PushManager;
 import com.igexin.sdk.message.GTCmdMessage;
 import com.igexin.sdk.message.GTTransmitMessage;
+import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 
 /**
@@ -20,6 +27,7 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
 public class IntentService extends GTIntentService {
 
     private static final String TAG = "GetuiSdkDemo";
+
     public IntentService() {
 
     }
@@ -31,6 +39,7 @@ public class IntentService extends GTIntentService {
 
     @Override
     public void onReceiveMessageData(Context context, GTTransmitMessage msg) {
+
         String appid = msg.getAppid();
         String taskid = msg.getTaskId();
         String messageid = msg.getMessageId();
@@ -38,20 +47,22 @@ public class IntentService extends GTIntentService {
         String pkg = msg.getPkgName();
         String cid = msg.getClientId();
 
+
+
         // 第三方回执调用接口，actionid范围为90000-90999，可根据业务场景执行
         boolean result = PushManager.getInstance().sendFeedbackMessage(context, taskid, messageid, 90001);
         Log.e(TAG, "call sendFeedbackMessage = " + (result ? "success" : "failed"));
         Log.e(TAG, "onReceiveMessageData -> " + "appid = " + appid + "\ntaskid = " + taskid + "\nmessageid = " + messageid + "\npkg = " + pkg
                 + "\ncid = " + cid);
 
-        if (payload == null) {
-            Log.e(TAG, "receiver payload = null");
-        } else {
+        if (payload != null) {
             //如果收到消息更新数据
             String data = new String(payload);
-            Log.e(TAG, "receiver payload = " + data);
+            Log.e(TAG, "receiver payload = " + data+"::"+msg.getPayloadId());
             // 测试消息为了观察数据变化
             sendMessage(data, 0);
+            setNotificationManager("CRM销售系统" +
+                    "", data);
         }
 
     }
@@ -59,6 +70,7 @@ public class IntentService extends GTIntentService {
     @Override
     public void onReceiveClientId(Context context, String clientid) {
         sendMessage(clientid, 1);
+
     }
 
     @Override
@@ -70,9 +82,6 @@ public class IntentService extends GTIntentService {
     public void onReceiveCommandResult(Context context, GTCmdMessage cmdMessage) {
         Log.e(TAG, "onReceiveCommandResult -> " + cmdMessage);
 
-        int action = cmdMessage.getAction();
-
-
     }
 
 
@@ -81,7 +90,23 @@ public class IntentService extends GTIntentService {
         msg.what = what;
         msg.obj = data;
         BaseApplication.mApp.sendMessage(msg);
+
+
     }
 
-
+    private void setNotificationManager(String title, String message) {
+        //实例化通知管理器
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        //实例化通知
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle(title);//设置通知标题
+        builder.setContentText(message);//设置通知内容
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);//设置通知的方式，震动、LED灯、音乐等
+        builder.setAutoCancel(true);//点击通知后，状态栏自动删除通知
+        builder.setSmallIcon(R.mipmap.notification);//设置小图标
+        builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, HomeActiviyt.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
+        Notification notification = builder.build();
+        //发送通知
+        notificationManager.notify(0x101, notification);
+    }
 }
