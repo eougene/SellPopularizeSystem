@@ -72,7 +72,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private EditText etCertificateTime, etVistTitle, etVistContent;
     private Button btDoacash, btDoaTransfer, btDoaCancel, btFromCamera, btFromAlbum, btPhotoCancel;
     private ImageView ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
-    private String picPath;
+    private String picPath = "";
     private LinearLayout llSpace, llCertificate, llChooseSpace;
     private Dialog eoiDialog, methodDialog, optionDialog;
     private List<String> weeks;
@@ -83,7 +83,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private SwipeMenuListView listView;
     private PullToRefreshLayout ptrl;
     private int page = 1;
-    private String number = "5";
+    private String number = "20";
     private Dialog visitDilog;
     private VisitRecord.ResultBean visitRecord;
     public static CusOprateRecordActivity cusOprateRecordActivity;
@@ -399,7 +399,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 case R.id.tvEoiSubmit:
                     Log.e("submitEoi", "onClick: " + "submitEoi");
                     if (llCertificate.getVisibility() == View.VISIBLE) {
-                        if (picPath == null) {
+                        if (picPath == "") {
                             ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.picpath));
                         }
                     }
@@ -459,6 +459,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void updateVisit() {
+        showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("v_log_id", visitRecord.getV_log_id() + "");
@@ -469,6 +470,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
@@ -488,6 +490,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }
@@ -541,6 +544,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void submitEoi() {
+        showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         try {
@@ -548,12 +552,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("payment_method", payment_method);
             ajaxParams.put("payment_amount", tvMoneyNum.getText().toString());
-            File picFile = new File(picPath);
-            ajaxParams.put("file", picFile);
+            if (!picPath.equals("")) {
+                File picFile = new File(picPath);
+                ajaxParams.put("file", picFile);
+            }
             ajaxParams.put("pay_time", "");
             ajaxParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
             ajaxParams.put("purchaseReason", "");
-            Log.e("ajax", "submitEoi: " + customeId + "\n" + payment_method + "\n" + tvMoneyNum.getText().toString() + picPath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -561,14 +566,21 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                        if (json.getString("msg").equals(getString(R.string.rechargesuccess))) {
-                            eoiDialog.dismiss();
-                            handler.sendEmptyMessage(ExtraName.SUCCESS);
-                            Log.e("tag", "trust_account_id: "+ json.getString("trust_account_id"));
+
+                        eoiDialog.dismiss();
+                        handler.sendEmptyMessage(ExtraName.SUCCESS);
+
+                        if (payment_method.equals("6") || payment_method.equals("7")) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("payurlId", json.getString("trust_account_id"));
+                            bundle.putString("payment_method", payment_method);
+                            ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
+                        } else {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
                         }
                     } else {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
@@ -581,7 +593,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
 
@@ -593,7 +605,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", "1");
-        ajaxParams.put("number", "10");
+        ajaxParams.put("number", "20");
         ajaxParams.put("company_id", BaseApplication.getInstance().getResultBean().getCompany_id() + "");
         ajaxParams.put("client", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
         ajaxParams.put("property_id", "");
@@ -612,10 +624,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                         @Override
                         public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
-                            holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + "");
-                            if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==6||item.getPayment_method()==7)){
+                            holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
+                            if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 6 || item.getPayment_method() == 7)) {
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
-                            }else if (item.getEoi_moneycheck_time().equals("")&&(item.getPayment_method()==1||item.getPayment_method()==4)) {
+                            } else if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
                             } else if (item.getCancel_apply_status() == 1) {
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
@@ -636,6 +648,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }
@@ -658,6 +671,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     Bundle bun = new Bundle();
                     bun.putSerializable("subrb", rbList.get(position));
                     ActivitySkip.forward(CusOprateRecordActivity.this, DialogOptionActivity.class, bun);
+                } else {
+                    EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
+                    Log.e("支付**", "play:" + eoilistBean.getEoi_money_url());
+                    if (eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("payurlId", eoilistBean.getEoi_money_url());
+                        bundle.putString("payment_method", eoilistBean.getPayment_method() + "");
+                        ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
+                    }
                 }
             }
         });
@@ -714,7 +736,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     };
                     //visitAdapter=new SlidingListviewAdapter(CusOprateRecordActivity.this,vrrb,listView.getRightViewWidth());
                     listView.setAdapter(visitAdapter);
-                    if (tvDes.getVisibility()==View.VISIBLE){
+                    if (tvDes.getVisibility() == View.VISIBLE) {
                         tvDes.setVisibility(View.GONE);
                     }
                     initMenuListView();
@@ -765,7 +787,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 int vlog_id = vrrb.get(position).getV_log_id();
                                 vrrb.remove(position);
                                 visitAdapter.notifyDataSetChanged();
-                                if (vrrb.size()==0){
+                                if (vrrb.size() == 0) {
                                     tvDes.setVisibility(View.VISIBLE);
                                 }
                                 removeVistOrResRecord(vlog_id);
@@ -776,8 +798,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 int log_id = rbList.get(position).getO_log_id();
                                 rbList.remove(position);
                                 subscribeAdapter.notifyDataSetChanged();
-                                if (rbList.size()==0){
-                                  tvDes.setVisibility(View.VISIBLE);
+                                if (rbList.size() == 0) {
+                                    tvDes.setVisibility(View.VISIBLE);
                                 }
                                 removeVistOrResRecord(log_id);
                             }

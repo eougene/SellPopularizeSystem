@@ -22,7 +22,7 @@
                 android:id="@+id/btUnknown"
                 style="@style/MatchWrap"
                 android:background="@drawable/base_square"
-                android:text="未知"
+                android:text="@string/unknow"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
             <View
@@ -36,7 +36,7 @@
                 android:id="@+id/btSure"
                 style="@style/MatchWrap"
                 android:background="@drawable/base_square"
-                android:text="是"
+                android:text="@string/yes"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
             <View
@@ -49,7 +49,7 @@
                 android:id="@+id/btFalse"
                 style="@style/MatchWrap"
                 android:background="@drawable/base_square"
-                android:text="否"
+                android:text="@string/no"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
         </LinearLayout>

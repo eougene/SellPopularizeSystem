@@ -45,22 +45,26 @@ public class NotificationFragment extends BaseFragmentView {
                 case 0:
                     tvOrderSum.setVisibility(View.VISIBLE);
                     tvOrderSum.setText((String) msg.obj);
+
                     break;
                 //小组
                 case 1:
                     tvBriefSum.setVisibility(View.VISIBLE);
                     tvBriefSum.setText((String) msg.obj);
+
                     break;
 
                 //公司
                 case 2:
                     tvCompanySum.setVisibility(View.VISIBLE);
                     tvCompanySum.setText((String) msg.obj);
+
                     break;
                 //系统
                 case 3:
                     tvSystemSum.setVisibility(View.VISIBLE);
                     tvSystemSum.setText((String) msg.obj);
+
                     break;
 
 

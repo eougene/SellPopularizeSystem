@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.umeng.socialize.UMAuthListener;
@@ -94,8 +93,13 @@ public class SettingFragment extends BaseFragmentView {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.bindAcount:
-
-                    UMShareAPI.get(getActivity()).doOauthVerify(getActivity(), SHARE_MEDIA.WEIXIN, authListener);
+                    if (UMShareAPI.get(getActivity()).isInstall(getActivity(), SHARE_MEDIA.WEIXIN)) {//判断是否安装微信
+                        acountPopupWindow.dismiss();
+                        UMShareAPI.get(getActivity()).doOauthVerify(getActivity(), SHARE_MEDIA.WEIXIN, authListener);
+                    } else {
+                        ToasShow.showToastCenter(getActivity(), "检查是否安装微信");
+                        return;
+                    }
 
                     break;
                 case R.id.cancelButton:
@@ -106,6 +110,10 @@ public class SettingFragment extends BaseFragmentView {
     };
 
     private void logOut() {
+        //先取消上次的微信授权
+        UMShareAPI.get(getActivity()).deleteOauth(getActivity(), SHARE_MEDIA.WEIXIN, null);
+
+        //清除用户数据
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserName();
@@ -117,36 +125,34 @@ public class SettingFragment extends BaseFragmentView {
     UMAuthListener authListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
+            showLoadingDialog();
             Log.e("开始授权", "platform:" + platform);
         }
 
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
+            dismissLoadingDialog();
             Log.e("授权成功", "platform:" + platform);
             String openId = data.get("openid");
+            String access_token = data.get("access_token");
             SharedPreferencesHelps.setOpenId(openId);
-            String temp = "";
-         /*   for (String key : data.keySet()) {
-                temp = temp + key + " : " + data.get(key) + "\n";
-            }*/
-            Log.e("data***", "openId:" + openId);
+
+            Log.e("data***", "openId:" + openId + "\naccess_token:" + access_token);
 
 
-            getWeiXinInfo(data.get("access_token"), data.get("openId"));
+            getWeiXinInfo(access_token, openId);
 
 
         }
 
         @Override
         public void onError(SHARE_MEDIA platform, int action, Throwable t) {
-
-            Toast.makeText(getActivity(), "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+            ToasShow.showToastBottom(getActivity(), t.getMessage());
         }
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-
-            Toast.makeText(getActivity(), "取消了", Toast.LENGTH_LONG).show();
+            ToasShow.showToastBottom(getActivity(), "已取消授权");
         }
     };
 
@@ -177,7 +183,6 @@ public class SettingFragment extends BaseFragmentView {
                             return;
                         }
 
-
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -204,21 +209,19 @@ public class SettingFragment extends BaseFragmentView {
         ajaxParams.put("type", "wechat");
         ajaxParams.put("openid", openId);
         ajaxParams.put("unionid", unionid);
-        http.post(Contants.WEXIN_URL_STRING, ajaxParams, new AjaxCallBack<String>() {
+        http.post(Contants.BINDING_THIRD, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-                acountPopupWindow.dismiss();
                 dismissLoadingDialog();
                 Log.e("TAG", "onSuccess: " + s);
                 try {
                     JSONObject json = new JSONObject(s);
-                    if (json.get("code").equals("1")) {
-                        acountPopupWindow.dismiss();
-                    } else {
-                        String str = json.getString("msg");
-                        ToasShow.showToastBottom(getActivity(), json.getString("msg"));
+                    ToasShow.showToastCenter(getActivity(), json.getString("msg"));
+                    if (json.getString("code").equals("1")) {
+                        logOut();
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -227,7 +230,7 @@ public class SettingFragment extends BaseFragmentView {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                ToasShow.showToastCenter(getContext(), "网络异常");
+                ToasShow.showToastCenter(getContext(), strMsg);
                 dismissLoadingDialog();
             }
         });
@@ -295,4 +298,6 @@ public class SettingFragment extends BaseFragmentView {
 
         }
     }
+
+
 }

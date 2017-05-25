@@ -25,7 +25,7 @@
             style="@style/WrapWrap"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding_margin_4"
-            android:text="房屋"
+            android:text="@string/fangwu"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
     </LinearLayout>

@@ -14,7 +14,7 @@
             android:id="@+id/questionTitle"
             style="@style/WrapWrap"
             android:layout_centerVertical="true"
-            android:text="对错" />
+            android:text="@string/yesorno" />
 
         <ImageView
             android:id="@+id/ivFlag"

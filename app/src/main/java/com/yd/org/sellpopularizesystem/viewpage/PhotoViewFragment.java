@@ -44,6 +44,8 @@ public class PhotoViewFragment extends BaseFragmentView implements OnPageChangeL
 
         url = getArguments().getString("url");
 
+        Log.e("url***","url:"+url);
+
         if (url.endsWith(".pdf")) {
             showLoadingDialog();
             title = getArguments().getString("title");

@@ -42,7 +42,7 @@
                     android:layout_below="@id/studyTextView"
                     android:layout_marginTop="@dimen/padding_margin_6"
                     android:textColor="@color/white"
-                    android:text="截止时间:2018/01/06"
+                    android:text="@string/_2018_01_06"
                     android:textSize="@dimen/tv_size_10"/>
 
             </RelativeLayout>

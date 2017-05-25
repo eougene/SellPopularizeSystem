@@ -171,6 +171,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     NotificationFragment.notificationFragment.mhandler.sendMessage(message);
                 }
 
+
             }
         }
 

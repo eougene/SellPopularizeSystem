@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="描述"
+                android:text="@string/des"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_10" />
 
@@ -133,7 +133,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginRight="@dimen/padding_margin_4"
                 android:layout_marginTop="@dimen/padding_margin_4"
-                android:text="名字"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_10"
                 android:textStyle="bold" />
@@ -160,9 +160,9 @@
             android:layout_marginBottom="@dimen/padding_margin_4"
             android:layout_marginRight="@dimen/padding_margin_4"
             android:layout_marginTop="@dimen/padding_margin_4"
-            android:background="@color/home_scale_d"
+            android:background="@color/home_scale"
             android:gravity="center"
-            android:text="意向金凭证已经上传\n请申请合同"
+            android:text="@string/askcontract"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_10" />
     </LinearLayout>

@@ -15,3 +15,7 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep public class android.net.http.SslError
+-dontwarn android.webkit.WebView
+-dontwarn android.net.http.SslError
+-dontwarn Android.webkit.WebViewClient

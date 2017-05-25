@@ -76,6 +76,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/product_listview_item2.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_myteam.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_myteam.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_scale.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_scale.xml"
     },
@@ -98,10 +102,6 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/nav_tablayout.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/nav_tablayout.xml"
-    },
-    {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/scale_new_activity.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/scale_new_activity.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/product_listview_item_sublay.xml",
@@ -228,10 +228,6 @@
         "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/layout/design_bottom_navigation_item.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_test.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_test.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/jc_dialog_brightness.xml",
         "source": "/Users/e-dot/.android/build-cache/6ce9105be8366e0b1f3ccd24d390959ec952f1d5/output/res/layout/jc_dialog_brightness.xml"
     },
@@ -328,6 +324,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/clip_main.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/reserve_activity_cusselect_pop.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/reserve_activity_cusselect_pop.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/grade_display_listview_item.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/grade_display_listview_item.xml"
     },
@@ -364,6 +364,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/saleorder_listview_item.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/team_listview_item_sublay.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/team_listview_item_sublay.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/getui_notification.xml",
         "source": "/Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/res/layout/getui_notification.xml"
     },
@@ -390,6 +394,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/pickerview_options.xml",
         "source": "/Users/e-dot/.android/build-cache/927ea1ca6ec1ad6530bcebdc51313262a762305d/output/res/layout/pickerview_options.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/team_listview_item_layout.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/team_listview_item_layout.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/answer_layout.xml",
@@ -424,12 +432,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/home_fragment.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/commission_item.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/commission_item.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/commission_item.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/commission_item.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_pdf.xml",
@@ -488,10 +496,6 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/reserver_listview_item_layout.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_test_layout.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_test_layout.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_change_pass_word.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_change_pass_word.xml"
     },
@@ -518,10 +522,6 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_screen_simple.xml"
-    },
-    {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_home_activiyt_1.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_home_activiyt_1.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_product_sub_item_detail.xml",
@@ -568,6 +568,10 @@
         "source": "/Users/e-dot/.android/build-cache/6ce9105be8366e0b1f3ccd24d390959ec952f1d5/output/res/layout/jc_layout_base.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_alipay_qr.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_alipay_qr.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/examine_item.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/examine_item.xml"
     },
@@ -608,12 +612,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/fragment_photo_view.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_popup_menu_header_item_layout.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/map_maker_view.xml",

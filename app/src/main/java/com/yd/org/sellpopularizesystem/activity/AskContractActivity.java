@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
@@ -21,10 +22,10 @@ import org.json.JSONObject;
 
 public class AskContractActivity extends BaseActivity {
     private Button btConSubmit;
-    private TextView tvSaleAskBill;
+    private TextView tvSaleAskBill, tvSaleId, tvSalePrice, tvCustomeName;
     private RelativeLayout rlSure;
     private CheckBox cbSure;
-    private String orderId,sale_advice_url;
+    private String orderId, sale_advice_url, price, surname;
 
     @Override
     protected int setContentView() {
@@ -35,13 +36,28 @@ public class AskContractActivity extends BaseActivity {
     public void initView() {
         setTitle(getString(R.string.ask_contract));
         hideRightImagview();
-        Bundle bundle=getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         orderId = bundle.getString("orderId");
-        sale_advice_url=bundle.getString("sale_advice_url");
-        tvSaleAskBill=getViewById(R.id.tvSaleAskBill);
-        rlSure=getViewById(R.id.rlSure);
-        cbSure=getViewById(R.id.tvDot);
-        btConSubmit=getViewById(R.id.btConSubmit);
+        price = bundle.getString("price");
+        sale_advice_url = bundle.getString("sale_advice_url");
+        surname = bundle.getString("surname");
+
+
+        tvSaleAskBill = getViewById(R.id.tvSaleAskBill);
+        rlSure = getViewById(R.id.rlSure);
+        cbSure = getViewById(R.id.tvDot);
+        btConSubmit = getViewById(R.id.btConSubmit);
+
+
+        tvSaleId = getViewById(R.id.tvSaleId);
+        tvSaleId.setText(orderId + "");
+
+        tvSalePrice = getViewById(R.id.tvSalePrice);
+        tvSalePrice.setText("$ " + MyUtils.getInstance().addComma(price));
+
+        tvCustomeName = getViewById(R.id.tvCustomeName);
+        tvCustomeName.setText(surname);
+
     }
 
     @Override
@@ -49,25 +65,30 @@ public class AskContractActivity extends BaseActivity {
         tvSaleAskBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle=new Bundle();
+                Bundle bundle = new Bundle();
                 bundle.putString("orderId", orderId + "");
                 bundle.putString("sale_advice_url", sale_advice_url);
-                ActivitySkip.forward(AskContractActivity.this,SaleReceiveNoticeActivity.class,bundle);
+                ActivitySkip.forward(AskContractActivity.this, SaleReceiveNoticeActivity.class, bundle);
             }
         });
 
         btConSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                applyContract(orderId);
+                if (cbSure.isChecked()) {
+                    applyContract(orderId);
+                } else {
+                    ToasShow.showToastCenter(AskContractActivity.this, "请确认支付信息");
+                }
+
             }
         });
         rlSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (cbSure.isChecked()){
+                if (cbSure.isChecked()) {
                     cbSure.setChecked(false);
-                }else{
+                } else {
                     cbSure.setChecked(true);
                 }
             }
@@ -75,20 +96,21 @@ public class AskContractActivity extends BaseActivity {
     }
 
     private void applyContract(String orderId) {
+        showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("order_id", orderId + "");
         http.post(Contants.APPLY_CONTRACT, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
+                closeDialog();
                 try {
-                    JSONObject json=new JSONObject(s);
-                    if(json.getString("code").equals("1")){
+                    JSONObject json = new JSONObject(s);
+                    if (json.getString("code").equals("1")) {
                         SaleRecordActivity.sra.handler.sendEmptyMessage(0x00);
-                        ToasShow.showToastBottom(AskContractActivity.this,json.getString("msg"));
-                    }else{
-                        ToasShow.showToastBottom(AskContractActivity.this,json.getString("msg"));
+                        ToasShow.showToastBottom(AskContractActivity.this, json.getString("msg"));
+                    } else {
+                        ToasShow.showToastBottom(AskContractActivity.this, json.getString("msg"));
                     }
 
                 } catch (JSONException e) {
@@ -98,7 +120,7 @@ public class AskContractActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }

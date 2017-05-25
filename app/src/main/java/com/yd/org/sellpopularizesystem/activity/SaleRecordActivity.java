@@ -2,12 +2,10 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -17,14 +15,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
@@ -50,9 +45,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.breadCrumbShortTitle;
-import static android.R.attr.order;
-
 public class SaleRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView lvSaleRecord;
     private PullToRefreshLayout ptrlSaleRecord;
@@ -68,14 +60,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private CommonPopuWindow mSalePopuwindow, mUpdatePop;
     private Dialog mUpdateDialog;
     private int orderId, pos;
-    private String sale_advice_url;
+    private String sale_advice_url,tvSalePrice,surname;
     public static SaleRecordActivity sra;
 
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            getSaleData(page, 50, true);
+            getSaleData(page,true);
         }
     };
     private String picPath;
@@ -125,17 +117,17 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         tvOrderContent = (TextView) mUpdateDialog.findViewById(R.id.tvOrderContent);
         etOrderRemark = (EditText) mUpdateDialog.findViewById(R.id.etOrderRemark);
         tvOrderUpdateSubmit = (TextView) mUpdateDialog.findViewById(R.id.tvOrderUpdateSubmit);
-        getSaleData(page, 10, true);
+        getSaleData(page,true);
     }
 
-    private void getSaleData(int page, int number, final boolean isRefresh) {
+    private void getSaleData(int page, final boolean isRefresh) {
         showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("company_id", SharedPreferencesHelps.getCompanyId());
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", page + "");
-        ajaxParams.put("number", number + "");
+        ajaxParams.put("number",  "20");
         http.get(Contants.INQUIRE_ORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -177,7 +169,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     /*holder.setText(R.id.tvBedRoom, item.getProduct_info().getBedroom());
                     holder.setText(R.id.tvBathroom, item.getProduct_info().getBathroom());
                     holder.setText(R.id.tvCarSquare, item.getProduct_info().getCar_space());*/
-                    holder.setText(R.id.tvSalePrice, item.getProduct_info().getCurrency() + item.getProduct_info().getPrice());
+                    holder.setText(R.id.tvSalePrice, item.getProduct_info().getCurrency()+" "+MyUtils.getInstance().addComma(item.getPrice()));
                     holder.setText(R.id.tvSaleName, item.getCustomer_surname() + getString(R.string.single_blank_space) + item.getCustomer_first_name());
                     if (saleAdapter.getmCurrentItem() == item.getProduct_orders_id()) {
                         holder.setView(R.id.tvStatus, ContextCompat.getColor(SaleRecordActivity.this, R.color.transparent));
@@ -252,6 +244,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             Bundle bundle = new Bundle();
             bundle.putString("orderId", orderId + "");
             bundle.putString("sale_advice_url", sale_advice_url);
+            bundle.putString("price", tvSalePrice);
+            bundle.putString("surname",surname);
             switch (v.getId()) {
                 //点击pop内容区之外pop消失
                 case R.id.llSalePop:
@@ -276,9 +270,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
                         Bundle bun = new Bundle();
-                        bun.putString("payurlId", sobRbData.get(pos).getBuy_money_url());
-                        bun.putString("payment_method", sobRbData.get(pos).getPayment_amount());
+                        bun.putString("payurlId", ((SaleOrderBean.ResultBean)saleAdapter.getItem(pos)).getOrder_money_url());
+                        bun.putString("payment_method", ((SaleOrderBean.ResultBean)saleAdapter.getItem(pos)).getPayment_method()+"");
                         ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
+
                     }
 
                     break;
@@ -305,7 +300,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击放弃订单
                 case R.id.btOrderCancel:
-                    sobRbData.get(pos).setCancel_apply_status(1);
+                    ((SaleOrderBean.ResultBean)saleAdapter.getItem(pos)).setCancel_apply_status(1);
                     saleAdapter.notifyDataSetChanged();
                     canceOrder(orderId);
                     mSalePopuwindow.dismiss();
@@ -388,7 +383,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
                     if (resultBean.getCancel_apply_status() != 1 && resultBean.getCancel_apply_status() != 2) {
                         orderId = resultBean.getProduct_orders_id();
-                        sale_advice_url = sobRbData.get(position).getSale_advice_url();
+                        sale_advice_url = resultBean.getSale_advice_url();
+                        tvSalePrice=resultBean.getPrice();
+                        surname=resultBean.getCustomer_surname()+" "+resultBean.getCustomer_first_name();
                         //saleAdapter.getView(position,)
                         pos = position;
                         TextView tvText = (TextView) view.findViewById(R.id.tvStatus);
@@ -447,13 +444,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
-        getSaleData(page, 10, true);
+        getSaleData(page, true);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getSaleData(page, 10, false);
+        getSaleData(page,false);
     }
 
     @Override

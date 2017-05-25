@@ -175,7 +175,6 @@ public class BriefNotificFragment extends BaseFragmentView implements PullToRefr
                     NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
                 }
-
             }
         }
 

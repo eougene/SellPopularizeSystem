@@ -61,8 +61,7 @@ public class IntentService extends GTIntentService {
             Log.e(TAG, "receiver payload = " + data+"::"+msg.getPayloadId());
             // 测试消息为了观察数据变化
             sendMessage(data, 0);
-            setNotificationManager("CRM销售系统" +
-                    "", data);
+            setNotificationManager("CRM销售系统", data);
         }
 
     }

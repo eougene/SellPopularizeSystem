@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:2:1-209:12
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:2:1-208:12
 	package
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:4:11-52
 		INJECTED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml
@@ -198,8 +198,7 @@ ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/Androi
 	android:required
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:82:9-32
 application
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:84:5-207:19
-MERGED from [SellPopularizeSystem:android-pdf:unspecified] /Users/e-dot/Documents/e-dot/SellPopularizeSystem/android-pdf/build/intermediates/bundles/default/AndroidManifest.xml:11:5-15:19
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:84:5-206:19
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/e-dot/.android/build-cache/74ab709aa4c3d40a768985f046529ea178494117/output/AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] /Users/e-dot/.android/build-cache/ce2ce393b11124e124f847190ffee946ac7874c0/output/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/e-dot/.android/build-cache/b51b85f0c18ea7946035525b64bfc3f586c178da/output/AndroidManifest.xml:9:5-20
@@ -209,13 +208,14 @@ MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/e-dot/.android/buil
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/7f74d5b2df4658cf9412923515c7babeba4a875d/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/ef7c2d2bb7424d437618352b6b609c46bce7c151/output/AndroidManifest.xml:26:5-20
 MERGED from [com.r0adkll:slidableactivity:2.0.5] /Users/e-dot/.android/build-cache/12dbe7a6cdd131b3568acab55409f3a4682a2cb8/output/AndroidManifest.xml:9:5-20
+MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:32:5-98:19
+MERGED from [com.github.barteksc:pdfium-android:1.4.0] /Users/e-dot/.android/build-cache/bc7a290f951ee60429b6f50d524bdcf8991c1272/output/AndroidManifest.xml:11:5-14:19
 MERGED from [com.android.support:support-v4:25.3.0] /Users/e-dot/.android/build-cache/10a78500ab51f31e60d05a4783b50343196d06a0/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.0] /Users/e-dot/.android/build-cache/522126fc67ade4f62ecf9d05abb10df1ab996a4d/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.0] /Users/e-dot/.android/build-cache/06b9d4abb925aa8f559bb48a6f565795b92374f3/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.0] /Users/e-dot/.android/build-cache/e58fb4f2eb30d8557b7fb75296e49bb6ce62b62c/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.0] /Users/e-dot/.android/build-cache/24112e6bf60fe8f736e0b827beca8aabe8395f97/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.0] /Users/e-dot/.android/build-cache/a72fc728422c0256f02b1cacbe8c4c6b30718e54/output/AndroidManifest.xml:29:5-20
-MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:32:5-98:19
 	android:label
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:88:9-41
 	android:supportsRtl
@@ -354,80 +354,76 @@ activity#com.yd.org.sellpopularizesystem.activity.MapActivity
 ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:136:9-57
 	android:name
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:136:19-55
-activity#com.yd.org.sellpopularizesystem.activity.TestLayoutActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:137:9-64
-	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:137:19-62
 activity#com.yd.org.sellpopularizesystem.wxapi.WXEntryActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:138:9-143:74
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:137:9-142:74
 	android:screenOrientation
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:142:13-49
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:141:13-49
 	android:exported
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:141:13-36
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:140:13-36
 	android:configChanges
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:140:13-74
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:139:13-74
 	android:theme
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:143:13-72
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:142:13-72
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:139:13-50
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:138:13-50
 meta-data#UMENG_APPKEY
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:145:9-151:21
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:144:9-150:21
 	android:value
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:147:13-53
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:146:13-53
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:146:13-40
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:145:13-40
 meta-data#UMENG_CHANNEL
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:148:13-150:40
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:147:13-149:40
 	android:value
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:150:17-38
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:149:17-38
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:149:17-45
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:148:17-45
 activity#com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:153:9-72
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:152:9-72
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:153:19-70
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:152:19-70
 activity#com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:154:9-71
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:153:9-71
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:154:19-69
-activity#com.yd.org.sellpopularizesystem.activity.TestActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:155:9-58
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:153:19-69
+activity#com.yd.org.sellpopularizesystem.activity.MyTeamActivity
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:154:9-60
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:155:19-56
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:154:19-58
 activity#com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:156:9-74
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:155:9-74
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:156:19-72
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:155:19-72
 activity#com.yd.org.sellpopularizesystem.activity.ReserveActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:157:9-61
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:156:9-61
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:157:19-59
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:156:19-59
 activity#com.yd.org.sellpopularizesystem.activity.AskContractActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:158:9-65
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:157:9-65
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:158:19-63
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:157:19-63
 activity#com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:159:9-71
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:158:9-71
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:159:19-69
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:158:19-69
 activity#com.yd.org.sellpopularizesystem.activity.CusOprateRecordActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:160:9-69
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:159:9-69
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:160:19-67
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:159:19-67
 activity#com.yd.org.sellpopularizesystem.activity.DialogOptionActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:161:9-164:67
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:160:9-163:66
 	android:windowSoftInputMode
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:164:13-64
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:163:13-64
 	android:theme
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:163:13-47
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:162:13-47
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:162:13-58
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:161:13-58
 activity#com.yd.org.sellpopularizesystem.activity.BuildingPlanActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:165:9-166:66
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:164:9-166:66
 	android:windowSoftInputMode
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:166:13-64
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:165:19-64
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:165:13-58
 activity#com.yd.org.sellpopularizesystem.activity.FilterActivity
 ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:167:9-60
 	android:name
@@ -445,76 +441,80 @@ ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/Androi
 	android:name
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:170:19-61
 activity#com.yd.org.sellpopularizesystem.activity.ImageShowActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:171:9-63
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:171:9-173:71
+	android:theme
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:173:13-69
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:171:19-61
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:172:13-55
 meta-data#PUSH_APPID
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:174:9-176:53
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:176:9-178:53
 MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:35:9-37:47
 	android:value
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:176:13-51
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:178:13-51
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:175:13-38
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:177:13-38
 meta-data#PUSH_APPKEY
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:177:9-179:53
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:179:9-181:53
 MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:38:9-40:48
 	android:value
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:179:13-51
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:181:13-51
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:178:13-39
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:180:13-39
 meta-data#PUSH_APPSECRET
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:180:9-182:53
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:182:9-184:53
 MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:41:9-43:51
 	android:value
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:182:13-51
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:184:13-51
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:181:13-42
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:183:13-42
 service#com.yd.org.sellpopularizesystem.getui.IntentService
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:186:9-55
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:188:9-55
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:186:18-53
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:188:18-53
 service#com.yd.org.sellpopularizesystem.getui.PushService
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:189:9-194:19
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:191:9-195:45
 	android:process
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:193:13-43
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:195:13-43
 	android:label
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:192:13-40
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:194:13-40
 	android:exported
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:191:13-36
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:193:13-36
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:190:13-46
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:192:13-46
 activity#com.yd.org.sellpopularizesystem.activity.CommissionActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:197:9-64
-	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:197:19-62
-activity#com.yd.org.sellpopularizesystem.activity.OldProjectActivity
 ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:198:9-64
 	android:name
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:198:19-62
+activity#com.yd.org.sellpopularizesystem.activity.OldProjectActivity
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:199:9-64
+	android:name
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:199:19-62
 activity#com.yd.org.sellpopularizesystem.activity.InvestigateListActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:199:9-69
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:200:9-69
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:199:19-67
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:200:19-67
 activity#com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:200:9-71
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:201:9-71
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:200:19-69
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:201:19-69
 activity#com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:201:9-202:20
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:202:9-69
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:201:19-67
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:202:19-67
 activity#com.yd.org.sellpopularizesystem.activity.FileActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:203:9-204:20
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:203:9-58
 	android:name
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:203:19-56
 activity#com.yd.org.sellpopularizesystem.activity.PDFActivity
-ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:205:9-206:20
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:204:9-57
 	android:name
-		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:205:19-55
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:204:19-55
+activity#com.yd.org.sellpopularizesystem.activity.PaymentQrActivity
+ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:205:9-63
+	android:name
+		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:205:19-61
 uses-sdk
 INJECTED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-MERGED from [SellPopularizeSystem:android-pdf:unspecified] /Users/e-dot/Documents/e-dot/SellPopularizeSystem/android-pdf/build/intermediates/bundles/default/AndroidManifest.xml:7:5-9:41
-MERGED from [io.reactivex:rxandroid:1.1.0] /Users/e-dot/.android/build-cache/bd07e8789618aa0816409360a9db1e0fd3aadbf7/output/AndroidManifest.xml:19:5-43
 MERGED from [com.contrarywind:Android-PickerView:3.2.4] /Users/e-dot/.android/build-cache/927ea1ca6ec1ad6530bcebdc51313262a762305d/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] /Users/e-dot/.android/build-cache/74ab709aa4c3d40a768985f046529ea178494117/output/AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-base:8.4.0] /Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/AndroidManifest.xml:18:5-42
@@ -531,13 +531,16 @@ MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/e-dot/.android/buil
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/7f74d5b2df4658cf9412923515c7babeba4a875d/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/ef7c2d2bb7424d437618352b6b609c46bce7c151/output/AndroidManifest.xml:20:5-43
 MERGED from [com.r0adkll:slidableactivity:2.0.5] /Users/e-dot/.android/build-cache/12dbe7a6cdd131b3568acab55409f3a4682a2cb8/output/AndroidManifest.xml:7:5-44
+MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:android-pdf-viewer:1.4.0] /Users/e-dot/.android/build-cache/10b8850bca929e4198f97ff63a75094d79e82617/output/AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.4.0] /Users/e-dot/.android/build-cache/bc7a290f951ee60429b6f50d524bdcf8991c1272/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:25.3.0] /Users/e-dot/.android/build-cache/10a78500ab51f31e60d05a4783b50343196d06a0/output/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.0] /Users/e-dot/.android/build-cache/522126fc67ade4f62ecf9d05abb10df1ab996a4d/output/AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.0] /Users/e-dot/.android/build-cache/06b9d4abb925aa8f559bb48a6f565795b92374f3/output/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.0] /Users/e-dot/.android/build-cache/e58fb4f2eb30d8557b7fb75296e49bb6ce62b62c/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.0] /Users/e-dot/.android/build-cache/24112e6bf60fe8f736e0b827beca8aabe8395f97/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.0] /Users/e-dot/.android/build-cache/a72fc728422c0256f02b1cacbe8c4c6b30718e54/output/AndroidManifest.xml:21:5-23:58
-MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:7:5-9:41
+MERGED from [io.reactivex:rxandroid:1.1.0] /Users/e-dot/.android/build-cache/bd07e8789618aa0816409360a9db1e0fd3aadbf7/output/AndroidManifest.xml:19:5-43
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.0] /Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -670,4 +673,4 @@ ADDED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499
 	android:name
 		ADDED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:94:13-64
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:2:1-209:12 reason: com.igexin requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:2:1-208:12 reason: com.igexin requested WRITE_EXTERNAL_STORAGE

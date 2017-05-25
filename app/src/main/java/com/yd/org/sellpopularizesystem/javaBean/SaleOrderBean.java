@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -52,7 +53,7 @@ public class SaleOrderBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean implements Serializable{
         /**
          * product_orders_id : 94
          * company_id : 1

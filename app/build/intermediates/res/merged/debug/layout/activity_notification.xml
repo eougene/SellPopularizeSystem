@@ -7,9 +7,6 @@
     <include
         layout="@layout/notificationhead"/>
 
-
-
-
     <FrameLayout
         android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"

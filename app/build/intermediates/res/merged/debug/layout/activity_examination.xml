@@ -52,7 +52,7 @@
             android:layout_marginLeft="@dimen/padding_margin_50"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="提交"
+            android:text="@string/submit"
             android:textColor="@color/white" />
 
         <Button
@@ -63,7 +63,7 @@
             android:layout_marginRight="@dimen/padding_margin_50"
             android:layout_weight="1"
             android:background="@drawable/button"
-            android:text="跳过"
+            android:text="@string/skip"
             android:textColor="@color/white" />
     </LinearLayout>
 

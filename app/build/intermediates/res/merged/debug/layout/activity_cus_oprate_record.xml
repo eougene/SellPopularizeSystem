@@ -20,7 +20,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
         android:layout_marginTop="@dimen/padding_margin_35"
-        android:text="客户没有EOI,点击右上角充值"
+        android:text="@string/noeoi"
         android:textColor="@color/black"
         android:visibility="gone"/>
 </RelativeLayout>

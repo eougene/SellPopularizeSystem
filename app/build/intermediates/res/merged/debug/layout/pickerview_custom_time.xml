@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="请选择预约时间"
+            android:text="@string/selectdatetime"
             android:textColor="@color/gray"/>
         <TextView
             android:id="@+id/tv_finish"
@@ -47,7 +47,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="17dp"
             android:padding="8dp"
-            android:text="完成"
+            android:text="@string/done"
             android:textColor="@color/black"
             android:textSize="18sp" />
 

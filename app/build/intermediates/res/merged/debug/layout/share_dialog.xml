@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/tv_size_10"
             android:gravity="center"
-            android:text="选择分享方式"
+            android:text="@string/chooseshare"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_15" />
 
@@ -42,7 +42,7 @@
                     android:layout_below="@+id/ivWexinp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/padding_margin_10"
-                    android:text="微信朋友圈"
+                    android:text="@string/weixincircle"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_10"/>
             </RelativeLayout>
@@ -63,7 +63,28 @@
                     android:layout_below="@+id/ivWexin"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/padding_margin_10"
-                    android:text="微信好友"
+                    android:text="@string/weixinfriends"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_10"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:visibility="gone">
+
+                <com.yd.org.sellpopularizesystem.myView.CircleImageView
+                    android:id="@+id/ivFacebook"
+                    style="@style/WrapWrap"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/umeng_socialize_facebook" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivFacebook"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/padding_margin_10"
+                    android:text="@string/auth_google_play_services_client_facebook_display_name"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_10"/>
             </RelativeLayout>

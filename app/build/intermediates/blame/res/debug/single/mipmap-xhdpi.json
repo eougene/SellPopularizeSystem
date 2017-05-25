@@ -104,6 +104,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/introtool.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_facebook.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_facebook.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
     },

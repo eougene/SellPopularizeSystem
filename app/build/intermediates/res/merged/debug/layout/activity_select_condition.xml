@@ -29,7 +29,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="区域一"
+                android:text="@string/areaone"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -48,7 +48,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="区域二"
+                android:text="@string/areatwo"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -67,7 +67,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="区域三"
+                android:text="@string/areathree"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -86,7 +86,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="区域四"
+                android:text="@string/areafour"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -105,7 +105,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="区域五"
+                android:text="@string/areafive"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -131,7 +131,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="一室"
+                android:text="@string/roomone"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -150,7 +150,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="二室"
+                android:text="@string/roomtwo"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -169,7 +169,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="三室"
+                android:text="@string/roomthree"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -188,7 +188,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="四室"
+                android:text="@string/roomfour"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -207,7 +207,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="五室"
+                android:text="@string/fiveroom"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -226,7 +226,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="五室以上"
+                android:text="@string/abovefiveroom"
                 android:tag="6"
                 android:textSize="@dimen/tv_size_12" />
         </LinearLayout>
@@ -246,7 +246,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="描述一"
+                android:text="@string/desone"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -265,7 +265,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="描述二"
+                android:text="@string/destwo"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -284,7 +284,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="描述三"
+                android:text="@string/desthree"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -303,7 +303,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="描述四"
+                android:text="@string/desfour"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -322,7 +322,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="描述五"
+                android:text="@string/desfive"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -346,7 +346,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="50k-100k"
+                    android:text="@string/_50k_100k"
                     android:tag="50000~100000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -365,7 +365,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="100k-150k"
+                    android:text="@string/_100k_150k"
                     android:tag="100000~150000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -384,7 +384,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="150k-200k"
+                    android:text="@string/_150k_200k"
                     android:tag="150000~200000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -403,7 +403,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="200k-250k"
+                    android:text="@string/_200k_250k"
                     android:tag="200000~250000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -422,7 +422,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="250k-300k"
+                    android:text="@string/_250k_300k"
                     android:tag="250000~300000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -440,7 +440,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="300k-350k"
+                    android:text="@string/_300k_350k"
                     android:tag="300000~350000"
                     android:textSize="@dimen/tv_size_12" />
                 <View
@@ -457,7 +457,7 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:text="300k-不限"
+                    android:text="@string/_300k"
                     android:tag="350000~999999999"
                     android:textSize="@dimen/tv_size_12" />
             </RadioGroup>

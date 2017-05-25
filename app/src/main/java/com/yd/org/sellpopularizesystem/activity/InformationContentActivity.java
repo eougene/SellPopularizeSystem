@@ -12,9 +12,6 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class InformationContentActivity extends BaseActivity {
     private TextView tvInformContent;
     @Override
@@ -28,17 +25,16 @@ public class InformationContentActivity extends BaseActivity {
         Bundle bundle = intent.getExtras();
         String str = bundle.getString("data", getString(R.string.novalue));
         String title = bundle.getString("title");
-        String userId = bundle.getString("notice_id", "null");
+        String notice_id = bundle.getString("notice_id", "null");
         tvInformContent = (TextView) findViewById(R.id.tvInformContent);
         tvInformContent.setText(title+"\n"+str);
         setTitle("消息详情");
         hideRightImagview();
-        commitNotice(userId);
+        commitNotice(notice_id);
 
     }
 
     private void commitNotice(String str) {
-        showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -46,19 +42,11 @@ public class InformationContentActivity extends BaseActivity {
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                closeDialog();
-                try {
-                    JSONObject json = new JSONObject(s);
-                    String str = json.getString("msg");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
             }
         });
     }

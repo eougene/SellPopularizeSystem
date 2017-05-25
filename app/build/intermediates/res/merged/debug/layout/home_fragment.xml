@@ -71,7 +71,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/sale_pro"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -79,16 +79,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="共有0个推广素材"
-                                android:textColor="@color/black"
+                                android:text="@string/zeropromotematerial"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
                                 android:id="@+id/tvNewAddSource"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="本周新增0个"
-                                android:textColor="@color/black"
+                                android:text="@string/newadd"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -130,7 +130,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_study"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -138,16 +138,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="共有0个学习资料"
-                                android:textColor="@color/black"
+                                android:text="@string/zerostudy"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
                                 android:id="@+id/tvNotCompleteCount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="您有0个考核未完成"
-                                android:textColor="@color/black"
+                                android:text="@string/zerocheck"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -194,8 +194,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/home_custom"
-                                android:textColor="@color/black"
+                                android:text="@string/home_scale"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -203,16 +203,16 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="您有0位客户"
-                                android:textColor="@color/black"
+                                android:text="@string/zerocus"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                             <TextView
                                 android:id="@+id/tvNewCustomNumber"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="本月新增0位"
-                                android:textColor="@color/black"
+                                android:text="@string/zeronewadd"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"/>
 
                         </LinearLayout>
@@ -253,8 +253,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="往期项目"
-                                android:textColor="@color/black"
+                                android:text="@string/oldproject"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_15"/>
 
                             <TextView
@@ -262,7 +262,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_setting_en"
-                                android:textColor="@color/black"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>
 
@@ -272,8 +272,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="您还有0条未读信息"
-                                android:textColor="@color/black"
+                                android:text="@string/zerounread"
+                                android:textColor="@color/home_scale"
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>
 

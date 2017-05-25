@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlReserver"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yd.org.sellpopularizesystem.activity.ReserveActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/rlReserver"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.yd.org.sellpopularizesystem.activity.ReserveActivity">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/gray" />
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:layout_width="match_parent"
@@ -37,9 +33,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
-                    android:text="萨达萨达"
+                    android:text="@string/sada"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReNameOne"
@@ -47,9 +43,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:layout_toRightOf="@+id/tvPrice"
-                    android:text="-"
+                    android:text="@string/seprate"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReNameTwo"
@@ -57,9 +53,9 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:layout_toRightOf="@+id/tvReNameOne"
-                    android:text="萨达萨达"
+                    android:text="@string/sada"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -73,9 +69,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="价格"
+                    android:text="@string/price"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvRePrice"
@@ -83,15 +79,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="0.0"
+                    android:text="@string/singlezero"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -104,9 +100,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="类型"
+                    android:text="@string/type"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvRetype"
@@ -114,15 +110,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="0.0"
+                    android:text="@string/singlezero"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -135,9 +131,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="Available For FIRB"
+                    android:text="@string/available_for_firb"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReFirb"
@@ -145,15 +141,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="0.0"
+                    android:text="@string/singlezero"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -166,9 +162,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="销售"
+                    android:text="@string/sale"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReSale"
@@ -176,9 +172,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="0.0"
+                    android:text="@string/singlezero"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <!--<View
@@ -198,9 +194,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="有效期"
+                    android:text="@string/validity"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvValidity"
@@ -208,15 +204,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="2017/03/31"
+                    android:text="@string/threemonth"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlRecus"
@@ -230,9 +226,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="客户"
+                    android:text="@string/custome"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReCus"
@@ -240,15 +236,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="jinliu"
+                    android:text="@string/jinliu"
                     android:textColor="#ff0000"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlReLawyer"
@@ -261,9 +257,9 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="客户律师"
+                    android:text="@string/cuslawyer"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
                     android:id="@+id/ivReLawyer"
@@ -271,7 +267,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/add"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReLawyer"
@@ -279,13 +275,13 @@
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:textSize="@dimen/tv_size_12"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlReGoal"
@@ -299,9 +295,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="购房目的"
+                    android:text="@string/buyhousetention"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvReGoal"
@@ -309,15 +305,15 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="未知"
+                    android:text="@string/unknow"
                     android:textColor="#0000ff"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlPayType"
@@ -332,9 +328,9 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="支付"
+                    android:text="@string/zhifu"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvRePay"
@@ -345,7 +341,7 @@
                     android:layout_toRightOf="@+id/tvPay"
                     android:text="$0000"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
                     android:id="@+id/tvRePayType"
@@ -353,9 +349,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="请选择支付方式"
+                    android:text="@string/pay_method"
                     android:textColor="#0000ff"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -368,7 +364,7 @@
                     android:id="@+id/ivBpay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/bpay" />
+                    android:src="@mipmap/bpay"/>
 
                 <ImageView
                     android:id="@+id/ivWeixin"
@@ -376,14 +372,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
                     android:layout_toRightOf="@+id/ivBpay"
-                    android:src="@mipmap/alipay" />
+                    android:src="@mipmap/alipay"/>
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
                     android:layout_toRightOf="@+id/ivWeixin"
-                    android:src="@mipmap/weichatpay" />
+                    android:src="@mipmap/weichatpay"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -392,11 +388,12 @@
                 android:layout_marginTop="@dimen/padding_margin_10"
                 android:gravity="center"
                 android:visibility="gone">
+
                 <ImageView
                     android:id="@+id/ivBank"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/dollar" />
+                    android:src="@mipmap/dollar"/>
 
                 <ImageView
                     android:id="@+id/ivWallet"
@@ -404,7 +401,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
                     android:layout_toRightOf="@+id/ivBank"
-                    android:src="@mipmap/wallet" />
+                    android:src="@mipmap/wallet"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -427,8 +424,8 @@
                     android:id="@+id/tvCertificate"
                     style="@style/WrapWrap"
                     android:layout_centerInParent="true"
-                    android:text="上传凭证"
-                    android:textColor="@color/white" />
+                    android:text="@string/uploadeevidence"
+                    android:textColor="@color/white"/>
             </RelativeLayout>
         </LinearLayout>
     </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
@@ -448,7 +445,7 @@
             android:background="@color/home_scale"
             android:paddingBottom="@dimen/padding_margin_4"
             android:paddingTop="@dimen/padding_margin_4"
-            android:text="提交"
-            android:textColor="@color/white" />
+            android:text="@string/submit"
+            android:textColor="@color/white"/>
     </RelativeLayout>
 </LinearLayout>

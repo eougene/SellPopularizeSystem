@@ -31,7 +31,7 @@
             android:layout_below="@+id/ivHeadPhoto"
             android:gravity="center"
             android:layout_marginTop="10dp"
-            android:text="客户名字"
+            android:text="@string/customename"
             android:textColor="@color/white" />
     </RelativeLayout>
 
@@ -54,7 +54,7 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="联系方式:"
+                    android:text="@string/contact"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -85,7 +85,7 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="联系地址:"
+                    android:text="@string/address"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -115,7 +115,7 @@
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="备注:"
+                    android:text="@string/remark"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -145,7 +145,7 @@
                     android:id="@+id/textView2"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
-                    android:text="预约时间:"
+                    android:text="@string/datetime"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -208,7 +208,7 @@
                 android:background="@color/home_scale"
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
-                android:text="无法确定"
+                android:text="@string/unsure"
                 android:gravity="center"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_15" />

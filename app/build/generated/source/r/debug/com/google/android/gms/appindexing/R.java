@@ -8,12 +8,12 @@ package com.google.android.gms.appindexing;
 
 public final class R {
     public static final class attr {
-        public static final int buttonSize = 0x7f010141;
+        public static final int buttonSize = 0x7f010145;
         public static final int circleCrop = 0x7f010108;
-        public static final int colorScheme = 0x7f010142;
+        public static final int colorScheme = 0x7f010146;
         public static final int imageAspectRatio = 0x7f010107;
         public static final int imageAspectRatioAdjust = 0x7f010106;
-        public static final int scopeUris = 0x7f010143;
+        public static final int scopeUris = 0x7f010147;
     }
     public static final class color {
         public static final int common_action_bar_splitter = 0x7f0d0021;
@@ -99,8 +99,8 @@ public final class R {
         public static final int google_play_services_version = 0x7f0c000c;
     }
     public static final class string {
-        public static final int auth_google_play_services_client_facebook_display_name = 0x7f0800cc;
-        public static final int auth_google_play_services_client_google_display_name = 0x7f0800cd;
+        public static final int auth_google_play_services_client_facebook_display_name = 0x7f0800e7;
+        public static final int auth_google_play_services_client_google_display_name = 0x7f0800e8;
         public static final int common_google_play_services_api_unavailable_text = 0x7f080013;
         public static final int common_google_play_services_enable_button = 0x7f080014;
         public static final int common_google_play_services_enable_text = 0x7f080015;
@@ -136,7 +136,7 @@ public final class R {
         public static final int LoadingImageView_circleCrop = 2;
         public static final int LoadingImageView_imageAspectRatio = 1;
         public static final int LoadingImageView_imageAspectRatioAdjust = 0;
-        public static final int[] SignInButton = { 0x7f010141, 0x7f010142, 0x7f010143 };
+        public static final int[] SignInButton = { 0x7f010145, 0x7f010146, 0x7f010147 };
         public static final int SignInButton_buttonSize = 0;
         public static final int SignInButton_colorScheme = 1;
         public static final int SignInButton_scopeUris = 2;

@@ -384,8 +384,8 @@
     <string name="project">项目</string>
     <string name="nohistoryrecord">无历史记录</string>
     <string name="clearsuccess">清除成功</string>
-    <string name="scanalipayqr">请使用支付宝扫描二维码支付</string>
-    <string name="scanalipayqrwx">请使用微信扫描二维码支付</string>
+    <string name="scanalipayqr">请使用支付宝扫码支付</string>
+    <string name="scanalipayqrwx">请使用微信扫码支付</string>
     <string name="selectcus">选择客户</string>
     <string name="editcusinfo">编辑客户信息</string>
     <string name="nopayintent">尚未支付意向金\n请付款</string>
