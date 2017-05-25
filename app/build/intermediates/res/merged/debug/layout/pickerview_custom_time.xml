@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="#EEEEEE">
+        android:background="@color/search_edit_bac">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#aaa" />
+            android:background="@color/search_edit_bac"/>
 
         <ImageView
             android:id="@+id/ivUp"
@@ -21,7 +21,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_margin_4"
             android:padding="8dp"
-            android:src="@mipmap/up" />
+            android:src="@mipmap/up"/>
 
         <ImageView
             android:id="@+id/ivDown"
@@ -31,7 +31,8 @@
             android:layout_marginLeft="@dimen/padding_margin_4"
             android:layout_toRightOf="@+id/ivUp"
             android:padding="8dp"
-            android:src="@mipmap/down" />
+            android:src="@mipmap/down"/>
+
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -39,6 +40,7 @@
             android:layout_centerInParent="true"
             android:text="@string/selectdatetime"
             android:textColor="@color/gray"/>
+
         <TextView
             android:id="@+id/tv_finish"
             android:layout_width="wrap_content"
@@ -49,12 +51,12 @@
             android:padding="8dp"
             android:text="@string/done"
             android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="#aaa" />
+            android:background="@color/search_edit_bac" />
     </RelativeLayout>
 
     <!--此部分需要完整复制过去，删减或者更改ID会导致初始化找不到内容而报空-->
@@ -74,13 +76,13 @@
             android:id="@+id/options2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
 
         <com.bigkoo.pickerview.lib.WheelView
             android:id="@+id/options3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"/>
     </LinearLayout>
 
 </LinearLayout>

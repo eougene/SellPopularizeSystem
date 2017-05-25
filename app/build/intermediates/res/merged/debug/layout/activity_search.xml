@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
-            android:background="@color/setting_bac" />
+            android:background="@color/search_edit_bac" />
 
         <TextView
             android:id="@+id/tvSearchCancel"
@@ -72,7 +72,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/search_edit"
+        android:background="@color/search_edit_bac"
         android:orientation="horizontal">
     <TextView
         android:id="@+id/tvSearchTitle"

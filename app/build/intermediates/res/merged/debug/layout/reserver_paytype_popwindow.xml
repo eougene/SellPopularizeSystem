@@ -10,15 +10,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 
-        <!-- <Button
-             android:id="@+id/photoAlbumButton"
-             style="@style/MatchWrap"
-             android:layout_marginLeft="@dimen/padding_margin_20"
-             android:layout_marginRight="@dimen/padding_margin_20"
-             android:background="@drawable/base_square"
-             android:text="@string/photofromalbum"
-             android:textColor="@color/light_blue"
-             android:textSize="@dimen/tv_size_15" />-->
         <LinearLayout
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/padding_margin_20"
@@ -37,7 +28,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/search_edit_bac" />
 
             <Button
                 android:id="@+id/btCredit"
@@ -50,7 +41,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/search_edit_bac" />
 
             <Button
                 android:id="@+id/btDesposit"
@@ -62,7 +53,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/search_edit_bac" />
             <Button
                 android:id="@+id/btTransfer"
                 style="@style/MatchWrap"
@@ -73,7 +64,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac" />
+                android:background="@color/search_edit_bac" />
 
             <Button
                 android:id="@+id/btCheck"

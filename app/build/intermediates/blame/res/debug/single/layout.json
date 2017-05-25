@@ -24,10 +24,6 @@
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_dialog_option.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_dialog_option.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/fragment_notific.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/fragment_notific.xml"
     },
@@ -204,10 +200,6 @@
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/layout/abc_action_bar_up_container.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_search_result.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_search_result.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/floor_listview_iten_layout.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/floor_listview_iten_layout.xml"
     },
@@ -242,10 +234,6 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
         "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/layout/design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/activity_wxentry.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/activity_wxentry.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/eoi_choose_oprate_dialog.xml",
@@ -602,10 +590,6 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/update_order_popview.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/update_order_popview.xml"
-    },
-    {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/scale_list_item.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/layout/scale_list_item.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout/fragment_photo_view.xml",

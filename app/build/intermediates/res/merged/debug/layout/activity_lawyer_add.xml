@@ -55,7 +55,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:background="@color/setting_bac"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -183,7 +183,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:background="@color/setting_bac"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -226,7 +226,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:background="@color/setting_bac"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
@@ -269,7 +269,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:background="@color/setting_bac"/>
+                android:background="@color/search_edit_bac"/>
         </LinearLayout>
     </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
 </LinearLayout>

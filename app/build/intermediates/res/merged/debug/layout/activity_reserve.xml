@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/rlReserver"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.yd.org.sellpopularizesystem.activity.ReserveActivity">
+              android:orientation="vertical">
 
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
@@ -13,7 +11,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="0.5dp"
         android:layout_weight="1"
-        android:background="@color/shallow_gray">
+        android:background="@color/search_edit_bac">
 
         <LinearLayout
             style="@style/MatchWrap"
@@ -25,8 +23,8 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:gravity="center"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     android:id="@+id/tvPrice"
@@ -62,8 +60,8 @@
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -87,14 +85,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -124,8 +122,8 @@
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -149,14 +147,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -186,8 +184,8 @@
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_6"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10"
                 android:visibility="gone">
 
                 <TextView
@@ -212,7 +210,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 android:id="@+id/rlRecus"
@@ -244,15 +242,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 android:id="@+id/rlReLawyer"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_8"
-                android:paddingTop="@dimen/padding_margin_8">
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -281,7 +279,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 android:id="@+id/rlReGoal"
@@ -313,7 +311,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
                 android:id="@+id/rlPayType"

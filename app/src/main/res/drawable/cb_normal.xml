@@ -3,7 +3,7 @@
 
     android:shape="rectangle">
     <!-- 填充颜色 -->
-    <solid android:color="@color/gray"></solid>
+    <solid android:color="@color/search_edit_bac"></solid>
     <size android:width="16dp" android:height="16dp"></size>
 
 </shape>

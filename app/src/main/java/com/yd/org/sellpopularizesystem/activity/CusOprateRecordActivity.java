@@ -83,14 +83,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private SwipeMenuListView listView;
     private PullToRefreshLayout ptrl;
     private int page = 1;
-    private String number = "20";
     private Dialog visitDilog;
     private VisitRecord.ResultBean visitRecord;
     public static CusOprateRecordActivity cusOprateRecordActivity;
-    private List<VisitRecord.ResultBean> vrrb;
+    private List<VisitRecord.ResultBean> vrrb = new ArrayList<>();
     private String payment_method;
     private Uri imgUri;
-    private List<SubscribeListBean.ResultBean> rbList;
+    private List<SubscribeListBean.ResultBean> rbList = new ArrayList<>();
+    private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
 
     @Override
     protected int setContentView() {
@@ -109,10 +109,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
                 initVisitDilaog();
-                getVisitData(page);
+                getVisitData(page, true);
             } else if (flag.equals("custoreser")) {
                 setTitle(getString(R.string.yuyue));
-                getReservertData();
+                getReservertData(page, true);
             }
             clickRightImageView(R.mipmap.addim, new View.OnClickListener() {
                 @Override
@@ -124,12 +124,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         bundle.putString("cora", "reserver");
                         ActivitySkip.forward(CusOprateRecordActivity.this, DialogOptionActivity.class, bundle);
                     }
-                    //addOpratePopWin.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM,0,0);
                 }
             });
         } else {
             setTitle("EOI");
-            getEoiData();
+            getEoiData(page, true);
             setRightTitle(R.string.recharge, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -155,11 +154,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             if (msg.what == ExtraName.UPDATE && flag.equals("custovisit")) {
-                getVisitData(page);
+                getVisitData(page, true);
             } else if (msg.what == ExtraName.UPDATE && flag.equals("custoreser")) {
-                getReservertData();
+                getReservertData(page, true);
             } else if (msg.what == ExtraName.SUCCESS) {
-                getEoiData();
+                getEoiData(page, true);
             }
         }
     };
@@ -599,12 +598,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     }
 
-    private void getEoiData() {
+    private void getEoiData(int page, final boolean isRel) {
         showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", "1");
+        ajaxParams.put("page", page + "");
         ajaxParams.put("number", "20");
         ajaxParams.put("company_id", BaseApplication.getInstance().getResultBean().getCompany_id() + "");
         ajaxParams.put("client", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
@@ -618,8 +617,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 closeDialog();
                 Gson gson = new Gson();
                 EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
-                if (eoilistBean.getResult().size() > 0) {
-                    List<EoilistBean.ResultBean> eoiList = eoilistBean.getResult();
+                eoiList = eoilistBean.getResult();
+
+
+                if (isRel) {
                     eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
                         @Override
@@ -636,13 +637,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             }
                         }
                     };
+                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                     listView.setAdapter(eoiAdapter);
-                    if (tvDes.getVisibility() == View.VISIBLE) {
-                        tvDes.setVisibility(View.GONE);
-                    }
                 } else {
-                    tvDes.setVisibility(View.VISIBLE);
+                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                    eoiAdapter.addMore(eoiList);
                 }
+
+
             }
 
             @Override
@@ -707,14 +709,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         tvVisitSubmit = (TextView) visitDilog.findViewById(R.id.tvVisitSubmit);
     }
 
-    private void getVisitData(int page) {
+    private void getVisitData(int page, final boolean isRel) {
         showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("customer_id", customeId);
         ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", number);
+        ajaxParams.put("number", "20");
         fh.get(Contants.VISIT_RECORD_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -723,9 +725,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 Log.e("tag", "onSuccess: " + s);
                 Gson gson = new Gson();
                 VisitRecord visitRecord = gson.fromJson(s, VisitRecord.class);
-                if (visitRecord.getResult().size() > 0) {
-                    vrrb = new ArrayList<VisitRecord.ResultBean>();
-                    vrrb = visitRecord.getResult();
+                vrrb = visitRecord.getResult();
+
+                if (isRel) {
+                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                     visitAdapter = new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this, vrrb, R.layout.visit_listview_item_layout) {
                         @Override
                         public void convert(ViewHolder holder, VisitRecord.ResultBean item) {
@@ -734,15 +737,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             holder.setText(R.id.tvVisitContent, item.getContent());
                         }
                     };
-                    //visitAdapter=new SlidingListviewAdapter(CusOprateRecordActivity.this,vrrb,listView.getRightViewWidth());
                     listView.setAdapter(visitAdapter);
-                    if (tvDes.getVisibility() == View.VISIBLE) {
-                        tvDes.setVisibility(View.GONE);
-                    }
                     initMenuListView();
+
+
                 } else {
-                    tvDes.setVisibility(View.VISIBLE);
-                    tvDes.setText(getString(R.string.noinformation));
+                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                    visitAdapter.addMore(vrrb);
                 }
 
             }
@@ -750,6 +751,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }
@@ -846,14 +848,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         });
     }
 
-    private void getReservertData() {
+    private void getReservertData(int page, final boolean isRel) {
         showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("customer_id", customeId);
         ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", number);
+        ajaxParams.put("number", "20");
         fh.get(Contants.RESERVER_RECORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -861,31 +863,32 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 closeDialog();
                 Gson gson = new Gson();
                 SubscribeListBean slb = gson.fromJson(s, SubscribeListBean.class);
-                if (slb.getCode().equals("1")) {
-                    if (slb.getResult().size() > 0) {
-                        rbList = slb.getResult();
-                        subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
-                            @Override
-                            public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
-                                holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time() * 1000));
-                                holder.setText(R.id.tvSubscribeContent, item.getContent());
-                            }
-                        };
-                        listView.setAdapter(subscribeAdapter);
-                        if (tvDes.getVisibility() == View.VISIBLE) {
-                            tvDes.setVisibility(View.GONE);
+                rbList = slb.getResult();
+
+                if (isRel) {
+                    subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
+                        @Override
+                        public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
+                            holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time() * 1000));
+                            holder.setText(R.id.tvSubscribeContent, item.getContent());
                         }
-                        initMenuListView();
-                    } else {
-                        tvDes.setVisibility(View.VISIBLE);
-                        tvDes.setText(getString(R.string.noinformation));
-                    }
+                    };
+
+                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+                    listView.setAdapter(subscribeAdapter);
+                    initMenuListView();
+                } else {
+                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+                    subscribeAdapter.addMore(rbList);
                 }
+
+
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
 
             }
         });
@@ -899,26 +902,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             switch (requestCode) {
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
-                   /* File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
-                    if (cameraFile.exists()) {
-                        // copy 照片到指定目录下
-                        String path = BitmapUtil.getCacheDir(this);
-                        File dir = new File(path, "camera");
-                        if (!dir.exists()) {
-                            dir.mkdirs();
-                        }
-                       File picFile = new File(dir, System.currentTimeMillis() + ".jpg");
-
-                        try {
-                           // BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(picFile));
-                            //cameraFile.delete();
-                            picPath = picFile.getAbsolutePath();
-                            Log.e("picFile", picPath);
-                            Picasso.with(this).load("http://i.imgur.com/DvpvklR.png").resize(100, 100).into(ivCertificate);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }*/
                     try {
                         if (null != data && null != data.getData()) {
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
@@ -930,22 +913,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, imgUri, null, null);
                             Log.e("picPath", "onActivityResult: " + picPath);
                             ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
-                            /*Picasso.with(this).load(picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(new Target() {
-                                @Override
-                                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                                    ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
-                                }
-
-                                @Override
-                                public void onBitmapFailed(Drawable errorDrawable) {
-
-                                }
-
-                                @Override
-                                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                                }
-                            });*/
                         }
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -968,13 +935,27 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
-        getVisitData(page);
+
+        if (flag.equals("custovisit")) {
+            getVisitData(page, true);
+        } else if (flag.equals("custoreser")) {
+            getReservertData(page, true);
+        } else {
+            getEoiData(page, true);
+        }
+
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getVisitData(page);
+        if (flag.equals("custovisit")) {
+            getVisitData(page, false);
+        } else if (flag.equals("custoreser")) {
+            getReservertData(page, false);
+        } else {
+            getEoiData(page, false);
+        }
     }
 
 }

@@ -1256,7 +1256,7 @@
     <string name="accountholder">存款持有者:</string>
     <string name="accuracy">正确率:</string>
     <string name="add">添加</string>
-    <string name="address">联系地址:</string>
+    <string name="address">联系地址</string>
     <string name="addressnopoint">联系地址</string>
     <string name="addsuccess">添加成功</string>
     <string name="alipay">支付宝</string>
@@ -1342,7 +1342,7 @@
     <string name="company">公司</string>
     <string name="confirm_content">请确认通知单内容</string>
     <string name="confirm_pay_information">我已确认在通知单内的支付信息</string>
-    <string name="contact">联系方式:</string>
+    <string name="contact">联系方式</string>
     <string name="content">内容</string>
     <string name="contract">合同</string>
     <string name="credit">信用卡</string>
@@ -1355,7 +1355,7 @@
     <string name="customename">客户名字</string>
     <string name="customernum">您有0位客户</string>
     <string name="date">预约</string>
-    <string name="datetime">预约时间:</string>
+    <string name="datetime">预约时间</string>
     <string name="datetimemust">预约时间必须大于当前时间</string>
     <string name="datetimemustlarge">提醒时间必须小于预约时间且大于当前时间</string>
     <string name="deadtime">销售截止日期:</string>

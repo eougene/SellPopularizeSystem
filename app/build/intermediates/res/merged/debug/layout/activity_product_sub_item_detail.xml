@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity">
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/state"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItStatus"
@@ -27,27 +27,28 @@
             android:layout_gravity="center_vertical"
             android:text="@string/issaling"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/price"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItPrice"
@@ -56,27 +57,28 @@
             android:layout_gravity="center_vertical"
             android:text="0.00"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/type"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItType"
@@ -85,27 +87,28 @@
             android:layout_gravity="center_vertical"
             android:text="@string/unknown"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/batchnum"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItBatchNum"
@@ -114,27 +117,28 @@
             android:layout_gravity="center_vertical"
             android:text="@string/theme"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/unitnum"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItUnitNum"
@@ -143,27 +147,28 @@
             android:layout_gravity="center_vertical"
             android:text="@string/theme"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/floortype"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvFloorType"
@@ -172,27 +177,28 @@
             android:layout_gravity="center_vertical"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/floor"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItFloor"
@@ -201,27 +207,28 @@
             android:layout_gravity="center_vertical"
             android:text="0"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/housetype"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -235,7 +242,7 @@
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
                 android:background="@color/transparent"
-                android:src="@mipmap/house" />
+                android:src="@mipmap/house"/>
 
             <TextView
                 android:id="@+id/tvItBedRoom"
@@ -244,14 +251,14 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="1"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <ImageView
                 android:id="@+id/ivItBathroom"
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:src="@mipmap/shower" />
+                android:src="@mipmap/shower"/>
 
             <TextView
                 android:id="@+id/tvItBath"
@@ -260,14 +267,14 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="12"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <ImageView
                 android:id="@+id/ivCar"
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:src="@mipmap/car" />
+                android:src="@mipmap/car"/>
 
             <TextView
                 android:id="@+id/tvItCarSquare"
@@ -276,7 +283,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="1"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
     </RelativeLayout>
@@ -284,21 +291,22 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/bathroomnum"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItBathNum"
@@ -307,27 +315,28 @@
             android:layout_gravity="center_vertical"
             android:text="0.0"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/direction"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItDrec"
@@ -336,27 +345,28 @@
             android:layout_gravity="center_vertical"
             android:text=""
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/areanum"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItRoomArea"
@@ -365,27 +375,28 @@
             android:layout_gravity="center_vertical"
             android:text="0.00"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/outsidearea"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvItORoomArea"
@@ -394,27 +405,28 @@
             android:layout_gravity="center_vertical"
             android:text="@string/doublezero"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 
     <RelativeLayout
         style="@style/MatchWrap"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
-        android:paddingBottom="@dimen/padding_margin_8"
-        android:paddingTop="@dimen/padding_margin_6">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             style="@style/WrapWrap"
             android:layout_gravity="center_vertical"
             android:text="@string/totalarea"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <TextView
             android:id="@+id/tvTotalArea"
@@ -423,11 +435,12 @@
             android:layout_gravity="center_vertical"
             android:text="0.00"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/gray" />
+        android:layout_marginLeft="@dimen/padding_margin_4"
+        android:background="@color/search_edit_bac"/>
 </LinearLayout>

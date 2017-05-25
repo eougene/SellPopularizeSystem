@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llEoi"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:id="@+id/llEoi"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,12 +24,12 @@
             android:paddingTop="@dimen/padding_margin_4"
             android:text="@string/chongzhi"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_8"
                 android:text="@string/moneypoint"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvMoneyNum"
@@ -56,7 +56,7 @@
                 android:layout_toRightOf="@+id/tvNum"
                 android:text="-"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvPayMethod"
@@ -72,7 +72,7 @@
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/pay_method"
                 android:textColor="@color/black"
-                android:textSize="@dimen/padding_margin_12" />
+                android:textSize="@dimen/padding_margin_12"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -80,42 +80,38 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_4"
-                android:text="上传凭证:"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />-->
             <ImageView
                 android:id="@+id/ivCash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/dollar" />
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@mipmap/dollar"/>
 
             <ImageView
                 android:id="@+id/ivIdCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/wallet" />
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@mipmap/wallet"/>
+
             <ImageView
                 android:id="@+id/ivAlipay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/alipay" />
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@mipmap/alipay"/>
+
             <ImageView
                 android:id="@+id/ivWeixinPay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:scaleType="fitCenter"
-                android:src="@mipmap/weichatpay" />
+                android:layout_weight="1"
+                android:scaleType="centerInside"
+                android:src="@mipmap/weichatpay"/>
 
         </LinearLayout>
 
@@ -138,7 +134,7 @@
                 android:paddingTop="@dimen/padding_margin_4"
                 android:text="@string/uploadeevidencepoint"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <ImageView
                 android:id="@+id/ivCertificate"
@@ -147,14 +143,14 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:scaleType="centerInside"
-                android:src="@mipmap/addmore" />
+                android:src="@mipmap/addmore"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac"/>
 
         <TextView
             android:id="@+id/tvEoiSubmit"
@@ -167,16 +163,11 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_8"
-            android:paddingTop="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_16"
             android:text="@string/submit"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </LinearLayout>
 
-    <!--<LinearLayout
-        android:id="@+id/llbac"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"></LinearLayout>-->
+
 </LinearLayout>

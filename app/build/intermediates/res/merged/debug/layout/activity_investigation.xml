@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_investigation"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/search_edit_bac"
-    android:orientation="vertical"
-    tools:context="com.yd.org.sellpopularizesystem.activity.InvestigationActivity">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/activity_investigation"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rlPhoto"
@@ -20,7 +18,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/settingbt" />
+            android:src="@mipmap/settingbt"/>
 
         <TextView
             android:id="@+id/tvCustomeName"
@@ -29,10 +27,10 @@
             android:layout_alignLeft="@+id/ivHeadPhoto"
             android:layout_alignRight="@+id/ivHeadPhoto"
             android:layout_below="@+id/ivHeadPhoto"
-            android:gravity="center"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="@string/customename"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -49,14 +47,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:text="@string/contact"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <EditText
                     android:id="@+id/etContact"
@@ -64,15 +62,15 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:background="@null"
+                    android:text="1111111111"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"
-                    android:text="1111111111" />
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac">
+                android:background="@color/search_edit_bac">
 
             </View>
 
@@ -80,29 +78,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:text="@string/address"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <EditText
-                    style="@style/MatchWrap"
                     android:id="@+id/etAddress"
+                    style="@style/MatchWrap"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
                     android:background="@null"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac">
+                android:background="@color/search_edit_bac">
 
             </View>
 
@@ -110,14 +108,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:text="@string/remark"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <EditText
                     style="@style/MatchWrap"
@@ -125,13 +123,13 @@
                     android:layout_marginLeft="10dp"
                     android:background="@null"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac">
+                android:background="@color/search_edit_bac">
 
             </View>
 
@@ -139,7 +137,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:padding="@dimen/padding_margin_14">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -147,7 +145,7 @@
                     android:layout_centerVertical="true"
                     android:text="@string/datetime"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <TextView
                     android:id="@+id/edtTime"
@@ -156,13 +154,13 @@
                     android:layout_marginLeft="10dp"
                     android:background="@null"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/setting_bac"></View>
+                android:background="@color/search_edit_bac"></View>
         </LinearLayout>
 
         <View
@@ -170,7 +168,7 @@
             android:layout_height="0.5dp"
             android:layout_above="@+id/llSelection"
             android:layout_marginBottom="10dp"
-            android:background="@color/setting_bac"></View>
+            android:background="@color/search_edit_bac"></View>
 
         <LinearLayout
             android:id="@+id/llSelection"
@@ -190,12 +188,12 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="1dp"
                 android:background="@color/home_scale"
+                android:gravity="center"
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/submit"
-                android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
             <Button
                 android:id="@+id/btnUnsure"
@@ -206,12 +204,12 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="1dp"
                 android:background="@color/home_scale"
+                android:gravity="center"
                 android:paddingBottom="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/unsure"
-                android:gravity="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
         </LinearLayout>
 
     </RelativeLayout>

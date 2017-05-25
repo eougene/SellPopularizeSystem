@@ -28,7 +28,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac" />
 
         <EditText
             android:id="@+id/etReserTime"
@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="@string/selectdatetime"
-            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingBottom="@dimen/padding_margin_10"
             android:paddingLeft="@dimen/padding_margin_6"
-            android:paddingTop="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_10"
             android:textColor="#ff0000"
             android:textColorHint="@color/gray"
             android:textSize="@dimen/tv_size_12"
@@ -47,7 +47,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac" />
 
         <EditText
             android:id="@+id/etRemindTime"
@@ -55,9 +55,9 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:hint="@string/reminder"
-            android:paddingBottom="@dimen/padding_margin_8"
+            android:paddingBottom="@dimen/padding_margin_10"
             android:paddingLeft="@dimen/padding_margin_6"
-            android:paddingTop="@dimen/padding_margin_8"
+            android:paddingTop="@dimen/padding_margin_10"
             android:textColor="#0000ff"
             android:textColorHint="@color/gray"
             android:textSize="@dimen/tv_size_12"
@@ -66,12 +66,12 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac" />
 
         <TextView
             style="@style/WrapWrap"
             android:layout_marginLeft="@dimen/padding_margin_4"
-            android:layout_marginTop="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_6"
             android:text="@string/remark"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12" />
@@ -82,7 +82,7 @@
             android:layout_height="150dp"
             android:layout_marginLeft="@dimen/padding_margin_4"
             android:layout_marginRight="@dimen/padding_margin_4"
-            android:layout_marginTop="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_6"
             android:background="@drawable/edittext_yuyue_bac"
             android:gravity="start"
             android:textColor="@color/black"

@@ -125,7 +125,6 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.SearchResultActivity"/>
         <activity android:name=".activity.ScalListActivity"/>
         <activity android:name=".activity.InvestigationActivity"/>
         <activity android:name=".activity.ExaminationActivity"/>

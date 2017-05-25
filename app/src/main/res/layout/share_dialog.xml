@@ -93,7 +93,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac" />
 
         <TextView
             android:id="@+id/tvCancelShare"

@@ -1,11 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import com.yd.org.sellpopularizesystem.R;
-
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.hardware.Camera;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -13,20 +9,17 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import java.util.ArrayList;
@@ -62,7 +55,6 @@ public class SearchActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_search);
-        setImmerseLayout(findViewById(R.id.base_header_layout));
         initView();
     }
 
@@ -194,14 +186,6 @@ public class SearchActivity extends Activity {
     }
 
 
-    protected void setImmerseLayout(View view) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window window = getWindow();
-            //window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            int statusBarHeight = MyUtils.getStatusBarHeight(this.getBaseContext());
-            //view.setPadding(0, statusBarHeight, 0, 0);
-        }
-    }
+
 
 }

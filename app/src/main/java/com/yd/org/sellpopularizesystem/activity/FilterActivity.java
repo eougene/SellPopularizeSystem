@@ -1,10 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,10 +11,7 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-
-import java.util.concurrent.CopyOnWriteArraySet;
 
 public class FilterActivity extends BaseActivity {
     private TextView tvSelect,tvAreaDes,tvHouseType,tvSelectType,tvSelectPrice,tvProductSearch;
@@ -51,8 +46,6 @@ public class FilterActivity extends BaseActivity {
 
     private void initSetting() {
         setTitle(R.string.select);
-        setColor(Color.BLACK);
-        setBaseLayoutBackground(Color.WHITE);
         /*setRightTitleBackground(R.drawable.button_bac,Color.WHITE);
         setRightTitle(R.string.clear, new View.OnClickListener() {
             @Override

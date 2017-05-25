@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="#fff"
-    android:gravity="center_vertical"
-    android:orientation="vertical" >
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:background="#fff"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
 
     <TextView
         android:id="@+id/country_catalog"
@@ -15,12 +15,12 @@
         android:paddingBottom="2dip"
         android:paddingLeft="8dip"
         android:paddingTop="2dip"
-        android:textColor="#000" />
+        android:textColor="#000"/>
 
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dip" >
+        android:padding="10dip">
 
         <TextView
             android:id="@+id/country_name"
@@ -30,7 +30,7 @@
             android:layout_marginLeft="20dip"
             android:maxLines="1"
             android:textColor="#000"
-            android:textSize="15sp" />
+            android:textSize="15sp"/>
 
         <TextView
             android:id="@+id/country_number"
@@ -38,10 +38,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dip"
-            android:visibility="gone"
             android:maxLines="1"
             android:textColor="#333"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:visibility="gone"/>
     </RelativeLayout>
 
 </LinearLayout>

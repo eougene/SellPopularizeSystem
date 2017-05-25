@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity">
+    android:orientation="vertical">
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:layout_width="match_parent"
@@ -38,14 +37,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/black" />
+                android:background="@color/search_edit_bac" />
 
             <TextView
                 android:id="@+id/tvProdes"
                 style="@style/WrapWrap"
                 android:layout_margin="@dimen/padding_margin_10"
                 android:text="@string/introduce"
-                android:textColor="@color/black"
+                android:textColor="@color/gray"
                 android:lineSpacingExtra="@dimen/padding_margin_8"
                 android:textSize="@dimen/tv_size_10" />
 
@@ -53,7 +52,7 @@
                 style="@style/WrapWrap"
                 android:layout_margin="@dimen/padding_margin_10"
                 android:text="@string/details"
-                android:textColor="@color/black"
+                android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_10" />
 
             <LinearLayout
@@ -69,14 +68,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="ID:"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvId"
                         style="@style/WrapWrap"
                         android:text="9"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -88,14 +87,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/issaling"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvIsSalingNum"
                         style="@style/WrapWrap"
                         android:text="0"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -107,14 +106,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/hashsalenum"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvHasSaledNum"
                         style="@style/WrapWrap"
                         android:text="0"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -126,14 +125,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/firbnum"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvFirbNum"
                         style="@style/WrapWrap"
                         android:text="0"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -145,14 +144,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/eoiopen"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvEoiTime"
                         style="@style/WrapWrap"
                         android:text="@string/starttime"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -164,14 +163,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/deadtime"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvSaleDeadTime"
                         style="@style/WrapWrap"
                         android:text="@string/starttime"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -183,14 +182,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/closedate"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvCloseDate"
                         style="@style/WrapWrap"
                         android:text="1970/01/01"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -202,14 +201,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/memo"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvMemo"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -221,14 +220,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/projectpropety"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvProjectPro"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -240,14 +239,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/supplier"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvSupplier"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -259,14 +258,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/supplierlaw"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvLawyer"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -278,14 +277,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/builder"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvBuilder"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -297,14 +296,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/accountholder"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvDespositHolder"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -316,14 +315,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/fore"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvForeignMoney"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -335,14 +334,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/firbdeposit"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvCashDesposit"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -354,14 +353,14 @@
                     <TextView
                         style="@style/WrapWrap"
                         android:text="@string/orderfee"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
 
                     <TextView
                         android:id="@+id/tvSubscription"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/black"
+                        android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
             </LinearLayout>

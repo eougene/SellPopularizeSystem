@@ -135,7 +135,6 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.SearchActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SearchResultActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.ScalListActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.InvestigationActivity" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.ExaminationActivity" />

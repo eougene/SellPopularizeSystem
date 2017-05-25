@@ -9,15 +9,6 @@
         android:layout_marginBottom="@dimen/padding_margin_10"
         android:orientation="vertical">
 
-       <!-- <Button
-            android:id="@+id/photoAlbumButton"
-            style="@style/MatchWrap"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginRight="@dimen/padding_margin_20"
-            android:background="@drawable/base_square"
-            android:text="@string/photofromalbum"
-            android:textColor="@color/light_blue"
-            android:textSize="@dimen/tv_size_15" />-->
         <Button
             android:id="@+id/photoButton"
             style="@style/MatchWrap"

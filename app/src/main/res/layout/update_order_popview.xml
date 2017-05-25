@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingBottom="@dimen/padding_margin_4"
-            android:paddingTop="@dimen/padding_margin_4"
+            android:paddingBottom="@dimen/padding_margin_10"
+            android:paddingTop="@dimen/padding_margin_10"
             android:text="@string/modifiedorder"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/tv_size_12" />
@@ -28,7 +28,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/shallow_gray" />
+            android:background="@color/search_edit_bac" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,6 +58,7 @@
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="@dimen/padding_margin_10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/padding_margin_4"
@@ -81,7 +82,7 @@
             android:id="@+id/tvOrderUpdateSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_10"
             android:background="@drawable/pop_button_bac"
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_8"

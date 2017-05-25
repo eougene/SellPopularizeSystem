@@ -69,7 +69,6 @@ public class ProductItemDetailActivity extends BaseActivity {
     @Override
     protected int setContentView() {
         //hideRightImagview();
-        setBaseLayoutBackground(Color.WHITE);
         return R.layout.activity_product_item_des;
     }
 

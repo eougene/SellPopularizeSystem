@@ -10,7 +10,6 @@
         android:id="@+id/flContent"
         style="@style/MatchMatch"
         android:background="@color/white">
-
         <include layout="@layout/sliding_listview_layout"/>
     </FrameLayout>
 
