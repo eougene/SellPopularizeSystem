@@ -40,9 +40,9 @@ public class CustomeListAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private boolean isBoolean;
 
-    public CustomeListAdapter(Activity mContext,boolean isBoolean) {
+    public CustomeListAdapter(Activity mContext, boolean isBoolean) {
         this.mContext = mContext;
-        this.isBoolean=isBoolean;
+        this.isBoolean = isBoolean;
         this.inflater = LayoutInflater.from(mContext);
     }
 
@@ -78,6 +78,7 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_layout, null);
             viewHolder.prductImageView = (ImageView) convertView.findViewById(R.id.prductImageView);
+            viewHolder.ivLockImageView = (ImageView) convertView.findViewById(R.id.ivIslock);
             viewHolder.productName = (TextView) convertView.findViewById(R.id.productName);
             viewHolder.lvSubItem = (ListView) convertView.findViewById(R.id.lvSubItem);
             viewHolder.rlViewAll = (RelativeLayout) convertView.findViewById(R.id.rlViewAll);
@@ -105,22 +106,24 @@ public class CustomeListAdapter extends BaseAdapter {
         viewHolder.childs = list.get(position).getChilds();
         /*tempChilds.clear();
         tempChilds.addAll(viewHolder.childs);*/
-
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
         final ViewHolder finalViewHolder = viewHolder;
-        //点击查看单个item
-        viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
-        //点击查看所有
-        viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
-        //产品子单元listview点击
-        viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
-                //Log.e("position***", "position:" + positions);
-                ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
-            }
-        });
-
+        if (list.get(position).getIs_study()==0) {
+            //点击查看单个item
+            viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
+            //点击查看所有
+            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
+            //产品子单元listview点击
+            viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
+                    //Log.e("position***", "position:" + positions);
+                    ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
+                }
+            });
+        }else {
+            viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
+        }
         return convertView;
     }
 
@@ -139,7 +142,7 @@ public class CustomeListAdapter extends BaseAdapter {
         public Bitmap transform(Bitmap source) {
             Log.e("source**", position + "position:" + source);
 
-            if (isBoolean&&ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) == null) {
+            if (isBoolean && ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) == null) {
                 ScaleActivity.scaleActivity.aCache.put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
             }
             return source;
@@ -179,7 +182,7 @@ public class CustomeListAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        private ImageView prductImageView;
+        private ImageView prductImageView, ivLockImageView;
         private TextView productName, productDescription;
         private ListView lvSubItem;
         private RelativeLayout rlViewAll;
