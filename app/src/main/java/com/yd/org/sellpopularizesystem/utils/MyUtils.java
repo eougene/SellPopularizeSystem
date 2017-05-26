@@ -2,18 +2,24 @@ package com.yd.org.sellpopularizesystem.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.style.ForegroundColorSpan;
@@ -24,6 +30,10 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 
 import java.io.File;
 import java.security.MessageDigest;
@@ -32,6 +42,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -96,7 +107,7 @@ public class MyUtils {
      * 将每三个数字加上逗号处理（通常使用金额方面的编辑）
      *
      * @param str 无逗号的数字
-     *  @return 加上逗号的数字
+     * @return 加上逗号的数字
      */
     public static String addComma(String str) {
         // 将传进数字反转
@@ -381,9 +392,95 @@ public class MyUtils {
         }
         return time;
     }
+    //获取时间滚轮数据
+    public void getOptionData(Context context,List<String> weeks,List<String> hours,List<String> minutes) {
+        Calendar cal = Calendar.getInstance();
+        int mYear = cal.get(Calendar.YEAR);
+        int mMon = cal.get(Calendar.MONTH) + 1;
+        int mDay = cal.get(Calendar.DAY_OF_MONTH);
+        int date = cal.get(Calendar.DATE);
+        //int daysCountOfYear=cal.getActualMaximum(Calendar.YEAR);
+        //cal.setTime(new Date());
+        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_start = null;
+        Date date_end = null;
+        try {
+            date_start = sdf.parse(mYear+"-01-01");
+            date_end = sdf.parse((mYear+1)+"-01-01");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        int daysCountOfYear=getGapDayCount(date_start,date_end);*/
+        Calendar ca = Calendar.getInstance();
+        ca.set(Calendar.YEAR, mYear);
+        for (int i = 1; i < 13; i++) {
+            ca.set(Calendar.MONTH, i);
+            int days = 0;
+            if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
+                days = 32;
+            } else if (i == 2) {
+                if (mYear % 4 != 0 && mYear % 400 != 0) {
+                    days = 29;
+                } else {
+                    days = 30;
+                }
+            } else {
+                days = 31;
+            }
+            for (int j = 1; j < days; j++) {
+                if (i == mMon && j == mDay) {
+                    weeks.add(context.getString(R.string.today));
+                } else {
+                    String dayOfWeek = MyUtils.getInstance().getdayOfWeek(ca, i, j);
+                    String str = i + "月" + j + "日" + "周" + dayOfWeek;
+                    weeks.add(str);
+                }
+
+            }
+        }
+        for (int i = 0; i < 24; i++) {
+            hours.add(String.format("%02d", i));
+        }
+        for (int i = 0; i < 60; i++) {
+            minutes.add(String.format("%02d", i));
+        }
+    }
+
+    //根据日期判断星期几
+    public String getdayOfWeek(Calendar ca, int i, int j) {
+        ca.set(Calendar.MONTH, i - 1);
+        ca.set(Calendar.DAY_OF_MONTH, j);
+        int dayOfWeek = ca.get(Calendar.DAY_OF_WEEK);
+        String str = "null";
+        switch (dayOfWeek) {
+            case 1:
+                str = "日";
+                break;
+            case 2:
+                str = "一";
+                break;
+            case 3:
+                str = "二";
+                break;
+            case 4:
+                str = "三";
+                break;
+            case 5:
+                str = "四";
+                break;
+            case 6:
+                str = "五";
+                break;
+            case 7:
+                str = "六";
+                break;
+        }
+        return str;
+    }
 
     /**
      * 根据2个日期求出之间的天数
+     *
      * @param start_date
      * @param end_date
      * @return
@@ -403,6 +500,128 @@ public class MyUtils {
         toCalendar.set(Calendar.SECOND, 0);
         toCalendar.set(Calendar.MILLISECOND, 0);
         return (int) ((toCalendar.getTime().getTime() - fromCalendar.getTime().getTime()) / (1000 * 60 * 60 * 24));
+    }
+
+    //根据时间格式获取毫秒数
+    public long getTimeMillis(View view) {
+        long millis = 0;
+        String[] reservDate = new String[2];
+        String[] reservTime = new String[2];
+        if (view instanceof EditText) {
+            // SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String[] reserv = ((EditText) view).getText().toString().trim().split("\\s+");//根据03/14 08:29形式拆分
+            Log.e("reserv", "getTimeMillis: " + reserv[1] + ((EditText) view).getText().toString().trim());
+            reservDate = reserv[0].split("\\/");//得到03 14
+            reservTime = reserv[1].split("\\:");//得到08 29
+            Log.e("reservDate", "getTimeMillis: " + reservDate[0] + reservDate[1]);
+        }
+        Calendar dateCal = Calendar.getInstance();
+        //Log.e("tag", "TimeMillis: ");
+        //Log.e("time", dateCal.get(Calendar.YEAR) + "-" + reservDate[0] + "-" + reservDate[1] + getString(R.string.single_blank_space) + reservTime[0] + ":" + reservTime[1] + ":00");
+        //Date date1 = sdf.parse(String.valueOf(dateCal.get(Calendar.YEAR)) + "-" + reservDate[0] + "-" + reservDate[1] +getString(R.string.single_blank_space)+ reserv[1]+":00");
+        dateCal.set(dateCal.get(Calendar.YEAR), Integer.parseInt(reservDate[0]) - 1, Integer.parseInt(reservDate[1]), Integer.parseInt(reservTime[0]), Integer.parseInt(reservTime[1]), 00);
+        // millis = date1.getTime();
+        millis = dateCal.getTimeInMillis();
+        Log.e("millis", "getTimeMillis: " + millis);
+        return millis;
+    }
+
+    //向日历中插入事件
+    public void submitToCalendar(Activity activity, long reserverTime, long reminderTime, String string) {
+        //获取日历账户id
+        Log.e("TAG", "submit: " + reserverTime + "\n" + reminderTime);
+        String calId = "";
+        Cursor userCursor = activity.getContentResolver().query(Uri.parse(ExtraName.CALANDERURL), null, null, null, null);
+        if (userCursor.getCount() > 0) {
+            //注意：是向最后一个账户添加，开发者可以根据需要改变添加事件 的账户
+            userCursor.moveToLast();
+            calId = userCursor.getString(userCursor.getColumnIndex("_id"));
+        } else {
+            Toast.makeText(activity, activity.getString(R.string.noaccount), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        ContentValues event = new ContentValues();
+        event.put("title", activity.getString(R.string.askdate));
+        event.put("description", string != null ? string : "");
+        event.put(CalendarContract.Events.CALENDAR_ID, calId);
+        //添加事件时间
+        Calendar mCalendar = Calendar.getInstance();
+            /*String[] resevers = etReserTime.getText().toString().split("\\/");
+            mCalendar.set(mCalendar.get(Calendar.YEAR), Integer.parseInt(resevers[0]), Integer.parseInt(resevers[1]));//设置开始时间*/
+        long start = reserverTime;
+        mCalendar.setTimeInMillis(start + 3600000);//设置终止时间
+        long end = mCalendar.getTime().getTime();
+        event.put(CalendarContract.Events.DTSTART, start);
+        event.put(CalendarContract.Events.DTEND, end);
+        event.put(CalendarContract.Events.HAS_ALARM, 1);//设置有闹钟提醒
+        event.put(CalendarContract.Events.EVENT_TIMEZONE, "Asia/Shanghai");//这个是时区，必须有，
+        //添加事件
+        Uri newEvent = activity.getContentResolver().insert(Uri.parse(ExtraName.CALANDEREVENTURL), event);
+        if (newEvent == null) {
+            // 添加日历事件失败直接返回
+            return;
+        }
+        //事件提醒的设定
+        ContentValues values = new ContentValues();
+        values.put(CalendarContract.Reminders.EVENT_ID, ContentUris.parseId(newEvent));
+        long id = Long.parseLong(newEvent.getLastPathSegment());
+        values.put(CalendarContract.Reminders.EVENT_ID, id);
+        // 计算预约日期和提醒日期差值
+        //long mins = getGapTime("mins");
+        long mins = getGapTime("mins", (reserverTime - reminderTime));
+        Log.e("tag", "submit: " + mins);
+        //设置提前多少分钟
+        values.put(CalendarContract.Reminders.MINUTES, mins);
+        //设置提醒方式
+        values.put(CalendarContract.Reminders.METHOD, CalendarContract.Reminders.METHOD_ALERT);
+        //向日历中插入提醒事件
+        activity.getContentResolver().insert(Uri.parse(ExtraName.CALANDERREMIDERURL), values);
+
+    }
+
+    //计算2个时间间隔时长
+    public long getGapTime(String str, long timeInterval) {
+        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        String[] reserv = etReserTime.getText().toString().split("\\ ");//根据03/14 08:29形式拆分
+        String[] reservDate = reserv[0].split("\\/");//得到03 14
+        String[] reminder = etRemindTime.getText().toString().split("\\ ");//根据03/14 08:25形式拆分
+        String[] reminDate1 = reminder[0].split("\\/");//得到03 14
+        Log.e("TAG", "submit: " + etRemindTime.getText().toString());
+        Calendar dateCal = Calendar.getInstance();*/
+        long days = 0;
+        long hours = 0;
+        long mins = 0;
+        long diff = 0;
+        long time = 0;
+        //try {
+            /*Date date1 = sdf.parse(dateCal.get(Calendar.YEAR) + "-" + reservDate[0] + "-" + reservDate[1] + getString(R.string.single_blank_space) + reserv[1]);
+            Date date2 = sdf.parse(dateCal.get(Calendar.YEAR) + "-" + reminDate1[0] + "-" + reminDate1[1] + getString(R.string.single_blank_space) + reminder[1]);
+            // 计算预约日期和提醒日期差值
+            diff = date1.getTime() - date2.getTime();*/
+        diff = timeInterval;
+        days = diff / (1000 * 60 * 60 * 24);
+        //hours = (diff - days * (1000 * 60 * 60 * 24)) / (1000 * 60 * 60);
+        hours = diff / (1000 * 60 * 60);
+        //mins = (diff - days * (1000 * 60 * 60 * 24) - hours * (1000 * 60 * 60)) / (1000 * 60);
+        mins = diff / (1000 * 60);
+        Log.e("diff", "getGapTime: " + diff);
+        Log.e("diff", "getGapTime: " + days);
+        Log.e("diff", "getGapTime: " + hours);
+        /*} catch (ParseException e) {
+            e.printStackTrace();
+        }*/
+        if (str.equals("days")) {
+            time = days;
+        } else if (str.equals("hours")) {
+            time = hours;
+        } else if (str.equals("mins")) {
+            time = mins;
+            Log.e("Time", "getGapTime: " + time);
+        } else {
+            time = diff;
+        }
+        Log.e("Time", "getGapTime: " + time);
+        return time;
     }
 
     /**
@@ -734,8 +953,9 @@ public class MyUtils {
         }
         return result;
     }
+
     //将dp转化为px
-    public static  int dp2px(Context context,int dp) {
+    public static int dp2px(Context context, int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 context.getResources().getDisplayMetrics());
     }
@@ -755,12 +975,13 @@ public class MyUtils {
         int height = wm.getDefaultDisplay().getHeight();
         return height;
     }
+
     //获取状态栏高度
-    public static int getStatusHeight(Activity context){
-        Rect rectangle= new Rect();
+    public static int getStatusHeight(Activity context) {
+        Rect rectangle = new Rect();
         context.getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
         //高度为rectangle.top-0仍为rectangle.top
-       // Log.e("WangJ", "状态栏-方法3:" + rectangle.top);
+        // Log.e("WangJ", "状态栏-方法3:" + rectangle.top);
         return rectangle.top;
     }
 }

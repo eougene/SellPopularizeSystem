@@ -192,86 +192,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         //etCertificateTime.setOnClickListener(mOnClickListener);
         ivCertificate.setOnClickListener(mOnClickListener);
         //初始化自定义选择器的数据
-        initOptionData();
+        MyUtils.getInstance().getOptionData(CusOprateRecordActivity.this,weeks,hours,minutes);
         //初始化自定义选择器
         initOptionPicker();
     }
-
-    private void initOptionData() {
-        Calendar cal = Calendar.getInstance();
-        int mYear = cal.get(Calendar.YEAR);
-        int mMon = cal.get(Calendar.MONTH) + 1;
-        int mDay = cal.get(Calendar.DAY_OF_MONTH);
-        Calendar ca = Calendar.getInstance();
-        ca.set(Calendar.YEAR, mYear);
-        weeks = new ArrayList<String>();
-        hours = new ArrayList<String>();
-        minutes = new ArrayList<String>();
-        for (int i = 1; i < 13; i++) {
-            ca.set(Calendar.MONTH, i);
-            int days = 0;
-            if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
-                days = 32;
-            } else if (i == 2) {
-                if (mYear % 4 != 0 && mYear % 400 != 0) {
-                    days = 29;
-                } else {
-                    days = 30;
-                }
-            } else {
-                days = 31;
-            }
-            for (int j = 1; j < days; j++) {
-                if (i == mMon && j == mDay) {
-                    weeks.add("今天");
-                } else {
-                    String dayOfWeek = getdayOfWeek(ca, i, j);
-                    String str = i + "月" + j + "日" + "周" + dayOfWeek;
-                    weeks.add(str);
-                }
-
-            }
-        }
-        for (int i = 0; i < 24; i++) {
-            hours.add(String.format("%02d", i));
-        }
-        for (int i = 0; i < 60; i++) {
-            minutes.add(String.format("%02d", i));
-        }
-    }
-
-    //根据日期判断星期几
-    private String getdayOfWeek(Calendar ca, int i, int j) {
-        ca.set(Calendar.MONTH, i - 1);
-        ca.set(Calendar.DAY_OF_MONTH, j);
-        int dayOfWeek = ca.get(Calendar.DAY_OF_WEEK);
-        String str = "null";
-        switch (dayOfWeek) {
-            case 1:
-                str = "日";
-                break;
-            case 2:
-                str = "一";
-                break;
-            case 3:
-                str = "二";
-                break;
-            case 4:
-                str = "三";
-                break;
-            case 5:
-                str = "四";
-                break;
-            case 6:
-                str = "五";
-                break;
-            case 7:
-                str = "六";
-                break;
-        }
-        return str;
-    }
-
     private Calendar cal;
 
     private void initOptionPicker() {
@@ -313,9 +237,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void setText(Calendar cal, int options1, int options2, int options3) {
         Calendar ca = Calendar.getInstance();
-        String str1 = (String) weeks.get(options1);
-        String str2 = (String) hours.get(options2);
-        String str3 = (String) minutes.get(options3);
+        String str1 =weeks.get(options1);
+        String str2 =hours.get(options2);
+        String str3 =minutes.get(options3);
                 /*Pattern p = Pattern.compile("\\d+");
                 Matcher m = p.matcher(str);
                 m.find();

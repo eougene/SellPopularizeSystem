@@ -32,8 +32,6 @@ public class PDFUtils {
             listener.setFile(file);
 
         } else {
-
-
             ApiManager.downloadPicFromNet(fileUrl).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Action1<ResponseBody>() {
