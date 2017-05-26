@@ -123,8 +123,8 @@ public class CustomeListAdapter extends BaseAdapter {
             });
         }else {
             viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
-            viewHolder.lvSubItem.setVisibility(View.VISIBLE);
-            viewHolder.rlViewAll.setVisibility(View.VISIBLE);
+            viewHolder.lvSubItem.setVisibility(View.GONE);
+            viewHolder.rlViewAll.setVisibility(View.GONE);
         }
         return convertView;
     }
