@@ -330,7 +330,7 @@
     <string name="payintentmoney">支付意向金</string>
     <string name="des">描述</string>
     <string name="name">名字</string>
-    <string name="askcontract">意向金凭证已经上传 请申请合同</string>
+    <string name="askcontract">意向金凭证已经上传\n请申请合同</string>
     <string name="localarea">所在区域</string>
     <string name="rangeprice">价格区间</string>
     <string name="chooseshare">选择分享方式</string>
@@ -392,4 +392,5 @@
     <string name="bedroom">卧室</string>
     <string name="bathroom">浴室</string>
     <string name="carport">车库</string>
+    <string name="china">中国</string>
 </resources>
