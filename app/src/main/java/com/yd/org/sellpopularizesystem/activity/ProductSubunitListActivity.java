@@ -264,7 +264,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 holder.setText(R.id.tvBedRoom, item.getBedroom());
                 holder.setText(R.id.tvBathroom, item.getBathroom());
                 holder.setText(R.id.tvCarSquare, item.getCar_space());
-                holder.setText(R.id.tvHouseSquare, item.getBuilding_area());
+                holder.setText(R.id.tvHouseSquare, MyUtils.addComma(item.getBuilding_area().split("\\.")[0]));
                 holder.setText(R.id.tvDetailPrice, "$" + getString(R.string.single_blank_space) + MyUtils.addComma(item.getPrice().split("\\.")[0]));
             }
         };

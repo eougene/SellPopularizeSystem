@@ -111,7 +111,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 initVisitDilaog();
                 getVisitData(page, true);
             } else if (flag.equals("custoreser")) {
-                setTitle(getString(R.string.yuyue));
+                setTitle(getString(R.string.yuyuerecord));
                 getReservertData(page, true);
             }
             clickRightImageView(R.mipmap.addim, new View.OnClickListener() {
@@ -621,6 +621,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
         lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
         dialogWindow.setAttributes(lp);
+        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         dialogWindow.setGravity(Gravity.CENTER);
         initVisitDilaogViews(visitDilog);
     }
