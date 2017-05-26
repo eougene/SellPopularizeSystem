@@ -121,8 +121,9 @@
     <string name="sale_pro">销售推广</string>
     <string name="message">消息</string>
     <string name="recharge">充值</string>
-    <string name="visit">拜访</string>
+    <string name="visit">拜访记录</string>
     <string name="yuyue">预约</string>
+    <string name="yuyuerecord">预约记录</string>
     <string name="expandre">推广记录</string>
     <string name="housepurchase">购房记录</string>
     <string name="blank_space">&#160;&#160;</string>
