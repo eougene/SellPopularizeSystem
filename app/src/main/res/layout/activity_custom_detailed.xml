@@ -768,6 +768,7 @@
                     android:layout_toRightOf="@id/tvNation"
                     android:background="@null"
                     android:gravity="end"
+                    android:focusable="false"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:padding="@dimen/padding_margin_10"
