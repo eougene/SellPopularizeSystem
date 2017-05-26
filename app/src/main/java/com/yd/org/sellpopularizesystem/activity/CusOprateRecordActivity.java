@@ -75,9 +75,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private String picPath = "";
     private LinearLayout llSpace, llCertificate, llChooseSpace;
     private Dialog eoiDialog, methodDialog, optionDialog;
-    private List<String> weeks;
-    private List<String> hours;
-    private List<String> minutes;
+    private List<String> weeks=new ArrayList<>();
+    private List<String> hours=new ArrayList<>();
+    private List<String> minutes=new ArrayList<>();
     private CommonAdapter visitAdapter, eoiAdapter, subscribeAdapter;
     private OptionsPickerView pvCustomTime;
     private SwipeMenuListView listView;
@@ -773,7 +773,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void getReservertData(int page, final boolean isRel) {
-        showDialog();
+        if(!isFinishing()){
+            showDialog();
+        }
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -882,4 +884,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeDialog();
+    }
 }

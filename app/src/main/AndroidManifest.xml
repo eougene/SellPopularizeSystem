@@ -100,19 +100,28 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CustomeActivity"/>
+        <activity android:name=".activity.CustomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ScaleActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".activity.LoginActivity"/>
-        <activity android:name=".activity.HomeActiviyt"/>
-        <activity android:name=".activity.GuideActivity"/>
-        <activity android:name=".activity.LearningGardenActivity"/>
-        <activity android:name=".activity.SettingActivity"/>
-        <activity android:name=".activity.ChangePassWordActivity"/>
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.HomeActiviyt"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.GuideActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LearningGardenActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ChangePassWordActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.CustomDetailedActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
         <activity android:name=".clippicture.ClipPictureActivity"/>
         <activity
             android:name=".activity.StudyDetailaActivity"
@@ -124,15 +133,24 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <activity android:name=".activity.SearchActivity"/>
-        <activity android:name=".activity.ScalListActivity"/>
-        <activity android:name=".activity.InvestigationActivity"/>
-        <activity android:name=".activity.ExaminationActivity"/>
-        <activity android:name=".activity.GradeActivity"/>
-        <activity android:name=".activity.NotificationActivity"/>
-        <activity android:name=".activity.InformationContentActivity"/>
-        <activity android:name=".activity.SaleRecordActivity"/>
-        <activity android:name=".activity.MapActivity"/>
+        <activity android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ScalListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.InvestigationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ExaminationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.GradeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.NotificationActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.InformationContentActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SaleRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MapActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -148,28 +166,43 @@
                 android:value="Umeng"/>
         </meta-data>
 
-        <activity android:name=".activity.ProductSubunitListActivity"/>
-        <activity android:name=".activity.ProductItemDetailActivity"/>
-        <activity android:name=".activity.MyTeamActivity"/>
-        <activity android:name=".activity.ProductSubItemDetailActivity"/>
-        <activity android:name=".activity.ReserveActivity"/>
-        <activity android:name=".activity.AskContractActivity"/>
-        <activity android:name=".activity.SaleReceiveNoticeActivity"/>
-        <activity android:name=".activity.CusOprateRecordActivity"/>
+        <activity android:name=".activity.ProductSubunitListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ProductItemDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.MyTeamActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ProductSubItemDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.ReserveActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.AskContractActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SaleReceiveNoticeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CusOprateRecordActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.DialogOptionActivity"
             android:theme="@style/DialogStyle"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.BuildingPlanActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <activity android:name=".activity.FilterActivity"/>
-        <activity android:name=".activity.SelectConditionActivity"/>
-        <activity android:name=".activity.LawyerActivity"/>
-        <activity android:name=".activity.LawyerAddActivity"/>
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FilterActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.SelectConditionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LawyerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.LawyerAddActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ImageShowActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
 
         <!-- 个推 -->
         <meta-data
@@ -194,14 +227,22 @@
             android:process=":pushservice"/>
 
         <!-- 个推结束 -->
-        <activity android:name=".activity.CommissionActivity"/>
-        <activity android:name=".activity.OldProjectActivity"/>
-        <activity android:name=".activity.InvestigateListActivity"/>
-        <activity android:name=".activity.CommissionDetailsActivity"/>
-        <activity android:name=".activity.PromotionRecordActivity"/>
-        <activity android:name=".activity.FileActivity"/>
-        <activity android:name=".activity.PDFActivity"/>
-        <activity android:name=".activity.PaymentQrActivity"/>
+        <activity android:name=".activity.CommissionActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.OldProjectActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.InvestigateListActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.CommissionDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PromotionRecordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FileActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PDFActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.PaymentQrActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

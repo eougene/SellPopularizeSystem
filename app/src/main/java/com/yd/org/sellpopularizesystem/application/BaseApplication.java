@@ -13,6 +13,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.baidu.mapapi.SDKInitializer;
 import com.igexin.sdk.PushManager;
+import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
@@ -83,7 +84,8 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //腾讯bugly
+        CrashReport.initCrashReport(getApplicationContext(),"ea61d4b40a",false);
         //获取设备的cid,用于绑定账号用
         cid = PushManager.getInstance().getClientid(this);
 

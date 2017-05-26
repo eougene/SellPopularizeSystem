@@ -191,13 +191,20 @@ public class CustomDetailedActivity extends BaseActivity {
                 //城市选择
                 case R.id.edcustmomeDetailedCity:
                     if (isDataLoaded) {
-                        addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
-                    } else {
-
+                        Log.e(TAG, "onClick: "+edcustmomeDetailedNationality.getText());
+                        if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))){
+                            addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                        }else {
+                            edcustmomeDetailedNationality.setFocusable(true);
+                        }
                     }
                     break;
                 //国家选择
                 case R.id.edcustmomeDetailedNationality:
+                    nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                    break;
+                //国籍选择
+                case R.id.etNation:
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.etFirb:
@@ -351,7 +358,7 @@ public class CustomDetailedActivity extends BaseActivity {
         for (int i = 0, length = countryList.length; i < length; i++) {
             String[] country = countryList[i].split("\\*");
 
-            String countryName = country[0];
+            String countryName = country[0].trim();
             String countryNumber = country[1];
             String countrySortKey = characterParserUtil.getSelling(countryName);
             CountrySortModel countrySortModel = new CountrySortModel(countryName, countryNumber,
@@ -719,9 +726,9 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 isAddrChoosed = true;
-                String addr = mCurrentProviceName + mCurrentCityName;
+                String addr = mCurrentProviceName + getString(R.string.single_blank_space)+mCurrentCityName;
                 if (!mCurrentDistrictName.equals(getString(R.string.other))) {
-                    addr += mCurrentDistrictName;
+                    addr += getString(R.string.single_blank_space)+mCurrentDistrictName;
                 }
                 edcustmomeDetailedCity.setText(addr);
                 addrPopWindow.dismiss();
@@ -810,6 +817,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone.setOnClickListener(onClickListener);
         ivEmail.setOnClickListener(onClickListener);
         edcustmomeDetailedNationality.setOnClickListener(onClickListener);
+        etNation.setOnClickListener(onClickListener);
         etFirb.setOnClickListener(onClickListener);
         //llOperate.setOnClickListener(onClickListener);
         tvEoi.setOnClickListener(onClickListener);
