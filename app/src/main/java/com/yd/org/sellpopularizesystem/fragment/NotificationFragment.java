@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.getui.IntentService;
+import com.yd.org.sellpopularizesystem.getui.PushService;
 
 /**
  * Created by hejin on 2017/4/10.
@@ -31,6 +34,9 @@ public class NotificationFragment extends BaseFragmentView {
     private CompanyNotificFragment notificFragment2;
     private SystemNotificFragment notificFragment3;
     private int fragmentID = 0;
+
+
+    private Class userPushService = PushService.class;
 
 
     /**
@@ -65,6 +71,16 @@ public class NotificationFragment extends BaseFragmentView {
                     tvSystemSum.setVisibility(View.VISIBLE);
                     tvSystemSum.setText((String) msg.obj);
 
+                    break;
+
+
+                //删除成功
+                case 4:
+                    isShow = false;
+                    tvCancel.setText(R.string.customdetaild_title);
+                    allCheck.setVisibility(View.INVISIBLE);
+                    deleteNotification.setVisibility(View.INVISIBLE);
+                    type = 0;
                     break;
 
 
@@ -238,9 +254,24 @@ public class NotificationFragment extends BaseFragmentView {
     protected void initView(Bundle savedInstanceState) {
         notificationFragment = this;
         setContentView(R.layout.activity_notification);
+        startGeTui();
         initWedget();
         //第一次初始化首页默认显示第一个fragment
         initFragment1(cate_id);
+    }
+
+    
+
+    //启动个推服务
+    private void startGeTui() {
+        //cid= PushManager.getInstance().getClientid(this);
+        // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 IntentService 传递数据,
+        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
+        // IntentService, 必须在 AndroidManifest 中声明)
+        PushManager.getInstance().initialize(getActivity().getApplicationContext(), userPushService);
+        PushManager.getInstance().registerPushIntentService(getActivity().getApplicationContext(), IntentService.class);
+
+
     }
 
     //显示第一个fragment

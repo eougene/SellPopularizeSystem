@@ -1,8 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -25,7 +24,7 @@ public class VideoActivity extends AppCompatActivity {
         //视频url
         String videoUrl="http://www.maclandgroup.com/video/2016.10.18_Macland_Video_2016.mp4";
         //设置视频地址
-        playerStandard.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,"视频介绍");
+        playerStandard.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,getString(R.string.vp));
         //直接进入全屏
         playerStandard.startFullscreen(this, JCVideoPlayerStandard.class, videoUrl, "");
         //点击播放按钮播放

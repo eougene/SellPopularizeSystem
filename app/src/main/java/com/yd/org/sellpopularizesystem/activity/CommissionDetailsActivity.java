@@ -48,7 +48,7 @@ public class CommissionDetailsActivity extends BaseActivity {
         tvThreeCom.setText("3. " + resultBean.getThird_commossion() + " / - / ");
         tvThreeDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd HH:mm", Long.parseLong(resultBean.getThird_time() + "000")));
 
-        tvSunCom.setText("合计:" + resultBean.getFirst_total() + " / " + resultBean.getSecond_total() + " / " + resultBean.getThird_total());
+        tvSunCom.setText(getString(R.string.total) + resultBean.getFirst_total() + " / " + resultBean.getSecond_total() + " / " + resultBean.getThird_total());
 
 
     }

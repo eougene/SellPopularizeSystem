@@ -16,6 +16,7 @@ public class HorizontalBounceScrollView extends HorizontalScrollView {
     private View inner;
     private Rect normal = new Rect();
     private float x;
+
     public HorizontalBounceScrollView(Context context) {
         super(context);
     }

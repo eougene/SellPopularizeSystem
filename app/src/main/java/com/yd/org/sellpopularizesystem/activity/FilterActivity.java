@@ -102,15 +102,15 @@ public class FilterActivity extends BaseActivity {
                     break;
                 case R.id.tvProductSearch:
                     Message message=ScaleActivity.scaleActivity.handler.obtainMessage();
-                    ScaleActivity.scaleActivity.psu.setArea(tvAreaDes.getText().toString().equals("不限")?"":selectStrTag);
-                    ScaleActivity.scaleActivity.psu.setHouse(tvHouseType.getText().toString().equals("不限")?"":selectStrTag);
+                    ScaleActivity.scaleActivity.psu.setArea(tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
+                    ScaleActivity.scaleActivity.psu.setHouse(tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
                     //ScaleActivity.scaleActivity.psu.setSpace(tvSelectType.getText().toString().equals("不限")?"":selectStrTag);
-                    ScaleActivity.scaleActivity.psu.setPrice(tvSelectPrice.getText().toString().equals("不限")?"":selectStrTag);
+                    ScaleActivity.scaleActivity.psu.setPrice(tvSelectPrice.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
                     message.obj=ScaleActivity.scaleActivity.psu;
                     ScaleActivity.scaleActivity.handler.handleMessage(message);
-                    String strArea=tvAreaDes.getText().toString().equals("不限")?"":tvAreaDes.getText().toString();
-                    String strHt=tvHouseType.getText().toString().equals("不限")?"":tvHouseType.getText().toString();
-                    String strPrice=tvSelectPrice.getText().toString().equals("不限")?"":tvSelectPrice.getText().toString();
+                    String strArea=tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":tvAreaDes.getText().toString();
+                    String strHt=tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":tvHouseType.getText().toString();
+                    String strPrice=tvSelectPrice.getText().toString().equals(getString(R.string.unlimited_))?"":tvSelectPrice.getText().toString();
                     selectContent=strArea+strHt+strPrice;
                     ScaleActivity.scaleActivity.strSelect=selectContent;
                     finish();
@@ -120,17 +120,17 @@ public class FilterActivity extends BaseActivity {
     };
 
     private void resetText() {
-        if (!tvAreaDes.getText().equals("不限")){
-            tvAreaDes.setText("不限");
+        if (!tvAreaDes.getText().equals(getString(R.string.unlimited_))){
+            tvAreaDes.setText(getString(R.string.unlimited_));
         }
-        if (!tvHouseType.getText().equals("不限")){
-            tvHouseType.setText("不限");
+        if (!tvHouseType.getText().equals(getString(R.string.unlimited_))){
+            tvHouseType.setText(getString(R.string.unlimited_));
         }
         /*if (!tvSelectType.getText().equals("不限")){
             tvSelectType.setText("不限");
         }*/
-        if (!tvSelectPrice.getText().equals("不限")){
-            tvSelectPrice.setText("不限");
+        if (!tvSelectPrice.getText().equals(getString(R.string.unlimited_))){
+            tvSelectPrice.setText(getString(R.string.unlimited_));
         }
     }
 
@@ -140,11 +140,11 @@ public class FilterActivity extends BaseActivity {
         if (resultCode==RESULT_OK){
             switch (requestCode){
                 case ExtraName.AREA:
-                    tvAreaDes.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?"不限":data.getStringExtra("selectextra"));
+                    tvAreaDes.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?getString(R.string.unlimited_):data.getStringExtra("selectextra"));
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     break;
                 case ExtraName.HOURSE:
-                    tvHouseType.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?"不限":data.getStringExtra("selectextra"));
+                    tvHouseType.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?getString(R.string.unlimited_):data.getStringExtra("selectextra"));
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     break;
                 /*case ExtraName.SPACE:
@@ -152,7 +152,7 @@ public class FilterActivity extends BaseActivity {
                     selectStrTag=data.getStringExtra("selecttagextra");
                     break;*/
                 case ExtraName.PRICE:
-                    tvSelectPrice.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?"不限":data.getStringExtra("selectextra"));
+                    tvSelectPrice.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?getString(R.string.unlimited_):data.getStringExtra("selectextra"));
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     break;
             }

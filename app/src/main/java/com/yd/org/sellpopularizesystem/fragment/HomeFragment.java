@@ -117,14 +117,11 @@ public class HomeFragment extends BaseFragmentView {
                     HomeDataBean homeDataBean = gson.fromJson(json, HomeDataBean.class);
                     if (homeDataBean.getCode() == 1) {
 
-                        tvScaleSource.setText("共有" + homeDataBean.getResult().getTotal_product() + "个推广素材");
-                        tvNewAddSource.setText("本周新增" + homeDataBean.getResult().getNew_product() + "个");
-                        tvCustomNumber.setText("您有" + homeDataBean.getResult().getTotal_customer() + "位客户");
-                        tvNewCustomNumber.setText("本月新增" + homeDataBean.getResult().getNew_customer() + "位");
-                        tvStydyDatumCount.setText("共有" + homeDataBean.getResult().getTotal_study() + "个学习资料");
-                        tvNotCompleteCount.setText("您有" + homeDataBean.getResult().getUncheck() + "个考核未完成");
-                        tvNoNewsCount.setText("您还有" + homeDataBean.getResult().getUnread() + "条未读信息");
-
+                        tvScaleSource.setText(getString(R.string.owned_by_all)+" " + homeDataBean.getResult().getTotal_product() +" " +getString(R.string.home_01));
+                        tvNewAddSource.setText(getString(R.string.newly_increased) +" "+ homeDataBean.getResult().getNew_product() +" " + getString(R.string.home_02));
+                        tvCustomNumber.setText(getString(R.string.your_there) +" "+ homeDataBean.getResult().getTotal_customer() +" "+ getString(R.string.home_03));
+                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) +" "+ homeDataBean.getResult().getNew_customer()+" "+ getString(R.string.home_04));
+                        tvStydyDatumCount.setText(getString(R.string.owned_by_all) +" "+ homeDataBean.getResult().getTotal_study() +" "+ getString(R.string.home_05));
 
                         //如果首次进去有消息条数.则通知显示
                         if (homeDataBean.getResult().getUnread() > 0) {
@@ -191,7 +188,7 @@ public class HomeFragment extends BaseFragmentView {
 
         ImageView imageViewOne = new ImageView(getActivity());
         imageViewOne.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageViewOne.setImageResource(R.mipmap.guild2);
+        imageViewOne.setImageResource(R.mipmap.home);
 
         //添加要渐变的ImageView
         imageViews.add(imageView);

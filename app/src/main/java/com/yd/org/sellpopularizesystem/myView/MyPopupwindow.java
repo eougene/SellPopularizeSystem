@@ -23,7 +23,7 @@ public class MyPopupwindow extends PopupWindow {
     private static final String TAG = "FinishProjectPopupWindows";
 
     private View mView;
-    public Button photoAlbumButton,photoButton,cancelButton;
+    public Button photoAlbumButton, photoButton, cancelButton;
 
     public MyPopupwindow(Activity context, View.OnClickListener itemsOnClick) {
         super(context);

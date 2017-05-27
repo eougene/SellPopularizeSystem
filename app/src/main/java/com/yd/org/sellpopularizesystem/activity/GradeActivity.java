@@ -1,25 +1,16 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.content.ClipData;
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.google.gson.internal.ObjectConstructor;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.GradeAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
-import com.yd.org.sellpopularizesystem.javaBean.PagerDetailsBean;
-import com.yd.org.sellpopularizesystem.myView.ChildListView;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -96,8 +87,8 @@ public class GradeActivity extends BaseActivity {
         Gson gson = new Gson();
         gradeBean = gson.fromJson(json, GradeBean.class);
         if (gradeBean.getCode().equals("1")) {
-            tvCount.setText(gradeBean.getTotal_answer() + "题");
-            tvSureCount.setText(gradeBean.getTotal_right_answer() + "题");
+            tvCount.setText(gradeBean.getTotal_answer() + getString(R.string.topic));
+            tvSureCount.setText(gradeBean.getTotal_right_answer() +getString(R.string.topic));
             DecimalFormat df = new DecimalFormat("0.00");
             tvAccuracy.setText(df.format(((Float.valueOf(gradeBean.getTotal_right_answer()) / Float.valueOf(gradeBean.getTotal_answer())) * 100)) + " %");
             gradeAdapter = new GradeAdapter(this, gradeBean.getResult());

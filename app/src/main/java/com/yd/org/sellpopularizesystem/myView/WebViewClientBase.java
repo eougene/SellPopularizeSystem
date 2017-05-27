@@ -22,6 +22,7 @@ public class WebViewClientBase extends WebViewClient {
         loading_Dialog = new CustomProgressDialog(activitys, R.style.customLoadDialog);
 
     }
+
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         //handler.cancel(); 默认的处理方式，WebView变成空白页

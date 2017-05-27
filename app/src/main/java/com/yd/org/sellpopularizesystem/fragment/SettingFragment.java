@@ -97,7 +97,7 @@ public class SettingFragment extends BaseFragmentView {
                         acountPopupWindow.dismiss();
                         UMShareAPI.get(getActivity()).doOauthVerify(getActivity(), SHARE_MEDIA.WEIXIN, authListener);
                     } else {
-                        ToasShow.showToastCenter(getActivity(), "检查是否安装微信");
+                        ToasShow.showToastCenter(getActivity(), getString(R.string.check_we));
                         return;
                     }
 
@@ -152,7 +152,7 @@ public class SettingFragment extends BaseFragmentView {
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            ToasShow.showToastBottom(getActivity(), "已取消授权");
+           // ToasShow.showToastBottom(getActivity(), "已取消授权");
         }
     };
 
@@ -179,7 +179,7 @@ public class SettingFragment extends BaseFragmentView {
                         if (!TextUtils.isEmpty(UseJson.optString("unionid"))) {
                             sendBindAccount(opendid, UseJson.optString("unionid"));
                         } else {
-                            ToasShow.showToastCenter(getContext(), "绑定失败");
+                            ToasShow.showToastCenter(getContext(), getString(R.string.binding_f));
                             return;
                         }
 
@@ -193,7 +193,7 @@ public class SettingFragment extends BaseFragmentView {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                ToasShow.showToastCenter(getContext(), "网络异常");
+                ToasShow.showToastCenter(getContext(), strMsg);
             }
         });
 

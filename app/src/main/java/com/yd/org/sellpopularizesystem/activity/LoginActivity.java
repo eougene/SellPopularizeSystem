@@ -209,7 +209,7 @@ public class LoginActivity extends BaseActivity {
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-            ToasShow.showToastBottom(LoginActivity.this, "已取消授权");
+
         }
     };
 

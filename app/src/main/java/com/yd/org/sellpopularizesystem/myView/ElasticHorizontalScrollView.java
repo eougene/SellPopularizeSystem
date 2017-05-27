@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.myView;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.text.style.TtsSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,6 +16,7 @@ public class ElasticHorizontalScrollView extends HorizontalScrollView {
     private View inner;
     private Rect normal = new Rect();
     private float x;
+
     public ElasticHorizontalScrollView(Context context) {
         super(context);
     }
@@ -39,9 +39,9 @@ public class ElasticHorizontalScrollView extends HorizontalScrollView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if (ev==null){
+        if (ev == null) {
             return super.onTouchEvent(ev);
-        }else{
+        } else {
             commonOnTouchEvent(ev);
         }
         return super.onTouchEvent(ev);

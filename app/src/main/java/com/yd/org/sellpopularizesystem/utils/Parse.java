@@ -232,12 +232,13 @@ public class Parse {
 
     /**
      * 去掉字符串中的\r\n,多余的空格
+     *
      * @param str
      * @return
      */
-    public  String replaceBlank(String str) {
+    public String replaceBlank(String str) {
         String dest = "";
-        if (str!=null) {
+        if (str != null) {
             Pattern p = Pattern.compile("\\s*|\t|\r|\n");
             Matcher m = p.matcher(str);
             dest = m.replaceAll("");

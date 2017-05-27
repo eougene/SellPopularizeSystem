@@ -93,7 +93,7 @@ public class CustomeListAdapter extends BaseAdapter {
             if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) != null) {
                 viewHolder.prductImageView.setImageBitmap(ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()));
             } else {
-                ToasShow.showToastCenter(mContext, "当前处于无网络状态");
+                ToasShow.showToastCenter(mContext, mContext.getString(R.string.network_error));
             }
         } else {
 

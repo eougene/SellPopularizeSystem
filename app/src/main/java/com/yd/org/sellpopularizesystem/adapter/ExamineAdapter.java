@@ -2,10 +2,8 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,7 +113,7 @@ public class ExamineAdapter extends BaseAdapter {
         Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.studyDisImageView);
         holder.studyTextView.setText(holder.productListBean.getPaper_title());
         String time = holder.productListBean.getStop_time() + "000";
-        holder.dateTextView.setText("截止时间:" + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.valueOf(time)));
+        holder.dateTextView.setText(context.getString(R.string.deadline) + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.valueOf(time)));
         if (list.get(position).getCan_check() == 1) {
             holder.lockImageView.setVisibility(View.GONE);
         } else {
@@ -123,7 +121,7 @@ public class ExamineAdapter extends BaseAdapter {
             holder.examineLinearLayout.setVisibility(View.GONE);
         }
         if (list.get(position).getCan_check()==1){
-            holder.examTextView.setText("考核通过");
+            holder.examTextView.setText(context.getString(R.string.examination_));
             holder.examTextView.setTextColor(Color.GREEN);
             holder.resultsTextView.setVisibility(View.INVISIBLE);
         }
@@ -143,7 +141,7 @@ public class ExamineAdapter extends BaseAdapter {
         holder.examTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (finalHolder.examTextView.getText().equals("考核通过")){
+                if (finalHolder.examTextView.getText().equals(context.getString(R.string.examination_))){
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("key", list.get(position));
                     ActivitySkip.forward(activity, GradeActivity.class, bundle);

@@ -78,7 +78,7 @@ public class AskContractActivity extends BaseActivity {
                 if (cbSure.isChecked()) {
                     applyContract(orderId);
                 } else {
-                    ToasShow.showToastCenter(AskContractActivity.this, "请确认支付信息");
+                    ToasShow.showToastCenter(AskContractActivity.this, getString(R.string.ask_contplay));
                 }
 
             }

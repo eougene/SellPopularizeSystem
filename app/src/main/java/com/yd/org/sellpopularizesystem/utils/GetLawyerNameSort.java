@@ -9,7 +9,6 @@
 
 package com.yd.org.sellpopularizesystem.utils;
 
-import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 
 import java.util.ArrayList;
@@ -89,8 +88,8 @@ public class GetLawyerNameSort {
         if (str.matches("^([0-9]|[/+]).*")) {// 正则表达式 匹配以数字或者加号开头的字符串(包括了带空格及-分割的号码)
             String simpleStr = str.replaceAll("\\-|\\s", "");
             for (Lawyer.ResultBean.LawyerListBean contact : list) {
-                if (contact.getLawyer_id()+"" != null ) {
-                    if (contact.getLawyer_id()==Integer.parseInt(simpleStr)) {
+                if (contact.getLawyer_id() + "" != null) {
+                    if (contact.getLawyer_id() == Integer.parseInt(simpleStr)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
@@ -99,9 +98,9 @@ public class GetLawyerNameSort {
             }
         } else {
             for (Lawyer.ResultBean.LawyerListBean contact : list) {
-                if (contact.getFirst_name() != null ) {
-                    if (contact.getFirst_name().indexOf(str)!=-1 ||
-                            CharacterParserUtil.getInstance().getSelling(contact.getFirst_name()).startsWith(str)){
+                if (contact.getFirst_name() != null) {
+                    if (contact.getFirst_name().indexOf(str) != -1 ||
+                            CharacterParserUtil.getInstance().getSelling(contact.getFirst_name()).startsWith(str)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
@@ -113,7 +112,7 @@ public class GetLawyerNameSort {
                             filterList.add(contact);
                         }
                     }
-                    if (contact.getLaw_firm().indexOf(str)!=-1){
+                    if (contact.getLaw_firm().indexOf(str) != -1) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }

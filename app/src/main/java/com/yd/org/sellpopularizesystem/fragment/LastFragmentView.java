@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
@@ -147,9 +146,7 @@ public class LastFragmentView extends BaseFragmentView {
     public void controlViewVisibility() {
         if (tvEnd != null && tvStart != null) {
             tvEnd.setVisibility(View.GONE);
-            tvStart.setText("完成学习");
-        } else {
-            Toast.makeText(getActivity(),"控件未初始化", Toast.LENGTH_SHORT).show();
+            tvStart.setText(R.string.complete_learning);
         }
     }
 }

@@ -177,7 +177,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 price = psu.getPrice();
                 Log.e("tag", "handleMessage: " + area + house + space + space);
                 if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-                    ToasShow.showToastCenter(ScaleActivity.this, "当前无网络");
+                    ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.network_error));
                 } else {
                     getProductListData(true, page, space, price, house, area);
                 }
@@ -495,7 +495,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ProductListBean product = gson.fromJson(json, ProductListBean.class);
         if (product.getCode().equals("1")) {
             productData = product.getResult();
-            tvProjectNum.setText("共" + productData.size() + "个项目" + getString(R.string.single_blank_space) + strSelect);
+            tvProjectNum.setText(getString(R.string.sum) + productData.size() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
             if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {

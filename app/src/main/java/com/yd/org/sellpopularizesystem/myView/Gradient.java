@@ -33,7 +33,7 @@ public class Gradient extends RelativeLayout {
     private int currentIndex;//当前的页面
     private LinearLayout linearLayout;
     private onClickListner listner;
-    private long time=7000;//动画间隔时间
+    private long time = 7000;//动画间隔时间
 
 
     public Gradient(Context context) {
@@ -72,7 +72,7 @@ public class Gradient extends RelativeLayout {
                 childAt.setEnabled(true);
             }
             //添加到图片的下边
-            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(-1,-2);
+            RelativeLayout.LayoutParams rlp = new RelativeLayout.LayoutParams(-1, -2);
             rlp.bottomMargin = dip2px(mContext, 5);
             rlp.addRule(ALIGN_PARENT_BOTTOM);
             this.addView(linearLayout, rlp);
@@ -92,13 +92,14 @@ public class Gradient extends RelativeLayout {
 
     /**
      * 设置图片
+     *
      * @param imageViews
      */
     public void setImageViews(List<ImageView> imageViews) {
         this.imageViews = imageViews;
         for (int i = 0; i < imageViews.size(); i++) {
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1,-1);
-            addView(imageViews.get(i),layoutParams);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(-1, -1);
+            addView(imageViews.get(i), layoutParams);
         }
         setonClick();
         cratePoint();
@@ -141,7 +142,6 @@ public class Gradient extends RelativeLayout {
                         //当前的淡出,下一张淡入
                         ImageView imageView = imageViews.get(size - 1 - i);
                         imageView.startAnimation(outAnim.get(size - 1 - i));
-
 
 
                     }
@@ -211,13 +211,14 @@ public class Gradient extends RelativeLayout {
         }
     }
 
-    public interface onClickListner{
+    public interface onClickListner {
 
         void setonClick(int position);
     }
 
     /**
      * 设置动画播放和handler延迟时间
+     *
      * @param time
      */
     public void setTime(long time) {
@@ -228,8 +229,10 @@ public class Gradient extends RelativeLayout {
         this.listner = listner;
     }
 
-    /** 创建一个淡出缩小的动画 */
-    public  Animation createZoomOutAwayAnim() {
+    /**
+     * 创建一个淡出缩小的动画
+     */
+    public Animation createZoomOutAwayAnim() {
         AnimationSet ret;
         Animation anim;
         ret = new AnimationSet(false);
@@ -241,8 +244,11 @@ public class Gradient extends RelativeLayout {
 
         return ret;
     }
-    /** 创建一个淡入缩小的动画 */
-    public  Animation createZoomOutNearAnim() {
+
+    /**
+     * 创建一个淡入缩小的动画
+     */
+    public Animation createZoomOutNearAnim() {
         AnimationSet ret;
         Animation anim;
         ret = new AnimationSet(false);

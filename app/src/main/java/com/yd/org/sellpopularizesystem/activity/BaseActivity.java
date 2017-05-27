@@ -1,9 +1,9 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -22,7 +22,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
  * Created by bai on 2017/1/10.
  */
 
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity extends AppCompatActivity {
     protected ImageView backLinearLayou, rightSearchLinearLayout;
     private TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;

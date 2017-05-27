@@ -28,7 +28,7 @@ public class InformationContentActivity extends BaseActivity {
         String notice_id = bundle.getString("notice_id", "null");
         tvInformContent = (TextView) findViewById(R.id.tvInformContent);
         tvInformContent.setText(title+"\n"+str);
-        setTitle("消息详情");
+        setTitle(getString(R.string.notic_info));
         hideRightImagview();
         commitNotice(notice_id);
 

@@ -19,6 +19,8 @@ import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
+import com.yd.org.sellpopularizesystem.getui.IntentService;
+import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
@@ -34,6 +36,7 @@ public class BaseApplication extends Application {
     private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
+    private Class userPushService = PushService.class;
 
 
     //个推开始
@@ -117,6 +120,20 @@ public class BaseApplication extends Application {
         if (handler == null) {
             handler = new MainHandler();
         }
+
+
+        startGeTui();
+
+    }
+
+    //启动个推服务
+    private void startGeTui() {
+        //cid= PushManager.getInstance().getClientid(this);
+        // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 IntentService 传递数据,
+        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
+        // IntentService, 必须在 AndroidManifest 中声明)
+        PushManager.getInstance().initialize(this.getApplicationContext(), userPushService);
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), IntentService.class);
 
 
     }

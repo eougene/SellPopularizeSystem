@@ -32,7 +32,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.XMLFormatter;
 
 public class ExaminationActivity extends BaseActivity {
     private List<QuestionBean> questions = new ArrayList<>();
@@ -243,7 +242,7 @@ public class ExaminationActivity extends BaseActivity {
                 // 判断是否有题没答完
                 // Log.e("hh**1", "Status" + questions.get(i).getStatus());
                 if (questions.get(i).getStatus() == 0) {
-                    Toast.makeText(getApplicationContext(), "您" + (i + 1) + "题没有答完", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getString(R.string.nin) + (i + 1) + getString(R.string.examination), Toast.LENGTH_LONG).show();
                     jsonArray = null;
                     isState = false;
                     break;

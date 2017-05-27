@@ -251,6 +251,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 if (e.getCode().equals("1")) {
                     //发送消息数目
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
                     getData(1, true, cate_id);
 
 

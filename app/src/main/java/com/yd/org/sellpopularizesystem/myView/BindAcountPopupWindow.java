@@ -1,13 +1,11 @@
 package com.yd.org.sellpopularizesystem.myView;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -18,11 +16,11 @@ import com.yd.org.sellpopularizesystem.R;
 
 public class BindAcountPopupWindow extends PopupWindow {
     private View mView;
-    private Button btnBind,btnCancel;
+    private Button btnBind, btnCancel;
 
     public BindAcountPopupWindow(Activity context, View.OnClickListener itemsOnClick) {
         super(context);
-        mView=LayoutInflater.from(context).inflate(R.layout.bind_acount_popuwindow,null);
+        mView = LayoutInflater.from(context).inflate(R.layout.bind_acount_popuwindow, null);
         btnCancel = (Button) mView.findViewById(R.id.cancelButton);
         btnBind = (Button) mView.findViewById(R.id.bindAcount);
         btnCancel.setOnClickListener(itemsOnClick);

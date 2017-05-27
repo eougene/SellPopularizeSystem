@@ -486,11 +486,11 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //是否是FIRB 0未知 1是  2否
         if (customeDetailedBean.getResult().getIs_firb() == 1) {
-            etFirb.setText("是");
+            etFirb.setText(R.string.sur);
         } else if (customeDetailedBean.getResult().getIs_firb() == 2) {
-            etFirb.setText("否");
+            etFirb.setText(R.string.isno);
         } else {
-            etFirb.setText("未知");
+            etFirb.setText(R.string.unknown_);
         }
 
         //职业
@@ -796,7 +796,7 @@ public class CustomDetailedActivity extends BaseActivity {
         btUnknown.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                etFirb.setText("未知");
+                etFirb.setText(getString(R.string.unknown_));
                 firbSelectPopWindow.dismiss();
             }
         });

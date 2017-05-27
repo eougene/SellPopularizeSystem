@@ -12,6 +12,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.igexin.sdk.PushManager;
@@ -23,7 +24,6 @@ import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.Locale;
@@ -76,8 +76,10 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         String language = locale.getLanguage();
         //选择语言
         showLanguage(language);
+        //全屏
+        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
+                WindowManager.LayoutParams. FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_activiyt);
-        StatusBarUtil.setTranslucentForImageView(homeActiviyt,null);
         inintView();
         setSelect(0);
 
@@ -193,20 +195,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    /**
-     * 清楚个推消息
-     */
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-
-    }
 
     @Override
     protected void onResume() {

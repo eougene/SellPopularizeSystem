@@ -55,22 +55,27 @@ public class SharedPreferencesHelps {
     public synchronized static final String getAccount() {
         return getPreferences().getString(ExtraName.ACCOUNT, "null");
     }
+
     //获取名字
     public synchronized static final String getFirstName() {
         return getPreferences().getString(ExtraName.FIRST_NAME, "null");
     }
+
     //设置名字
     public synchronized static final void setFirstName(String firstName) {
         getPreferences().edit().putString(ExtraName.FIRST_NAME, firstName).commit();
     }
+
     //获取名字编号
     public synchronized static final String getSurName() {
         return getPreferences().getString(ExtraName.SUR_NAME, "null");
     }
+
     //设置名字编号
     public synchronized static final void setSurName(String surName) {
         getPreferences().edit().putString(ExtraName.SUR_NAME, surName).commit();
     }
+
     /**
      * 保存用户ID
      *
@@ -88,26 +93,31 @@ public class SharedPreferencesHelps {
     public synchronized static final String getUserID() {
         return getPreferences().getString(ExtraName.USER_ID, "null");
     }
+
     public synchronized static final void setCompanyId(String companyId) {
         getPreferences().edit().putString(ExtraName.COMPANY_ID, companyId).commit();
     }
+
     public synchronized static final String getCompanyId() {
         return getPreferences().getString(ExtraName.COMPANY_ID, "null");
     }
+
     //获取历史记录
-    public synchronized static final String getHistory(){
-            return getPreferences().getString(ExtraName.HISTORY_NAME,"");
+    public synchronized static final String getHistory() {
+        return getPreferences().getString(ExtraName.HISTORY_NAME, "");
 
     }
+
     //保存历史记录
-    public synchronized static final void editHistory( String name, boolean bool){
-        if(bool){
-            getPreferences().edit().putString(ExtraName.HISTORY_NAME,name).commit();
-        }else{
+    public synchronized static final void editHistory(String name, boolean bool) {
+        if (bool) {
+            getPreferences().edit().putString(ExtraName.HISTORY_NAME, name).commit();
+        } else {
             getPreferences().edit().clear().commit();
         }
 
     }
+
     /**
      * 保存用户名`
      *
@@ -134,9 +144,6 @@ public class SharedPreferencesHelps {
     }
 
 
-
-
-
     /**
      * 保存用户密码
      *
@@ -154,10 +161,12 @@ public class SharedPreferencesHelps {
     public synchronized static final String getUserPassword() {
         return getPreferences().getString(ExtraName.USER_PASSWORD, "null");
     }
+
     //设置openid
     public synchronized static final void setOpenId(String openId) {
         getPreferences().edit().putString(ExtraName.OPENID, openId).commit();
     }
+
     //获取openid
     public synchronized static final String getOpenId() {
         return getPreferences().getString(ExtraName.OPENID, "null");

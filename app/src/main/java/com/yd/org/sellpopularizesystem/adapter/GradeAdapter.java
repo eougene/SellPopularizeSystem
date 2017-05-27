@@ -3,22 +3,18 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
 
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 /**
@@ -68,9 +64,9 @@ public class GradeAdapter extends BaseAdapter {
         }
 
         if (data.get(position).getOptions().size()>2){
-            viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+"(多选题)");
+            viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.multiple_choice));
         }else{
-            viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+"(单选题)");
+            viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.single_choice));
         }
         if (data.get(position).getCheck_result().equals("1")) {
             viewHolder.ivFlag.setImageResource(R.mipmap.correcticonx);

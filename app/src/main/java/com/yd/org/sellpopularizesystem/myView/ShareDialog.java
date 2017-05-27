@@ -19,6 +19,7 @@ import com.yd.org.sellpopularizesystem.R;
 public class ShareDialog extends Dialog {
     private onClickback callback;
     private Dialog mDialog;
+
     public ShareDialog(Context context, onClickback callback) {
         this(context, R.layout.share_dialog, R.style.shareDialog, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
         this.callback = callback;

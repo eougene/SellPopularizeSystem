@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.umeng.socialize.UMAuthListener;
@@ -170,13 +169,13 @@ public class SettingActivity extends BaseActivity {
     UMAuthListener authListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
-            Toast.makeText(SettingActivity.this, "开始", Toast.LENGTH_LONG).show();
+            //Toast.makeText(SettingActivity.this, "开始", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
 
-            Toast.makeText(SettingActivity.this, "成功了", Toast.LENGTH_LONG).show();
+            //Toast.makeText(SettingActivity.this, "成功了", Toast.LENGTH_LONG).show();
             String openId = data.get("openid");
             SharedPreferencesHelps.setOpenId(openId);
             String temp = "";
@@ -191,13 +190,13 @@ public class SettingActivity extends BaseActivity {
         @Override
         public void onError(SHARE_MEDIA platform, int action, Throwable t) {
 
-            Toast.makeText(SettingActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
+          //  Toast.makeText(SettingActivity.this, "失败：" + t.getMessage(), Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
 
-            Toast.makeText(SettingActivity.this, "取消了", Toast.LENGTH_LONG).show();
+           // Toast.makeText(SettingActivity.this, "取消了", Toast.LENGTH_LONG).show();
         }
     };
 

@@ -28,7 +28,7 @@ public class PaymentQrActivity extends BaseActivity {
     @Override
     protected int setContentView() {
         hideRightImagview();
-        setTitle("支付");
+        setTitle(getString(R.string.payment));
         return R.layout.activity_alipay_qr;
     }
 

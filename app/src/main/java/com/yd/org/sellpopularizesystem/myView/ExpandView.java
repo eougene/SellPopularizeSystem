@@ -17,13 +17,14 @@ import com.yd.org.sellpopularizesystem.R;
 public class ExpandView extends FrameLayout {
     private Animation mExpandAnimation;
     private Animation mCollapseAnimation;
-    private boolean mIsExpand=true;
+    private boolean mIsExpand = true;
+
     public ExpandView(Context context) {
-        this(context,null);
+        this(context, null);
     }
 
     public ExpandView(Context context, AttributeSet attrs) {
-        this(context, attrs,0);
+        this(context, attrs, 0);
     }
 
     public ExpandView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -32,8 +33,8 @@ public class ExpandView extends FrameLayout {
     }
 
     private void initExpandView() {
-        LayoutInflater.from(getContext()).inflate(R.layout.expandview_layout,this,true);
-        mExpandAnimation= AnimationUtils.loadAnimation(getContext(),R.anim.expand_anim);
+        LayoutInflater.from(getContext()).inflate(R.layout.expandview_layout, this, true);
+        mExpandAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.expand_anim);
         mExpandAnimation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -68,16 +69,18 @@ public class ExpandView extends FrameLayout {
             }
         });
     }
-    public void collapse(){
+
+    public void collapse() {
         if (mIsExpand) {
-            mIsExpand=false;
+            mIsExpand = false;
             clearAnimation();
             startAnimation(mCollapseAnimation);
         }
     }
-    public void expand(){
+
+    public void expand() {
         if (!mIsExpand) {
-            mIsExpand=true;
+            mIsExpand = true;
             clearAnimation();
             startAnimation(mExpandAnimation);
         }
@@ -95,7 +98,7 @@ public class ExpandView extends FrameLayout {
         return mIsExpand;
     }
 
-    public void setContentView(){
+    public void setContentView() {
         View view = null;
         view = LayoutInflater.from(getContext()).inflate(R.layout.expandview_layout, null);
         removeAllViews();

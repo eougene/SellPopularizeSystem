@@ -181,59 +181,59 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     if (item.getStatus() != 11) {
                         //订单状态判断
                         if (item.getCancel_apply_status() == 1) {
-                            holder.setText(R.id.tvStatus, "订单放弃中");
+                            holder.setText(R.id.tvStatus, getString(R.string.saler_01));
                         } else if (item.getCancel_apply_status() == 2) {
                             Log.e("Cancel_apply_status", "convert: " + item.getProduct_orders_id());
-                            holder.setText(R.id.tvStatus, "订单已取消");
+                            holder.setText(R.id.tvStatus, getString(R.string.saler_02));
                         } else {
                             if (item.getOrder_money_status() == 1) {
                                 if (item.getPayment_method() == 1 || item.getPayment_method() == 4) {
                                     if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "意向金凭证已上传\n请申请合同");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_03));
                                     }
                                 } else {
-                                    holder.setText(R.id.tvStatus, "尚未支付意向金\n请付款");
+                                    holder.setText(R.id.tvStatus, getString(R.string.saler_04));
                                 }
                             }
                             if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 1) {
-                                holder.setText(R.id.tvStatus, "合同首页已审核\n首付款凭证审核中");
+                                holder.setText(R.id.tvStatus, getString(R.string.saler_05));
                             }
                             if (item.getOrder_money_status() == 1) {
                                 if (item.getPayment_method() == 1 || item.getPayment_method() == 4) {
                                     if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "意向金凭证已上传\n请申请合同");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_03));
                                     }else if (item.getContract_apply_status() == 1) {
-                                        holder.setText(R.id.tvStatus, "正在申请合同\n请等待管理员审核");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_06));
                                     }
                                 }else {
                                     if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "意向金已支付\n请申请合同");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_07));
                                     }else if (item.getContract_apply_status() == 1) {
-                                        holder.setText(R.id.tvStatus, "正在申请合同\n请等待管理员审核");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_08));
                                     }
                                 }
                                 if (item.getContract_apply_status() == 2) {
                                     if (item.getUpload_contract_status() == 0 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "请上传合同首页\n请上传首付款凭证");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_09));
                                     }
                                     if (item.getUpload_contract_status() == 1 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "合同首页审核中\n请上传首付款凭证");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_10));
                                     } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, "合同首页已审核\n请上传首付款凭证");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_11));
                                     } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 1) {
-                                        holder.setText(R.id.tvStatus, "合同首页已审核\n首付款凭证审核中");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_12));
                                     } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 2) {
-                                        holder.setText(R.id.tvStatus, "准备交换合同");
+                                        holder.setText(R.id.tvStatus, getString(R.string.saler_13));
                                     }
                                 }
                             } else if (item.getOrder_money_status() == 2) {
                                 if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 2) {
-                                    holder.setText(R.id.tvStatus, "准备交换合同");
+                                    holder.setText(R.id.tvStatus, getString(R.string.saler_13));
                                 }
                             }
                         }
                     } else if (item.getStatus() == 11) {
-                        holder.setText(R.id.tvStatus, "订单已完成");
+                        holder.setText(R.id.tvStatus, getString(R.string.saler_14));
                     }
                 }
             };
@@ -260,7 +260,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击申请合同
                 case R.id.btApplyContract:
-                    if (btApplyContract.getText().equals("上传合同首页")) {
+                    if (btApplyContract.getText().equals(getString(R.string.saler_15))) {
                         mSalePopuwindow.dismiss();
                         flag = ExtraName.UPLOAD_CONTRACT;
                         BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
@@ -271,7 +271,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击意向金
                 case R.id.btPayIntention:
-                    if (btPayIntention.getText().equals("上传首款凭证")) {
+                    if (btPayIntention.getText().equals(getString(R.string.saler_16))) {
                         mSalePopuwindow.dismiss();
                         flag = ExtraName.UPLOAD_FIRST_COMMISSION;
                         BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
@@ -397,32 +397,32 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     //tvText.setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this,R.color.transparent));
                     Log.e("view", "onItemClick: " + tvText.getText().toString());
                     tvText.setBackground(null);
-                    if (!tvText.getText().toString().equals("正在申请合同\n请等待管理员审核")) {
+                    if (!tvText.getText().toString().equals(getString(R.string.saler_17))) {
 
 
                         //尚未支付意向金情况:Order_money_status() == 0
-                        if (tvText.getText().toString().equals("尚未支付意向金\n请付款")) {
+                        if (tvText.getText().toString().equals(R.string.saler_04)) {
                             btApplyContract.setVisibility(View.GONE);
-                            btPayIntention.setText("支付意向金");
+                            btPayIntention.setText(R.string.saler_18);
                         }
                         //意向金已支付情况:Order_money_status() == 1,Contract_apply_status() == 0
-                        if (tvText.getText().toString().equals("意向金已支付\n请申请合同")) {
+                        if (tvText.getText().toString().equals(R.string.saler_07)) {
                             btPayIntention.setVisibility(View.GONE);
                         }
-                        if (tvText.getText().toString().equals("意向金凭证已上传\n请申请合同")) {
+                        if (tvText.getText().toString().equals(R.string.saler_03)) {
                             btPayIntention.setVisibility(View.GONE);
                         }
                         //请上传合同首页请上传首付款凭证情况:Order_money_status() == 2,Contract_apply_status() == 2
-                        if (tvText.getText().toString().equals("请上传合同首页\n请上传首付款凭证")) {
-                            btApplyContract.setText("上传合同首页");
-                            btPayIntention.setText("上传首款凭证");
+                        if (tvText.getText().toString().equals(R.string.saler_09)) {
+                            btApplyContract.setText(R.string.saler_15);
+                            btPayIntention.setText(R.string.saler_16);
                             btOrderCancel.setVisibility(View.GONE);
                         }
-                        if (tvText.getText().toString().equals("合同首页已审核\n首付款凭证审核中")) {
+                        if (tvText.getText().toString().equals(getString(R.string.saler_19))) {
                             btPayIntention.setVisibility(View.GONE);
-                            btPayIntention.setText("上传首款凭证");
+                            btPayIntention.setText(R.string.saler_16);
                         }
-                        if (tvText.getText().toString().equals("准备交换合同")) {
+                        if (tvText.getText().toString().equals(getString(R.string.saler_20))) {
                             btApplyContract.setVisibility(View.GONE);
                             btPayIntention.setVisibility(View.GONE);
                             btOrderCancel.setVisibility(View.GONE);

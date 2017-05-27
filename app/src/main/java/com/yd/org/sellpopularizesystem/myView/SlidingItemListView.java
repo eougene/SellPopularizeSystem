@@ -15,7 +15,7 @@ import com.yd.org.sellpopularizesystem.internal.Pullable;
  * Created by hejin on 2017/5/8.
  */
 
-public class SlidingItemListView extends ListView implements Pullable{
+public class SlidingItemListView extends ListView implements Pullable {
     //前一个视图
     private View mPreItemView;
     //侧滑要显示的视图
@@ -62,7 +62,7 @@ public class SlidingItemListView extends ListView implements Pullable{
                 }
 
                 if (mIsHorizontal) {
-                    if (mIsShown&&mPreItemView!=mCurrentItemView) {
+                    if (mIsShown && mPreItemView != mCurrentItemView) {
                         //正在展示，前视图不等于后视图
                         //则隐藏前视图
                         hideRightView(mPreItemView);
@@ -152,6 +152,7 @@ public class SlidingItemListView extends ListView implements Pullable{
 
     /**
      * 展示隐藏的布局
+     *
      * @param mCurrentItemView2
      */
     private void showRight(View mCurrentItemView2) {
@@ -159,7 +160,9 @@ public class SlidingItemListView extends ListView implements Pullable{
         mIsShown = true;
     }
 
-    /**隐藏布局*/
+    /**
+     * 隐藏布局
+     */
     private void hideRightView(View mCurrentItemView2) {
 
         mCurrentItemView2.scrollTo(0, 0);

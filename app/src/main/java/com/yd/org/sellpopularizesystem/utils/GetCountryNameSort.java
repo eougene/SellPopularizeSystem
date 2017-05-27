@@ -100,8 +100,8 @@ public class GetCountryNameSort {
         } else {
             for (CountrySortModel contact : list) {
                 if (contact.countryNumber != null && contact.countryName != null) {
-                    if (contact.countryName.indexOf(str)!=-1 ||
-                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str)){
+                    if (contact.countryName.indexOf(str) != -1 ||
+                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }

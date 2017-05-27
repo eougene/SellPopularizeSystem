@@ -6,12 +6,12 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.InvestigationActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
-import com.yd.org.sellpopularizesystem.activity.StartActivity;
 
 import java.util.List;
 
@@ -24,8 +24,9 @@ public class ViewPagerAdapter extends PagerAdapter {
     // 界面列表
     private List<View> views;
     private Context context;
+
     public ViewPagerAdapter(Context context, List<View> views) {
-        this.context=context;
+        this.context = context;
         this.views = views;
     }
 
@@ -54,20 +55,20 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(View view, int position) {
         ((ViewPager) view).addView(views.get(position), 0);
-        if(position==views.size()){
-            TextView tvStart= (TextView) view.findViewById(R.id.tvStartInvestigation);
-            TextView tvEnd= (TextView) view.findViewById(R.id.tvEndInvestigation);
+        if (position == views.size()) {
+            TextView tvStart = (TextView) view.findViewById(R.id.tvStartInvestigation);
+            TextView tvEnd = (TextView) view.findViewById(R.id.tvEndInvestigation);
             tvStart.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(context.getApplicationContext(), InvestigationActivity.class);
+                    Intent intent = new Intent(context.getApplicationContext(), InvestigationActivity.class);
                     context.startActivity(intent);
                 }
             });
             tvEnd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent=new Intent(context.getApplicationContext(), ScaleActivity.class);
+                    Intent intent = new Intent(context.getApplicationContext(), ScaleActivity.class);
                     context.startActivity(intent);
                 }
             });
@@ -84,6 +85,11 @@ public class ViewPagerAdapter extends PagerAdapter {
     @Override
     public void restoreState(Parcelable arg0, ClassLoader arg1) {
 
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView(views.get(position));//释放滑动过后的前一页
     }
 
     @Override
