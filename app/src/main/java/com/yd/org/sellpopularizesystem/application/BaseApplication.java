@@ -36,7 +36,6 @@ public class BaseApplication extends Application {
     private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
-    private Class userPushService = PushService.class;
 
 
     //个推开始
@@ -88,7 +87,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //腾讯bugly
-        CrashReport.initCrashReport(getApplicationContext(),"ea61d4b40a",false);
+        CrashReport.initCrashReport(getApplicationContext(), "ea61d4b40a", false);
         //获取设备的cid,用于绑定账号用
         cid = PushManager.getInstance().getClientid(this);
 
@@ -104,7 +103,7 @@ public class BaseApplication extends Application {
 
         PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
         SDKInitializer.initialize(this);
-        aCache=ACache.get(this);
+        aCache = ACache.get(this);
 
         //百度sdk
         bindService(new Intent(this, com.baidu.location.f.class), new ServiceConnection() {
@@ -122,21 +121,8 @@ public class BaseApplication extends Application {
         }
 
 
-        startGeTui();
-
     }
 
-    //启动个推服务
-    private void startGeTui() {
-        //cid= PushManager.getInstance().getClientid(this);
-        // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 IntentService 传递数据,
-        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
-        // IntentService, 必须在 AndroidManifest 中声明)
-        PushManager.getInstance().initialize(this.getApplicationContext(), userPushService);
-        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), IntentService.class);
-
-
-    }
 
     public static void sendMessage(Message msg) {
         handler.sendMessage(msg);
@@ -153,7 +139,7 @@ public class BaseApplication extends Application {
                     //主页面数据
                     Message message = new Message();
                     message.obj = msg.obj;
-                    msg.what=1;
+                    msg.what = 1;
                     HomeActiviyt.homeActiviyt.showToasHandler.sendMessage(message);
                     //更新数据
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
