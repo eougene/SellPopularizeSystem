@@ -22,7 +22,7 @@
             android:gravity="center"
             android:paddingBottom="@dimen/padding_margin_4"
             android:paddingTop="@dimen/padding_margin_4"
-            android:text="@string/chongzhi"
+            android:text="@string/recharge"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12"/>
 

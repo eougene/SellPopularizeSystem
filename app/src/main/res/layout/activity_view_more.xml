@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/llProdet"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:id="@+id/llProdet"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
 
     <LinearLayout
@@ -20,7 +20,7 @@
             android:layout_weight="0.8"
             android:gravity="center"
             android:text="@string/area"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvHouseType"
@@ -29,7 +29,7 @@
             android:layout_weight="1.2"
             android:gravity="center"
             android:text="@string/housetype"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvArea"
@@ -39,7 +39,7 @@
             android:gravity="center"
             android:paddingLeft="@dimen/padding_margin_4"
             android:text="@string/scale_tab_prop"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvPrice"
@@ -49,7 +49,7 @@
             android:gravity="center"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="@string/price"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvHousePhoto"
@@ -59,7 +59,7 @@
             android:gravity="right"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="@string/housetypeimage"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -74,14 +74,15 @@
             android:layout_weight="1"
             android:listSelector="@color/home_scale">
         </ListView>
+
         <TextView
             android:id="@+id/tvNoInfo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/nodata"
-            android:textSize="@dimen/tv_size_15"
             android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_15"
             android:visibility="gone"/>
     </RelativeLayout>
 
@@ -90,7 +91,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.yd.org.sellpopularizesystem.myView.ElasticHorizontalScrollView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -103,85 +104,92 @@
                 android:paddingBottom="@dimen/padding_margin_4"
                 android:paddingTop="@dimen/padding_margin_4">
 
+
                 <TextView
                     android:id="@+id/tvIntroduce"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/introtool"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/jieshao"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvVideo"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/videotool"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/video"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvOrder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/shoppping"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/reserver"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvFloor"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/floorstool"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/floorphoto"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvContract"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/contracttool"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/contract"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
 
                 <TextView
                     android:id="@+id/tvFile"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/othertool"
                     android:gravity="center"
+                    android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/file"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10" />
+                    android:textSize="@dimen/tv_size_10"/>
             </LinearLayout>
-        </com.yd.org.sellpopularizesystem.myView.ElasticHorizontalScrollView>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
