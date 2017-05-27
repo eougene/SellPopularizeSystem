@@ -142,6 +142,7 @@ public class CustomDetailedActivity extends BaseActivity {
     //firb选择相关
     private Button btUnknown, btSure, btFalse;
 
+    private int flag;
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -201,10 +202,12 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //国家选择
                 case R.id.edcustmomeDetailedNationality:
+                    flag=1;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国籍选择
                 case R.id.etNation:
+                    flag=2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.etFirb:
@@ -641,7 +644,11 @@ public class CustomDetailedActivity extends BaseActivity {
                     countryName = mAllCountryList.get(position).countryName;
                     countryNumber = mAllCountryList.get(position).countryNumber;
                 }
-                edcustmomeDetailedNationality.setText(countryName);
+                if (flag==1){
+                    edcustmomeDetailedNationality.setText(countryName);
+                }else {
+                    etNation.setText(countryName);
+                }
                 nationSelectPopWindow.dismiss();
             }
         });
