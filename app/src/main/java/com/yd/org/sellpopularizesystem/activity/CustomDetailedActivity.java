@@ -167,7 +167,7 @@ public class CustomDetailedActivity extends BaseActivity {
                             //    ActivityCompat#requestPermissions
                             // here to request the missing permissions, and then overriding
                             //   public void onReques+tPermissionsResult(int requestCode, String[] permissions,
-                            //                                          int[] grantResults)
+                            //                  int[] grantResults)
                             // to handle the case where the user grants the permission. See the documentation
                             // for ActivityCompat#requestPermissions for more details.
                             return;
@@ -199,6 +199,7 @@ public class CustomDetailedActivity extends BaseActivity {
                         }else {
                             Log.e(TAG, "onClick***: "+edcustmomeDetailedNationality.getText());
                             edcustmomeDetailedCity.setFocusable(true);
+                            edcustmomeDetailedCity.requestFocus();
                         }
                     }
                     break;
