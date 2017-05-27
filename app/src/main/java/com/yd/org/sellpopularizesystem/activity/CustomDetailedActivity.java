@@ -194,9 +194,11 @@ public class CustomDetailedActivity extends BaseActivity {
                     if (isDataLoaded) {
                         Log.e(TAG, "onClick: "+edcustmomeDetailedNationality.getText());
                         if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))){
+                            edcustmomeDetailedCity.setFocusable(false);
                             addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                         }else {
-                            edcustmomeDetailedNationality.setFocusable(true);
+                            Log.e(TAG, "onClick***: "+edcustmomeDetailedNationality.getText());
+                            edcustmomeDetailedCity.setFocusable(true);
                         }
                     }
                     break;
