@@ -113,7 +113,6 @@ public class InvestigationActivity extends BaseActivity {
                 TextView tvTitle = (TextView) v.findViewById(R.id.tvTitle);
                 ImageView ivUp = (ImageView) v.findViewById(R.id.ivUp);
                 ImageView ivDown = (ImageView) v.findViewById(R.id.ivDown);
-                tvTitle.setText(getString(R.string.uploadetime));
                 ivUp.setVisibility(View.GONE);
                 ivDown.setVisibility(View.GONE);
                 tvFinish.setOnClickListener(new View.OnClickListener() {
