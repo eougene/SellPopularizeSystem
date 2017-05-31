@@ -181,7 +181,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                 }
                 //getListData();
                 List<ProSubunitListBean.ResultBean.PropertyBean> filterList = findAllByPro(data, strHouseType, strNum);
-                Log.e("filterList", "onOptionsSelect: "+filterList.size());
                 if (filterList.size()>0){
                     adapter.setmDatas(filterList);
                     adapter.notifyDataSetChanged();
