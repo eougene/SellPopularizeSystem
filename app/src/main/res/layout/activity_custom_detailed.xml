@@ -460,7 +460,6 @@
                     android:layout_alignParentTop="true"
                     android:layout_toRightOf="@+id/custmomeDetailedCity"
                     android:background="@null"
-                    android:focusable="false"
                     android:gravity="end"
                     android:hint="@string/procidis"
                     android:imeOptions="actionNext"
