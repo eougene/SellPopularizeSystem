@@ -20,6 +20,7 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSubunitListBean;
@@ -27,6 +28,7 @@ import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -34,6 +36,8 @@ import net.tsz.afinal.http.AjaxParams;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class ProductSubunitListActivity extends BaseActivity {
@@ -45,7 +49,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private ListView lvHouseDetail;
     private ImageView ivSearch;
     private View mView;
-    private List<ProductChildBean> data = new ArrayList<ProductChildBean>();
+    private List<ProSubunitListBean.ResultBean.PropertyBean> data = new ArrayList<>();
     private CommonAdapter adapter;
     private Object bean;
     private ProSubUnitClassifyBean childBean;
@@ -64,6 +68,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     private OptionsPickerView optionsPickerView;
     private List houseTypes = new ArrayList<String>();
     private List numbers = new ArrayList<String>();
+    private String strHouseType;
+    private String strNum;
 
     @Override
     protected int setContentView() {
@@ -158,8 +164,8 @@ public class ProductSubunitListActivity extends BaseActivity {
         OptionsPickerView.Builder builder = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
-                String strHouseType = (String) houseTypes.get(options1);
-                String strNum = numbers.get(options2).equals(getString(R.string.nolimit)) ? "" : (String) numbers.get(options2);
+                strHouseType = (String) houseTypes.get(options1);
+                strNum = numbers.get(options2).equals(getString(R.string.nolimit)) ? "" : (String) numbers.get(options2);
                 if (strHouseType.equals(getString(R.string.bedroom))) {
                     bedRoomNum = strNum;
                     bathRoomNum = "";
@@ -173,12 +179,49 @@ public class ProductSubunitListActivity extends BaseActivity {
                     bedRoomNum = "";
                     bathRoomNum = "";
                 }
-                getListData();
+                //getListData();
+                List<ProSubunitListBean.ResultBean.PropertyBean> filterList = findAllByPro(data, strHouseType, strNum);
+                Log.e("filterList", "onOptionsSelect: "+filterList.size());
+                if (filterList.size()>0){
+                    adapter.setmDatas(filterList);
+                    adapter.notifyDataSetChanged();
+                }else {
+                    ToasShow.showToastCenter(ProductSubunitListActivity.this,getString(R.string.nomatchdata));
+                }
             }
         }).setTitleColor(R.color.black)
                 .setCyclic(false, false, true).setSelectOptions(houseTypes.indexOf(getString(R.string.bedroom)), numbers.indexOf(getString(R.string.nolimit)));
         optionsPickerView = new OptionsPickerView(builder);
         optionsPickerView.setNPicker(houseTypes, numbers, null);
+    }
+
+
+
+    private List<ProSubunitListBean.ResultBean.PropertyBean> findAllByPro(List<ProSubunitListBean.ResultBean.PropertyBean> data, String strHouseType, String strNum) {
+         List<ProSubunitListBean.ResultBean.PropertyBean> filterList = new ArrayList<>();
+        if (strNum.equals("")) {
+            filterList.clear();
+            filterList.addAll(data);
+        }else {
+            for (int i = 0; i < data.size(); i++) {
+                if (strHouseType.equals(getString(R.string.bedroom))) {
+                    if (data.get(i).getBedroom().equals(strNum)) {
+                        filterList.add(data.get(i));
+                    }
+                }
+                if (strHouseType.equals(getString(R.string.bathroom))) {
+                    if (data.get(i).getBathroom().equals(strNum)) {
+                        filterList.add(data.get(i));
+                    }
+                }
+                if (strHouseType.equals(getString(R.string.carport))) {
+                    if (data.get(i).getCar_space().equals(strNum)) {
+                        filterList.add(data.get(i));
+                    }
+                }
+            }
+        }
+        return filterList;
     }
 
     //获取子单元列表数据
@@ -189,7 +232,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("product_id", product_id == null ? "" : product_id);
         ajaxParams.put("page", page);
-        ajaxParams.put("number", 50+ "");
+        ajaxParams.put("number", 50 + "");
         ajaxParams.put("provice", "");
         ajaxParams.put("city", "");
         ajaxParams.put("town", "");
@@ -209,7 +252,7 @@ public class ProductSubunitListActivity extends BaseActivity {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-                Log.e("s***","s:"+s);
+                Log.e("s***", "s:" + s);
                 closeDialog();
                 parseJson(s);
             }
@@ -224,8 +267,21 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     private void parseJson(String s) {
         Gson gson = new Gson();
-        ProductSubunitListBean pslb = gson.fromJson(s, ProductSubunitListBean.class);
-        data = pslb.getResult();
+        ProSubunitListBean pslb = gson.fromJson(s, ProSubunitListBean.class);
+        data = pslb.getResult().getProperty();
+        //按照集合中元素属性进行排序
+        Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
+            @Override
+            public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
+                if (Integer.parseInt(o1.getBedroom()) > Integer.parseInt(o2.getBedroom())) {
+                    return 1;
+                }
+                if (Integer.parseInt(o1.getBedroom()) == Integer.parseInt(o2.getBedroom())) {
+                    return 0;
+                }
+                return -1;
+            }
+        });
         if (data.size() > 0) {
             if (tvNoInfo.getVisibility() == View.VISIBLE) {
                 tvNoInfo.setVisibility(View.GONE);
@@ -241,9 +297,9 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     private void setAdapter() {
-        adapter = new CommonAdapter<ProductChildBean>(this, data, R.layout.productdetaill_activity_listview_item) {
+        adapter = new CommonAdapter<ProSubunitListBean.ResultBean.PropertyBean>(this, data, R.layout.productdetaill_activity_listview_item) {
             @Override
-            public void convert(ViewHolder holder, ProductChildBean item) {
+            public void convert(ViewHolder holder, ProSubunitListBean.ResultBean.PropertyBean item) {
                 Log.e("tag", "convert: " + item.getIs_lock());
                 if (item.getIs_lock() == 0) {
                     holder.setImageResource(R.id.ivHouse, R.mipmap.greenhome);

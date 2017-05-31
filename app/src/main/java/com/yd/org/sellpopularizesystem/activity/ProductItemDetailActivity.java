@@ -265,6 +265,7 @@ public class ProductItemDetailActivity extends BaseActivity {
                 //预定
                 case R.id.tvOrder:
                     if (resultBean != null) {
+                        bun.putSerializable("prs", prs);
                         bun.putString("productId", product_id == null ? "" : product_id);
                         bun.putString("title", resultBean.getProduct_name());
                         bun.putString("pidatopsla", "pidatopsla");

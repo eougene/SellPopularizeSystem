@@ -52,19 +52,17 @@ public class ProductChildBean extends Domine{
 
     private int product_childs_id;
     private int product_id;
-    private String product_name;
     private String product_childs_lot_number;
     private String product_childs_unit_number;
     private int company_id;
     private int cate_id;
-    private String cate_name;
     private int cate_type;
     private String area;
     private String bedroom;
     private String bathroom;
     private String car_space;
-    private String max_price;
-    private String min_price;
+    /*private String max_price;
+    private String min_price;*/
     private String has_study;
     private String ensuite;
     private String level;
@@ -82,6 +80,7 @@ public class ProductChildBean extends Domine{
     private String house_vendor_price;
     private String house_discount_amount;
     private int is_gst;
+    private String extra_commossion;
     private int is_specal_commission;
     private int sales_commission_type;
     private String sales_commission_value;
@@ -100,6 +99,8 @@ public class ProductChildBean extends Domine{
     private int is_eoi;
     private int if_eoi;
     private int status;
+    private String cate_name;
+    private String product_name;
     private String product_description;
     private String product_childs_name;
     private String product_childs_description;
@@ -206,22 +207,6 @@ public class ProductChildBean extends Domine{
 
     public void setCar_space(String car_space) {
         this.car_space = car_space;
-    }
-
-    public String getMax_price() {
-        return max_price;
-    }
-
-    public void setMax_price(String max_price) {
-        this.max_price = max_price;
-    }
-
-    public String getMin_price() {
-        return min_price;
-    }
-
-    public void setMin_price(String min_price) {
-        this.min_price = min_price;
     }
 
     public String getHas_study() {
@@ -358,6 +343,14 @@ public class ProductChildBean extends Domine{
 
     public void setIs_gst(int is_gst) {
         this.is_gst = is_gst;
+    }
+
+    public String getExtra_commossion() {
+        return extra_commossion;
+    }
+
+    public void setExtra_commossion(String extra_commossion) {
+        this.extra_commossion = extra_commossion;
     }
 
     public int getIs_specal_commission() {

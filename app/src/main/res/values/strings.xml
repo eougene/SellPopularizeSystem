@@ -437,4 +437,5 @@
     <string name="check_we">检查是否安装微信</string>
     <string name="binding_f">绑定失败</string>
     <string name="gettui">CRM销售系统</string>
+    <string name="nomatchdata">没有符合筛选的数据</string>
 </resources>
