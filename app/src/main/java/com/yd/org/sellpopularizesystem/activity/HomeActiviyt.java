@@ -77,8 +77,8 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         //选择语言
         showLanguage(language);
         //全屏
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
-                WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_activiyt);
         inintView();
         setSelect(0);
@@ -157,27 +157,26 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 if (homeFragment == null) {
                     homeFragment = new HomeFragment();
                     transaction.add(R.id.flContent, homeFragment);
-                } else {
-                    transaction.show(homeFragment);
                 }
+                transaction.show(homeFragment);
                 break;
             case 1:
                 tvMessage.setSelected(true);
                 if (notificationFragment == null) {
                     notificationFragment = new NotificationFragment();
                     transaction.add(R.id.flContent, notificationFragment);
-                } else {
-                    transaction.show(notificationFragment);
                 }
+                transaction.show(notificationFragment);
+
                 break;
             case 2:
                 tvSetting.setSelected(true);
                 if (settingFragment == null) {
                     settingFragment = new SettingFragment();
                     transaction.add(R.id.flContent, settingFragment);
-                } else {
-                    transaction.show(settingFragment);
                 }
+                transaction.show(settingFragment);
+
                 break;
         }
         transaction.commit();

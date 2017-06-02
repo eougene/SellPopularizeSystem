@@ -68,7 +68,7 @@ public class AskContractActivity extends BaseActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("orderId", orderId + "");
                 bundle.putString("sale_advice_url", sale_advice_url);
-                ActivitySkip.forward(AskContractActivity.this, SaleReceiveNoticeActivity.class, bundle);
+                ActivitySkip.forward(AskContractActivity.this, PDFActivity.class, bundle);
             }
         });
 

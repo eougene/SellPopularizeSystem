@@ -29,6 +29,7 @@ import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
@@ -60,7 +61,7 @@ public class ReserveActivity extends BaseActivity {
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
-    private ProductChildBean bean;
+    private ProSubunitListBean.ResultBean.PropertyBean bean;
     private LawyerBean.ResultBean lawBean;
     private int lawyer_id = -1;
     private View mView, mPayTypeView, msetPhotoView, mCusSelectView;
@@ -89,7 +90,7 @@ public class ReserveActivity extends BaseActivity {
     @Override
     public void initView() {
         Bundle bundle = getIntent().getExtras();
-        bean = (ProductChildBean) bundle.get("item");
+        bean = (ProSubunitListBean.ResultBean.PropertyBean) bundle.get("item");
         lawBean = (LawyerBean.ResultBean) bundle.get("custome");
         hideRightImagview();
         setTitle(R.string.reserver);

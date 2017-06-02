@@ -61,7 +61,6 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
         } else {
             showDialog();
             setTitle(getString(R.string.contract));
-
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
             displayFromFile1(Contants.DOMAIN + "/" + prs.getContract_url(), "fa_"+prs.getProduct_id()+ ".pdf");

@@ -40,7 +40,6 @@ public class SaleReceiveNoticeActivity extends BaseActivity implements OnPageCha
     public void initView() {
         setTitle(getString(R.string.sale_notice));
         hideRightImagview();
-
         Bundle bundle = getIntent().getExtras();
         orderId = bundle.getString("orderId");
         sale_advice_url = bundle.getString("sale_advice_url");

@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 
 public class ProductSubItemDetailActivity extends BaseActivity {
-    private ProductChildBean bean;
+    private ProSubunitListBean.ResultBean.PropertyBean bean;
     private TextView tvItStatus,tvItPrice,tvItType,tvItBatchNum,tvItUnitNum,
             tvFloorType,tvItFloor,tvItBedRoom,tvItBath,tvItCarSquare,tvItBathNum,
             tvItDrec,tvItRoomArea,tvItORoomArea,tvTotalArea;
@@ -19,7 +20,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
     @Override
     public void initView() {
         Bundle bundle=getIntent().getExtras();
-        bean= (ProductChildBean) bundle.get("item");
+        bean= (ProSubunitListBean.ResultBean.PropertyBean) bundle.get("item");
         hideRightImagview();
         setTitle(getString(R.string.projectdetail));
         tvItStatus= (TextView) findViewById(R.id.tvItStatus);

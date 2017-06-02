@@ -362,6 +362,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+                //查看详情
                 case R.id.btViewDetail:
                     if (bund != null) {
                         bund.putSerializable("item", data.get(pos));
@@ -369,6 +370,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+                //预定
                 case R.id.btRemain:
                     if (bund != null) {
                         bund.putSerializable("item", data.get(pos));
