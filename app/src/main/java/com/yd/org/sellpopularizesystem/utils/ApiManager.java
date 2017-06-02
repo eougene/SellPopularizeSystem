@@ -21,9 +21,12 @@ public class ApiManager {
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build();
 
-    private static final ApiManagerService apiManager = sRetrofit.create(ApiManagerService.class);
+    private static final ApiManagerService apiManagerService = sRetrofit.create(ApiManagerService.class);
 
     public static Observable<ResponseBody> downloadPicFromNet(String fileUrl) {
-        return apiManager.downloadPicFromNet(fileUrl);
+        return apiManagerService.downloadPicFromNet(fileUrl);
+    }
+    public static Observable<ResponseBody> downloadPptxFromNet(String pptxFileUrl) {
+        return apiManagerService.downloadPptxFromNet(pptxFileUrl);
     }
 }
