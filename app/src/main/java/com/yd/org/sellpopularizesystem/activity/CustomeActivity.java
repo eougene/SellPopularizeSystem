@@ -30,9 +30,7 @@ import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -62,14 +60,14 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      * 汉字转换成拼音的类
      */
     private CharacterParser characterParser;
-    private List<CustomBean.ResultBean> SourceDateList = new ArrayList<CustomBean.ResultBean>();
+    private List<CustomBean.ResultBean> SourceDateList = new ArrayList<>();
 
     /**
      * 根据拼音来排列ListView里面的数据类
      */
     private PinyinComparator pinyinComparator;
     //用以判断跳转不同界面
-    String str1 = "default";
+    String str1 = "default", jsonStr = "";
     private List filterDateList;
     public Handler handler = new Handler() {
         @Override
@@ -94,31 +92,14 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Bundle bundle = intent.getExtras();
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
-        if (str1 != null && str1.equals(ExtraName.SCALETOCUSTOME)) {
-            if (!MyUtils.getInstance().isNetworkConnected(this)) {
-                String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
-                if (jsonStr != null) {
-                    jsonParse(jsonStr, true);
-                } else {
-                    ToasShow.showToastCenter(this, getString(R.string.nonetwork));
-                }
-            } else {
-                getCustomeListData(true, page);
-            }
-
+        jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
+        if (null != jsonStr && !TextUtils.isEmpty(jsonStr)) {
+            jsonParse(jsonStr, true);
         } else {
-            if (!MyUtils.getInstance().isNetworkConnected(this)) {
-                String jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
-                if (jsonStr != null) {
-                    jsonParse(jsonStr, true);
-                } else {
-                    ToasShow.showToastCenter(this, getString(R.string.nonetwork));
-                }
-            } else {
-                getCustomeListData(true, page);
-            }
+            getCustomeListData(true, page);
         }
-        setListener();
+
+
     }
 
     private void initViews() {
@@ -138,6 +119,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
+        setListener();
 
 
     }
@@ -229,7 +211,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "20");
+        ajaxParams.put("number", "50");
         final FinalHttp fh = new FinalHttp();
         fh.get(Contants.CUSTOMER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
@@ -241,8 +223,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                         BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_HOUR);
                     }
                     jsonParse(s, b);
-                } else {
-                    ToasShow.showToastBottom(CustomeActivity.this, getString(R.string.nodata));
                 }
             }
 
@@ -262,19 +242,25 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
+
+
         if (isRefresh) {
-            if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
-                ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
+            if (SourceDateList.size() == 0) {
+                tvNofriends.setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+            } else {
+                tvNofriends.setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
             }
+
+
             // 根据a-z进行排序源数据
             Collections.sort(SourceDateList, pinyinComparator);
             adapter = new SortGroupMemberAdapter(this, "custome");
             adapter.addData(SourceDateList, lawyersData);
             listView.setAdapter(adapter);
         } else {
-            if (MyUtils.getInstance().isNetworkConnected(CustomeActivity.this)) {
-                ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-            }
             ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addMore(SourceDateList);
         }
@@ -424,7 +410,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getCustomeListData(true, page);
     }

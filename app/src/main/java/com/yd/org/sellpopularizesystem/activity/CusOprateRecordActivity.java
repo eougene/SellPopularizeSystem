@@ -104,7 +104,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         flag = bundle.getString("custocora");
         customeId = (String) bundle.get("customeId");
         initWidgets();
-        Log.e("TAG", "initView: " + customeId);
         if (flag.equals("custovisit") || flag.equals("custoreser")) {
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
@@ -546,7 +545,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                 if (isRel) {
 
-                    if (vrrb.size()==0) {
+                    if (eoiList.size()==0) {
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
@@ -811,7 +810,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 rbList = slb.getResult();
 
                 if (isRel) {
-                    if (vrrb.size() ==0) {
+                    if (rbList.size() ==0) {
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {

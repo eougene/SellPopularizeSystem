@@ -9,7 +9,7 @@ import android.widget.AdapterView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.activity.InformationContentActivity;
+import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.adapter.NotificationAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
@@ -203,11 +203,11 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     getIsSelected().put(position, holder.check_box.isChecked());
                 } else {
                     //预定推送消息
-                    Bundle bundle = new Bundle();
-                    bundle.putString("title", resultBean.getTitle());
-                    bundle.putString("notice_id", resultBean.getId() + "");
-                    bundle.putString("data", resultBean.getContent());
-                    ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("title", resultBean.getTitle());
+//                    bundle.putString("notice_id", resultBean.getId() + "");
+//                    bundle.putString("data", resultBean.getContent());
+                    ActivitySkip.forward(getActivity(), SaleRecordActivity.class);
 
                 }
             }

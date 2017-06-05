@@ -208,14 +208,13 @@ MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/e-dot/.android/buil
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/7f74d5b2df4658cf9412923515c7babeba4a875d/output/AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/ef7c2d2bb7424d437618352b6b609c46bce7c151/output/AndroidManifest.xml:26:5-20
 MERGED from [com.r0adkll:slidableactivity:2.0.5] /Users/e-dot/.android/build-cache/12dbe7a6cdd131b3568acab55409f3a4682a2cb8/output/AndroidManifest.xml:9:5-20
-MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:32:5-98:19
-MERGED from [com.github.barteksc:pdfium-android:1.4.0] /Users/e-dot/.android/build-cache/bc7a290f951ee60429b6f50d524bdcf8991c1272/output/AndroidManifest.xml:11:5-14:19
 MERGED from [com.android.support:support-v4:25.3.0] /Users/e-dot/.android/build-cache/10a78500ab51f31e60d05a4783b50343196d06a0/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.0] /Users/e-dot/.android/build-cache/522126fc67ade4f62ecf9d05abb10df1ab996a4d/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.0] /Users/e-dot/.android/build-cache/06b9d4abb925aa8f559bb48a6f565795b92374f3/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-ui:25.3.0] /Users/e-dot/.android/build-cache/e58fb4f2eb30d8557b7fb75296e49bb6ce62b62c/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.0] /Users/e-dot/.android/build-cache/24112e6bf60fe8f736e0b827beca8aabe8395f97/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.0] /Users/e-dot/.android/build-cache/a72fc728422c0256f02b1cacbe8c4c6b30718e54/output/AndroidManifest.xml:29:5-20
+MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:32:5-98:19
 	android:label
 		ADDED from /Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/AndroidManifest.xml:89:9-41
 	android:supportsRtl
@@ -613,16 +612,13 @@ MERGED from [com.android.support:appcompat-v7:25.3.0] /Users/e-dot/.android/buil
 MERGED from [com.android.support:animated-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/7f74d5b2df4658cf9412923515c7babeba4a875d/output/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:25.3.0] /Users/e-dot/.android/build-cache/ef7c2d2bb7424d437618352b6b609c46bce7c151/output/AndroidManifest.xml:20:5-43
 MERGED from [com.r0adkll:slidableactivity:2.0.5] /Users/e-dot/.android/build-cache/12dbe7a6cdd131b3568acab55409f3a4682a2cb8/output/AndroidManifest.xml:7:5-44
-MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.barteksc:android-pdf-viewer:1.4.0] /Users/e-dot/.android/build-cache/10b8850bca929e4198f97ff63a75094d79e82617/output/AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.barteksc:pdfium-android:1.4.0] /Users/e-dot/.android/build-cache/bc7a290f951ee60429b6f50d524bdcf8991c1272/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:25.3.0] /Users/e-dot/.android/build-cache/10a78500ab51f31e60d05a4783b50343196d06a0/output/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.0] /Users/e-dot/.android/build-cache/522126fc67ade4f62ecf9d05abb10df1ab996a4d/output/AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.0] /Users/e-dot/.android/build-cache/06b9d4abb925aa8f559bb48a6f565795b92374f3/output/AndroidManifest.xml:21:5-23:63
 MERGED from [com.android.support:support-core-ui:25.3.0] /Users/e-dot/.android/build-cache/e58fb4f2eb30d8557b7fb75296e49bb6ce62b62c/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.0] /Users/e-dot/.android/build-cache/24112e6bf60fe8f736e0b827beca8aabe8395f97/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.0] /Users/e-dot/.android/build-cache/a72fc728422c0256f02b1cacbe8c4c6b30718e54/output/AndroidManifest.xml:21:5-23:58
-MERGED from [io.reactivex:rxandroid:1.1.0] /Users/e-dot/.android/build-cache/bd07e8789618aa0816409360a9db1e0fd3aadbf7/output/AndroidManifest.xml:19:5-43
+MERGED from [com.getui:sdk:2.10.2.0] /Users/e-dot/.android/build-cache/741f599499a35b2408ad3099a8e09de9db586cbd/output/AndroidManifest.xml:7:5-9:41
 MERGED from [com.tencent.bugly:crashreport:2.6.0] /Users/e-dot/.android/build-cache/256344ce6c78f0d8f9f2cbcff458c3cf5cb4e738/output/AndroidManifest.xml:5:5-7:41
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.0] /Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/AndroidManifest.xml:23:9-59

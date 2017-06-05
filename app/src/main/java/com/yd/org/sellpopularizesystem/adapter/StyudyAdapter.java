@@ -99,11 +99,11 @@ public class StyudyAdapter extends BaseAdapter {
         Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.studyDisImageView);
         holder.studyTextView.setText(list.get(position).getStudy_title());
         holder.descriptionTextView.setText(list.get(position).getDescription());
-        if (list.get(position).getCan_study() == 1) {
-            holder.lockImageView.setVisibility(View.GONE);
-        } else {
-            holder.lockImageView.setVisibility(View.VISIBLE);
-        }
+//        if (list.get(position).getCan_study() == 1) {
+           holder.lockImageView.setVisibility(View.GONE);
+//        } else {
+//            holder.lockImageView.setVisibility(View.VISIBLE);
+//        }
 
 
         return convertView;
@@ -111,7 +111,7 @@ public class StyudyAdapter extends BaseAdapter {
 
     public class HolderView {
         private ImageView studyDisImageView, lockImageView;
-        private TextView studyTextView,descriptionTextView;
+        private TextView studyTextView, descriptionTextView;
         public StudyBean.ResultBean productListBean;
 
     }

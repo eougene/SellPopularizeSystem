@@ -91,7 +91,7 @@ public class HomeFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.home_fragment);
-        StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(),0,null);
+        StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(), 0, null);
         homeFragment = this;
         initWidget();
         getHomeData();
@@ -119,12 +119,12 @@ public class HomeFragment extends BaseFragmentView {
                     HomeDataBean homeDataBean = gson.fromJson(json, HomeDataBean.class);
                     if (homeDataBean.getCode() == 1) {
 
-                        tvScaleSource.setText(getString(R.string.owned_by_all)+" " + homeDataBean.getResult().getTotal_product() +" " +getString(R.string.home_01));
-                        tvNewAddSource.setText(getString(R.string.newly_increased) +" "+ homeDataBean.getResult().getNew_product() +" " + getString(R.string.home_02));
-                        tvCustomNumber.setText(getString(R.string.your_there) +" "+ homeDataBean.getResult().getTotal_customer() +" "+ getString(R.string.home_03));
-                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) +" "+ homeDataBean.getResult().getNew_customer()+" "+ getString(R.string.home_04));
-                        tvStydyDatumCount.setText(getString(R.string.owned_by_all) +" "+ homeDataBean.getResult().getTotal_study() +" "+ getString(R.string.home_05));
-
+                        tvScaleSource.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_product() + " " + getString(R.string.home_01));
+                        tvNewAddSource.setText(getString(R.string.newly_increased) + " " + homeDataBean.getResult().getNew_product() + " " + getString(R.string.home_02));
+                        tvCustomNumber.setText(getString(R.string.your_there) + " " + homeDataBean.getResult().getTotal_customer() + " " + getString(R.string.home_03));
+                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) + " " + homeDataBean.getResult().getNew_customer() + " " + getString(R.string.home_04));
+                        tvStydyDatumCount.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_study() + " " + getString(R.string.home_05));
+                        tvNotCompleteCount.setVisibility(View.INVISIBLE);
                         //如果首次进去有消息条数.则通知显示
                         if (homeDataBean.getResult().getUnread() > 0) {
 

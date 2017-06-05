@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.internal.SwipeListview;
 
 import android.content.Context;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
@@ -16,7 +15,7 @@ import com.yd.org.sellpopularizesystem.internal.Pullable;
  * @author baoyz
  * @date 2014-8-18
  */
-public class SwipeMenuListView extends ListView implements Pullable{
+public class SwipeMenuListView extends ListView implements Pullable {
 
     private static final int TOUCH_STATE_NONE = 0;
     private static final int TOUCH_STATE_X = 1;
@@ -274,7 +273,7 @@ public class SwipeMenuListView extends ListView implements Pullable{
         }
     }
 
-    public void smoothCloseMenu(){
+    public void smoothCloseMenu() {
         if (mTouchView != null && mTouchView.isOpen()) {
             mTouchView.smoothCloseMenu();
         }
@@ -307,10 +306,12 @@ public class SwipeMenuListView extends ListView implements Pullable{
         if (getCount() == 0) {
             // 没有item的时候也可以下拉刷新
             return true;
-        } else if (getFirstVisiblePosition() == 0 && getChildAt(0).getTop() >= 0) {
+        } else if (getFirstVisiblePosition() == 0) {
             // 滑到ListView的顶部了
             return true;
-        } else return false;
+        } else {
+            return false;
+        }
     }
 
     @Override

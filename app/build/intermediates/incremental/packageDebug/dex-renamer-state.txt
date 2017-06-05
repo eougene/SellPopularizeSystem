@@ -1,4 +1,4 @@
-#Mon Jun 05 09:37:12 CST 2017
+#Mon Jun 05 14:39:46 CST 2017
 base.0=/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_5b4246ccc611d9c2058d2b563263461eafe4f1d3
 renamed.1=classes2.dex
 renamed.0=classes.dex

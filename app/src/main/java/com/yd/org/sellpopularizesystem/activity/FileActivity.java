@@ -1,32 +1,23 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
-import com.github.barteksc.pdfviewer.PDFView;
-import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
-import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.FileAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.PDFUtils;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import pdfinterface.OnFileListener;
-
-public class FileActivity extends BaseActivity implements OnPageChangeListener
-        , OnLoadCompleteListener {
+public class FileActivity extends BaseActivity {
     private ListView listView;
     private ProductDetailBean.ResultBean prs;
     private List<FileContent> file_content = new ArrayList<>();
@@ -35,7 +26,7 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
 
 
     //合同
-    private PDFView pdfView;
+    private WebView pdfView;
 
 
     @Override
@@ -49,7 +40,7 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
         key = getIntent().getStringExtra("key");
         prs = (ProductDetailBean.ResultBean) getIntent().getSerializableExtra("file");
         listView = getViewById(R.id.fileListView);
-        pdfView = (PDFView) findViewById(R.id.pdfView);
+        pdfView = getViewById(R.id.pdfView);
         if (key.equals("File")) {
             setTitle(getString(R.string.file_act));
             pdfView.setVisibility(View.GONE);
@@ -59,11 +50,10 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
             fileAdapter = new FileAdapter(this, file_content);
             listView.setAdapter(fileAdapter);
         } else {
-            showDialog();
             setTitle(getString(R.string.contract));
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            displayFromFile1(Contants.DOMAIN + "/" + prs.getContract_url(), "fa_"+prs.getProduct_id()+ ".pdf");
+            MyUtils.getInstance().showWebView(FileActivity.this,pdfView,"http://dcsapi.com?k=140337680&url=" +Contants.DOMAIN + "/" + prs.getContract_url());
 
 
         }
@@ -88,54 +78,5 @@ public class FileActivity extends BaseActivity implements OnPageChangeListener
 
     }
 
-    /**
-     * 获取打开网络的pdf文件
-     *
-     * @param fileUrl
-     * @param fileName
-     */
-    private void displayFromFile1(String fileUrl, String fileName) {
 
-        try {
-            showDialog();
-            PDFUtils.fileFromLocalStorage(fileUrl, fileName, new OnFileListener() {
-                @Override
-                public void setFile(File file) {
-                    pdfView.fromUri(Uri.fromFile(file))
-                            .defaultPage(1)
-                            .onPageChange(FileActivity.this)
-                            .swipeVertical(true)
-                            .showMinimap(false)
-                            .enableAnnotationRendering(true)
-                            .onLoad(FileActivity.this)
-                            .load();
-                }
-            });
-        } catch (Exception e) {
-
-        }
-
-    }
-
-    /**
-     * 翻页回调
-     *
-     * @param page
-     * @param pageCount
-     */
-    @Override
-    public void onPageChanged(int page, int pageCount) {
-        ToasShow.showToastBottom(FileActivity.this, page +
-                "/" + pageCount);
-    }
-
-    /**
-     * 加载完成回调
-     *
-     * @param nbPages 总共的页数
-     */
-    @Override
-    public void loadComplete(int nbPages) {
-        closeDialog();
-    }
 }

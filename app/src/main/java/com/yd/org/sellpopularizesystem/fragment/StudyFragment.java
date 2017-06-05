@@ -107,11 +107,11 @@ public class StudyFragment extends BaseFragmentView implements PullToRefreshLayo
                 StyudyAdapter.HolderView holderView = (StyudyAdapter.HolderView) view.getTag();
                 StudyBean.ResultBean resultBean = holderView.productListBean;
 
-                if (resultBean.getCan_study() == 1) {
+               // if (resultBean.getCan_study() == 1) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("study", resultBean);
                     ActivitySkip.forward(getActivity(), StudyDetailaActivity.class, bundle);
-                }
+               // }
 
             }
         });
