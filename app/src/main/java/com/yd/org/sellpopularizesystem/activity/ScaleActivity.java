@@ -317,7 +317,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 ActivitySkip.forward(ScaleActivity.this, SearchActivity.class);
             }
         });*/
-        /*clickRightImageView(R.mipmap.areablack, new View.OnClickListener() {
+        clickRightImageView(R.mipmap.areablack, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
@@ -325,8 +325,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
                 overridePendingTransition(R.anim.reverse_anim, 0);
             }
-        });*/
-        hideRightImagview();
+        });
+        //hideRightImagview();
     }
 
     /**
