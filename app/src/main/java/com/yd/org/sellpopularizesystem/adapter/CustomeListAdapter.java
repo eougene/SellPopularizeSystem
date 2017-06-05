@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
@@ -24,6 +25,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -125,6 +127,12 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
             viewHolder.lvSubItem.setVisibility(View.GONE);
             viewHolder.rlViewAll.setVisibility(View.GONE);
+            viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class);
+                }
+            });
         }
         return convertView;
     }
