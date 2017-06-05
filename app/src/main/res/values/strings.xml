@@ -438,4 +438,8 @@
     <string name="binding_f">绑定失败</string>
     <string name="gettui">CRM销售系统</string>
     <string name="nomatchdata">没有符合筛选的数据</string>
+    <string name="playplatform">玩转平台</string>
+    <string name="successlaw">成功原理</string>
+    <string name="basic_konwledge">基础知识</string>
+    <string name="sales_techniques">销售秘籍</string>
 </resources>
