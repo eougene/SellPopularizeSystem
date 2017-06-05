@@ -50,7 +50,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
     @Override
     protected void initView(Bundle savedInstanceState) {
         examineFragment = this;
-        setContentView(R.layout.fragment_study);
+        setContentView(R.layout.activity_study_subitem);
         initView();
         getStudyListData(true, page);
 
