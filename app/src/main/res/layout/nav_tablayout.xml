@@ -2,34 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/white"
-              android:padding="@dimen/padding_margin_4">
+              android:background="@color/white">
 
-    <TextView
-        android:id="@+id/tvHome"
+    <LinearLayout
+        android:id="@+id/tabLinearHome"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_weight="1"
-        android:drawableTop="@drawable/nav_tabhome_selector"
-        android:gravity="center"
-        android:text="@string/homepage"
-        android:textColor="@drawable/tabtextcolor_select"
-        android:textSize="@dimen/tv_size_12"/>
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_margin_4">
+
+        <TextView
+            android:id="@+id/tvHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/nav_tabhome_selector"
+            android:gravity="center"
+            android:text="@string/homepage"
+            android:textColor="@drawable/tabtextcolor_select"
+            android:textSize="@dimen/tv_size_12"/>
+
+    </LinearLayout>
+
 
     <RelativeLayout
+        android:id="@+id/tabLinearNotific"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:paddingTop="@dimen/padding_margin_4">
 
         <TextView
             android:id="@+id/tvMessage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:drawableTop="@drawable/nav_tabmessage_selector"
-            android:gravity="center"
-            android:paddingTop="@dimen/padding_margin_4"
+            android:gravity="center_horizontal"
             android:text="@string/message"
             android:textColor="@drawable/tabtextcolor_select"
             android:textSize="@dimen/tv_size_12"
@@ -40,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="@dimen/padding_margin_35"
+            android:layout_marginRight="@dimen/padding_margin_30"
             android:background="@drawable/circle_shape"
             android:gravity="center"
             android:text="@string/_99"
@@ -49,16 +57,25 @@
 
     </RelativeLayout>
 
-
-    <TextView
-        android:id="@+id/tvSetting"
+    <LinearLayout
+        android:id="@+id/tabLinearSeeting"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_weight="1"
-        android:drawableTop="@drawable/nav_tabset_selector"
-        android:gravity="center"
-        android:paddingTop="@dimen/padding_margin_4"
-        android:text="@string/settingcenter"
-        android:textColor="@drawable/tabtextcolor_select"
-        android:textSize="@dimen/tv_size_12"/>
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_margin_4">
+
+        <TextView
+            android:id="@+id/tvSetting"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableTop="@drawable/nav_tabset_selector"
+            android:gravity="center"
+            android:text="@string/settingcenter"
+            android:textColor="@drawable/tabtextcolor_select"
+            android:textSize="@dimen/tv_size_12"/>
+
+    </LinearLayout>
+
+
 </LinearLayout>

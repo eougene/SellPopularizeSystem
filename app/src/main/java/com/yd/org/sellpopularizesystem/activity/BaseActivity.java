@@ -28,13 +28,19 @@ public abstract class BaseActivity extends AppCompatActivity {
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
     private ACache aCache;
+    private View baseView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
+
+
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
+
+        baseView = getViewById(R.id.baseView);
+
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
         llBaseLayout = getViewById(R.id.titleViewParent_ll);
@@ -58,6 +64,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void hideBaseView() {
+        baseView.setVisibility(View.GONE);
+    }
 
     public ACache getaCache() {
         return aCache;

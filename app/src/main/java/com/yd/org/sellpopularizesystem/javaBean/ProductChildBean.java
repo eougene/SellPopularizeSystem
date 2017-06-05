@@ -4,7 +4,7 @@ package com.yd.org.sellpopularizesystem.javaBean;
  * Created by hejin on 2017/3/27.
  */
 
-public class ProductChildBean extends Domine{
+public class ProductChildBean extends Domine {
 
     /**
      * product_childs_id : 29

@@ -44,6 +44,7 @@ public class LoginActivity extends BaseActivity {
     private EditText useName, usePassword;
     private ImageView loginImageView, loginWechat;
     private Class userPushService = PushService.class;
+    private String client_id = "";
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -127,12 +128,18 @@ public class LoginActivity extends BaseActivity {
             return;
 
         } else {
-            getLogin(name, password);
+            if (TextUtils.isEmpty(BaseApplication.getInstance().cid) || BaseApplication.getInstance().cid == "") {
+                client_id = PushManager.getInstance().getClientid(this);
+            } else {
+                client_id = BaseApplication.getInstance().cid;
+
+            }
+            getLogin(name, password, client_id);
         }
 
     }
 
-    private void getLogin(String name, String password) {
+    private void getLogin(String name, String password, String client_id) {
         showDialog();
         final FinalHttp fh = new FinalHttp();
         fh.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -140,7 +147,7 @@ public class LoginActivity extends BaseActivity {
         ajaxParams.put("account", name);
         ajaxParams.put("password", password);
         //个推识别码
-        ajaxParams.put("client_id", BaseApplication.mApp.cid);
+        ajaxParams.put("client_id", client_id);
         fh.post(Contants.HOME_LOGIN, ajaxParams, new AjaxCallBack<String>() {
 
             @Override

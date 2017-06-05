@@ -1,10 +1,7 @@
 package com.yd.org.sellpopularizesystem.utils;
-
 import android.support.annotation.NonNull;
-
 import com.yd.org.sellpopularizesystem.download.DownloadProgressInterceptor;
 import com.yd.org.sellpopularizesystem.download.DownloadProgressListener;
-import com.yd.org.sellpopularizesystem.service.DownloadService;
 
 import java.io.File;
 import java.io.InputStream;

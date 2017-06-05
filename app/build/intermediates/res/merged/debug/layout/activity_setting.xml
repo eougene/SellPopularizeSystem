@@ -6,13 +6,12 @@
 
     <RelativeLayout
         style="@style/MatchAuto"
-        android:layout_weight="1"
-        android:background="@color/home_scale"
-        android:clipToPadding="true"
-        android:fitsSystemWindows="true"
-        android:gravity="center">
+        android:layout_marginTop="@dimen/padding_margin_30"
+        android:layout_weight="1">
 
-        <LinearLayout style="@style/WrapWrap.Vertical">
+        <LinearLayout
+            style="@style/WrapWrap.Vertical"
+            android:layout_centerInParent="true">
 
             <com.yd.org.sellpopularizesystem.myView.CircleImageView
                 android:id="@+id/ivCustomePhoto"

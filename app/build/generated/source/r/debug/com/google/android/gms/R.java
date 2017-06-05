@@ -99,8 +99,8 @@ public final class R {
         public static final int google_play_services_version = 0x7f0c000c;
     }
     public static final class string {
-        public static final int auth_google_play_services_client_facebook_display_name = 0x7f0800e7;
-        public static final int auth_google_play_services_client_google_display_name = 0x7f0800e8;
+        public static final int auth_google_play_services_client_facebook_display_name = 0x7f0801fd;
+        public static final int auth_google_play_services_client_google_display_name = 0x7f0801fe;
         public static final int common_google_play_services_api_unavailable_text = 0x7f080013;
         public static final int common_google_play_services_enable_button = 0x7f080014;
         public static final int common_google_play_services_enable_text = 0x7f080015;

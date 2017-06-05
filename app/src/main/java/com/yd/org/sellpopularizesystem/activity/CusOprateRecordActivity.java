@@ -545,6 +545,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
                 if (isRel) {
+
+                    if (vrrb.size()==0) {
+                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.GONE);
+                    } else {
+                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                        listView.setVisibility(View.VISIBLE);
+                    }
+
                     eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
                         @Override
@@ -653,6 +662,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 vrrb = visitRecord.getResult();
 
                 if (isRel) {
+
+                    if (vrrb.size() ==0) {
+                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.GONE);
+                    } else {
+                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                        listView.setVisibility(View.VISIBLE);
+                    }
+
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                     visitAdapter = new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this, vrrb, R.layout.visit_listview_item_layout) {
                         @Override
@@ -793,6 +811,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 rbList = slb.getResult();
 
                 if (isRel) {
+                    if (vrrb.size() ==0) {
+                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                        listView.setVisibility(View.GONE);
+                    } else {
+                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                        listView.setVisibility(View.VISIBLE);
+                    }
                     subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
                         @Override
                         public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {

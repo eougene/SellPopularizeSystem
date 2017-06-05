@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -92,6 +93,11 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
         if (flag.equals("custoexpand")) {
             getExpandReData(page, false);
         } else {
+
+            //测试阶段没有数据才简单写成这样
+            getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+
             getHouseurchase(page, false);
         }
 
@@ -139,6 +145,13 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
         }
 
         if (isRefresh) {
+            if (datas.size() == 0) {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+            } else {
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+            }
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             pradapter = new PromotionRecordAdapter(PromotionRecordActivity.this);
             listView.setAdapter(pradapter);
@@ -168,6 +181,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                 closeDialog();
                 Log.e("购房记录", "s:" + s);
+
 
             }
 

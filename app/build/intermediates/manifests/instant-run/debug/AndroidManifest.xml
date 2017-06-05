@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yd.org.sellpopularizesystem"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="20170532"
+    android:versionName="1.0.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -110,18 +110,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.CustomeActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.CustomeActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.ScaleActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.LoginActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.HomeActiviyt" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.GuideActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.LearningGardenActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SettingActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.HomeActiviyt"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.GuideActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.LearningGardenActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.CustomDetailedActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity android:name="com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity" />
         <activity
@@ -134,15 +150,33 @@
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SearchActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ScalListActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.InvestigationActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ExaminationActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.GradeActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.NotificationActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.InformationContentActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SaleRecordActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.MapActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.SearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ScalListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.InvestigationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ExaminationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.GradeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.NotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.InformationContentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.SaleRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.MapActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -158,27 +192,54 @@
                 android:value="Umeng" />
         </meta-data>
 
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.MyTeamActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.ReserveActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.AskContractActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.CusOprateRecordActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.MyTeamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ProductSubItemDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ReserveActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.AskContractActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.CusOprateRecordActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.DialogOptionActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/DialogStyle"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.BuildingPlanActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.FilterActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.SelectConditionActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.LawyerAddActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.FilterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.SelectConditionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.LawyerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.LawyerAddActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.ImageShowActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <!-- 个推 -->
@@ -204,14 +265,31 @@
             android:process=":pushservice" />
 
         <!-- 个推结束 -->
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.CommissionActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.OldProjectActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.InvestigateListActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.FileActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.PDFActivity" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.CommissionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.OldProjectActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.InvestigateListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.FileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.PDFActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.WebViewActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"

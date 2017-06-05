@@ -402,7 +402,7 @@
                     android:id="@+id/tvIntroduce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_16"
+                    android:layout_marginLeft="@dimen/padding_margin_30"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/introtool"
                     android:gravity="center"

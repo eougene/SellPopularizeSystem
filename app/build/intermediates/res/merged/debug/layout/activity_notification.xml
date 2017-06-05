@@ -5,12 +5,16 @@
               android:orientation="vertical">
 
     <include
+
+        android:id="@+id/not_header_layout"
         layout="@layout/notificationhead"/>
+
 
     <FrameLayout
         android:id="@+id/main_frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
     </FrameLayout>
 
 </LinearLayout>

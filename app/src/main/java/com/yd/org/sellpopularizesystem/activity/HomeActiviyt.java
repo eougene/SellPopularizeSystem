@@ -12,7 +12,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.igexin.sdk.PushManager;
@@ -24,6 +25,7 @@ import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.Locale;
@@ -35,7 +37,13 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     private HomeFragment homeFragment;
     private NotificationFragment notificationFragment;
     private SettingFragment settingFragment;
+    private LinearLayout tabLinearHome,tabLinearSeeting;
+    private RelativeLayout tabLinearNotific;
     private Class userPushService = PushService.class;
+
+
+
+
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -76,9 +84,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         String language = locale.getLanguage();
         //选择语言
         showLanguage(language);
-        //全屏
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_home_activiyt);
         inintView();
         setSelect(0);
@@ -118,9 +123,18 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         tvSetting = (TextView) findViewById(R.id.tvSetting);
         tvMessageCount = (TextView) findViewById(R.id.tvMessageCount);
         tvMessageCount.setVisibility(View.GONE);
-        tvHome.setOnClickListener(this);
-        tvMessage.setOnClickListener(this);
-        tvSetting.setOnClickListener(this);
+
+        tabLinearHome= (LinearLayout) findViewById(R.id.tabLinearHome);
+
+        tabLinearSeeting= (LinearLayout) findViewById(R.id.tabLinearSeeting);
+
+        tabLinearNotific= (RelativeLayout) findViewById(R.id.tabLinearNotific);
+
+
+
+        tabLinearHome.setOnClickListener(this);
+        tabLinearSeeting.setOnClickListener(this);
+        tabLinearNotific.setOnClickListener(this);
     }
 
     public void setUnselected() {
@@ -134,13 +148,18 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     public void onClick(View v) {
         setUnselected();
         switch (v.getId()) {
-            case R.id.tvHome:
+            case R.id.tabLinearHome:
+                StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
                 setSelect(0);
                 break;
-            case R.id.tvMessage:
+            case R.id.tabLinearNotific:
+                StatusBarUtil.setColor(this, getResources().getColor(R.color.white), 20);
+
                 setSelect(1);
                 break;
-            case R.id.tvSetting:
+            case R.id.tabLinearSeeting:
+                StatusBarUtil.setColor(this, getResources().getColor(R.color.home_scale), 0);
+
                 setSelect(2);
                 break;
 

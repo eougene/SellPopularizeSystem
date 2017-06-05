@@ -1271,8 +1271,9 @@
     <string name="areaone">区域一</string>
     <string name="areathree">区域三</string>
     <string name="areatwo">区域二</string>
+    <string name="ask_contplay">请确认支付信息</string>
     <string name="ask_contract">请求合同</string>
-    <string name="askcontract">意向金凭证已经上传 请申请合同</string>
+    <string name="askcontract">意向金凭证已经上传\n请申请合同</string>
     <string name="askdate">预约申请</string>
     <string name="au_0_00_to_au_0_00">AU$0.00 to AU$0.00</string>
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
@@ -1283,6 +1284,7 @@
     <string name="bathroomnum">浴室套间数</string>
     <string name="bedroom">卧室</string>
     <string name="bianhao">编号</string>
+    <string name="binding_f">绑定失败</string>
     <string name="bindthreeaccount">绑定第三方账号</string>
     <string name="birthday">生日</string>
     <string name="blank_space">  </string>
@@ -1296,8 +1298,9 @@
     <string name="check">考核</string>
     <string name="check_exam">开始考试</string>
     <string name="check_results">查看成绩</string>
+    <string name="check_we">检查是否安装微信</string>
     <string name="checknum">您有0个考核未完成</string>
-    <string name="chongzhi">充值</string>
+    <string name="china">中国</string>
     <string name="chooseemailapp">请选择邮件类应用</string>
     <string name="chooseshare">选择分享方式</string>
     <string name="clear">清除</string>
@@ -1340,6 +1343,7 @@
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="company">公司</string>
+    <string name="complete_learning">完成学习</string>
     <string name="confirm_content">请确认通知单内容</string>
     <string name="confirm_pay_information">我已确认在通知单内的支付信息</string>
     <string name="contact">联系方式</string>
@@ -1358,6 +1362,7 @@
     <string name="datetime">预约时间</string>
     <string name="datetimemust">预约时间必须大于当前时间</string>
     <string name="datetimemustlarge">提醒时间必须小于预约时间且大于当前时间</string>
+    <string name="deadline">截止时间:</string>
     <string name="deadtime">销售截止日期:</string>
     <string name="delete">删除</string>
     <string name="des">描述</string>
@@ -1385,6 +1390,8 @@
     <string name="errcode_success">发送成功</string>
     <string name="errcode_unknown">发送返回</string>
     <string name="errcode_unsupported">不支持错误</string>
+    <string name="examination">题没有答完</string>
+    <string name="examination_">考核通过</string>
     <string name="expandre">推广记录</string>
     <string name="fangwu">房屋</string>
     <string name="file">文件</string>
@@ -1401,11 +1408,17 @@
     <string name="floortype">楼层类型</string>
     <string name="fore">外汇保证金:</string>
     <string name="foreignInves">海外投资</string>
+    <string name="gettui">CRM销售系统</string>
     <string name="hadsaled">已售</string>
     <string name="hashsalenum">已售数量:</string>
     <string name="headerphoto">头像</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="historyclear">历史记录已经清除</string>
+    <string name="home_01">个推广素材</string>
+    <string name="home_02">个</string>
+    <string name="home_03">位客户</string>
+    <string name="home_04">位</string>
+    <string name="home_05">个学习资料</string>
     <string name="home_custom">客户管理</string>
     <string name="home_custom_en">Customer  management</string>
     <string name="home_scale">客户推广</string>
@@ -1420,10 +1433,12 @@
     <string name="housetype">房型</string>
     <string name="housetypeimage">房型图</string>
     <string name="idcard">身份证</string>
+    <string name="individuaproject">个项目</string>
     <string name="introduce">这里是简介</string>
     <string name="inverstigation">选择客户</string>
     <string name="investigate_list">调研</string>
     <string name="investment">投资</string>
+    <string name="isno">否</string>
     <string name="issaling">在售</string>
     <string name="jieshao">介绍</string>
     <string name="jinliu">jinliu</string>
@@ -1451,6 +1466,7 @@
     <string name="moenydes">佣金/税金/合计</string>
     <string name="money">金额</string>
     <string name="moneypoint">金额:</string>
+    <string name="multiple_choice">(多选题)</string>
     <string name="mutilatequestion">(多选题)</string>
     <string name="mycommission">我的佣金</string>
     <string name="myteam">我的团队</string>
@@ -1461,6 +1477,8 @@
     <string name="new_password">新密码</string>
     <string name="new_password_ch">新密码不能为空</string>
     <string name="newadd">本周新增0个</string>
+    <string name="newly_increased">本周新增</string>
+    <string name="nin">您</string>
     <string name="no">否</string>
     <string name="no_url">No mUrl</string>
     <string name="noaccount">没有账户，请先添加账户</string>
@@ -1470,11 +1488,13 @@
     <string name="noinformation">没有相关信息</string>
     <string name="noinstallapp">没有安装应用</string>
     <string name="nolimit">不限</string>
+    <string name="nomatchdata">没有符合筛选的数据</string>
     <string name="nonetwork">当前无网络</string>
     <string name="nonullpostcode">邮编不能为空</string>
     <string name="nopay">尚未付款</string>
     <string name="nopayintent">尚未支付意向金\n请付款</string>
     <string name="noresult">没有找到合适的结果</string>
+    <string name="notic_info">消息详情</string>
     <string name="novalue">没取到值</string>
     <string name="ok">确认</string>
     <string name="old_password">原密码</string>
@@ -1485,6 +1505,7 @@
     <string name="orderfee">预订费底限:</string>
     <string name="other">其他</string>
     <string name="outsidearea">套外面积</string>
+    <string name="owned_by_all">共有</string>
     <string name="passport">护照</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
@@ -1493,6 +1514,7 @@
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="pay_method">请选择支付方式</string>
     <string name="payintentmoney">支付意向金</string>
+    <string name="payment">支付</string>
     <string name="paytype">请选择支付方式</string>
     <string name="pcd">省市区</string>
     <string name="percent">0.00%</string>
@@ -1567,6 +1589,26 @@
     <string name="sale_pro">销售推广</string>
     <string name="sale_record">销售记录</string>
     <string name="saleprice">销售价格</string>
+    <string name="saler_01">订单放弃中</string>
+    <string name="saler_02">订单已取消</string>
+    <string name="saler_03">意向金凭证已上传 " \n "  请申请合同</string>
+    <string name="saler_04">尚未支付意向金  " \n "请付款</string>
+    <string name="saler_05">合同首页已审核 " \n " 首付款凭证审核中</string>
+    <string name="saler_06">正在申请合同  " \n "请等待管理员审核</string>
+    <string name="saler_07">意向金已支付  " \n "请申请合同</string>
+    <string name="saler_08">正在申请合同  " \n "请等待管理员审核</string>
+    <string name="saler_09">请上传合同首页  " \n "请上传首付款凭证</string>
+    <string name="saler_10">合同首页审核中  " \n "请上传首付款凭证</string>
+    <string name="saler_11">合同首页已审核  " \n "请上传首付款凭证</string>
+    <string name="saler_12">合同首页已审核  " \n "首付款凭证审核中</string>
+    <string name="saler_13">准备交换合同</string>
+    <string name="saler_14">订单已完成</string>
+    <string name="saler_15">上传合同首页</string>
+    <string name="saler_16">上传首款凭证</string>
+    <string name="saler_17">正在申请合同 请等待管理员审核</string>
+    <string name="saler_18">支付意向金</string>
+    <string name="saler_19">合同首页已审核 首付款凭证审核中</string>
+    <string name="saler_20">准备交换合同</string>
     <string name="scale_search">项目名称 区域 邮政编码 地址</string>
     <string name="scale_tab_area">所在区域</string>
     <string name="scale_tab_hourse">房型</string>
@@ -1595,11 +1637,12 @@
     <string name="setting_changepassword">修改密码</string>
     <string name="setting_notice">通知</string>
     <string name="setting_notification">通知中心</string>
-    <string name="settingcenter">设置中心</string>
+    <string name="settingcenter">我</string>
     <string name="sharecancel">分享取消了</string>
     <string name="sharefail">抱歉，分享失败</string>
     <string name="sharesuccess">分享成功</string>
     <string name="single_blank_space"> </string>
+    <string name="single_choice">(单选题)</string>
     <string name="singlequestion">(单选题)</string>
     <string name="singlezero">0.0</string>
     <string name="skip">跳过</string>
@@ -1611,8 +1654,10 @@
     <string name="study">学习</string>
     <string name="submit">提交</string>
     <string name="submitfail">提交失败</string>
+    <string name="sum">共</string>
     <string name="supplier">供应商:</string>
     <string name="supplierlaw">供应商律师:</string>
+    <string name="sur">是</string>
     <string name="sure">确认修改</string>
     <string name="sure_change">两次密码不一致</string>
     <string name="sure_password">确认密码</string>
@@ -1623,6 +1668,7 @@
     <string name="telephone">电话</string>
     <string name="test">测试</string>
     <string name="theme">萨达</string>
+    <string name="this_month_newly">本月新增</string>
     <string name="thisistime">这是时间</string>
     <string name="thisistitle">这是标题</string>
     <string name="threemonth">2017/03/31</string>
@@ -1634,6 +1680,8 @@
     <string name="tit">title</string>
     <string name="title">标题</string>
     <string name="today">今天</string>
+    <string name="topic">题</string>
+    <string name="total">合计:</string>
     <string name="totalarea">总面积</string>
     <string name="totaldes">共:</string>
     <string name="totalmoney">总金额</string>
@@ -1644,7 +1692,9 @@
     <string name="unitnum">单元号</string>
     <string name="unknow">未知</string>
     <string name="unknown">未知</string>
+    <string name="unknown_">未知</string>
     <string name="unlimited">不限</string>
+    <string name="unlimited_">不限</string>
     <string name="unread">您还有0条未读信息</string>
     <string name="unsure">无法确定</string>
     <string name="update">更新</string>
@@ -1658,7 +1708,8 @@
     <string name="ver_1_0_0">Ver:1.0.0</string>
     <string name="video">视频</string>
     <string name="viewdetail">查看详情</string>
-    <string name="visit">拜访</string>
+    <string name="visit">拜访记录</string>
+    <string name="vp">视频介绍</string>
     <string name="wechatpay">微信</string>
     <string name="weixincircle">微信朋友圈</string>
     <string name="weixinfriends">微信好友</string>
@@ -1666,7 +1717,9 @@
     <string name="yes">是</string>
     <string name="yesorno">对错</string>
     <string name="yesornoquestion">(是非题)</string>
+    <string name="your_there">您有</string>
     <string name="yuyue">预约</string>
+    <string name="yuyuerecord">预约记录</string>
     <string name="zero">0题</string>
     <string name="zerocheck">您有0个考核未完成</string>
     <string name="zerocus">您有0位客户</string>
@@ -1707,6 +1760,7 @@
         <item name="android:windowAnimationStyle">@style/default_animation</item>
         <item name="windowNoTitle">true</item>
         <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
 
     </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

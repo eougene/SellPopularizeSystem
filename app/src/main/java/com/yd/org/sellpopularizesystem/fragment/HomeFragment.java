@@ -24,6 +24,7 @@ import com.yd.org.sellpopularizesystem.myView.Gradient;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BadgeUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -90,6 +91,7 @@ public class HomeFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.home_fragment);
+        StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(),0,null);
         homeFragment = this;
         initWidget();
         getHomeData();

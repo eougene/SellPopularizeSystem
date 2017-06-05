@@ -12,6 +12,7 @@ import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 /**
  * Created by hejin on 2017/4/10.
@@ -254,13 +255,16 @@ public class NotificationFragment extends BaseFragmentView {
     protected void initView(Bundle savedInstanceState) {
         notificationFragment = this;
         setContentView(R.layout.activity_notification);
+
+        int color = getResources().getColor(R.color.white);
+        StatusBarUtil.setColor(getActivity(), color,20);
+
         startGeTui();
         initWedget();
         //第一次初始化首页默认显示第一个fragment
         initFragment1(cate_id);
     }
 
-    
 
     //启动个推服务
     private void startGeTui() {

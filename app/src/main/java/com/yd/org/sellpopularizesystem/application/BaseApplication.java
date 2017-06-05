@@ -19,8 +19,6 @@ import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
-import com.yd.org.sellpopularizesystem.getui.IntentService;
-import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
@@ -36,15 +34,9 @@ public class BaseApplication extends Application {
     private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
-
-
-    //个推开始
-    // private static DemoHandler handler;
-    /**
-     * 应用未启动, 个推 service已经被唤醒,保存在该时间段内离线消息(此时 GetuiSdkDemoActivity.tLogView == null)
-     */
-    public String cid;
+    public String cid="";
     private static MainHandler handler;
+
 
     //个推结束
     public BaseApplication() {
@@ -79,9 +71,6 @@ public class BaseApplication extends Application {
         return aCache;
     }
 
-    public void setaCache(ACache aCache) {
-        this.aCache = aCache;
-    }
 
     @Override
     public void onCreate() {
@@ -143,7 +132,6 @@ public class BaseApplication extends Application {
                     HomeActiviyt.homeActiviyt.showToasHandler.sendMessage(message);
                     //更新数据
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
-
                     break;
 
                 case 1:

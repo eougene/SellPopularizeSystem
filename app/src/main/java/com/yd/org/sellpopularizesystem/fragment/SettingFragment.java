@@ -28,6 +28,7 @@ import com.yd.org.sellpopularizesystem.myView.BindAcountPopupWindow;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
@@ -152,7 +153,7 @@ public class SettingFragment extends BaseFragmentView {
 
         @Override
         public void onCancel(SHARE_MEDIA platform, int action) {
-           // ToasShow.showToastBottom(getActivity(), "已取消授权");
+            // ToasShow.showToastBottom(getActivity(), "已取消授权");
         }
     };
 
@@ -239,6 +240,9 @@ public class SettingFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_setting);
+        int color = getResources().getColor(R.color.home_scale);
+        StatusBarUtil.setColor(getActivity(), color, 0);
+
         initWidget();
     }
 
@@ -253,7 +257,7 @@ public class SettingFragment extends BaseFragmentView {
         bindAccountRel = getViewById(R.id.bindAccountRel);
         rlSaleRecord = getViewById(R.id.saleRecord);
         tvUserName = getViewById(R.id.tvCustomeName);
-        tvUserName.setText(SharedPreferencesHelps.getSurName() + SharedPreferencesHelps.getFirstName());
+        tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         //settiing_noticTv = getViewById(R.id.settiing_noticTv);
         cancelLoginTv = getViewById(R.id.cancelLoginTv);
         versionTv = getViewById(R.id.versionTv);

@@ -14,14 +14,13 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/search_edit_bac"/>
+        android:layout_height="0.5dp"
+        android:background="@color/gray"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
         <include layout="@layout/nav_tablayout"/>
     </LinearLayout>

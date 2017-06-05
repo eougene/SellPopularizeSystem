@@ -116,6 +116,13 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
         if (isRefresh) {
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+            if (datas.size() ==0) {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+            } else {
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+            }
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }

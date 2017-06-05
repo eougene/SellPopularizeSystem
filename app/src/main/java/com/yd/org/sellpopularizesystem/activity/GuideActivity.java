@@ -35,6 +35,7 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     @Override
     public void initView() {
         hideBaseTab();
+        hideBaseView();
         views = new ArrayList<>();
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         // 初始化引导图片列表
