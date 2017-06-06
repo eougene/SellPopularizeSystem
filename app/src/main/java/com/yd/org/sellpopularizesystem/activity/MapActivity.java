@@ -21,10 +21,13 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
+import com.baidu.mapapi.map.MapStatusUpdate;
+import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +45,9 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     private TextView tvDes;
     private List<ProductListBean.ResultBean> productData=new ArrayList<>();
     BitmapDescriptor bd= BitmapDescriptorFactory.fromResource(R.drawable.icon_gcoding);
+    private ImageView ivPhoto;
+    private String proName;
+    private int proId;
 
     private BitmapDescriptor getBitmapDescriptor(int i) {
         tvDes.setText( productData.get(i).getProduct_name());
@@ -127,6 +133,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
 
     @Override
     public void setListener() {
+        //右上角图标点击
         clickRightImageView(R.mipmap.maplist, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -161,7 +168,21 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
 
     @Override
     public void onClick(View v) {
+        if (proName!=null){
+            for (int i = 0; i <productData.size() ; i++) {
+               String productName = productData.get(i).getProduct_name();
+                if(productName.equals(proName)){
+                    proId=productData.get(i).getProduct_id();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("productId",proId+"");
+                    bundle.putString("title",proName);
+                    bundle.putString("pidatopsla","maptopsla");
+                    Log.e("bundle", "onClick: "+proId+proName);
+                    ActivitySkip.forward(MapActivity.this,ProductSubunitListActivity.class,bundle);
+                }
+            }
 
+        }
     }
 
     /**
@@ -171,6 +192,8 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     public View getInfoWindow(Marker marker) {
         View infoWindow = getLayoutInflater().inflate(
                 R.layout.custom_info_window, null);
+        ivPhoto = (ImageView) infoWindow.findViewById(R.id.badge);
+        ivPhoto.setOnClickListener(this);
         render(marker, infoWindow);
         return infoWindow;
     }
@@ -179,7 +202,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         ImageView iv= (ImageView) view.findViewById(R.id.badge);
         for (int i = 0; i <productData.size(); i++) {
             if (marker.getTitle().equals(productData.get(i).getProduct_name())){
-                Picasso.with(MapActivity.this).load(Contants.DOMAIN +"/"+productData.get(i).getThumb()).resize(10,10).into(iv);
+                Picasso.with(MapActivity.this).load(Contants.DOMAIN +"/"+productData.get(i).getThumb()).resize(100,100).into(iv);
             }
         }
         String title = marker.getTitle();
@@ -215,6 +238,8 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     public View getInfoContents(Marker marker) {
         View infoContent = getLayoutInflater().inflate(
                 R.layout.custom_info_contents, null);
+        ivPhoto= (ImageView) infoContent.findViewById(R.id.badge);
+        ivPhoto.setOnClickListener(this);
         render(marker, infoContent);
         return infoContent;
     }
@@ -233,15 +258,19 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     @Override
     public void onMapLoaded() {
         // 设置所有maker显示在当前可视区域地图中
-        LatLngBounds bounds = new LatLngBounds.Builder().build();
+        LatLngBounds.Builder bounds = new LatLngBounds.Builder();
                 /*.include(Constants.XIAN).include(Constants.CHENGDU)
                 .include(latlng).include(Constants.ZHENGZHOU).include(Constants.BEIJING).build();*/
         for (int i = 0; i < productData.size(); i++) {
             LatLng lat=new LatLng(productData.get(i).getLatitude(),productData.get(i).getLongitude());
-            bounds.including(lat);
+            bounds=bounds.include(lat);
         }
-        aMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 10));
+        LatLngBounds latlngBounds = bounds.build();
+        //MapStatusUpdate mapStatusUpdate= MapStatusUpdateFactory.newLatLngBounds();
+        aMap.moveCamera(CameraUpdateFactory.newLatLngBounds(latlngBounds, 10));
+        aMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-33.86759, 151.2088),13));
         aMap.invalidate();// 刷新地图
+
     }
 
     /**
@@ -249,6 +278,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
      */
     @Override
     public boolean onMarkerClick(Marker marker) {
+        proName = marker.getTitle();
         return false;
     }
 

@@ -91,12 +91,12 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     private void openShareDialog() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW,
-                    Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
-            ActivityCompat.requestPermissions(this, mPermissionList, 123);
+        if(Build.VERSION.SDK_INT>=23){
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,
+             Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE,
+             Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
+           // ActivityCompat.requestPermissions(this,mPermissionList,123);
         }
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
@@ -192,35 +192,31 @@ public class ProductItemDetailActivity extends BaseActivity {
             @Override
             public void onSuccess(String s) {
                 closeDialog();
-                if (s != null) {
-
-
-                    Gson gson = new Gson();
-                    ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
-                    if (pdb.getCode().equals("1")) {
-                        prs = pdb.getResult();
-                        BaseApplication.getInstance().setPrs(prs);
-                        //轮播控件适配器
-                        rpv.setAdapter(new NormalAdapter(rpv));
-                        tvId.setText(prs.getProduct_id() + "");
-                        tvProdes.setText(prs.getDescription());
-                        tvIsSalingNum.setText(prs.getSell_number() + "");
-                        tvHasSaledNum.setText(prs.getSign_number() + "");
-                        tvFirbNum.setText(prs.getFirb_number() + "");
-                        tvEoiTime.setText(prs.getEoi_open_time() + "");
-                        tvSaleDeadTime.setText(prs.getStop_sales_time() + "");
-                        tvCloseDate.setText(prs.getSettlement_time() + "");
-                        tvMemo.setText(prs.getPreview_memo());
-                        tvProjectPro.setText(prs.getProduct_type());
-                        tvSupplier.setText(prs.getVendor());
-                        tvLawyer.setText(prs.getVendor_lawyer());
-                        tvBuilder.setText(prs.getBuilder());
-                        tvDespositHolder.setText(prs.getDesposit_holder());
-                        tvForeignMoney.setText(prs.getExchange_deposit());
-                        tvCashDesposit.setText(prs.getFirb_exchange_deposit());
-                        tvSubscription.setText(prs.getMin_reservation_fee());
-                        controlColor();
-                    }
+                Gson gson = new Gson();
+                ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
+                if (pdb.getCode().equals("1")) {
+                    prs = pdb.getResult();
+                    BaseApplication.getInstance().setPrs(prs);
+                    //轮播控件适配器
+                    rpv.setAdapter(new NormalAdapter(rpv));
+                    tvId.setText(prs.getProduct_id() + "");
+                    tvProdes.setText(prs.getDescription());
+                    tvIsSalingNum.setText(prs.getSell_number() + "");
+                    tvHasSaledNum.setText(prs.getSign_number() + "");
+                    tvFirbNum.setText(prs.getFirb_number() + "");
+                    tvEoiTime.setText(prs.getEoi_open_time() + "");
+                    tvSaleDeadTime.setText(prs.getStop_sales_time() + "");
+                    tvCloseDate.setText(prs.getSettlement_time() + "");
+                    tvMemo.setText(prs.getPreview_memo());
+                    tvProjectPro.setText(prs.getProduct_type());
+                    tvSupplier.setText(prs.getVendor());
+                    tvLawyer.setText(prs.getVendor_lawyer());
+                    tvBuilder.setText(prs.getBuilder());
+                    tvDespositHolder.setText(prs.getDesposit_holder());
+                    tvForeignMoney.setText(prs.getExchange_deposit());
+                    tvCashDesposit.setText(prs.getFirb_exchange_deposit());
+                    tvSubscription.setText(prs.getMin_reservation_fee());
+                    controlColor();
                 }
             }
 

@@ -85,7 +85,13 @@ public class ProductSubunitListActivity extends BaseActivity {
         product_id = (String) bundle.get("productId");
         flag = (String) bundle.get("pidatopsla");
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
+        if (flag != null && flag.equals("maptopsla")){
+            string = (String) bundle.get("title");
+            setTitle(string);
+            getListData();
+        }
         if (prs == null) {
+            //获取产品详情
             getItemProductDetail();
         }
         if (flag != null && flag.equals("pidatopsla")) {
