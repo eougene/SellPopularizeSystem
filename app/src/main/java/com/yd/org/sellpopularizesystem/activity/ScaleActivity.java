@@ -1,16 +1,20 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -44,6 +48,7 @@ import java.util.Vector;
  * 销售推广
  */
 public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
+    protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
     private LinearLayout scaleLL;
     private GridView scaleGridView;
@@ -147,6 +152,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     ActivitySkip.forward(ScaleActivity.this, FilterActivity.class);
                     overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;
+
+                //返回按钮
+                case R.id.backLinearLayout:
+                    showAlertDialog();
+                    break;
             }
         }
     };
@@ -203,6 +213,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void initView() {
+        backLinearLayou = getViewById(R.id.backLinearLayout);
+        backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
         btScaleSearch = getViewById(R.id.btScaleSearch);
         tvProjectNum = getViewById(R.id.tvProjectNum);
@@ -518,5 +530,28 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         bundle.putString("productId", str2 == null ? "" : str2);
         ActivitySkip.forward(ScaleActivity.this, cls, bundle);
         ;
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(scaleActivity)
+                .setMessage(R.string.exit_scale)
+                .setPositiveButton(R.string.cancel, null)
+                .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).create().show();
+    }
+
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            showAlertDialog();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
     }
 }

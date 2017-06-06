@@ -37,6 +37,7 @@ public class AskContractActivity extends BaseActivity {
         setTitle(getString(R.string.ask_contract));
         hideRightImagview();
         Bundle bundle = getIntent().getExtras();
+
         orderId = bundle.getString("orderId");
         price = bundle.getString("price");
         sale_advice_url = bundle.getString("sale_advice_url");

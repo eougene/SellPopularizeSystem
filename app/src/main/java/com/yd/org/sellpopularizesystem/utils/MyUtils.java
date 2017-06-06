@@ -1006,6 +1006,7 @@ public class MyUtils {
         webSettings.setJavaScriptCanOpenWindowsAutomatically(true); //支持通过JS打开新窗口
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
+        webSettings.setDomStorageEnabled(true);
         view.setWebViewClient(new WebViewClientBase(activity));
         view.loadUrl(url);
 

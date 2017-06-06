@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -24,14 +25,16 @@ public class PDFActivity extends BaseActivity {
         pdfView = getViewById(R.id.pdfView);
         Bundle bundle = getIntent().getExtras();
         orderId = bundle.getString("orderId");
+        sale_advice_url = bundle.getString("sale_advice_url");
 
+        Log.e("","");
         if (orderId == null || sale_advice_url == null) {
             fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
             setTitle(fileContent.getDetail_name());
             MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + Contants.DOMAIN + "/" + fileContent.getUrl());
 
         } else {
-            sale_advice_url = bundle.getString("sale_advice_url");
+
             setTitle(getString(R.string.sale_notice));
             MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + sale_advice_url);
 

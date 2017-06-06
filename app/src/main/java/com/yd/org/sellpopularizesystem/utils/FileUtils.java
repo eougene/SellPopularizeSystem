@@ -9,9 +9,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.util.Log;
 import android.view.View;
-
-import com.android.volley.toolbox.ImageLoader;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;

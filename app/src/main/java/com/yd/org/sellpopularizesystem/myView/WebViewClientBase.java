@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.myView;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.net.http.SslError;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -12,12 +14,16 @@ import com.yd.org.sellpopularizesystem.R;
  */
 
 public class WebViewClientBase extends WebViewClient {
-    private Activity activitys;
     private CustomProgressDialog loading_Dialog;
 
+    @Override
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+        handler.proceed();  // 接受所有网站的证书
+        super.onReceivedSslError(view, handler, error);
+    }
+
     public WebViewClientBase(Activity activity) {
-        this.activitys = activity;
-        loading_Dialog = new CustomProgressDialog(activitys, R.style.customLoadDialog);
+        loading_Dialog = new CustomProgressDialog(activity, R.style.customLoadDialog);
 
     }
 
@@ -27,6 +33,7 @@ public class WebViewClientBase extends WebViewClient {
         view.loadUrl(url);
         return true;
     }
+
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);

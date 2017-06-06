@@ -5,7 +5,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
@@ -151,10 +150,10 @@ public class LearningGardenActivity extends FragmentActivity {
         if (type == 0) {
             studyRadion.setChecked(true);
             checkRadion.setChecked(false);
-            studyView.setBackgroundColor(ContextCompat.getColor(this,R.color.home_custom));
-            checkView.setBackgroundColor(ContextCompat.getColor(this,R.color.gray));
-            studyRadion.setTextColor(ContextCompat.getColor(this,R.color.home_custom));
-            checkRadion.setTextColor(ContextCompat.getColor(this,R.color.gray));
+            studyView.setBackgroundColor(getResources().getColor(R.color.home_custom));
+            checkView.setBackgroundColor(getResources().getColor(R.color.gray));
+            studyRadion.setTextColor(getResources().getColor(R.color.home_custom));
+            checkRadion.setTextColor(getResources().getColor(R.color.gray));
 
         } else {
             studyRadion.setChecked(false);

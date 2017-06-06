@@ -44,7 +44,8 @@ public class Contants {
     //获取我的团队列表
     public static final String TEAM_LIST = DOMAIN + "/index.php/appv2/user/my_team_users";
     //获取学习列表
-    public static final String STUDY_LIST = DOMAIN + "/index.php/app/study/study_list";
+    //public static final String STUDY_LIST = DOMAIN + "/index.php/app/study/study_list";
+    public static final String STUDY_LIST = DOMAIN + "/index.php/appv2/study/study_list";
     //获取学习完成反馈
     public static final String STUDY_COMPLETE = DOMAIN + "/index.php/app/study/study_complete";
     //获取试卷详情

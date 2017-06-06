@@ -1,17 +1,10 @@
 package com.yd.org.sellpopularizesystem.application;
 
 import android.app.Application;
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
-import com.baidu.mapapi.SDKInitializer;
 import com.igexin.sdk.PushManager;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.socialize.Config;
@@ -30,7 +23,6 @@ import com.yd.org.sellpopularizesystem.utils.ACache;
 
 public class BaseApplication extends Application {
     public static BaseApplication mApp;
-    private RequestQueue queue;
     private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
@@ -43,13 +35,6 @@ public class BaseApplication extends Application {
         mApp = this;
     }
 
-    public RequestQueue getQueue() {
-        return queue;
-    }
-
-    public void setQueue(RequestQueue queue) {
-        this.queue = queue;
-    }
 
     public CustomBean.ResultBean getResultBean() {
         return resultBean;
@@ -79,31 +64,14 @@ public class BaseApplication extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "ea61d4b40a", false);
         //获取设备的cid,用于绑定账号用
         cid = PushManager.getInstance().getClientid(this);
-
         Log.e("cid**", "cid:" + cid);
-
-
         //设置友盟
         Config.DEBUG = false;
         UMShareAPI.get(this);
-
-        //初始化Volley
-        queue = Volley.newRequestQueue(mApp);
-
+        //微信
         PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
-        SDKInitializer.initialize(this);
+        //缓存
         aCache = ACache.get(this);
-
-        //百度sdk
-        bindService(new Intent(this, com.baidu.location.f.class), new ServiceConnection() {
-            @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-            }
-
-            @Override
-            public void onServiceDisconnected(ComponentName name) {
-            }
-        }, this.BIND_AUTO_CREATE);
 
         if (handler == null) {
             handler = new MainHandler();

@@ -65,7 +65,7 @@ public class PhotoViewFragment extends BaseFragmentView {
 
     private void init() {
         Log.e("图片地址**", "url:" + url);
-        Picasso.with(getContext()).load(url).into(photoIm);
+        Picasso.with(getActivity()).load(url).into(photoIm);
 
     }
 

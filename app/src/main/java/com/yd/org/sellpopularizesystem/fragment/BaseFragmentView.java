@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -23,12 +22,7 @@ public abstract class BaseFragmentView extends Fragment {
     protected boolean mIsLoadedData = false;
     private CustomProgressDialog loading_Dialog;
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        TAG = this.getClass().getSimpleName();
 
-    }
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {

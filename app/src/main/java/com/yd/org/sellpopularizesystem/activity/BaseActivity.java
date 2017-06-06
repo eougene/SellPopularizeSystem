@@ -185,7 +185,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             finish();
-            overridePendingTransition(0, R.anim.left_to_right_out);
         }
     };
 

@@ -40,7 +40,7 @@ public class StyudyAdapter extends BaseAdapter {
      */
     @Override
     public int getCount() {
-        return list != null ? list.size() : 0;
+        return list.size();
     }
 
 
