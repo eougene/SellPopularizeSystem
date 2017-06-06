@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
             android:id="@+id/ivFloorImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitXY"/>
 
         <TextView
             android:id="@+id/tvTitleName"
@@ -25,6 +25,6 @@
             android:paddingBottom="@dimen/padding_margin_4"
             android:paddingTop="@dimen/padding_margin_4"
             android:text="@string/thisistitle"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"/>
     </RelativeLayout>
 </LinearLayout>

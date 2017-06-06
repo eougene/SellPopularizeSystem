@@ -2,8 +2,6 @@
     style="@style/MatchMatch"
     android:background="@color/white"
     android:orientation="vertical">
-
-    <!-- <include layout="@layout/base_listview" />-->
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -22,7 +20,7 @@
                 <TextView
                     android:id="@+id/tvPlayPlatform"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="165dp"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:layout_marginRight="@dimen/padding_margin_2"
                     android:layout_marginTop="@dimen/padding_margin_4"
@@ -35,7 +33,7 @@
                 <TextView
                     android:id="@+id/tvSuccess"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="165dp"
                     android:layout_marginLeft="@dimen/padding_margin_2"
                     android:layout_marginRight="@dimen/padding_margin_4"
                     android:layout_marginTop="@dimen/padding_margin_4"
@@ -54,7 +52,7 @@
                 <TextView
                     android:id="@+id/tvBasic"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="165dp"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:layout_marginRight="@dimen/padding_margin_2"
                     android:layout_marginTop="@dimen/padding_margin_4"
@@ -67,7 +65,7 @@
                 <TextView
                     android:id="@+id/tvSaleTec"
                     android:layout_width="0dp"
-                    android:layout_height="150dp"
+                    android:layout_height="165dp"
                     android:layout_marginLeft="@dimen/padding_margin_2"
                     android:layout_marginRight="@dimen/padding_margin_4"
                     android:layout_marginTop="@dimen/padding_margin_4"
@@ -81,7 +79,7 @@
             <TextView
                 android:id="@+id/tvProject"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="165dp"
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:layout_marginRight="@dimen/padding_margin_4"
                 android:layout_marginTop="@dimen/padding_margin_4"

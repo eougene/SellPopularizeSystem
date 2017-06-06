@@ -442,4 +442,5 @@
     <string name="successlaw">成功原理</string>
     <string name="basic_konwledge">基础知识</string>
     <string name="sales_techniques">销售秘籍</string>
+    <string name="exit_scale">确认要结束推广吗?</string>
 </resources>
