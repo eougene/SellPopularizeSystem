@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.fragment.SettingFragment;
@@ -28,6 +29,10 @@ import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
+import net.tsz.afinal.FinalHttp;
+import net.tsz.afinal.http.AjaxCallBack;
+import net.tsz.afinal.http.AjaxParams;
+
 import java.util.Locale;
 
 public class HomeActiviyt extends FragmentActivity implements View.OnClickListener {
@@ -37,11 +42,9 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     private HomeFragment homeFragment;
     private NotificationFragment notificationFragment;
     private SettingFragment settingFragment;
-    private LinearLayout tabLinearHome,tabLinearSeeting;
+    private LinearLayout tabLinearHome, tabLinearSeeting;
     private RelativeLayout tabLinearNotific;
     private Class userPushService = PushService.class;
-
-
 
 
     public Handler handler = new Handler() {
@@ -71,6 +74,17 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
             super.handleMessage(msg);
             String mess = (String) msg.obj;
             showToas(mess);
+
+        }
+    };
+
+    public Handler recordHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0x001) {
+                addRecord();
+            }
 
         }
     };
@@ -124,12 +138,11 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         tvMessageCount = (TextView) findViewById(R.id.tvMessageCount);
         tvMessageCount.setVisibility(View.GONE);
 
-        tabLinearHome= (LinearLayout) findViewById(R.id.tabLinearHome);
+        tabLinearHome = (LinearLayout) findViewById(R.id.tabLinearHome);
 
-        tabLinearSeeting= (LinearLayout) findViewById(R.id.tabLinearSeeting);
+        tabLinearSeeting = (LinearLayout) findViewById(R.id.tabLinearSeeting);
 
-        tabLinearNotific= (RelativeLayout) findViewById(R.id.tabLinearNotific);
-
+        tabLinearNotific = (RelativeLayout) findViewById(R.id.tabLinearNotific);
 
 
         tabLinearHome.setOnClickListener(this);
@@ -261,5 +274,23 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
 
     }
 
+
+    private void addRecord() {
+
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("data", SharedPreferencesHelps.getData());
+        finalHttp.post(Contants.ADD_SALE_LOG, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                Log.e("onSuccess", "s:" + s);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                Log.e("errorNo", "errorNo:" + errorNo);
+            }
+        });
+    }
 
 }

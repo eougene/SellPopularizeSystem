@@ -16,7 +16,7 @@ public class Contants {
     //登录
     public static final String HOME_LOGIN = DOMAIN + "/index.php/app/login/index";
     //微信登录
-   // public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/app/login/third_login";
+    // public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/app/login/third_login";
     public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/appv2/login/third_login";
     //修改密码
     public static final String CHANGE_PASSWORD = DOMAIN + "/index.php/app/user/user_setpassword";
@@ -128,6 +128,12 @@ public class Contants {
 
     //推广列表
     public static final String SALE_LOG_LIST = DOMAIN + "/index.php/appv2/product/sale_log_list";
+
+
+    //推广记录
+    public static final String ADD_SALE_LOG = DOMAIN + "/index.php/appv2/product/add_sale_log";
+
+
     //购房记录
     public static final String ORDER_LIST = "/index.php/appv2/order/order_list";
     //eoi充值
@@ -150,6 +156,6 @@ public class Contants {
     public static final String WEXIN_APP_ID = "wxaaa583d7b2f02dc3";
     public static final String WEXIN_APP_SECRET = "856425a0db943831154d248d32c761c2";
     public static final String WEXIN_URL_STRING = "https://api.weixin.qq.com/sns/oauth2/access_token";
-    public static final String BINDING_THIRD= DOMAIN+"/index.php/appv2/login/binding_third";
+    public static final String BINDING_THIRD = DOMAIN + "/index.php/appv2/login/binding_third";
 
 }

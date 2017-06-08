@@ -171,4 +171,37 @@ public class SharedPreferencesHelps {
     public synchronized static final String getOpenId() {
         return getPreferences().getString(ExtraName.OPENID, "null");
     }
+
+    /**
+     * 保存推广记录
+     */
+
+
+    public synchronized static final void setData(String data) {
+        getPreferences().edit().putString("data", data).commit();
+    }
+
+    public synchronized static final void clearData() {
+        getPreferences().edit().remove("data").commit();
+    }
+
+    public synchronized static final String getData() {
+        return getPreferences().getString("data", "null");
+    }
+
+
+    /**
+     * 保存推广时间戳
+     */
+    public synchronized static final void setTime(String time) {
+        getPreferences().edit().putString("time", time).commit();
+    }
+
+    public synchronized static final void clearTime() {
+        getPreferences().edit().remove("time").commit();
+    }
+
+    public synchronized static final String getTime() {
+        return getPreferences().getString("time", "null");
+    }
 }

@@ -14,7 +14,7 @@ import com.igexin.sdk.PushManager;
 import com.igexin.sdk.message.GTCmdMessage;
 import com.igexin.sdk.message.GTTransmitMessage;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
+import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 
 /**
@@ -103,7 +103,7 @@ public class IntentService extends GTIntentService {
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);//设置通知的方式，震动、LED灯、音乐等
         builder.setAutoCancel(true);//点击通知后，状态栏自动删除通知
         builder.setSmallIcon(R.mipmap.notification);//设置小图标
-        builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, HomeActiviyt.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
+        builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, SaleRecordActivity.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
         Notification notification = builder.build();
         //发送通知
         notificationManager.notify(0x101, notification);

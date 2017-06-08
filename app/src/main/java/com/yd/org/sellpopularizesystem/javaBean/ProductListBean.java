@@ -55,6 +55,7 @@ public class ProductListBean extends Domine {
 
     public static class ResultBean implements Serializable {
 
+
         /**
          * cate_name :
          * product_id : 9
@@ -119,7 +120,6 @@ public class ProductListBean extends Domine {
          * product_name : 好房不等人，快来抢房啦
          * description : null
          */
-
         private String cate_name;
         private int product_id;
         private int company_id;
@@ -189,7 +189,7 @@ public class ProductListBean extends Domine {
         private int up_admin;
         private int sell_number;
         private int sign_number;
-        private  String share_url;
+        private String share_url;
         private int status;
         private String product_name;
         private Object description;

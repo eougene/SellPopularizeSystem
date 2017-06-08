@@ -99,9 +99,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/ActivtyTheme" >
-        <meta-data
+
+        <!--
+            <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="3XChLmpeetI7hA0vunMEozM4TTUDfBZZ" />
+        -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="a7b0249d16ed843bfc62d915c4d9d421" />
 
         <activity android:name="com.yd.org.sellpopularizesystem.activity.StartActivity" >
             <intent-filter>
@@ -240,7 +246,7 @@
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.ImageShowActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/DialogStyle" />
 
         <!-- 个推 -->
         <meta-data
@@ -289,7 +295,7 @@
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.WebViewActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.StudySubitemActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"

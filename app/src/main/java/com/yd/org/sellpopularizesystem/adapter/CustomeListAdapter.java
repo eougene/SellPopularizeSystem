@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +20,14 @@ import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
@@ -92,13 +93,12 @@ public class CustomeListAdapter extends BaseAdapter {
         viewHolder.productListBean = list.get(position);
 
         if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
-            if (ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) != null) {
-                viewHolder.prductImageView.setImageBitmap(ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()));
+            if (BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) != null) {
+                viewHolder.prductImageView.setImageBitmap(BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()));
             } else {
                 ToasShow.showToastCenter(mContext, mContext.getString(R.string.network_error));
             }
         } else {
-
             Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).transform(new CropSquareTransformation(position)).into(viewHolder.prductImageView);
         }
 
@@ -119,7 +119,6 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
-                    //Log.e("position***", "position:" + positions);
                     ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
                 }
             });
@@ -150,10 +149,8 @@ public class CustomeListAdapter extends BaseAdapter {
 
         @Override
         public Bitmap transform(Bitmap source) {
-            Log.e("source**", position + "position:" + source);
-
-            if (isBoolean && ScaleActivity.scaleActivity.aCache.getAsBitmap(list.get(position).getThumb()) == null) {
-                ScaleActivity.scaleActivity.aCache.put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
+            if (isBoolean && BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) == null) {
+                BaseApplication.getInstance().getaCache().put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
             }
             return source;
         }
@@ -191,9 +188,11 @@ public class CustomeListAdapter extends BaseAdapter {
         }
     }
 
+
+
     public class ViewHolder {
         private ImageView prductImageView, ivLockImageView;
-        private TextView productName, productDescription;
+        private TextView productName;
         private ListView lvSubItem;
         private RelativeLayout rlViewAll;
         public ProductListBean.ResultBean productListBean;

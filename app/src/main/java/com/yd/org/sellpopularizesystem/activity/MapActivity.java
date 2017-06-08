@@ -21,8 +21,6 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.baidu.mapapi.map.MapStatusUpdate;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;

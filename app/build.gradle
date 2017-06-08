@@ -11,6 +11,8 @@ android {
         versionCode 20170532
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        //个推配置文件
         manifestPlaceholders = [
                 GETUI_APP_ID    : "vyh75woAJs5tv7iz3fHoh4",
                 GETUI_APP_KEY   : "nvFs64bF0a9AfmMzlfP2r5",
@@ -59,13 +61,14 @@ dependencies {
     //图片缩放
     compile files('libs/photoView.jar')
     compile files('libs/SocialSDK_WeiXin_Full.jar')
-    compile files('libs/umeng_social_api.jar')
-    compile files('libs/umeng_social_tool.jar')
-    compile files('libs/umeng_shareboard_widget.jar')
-    compile files('libs/umeng_social_net.jar')
-    compile files('libs/umeng_social_shareboard.jar')
     compile files('libs/SocialSDK_WeChat_Simplify.jar')
     compile files('libs/SocialSDK_facebook.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_shareview.jar')
+    compile files('libs/umeng_social_tool.jar')
     compile 'com.android.support:support-v4:25.1.0'
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.squareup.picasso:picasso:2.3.2'
@@ -74,7 +77,6 @@ dependencies {
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'eu.the4thfloor.volley:com.android.volley:2015.05.28'
     compile 'com.android.support:design:25.3.0'
     compile 'com.github.davidpizarro:pickerui:1.0.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'

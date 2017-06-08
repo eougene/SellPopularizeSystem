@@ -104,12 +104,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_facebook.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/add.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/add.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/acreagebt.png",
@@ -260,12 +260,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/xinghao.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/floorstool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/floorstool.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downgray.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downgray.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/floorstool.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/floorstool.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageblue.png",

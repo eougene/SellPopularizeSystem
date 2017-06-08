@@ -8,16 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!--<ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/apartment"
-             android:layout_centerInParent="true"/>-->
-
         <LinearLayout
             android:id="@+id/llTwo"
             style="@style/MatchWrap"
@@ -56,14 +46,6 @@
                     android:textSize="@dimen/tv_size_12"/>
             </LinearLayout>
 
-            <!--<include
-                android:id="@+id/scaletab_layout"
-                layout="@layout/scaletab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginLeft="@dimen/padding_margin_6"
-                android:layout_marginRight="@dimen/padding_margin_6" />-->
 
             <include
                 android:id="@+id/scale_popup_dialog"

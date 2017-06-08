@@ -220,7 +220,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
                 if (null != s) {
                     if (b) {
-                        BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_HOUR);
+                        BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
                     }
                     jsonParse(s, b);
                 }

@@ -7,7 +7,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,7 +28,6 @@ import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
-import com.umeng.socialize.utils.Log;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -42,6 +42,10 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -52,7 +56,6 @@ public class ProductItemDetailActivity extends BaseActivity {
             tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
             tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile;
-    private ImageView ivCart;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     ProductDetailBean.ResultBean prs;
@@ -61,19 +64,23 @@ public class ProductItemDetailActivity extends BaseActivity {
     private ShareAction mShareAction;
     private String string;
     private static Bitmap bitmap;
-    public int images;
     private Bundle bun = new Bundle();
-    ;
     private String product_id;
+    protected ImageView backLinearLayou;
 
     @Override
     protected int setContentView() {
-        //hideRightImagview();
         return R.layout.activity_product_item_des;
     }
 
     @Override
     public void initView() {
+
+        //保存推广开始时间
+        SharedPreferencesHelps.setTime((System.currentTimeMillis() / 1000) + "");
+        backLinearLayou = getViewById(R.id.backLinearLayout);
+        backLinearLayou.setOnClickListener(mOnClickListener);
+        //
         Bundle bundle = getIntent().getExtras();
         string = bundle.getString("productName");
         resultBean = (ProductListBean.ResultBean) bundle.getSerializable("bean");
@@ -81,22 +88,18 @@ public class ProductItemDetailActivity extends BaseActivity {
         childs.addAll(resultBean.getChilds());
         setTitle(string);
         initViews();
-        clickRightImageView(R.mipmap.share, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openShareDialog();
-            }
-        });
         initData();
+
+
     }
 
     private void openShareDialog() {
-        if(Build.VERSION.SDK_INT>=23){
-            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION,
-             Manifest.permission.CALL_PHONE,Manifest.permission.READ_LOGS,Manifest.permission.READ_PHONE_STATE,
-             Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.SET_DEBUG_APP,Manifest.permission.SYSTEM_ALERT_WINDOW,
-                    Manifest.permission.GET_ACCOUNTS,Manifest.permission.WRITE_APN_SETTINGS};
-           // ActivityCompat.requestPermissions(this,mPermissionList,123);
+        if (Build.VERSION.SDK_INT >= 23) {
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW,
+                    Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            // ActivityCompat.requestPermissions(this,mPermissionList,123);
         }
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
@@ -112,6 +115,7 @@ public class ProductItemDetailActivity extends BaseActivity {
                         break;
                     case 3://facebook
                         shareToMedia(SHARE_MEDIA.FACEBOOK);
+                        break;
                 }
             }
         }).show();
@@ -298,6 +302,13 @@ public class ProductItemDetailActivity extends BaseActivity {
                         ActivitySkip.forward(ProductItemDetailActivity.this, FileActivity.class, bun);
                     }
                     break;
+
+
+                //返回按钮
+                case R.id.backLinearLayout:
+                    addSaleLog();
+                    finish();
+                    break;
             }
         }
     };
@@ -312,14 +323,12 @@ public class ProductItemDetailActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-        /*ivCart.setOnClickListener(new View.OnClickListener() {
+        clickRightImageView(R.mipmap.share, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle=new Bundle();
-                bundle.putSerializable("bean", (Serializable) childs);
-                ActivitySkip.forward(ProductItemDetailActivity.this,ProductSubunitListActivity.class,bundle);
+                openShareDialog();
             }
-        });*/
+        });
         tvIntroduce.setOnClickListener(mOnClickListener);
         tvVideo.setOnClickListener(mOnClickListener);
         tvOrder.setOnClickListener(mOnClickListener);
@@ -407,4 +416,45 @@ public class ProductItemDetailActivity extends BaseActivity {
         super.onDestroy();
         UMShareAPI.get(this).release();
     }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            addSaleLog();
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
+    }
+
+
+    private void addSaleLog() {
+        try {
+            JSONArray jsonarray = new JSONArray();//json数组，里面包含的内容为pet的所有对象
+            JSONObject jsonObj = new JSONObject();//pet对象，json形式
+
+            jsonObj.put("product_id", product_id);
+            jsonObj.put("user_id", SharedPreferencesHelps.getUserID());
+            jsonObj.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
+            jsonObj.put("content", string);
+            jsonObj.put("start_time", SharedPreferencesHelps.getTime());
+            jsonObj.put("end_time", ((System.currentTimeMillis()/1000)+ ""));
+            jsonObj.put("gps_x_y", resultBean.getLongitude() + "," + resultBean.getLatitude());
+            jsonarray.put(jsonObj);
+
+            SharedPreferencesHelps.setData(jsonarray.toString());
+
+            HomeActiviyt.homeActiviyt.recordHandler.sendEmptyMessage(0x001);
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 }

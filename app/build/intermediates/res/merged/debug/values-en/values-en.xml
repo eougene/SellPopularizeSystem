@@ -34,6 +34,7 @@
     <string name="askdate">appointment to apply</string>
     <string name="au_0_00_to_au_0_00">AU$0.00 to AU$0.00</string>
     <string name="available_for_firb">Available For FIRB</string>
+    <string name="basic_konwledge">基础知识</string>
     <string name="batchnum">Lot Number</string>
     <string name="bathroom">Bathroom</string>
     <string name="bathroomnum">Ensuite</string>
@@ -116,6 +117,7 @@
     <string name="errcode_unsupported">Do not support the error</string>
     <string name="examination">topic no answer</string>
     <string name="examination_">Passed</string>
+    <string name="exit_scale">确认要结束推广吗?</string>
     <string name="expandre">Promotion History</string>
     <string name="fangwu">Housing</string>
     <string name="file">Files</string>
@@ -247,6 +249,7 @@
     <string name="pickerview_submit">Sure</string>
     <string name="pickerview_year"/>
     <string name="picpath">Please Upload the Receipt</string>
+    <string name="playplatform">玩转平台</string>
     <string name="postcode">Postcode</string>
     <string name="price">Price</string>
     <string name="procidis">Province City Area</string>
@@ -327,6 +330,7 @@
     <string name="saler_18">The interest paid</string>
     <string name="saler_19">Front Page Approved Down Payment Approving</string>
     <string name="saler_20">Ready to exchange contract</string>
+    <string name="sales_techniques">销售秘籍</string>
     <string name="scale_search">Project Name Area Postal Address</string>
     <string name="scale_tab_area">Area</string>
     <string name="scale_tab_hourse">Type</string>
@@ -370,6 +374,7 @@
     <string name="study">Learning</string>
     <string name="submit">Submit</string>
     <string name="submitfail">submit failure</string>
+    <string name="successlaw">成功原理</string>
     <string name="sum">Total</string>
     <string name="supplier">Vendor:</string>
     <string name="supplierlaw">Vendor Solicitor:</string>
