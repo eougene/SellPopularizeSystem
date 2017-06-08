@@ -64,7 +64,13 @@ public class HomeFragment extends BaseFragmentView {
                     break;
                 //学习园地
                 case R.id.studyLinearLayout:
-                    ActivitySkip.forward(getActivity(), LearningGardenActivity.class);
+                    Bundle bundle3 = new Bundle();
+                    if (homeDataBean!=null){
+                        bundle3.putString("studynum",homeDataBean.getResult().getTotal_study()+"");
+                    }else {
+                        bundle3.putString("studynum",0+"");
+                    }
+                    ActivitySkip.forward(getActivity(), LearningGardenActivity.class,bundle3);
                     break;
                 //往期项目
                 case R.id.rlBefore:
@@ -86,6 +92,7 @@ public class HomeFragment extends BaseFragmentView {
             }
         }
     };
+    private HomeDataBean homeDataBean;
 
 
     @Override
@@ -116,14 +123,14 @@ public class HomeFragment extends BaseFragmentView {
                 if (!TextUtils.isEmpty(json)) {
 
                     Gson gson = new Gson();
-                    HomeDataBean homeDataBean = gson.fromJson(json, HomeDataBean.class);
+                    homeDataBean = gson.fromJson(json, HomeDataBean.class);
                     if (homeDataBean.getCode() == 1) {
 
                         tvScaleSource.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_product() + " " + getString(R.string.home_01));
                         tvNewAddSource.setText(getString(R.string.newly_increased) + " " + homeDataBean.getResult().getNew_product() + " " + getString(R.string.home_02));
                         tvCustomNumber.setText(getString(R.string.your_there) + " " + homeDataBean.getResult().getTotal_customer() + " " + getString(R.string.home_03));
                         tvNewCustomNumber.setText(getString(R.string.this_month_newly) + " " + homeDataBean.getResult().getNew_customer() + " " + getString(R.string.home_04));
-                        tvStydyDatumCount.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_study() + " " + getString(R.string.home_05));
+                        //tvStydyDatumCount.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_study() + " " + getString(R.string.home_05));
                         tvNotCompleteCount.setVisibility(View.INVISIBLE);
                         //如果首次进去有消息条数.则通知显示
                         if (homeDataBean.getResult().getUnread() > 0) {
@@ -178,7 +185,7 @@ public class HomeFragment extends BaseFragmentView {
         tvNewCustomNumber = getViewById(R.id.tvNewCustomNumber);
         tvStydyDatumCount = getViewById(R.id.tvStydyDatumCount);
         tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
-        tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
+        //tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
 
         //渐变动画
         homeGradient = getViewById(R.id.homeGradient);

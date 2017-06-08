@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/scale_tab1">
+            android:background="@color/redyellow">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -140,7 +140,7 @@
                     android:layout_weight="1"
                     android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
-                    android:drawableTop="@mipmap/shoppping"
+                    android:drawableTop="@mipmap/shopping"
                     android:gravity="center"
                     android:paddingTop="@dimen/padding_margin_4"
                     android:text="@string/reserver"

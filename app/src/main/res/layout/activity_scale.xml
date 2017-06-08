@@ -42,6 +42,8 @@
                     android:layout_weight="1"
                     android:background="@drawable/edittext_bac"
                     android:hint="@string/scale_search"
+                    android:drawableLeft="@mipmap/searchsmall"
+                    android:drawablePadding="@dimen/padding_margin_2"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:textSize="@dimen/tv_size_12"/>
 
@@ -81,12 +83,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llTwo"
-            android:background="@color/scale_tab3"
+            android:drawableLeft="@mipmap/project1"
+            android:drawablePadding="@dimen/padding_margin_4"
             android:paddingBottom="@dimen/padding_margin_6"
             android:paddingLeft="@dimen/padding_margin_6"
             android:paddingTop="@dimen/padding_margin_6"
             android:text="@string/totalprojectnum"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12"/>
 
 

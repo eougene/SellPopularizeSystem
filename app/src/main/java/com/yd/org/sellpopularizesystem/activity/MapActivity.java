@@ -1,4 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.amap.api.maps2d.AMap;
@@ -21,16 +23,19 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.baidu.mapapi.map.MapStatusUpdate;
-import com.baidu.mapapi.map.MapStatusUpdateFactory;
+
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.RotationHelper;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.tag;
 
 
 public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListener,
@@ -43,11 +48,14 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     private MarkerOptions markerOption;
     private View mMakerView;
     private TextView tvDes;
+    public LinearLayout parent_container;
     private List<ProductListBean.ResultBean> productData=new ArrayList<>();
     BitmapDescriptor bd= BitmapDescriptorFactory.fromResource(R.drawable.icon_gcoding);
     private ImageView ivPhoto;
     private String proName;
     private int proId;
+    private String flag;
+    private RotationHelper rotateHelper;
 
     private BitmapDescriptor getBitmapDescriptor(int i) {
         tvDes.setText( productData.get(i).getProduct_name());
@@ -69,6 +77,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
 
     @Override
     protected int setContentView() {
+        hideRightImagview();
         return R.layout.activity_map;
     }
 
@@ -80,10 +89,11 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
 
     @Override
     public void initView() {
-        setBackImageView(R.mipmap.wback_1);
+        //setBackImageView(R.mipmap.wback_1);
         setTitle(R.string.home_scale);
-        setColor(Color.WHITE);
-        setBaseLayoutBackground(Color.BLACK);
+        setColor(Color.BLACK);
+        //setBaseLayoutBackground(Color.BLACK);
+        parent_container=getViewById(R.id.parent_container);
         productData= (List<ProductListBean.ResultBean>) getIntent().getSerializableExtra("data");
         Log.e("TAG", "initView: "+ productData.size());
         mMakerView= LayoutInflater.from(this).inflate(R.layout.map_maker_view,null);
@@ -98,6 +108,32 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
             aMap = mMapView.getMap();
             setUpMap();
         }
+        //showView();
+    }
+
+    private void showView() {
+         /* 取得Intent中的Bundle对象 */
+        Bundle bundle = this.getIntent().getExtras();
+
+        if (bundle != null) {
+            /* 取得Bundle对象中的数据 */
+            flag = bundle.getString("front");
+        }
+
+        if (flag.equals("First")) {
+            rotateHelper = new RotationHelper(this, ExtraName.KEY_SECOND_INVERSE);
+            rotateHelper.applyLastRotation(parent_container, 90, 0);
+        }
+    }
+
+    public void jumpToScaleActivity() {
+        Intent in = new Intent();
+        in.setClass(this, ScaleActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("map", "map");
+        in.putExtras(bundle);
+        startActivity(in);
+        finish();
     }
 
     private void setUpMap() {
@@ -134,13 +170,16 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     @Override
     public void setListener() {
         //右上角图标点击
-        clickRightImageView(R.mipmap.maplist, new View.OnClickListener() {
+        /*clickRightImageView(R.mipmap.maplist, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
                 overridePendingTransition(0,R.anim.reverse_anim);
+                *//*rotateHelper = new RotationHelper(MapActivity.this,
+                        ExtraName.KEY_SECOND_CLOCKWISE);
+                rotateHelper.applyFirstRotation(parent_container, 0, 90);*//*
             }
-        });
+        });*/
 
     }
 

@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -32,6 +33,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.RotationHelper;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -51,6 +53,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
     private LinearLayout scaleLL;
+    public LinearLayout parent_container;
     private GridView scaleGridView;
     private Button sureBt;
     private TextView tvProjectNum;
@@ -81,73 +84,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         public void onClick(View view) {
 
             switch (view.getId()) {
-              /*  //区域
-                case R.id.btLocation:
-                    btLocation.setEnabled(false);
-                    resetText();
-                    btHouseType.setEnabled(true);
-                    btArea.setEnabled(true);
-                    btPriceRange.setEnabled(true);
-                    //设置为空
-                    space = price = house = area = "";
-                    tag = ExtraName.AREA;
-                    isChecked = true;
-                    scale_popup_dialog.setVisibility(View.VISIBLE);
-                    //scaleLL.setBackgroundColor(getResources().getColor(R.color.scale_tab4));
-                    setCityAdapter(isChecked, product_area);
-                    break;
-                //房型
-                case R.id.btHouseType:
-                    btHouseType.setEnabled(false);
-                    resetText();
-                    btLocation.setEnabled(true);
-                    btArea.setEnabled(true);
-                    btPriceRange.setEnabled(true);
-                    //设置为空
-                    space = price = house = area = "";
-                    tag = ExtraName.HOURSE;
-                    isChecked = true;
-                    scale_popup_dialog.setVisibility(View.VISIBLE);
-                    //scaleLL.setBackgroundColor(getResources().getColor(R.color.scale_tab3));
-                    setCityAdapter(isChecked, product_house);
-                    break;
-                //面积
-                case R.id.btArea:
-                    btArea.setEnabled(false);
-                    resetText();
-                    btHouseType.setEnabled(true);
-                    btLocation.setEnabled(true);
-                    btPriceRange.setEnabled(true);
-                    //设置为空
-                    space = price = house = area = "";
-                    tag = ExtraName.SPACE;
-                    isChecked = false;
-                    scale_popup_dialog.setVisibility(View.VISIBLE);
-                    //scaleLL.setBackgroundColor(getResources().getColor(R.color.scale_tab2));
-                    setCityAdapter(isChecked, product_space);
-                    break;
-                //价格
-                case R.id.btPriceRange:
-                    btPriceRange.setEnabled(false);
-                    resetText();
-                    btArea.setEnabled(true);
-                    btHouseType.setEnabled(true);
-                    btLocation.setEnabled(true);
-                    //设置为空
-                    space = price = house = area = "";
-                    tag = ExtraName.PRICE;
-                    isChecked = false;
-                    scale_popup_dialog.setVisibility(View.VISIBLE);
-                    //scaleLL.setBackgroundColor(getResources().getColor(R.color.scale_tab1));
-                    setCityAdapter(isChecked, product_price);
-                    break;
-                //确定筛选的数据,重新加载数据
-                case R.id.sureBt:
-                    page = 1;
-                    scale_popup_dialog.setVisibility(View.GONE);
-                    //获取产品数据
-                    getProductListData(true, page, space, price, house, area);
-                    break;*/
+
                 case R.id.btScaleSearch:
                     ActivitySkip.forward(ScaleActivity.this, FilterActivity.class);
                     overridePendingTransition(R.anim.downtoup_in_anim, 0);
@@ -196,6 +133,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         }
     };
     private String strSearch;
+    private String flag;
+    private RotationHelper rotateHelper;
 
     private void resetText() {
         btLocation.setText(R.string.scale_tab_area);
@@ -216,6 +155,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         backLinearLayou = getViewById(R.id.backLinearLayout);
         backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
+        parent_container= getViewById(R.id.parent_container);
         btScaleSearch = getViewById(R.id.btScaleSearch);
         tvProjectNum = getViewById(R.id.tvProjectNum);
         ptrl = getViewById(R.id.refresh_view);
@@ -243,13 +183,24 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         setTitle(getResources().getString(R.string.home_scale));
         setColor(Color.BLACK);
         setBaseLayoutBackground(Color.WHITE);
-        /*btLocation = getViewById(R.id.btLocation);
-        btHouseType = getViewById(R.id.btHouseType);
-        btArea = getViewById(R.id.btArea);
-        btPriceRange = getViewById(R.id.btPriceRange);*/
         //下拉加载
         setTab();
+        //showView();
+    }
 
+    private void showView() {
+        /* 取得Intent中的Bundle对象 */
+        Bundle bundle = this.getIntent().getExtras();
+
+        if (bundle != null) {
+            /* 取得Bundle对象中的数据 */
+            flag = bundle.getString("map");
+            if (flag!=null && flag.equals("map")) {
+                rotateHelper = new RotationHelper(this,
+                        ExtraName.KEY_FIRST_CLOCKWISE);
+                rotateHelper.applyLastRotation(parent_container, -90, 0);
+            }
+        }
     }
 
     private void setCityAdapter(Boolean bool, Vector<String> data) {
@@ -275,99 +226,36 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void setListener() {
-        /*btLocation.setOnClickListener(mOnClickListener);
-        btHouseType.setOnClickListener(mOnClickListener);
-        btArea.setOnClickListener(mOnClickListener);
-        btPriceRange.setOnClickListener(mOnClickListener);
-        sureBt.setOnClickListener(mOnClickListener);*/
+
         btScaleSearch.setOnClickListener(mOnClickListener);
-        //筛选点击事件
-        /*scaleGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
-                rad_PopupWindowAdapter.changeState(position);
-
-                if (tag == ExtraName.AREA) {
-                    area = getSelectData(product_area);
-                    btLocation.setText(product_area.get(position));
-                } else if (tag == ExtraName.HOURSE) {
-                    house = getSelectData(product_house);
-                    btHouseType.setText(product_house.get(position));
-                } else if (tag == ExtraName.SPACE) {
-                    space = getSelectData(product_space);
-                    btArea.setText(product_space.get(position));
-                } else if (tag == ExtraName.PRICE) {
-                    price = getSelectData(product_price);
-                    btPriceRange.setText(product_price.get(position));
-                }
-            }
-        });*/
-
-
-        //产品列表点击事件
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position%2==0){
-                    StorePopHousingAdapter.Holder holder = (StorePopHousingAdapter.Holder) view.getTag();
-                    ProductListBean.ResultBean productListBean = holder.productListBean;
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("scale", productListBean);
-                    ActivitySkip.forward(ScaleActivity.this, ScalListActivity.class, bundle);
-                }else{
-
-                }
-            }
-        });*/
-
-
-    /*    clickRightImageView(R.mipmap.searchgraybt, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ActivitySkip.forward(ScaleActivity.this, SearchActivity.class);
-            }
-        });*/
-        clickRightImageView(R.mipmap.areablack, new View.OnClickListener() {
+        clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("data", (Serializable) productData);
                 ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
-                overridePendingTransition(R.anim.reverse_anim, 0);
+                //overridePendingTransition(R.anim.reverse_anim, 0);
+                /*rotateHelper = new RotationHelper(ScaleActivity.this, ExtraName.KEY_FIRST_INVERSE);
+                rotateHelper.applyFirstRotation(parent_container, 0, -90);*/
             }
         });
         //hideRightImagview();
     }
 
-    /**
-     * 获取要筛选的内容
-     *
-     * @param dtat
-     * @return
-     */
-
-    /*private String getSelectData(Vector<String> dtat) {
-        StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < dtat.size(); i++) {
-            if (rad_PopupWindowAdapter.getSelect(i)) {
-
-                if (stringBuffer.length() > 0) {
-                    stringBuffer.append(",").append(dtat.get(i));
-                } else {
-
-                    stringBuffer.append(dtat.get(i));
-                }
-
-            }
-
-        }
-
-        return ((getResources().getString(R.string.unlimited)).equals(stringBuffer.toString())) ? "" : stringBuffer.toString();
-
-    }*/
-
+    public void jumpToMapAcitivity() {
+        Intent in = new Intent();
+        in.setClass(this, MapActivity.class);
+        // new一个Bundle对象，并将要传递的数据传入
+        Bundle bundle = new Bundle();
+        bundle.putString("front", "First");
+        bundle.putSerializable("data", (Serializable) productData);
+        /* 将Bundle对象assign给Intent */
+        in.putExtras(bundle);
+        // 如果已经打开过的实例，将不会重新打开新的Activity
+        // in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(in);
+    }
 
     /**
      * 上下拉相关
@@ -533,7 +421,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
     private void showAlertDialog() {
-        new AlertDialog.Builder(scaleActivity)
+        new AlertDialog.Builder(ScaleActivity.this)
                 .setMessage(R.string.exit_scale)
                 .setPositiveButton(R.string.cancel, null)
                 .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener() {

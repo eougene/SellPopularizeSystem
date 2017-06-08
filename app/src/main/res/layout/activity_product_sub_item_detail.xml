@@ -242,7 +242,7 @@
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
                 android:background="@color/transparent"
-                android:src="@mipmap/house"/>
+                android:src="@mipmap/bedroom"/>
 
             <TextView
                 android:id="@+id/tvItBedRoom"

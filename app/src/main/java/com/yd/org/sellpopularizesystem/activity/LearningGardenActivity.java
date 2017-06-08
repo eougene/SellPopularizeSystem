@@ -33,7 +33,7 @@ public class LearningGardenActivity extends FragmentActivity {
     private ViewPager studyViewPager;
     private FragAdapter adapter;
     private ImageView backLinearLayout, rightSearchLinearLayout;
-    private TextView tvTitle;
+    private TextView tvTitle,tvStudyNum;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -43,13 +43,13 @@ public class LearningGardenActivity extends FragmentActivity {
                     finish();
                     break;
                 //园地
-                case R.id.studyLineaLayout:
+                case R.id.studyRadion:
                     selectRadio(0);
                     studyViewPager.setCurrentItem(0);
 
                     break;
                 //考核
-                case R.id.checkLineaLayout:
+                case R.id.checkRadion:
                     selectRadio(1);
                     studyViewPager.setCurrentItem(1);
 
@@ -58,6 +58,7 @@ public class LearningGardenActivity extends FragmentActivity {
             }
         }
     };
+    private String studyNum;
 
 
     @Override
@@ -71,6 +72,7 @@ public class LearningGardenActivity extends FragmentActivity {
 
 
     private void initView() {
+        studyNum = getIntent().getExtras().getString("studynum");
         //返回
         backLinearLayout = (ImageView) findViewById(R.id.backLinearLayout);
         backLinearLayout.setOnClickListener(mOnClickListener);
@@ -81,20 +83,20 @@ public class LearningGardenActivity extends FragmentActivity {
 
         //标题
         tvTitle = (TextView) findViewById(R.id.tvTitle);
+        tvStudyNum= (TextView) findViewById(R.id.tvStudyNum);
         tvTitle.setText(getString(R.string.home_study));
-
+        tvStudyNum.setText(studyNum);
         //园地切换
-        studyLineaLayout = (LinearLayout) findViewById(R.id.studyLineaLayout);
+        /*studyLineaLayout = (LinearLayout) findViewById(R.id.studyLineaLayout);
         checkLineaLayout = (LinearLayout) findViewById(R.id.checkLineaLayout);
         studyLineaLayout.setOnClickListener(mOnClickListener);
-        checkLineaLayout.setOnClickListener(mOnClickListener);
+        checkLineaLayout.setOnClickListener(mOnClickListener);*/
 
         //图标,字体
         studyRadion = (RadioButton) findViewById(R.id.studyRadion);
         checkRadion = (RadioButton) findViewById(R.id.checkRadion);
-        //底部分割线
-        studyView = findViewById(R.id.studyView);
-        checkView = findViewById(R.id.checkView);
+        studyRadion.setOnClickListener(mOnClickListener);
+        checkRadion.setOnClickListener(mOnClickListener);
         //viewpager
         studyViewPager = (ViewPager) findViewById(R.id.studyViewPager);
 
@@ -150,18 +152,18 @@ public class LearningGardenActivity extends FragmentActivity {
         if (type == 0) {
             studyRadion.setChecked(true);
             checkRadion.setChecked(false);
-            studyView.setBackgroundColor(getResources().getColor(R.color.home_custom));
+            /*studyView.setBackgroundColor(getResources().getColor(R.color.home_custom));
             checkView.setBackgroundColor(getResources().getColor(R.color.gray));
             studyRadion.setTextColor(getResources().getColor(R.color.home_custom));
-            checkRadion.setTextColor(getResources().getColor(R.color.gray));
+            checkRadion.setTextColor(getResources().getColor(R.color.gray));*/
 
         } else {
             studyRadion.setChecked(false);
             checkRadion.setChecked(true);
-            studyView.setBackgroundColor(getResources().getColor(R.color.gray));
+            /*studyView.setBackgroundColor(getResources().getColor(R.color.gray));
             checkView.setBackgroundColor(getResources().getColor(R.color.home_custom));
             studyRadion.setTextColor(getResources().getColor(R.color.gray));
-            checkRadion.setTextColor(getResources().getColor(R.color.home_custom));
+            checkRadion.setTextColor(getResources().getColor(R.color.home_custom));*/
         }
 
     }

@@ -162,7 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/scale_tab1"
+        android:background="@color/redyellow"
         android:gravity="center"
         android:paddingBottom="@dimen/padding_margin_8"
         android:paddingTop="@dimen/padding_margin_8"
