@@ -10,6 +10,8 @@
     <color name="black">#000000</color>
     <!-- 黑色 -->
     <color name="yellowish">#e99323</color>
+    <!-- 橘黄色 -->
+    <color name="redyellow">#ED791F</color>
     <!-- 透明-->
     <color name="transparent">#00000000</color>
     <!-- 红色   -->
