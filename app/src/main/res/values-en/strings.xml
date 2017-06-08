@@ -438,4 +438,8 @@
     <string name="binding_f">Binding failure</string>
     <string name="gettui">CRM Sales System</string>
     <string name="nomatchdata"> No data to be screened </string>
+    <string name="playplatform">Play the platform</string>
+    <string name="successlaw">Success principle</string>
+    <string name="basickonwledge">Basic konwledge</string>
+    <string name="salestechniques">Sales techniques</string>
 </resources>
