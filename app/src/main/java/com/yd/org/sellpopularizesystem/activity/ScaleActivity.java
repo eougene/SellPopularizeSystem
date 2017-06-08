@@ -3,6 +3,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +13,9 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -44,6 +48,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private String strSearch;
     protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
+    public LinearLayout parent_container;
     private TextView tvProjectNum;
     private EditText etSearch;
     private Button btScaleSearch;
@@ -106,7 +111,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         }
     };
 
-
     @Override
     protected int setContentView() {
         scaleActivity = this;
@@ -119,6 +123,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         backLinearLayou = getViewById(R.id.backLinearLayout);
         backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
+        parent_container= getViewById(R.id.parent_container);
         btScaleSearch = getViewById(R.id.btScaleSearch);
         tvProjectNum = getViewById(R.id.tvProjectNum);
         ptrl = getViewById(R.id.refresh_view);
@@ -137,7 +142,15 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             getProductListData(true, page, space, price, house, area);
         }
 
+        setBackImageView(R.mipmap.backbt);
+        setTitle(getResources().getString(R.string.home_scale));
+        setColor(Color.BLACK);
+        setBaseLayoutBackground(Color.WHITE);
+        //下拉加载
+        //showView();
     }
+
+
 
 
     @Override
@@ -147,17 +160,33 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         btScaleSearch.setOnClickListener(mOnClickListener);
 
         //地图
-        clickRightImageView(R.mipmap.areablack, new View.OnClickListener() {
+        clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("data", (Serializable) productData);
                 ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
-                overridePendingTransition(R.anim.reverse_anim, 0);
+                //overridePendingTransition(R.anim.reverse_anim, 0);
+                /*rotateHelper = new RotationHelper(ScaleActivity.this, ExtraName.KEY_FIRST_INVERSE);
+                rotateHelper.applyFirstRotation(parent_container, 0, -90);*/
             }
         });
     }
 
+
+    public void jumpToMapAcitivity() {
+        Intent in = new Intent();
+        in.setClass(this, MapActivity.class);
+        // new一个Bundle对象，并将要传递的数据传入
+        Bundle bundle = new Bundle();
+        bundle.putString("front", "First");
+        bundle.putSerializable("data", (Serializable) productData);
+        /* 将Bundle对象assign给Intent */
+        in.putExtras(bundle);
+        // 如果已经打开过的实例，将不会重新打开新的Activity
+        // in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        startActivity(in);
+    }
 
     /**
      * 上下拉相关
@@ -253,7 +282,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
     private void showAlertDialog() {
-        new AlertDialog.Builder(scaleActivity)
+        new AlertDialog.Builder(ScaleActivity.this)
                 .setMessage(R.string.exit_scale)
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override

@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -23,7 +24,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    protected ImageView backLinearLayou, rightSearchLinearLayout;
+    protected ImageView backLinearLayou, rightSearchLinearLayout,ivShare;
     private TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
@@ -49,6 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         backLinearLayou = getViewById(R.id.backLinearLayout);
         // 右边图片
         rightSearchLinearLayout = getViewById(R.id.rightSearchLinearLayout);
+        ivShare= getViewById(R.id.ivShare);
         //左边文字按钮事件处理
         backLinearLayou.setOnClickListener(clickback);
 

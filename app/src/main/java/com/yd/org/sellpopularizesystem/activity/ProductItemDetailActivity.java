@@ -159,6 +159,9 @@ public class ProductItemDetailActivity extends BaseActivity {
         rpv.setHintView(new ColorPointHintView(this, Color.WHITE, Color.parseColor("#7F7F7F")));
         rpv.setOnItemClickListener(mOnItemClickListener);
         tvId = getViewById(R.id.tvId);
+        rightSearchLinearLayout.setVisibility(View.GONE);
+        ivShare.setVisibility(View.VISIBLE);
+        ivShare.setOnClickListener(mOnClickListener);
         tvProdes = getViewById(R.id.tvProdes);
         tvIsSalingNum = getViewById(R.id.tvIsSalingNum);
         tvHasSaledNum = getViewById(R.id.tvHasSaledNum);
@@ -255,6 +258,10 @@ public class ProductItemDetailActivity extends BaseActivity {
         public void onClick(View v) {
 
             switch (v.getId()) {
+                //分享
+                case R.id.ivShare:
+                    openShareDialog();
+                    break;
                 //介绍
                 case R.id.tvIntroduce:
 

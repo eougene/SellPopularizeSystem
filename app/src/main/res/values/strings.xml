@@ -101,6 +101,7 @@
     <string name="lawyer_id">请选择律师</string>
     <string name="picpath">请上传支付凭证</string>
     <string name="issaling">在售</string>
+    <string name="issalingnum">在售数量:</string>
     <string name="hadsaled">已售</string>
     <string name="sale_list">销售列表</string>
     <string name="apply_contract">申请合同</string>
@@ -304,7 +305,7 @@
     <string name="finishpromote">结束推广</string>
     <string name="test">测试</string>
     <string name="seeall">查看所有</string>
-    <string name="homepage">主页</string>
+    <string name="homepage">首页</string>
     <string name="_99">99</string>
     <string name="settingcenter">我</string>
     <string name="selectall">全选</string>
@@ -443,4 +444,9 @@
     <string name="basic_konwledge">基础知识</string>
     <string name="sales_techniques">销售秘籍</string>
     <string name="exit_scale">确认要结束推广吗?</string>
+    <string name="checkdes">个考核未完成</string>
+    <string name="checkdes1">您有</string>
+    <string name="studymaterialdes">个学习材料,</string>
+    <string name="studydes1">共有</string>
+    <string name="courseclassfy">课程分类</string>
 </resources>

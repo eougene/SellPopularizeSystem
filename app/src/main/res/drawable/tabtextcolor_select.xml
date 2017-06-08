@@ -3,7 +3,7 @@
     <!--非选中-->
     <item  android:color="#6E7D83" android:state_selected="false" /><!-- 未点击时的颜色 -->
     <!--选中-->
-    <item  android:color="#007AFF" android:state_selected="true"/><!-- 点击后的颜色 -->
+    <item  android:color="@color/redyellow" android:state_selected="true"/><!-- 点击后的颜色 -->
     <!--android:state_checked="true"
     android:state_focused="true" android:state_selected="true" android:state_pressed="true"-->
     

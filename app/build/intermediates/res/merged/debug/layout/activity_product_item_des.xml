@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,7 +25,7 @@
                     android:id="@+id/rpv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    app:rollviewpager_hint_alpha="80"/>
+                    app:rollviewpager_hint_alpha="80" />
             </RelativeLayout>
 
             <TextView
@@ -39,13 +39,102 @@
                 android:layout_height="0.5dp"
                 android:background="@color/search_edit_bac" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/padding_margin_50"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="ID:"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvId"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_margin_4"
+                        android:layout_toRightOf="@+id/tvid"
+                        android:text="9"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvissaling"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/issalingnum"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvIsSalingNum"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_margin_4"
+                        android:layout_toRightOf="@+id/tvissaling"
+                        android:text="9"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tvhas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/hashsalenum"
+                        android:textColor="@color/gray" />
+
+                    <TextView
+                        android:id="@+id/tvHasSaledNum"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_margin_4"
+                        android:layout_toRightOf="@+id/tvhas"
+                        android:text="9"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/search_edit_bac" />
+
             <TextView
                 android:id="@+id/tvProdes"
                 style="@style/WrapWrap"
                 android:layout_margin="@dimen/padding_margin_10"
+                android:lineSpacingExtra="@dimen/padding_margin_8"
                 android:text="@string/introduce"
                 android:textColor="@color/gray"
-                android:lineSpacingExtra="@dimen/padding_margin_8"
                 android:textSize="@dimen/tv_size_10" />
 
             <TextView
@@ -60,7 +149,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <!--<LinearLayout
                     style="@style/MatchWrap"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/padding_margin_4">
@@ -77,9 +166,9 @@
                         android:text="9"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
-                </LinearLayout>
+                </LinearLayo-->ut>
 
-                <LinearLayout
+                <!--<LinearLayout
                     style="@style/MatchWrap"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/padding_margin_4">
@@ -96,9 +185,9 @@
                         android:text="0"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
-                </LinearLayout>
+                </LinearLayout>-->
 
-                <LinearLayout
+                <!--<LinearLayout
                     style="@style/MatchWrap"
                     android:orientation="horizontal"
                     android:paddingTop="@dimen/padding_margin_4">
@@ -115,7 +204,7 @@
                         android:text="0"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_10" />
-                </LinearLayout>
+                </LinearLayout>-->
 
                 <LinearLayout
                     style="@style/MatchWrap"
@@ -132,7 +221,7 @@
                         android:id="@+id/tvFirbNum"
                         style="@style/WrapWrap"
                         android:text="0"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -151,7 +240,7 @@
                         android:id="@+id/tvEoiTime"
                         style="@style/WrapWrap"
                         android:text="@string/starttime"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -170,7 +259,7 @@
                         android:id="@+id/tvSaleDeadTime"
                         style="@style/WrapWrap"
                         android:text="@string/starttime"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -189,7 +278,7 @@
                         android:id="@+id/tvCloseDate"
                         style="@style/WrapWrap"
                         android:text="1970/01/01"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -208,7 +297,7 @@
                         android:id="@+id/tvMemo"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -227,7 +316,7 @@
                         android:id="@+id/tvProjectPro"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -246,7 +335,7 @@
                         android:id="@+id/tvSupplier"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -265,7 +354,7 @@
                         android:id="@+id/tvLawyer"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -284,7 +373,7 @@
                         android:id="@+id/tvBuilder"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -303,7 +392,7 @@
                         android:id="@+id/tvDespositHolder"
                         style="@style/WrapWrap"
                         android:text=""
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -322,7 +411,7 @@
                         android:id="@+id/tvForeignMoney"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -341,7 +430,7 @@
                         android:id="@+id/tvCashDesposit"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
 
@@ -360,7 +449,7 @@
                         android:id="@+id/tvSubscription"
                         style="@style/WrapWrap"
                         android:text="0.00"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textSize="@dimen/tv_size_10" />
                 </LinearLayout>
             </LinearLayout>
@@ -389,7 +478,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:background="@color/scale_tab1">
+            android:background="@color/redyellow">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -403,11 +492,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/introtool"
                     android:gravity="center"
                     android:text="@string/jieshao"
-                    android:alpha="0.5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
 
@@ -416,11 +505,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/videotool"
                     android:gravity="center"
                     android:text="@string/video"
-                    android:alpha="0.5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
 
@@ -430,7 +519,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
                     android:drawablePadding="@dimen/padding_margin_4"
-                    android:drawableTop="@mipmap/shoppping"
+                    android:drawableTop="@mipmap/shopping"
                     android:gravity="center"
                     android:text="@string/reserver"
                     android:textColor="@color/white"
@@ -441,10 +530,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/floorstool"
                     android:gravity="center"
-                    android:alpha="0.5"
                     android:text="@string/floorphoto"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
@@ -454,11 +543,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/contracttool"
                     android:gravity="center"
                     android:text="@string/contract"
-                    android:alpha="0.5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
 
@@ -467,11 +556,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_30"
+                    android:alpha="0.5"
                     android:drawablePadding="@dimen/padding_margin_4"
                     android:drawableTop="@mipmap/othertool"
                     android:gravity="center"
                     android:text="@string/file"
-                    android:alpha="0.5"
                     android:textColor="@color/white"
                     android:textSize="@dimen/tv_size_10" />
             </LinearLayout>

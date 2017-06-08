@@ -56,8 +56,16 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study_s.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageunselect.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/up.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeselect.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up_arrow.png",
@@ -68,6 +76,14 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/basicknoledge.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/basicknoledge.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/myteam.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/myteam.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bpay.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bpay.png"
     },
@@ -76,8 +92,20 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/weichatpay.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/mycommission.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/mycommission.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/backbt.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/backbt.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bedroom.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bedroom.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/previouspro.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/previouspro.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/sale.png",
@@ -104,12 +132,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_facebook.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/add.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/add.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/add.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/add.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/acreagebt.png",
@@ -136,6 +164,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down_arrow.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studymaterial.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studymaterial.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pricebt.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pricebt.png"
     },
@@ -148,12 +180,20 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/phone.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shopping.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shopping.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/email.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/email.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/usernameicon.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/usernameicon.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project1.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project1.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more2.png",
@@ -184,6 +224,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messagegray.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletec.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletec.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/house.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/house.png"
     },
@@ -198,6 +242,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/incorrecticonx.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/incorrecticonx.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/success.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/success.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/rightarrow.png",
@@ -252,6 +300,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/yellowhome.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeunselect.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/checked.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/checked.png"
     },
@@ -276,6 +328,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/examine_s.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map1.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map1.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/load_succeed.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/load_succeed.png"
     },
@@ -294,6 +350,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/apartment.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/apartment.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/setting.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/setting.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/search.png",
@@ -316,6 +376,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wback_1.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salarecord.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salarecord.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saleicon.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saleicon.png"
     },
@@ -330,6 +394,14 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_succeed.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refresh_succeed.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bindaccount.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bindaccount.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/client1.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/client1.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/message.png",
@@ -352,6 +424,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/clear_button.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/me.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/me.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downmore.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downmore.png"
     },
@@ -362,6 +438,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/roomicon.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/roomicon.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salepromote.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salepromote.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/areabt.png",
@@ -380,6 +460,10 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map_annotation.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/playplat.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/playplat.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchicon.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchicon.png"
     },
@@ -392,8 +476,16 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pull_icon_big.png"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project.png"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downo.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downo.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageselect.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/price.png",
@@ -402,6 +494,18 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_wxcircle.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_wxcircle.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/maplist1.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/maplist1.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletui.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletui.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/meselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/meselect.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabmeunselect.png",
@@ -420,12 +524,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dian_false.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addmore.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addmore.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loginwechat.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loginwechat.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addmore.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addmore.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_failed.png",
@@ -434,6 +538,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/selectedx.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/selectedx.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studygarden.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studygarden.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share.png",
@@ -462,6 +570,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share_wechat.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/share_wechat.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/changepassword.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/changepassword.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wallet.png",

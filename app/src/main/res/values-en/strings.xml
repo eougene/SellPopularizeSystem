@@ -438,10 +438,11 @@
     <string name="binding_f">Binding failure</string>
     <string name="gettui">CRM Sales System</string>
     <string name="nomatchdata"> No data to be screened </string>
-
-    <string name="playplatform">玩转平台</string>
-    <string name="successlaw">成功原理</string>
     <string name="basic_konwledge">基础知识</string>
     <string name="sales_techniques">销售秘籍</string>
     <string name="exit_scale">确认要结束推广吗?</string>
+    <string name="playplatform">Play the platform</string>
+    <string name="successlaw">Success principle</string>
+    <string name="basickonwledge">Basic konwledge</string>
+    <string name="salestechniques">Sales techniques</string>
 </resources>

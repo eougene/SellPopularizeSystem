@@ -4,12 +4,12 @@
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-xhdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_low_normal.9.png",
-        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/jc_back_tiny_normal.png",
         "source": "/Users/e-dot/.android/build-cache/6ce9105be8366e0b1f3ccd24d390959ec952f1d5/output/res/drawable-xhdpi-v4/jc_back_tiny_normal.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/notification_bg_low_normal.9.png",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable-xhdpi-v4/notification_bg_low_normal.9.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",

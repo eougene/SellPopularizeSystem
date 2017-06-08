@@ -4,12 +4,12 @@
         "source": "/Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/res/drawable-mdpi/common_plus_signin_btn_icon_dark_pressed.9.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-mdpi/common_google_signin_btn_text_dark_pressed.9.png",
-        "source": "/Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/res/drawable-mdpi/common_google_signin_btn_text_dark_pressed.9.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-mdpi/common_plus_signin_btn_text_dark_normal.9.png",
         "source": "/Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/res/drawable-mdpi/common_plus_signin_btn_text_dark_normal.9.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-mdpi/common_google_signin_btn_text_dark_pressed.9.png",
+        "source": "/Users/e-dot/.android/build-cache/a531b836c5e648f6ea1dc2e54319e43fbfad3a88/output/res/drawable-mdpi/common_google_signin_btn_text_dark_pressed.9.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-mdpi/common_plus_signin_btn_text_light_focused.9.png",

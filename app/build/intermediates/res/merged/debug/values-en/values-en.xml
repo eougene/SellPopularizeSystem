@@ -35,6 +35,7 @@
     <string name="au_0_00_to_au_0_00">AU$0.00 to AU$0.00</string>
     <string name="available_for_firb">Available For FIRB</string>
     <string name="basic_konwledge">基础知识</string>
+    <string name="basickonwledge">Basic konwledge</string>
     <string name="batchnum">Lot Number</string>
     <string name="bathroom">Bathroom</string>
     <string name="bathroomnum">Ensuite</string>
@@ -249,7 +250,7 @@
     <string name="pickerview_submit">Sure</string>
     <string name="pickerview_year"/>
     <string name="picpath">Please Upload the Receipt</string>
-    <string name="playplatform">玩转平台</string>
+    <string name="playplatform">Play the platform</string>
     <string name="postcode">Postcode</string>
     <string name="price">Price</string>
     <string name="procidis">Province City Area</string>
@@ -331,6 +332,7 @@
     <string name="saler_19">Front Page Approved Down Payment Approving</string>
     <string name="saler_20">Ready to exchange contract</string>
     <string name="sales_techniques">销售秘籍</string>
+    <string name="salestechniques">Sales techniques</string>
     <string name="scale_search">Project Name Area Postal Address</string>
     <string name="scale_tab_area">Area</string>
     <string name="scale_tab_hourse">Type</string>
@@ -374,7 +376,7 @@
     <string name="study">Learning</string>
     <string name="submit">Submit</string>
     <string name="submitfail">submit failure</string>
-    <string name="successlaw">成功原理</string>
+    <string name="successlaw">Success principle</string>
     <string name="sum">Total</string>
     <string name="supplier">Vendor:</string>
     <string name="supplierlaw">Vendor Solicitor:</string>

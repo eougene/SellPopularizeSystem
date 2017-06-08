@@ -605,6 +605,7 @@
     <color name="primary_text_disabled_material_light">#39000000</color>
     <color name="read">#ff0000</color>
     <color name="reansoarent_oneoftwo">#5a000000</color>
+    <color name="redyellow">#ED791F</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
     <color name="scale_tab1">#db4342</color>
@@ -1159,6 +1160,7 @@
     <dimen name="text_size_medium">18sp</dimen>
     <dimen name="text_size_small">14sp</dimen>
     <dimen name="text_size_xlarge">18sp</dimen>
+    <dimen name="text_size_xlarge2">20sp</dimen>
     <dimen name="textsize_center_pickerui_item">25dp</dimen>
     <dimen name="textsize_far_center_pickerui_item">15dp</dimen>
     <dimen name="textsize_near_center_pickerui_item">17dp</dimen>
@@ -1300,6 +1302,8 @@
     <string name="check_exam">开始考试</string>
     <string name="check_results">查看成绩</string>
     <string name="check_we">检查是否安装微信</string>
+    <string name="checkdes">个考核未完成</string>
+    <string name="checkdes1">您有</string>
     <string name="checknum">您有0个考核未完成</string>
     <string name="china">中国</string>
     <string name="chooseemailapp">请选择邮件类应用</string>
@@ -1350,6 +1354,7 @@
     <string name="contact">联系方式</string>
     <string name="content">内容</string>
     <string name="contract">合同</string>
+    <string name="courseclassfy">课程分类</string>
     <string name="credit">信用卡</string>
     <string name="cuslawyer">客户律师</string>
     <string name="customdetaild_add">添加</string>
@@ -1430,7 +1435,7 @@
     <string name="home_study">学习园地</string>
     <string name="home_study_en">Learning  garden</string>
     <string name="home_sure">确定</string>
-    <string name="homepage">主页</string>
+    <string name="homepage">首页</string>
     <string name="housepurchase">购房记录</string>
     <string name="housetype">房型</string>
     <string name="housetypeimage">房型图</string>
@@ -1442,6 +1447,7 @@
     <string name="investment">投资</string>
     <string name="isno">否</string>
     <string name="issaling">在售</string>
+    <string name="issalingnum">在售数量:</string>
     <string name="jieshao">介绍</string>
     <string name="jinliu">jinliu</string>
     <string name="job">职业</string>
@@ -1656,6 +1662,8 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="stillneedcheck">凭证已上传,正在审核</string>
     <string name="study">学习</string>
+    <string name="studydes1">共有</string>
+    <string name="studymaterialdes">个学习材料,</string>
     <string name="submit">提交</string>
     <string name="submitfail">提交失败</string>
     <string name="successlaw">成功原理</string>

@@ -12,21 +12,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/SocialSDK_facebook.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="907649396ac985fdbb2155f882dd11e8e4b46592">
+        <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/SocialSDK_facebook_39dfa86b666b895e3698dd5d158414dd15e084d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/umeng_shareboard_widget.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="61b8863b887e4c87ca69bb9a8ae2c89102fbee5e">
         <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/umeng_shareboard_widget_5c2ef7ed2818b062b87a4a08cb3d82b4bced5b57/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/IndoorscapeAlbumPlugin.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="b6c8bf896e0d23f4003b9a3cab4bff9af9adefda">
-        <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/IndoorscapeAlbumPlugin_ee42fd04ec206ec39b2c948ec8469f03970dec39/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -45,15 +45,6 @@
         revision="25.0.2"
         sha1="c127e89b7c59c26574dbd2e6e1b52d62fbcc6705">
         <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/umeng_social_shareboard_f5c83f60306b43305ddb6697e76a0459ba1fdde9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/BaiduLBS_Android.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.2"
-        sha1="e53b14e9054757ca7a1cb3527ed7752e5d4d2444">
-        <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduLBS_Android_5d76afe7752c67a944211ccb1bb665b2b6e0678d/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -79,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
-        sha1="6c27ea0259c0b938370a7aab1ed150845ad332d4">
+        sha1="f34cd2e5caa75b06936749442ecd912759addcc4">
         <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_c262de185f6c60c6f9b8c3d19f2685b2cf2a2d6e/classes.dex" />
     </item>
     <item
@@ -111,12 +102,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/AMap_Location_V3.4.0_20170427.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa2675ac2111742d045390a97dd39ea48d957b87">
+        <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Location_V3.4.0_20170427_28987e4e976174940a5398f6edc2f59694b18024/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/pinyin4j-2.5.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.2"
         sha1="ae353005f973da1cd8545b54354504c2503f6865">
         <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/pinyin4j-2.5.0_33b821a8eab3cc5d81ef022fbf9aad1cea710818/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/libs/Amap_2DMap_V4.2.0_20170209.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="316c66b6aa80d81bf3c53ff67587568de136782f">
+        <dex dex="/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/transforms/dex/debug/folders/1000/2/Amap_2DMap_V4.2.0_20170209_4f639ab4c48ae862c16d18d2a5b4d9411043db11/classes.dex" />
     </item>
     <item
         is-multidex="true"

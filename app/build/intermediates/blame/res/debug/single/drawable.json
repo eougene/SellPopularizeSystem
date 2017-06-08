@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/bg_shape_customdialog.xml",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/bg_shape_customdialog.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
         "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable/design_snackbar_background.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/bg_shape_customdialog.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/bg_shape_customdialog.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/button_select.xml",
@@ -22,6 +22,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/rectange_left_shape.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/rectange_left_shape.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/jc_dialog_progress.xml",
@@ -52,12 +56,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/textview_noright.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
-        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/notification_icon_background.xml"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/design_password_eye.xml",
         "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable/design_password_eye.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
+        "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/notification_icon_background.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
@@ -72,12 +76,12 @@
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/tab_info_shape.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/tabhomeunselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/tabhomeunselect.png"
-    },
-    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/tabhomeunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/tabhomeunselect.png"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
@@ -152,6 +156,10 @@
         "source": "/Users/e-dot/.android/build-cache/6ce9105be8366e0b1f3ccd24d390959ec952f1d5/output/res/drawable/jc_seek_thumb_pressed.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/studycheck_butbac.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/studycheck_butbac.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/divider.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/divider.png"
     },
@@ -182,6 +190,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/setting.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/setting.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/radiotextcolor_select.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/radiotextcolor_select.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/button_bac.xml",
@@ -230,6 +242,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/messageblue.png",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/messageblue.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/rectange_shape.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/rectange_shape.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/spinner_76_inner_holo.png",
@@ -288,12 +304,20 @@
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/abc_ic_search_api_material.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/rectange_selector.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/rectange_selector.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/bg_full_image.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/bg_full_image.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/actionbar_btn_pressed.xml",
         "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/actionbar_btn_pressed.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/sdudycheck_radiobutton_selector.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/sdudycheck_radiobutton_selector.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/container_dropshadow.xml",
@@ -404,6 +428,10 @@
         "source": "/Users/e-dot/.android/build-cache/47d0e66494717d4841df31f41d8234240c142772/output/res/drawable/list_item_selector.xml"
     },
     {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/checkbut_radiobutton_selector.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/checkbut_radiobutton_selector.xml"
+    },
+    {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
         "source": "/Users/e-dot/.android/build-cache/badd976dc48c88330f745ee30886f2b749ac395e/output/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
@@ -430,6 +458,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/design_bottom_navigation_item_background.xml",
         "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/drawable/design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/rectange_right_shape.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/rectange_right_shape.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/checkbox_selector.xml",
@@ -482,6 +514,10 @@
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/jc_click_back_selector.xml",
         "source": "/Users/e-dot/.android/build-cache/6ce9105be8366e0b1f3ccd24d390959ec952f1d5/output/res/drawable/jc_click_back_selector.xml"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/gray_circle_shape.xml",
+        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/drawable/gray_circle_shape.xml"
     },
     {
         "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable/homegray.png",

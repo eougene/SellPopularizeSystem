@@ -49,11 +49,15 @@
                         android:background="@color/white"
                         android:gravity="center">
 
-                        <ImageView
+                        <TextView
                             android:id="@+id/ivSale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/sale"/>
+                            android:drawableTop="@mipmap/saletui"
+                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:text="@string/sale_pro"
+                            android:textColor="@color/home_scale"
+                            android:textSize="@dimen/tv_size_15"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -62,15 +66,16 @@
                             android:layout_marginLeft="@dimen/padding_margin_6"
                             android:layout_marginTop="@dimen/padding_margin_4"
                             android:layout_toRightOf="@+id/ivSale"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
-                            <TextView
+                            <!--<TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/sale_pro"
                                 android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>
+                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvScaleSource"
@@ -108,11 +113,15 @@
                         android:background="@color/white"
                         android:gravity="center">
 
-                        <ImageView
+                        <TextView
                             android:id="@+id/ivStudy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/study"/>
+                            android:drawableTop="@mipmap/studygarden"
+                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:text="@string/home_study"
+                            android:textColor="@color/home_scale"
+                            android:textSize="@dimen/tv_size_15"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -121,15 +130,16 @@
                             android:layout_marginLeft="@dimen/padding_margin_6"
                             android:layout_marginTop="@dimen/padding_margin_4"
                             android:layout_toRightOf="@+id/ivStudy"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
-                            <TextView
+                            <!--<TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_study"
                                 android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>
+                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvStydyDatumCount"
@@ -173,11 +183,16 @@
                         android:background="@color/white"
                         android:gravity="center">
 
-                        <ImageView
+                        <TextView
                             android:id="@+id/customImageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/client"/>
+                            android:drawableTop="@mipmap/client"
+                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:text="@string/home_scale"
+                            android:textColor="@color/home_scale"
+                            android:textSize="@dimen/tv_size_15"
+                            />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -185,16 +200,17 @@
                             android:layout_marginLeft="@dimen/padding_margin_6"
                             android:layout_marginTop="@dimen/padding_margin_4"
                             android:layout_toRightOf="@id/customImageView"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:visibility="gone">
 
-                            <TextView
+                            <!--<TextView
                                 android:id="@+id/textView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/padding_margin_4"
                                 android:text="@string/home_scale"
                                 android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>
+                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvCustomNumber"
@@ -233,13 +249,16 @@
                         android:background="@color/white"
                         android:gravity="center">
 
-                        <ImageView
+                        <TextView
                             android:id="@+id/ivSetting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@mipmap/before"/>
+                            android:drawableTop="@mipmap/previouspro"
+                            android:text="@string/oldproject"
+                            android:textColor="@color/home_scale"
+                            android:textSize="@dimen/tv_size_15"/>
 
-                        <LinearLayout
+                        <!--<LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/padding_margin_6"
@@ -275,7 +294,7 @@
                                 android:textSize="@dimen/tv_size_08"
                                 android:visibility="gone"/>
 
-                        </LinearLayout>
+                        </LinearLayout>-->
                     </RelativeLayout>
                 </LinearLayout>
 

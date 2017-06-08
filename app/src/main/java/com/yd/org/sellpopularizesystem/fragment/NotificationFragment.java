@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,8 +24,9 @@ public class NotificationFragment extends BaseFragmentView {
     //基本控件
     public static NotificationFragment notificationFragment;
 
-    private TextView allCheck, deleteNotification, tvCancel, tvOrderSum, tvBriefSum, tvCompanySum, tvSystemSum, tvOrder, tvBrief, tvCompany, tvSystem;
-    private View viewOrderSum, viewBriefSum, viewCompanySum, viewSystemSum;
+    private TextView allCheck, deleteNotification, tvCancel, tvOrderSum, tvBriefSum, tvCompanySum, tvSystemSum;
+    private RadioButton rbOrder, rbBrief, rbCompany, rbSystem;
+    //private View viewOrderSum, viewBriefSum, viewCompanySum, viewSystemSum;
     private RelativeLayout orderRelat, brifeRelat, companyRelat, systemRelat;
     private int type = 0, array = 0;
     //
@@ -163,22 +165,22 @@ public class NotificationFragment extends BaseFragmentView {
                     break;
 
                 //订单数
-                case R.id.orderRelat:
+                case R.id.tvOrder:
                     fragmentID = 0;
 
-                    tvOrder.setTextColor(getResources().getColor(R.color.yellowish));
-                    viewOrderSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
+                    rbOrder.setChecked(true);
+                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
-                    tvBrief.setTextColor(getResources().getColor(R.color.black));
-                    viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
-                    tvCompany.setTextColor(getResources().getColor(R.color.black));
-                    viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbBrief.setChecked(false);
+                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
 
 
-                    tvSystem.setTextColor(getResources().getColor(R.color.black));
-                    viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbCompany.setChecked(false);
+                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
+
+
+                    rbSystem.setChecked(false);
+                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
                     cate_id = 4;
 
                     initFragment1(cate_id);
@@ -186,60 +188,58 @@ public class NotificationFragment extends BaseFragmentView {
                     break;
 
                 //小组
-                case R.id.brifeRelat:
+                case R.id.tvBrief:
                     fragmentID = 1;
-                    tvOrder.setTextColor(getResources().getColor(R.color.black));
-                    viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbOrder.setChecked(false);
+                    rbBrief.setChecked(true);
+                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
-                    tvBrief.setTextColor(getResources().getColor(R.color.yellowish));
-                    viewBriefSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
+                    rbCompany.setChecked(false);
+                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    tvCompany.setTextColor(getResources().getColor(R.color.black));
-                    viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
-
-                    tvSystem.setTextColor(getResources().getColor(R.color.black));
-                    viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbSystem.setChecked(false);
+                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
 
                     cate_id = 3;
                     initFragment2(cate_id);
 
                     break;
                 //公司
-                case R.id.companyRelat:
+                case R.id.tvCompany:
                     fragmentID = 2;
-                    tvOrder.setTextColor(getResources().getColor(R.color.black));
-                    viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbOrder.setChecked(false);
+                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    tvBrief.setTextColor(getResources().getColor(R.color.black));
-                    viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
-                    tvCompany.setTextColor(getResources().getColor(R.color.yellowish));
-                    viewCompanySum.setBackgroundColor(getResources().getColor(R.color.yellowish));
+                    rbBrief.setChecked(false);
+                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
 
 
-                    tvSystem.setTextColor(getResources().getColor(R.color.black));
-                    viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbCompany.setChecked(true);
+                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.yellowish));
+
+
+                    rbSystem.setChecked(false);
+                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
 
                     cate_id = 2;
                     initFragment3(cate_id);
                     break;
                 //系统
-                case R.id.systemRelat:
+                case R.id.tvSystem:
                     fragmentID = 3;
-                    tvOrder.setTextColor(getResources().getColor(R.color.black));
-                    viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbOrder.setChecked(false);
+                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    tvBrief.setTextColor(getResources().getColor(R.color.black));
-                    viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
-                    tvCompany.setTextColor(getResources().getColor(R.color.black));
-                    viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
+                    rbBrief.setChecked(false);
+                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
 
 
-                    tvSystem.setTextColor(getResources().getColor(R.color.yellowish));
-                    viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
+                    rbCompany.setChecked(false);
+                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
+
+
+                    rbSystem.setChecked(true);
+                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
                     cate_id = 1;
                     initFragment4(cate_id);
@@ -388,19 +388,21 @@ public class NotificationFragment extends BaseFragmentView {
 
 
         //订单
-        tvOrder = getViewById(R.id.tvOrder);
+        rbOrder = getViewById(R.id.tvOrder);
         //小结
-        tvBrief = getViewById(R.id.tvBrief);
+        rbBrief = getViewById(R.id.tvBrief);
         //公司
-        tvCompany = getViewById(R.id.tvCompany);
+        rbCompany = getViewById(R.id.tvCompany);
         //系统
-        tvSystem = getViewById(R.id.tvSystem);
-
-
-        viewOrderSum = getViewById(R.id.viewOrderSum);
+        rbSystem = getViewById(R.id.tvSystem);
+        rbOrder.setOnClickListener(mOnClickListener);
+        rbBrief.setOnClickListener(mOnClickListener);
+        rbCompany.setOnClickListener(mOnClickListener);
+        rbSystem.setOnClickListener(mOnClickListener);
+        /*viewOrderSum = getViewById(R.id.viewOrderSum);
         viewBriefSum = getViewById(R.id.viewBriefSum);
         viewCompanySum = getViewById(R.id.viewCompanySum);
-        viewSystemSum = getViewById(R.id.viewSystemSum);
+        viewSystemSum = getViewById(R.id.viewSystemSum);*/
 
 
     }

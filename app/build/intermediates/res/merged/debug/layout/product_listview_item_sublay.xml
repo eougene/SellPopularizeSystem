@@ -29,7 +29,7 @@
                 android:id="@+id/ivHouse"
                 style="@style/WrapWrap"
                 android:layout_gravity="center_vertical"
-                android:src="@mipmap/house"/>
+                android:src="@mipmap/bedroom"/>
 
             <TextView
                 android:id="@+id/tvHouse"

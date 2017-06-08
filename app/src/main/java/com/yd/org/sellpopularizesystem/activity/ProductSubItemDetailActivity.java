@@ -6,6 +6,7 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 public class ProductSubItemDetailActivity extends BaseActivity {
     private ProSubunitListBean.ResultBean.PropertyBean bean;
@@ -43,7 +44,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
 
     private void initData() {
         tvItStatus.setText(bean.getIs_lock()==0?getString(R.string.issaling):getString(R.string.hadsaled));
-        tvItPrice.setText(bean.getPrice());
+        tvItPrice.setText(MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvItType.setText(bean.getCate_id()+"");
         tvItBatchNum.setText(bean.getProduct_childs_lot_number());
         tvItUnitNum.setText(bean.getProduct_childs_unit_number());

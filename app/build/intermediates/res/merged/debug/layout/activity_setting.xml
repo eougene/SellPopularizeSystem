@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch"
-              android:background="@color/home_scale"
-              android:orientation="vertical">
+    style="@style/MatchMatch"
+    android:background="@color/home_scale"
+    android:orientation="vertical">
 
     <RelativeLayout
         style="@style/MatchAuto"
@@ -18,7 +18,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_centerInParent="true"
-                android:src="@mipmap/settingbt"/>
+                android:src="@mipmap/settingbt" />
 
             <TextView
                 android:id="@+id/tvCustomeName"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="@string/customename"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -51,18 +51,27 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/padding_margin_12">
 
+                <ImageView
+                    android:id="@+id/change"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/changepassword" />
+
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/change"
                     android:text="@string/setting_changepassword"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
 
                 <ImageView
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/rightarrow"/>
+                    android:src="@mipmap/rightarrow" />
             </RelativeLayout>
 
             <View
@@ -77,18 +86,27 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/padding_margin_12">
 
+                <ImageView
+                    android:id="@+id/bind"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/bindaccount" />
+
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/bind"
                     android:text="@string/setting_bindaccount"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
 
                 <ImageView
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/rightarrow"/>
+                    android:src="@mipmap/rightarrow" />
             </RelativeLayout>
 
             <View
@@ -103,12 +121,21 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/padding_margin_12">
 
+                <ImageView
+                    android:id="@+id/sale"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/salarecord" />
+
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/sale"
                     android:text="@string/sale_record"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
 
 
                 <ImageView
@@ -118,7 +145,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow"/>
+                    android:src="@mipmap/rightarrow" />
 
                 <!--<TextView
                     android:id="@+id/settiing_noticTv"
@@ -144,12 +171,21 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/padding_margin_12">
 
+                <ImageView
+                    android:id="@+id/commission"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/mycommission" />
+
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/commission"
                     android:text="@string/mycommission"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
 
 
                 <ImageView
@@ -158,7 +194,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow"/>
+                    android:src="@mipmap/rightarrow" />
 
             </RelativeLayout>
 
@@ -174,12 +210,21 @@
                 style="@style/MatchWrap"
                 android:padding="@dimen/padding_margin_12">
 
+                <ImageView
+                    android:id="@+id/myteam"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/myteam" />
+
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/myteam"
                     android:text="@string/myteam"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
 
 
                 <ImageView
@@ -188,7 +233,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow"/>
+                    android:src="@mipmap/rightarrow" />
 
             </RelativeLayout>
 
@@ -212,7 +257,7 @@
                 android:gravity="center"
                 android:text="@string/setting_cancellogin"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_15" />
 
             <View
                 android:layout_width="match_parent"
@@ -229,7 +274,7 @@
                 android:padding="@dimen/padding_margin_6"
                 android:text="@string/ver_1_0_0"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
         </LinearLayout>
 
