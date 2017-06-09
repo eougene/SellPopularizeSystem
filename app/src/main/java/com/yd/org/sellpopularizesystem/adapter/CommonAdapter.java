@@ -21,9 +21,7 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     protected Context mContext;
     protected List<T> mDatas = new ArrayList<T>(), list = new ArrayList<T>();
     protected final int mItemLayoutId;
-
-    private int mCurrentItem=0;
-    private boolean isClick=false;
+    private boolean isClick = false;
 
     public CommonAdapter(Context context, List<T> mDatas, int itemLayoutId) {
         this.mContext = context;
@@ -90,23 +88,12 @@ public abstract class CommonAdapter<T> extends BaseAdapter {
     private ViewHolder getViewHolder(int position, View convertView, ViewGroup parent) {
         return ViewHolder.get(mContext, convertView, parent, mItemLayoutId, position);
     }
-    public void setCurrentItem(int currentItem){
-        this.mCurrentItem=currentItem;
-    }
-
-    public int getmCurrentItem() {
-        return mCurrentItem;
-    }
-
-    public void setmCurrentItem(int mCurrentItem) {
-        this.mCurrentItem = mCurrentItem;
-    }
 
     public boolean isClick() {
         return isClick;
     }
 
-    public void setClick(boolean click){
-        this.isClick=click;
+    public void setClick(boolean click) {
+        this.isClick = click;
     }
 }

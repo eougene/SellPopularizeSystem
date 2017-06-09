@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch">
+                style="@style/MatchMatch">
 
 
     <LinearLayout
@@ -30,12 +30,12 @@
                     android:background="@color/white"
                     android:text="@string/apply_contract"
                     android:textColor="@color/light_blue"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <Button
                     android:id="@+id/btPayIntention"
@@ -43,12 +43,28 @@
                     android:background="@color/white"
                     android:text="@string/payintentmoney"
                     android:textColor="@color/light_blue"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"
+                    />
+
+                <Button
+                    android:id="@+id/btOrderUpdate"
+                    style="@style/MatchWrap"
+                    android:background="@color/white"
+                    android:text="@string/saler_16"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_15"
+                    />
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/search_edit_bac"/>
 
                 <Button
                     android:id="@+id/btOrderCancel"
@@ -56,25 +72,13 @@
                     android:background="@color/white"
                     android:text="@string/cancel_oder"
                     android:textColor="@color/light_blue"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
+
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/search_edit_bac" />
-
-                <Button
-                    android:id="@+id/btOrderUpdate"
-                    style="@style/MatchWrap"
-                    android:background="@color/white"
-                    android:text="@string/updateorder"
-                    android:textColor="@color/light_blue"
-                    android:textSize="@dimen/tv_size_15" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <Button
                     android:id="@+id/btSaleCancel"
@@ -82,7 +86,7 @@
                     android:background="@color/white"
                     android:text="@string/sale_cancel"
                     android:textColor="@color/light_blue"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
         </LinearLayout>

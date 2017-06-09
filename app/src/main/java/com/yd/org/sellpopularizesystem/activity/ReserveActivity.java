@@ -30,7 +30,6 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
@@ -112,15 +111,15 @@ public class ReserveActivity extends BaseActivity {
         rlPayType = (RelativeLayout) findViewById(R.id.rlPayType);
         tvCertificate = (TextView) findViewById(R.id.tvCertificate);
 
-        mCustomePopuWindow = new CustomePopuWindow(ReserveActivity.this, mOnClickListener);
+        mCustomePopuWindow = new CustomePopuWindow(ReserveActivity.this);
         mView = mCustomePopuWindow.getContentView();
-        cusSelectPop = new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
+        cusSelectPop = new CommonPopuWindow(ReserveActivity.this) {
             @Override
             protected int getLayoutId() {
                 return R.layout.reserve_activity_cusselect_pop;
             }
         };
-        rePayTypePopuWindow = new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
+        rePayTypePopuWindow = new CommonPopuWindow(ReserveActivity.this) {
             @Override
             protected int getLayoutId() {
                 return R.layout.reserver_paytype_popwindow;
@@ -128,7 +127,7 @@ public class ReserveActivity extends BaseActivity {
         };
         initPayMethodDialog();
 
-        setPhotoPopuWindow = new CommonPopuWindow(ReserveActivity.this, mOnClickListener) {
+        setPhotoPopuWindow = new CommonPopuWindow(ReserveActivity.this) {
             @Override
             protected int getLayoutId() {
                 return R.layout.reserve_activity_setphoto_popwindow;
@@ -512,8 +511,8 @@ public class ReserveActivity extends BaseActivity {
 
     class CustomePopuWindow extends CommonPopuWindow {
 
-        public CustomePopuWindow(Activity context, View.OnClickListener itemsOnClick) {
-            super(context, itemsOnClick);
+        public CustomePopuWindow(Activity context) {
+            super(context);
         }
 
         @Override
