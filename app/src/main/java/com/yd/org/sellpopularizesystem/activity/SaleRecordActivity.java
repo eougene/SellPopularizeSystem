@@ -112,18 +112,23 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 && resultBean.getSale_advice_status() == 0
                 && resultBean.getStatus() == 0) {
 
+            //测试用
+            btOrderUpdate.setVisibility(View.GONE);
             if (resultBean.getPayment_method() == 1 || resultBean.getPayment_method() == 4) {
                 //意向金已支付
                 btPayIntention.setVisibility(View.GONE);
 
+
             } else {
                 //意向金未支付
+
                 btApplyContract.setVisibility(View.GONE);
             }
         }
 
 
     }
+
 
     public class MOnClickListener implements View.OnClickListener {
 
@@ -133,6 +138,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             this.resultBeans = resultBeans;
 
         }
+
 
         @Override
         public void onClick(View v) {
@@ -159,12 +165,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击意向金
                 case R.id.btPayIntention:
+                    mSalePopuwindow.dismiss();
                     Bundle bun = new Bundle();
                     bun.putString("payurlId", resultBeans.getOrder_money_url());
                     bun.putString("payment_method", resultBeans.getPayment_method() + "");
                     ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
+
                     break;
-                //点击修改订单
+                //上传凭证
                 case R.id.btOrderUpdate:
                     mSalePopuwindow.dismiss();
                     flag = ExtraName.UPLOAD_FIRST_COMMISSION;
@@ -172,8 +180,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击放弃订单
                 case R.id.btOrderCancel:
-                    canceOrder(resultBeans.getProduct_orders_id());
                     mSalePopuwindow.dismiss();
+                    canceOrder(resultBeans.getProduct_orders_id());
+
                     break;
                 //点击取消
                 case R.id.btSaleCancel:
