@@ -21,6 +21,7 @@ import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
 import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
+import com.yd.org.sellpopularizesystem.activity.SettingActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
@@ -39,13 +40,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * Created by hejin on 2017/4/10.
  */
 
-public class SettingFragment extends BaseFragmentView {
-    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord, rlTeam;
+public class MeFragment extends BaseFragmentView {
+    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord, rlTeam,rlSetting;
     private TextView cancelLoginTv, versionTv, tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
@@ -77,6 +79,10 @@ public class SettingFragment extends BaseFragmentView {
                 //我的团队
                 case R.id.rlTeam:
                     ActivitySkip.forward(getActivity(), MyTeamActivity.class);
+                    break;
+                //设置
+                case R.id.rlSetting:
+                    ActivitySkip.forward(getActivity(), SettingActivity.class);
                     break;
             }
         }
@@ -239,10 +245,10 @@ public class SettingFragment extends BaseFragmentView {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_setting);
-        int color = getResources().getColor(R.color.home_scale);
-        StatusBarUtil.setColor(getActivity(), color, 0);
-
+        setContentView(R.layout.fragment_me);
+       /* int color = getResources().getColor(R.color.home_scale);
+        StatusBarUtil.setColor(getActivity(), color, 0);*/
+        StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(), 0, null);
         initWidget();
     }
 
@@ -253,6 +259,8 @@ public class SettingFragment extends BaseFragmentView {
         rlTeam = getViewById(R.id.rlTeam);
         rlTeam.setOnClickListener(mOnClickListener);
         ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
+        rlSetting=getViewById(R.id.rlSetting);
+        rlSetting.setOnClickListener(mOnClickListener);
         changePassWordRel = getViewById(R.id.changePassWordRel);
         bindAccountRel = getViewById(R.id.bindAccountRel);
         rlSaleRecord = getViewById(R.id.saleRecord);

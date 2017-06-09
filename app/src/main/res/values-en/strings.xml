@@ -455,4 +455,10 @@
     <string name="orderthrough">Order through</string>
     <string name="createsuccess">Create success</string>
     <string name="continueread">Keep reading</string>
+    <string name="setting">Setting</string>
+    <string name="version_info">Version information</string>
+    <string name="about_us">About us</string>
+    <string name="inputoldpassword">Please enter the original password</string>
+    <string name="confirm_new_password">Please confirm the new password</string>
+    <string name="input_new_password">Please enter a new password</string>
 </resources>

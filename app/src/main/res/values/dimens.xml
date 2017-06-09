@@ -29,6 +29,7 @@
     <dimen name="padding_margin_22">22dp</dimen>
     <dimen name="padding_margin_35">35dp</dimen>
     <dimen name="padding_margin_30">30dp</dimen>
+    <dimen name="padding_margin_40">40dp</dimen>
     <dimen name="padding_margin_50">50dp</dimen>
     <dimen name="padding_margin_100">100dp</dimen>
     <dimen name="padding_margin_150">150dp</dimen>

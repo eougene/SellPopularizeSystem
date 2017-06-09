@@ -454,4 +454,10 @@
     <string name="orderthrough">订单通过</string>
     <string name="createsuccess">创建成功</string>
     <string name="continueread">继续阅读</string>
+    <string name="setting">设置</string>
+    <string name="version_info">版本信息</string>
+    <string name="about_us">关于我们</string>
+    <string name="inputoldpassword">请输入原密码</string>
+    <string name="confirm_new_password">请确认新密码</string>
+    <string name="input_new_password">请输入新密码</string>
 </resources>

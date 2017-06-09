@@ -21,7 +21,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
-import com.yd.org.sellpopularizesystem.fragment.SettingFragment;
+import com.yd.org.sellpopularizesystem.fragment.MeFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
@@ -41,7 +41,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     private TextView tvHome, tvMessage, tvSetting, tvMessageCount;
     private HomeFragment homeFragment;
     private NotificationFragment notificationFragment;
-    private SettingFragment settingFragment;
+    private MeFragment meFragment;
     private LinearLayout tabLinearHome, tabLinearSeeting;
     private RelativeLayout tabLinearNotific;
     private Class userPushService = PushService.class;
@@ -171,7 +171,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 setSelect(1);
                 break;
             case R.id.tabLinearSeeting:
-                StatusBarUtil.setColor(this, getResources().getColor(R.color.home_scale), 0);
+                StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
 
                 setSelect(2);
                 break;
@@ -203,11 +203,11 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 break;
             case 2:
                 tvSetting.setSelected(true);
-                if (settingFragment == null) {
-                    settingFragment = new SettingFragment();
-                    transaction.add(R.id.flContent, settingFragment);
+                if (meFragment == null) {
+                    meFragment = new MeFragment();
+                    transaction.add(R.id.flContent, meFragment);
                 }
-                transaction.show(settingFragment);
+                transaction.show(meFragment);
 
                 break;
         }
@@ -221,8 +221,8 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         if (notificationFragment != null) {
             transaction.hide(notificationFragment);
         }
-        if (settingFragment != null) {
-            transaction.hide(settingFragment);
+        if (meFragment != null) {
+            transaction.hide(meFragment);
         }
     }
 
