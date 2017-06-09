@@ -122,6 +122,7 @@
     <string name="blank_space">&#160;&#160;</string>
     <string name="single_blank_space">&#160;</string>
     <string name="clear">Clear</string>
+    <string name="reset">reset</string>
     <string name="alipay">Alipay</string>
     <string name="wechatpay">Wechat</string>
     <string name="zhifu">Pay</string>
@@ -144,7 +145,7 @@
     <string name="totalmoney">Total Amount</string>
     <string name="moenydes">Commission/tax/combined</string>
     <string name="totalnum">ombined:0.00/0.00/0.00</string>
-    <string name="noeoi">Client no EOI,Click on the top right corner recharge</string>
+    <string name="noeoi">Please EOI firstly by click the recharge button on the top right</string>
     <string name="headerphoto">Photo</string>
     <string name="firstname">Surname</string>
     <string name="lastname">First Name</string>
@@ -235,7 +236,7 @@
     <string name="outsidearea">External Area</string>
     <string name="doublezero">0.00</string>
     <string name="totalarea">Total Area</string>
-    <string name="sada">萨达萨达</string>
+    <string name="sada">sadasada</string>
     <string name="singlezero">0.0</string>
     <string name="available_for_firb">Available For FIRB</string>
     <string name="sale">Sales</string>
@@ -424,10 +425,10 @@
     <string name="examination_">Passed</string>
     <string name="multiple_choice">(Multiple Choice)</string>
     <string name="single_choice">(Single Choice)</string>
-    <string name="owned_by_all">Total be</string>
-    <string name="newly_increased">This week the new</string>
+    <string name="owned_by_all">A total of</string>
+    <string name="newly_increased">New additions this week</string>
     <string name="your_there">You</string>
-    <string name="this_month_newly">This month the new</string>
+    <string name="this_month_newly">New additions this month</string>
     <string name="home_01">Promotional material</string>
     <string name="home_02"></string>
     <string name="home_03">customer</string>
@@ -438,11 +439,20 @@
     <string name="binding_f">Binding failure</string>
     <string name="gettui">CRM Sales System</string>
     <string name="nomatchdata"> No data to be screened </string>
-    <string name="basic_konwledge">基础知识</string>
-    <string name="sales_techniques">销售秘籍</string>
-    <string name="exit_scale">确认要结束推广吗?</string>
+    <string name="basic_konwledge">Basic konwledge</string>
+    <string name="sales_techniques">Sales techniques</string>
+    <string name="exit_scale">Are you sure you want to end the promotion?</string>
     <string name="playplatform">Play the platform</string>
     <string name="successlaw">Success principle</string>
     <string name="basickonwledge">Basic konwledge</string>
     <string name="salestechniques">Sales techniques</string>
+    <string name="checkdes">assessment is not completed</string>
+    <string name="checkdes1">you have </string>
+    <string name="studymaterialdes">learning materials,</string>
+    <string name="studydes1">A total of</string>
+    <string name="courseclassfy">Course classification</string>
+    <string name="orderapproved">The order has been passed</string>
+    <string name="orderthrough">Order through</string>
+    <string name="createsuccess">Create success</string>
+    <string name="continueread">Keep reading</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
@@ -46,13 +48,13 @@ public class FilterActivity extends BaseActivity {
 
     private void initSetting() {
         setTitle(R.string.select);
-        /*setRightTitleBackground(R.drawable.button_bac,Color.WHITE);
-        setRightTitle(R.string.clear, new View.OnClickListener() {
+        setRightTitleBackground(new ColorDrawable(Color.WHITE), Color.RED);
+        setRightTitle(R.string.reset, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                    resetText();
             }
-        });*/
+        });
         changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,16 +62,16 @@ public class FilterActivity extends BaseActivity {
                 overridePendingTransition(0, R.anim.out_anim);
             }
         });
-        tvSelect=getViewById(R.id.tvSelect);
-        tvSelect.setText(getString(R.string.clear));
-        tvSelect.setVisibility(View.VISIBLE);
+        /*tvSelect=getViewById(R.id.tvSelect);
+        tvSelect.setText(getString(R.string.reset));
+        tvSelect.setVisibility(View.VISIBLE);*/
         ivSearch=getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
     }
 
     @Override
     public void setListener() {
-        tvSelect.setOnClickListener(mOnClickListener);
+        //tvSelect.setOnClickListener(mOnClickListener);
         rlArea.setOnClickListener(mOnClickListener);
        rlHouseType.setOnClickListener(mOnClickListener);
         //rlType.setOnClickListener(mOnClickListener);
@@ -81,9 +83,9 @@ public class FilterActivity extends BaseActivity {
         public void onClick(View v) {
             Bundle bun=new Bundle();
             switch (v.getId()){
-                case R.id.tvSelect:
+                /*case R.id.tvSelect:
                     resetText();
-                    break;
+                    break;*/
                 case R.id.rlArea:
                     bun.putString("fatosca","area");
                     ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class, ExtraName.AREA,bun);

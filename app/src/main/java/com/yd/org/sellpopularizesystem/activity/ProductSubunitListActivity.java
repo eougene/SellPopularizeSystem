@@ -1,7 +1,10 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -121,11 +124,13 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     private void getViews() {
-        tvSelect = getViewById(R.id.tvSelect);
-        tvSelect.setVisibility(View.VISIBLE);
+        /*tvSelect = getViewById(R.id.tvSelect);
+        tvSelect.setVisibility(View.VISIBLE);*/
+        rightRtitle.setTextColor(ContextCompat.getColor(this,R.color.redyellow));
+        setRightTitle(R.string.select, mOnClickListener);
         ivSearch = getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
-        tvSelect.setOnClickListener(mOnClickListener);
+        //tvSelect.setOnClickListener(mOnClickListener);
         //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
@@ -339,11 +344,11 @@ public class ProductSubunitListActivity extends BaseActivity {
             bund = new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
-
-                    break;
-                case R.id.tvSelect:
                     optionsPickerView.show();
                     break;
+                /*case R.id.tvSelect:
+                    optionsPickerView.show();
+                    break;*/
                 case R.id.ivHousePic:
                     if (bund == null) {
                         bund = new Bundle();

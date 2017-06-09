@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -24,7 +25,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
     protected ImageView backLinearLayou, rightSearchLinearLayout,ivShare;
-    private TextView tvTitle, rightRtitle;
+    protected TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
     private ACache aCache;
@@ -164,6 +165,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         rightRtitle.setVisibility(View.VISIBLE);
         rightRtitle.setTextColor(colorId);
         rightRtitle.setBackgroundResource(drawableId);
+    }
+
+    //设置右上角标题背景色
+    public void setRightTitleBackground(Drawable drawable, int colorId) {
+        rightSearchLinearLayout.setVisibility(View.GONE);
+        rightRtitle.setVisibility(View.VISIBLE);
+        rightRtitle.setTextColor(colorId);
+        rightRtitle.setBackground(drawable);
     }
 
     public void changeLeftImageView(int resId, View.OnClickListener onClickListener) {

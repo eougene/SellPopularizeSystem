@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -75,9 +77,11 @@ public class SelectConditionActivity extends BaseActivity {
     }
 
     private void initStting() {
-        tvSelect=getViewById(R.id.tvSelect);
+        /*tvSelect=getViewById(R.id.tvSelect);
         tvSelect.setText(getString(R.string.home_sure));
-        tvSelect.setVisibility(View.VISIBLE);
+        tvSelect.setVisibility(View.VISIBLE);*/
+        setRightTitleBackground(new ColorDrawable(Color.WHITE), Color.RED);
+        setRightTitle(R.string.ok, mOnClickListener);
         ivSearch=getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
     }
@@ -97,7 +101,7 @@ public class SelectConditionActivity extends BaseActivity {
                 case R.id.backLinearLayout:
                     setData(intent);
                     break;
-                case R.id.tvSelect:
+                case R.id.rightTitle:
                     setData(intent);
                     break;
             }
@@ -149,7 +153,7 @@ public class SelectConditionActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-        tvSelect.setOnClickListener(mOnClickListener);
+        //tvSelect.setOnClickListener(mOnClickListener);
         backLinearLayou.setOnClickListener(mOnClickListener);
         rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
         rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);

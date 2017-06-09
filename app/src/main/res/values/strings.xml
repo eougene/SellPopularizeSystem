@@ -123,6 +123,7 @@
     <string name="blank_space">&#160;&#160;</string>
     <string name="single_blank_space">&#160;</string>
     <string name="clear">清除</string>
+    <string name="reset">重置</string>
     <string name="alipay">支付宝</string>
     <string name="wechatpay">微信</string>
     <string name="zhifu">支付</string>
@@ -449,4 +450,8 @@
     <string name="studymaterialdes">个学习材料,</string>
     <string name="studydes1">共有</string>
     <string name="courseclassfy">课程分类</string>
+    <string name="orderapproved">订单已通过</string>
+    <string name="orderthrough">订单通过</string>
+    <string name="createsuccess">创建成功</string>
+    <string name="continueread">继续阅读</string>
 </resources>
