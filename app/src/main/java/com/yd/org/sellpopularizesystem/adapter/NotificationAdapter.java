@@ -1,6 +1,10 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -86,7 +90,21 @@ public class NotificationAdapter extends BaseAdapter {
             viewHoler = (ViewHoler) convertView.getTag();
         }
         viewHoler.resultBean = informationtents.get(position);
-        viewHoler.tvMessage.setText(informationtents.get(position).getTitle());
+        String title = informationtents.get(position).getTitle();
+        String strStatus="";
+        if (title.contains(mContext.getString(R.string.orderapproved))){
+                strStatus="["+mContext.getString(R.string.orderthrough)+"]";
+        }else if (title.contains(mContext.getString(R.string.createsuccess))){
+            strStatus="["+mContext.getString(R.string.createsuccess)+"]";
+        }
+        if (informationtents.get(position).getIs_read()!=1){
+            SpannableStringBuilder spanBuilder =new SpannableStringBuilder(strStatus);
+        //style 为0 即是正常的，还有Typeface.BOLD(粗体) Typeface.ITALIC(斜体)等
+        //size  为0 即采用原始的正常的 size大小
+            ColorStateList redColors = ColorStateList.valueOf(mContext.getResources().getColor(R.color.redyellow));
+            spanBuilder.setSpan(new TextAppearanceSpan(null, 0, 60, redColors, null), 1, strStatus.length()-1, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+        }
+        viewHoler.tvMessage.setText(strStatus+mContext.getResources().getString(R.string.blank_space)+title);
 
 
         //已读
