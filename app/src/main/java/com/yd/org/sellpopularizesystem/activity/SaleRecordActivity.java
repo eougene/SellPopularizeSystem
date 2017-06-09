@@ -1,35 +1,28 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
+import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
+import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -37,31 +30,29 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SaleRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView lvSaleRecord;
     private PullToRefreshLayout ptrlSaleRecord;
     private int page = 1;
-    private View mSalePopView, mUpdatePopView;
+    private View mSalePopView;
     private Button btApplyContract, btOrderUpdate, btPayIntention, btOrderCancel, btSaleCancel;
-    private TextView tvOrderSequence, tvOrderContent, tvOrderUpdateSubmit;
-    private EditText etOrderRemark;
     private LinearLayout llSalePop;
-    private SaleOrderBean sob;
     private List<SaleOrderBean.ResultBean> sobRbData = new ArrayList<>();
-    private CommonAdapter saleAdapter;
-    private CommonPopuWindow mSalePopuwindow, mUpdatePop;
-    private Dialog mUpdateDialog;
-    private int orderId, pos;
-    private String sale_advice_url, tvSalePrice, surname;
+    private SaleRecordAdapter saleAdapter;
+    private CommonPopuWindow mSalePopuwindow;
     public static SaleRecordActivity sra;
+    private String picPath;
+    private SaleOrderBean.ResultBean resultBean;
+
+    //上传合同首页还是首付款标志
+    private String flag;
+
 
     public Handler handler = new Handler() {
         @Override
@@ -70,10 +61,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             getSaleData(page, true);
         }
     };
-    private String picPath;
-    private SaleOrderBean.ResultBean resultBean;
-    //上传合同首页还是首付款标志
-    private String flag;
 
     @Override
     protected int setContentView() {
@@ -86,11 +73,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         hideRightImagview();
         setTitle(getString(R.string.sale_list));
         lvSaleRecord = getViewById(R.id.content_view);
-        lvSaleRecord.setDrawSelectorOnTop(true);
-        lvSaleRecord.setSelector(R.color.home_scale_d);
         ptrlSaleRecord = getViewById(R.id.refresh_view);
         ptrlSaleRecord.setOnRefreshListener(this);
-        mSalePopuwindow = new CommonPopuWindow(SaleRecordActivity.this, mOnClickListener) {
+        //加载数据
+        getSaleData(page, true);
+    }
+
+    private void showDialogWindow(SaleOrderBean.ResultBean resultBean) {
+        mSalePopuwindow = new CommonPopuWindow(SaleRecordActivity.this) {
             @Override
             protected int getLayoutId() {
                 return R.layout.saleoperate_popuwindow;
@@ -104,155 +94,59 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         btOrderCancel = (Button) mSalePopView.findViewById(R.id.btOrderCancel);
         btSaleCancel = (Button) mSalePopView.findViewById(R.id.btSaleCancel);
 
-        mUpdateDialog = new Dialog(SaleRecordActivity.this);
-        mUpdateDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mUpdateDialog.setContentView(R.layout.update_order_popview);
-        Window dialogWindow = mUpdateDialog.getWindow();
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.x = MyUtils.getStatusBarHeight(SaleRecordActivity.this);
-        dialogWindow.setAttributes(lp);
-        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
-        tvOrderSequence = (TextView) mUpdateDialog.findViewById(R.id.tvOrderSequence);
-        tvOrderContent = (TextView) mUpdateDialog.findViewById(R.id.tvOrderContent);
-        etOrderRemark = (EditText) mUpdateDialog.findViewById(R.id.etOrderRemark);
-        tvOrderUpdateSubmit = (TextView) mUpdateDialog.findViewById(R.id.tvOrderUpdateSubmit);
-        getSaleData(page, true);
-    }
+        mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER, 0, 0);
 
-    private void getSaleData(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("company_id", SharedPreferencesHelps.getCompanyId());
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "20");
-        http.get(Contants.INQUIRE_ORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                Log.e("TAG", "onSuccess: " + s);
-                try {
-                    JSONObject josn = new JSONObject(s);
-                    if (josn.getInt("code") == 1) {
-                        parseJson(s, isRefresh);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+        //事件
+        llSalePop.setOnClickListener(new MOnClickListener(resultBean));
+        btApplyContract.setOnClickListener(new MOnClickListener(resultBean));
+        btOrderCancel.setOnClickListener(new MOnClickListener(resultBean));
+        btSaleCancel.setOnClickListener(new MOnClickListener(resultBean));
+        btPayIntention.setOnClickListener(new MOnClickListener(resultBean));
+        btOrderUpdate.setOnClickListener(new MOnClickListener(resultBean));
+
+
+        //意向金凭证已上传,,,请申请合同
+        if (resultBean.getOrder_money_status() == 1
+                && resultBean.getCancel_apply_status() == 0
+                && resultBean.getSale_advice_status() == 0
+                && resultBean.getStatus() == 0) {
+
+            //测试用
+            btOrderUpdate.setVisibility(View.GONE);
+            if (resultBean.getPayment_method() == 1 || resultBean.getPayment_method() == 4) {
+                //意向金已支付
+                btPayIntention.setVisibility(View.GONE);
+
+
+            } else {
+                //意向金未支付
+
+                btApplyContract.setVisibility(View.GONE);
             }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
-    }
-
-    private void parseJson(String json, boolean isRefresh) {
-        Gson gson = new Gson();
-        sob = gson.fromJson(json, SaleOrderBean.class);
-        sobRbData = sob.getResult();
-        if (isRefresh) {
-            //ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
-            saleAdapter = new CommonAdapter<SaleOrderBean.ResultBean>(this, sobRbData, R.layout.saleorder_listview_item) {
-                @Override
-                public void convert(ViewHolder holder, SaleOrderBean.ResultBean item) {
-                    holder.setText(R.id.tvSaleNum, item.getProduct_orders_id() + "");
-                    if (item.getProduct_name() == null) {
-                        holder.setText(R.id.tvSaleDes, "null" + "-" + item.getProduct_info().getProduct_childs_lot_number() + "-" + item.getProduct_info().getProduct_childs_unit_number());
-                    } else {
-                        holder.setText(R.id.tvSaleDes, item.getProduct_name().getProduct_name() + "-" + item.getProduct_info().getProduct_childs_lot_number() + "-" + item.getProduct_info().getProduct_childs_unit_number());
-                    }
-                    /*holder.setText(R.id.tvBedRoom, item.getProduct_info().getBedroom());
-                    holder.setText(R.id.tvBathroom, item.getProduct_info().getBathroom());
-                    holder.setText(R.id.tvCarSquare, item.getProduct_info().getCar_space());*/
-                    holder.setText(R.id.tvSalePrice, item.getProduct_info().getCurrency() + " " + MyUtils.getInstance().addComma(item.getPrice()));
-                    holder.setText(R.id.tvSaleName, item.getCustomer_surname() + getString(R.string.single_blank_space) + item.getCustomer_first_name());
-                    if (saleAdapter.getmCurrentItem() == item.getProduct_orders_id()) {
-                        holder.setView(R.id.tvStatus, ContextCompat.getColor(SaleRecordActivity.this, R.color.transparent));
-                        holder.getConvertView().setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this, R.color.home_scale));
-                    } else {
-                        holder.setView(R.id.tvStatus, ContextCompat.getColor(SaleRecordActivity.this, R.color.home_scale));
-                        holder.getConvertView().setBackground(null);
-                    }
-                    if (item.getStatus() != 11) {
-                        //订单状态判断
-                        if (item.getCancel_apply_status() == 1) {
-                            holder.setText(R.id.tvStatus, getString(R.string.saler_01));
-                        } else if (item.getCancel_apply_status() == 2) {
-                            Log.e("Cancel_apply_status", "convert: " + item.getProduct_orders_id());
-                            holder.setText(R.id.tvStatus, getString(R.string.saler_02));
-                        } else {
-                            if (item.getOrder_money_status() == 1) {
-                                if (item.getPayment_method() == 1 || item.getPayment_method() == 4) {
-                                    if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_03));
-                                    }
-                                } else {
-                                    holder.setText(R.id.tvStatus, getString(R.string.saler_04));
-                                }
-                            }
-                            if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 1) {
-                                holder.setText(R.id.tvStatus, getString(R.string.saler_05));
-                            }
-                            if (item.getOrder_money_status() == 1) {
-                                if (item.getPayment_method() == 1 || item.getPayment_method() == 4) {
-                                    if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_03));
-                                    }else if (item.getContract_apply_status() == 1) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_06));
-                                    }
-                                }else {
-                                    if (item.getContract_apply_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_07));
-                                    }else if (item.getContract_apply_status() == 1) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_08));
-                                    }
-                                }
-                                if (item.getContract_apply_status() == 2) {
-                                    if (item.getUpload_contract_status() == 0 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_09));
-                                    }
-                                    if (item.getUpload_contract_status() == 1 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_10));
-                                    } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 0) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_11));
-                                    } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 1) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_12));
-                                    } else if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 2) {
-                                        holder.setText(R.id.tvStatus, getString(R.string.saler_13));
-                                    }
-                                }
-                            } else if (item.getOrder_money_status() == 2) {
-                                if (item.getUpload_contract_status() == 2 && item.getBuy_money_status() == 2) {
-                                    holder.setText(R.id.tvStatus, getString(R.string.saler_13));
-                                }
-                            }
-                        }
-                    } else if (item.getStatus() == 11) {
-                        holder.setText(R.id.tvStatus, getString(R.string.saler_14));
-                    }
-                }
-            };
-            saleAdapter.setCurrentItem(0);
-            lvSaleRecord.setAdapter(saleAdapter);
-        } else {
-            saleAdapter.addMore(sobRbData);
-            ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         }
+
+
     }
 
-    View.OnClickListener mOnClickListener = new View.OnClickListener() {
+
+    public class MOnClickListener implements View.OnClickListener {
+
+        private SaleOrderBean.ResultBean resultBeans;
+
+        public MOnClickListener(SaleOrderBean.ResultBean resultBeans) {
+            this.resultBeans = resultBeans;
+
+        }
+
+
         @Override
         public void onClick(View v) {
             Bundle bundle = new Bundle();
-            bundle.putString("orderId", orderId + "");
-            bundle.putString("sale_advice_url", sale_advice_url);
-            bundle.putString("price", tvSalePrice);
-            bundle.putString("surname", surname);
+            bundle.putString("orderId", resultBeans.getProduct_orders_id() + "");
+            bundle.putString("sale_advice_url", resultBeans.getSale_advice_url());
+            bundle.putString("price", resultBeans.getPrice());
+            bundle.putString("surname", resultBeans.getCustomer_surname() + " " + resultBeans.getCustomer_first_name());
             switch (v.getId()) {
                 //点击pop内容区之外pop消失
                 case R.id.llSalePop:
@@ -271,46 +165,24 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
                 //点击意向金
                 case R.id.btPayIntention:
-                    if (btPayIntention.getText().equals(getString(R.string.saler_16))) {
-                        mSalePopuwindow.dismiss();
-                        flag = ExtraName.UPLOAD_FIRST_COMMISSION;
-                        BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    } else {
-                        Bundle bun = new Bundle();
-                        bun.putString("payurlId", ((SaleOrderBean.ResultBean) saleAdapter.getItem(pos)).getOrder_money_url());
-                        bun.putString("payment_method", ((SaleOrderBean.ResultBean) saleAdapter.getItem(pos)).getPayment_method() + "");
-                        ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
-
-                    }
+                    mSalePopuwindow.dismiss();
+                    Bundle bun = new Bundle();
+                    bun.putString("payurlId", resultBeans.getOrder_money_url());
+                    bun.putString("payment_method", resultBeans.getPayment_method() + "");
+                    ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
 
                     break;
-                //点击修改订单
+                //上传凭证
                 case R.id.btOrderUpdate:
                     mSalePopuwindow.dismiss();
-                    mUpdateDialog.show();
-                    SaleOrderBean.ResultBean sb = (SaleOrderBean.ResultBean) saleAdapter.getItem(pos);
-                    tvOrderSequence.setText(sb.getProduct_orders_id() + ":");
-                    if (sb.getProduct_name() == null) {
-                        tvOrderContent.setText("null" + "-" +
-                                sb.getProduct_info().getProduct_childs_lot_number() + "-"
-                                + sb.getProduct_info().getProduct_childs_unit_number());
-                    } else {
-                        tvOrderContent.setText(sb.getProduct_name().getProduct_name() + "-" +
-                                sb.getProduct_info().getProduct_childs_lot_number() + "-"
-                                + sb.getProduct_info().getProduct_childs_unit_number());
-                    }
-                    etOrderRemark.setText(sb.getRemark());
-                    break;
-                //点击修改订单界面提交按钮
-                case R.id.tvOrderUpdateSubmit:
-                    submitOrderUpdate(orderId);
+                    flag = ExtraName.UPLOAD_FIRST_COMMISSION;
+                    BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
                     break;
                 //点击放弃订单
                 case R.id.btOrderCancel:
-                    ((SaleOrderBean.ResultBean) saleAdapter.getItem(pos)).setCancel_apply_status(1);
-                    saleAdapter.notifyDataSetChanged();
-                    canceOrder(orderId);
                     mSalePopuwindow.dismiss();
+                    canceOrder(resultBeans.getProduct_orders_id());
+
                     break;
                 //点击取消
                 case R.id.btSaleCancel:
@@ -318,39 +190,69 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     break;
             }
         }
-    };
+    }
 
-    //修改订单
-    private void submitOrderUpdate(int orderId) {
-        FinalHttp fh = new FinalHttp();
+
+    private void getSaleData(int page, final boolean isRefresh) {
+        showDialog();
+        FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("order_id", orderId + "");
+        ajaxParams.put("company_id", SharedPreferencesHelps.getCompanyId());
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("remark", etOrderRemark.getText().toString());
-        fh.post(Contants.UPDATE_ORDER, ajaxParams, new AjaxCallBack<String>() {
+        ajaxParams.put("page", page + "");
+        ajaxParams.put("number", "50");
+        http.get(Contants.INQUIRE_ORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
-                        mUpdateDialog.dismiss();
-                        ToasShow.showToastCenter(SaleRecordActivity.this, json.getString("msg"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                closeDialog();
+                Log.e("TAG", "onSuccess: " + s);
+                if (null != s) {
+                    parseJson(s, isRefresh);
                 }
 
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }
 
+
+    /**
+     * 获取数据
+     *
+     * @param json
+     * @param isRefresh
+     */
+    private void parseJson(String json, boolean isRefresh) {
+
+        Gson gson = new Gson();
+        SaleOrderBean saleOrderBean = gson.fromJson(json, SaleOrderBean.class);
+
+        if (saleOrderBean.getCode() == 1) {
+            sobRbData = saleOrderBean.getResult();
+
+        }
+
+
+        if (isRefresh) {
+            ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
+            saleAdapter = new SaleRecordAdapter(this);
+            lvSaleRecord.setAdapter(saleAdapter);
+        }
+        saleAdapter.addMore(sobRbData);
+        ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+    }
+
+    /**
+     * 取消订单
+     *
+     * @param orderId
+     */
     private void canceOrder(int orderId) {
+        showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("order_id", orderId + "");
@@ -358,21 +260,19 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         http.post(Contants.ORDER_CANCEL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
-                        mUpdateDialog.dismiss();
-                        ToasShow.showToastCenter(SaleRecordActivity.this, json.getString("msg"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                closeDialog();
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                if (errorBean.getCode().equals("1")) {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                 }
+
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
             }
         });
     }
@@ -382,76 +282,90 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         lvSaleRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                resetSalePopView();
-                resultBean = (SaleOrderBean.ResultBean) saleAdapter.getItem(position);
+                SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
+                resultBean = viewHolder.resultBean;
                 saleAdapter.setCurrentItem(resultBean.getProduct_orders_id());
                 saleAdapter.notifyDataSetChanged();
-                if (resultBean.getCancel_apply_status() != 1 && resultBean.getCancel_apply_status() != 2) {
-                    orderId = resultBean.getProduct_orders_id();
-                    sale_advice_url = resultBean.getSale_advice_url();
-                    tvSalePrice = resultBean.getPrice();
-                    surname = resultBean.getCustomer_surname() + " " + resultBean.getCustomer_first_name();
-                    //saleAdapter.getView(position,)
-                    pos = position;
-                    TextView tvText = (TextView) view.findViewById(R.id.tvStatus);
-                    //tvText.setBackgroundColor(ContextCompat.getColor(SaleRecordActivity.this,R.color.transparent));
-                    Log.e("view", "onItemClick: " + tvText.getText().toString());
-                    tvText.setBackground(null);
-                    if (!tvText.getText().toString().equals(getString(R.string.saler_17))) {
+
+                //正在申请合同,等待管理员审核
+                if (resultBean.getOrder_money_status() == 1
+                        && resultBean.getSales_advice_status() == 0
+                        && resultBean.getContract_apply_status() == 1
+                        && resultBean.getStatus() == 0
+                        && resultBean.getCancel_apply_status() == 0) {
 
 
-                        //尚未支付意向金情况:Order_money_status() == 0
-                        if (tvText.getText().toString().equals(R.string.saler_04)) {
-                            btApplyContract.setVisibility(View.GONE);
-                            btPayIntention.setText(R.string.saler_18);
-                        }
-                        //意向金已支付情况:Order_money_status() == 1,Contract_apply_status() == 0
-                        if (tvText.getText().toString().equals(R.string.saler_07)) {
-                            btPayIntention.setVisibility(View.GONE);
-                        }
-                        if (tvText.getText().toString().equals(R.string.saler_03)) {
-                            btPayIntention.setVisibility(View.GONE);
-                        }
-                        //请上传合同首页请上传首付款凭证情况:Order_money_status() == 2,Contract_apply_status() == 2
-                        if (tvText.getText().toString().equals(R.string.saler_09)) {
-                            btApplyContract.setText(R.string.saler_15);
-                            btPayIntention.setText(R.string.saler_16);
-                            btOrderCancel.setVisibility(View.GONE);
-                        }
-                        if (tvText.getText().toString().equals(getString(R.string.saler_19))) {
-                            btPayIntention.setVisibility(View.GONE);
-                            btPayIntention.setText(R.string.saler_16);
-                        }
-                        if (tvText.getText().toString().equals(getString(R.string.saler_20))) {
-                            btApplyContract.setVisibility(View.GONE);
-                            btPayIntention.setVisibility(View.GONE);
-                            btOrderCancel.setVisibility(View.GONE);
-                        }
-                        mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER, 0, 0);
-                    }
                 }
+                //意向金凭证已上传,,,请申请合同
+                else if (resultBean.getOrder_money_status() == 1
+                        && resultBean.getCancel_apply_status() == 0
+                        && resultBean.getSale_advice_status() == 0
+                        && resultBean.getStatus() == 0) {
+
+                    showDialogWindow(resultBean);
+
+
+                    //订单放弃中
+                } else if ((resultBean.getOrder_money_status() == 1 || resultBean.getOrder_money_status() == 2)
+                        && resultBean.getCancel_apply_status() == 1
+                        && resultBean.getStatus() == 0) {
+
+                    //订单已取消
+                } else if (resultBean.getOrder_money_status() == 1
+                        && resultBean.getCancel_apply_status() == 2
+                        && resultBean.getStatus() == 10) {
+
+
+                    //准备交换合同
+                } else if (resultBean.getOrder_money_status() == 2
+                        && resultBean.getContract_apply_status() == 2
+                        && resultBean.getBuy_money_status() == 2
+                        && resultBean.getCancel_apply_status() == 0
+                        && resultBean.getUpload_contract_status() == 2
+                        && resultBean.getStatus() == 0) {
+
+
+                    //合同首页已审核 , 首付款凭证审核中
+                } else if (resultBean.getUpload_contract_status() == 2
+                        && resultBean.getBuy_money_status() == 1
+                        && resultBean.getCancel_apply_status() == 0) {
+
+
+                    //请上传合同首页 ,请上传首付款凭证
+                } else if (resultBean.getContract_apply_status() == 2
+                        && resultBean.getUpload_contract_status() == 0
+                        && resultBean.getBuy_money_status() == 0
+                        && resultBean.getCancel_apply_status() == 0) {
+                    showDialogWindow(resultBean);
+                    //合同首页审核中,请上传首付款凭证
+                } else if (resultBean.getContract_apply_status() == 2
+                        && resultBean.getUpload_contract_status() == 1
+                        && resultBean.getBuy_money_status() == 0
+                        && resultBean.getCancel_apply_status() == 0) {
+                    showDialogWindow(resultBean);
+                    // 合同首页已审核,请上传首付款凭证
+                } else if (resultBean.getContract_apply_status() == 2
+                        && resultBean.getUpload_contract_status() == 2
+                        && resultBean.getBuy_money_status() == 0
+                        && resultBean.getCancel_apply_status() == 0) {
+                    showDialogWindow(resultBean);
+                    //合同首页已审核,首付款凭证审核中
+                } else if (resultBean.getContract_apply_status() == 2
+                        && resultBean.getUpload_contract_status() == 2
+                        && resultBean.getBuy_money_status() == 1
+                        && resultBean.getCancel_apply_status() == 0) {
+
+                }
+
+
             }
         });
-        llSalePop.setOnClickListener(mOnClickListener);
-        btApplyContract.setOnClickListener(mOnClickListener);
-        btOrderCancel.setOnClickListener(mOnClickListener);
-        btSaleCancel.setOnClickListener(mOnClickListener);
-        btPayIntention.setOnClickListener(mOnClickListener);
-        btOrderUpdate.setOnClickListener(mOnClickListener);
-        tvOrderUpdateSubmit.setOnClickListener(mOnClickListener);
 
-    }
 
-    private void resetSalePopView() {
-        btApplyContract.setVisibility(View.VISIBLE);
-        btPayIntention.setVisibility(View.VISIBLE);
-        btPayIntention.setVisibility(View.VISIBLE);
-        btOrderCancel.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-        ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getSaleData(page, true);
     }
@@ -471,54 +385,69 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 case ExtraName.TAKE_PICTURE:
                     if (null != data && null != data.getData()) {
                         picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, data.getData(), null, null);
-                        FinalHttp finalHttp = new FinalHttp();
-                        AjaxParams ajaxParams = new AjaxParams();
-                        String strUrl = "";
-                        try {
-                            ajaxParams.put("order_id", resultBean.getProduct_orders_id() + "");
-                            if (flag.equals(ExtraName.UPLOAD_CONTRACT)) {
-                                strUrl = Contants.UPLOAD_CONTRACT_PHOTO;
-                                if (null != picPath && !picPath.equals("")) {
-                                    File picFile = new File(picPath);
-                                    ajaxParams.put("file", picFile);
-                                }
-                            } else {
-                                strUrl = Contants.UPLOAD_FIRST_COMMISSION;
-                                ajaxParams.put("money_where", "");
-                                ajaxParams.put("pay_method", "");
-                                ajaxParams.put("pay_time", "");
-                                ajaxParams.put("amount", "");
-                                ajaxParams.put("remark", "");
-                            }
-
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                        finalHttp.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
-                            @Override
-                            public void onSuccess(String s) {
-                                super.onSuccess(s);
-                                try {
-                                    JSONObject json = new JSONObject(s);
-                                    if (json.getString("code").equals("1")) {
-                                        ToasShow.showToastCenter(SaleRecordActivity.this, json.getString("msg"));
-                                    } else {
-                                        ToasShow.showToastCenter(SaleRecordActivity.this, json.getString("msg"));
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-
-                            @Override
-                            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                                super.onFailure(t, errorNo, strMsg);
-
-                            }
-                        });
+                        setPicPath(picPath);
                     }
             }
         }
+    }
+
+
+    /**
+     * 上传支付凭证
+     *
+     * @param picPath
+     */
+    private void setPicPath(String picPath) {
+        try {
+            showDialog();
+            FinalHttp finalHttp = new FinalHttp();
+            AjaxParams ajaxParams = new AjaxParams();
+            String strUrl = "";
+            ajaxParams.put("order_id", resultBean.getProduct_orders_id() + "");
+
+            //支付定金
+            if (flag.equals(ExtraName.UPLOAD_CONTRACT)) {
+                strUrl = Contants.UPLOAD_CONTRACT_PHOTO;
+                if (null != picPath && !picPath.equals("")) {
+                    File picFile = new File(picPath);
+                    ajaxParams.put("file", picFile);
+                }
+            } else {
+                //支付房款-上传凭证或在线支付
+                strUrl = Contants.UPLOAD_FIRST_COMMISSION;
+                ajaxParams.put("money_where", "");
+                ajaxParams.put("pay_method", "");
+                ajaxParams.put("pay_time", "");
+                ajaxParams.put("amount", "");
+                ajaxParams.put("remark", "");
+                ajaxParams.put("image", "");
+            }
+
+            finalHttp.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
+                @Override
+                public void onSuccess(String s) {
+                    closeDialog();
+                    Gson gson = new Gson();
+                    ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                    if (errorBean.getCode().equals("1")) {
+                        ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                    } else {
+                        ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                    }
+
+
+                }
+
+                @Override
+                public void onFailure(Throwable t, int errorNo, String strMsg) {
+                    closeDialog();
+
+                }
+            });
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 }

@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,8 +11,8 @@ public class SaleOrderBean extends Domine {
     /**
      * code : 1
      * msg : 成功获取订单列表
-     * total_number : 4
-     * result : [{"product_orders_id":94,"company_id":"1","order_type":1,"purchaseReason":"未知","property_id":31,"price":"123.00","currency":"au","client":76,"is_firb":0,"client_type":1,"sales_id":100014,"lawyer_id":5,"lawyer_name":"自然好味道","lawyer_tel":"4008006465","lawyer_email":"fsf@d.dd","payment_method":0,"payment_amount":"0.00","add_time":"1491449958","order_money_url":"public/uploads/order_money/170406/201704061139188277.jpg","pay_time":"1491449958","order_moneycheck_time":"","order_money_status":1,"contract_apply_time":0,"contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","old_status":"","status":0,"product_name":"3303","customer_surname":"liu","customer_first_name":"jin","customer_en_name":"hj","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=94","product_info":{"product_childs_id":31,"product_id":33,"product_childs_lot_number":"3303330333033303","product_childs_unit_number":"33033303","company_id":1,"cate_id":4,"area":"4","bedroom":"2","bathroom":"1","car_space":"2","has_study":"2","ensuite":"3","level":"33","floor_type":"","aspect":"","internal":"3.00","external":"33.00","building_area":"33.00","land_size":"0.00","price":"123.00","vendor_price":"0.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"0.00","house_discount_amount":"0.00","is_gst":1,"sales_commission_type":1,"sales_commission_value":"0.00","commossion_first":"31.00","commossion_second":"37.00","commossion_third":"32.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170320/201703201713433108.jpg","up_time":1490001223,"up_ip":"114.224.133.41","up_admin":4,"is_lock":1,"is_eoi":0,"status":0}},{"product_orders_id":93,"company_id":"1","order_type":1,"purchaseReason":"Unknown","property_id":1895,"price":"0.00","currency":"au","client":76,"is_firb":0,"client_type":1,"sales_id":100014,"lawyer_id":1,"lawyer_name":"齐大大","lawyer_tel":"1234","lawyer_email":"15252132437@qq.com","payment_method":2,"payment_amount":"5000.00","add_time":"1491444952","order_money_url":"public/uploads/order_money/170406/201704061015527672.jpg","pay_time":"1491444952","order_moneycheck_time":"","order_money_status":1,"contract_apply_time":0,"contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","old_status":"","status":0,"product_name":"","customer_surname":"liu","customer_first_name":"jin","customer_en_name":"hj","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=93","product_info":{"product_childs_id":1895,"product_id":116,"product_childs_lot_number":"批号","product_childs_unit_number":"单元号","company_id":2,"cate_id":41,"area":"","bedroom":"1","bathroom":"2","car_space":"3","has_study":"1","ensuite":"4","level":"5","floor_type":"2","aspect":"E","internal":"78.98","external":"23.23","building_area":"123.20","land_size":"12.00","price":"0.00","vendor_price":"65000.00","discount_amount":"300.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"0.00","house_discount_amount":"0.00","is_gst":1,"sales_commission_type":1,"sales_commission_value":"2.00","commossion_first":"1.00","commossion_second":"1.00","commossion_third":"1.00","currency":"au","thumb":"public/uploads/product_thumb/170327/201703270947058855.jpg","up_time":1490579061,"up_ip":"117.84.78.214","up_admin":4,"is_lock":1,"is_eoi":0,"status":0}},{"product_orders_id":92,"company_id":"1","order_type":1,"purchaseReason":"Unknown","property_id":1894,"price":"0.00","currency":"au","client":76,"is_firb":0,"client_type":1,"sales_id":100014,"lawyer_id":1,"lawyer_name":"齐大大","lawyer_tel":"1234","lawyer_email":"15252132437@qq.com","payment_method":2,"payment_amount":"5000.00","add_time":"1491442583","order_money_url":"public/uploads/order_money/170406/201704060936235683.jpg","pay_time":"1491442583","order_moneycheck_time":"","order_money_status":1,"contract_apply_time":0,"contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","old_status":"","status":0,"product_name":"","customer_surname":"liu","customer_first_name":"jin","customer_en_name":"hj","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=92","product_info":{"product_childs_id":1894,"product_id":112,"product_childs_lot_number":"sdgtgwae","product_childs_unit_number":"ewwet","company_id":2,"cate_id":3,"area":"","bedroom":"3","bathroom":"4","car_space":"2","has_study":"1","ensuite":"3","level":"1","floor_type":"1","aspect":"E","internal":"3243.00","external":"234.00","building_area":"23.00","land_size":"234.00","price":"0.00","vendor_price":"234.00","discount_amount":"23.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"0.00","house_discount_amount":"0.00","is_gst":1,"sales_commission_type":1,"sales_commission_value":"0.00","commossion_first":"0.00","commossion_second":"0.00","commossion_third":"0.00","currency":"au","thumb":"","up_time":1490513757,"up_ip":"117.84.78.214","up_admin":4,"is_lock":1,"is_eoi":0,"status":0}},{"product_orders_id":91,"company_id":"1","order_type":1,"purchaseReason":"Investment","property_id":25,"price":"0.00","currency":"au","client":80,"is_firb":0,"client_type":1,"sales_id":100014,"lawyer_id":1,"lawyer_name":"齐大大","lawyer_tel":"1234","lawyer_email":"15252132437@qq.com","payment_method":3,"payment_amount":"5000.00","add_time":"1491014537","order_money_url":"public/uploads/order_money/170401/201704011042173925.jpg","pay_time":"1491014537","order_moneycheck_time":"","order_money_status":1,"contract_apply_time":0,"contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1491016938,"cancel_time":"","cancel_apply_status":1,"complete_time":"","remark":"{\"product_childs_id\":25,\"product_id\":9,\"product_childs_lot_number\":\"\\u8428\\u8fbe\\u8428\\u8fbe\",\"product_childs_unit_number\":\"\\u8428\\u8fbe\\u8428\\u8fbe\",\"company_id\":1,\"cate_id\":0,\"area\":\"\",\"bedroom\":\"1\",\"bathroom\":\"12\",\"car_space\":\"1\",\"has_study\":\"0\",\"ensuit","old_status":"0","status":0,"product_name":null,"customer_surname":"bai","customer_first_name":"peng","customer_en_name":"baipeng","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=91","product_info":{"product_childs_id":25,"product_id":9,"product_childs_lot_number":"萨达萨达","product_childs_unit_number":"萨达萨达","company_id":1,"cate_id":0,"area":"","bedroom":"1","bathroom":"12","car_space":"1","has_study":"0","ensuite":"0","level":"0","floor_type":"","aspect":"","internal":"0.00","external":"0.00","building_area":"0.00","land_size":"0.00","price":"0.00","vendor_price":"0.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"0.00","house_discount_amount":"0.00","is_gst":1,"sales_commission_type":1,"sales_commission_value":"0.00","commossion_first":"0.00","commossion_second":"0.00","commossion_third":"0.00","currency":"","thumb":"public/uploads/product_childs_thumb/170214/201702141710003562.png","up_time":1487063400,"up_ip":"117.84.78.157","up_admin":4,"is_lock":1,"is_eoi":0,"status":0}}]
+     * total_number : 25
+     * result : [{"product_orders_id":48,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Investment","property_id":21,"product_childs_type":2,"price":"420100","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":4,"payment_amount":"300.00","add_time":"1495610298","order_money_url":"76","pay_time":"517303096.","order_money_upload_time":"1495610298","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":";","days_to_pay":"","sale_advice_status":0,"old_status":"","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=48","product_info":{"product_childs_id":21,"product_id":3,"product_childs_lot_number":"P001392","product_childs_unit_number":"110","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"5","bathroom":"3","car_space":"2","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"200.00","external":"62.00","building_area":"229.00","land_size":"376.00","price":"816200.00","vendor_price":"816200.00","discount_amount":"0.00","land_vendor_price":"420100.00","land_discount_amount":"0.00","house_vendor_price":"396100.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170522/201705221104088505.jpg","agent_notes":"","up_time":1495422248,"up_ip":"101.81.225.106","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":45,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Unknown","property_id":15,"product_childs_type":1,"price":"396100","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":1,"payment_amount":"300.00","add_time":"1495609650","order_money_url":"73","pay_time":"517302449.","order_money_upload_time":"1495609650","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=45","product_info":{"product_childs_id":15,"product_id":3,"product_childs_lot_number":"P001392","product_childs_unit_number":"110","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"5","bathroom":"3","car_space":"2","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"200.00","external":"40.00","building_area":"229.00","land_size":"376.00","price":"816200.00","vendor_price":"816200.00","discount_amount":"0.00","land_vendor_price":"420100.00","land_discount_amount":"0.00","house_vendor_price":"396100.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161304125879.jpg","agent_notes":"","up_time":1494911052,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":46,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Unknown","property_id":15,"product_childs_type":2,"price":"420100","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":1,"payment_amount":"300.00","add_time":"1495609650","order_money_url":"74","pay_time":"517302449.","order_money_upload_time":"1495609650","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1496917031,"cancel_time":"","cancel_apply_status":1,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"0","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=46","product_info":{"product_childs_id":15,"product_id":3,"product_childs_lot_number":"P001392","product_childs_unit_number":"110","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"5","bathroom":"3","car_space":"2","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"200.00","external":"40.00","building_area":"229.00","land_size":"376.00","price":"816200.00","vendor_price":"816200.00","discount_amount":"0.00","land_vendor_price":"420100.00","land_discount_amount":"0.00","house_vendor_price":"396100.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161304125879.jpg","agent_notes":"","up_time":1494911052,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":43,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Unknown","property_id":14,"product_childs_type":1,"price":"396500","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":4,"payment_amount":"300.00","add_time":"1495531534","order_money_url":"71","pay_time":"517224331.","order_money_upload_time":"1495531535","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":1495609527,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":1,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1496817508,"cancel_time":"","cancel_apply_status":1,"complete_time":"","remark":";","days_to_pay":"","sale_advice_status":0,"old_status":"0","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=43","product_info":{"product_childs_id":14,"product_id":3,"product_childs_lot_number":"P001398","product_childs_unit_number":"118","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"4","bathroom":"3","car_space":"1","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"250.00","external":"40.00","building_area":"300.00","land_size":"310.00","price":"730700.00","vendor_price":"730700.00","discount_amount":"0.00","land_vendor_price":"334200.00","land_discount_amount":"0.00","house_vendor_price":"396500.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161301291528.jpg","agent_notes":"","up_time":1494910889,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":44,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Unknown","property_id":14,"product_childs_type":2,"price":"334200","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":4,"payment_amount":"300.00","add_time":"1495531534","order_money_url":"72","pay_time":"517224331.","order_money_upload_time":"1495531535","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=44","product_info":{"product_childs_id":14,"product_id":3,"product_childs_lot_number":"P001398","product_childs_unit_number":"118","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"4","bathroom":"3","car_space":"1","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"250.00","external":"40.00","building_area":"300.00","land_size":"310.00","price":"730700.00","vendor_price":"730700.00","discount_amount":"0.00","land_vendor_price":"334200.00","land_discount_amount":"0.00","house_vendor_price":"396500.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161301291528.jpg","agent_notes":"","up_time":1494910889,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":42,"company_id":"1","order_type":1,"product_id":"3","eoi_id":"","purchaseReason":"Unknown","property_id":13,"product_childs_type":1,"price":"192921","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":7,"lawyer_name":"feiliu","lawyer_tel":"0425120116","lawyer_email":"fei@kwllawyers.com.au","payment_method":7,"payment_amount":"2000.00","add_time":"1495531367","order_money_url":"70","pay_time":"517224166.","order_money_upload_time":"1495531367","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=42","product_info":{"product_childs_id":13,"product_id":3,"product_childs_lot_number":"302","product_childs_unit_number":"","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"3","bathroom":"1","car_space":"1","has_study":"0","ensuite":"","level":"","floor_type":"4","aspect":"E","internal":"120.00","external":"130.00","building_area":"131.00","land_size":"132.00","price":"192921.00","vendor_price":"192921.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"193021.00","house_discount_amount":"100.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161247328619.jpg","agent_notes":"","up_time":1494910052,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":38,"company_id":"1","order_type":1,"product_id":"2","eoi_id":"","purchaseReason":"Investment","property_id":25,"product_childs_type":2,"price":"910000.00","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":3,"lawyer_name":"firstnametest","lawyer_tel":"139","lawyer_email":"qq@test.com","payment_method":7,"payment_amount":"2000.00","add_time":"1495439418","order_money_url":"65","pay_time":"517132216.","order_money_upload_time":"1495439418","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1495610181,"cancel_time":"","cancel_apply_status":1,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"0","status":0,"product_name":{"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=38","product_info":{"product_childs_id":25,"product_id":2,"product_childs_lot_number":"P001949","product_childs_unit_number":"73","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"2","bathroom":"2","car_space":"1","has_study":"0","ensuite":"","level":"","floor_type":"1","aspect":"SE","internal":"85.00","external":"21.00","building_area":"106.00","land_size":"250.00","price":"910000.00","vendor_price":"910000.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"910000.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170522/201705221325521024.jpg","agent_notes":"","up_time":1495430752,"up_ip":"101.81.225.106","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":31,"company_id":"1","order_type":1,"product_id":"1","eoi_id":"0","purchaseReason":"投资","property_id":8,"product_childs_type":2,"price":"710000.00","currency":"au","client":3429,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":1,"lawyer_name":"Express Settlement","lawyer_tel":"","lawyer_email":"","payment_method":7,"payment_amount":"200000.00","add_time":"1495421119","order_money_url":"58","pay_time":"1495421121","order_money_upload_time":"1495421119","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":2,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","cancel_apply_status":0,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"","status":0,"product_name":{"company_id":1,"product_info_id":2,"product_id":2,"product_name":"Parramatta Imperial Tower A","product_description":"","add_time":1495435459,"lan":"en"},"customer_surname":"Jia","customer_first_name":"Lixin","customer_en_name":"Leo","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=31","product_info":{"product_childs_id":8,"product_id":1,"product_childs_lot_number":"P001880","product_childs_unit_number":"128","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"3","bathroom":"2","car_space":"2","has_study":"0","ensuite":"0","level":"5","floor_type":"1","aspect":"S","internal":"95.00","external":"17.00","building_area":"112.00","land_size":"0.00","price":"710000.00","vendor_price":"710000.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"710000.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170512/201705121112489761.jpg","agent_notes":"","up_time":1494558768,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}},{"product_orders_id":30,"company_id":"1","order_type":1,"product_id":"2","eoi_id":"0","purchaseReason":"投资","property_id":19,"product_childs_type":2,"price":"1045000.00","currency":"au","client":2837,"is_firb":0,"client_type":1,"sales_id":100048,"lawyer_id":1,"lawyer_name":"Express Settlement","lawyer_tel":"","lawyer_email":"","payment_method":1,"payment_amount":"30000.00","add_time":"1495089027","order_money_url":"50","pay_time":"1495089023","order_money_upload_time":"1495089027","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1495094211,"cancel_time":"1495418102","cancel_apply_status":2,"complete_time":"","remark":"","days_to_pay":"","sale_advice_status":0,"old_status":"0","status":10,"product_name":{"company_id":1,"product_info_id":7,"product_id":1,"product_name":"Bankstown THE Mark","product_description":"","add_time":1495435401,"lan":"en"},"customer_surname":"liu","customer_first_name":"chang","customer_en_name":"chang","sale_advice_url":"https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=30","product_info":{"product_childs_id":19,"product_id":2,"product_childs_lot_number":"P001950","product_childs_unit_number":"74","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"3","bathroom":"2","car_space":"1","has_study":"0","ensuite":"","level":"","floor_type":"1","aspect":"E","internal":"92.00","external":"14.00","building_area":"106.00","land_size":"150.00","price":"1045000.00","vendor_price":"1045000.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"1045000.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170516/201705161340318416.jpg","agent_notes":"","up_time":1494913231,"up_ip":"101.81.231.191","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}}]
      */
 
     private int code;
@@ -53,34 +52,43 @@ public class SaleOrderBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean implements Serializable{
+    public static class ResultBean {
         /**
-         * product_orders_id : 94
+         * product_orders_id : 48
          * company_id : 1
          * order_type : 1
-         * purchaseReason : 未知
-         * property_id : 31
-         * price : 123.00
+         * product_id : 3
+         * eoi_id :
+         * purchaseReason : Investment
+         * property_id : 21
+         * product_childs_type : 2
+         * price : 420100
          * currency : au
-         * client : 76
+         * client : 3429
          * is_firb : 0
          * client_type : 1
-         * sales_id : 100014
-         * lawyer_id : 5
-         * lawyer_name : 自然好味道
-         * lawyer_tel : 4008006465
-         * lawyer_email : fsf@d.dd
-         * payment_method : 0
-         * payment_amount : 0.00
-         * add_time : 1491449958
-         * order_money_url : public/uploads/order_money/170406/201704061139188277.jpg
-         * pay_time : 1491449958
+         * sales_id : 100048
+         * lawyer_id : 7
+         * lawyer_name : feiliu
+         * lawyer_tel : 0425120116
+         * lawyer_email : fei@kwllawyers.com.au
+         * payment_method : 4
+         * payment_amount : 300.00
+         * add_time : 1495610298
+         * order_money_url : 76
+         * pay_time : 517303096.
+         * order_money_upload_time : 1495610298
          * order_moneycheck_time :
          * order_money_status : 1
+         * sales_advice_is_true : 0
+         * sales_advice_status : 0
          * contract_apply_time : 0
+         * contract_unsigned_url :
+         * unsign_upload_time :
          * contract_apply_check_time : 0
          * contract_apply_status : 0
          * buy_money_url :
+         * buy_money_account_paid : 0.00
          * buy_money_add_time :
          * buy_money_check_time :
          * buy_money_status : 0
@@ -92,15 +100,17 @@ public class SaleOrderBean extends Domine {
          * cancel_time :
          * cancel_apply_status : 0
          * complete_time :
-         * remark :
+         * remark : ;
+         * days_to_pay :
+         * sale_advice_status : 0
          * old_status :
          * status : 0
-         * product_name : 3303
-         * customer_surname : liu
-         * customer_first_name : jin
-         * customer_en_name : hj
-         * sale_advice_url : https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=94
-         * product_info : {"product_childs_id":31,"product_id":33,"product_childs_lot_number":"3303330333033303","product_childs_unit_number":"33033303","company_id":1,"cate_id":4,"area":"4","bedroom":"2","bathroom":"1","car_space":"2","has_study":"2","ensuite":"3","level":"33","floor_type":"","aspect":"","internal":"3.00","external":"33.00","building_area":"33.00","land_size":"0.00","price":"123.00","vendor_price":"0.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"0.00","house_discount_amount":"0.00","is_gst":1,"sales_commission_type":1,"sales_commission_value":"0.00","commossion_first":"31.00","commossion_second":"37.00","commossion_third":"32.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170320/201703201713433108.jpg","up_time":1490001223,"up_ip":"114.224.133.41","up_admin":4,"is_lock":1,"is_eoi":0,"status":0}
+         * product_name : {"company_id":1,"product_info_id":3,"product_id":3,"product_name":"Leppington Lucere","product_description":"","add_time":1494910883,"lan":"en"}
+         * customer_surname : Jia
+         * customer_first_name : Lixin
+         * customer_en_name : Leo
+         * sale_advice_url : https://www.wingaid.com/index.php/admin/outpdf/out_sales_advice_pdf?type=down&order_id=48
+         * product_info : {"product_childs_id":21,"product_id":3,"product_childs_lot_number":"P001392","product_childs_unit_number":"110","company_id":1,"cate_id":1,"cate_type":1,"area":"","bedroom":"5","bathroom":"3","car_space":"2","has_study":"0","ensuite":"","level":"","floor_type":"2","aspect":"E","internal":"200.00","external":"62.00","building_area":"229.00","land_size":"376.00","price":"816200.00","vendor_price":"816200.00","discount_amount":"0.00","land_vendor_price":"420100.00","land_discount_amount":"0.00","house_vendor_price":"396100.00","house_discount_amount":"0.00","is_gst":1,"extra_commossion":"","is_specal_commission":0,"sales_commission_type":1,"sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","currency":"au","thumb":"public/uploads/product_childs_thumb/170522/201705221104088505.jpg","agent_notes":"","up_time":1495422248,"up_ip":"101.81.225.106","up_admin":11,"is_lock":1,"is_eoi":0,"if_eoi":0,"status":0}
          */
 
         private int product_orders_id;
@@ -110,6 +120,7 @@ public class SaleOrderBean extends Domine {
         private String eoi_id;
         private String purchaseReason;
         private int property_id;
+        private int product_childs_type;
         private String price;
         private String currency;
         private int client;
@@ -136,6 +147,7 @@ public class SaleOrderBean extends Domine {
         private int contract_apply_check_time;
         private int contract_apply_status;
         private String buy_money_url;
+        private String buy_money_account_paid;
         private String buy_money_add_time;
         private String buy_money_check_time;
         private int buy_money_status;
@@ -148,9 +160,11 @@ public class SaleOrderBean extends Domine {
         private int cancel_apply_status;
         private String complete_time;
         private String remark;
+        private String days_to_pay;
+        private int sale_advice_status;
         private String old_status;
         private int status;
-        private ProductName product_name;
+        private ProductNameBean product_name;
         private String customer_surname;
         private String customer_first_name;
         private String customer_en_name;
@@ -211,6 +225,14 @@ public class SaleOrderBean extends Domine {
 
         public void setProperty_id(int property_id) {
             this.property_id = property_id;
+        }
+
+        public int getProduct_childs_type() {
+            return product_childs_type;
+        }
+
+        public void setProduct_childs_type(int product_childs_type) {
+            this.product_childs_type = product_childs_type;
         }
 
         public String getPrice() {
@@ -333,6 +355,14 @@ public class SaleOrderBean extends Domine {
             this.pay_time = pay_time;
         }
 
+        public String getOrder_money_upload_time() {
+            return order_money_upload_time;
+        }
+
+        public void setOrder_money_upload_time(String order_money_upload_time) {
+            this.order_money_upload_time = order_money_upload_time;
+        }
+
         public String getOrder_moneycheck_time() {
             return order_moneycheck_time;
         }
@@ -349,12 +379,44 @@ public class SaleOrderBean extends Domine {
             this.order_money_status = order_money_status;
         }
 
+        public int getSales_advice_is_true() {
+            return sales_advice_is_true;
+        }
+
+        public void setSales_advice_is_true(int sales_advice_is_true) {
+            this.sales_advice_is_true = sales_advice_is_true;
+        }
+
+        public int getSales_advice_status() {
+            return sales_advice_status;
+        }
+
+        public void setSales_advice_status(int sales_advice_status) {
+            this.sales_advice_status = sales_advice_status;
+        }
+
         public int getContract_apply_time() {
             return contract_apply_time;
         }
 
         public void setContract_apply_time(int contract_apply_time) {
             this.contract_apply_time = contract_apply_time;
+        }
+
+        public String getContract_unsigned_url() {
+            return contract_unsigned_url;
+        }
+
+        public void setContract_unsigned_url(String contract_unsigned_url) {
+            this.contract_unsigned_url = contract_unsigned_url;
+        }
+
+        public String getUnsign_upload_time() {
+            return unsign_upload_time;
+        }
+
+        public void setUnsign_upload_time(String unsign_upload_time) {
+            this.unsign_upload_time = unsign_upload_time;
         }
 
         public int getContract_apply_check_time() {
@@ -379,6 +441,14 @@ public class SaleOrderBean extends Domine {
 
         public void setBuy_money_url(String buy_money_url) {
             this.buy_money_url = buy_money_url;
+        }
+
+        public String getBuy_money_account_paid() {
+            return buy_money_account_paid;
+        }
+
+        public void setBuy_money_account_paid(String buy_money_account_paid) {
+            this.buy_money_account_paid = buy_money_account_paid;
         }
 
         public String getBuy_money_add_time() {
@@ -477,6 +547,22 @@ public class SaleOrderBean extends Domine {
             this.remark = remark;
         }
 
+        public String getDays_to_pay() {
+            return days_to_pay;
+        }
+
+        public void setDays_to_pay(String days_to_pay) {
+            this.days_to_pay = days_to_pay;
+        }
+
+        public int getSale_advice_status() {
+            return sale_advice_status;
+        }
+
+        public void setSale_advice_status(int sale_advice_status) {
+            this.sale_advice_status = sale_advice_status;
+        }
+
         public String getOld_status() {
             return old_status;
         }
@@ -493,11 +579,11 @@ public class SaleOrderBean extends Domine {
             this.status = status;
         }
 
-        public ProductName getProduct_name() {
+        public ProductNameBean getProduct_name() {
             return product_name;
         }
 
-        public void setProduct_name(ProductName product_name) {
+        public void setProduct_name(ProductNameBean product_name) {
             this.product_name = product_name;
         }
 
@@ -541,47 +627,131 @@ public class SaleOrderBean extends Domine {
             this.product_info = product_info;
         }
 
+        public static class ProductNameBean {
+            /**
+             * company_id : 1
+             * product_info_id : 3
+             * product_id : 3
+             * product_name : Leppington Lucere
+             * product_description :
+             * add_time : 1494910883
+             * lan : en
+             */
+
+            private int company_id;
+            private int product_info_id;
+            private int product_id;
+            private String product_name;
+            private String product_description;
+            private int add_time;
+            private String lan;
+
+            public int getCompany_id() {
+                return company_id;
+            }
+
+            public void setCompany_id(int company_id) {
+                this.company_id = company_id;
+            }
+
+            public int getProduct_info_id() {
+                return product_info_id;
+            }
+
+            public void setProduct_info_id(int product_info_id) {
+                this.product_info_id = product_info_id;
+            }
+
+            public int getProduct_id() {
+                return product_id;
+            }
+
+            public void setProduct_id(int product_id) {
+                this.product_id = product_id;
+            }
+
+            public String getProduct_name() {
+                return product_name;
+            }
+
+            public void setProduct_name(String product_name) {
+                this.product_name = product_name;
+            }
+
+            public String getProduct_description() {
+                return product_description;
+            }
+
+            public void setProduct_description(String product_description) {
+                this.product_description = product_description;
+            }
+
+            public int getAdd_time() {
+                return add_time;
+            }
+
+            public void setAdd_time(int add_time) {
+                this.add_time = add_time;
+            }
+
+            public String getLan() {
+                return lan;
+            }
+
+            public void setLan(String lan) {
+                this.lan = lan;
+            }
+        }
+
         public static class ProductInfoBean {
             /**
-             * product_childs_id : 31
-             * product_id : 33
-             * product_childs_lot_number : 3303330333033303
-             * product_childs_unit_number : 33033303
+             * product_childs_id : 21
+             * product_id : 3
+             * product_childs_lot_number : P001392
+             * product_childs_unit_number : 110
              * company_id : 1
-             * cate_id : 4
-             * area : 4
-             * bedroom : 2
-             * bathroom : 1
+             * cate_id : 1
+             * cate_type : 1
+             * area :
+             * bedroom : 5
+             * bathroom : 3
              * car_space : 2
-             * has_study : 2
-             * ensuite : 3
-             * level : 33
-             * floor_type :
-             * aspect :
-             * internal : 3.00
-             * external : 33.00
-             * building_area : 33.00
-             * land_size : 0.00
-             * price : 123.00
-             * vendor_price : 0.00
+             * has_study : 0
+             * ensuite :
+             * level :
+             * floor_type : 2
+             * aspect : E
+             * internal : 200.00
+             * external : 62.00
+             * building_area : 229.00
+             * land_size : 376.00
+             * price : 816200.00
+             * vendor_price : 816200.00
              * discount_amount : 0.00
-             * land_vendor_price : 0.00
+             * land_vendor_price : 420100.00
              * land_discount_amount : 0.00
-             * house_vendor_price : 0.00
+             * house_vendor_price : 396100.00
              * house_discount_amount : 0.00
              * is_gst : 1
+             * extra_commossion :
+             * is_specal_commission : 0
              * sales_commission_type : 1
              * sales_commission_value : 0.00
-             * commossion_first : 31.00
-             * commossion_second : 37.00
-             * commossion_third : 32.00
+             * first_commission_type : 1
+             * commossion_first : 0.00
+             * second_commission_type : 1
+             * commossion_second : 0.00
+             * third_commission_type : 1
+             * commossion_third : 0.00
              * currency : au
-             * thumb : public/uploads/product_childs_thumb/170320/201703201713433108.jpg
-             * up_time : 1490001223
-             * up_ip : 114.224.133.41
-             * up_admin : 4
+             * thumb : public/uploads/product_childs_thumb/170522/201705221104088505.jpg
+             * agent_notes :
+             * up_time : 1495422248
+             * up_ip : 101.81.225.106
+             * up_admin : 11
              * is_lock : 1
              * is_eoi : 0
+             * if_eoi : 0
              * status : 0
              */
 
@@ -591,6 +761,7 @@ public class SaleOrderBean extends Domine {
             private String product_childs_unit_number;
             private int company_id;
             private int cate_id;
+            private int cate_type;
             private String area;
             private String bedroom;
             private String bathroom;
@@ -612,18 +783,25 @@ public class SaleOrderBean extends Domine {
             private String house_vendor_price;
             private String house_discount_amount;
             private int is_gst;
+            private String extra_commossion;
+            private int is_specal_commission;
             private int sales_commission_type;
             private String sales_commission_value;
+            private String first_commission_type;
             private String commossion_first;
+            private String second_commission_type;
             private String commossion_second;
+            private String third_commission_type;
             private String commossion_third;
             private String currency;
             private String thumb;
+            private String agent_notes;
             private int up_time;
             private String up_ip;
             private int up_admin;
             private int is_lock;
             private int is_eoi;
+            private int if_eoi;
             private int status;
 
             public int getProduct_childs_id() {
@@ -672,6 +850,14 @@ public class SaleOrderBean extends Domine {
 
             public void setCate_id(int cate_id) {
                 this.cate_id = cate_id;
+            }
+
+            public int getCate_type() {
+                return cate_type;
+            }
+
+            public void setCate_type(int cate_type) {
+                this.cate_type = cate_type;
             }
 
             public String getArea() {
@@ -842,6 +1028,22 @@ public class SaleOrderBean extends Domine {
                 this.is_gst = is_gst;
             }
 
+            public String getExtra_commossion() {
+                return extra_commossion;
+            }
+
+            public void setExtra_commossion(String extra_commossion) {
+                this.extra_commossion = extra_commossion;
+            }
+
+            public int getIs_specal_commission() {
+                return is_specal_commission;
+            }
+
+            public void setIs_specal_commission(int is_specal_commission) {
+                this.is_specal_commission = is_specal_commission;
+            }
+
             public int getSales_commission_type() {
                 return sales_commission_type;
             }
@@ -858,6 +1060,14 @@ public class SaleOrderBean extends Domine {
                 this.sales_commission_value = sales_commission_value;
             }
 
+            public String getFirst_commission_type() {
+                return first_commission_type;
+            }
+
+            public void setFirst_commission_type(String first_commission_type) {
+                this.first_commission_type = first_commission_type;
+            }
+
             public String getCommossion_first() {
                 return commossion_first;
             }
@@ -866,12 +1076,28 @@ public class SaleOrderBean extends Domine {
                 this.commossion_first = commossion_first;
             }
 
+            public String getSecond_commission_type() {
+                return second_commission_type;
+            }
+
+            public void setSecond_commission_type(String second_commission_type) {
+                this.second_commission_type = second_commission_type;
+            }
+
             public String getCommossion_second() {
                 return commossion_second;
             }
 
             public void setCommossion_second(String commossion_second) {
                 this.commossion_second = commossion_second;
+            }
+
+            public String getThird_commission_type() {
+                return third_commission_type;
+            }
+
+            public void setThird_commission_type(String third_commission_type) {
+                this.third_commission_type = third_commission_type;
             }
 
             public String getCommossion_third() {
@@ -896,6 +1122,14 @@ public class SaleOrderBean extends Domine {
 
             public void setThumb(String thumb) {
                 this.thumb = thumb;
+            }
+
+            public String getAgent_notes() {
+                return agent_notes;
+            }
+
+            public void setAgent_notes(String agent_notes) {
+                this.agent_notes = agent_notes;
             }
 
             public int getUp_time() {
@@ -936,6 +1170,14 @@ public class SaleOrderBean extends Domine {
 
             public void setIs_eoi(int is_eoi) {
                 this.is_eoi = is_eoi;
+            }
+
+            public int getIf_eoi() {
+                return if_eoi;
+            }
+
+            public void setIf_eoi(int if_eoi) {
+                this.if_eoi = if_eoi;
             }
 
             public int getStatus() {

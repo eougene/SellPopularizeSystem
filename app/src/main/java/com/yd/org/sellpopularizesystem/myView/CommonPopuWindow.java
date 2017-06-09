@@ -16,7 +16,7 @@ import com.yd.org.sellpopularizesystem.R;
 public abstract class CommonPopuWindow extends PopupWindow {
     private View mView;
 
-    public CommonPopuWindow(Activity context, View.OnClickListener itemsOnClick) {
+    public CommonPopuWindow(Activity context) {
         super(context);
         mView = LayoutInflater.from(context).inflate(getLayoutId(), null);
         //设置PopupWindow的View

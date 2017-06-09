@@ -24,9 +24,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductSubunitListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -145,7 +143,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         tvFile = getViewById(R.id.tvFile);
         tvFile.setOnClickListener(mOnClickListener);
 
-        mCustomePopuWindow = new CustomePopuWindow(ProductSubunitListActivity.this, mOnClickListener);
+        mCustomePopuWindow = new CustomePopuWindow(ProductSubunitListActivity.this);
         mView = mCustomePopuWindow.getContentView();
         rlPop = (RelativeLayout) mView.findViewById(R.id.rlPop);
         rlPop.setOnClickListener(mOnClickListener);
@@ -500,8 +498,8 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     class CustomePopuWindow extends CommonPopuWindow {
 
-        public CustomePopuWindow(Activity context, View.OnClickListener itemsOnClick) {
-            super(context, itemsOnClick);
+        public CustomePopuWindow(Activity context) {
+            super(context);
         }
 
         @Override
