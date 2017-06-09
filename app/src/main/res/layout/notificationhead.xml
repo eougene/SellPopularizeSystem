@@ -61,8 +61,8 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/customdetaild_title"
-                android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_12" />
+                android:textColor="@color/redyellow"
+                android:textSize="@dimen/tv_size_15" />
 
 
         </LinearLayout>

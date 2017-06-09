@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:gravity="center"
-            android:text="@string/area"
+            android:text="ID"
             android:textColor="@color/white"/>
 
         <TextView
