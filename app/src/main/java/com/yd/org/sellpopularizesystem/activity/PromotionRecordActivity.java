@@ -182,7 +182,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 closeDialog();
                 Log.e("购房记录", "s:" + s);
 
-
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
 
             @Override
@@ -191,6 +192,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
                 ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                 closeDialog();
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             }
         });
 

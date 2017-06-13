@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/notificationLayout"
@@ -23,7 +23,7 @@
             android:text="@string/selectall"
             android:textColor="@color/light_blue"
             android:textSize="@dimen/tv_size_12"
-            android:visibility="invisible" />
+            android:visibility="invisible"/>
 
         <TextView
             android:layout_width="0dp"
@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="@string/message"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_tv_size" />
+            android:textSize="@dimen/title_tv_size"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -51,7 +51,7 @@
                 android:text="@string/delete"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_12"
-                android:visibility="invisible" />
+                android:visibility="invisible"/>
 
 
             <TextView
@@ -62,7 +62,7 @@
                 android:gravity="center"
                 android:text="@string/customdetaild_title"
                 android:textColor="@color/redyellow"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </LinearLayout>
@@ -70,6 +70,12 @@
 
     </LinearLayout>
 
+    <View
+        android:id="@+id/baseView"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/padding_margin_10"
+        android:background="@color/search_edit_bac"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -95,7 +101,7 @@
                 android:gravity="center"
                 android:text="@string/order"
                 android:textColor="@drawable/radiotextcolor_select"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvOrderSum"
@@ -109,7 +115,7 @@
                 android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
 
             <!--<View
@@ -125,7 +131,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/redyellow" />
+            android:background="@color/redyellow"/>
 
         <RelativeLayout
             android:id="@+id/brifeRelat"
@@ -144,7 +150,7 @@
                 android:gravity="center"
                 android:text="@string/team"
                 android:textColor="@drawable/radiotextcolor_select"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvBriefSum"
@@ -158,7 +164,7 @@
                 android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
             <!--<View
                 android:id="@+id/viewBriefSum"
@@ -173,7 +179,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/redyellow" />
+            android:background="@color/redyellow"/>
 
         <RelativeLayout
             android:id="@+id/companyRelat"
@@ -192,7 +198,7 @@
                 android:gravity="center"
                 android:text="@string/company"
                 android:textColor="@drawable/radiotextcolor_select"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvCompanySum"
@@ -206,7 +212,7 @@
                 android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
-                android:visibility="gone" />
+                android:visibility="gone"/>
 
             <!--<View
                 android:id="@+id/viewCompanySum"
@@ -221,7 +227,7 @@
         <View
             android:layout_width="1dp"
             android:layout_height="match_parent"
-            android:background="@color/redyellow" />
+            android:background="@color/redyellow"/>
 
         <RelativeLayout
             android:id="@+id/systemRelat"
@@ -233,14 +239,14 @@
                 android:id="@+id/tvSystem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:background="@drawable/checkbut_radiobutton_selector"
                 android:button="@null"
                 android:gravity="center"
                 android:text="@string/system"
                 android:textColor="@drawable/radiotextcolor_select"
-                android:textSize="@dimen/tv_size_12"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <TextView
                 android:id="@+id/tvSystemSum"
@@ -254,14 +260,7 @@
                 android:text="@string/_99"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
-                android:visibility="gone" />
-
-            <!--<View
-                android:id="@+id/viewSystemSum"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/black" />-->
+                android:visibility="gone"/>
 
 
         </RelativeLayout>
@@ -269,4 +268,9 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/padding_margin_10"
+        android:background="@color/search_edit_bac"/>
 </LinearLayout>

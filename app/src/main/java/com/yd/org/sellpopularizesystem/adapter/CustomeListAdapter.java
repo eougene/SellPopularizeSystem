@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,6 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
@@ -129,7 +129,9 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class);
+                    Bundle bundle =new Bundle();
+                    bundle.putString("studynum","0");
+                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class,bundle);
                 }
             });
         }

@@ -20,6 +20,7 @@ import static android.support.v4.content.ContextCompat.getColor;
 
 /**
  * Created by e-dot on 2017/6/8.
+ * 订单页面
  */
 
 public class SaleRecordAdapter extends BaseAdapter {

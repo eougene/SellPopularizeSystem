@@ -4,10 +4,12 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
+
     <include
 
         android:id="@+id/not_header_layout"
         layout="@layout/notificationhead"/>
+
 
 
     <FrameLayout

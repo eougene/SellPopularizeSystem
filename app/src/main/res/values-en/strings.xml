@@ -463,4 +463,8 @@
     <string name="register">Register</string>
     <string name="forget_password">Forgot password?</string>
     <string name="check_wechat_install">Check to see if WeChat is installed</string>
+    <string name="issalingnum">在售数量:</string>
+    <string name="login_toas">您的账号在另外一台设备登录.</string>
+    <string name="hint_toas">提示</string>
+    <string name="home_reminder">您的账号在另外一台设备登录，为确保安全，请核实情况!</string>
 </resources>

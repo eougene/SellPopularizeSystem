@@ -121,7 +121,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
             } else {
                 //意向金未支付
-
                 btApplyContract.setVisibility(View.GONE);
             }
         }

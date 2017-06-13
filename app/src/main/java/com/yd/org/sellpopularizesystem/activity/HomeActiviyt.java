@@ -1,5 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -20,11 +22,12 @@ import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
-import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.fragment.MeFragment;
+import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -47,6 +50,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     private Class userPushService = PushService.class;
 
 
+    //主页消息数是否显示,更新,根据消息页面发送消息个数做决定
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -56,7 +60,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 if (messageCountBean.state.equals("1")) {
                     tvMessageCount.setVisibility(View.VISIBLE);
                     tvMessageCount.setText(messageCountBean.count);
-
                     //没有有新的消息
                 } else {
                     tvMessageCount.setVisibility(View.GONE);
@@ -68,6 +71,8 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         }
     };
 
+
+    //提示消息,个推提示
     public Handler showToasHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -75,9 +80,17 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
             String mess = (String) msg.obj;
             showToas(mess);
 
+
+            //设备在别的手机登录提示,并退出当前登录
+            if (mess.equals(getResources().getString(R.string.login_toas))) {
+                showLoginToas();
+            }
+
         }
     };
 
+
+    //推广记录提交,在退出推广的时候发送消息用于提交记录
     public Handler recordHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -93,6 +106,14 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeActiviyt = this;
+
+
+        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
+        // IntentService, 必须在 AndroidManifest 中声明)
+        PushManager.getInstance().initialize(this.getApplicationContext(), userPushService);
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), IntentService.class);
+
+
         //获取系统语言
         Locale locale = Locale.getDefault();
         String language = locale.getLanguage();
@@ -101,12 +122,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         setContentView(R.layout.activity_home_activiyt);
         inintView();
         setSelect(0);
-
-
-        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
-        // IntentService, 必须在 AndroidManifest 中声明)
-        PushManager.getInstance().initialize(this.getApplicationContext(), userPushService);
-        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), IntentService.class);
 
 
     }
@@ -291,6 +306,25 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 Log.e("errorNo", "errorNo:" + errorNo);
             }
         });
+    }
+
+    private void showLoginToas() {
+        new AlertDialog.Builder(this).setTitle(R.string.hint_toas).setMessage(R.string.home_reminder).setPositiveButton(getResources().getString(R.string.home_sure), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                logOut();
+            }
+        }).create().show();
+    }
+
+    private void logOut() {
+
+        SharedPreferencesHelps.clearUserID();
+        SharedPreferencesHelps.cleaAccount();
+        SharedPreferencesHelps.clearUserName();
+        SharedPreferencesHelps.clearUserPassword();
+        ActivitySkip.forward(HomeActiviyt.this, LoginActivity.class);
+        finish();
     }
 
 }

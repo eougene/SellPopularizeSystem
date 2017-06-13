@@ -7,13 +7,11 @@ import java.util.List;
  */
 
 public class CommissionBean extends Domine {
-
-
     /**
      * code : 1
      * msg : 成功获取佣金列表
-     * total_number : 1
-     * result : [{"id":1,"company_id":1,"user_id":100009,"true_name":"","user_first_name":"","user_surname":"","user_en_name":"","customer_id":0,"customer_first_name":"","customer_surname":"","customer_en_name":"","order_id":0,"product_id":0,"product_childs_id":0,"product_name":"","product_childs_lot_number":"","product_childs_unit_number":"","order_price":"0.00","commossion":"0.00","gst":"0.00","total":"0.00","first_money":"0.00","first_status":0,"first_time":2147483647,"second_money":"0.00","second_status":1,"second_time":0,"third_money":"0.00","third_status":1,"third_time":0,"add_time":0,"update_time":0,"status":0,"first_commossion":"0.00","first_gst":0,"first_total":0,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0}]
+     * total_number : 3
+     * result : [{"id":4,"company_id":0,"user_id":100048,"true_name":"","user_first_name":"test","user_surname":"test","user_en_name":"","customer_id":3694,"customer_first_name":"test","customer_surname":"test","customer_en_name":"","order_id":70,"product_id":3,"product_childs_id":22,"product_name":"Leppington Lucere","product_childs_lot_number":" P001400","product_childs_unit_number":"127","order_price":"391500.00","commossion":"14.09","gst":"1.57","total":"15.66","first_money":"0.04","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1496986849,"update_time":0,"is_value":0,"status":0,"first_commossion":"0.04","first_gst":0.0044570617459191,"first_total":0.044457061745919,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0},{"id":2,"company_id":0,"user_id":100048,"true_name":"","user_first_name":"Lixin","user_surname":"Jia","user_en_name":"","customer_id":69,"customer_first_name":"Lixin","customer_surname":"Jia","customer_en_name":"","order_id":9,"product_id":3,"product_childs_id":12,"product_name":"Leppington Lucere","product_childs_lot_number":"P001402","product_childs_unit_number":"154","order_price":"403500.00","commossion":"0.00","gst":"0.00","total":"0.00","first_money":"0.00","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1494897161,"update_time":0,"is_value":0,"status":0,"first_commossion":"0.00","first_gst":0,"first_total":0,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0},{"id":1,"company_id":0,"user_id":100048,"true_name":"","user_first_name":"Lixin","user_surname":"Jia","user_en_name":"","customer_id":3684,"customer_first_name":"Lixin","customer_surname":"Jia","customer_en_name":"","order_id":2,"product_id":1,"product_childs_id":2,"product_name":"APT - Bankstown THE Mark","product_childs_lot_number":" P002081","product_childs_unit_number":"1156","order_price":"0.00","commossion":"0.00","gst":"0.00","total":"0.00","first_money":"0.00","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1494399887,"update_time":0,"is_value":0,"status":0,"first_commossion":"0.00","first_gst":0,"first_total":0,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0}]
      */
 
     private int code;
@@ -53,44 +51,45 @@ public class CommissionBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean extends Domine{
+    public static class ResultBean extends  Domine{
         /**
-         * id : 1
-         * company_id : 1
-         * user_id : 100009
+         * id : 4
+         * company_id : 0
+         * user_id : 100048
          * true_name :
-         * user_first_name :
-         * user_surname :
+         * user_first_name : test
+         * user_surname : test
          * user_en_name :
-         * customer_id : 0
-         * customer_first_name :
-         * customer_surname :
+         * customer_id : 3694
+         * customer_first_name : test
+         * customer_surname : test
          * customer_en_name :
-         * order_id : 0
-         * product_id : 0
-         * product_childs_id : 0
-         * product_name :
-         * product_childs_lot_number :
-         * product_childs_unit_number :
-         * order_price : 0.00
-         * commossion : 0.00
-         * gst : 0.00
-         * total : 0.00
-         * first_money : 0.00
+         * order_id : 70
+         * product_id : 3
+         * product_childs_id : 22
+         * product_name : Leppington Lucere
+         * product_childs_lot_number :  P001400
+         * product_childs_unit_number : 127
+         * order_price : 391500.00
+         * commossion : 14.09
+         * gst : 1.57
+         * total : 15.66
+         * first_money : 0.04
          * first_status : 0
-         * first_time : 2147483647
+         * first_time : 0
          * second_money : 0.00
-         * second_status : 1
+         * second_status : 0
          * second_time : 0
          * third_money : 0.00
-         * third_status : 1
+         * third_status : 0
          * third_time : 0
-         * add_time : 0
+         * add_time : 1496986849
          * update_time : 0
+         * is_value : 0
          * status : 0
-         * first_commossion : 0.00
-         * first_gst : 0
-         * first_total : 0
+         * first_commossion : 0.04
+         * first_gst : 0.0044570617459191
+         * first_total : 0.044457061745919
          * second_commossion : 0.00
          * second_gst : 0
          * second_total : 0
@@ -131,10 +130,11 @@ public class CommissionBean extends Domine {
         private int third_time;
         private int add_time;
         private int update_time;
+        private int is_value;
         private int status;
         private String first_commossion;
-        private int first_gst;
-        private int first_total;
+        private double first_gst;
+        private double first_total;
         private String second_commossion;
         private int second_gst;
         private int second_total;
@@ -398,6 +398,14 @@ public class CommissionBean extends Domine {
             this.update_time = update_time;
         }
 
+        public int getIs_value() {
+            return is_value;
+        }
+
+        public void setIs_value(int is_value) {
+            this.is_value = is_value;
+        }
+
         public int getStatus() {
             return status;
         }
@@ -414,19 +422,19 @@ public class CommissionBean extends Domine {
             this.first_commossion = first_commossion;
         }
 
-        public int getFirst_gst() {
+        public double getFirst_gst() {
             return first_gst;
         }
 
-        public void setFirst_gst(int first_gst) {
+        public void setFirst_gst(double first_gst) {
             this.first_gst = first_gst;
         }
 
-        public int getFirst_total() {
+        public double getFirst_total() {
             return first_total;
         }
 
-        public void setFirst_total(int first_total) {
+        public void setFirst_total(double first_total) {
             this.first_total = first_total;
         }
 
