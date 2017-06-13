@@ -21,7 +21,7 @@ import java.util.List;
 
 public class TeamAdapter extends BaseAdapter implements SectionIndexer {
     private LayoutInflater layoutInflater;
-    private List<TeamBean.ResultBean.SubBeanX> tasks;
+    private List<TeamBean.ResultBean.SubBeanX> tasks = new ArrayList<>();
     private Context mContext;
 
     public TeamAdapter(Context context, List<TeamBean.ResultBean.SubBeanX> tasks) {
@@ -47,7 +47,10 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
 
     @Override
     public int getCount() {
+
         return tasks.size();
+
+
     }
 
     @Override

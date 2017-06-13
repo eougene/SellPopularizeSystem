@@ -24,11 +24,13 @@
         <EditText
             android:id="@+id/etUser"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
+            android:layout_height="@dimen/padding_margin_40"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
             android:hint="@string/register_hint"
+            android:maxLines="1"
+            android:singleLine="true"
             android:textColorHint="@color/gray"
             android:background="@drawable/editbac" />
 
@@ -38,17 +40,19 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_20"
+            android:layout_marginTop="@dimen/padding_margin_10"
             android:text="@string/login_activity_password"
             android:textSize="@dimen/padding_margin_16" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
+            android:layout_height="@dimen/padding_margin_40"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
+            android:maxLines="1"
+            android:singleLine="true"
             android:background="@drawable/editbac" />
 
         <TextView
@@ -57,18 +61,21 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_20"
+            android:layout_marginTop="@dimen/padding_margin_10"
             android:text="@string/sure_password"
             android:textSize="@dimen/padding_margin_16" />
 
         <EditText
             android:id="@+id/etPassAgain"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
+            android:layout_height="@dimen/padding_margin_40"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="@drawable/editbac" />
+            android:background="@drawable/editbac"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionDone"/>
 
         <TextView
             android:id="@+id/tvRegister"
@@ -78,7 +85,7 @@
             android:layout_marginBottom="@dimen/padding_margin_6"
             android:layout_marginLeft="@dimen/padding_margin_14"
             android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_30"
+            android:layout_marginTop="@dimen/padding_margin_20"
             android:background="@drawable/loginbut_bac"
             android:gravity="center"
             android:text="@string/register"

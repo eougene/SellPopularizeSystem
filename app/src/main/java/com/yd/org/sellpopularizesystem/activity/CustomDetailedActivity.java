@@ -422,7 +422,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //生日
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || customeDetailedBean.getResult().getBirth_date() == 0) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || customeDetailedBean.getResult().getBirth_date().equals("") ) {
             edcustmomeDetailedBie.setText("");
         } else {
             edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date() + "");

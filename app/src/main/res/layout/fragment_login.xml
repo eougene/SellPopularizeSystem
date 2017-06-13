@@ -24,10 +24,13 @@
         <EditText
             android:id="@+id/useName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
+            android:layout_height="@dimen/padding_margin_40"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
             android:background="@drawable/editbac" />
 
         <RelativeLayout
@@ -59,10 +62,13 @@
         <EditText
             android:id="@+id/usePassword"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
+            android:layout_height="@dimen/padding_margin_40"
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             android:background="@drawable/editbac" />
 
         <TextView

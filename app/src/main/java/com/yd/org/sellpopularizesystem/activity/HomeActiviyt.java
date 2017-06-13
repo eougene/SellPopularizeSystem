@@ -67,7 +67,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 }
             }
 
-
         }
     };
 
@@ -79,7 +78,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
             super.handleMessage(msg);
             String mess = (String) msg.obj;
             showToas(mess);
-
 
             //设备在别的手机登录提示,并退出当前登录
             if (mess.equals(getResources().getString(R.string.login_toas))) {
@@ -106,7 +104,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeActiviyt = this;
-
 
         // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
         // IntentService, 必须在 AndroidManifest 中声明)
@@ -318,7 +315,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     }
 
     private void logOut() {
-
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserName();

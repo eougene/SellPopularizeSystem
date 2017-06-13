@@ -235,8 +235,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
         }
 
-
         if (isRefresh) {
+            if (sobRbData.size()==0) {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                lvSaleRecord.setVisibility(View.GONE);
+            } else {
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                lvSaleRecord.setVisibility(View.VISIBLE);
+            }
             ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
             saleAdapter = new SaleRecordAdapter(this);
             lvSaleRecord.setAdapter(saleAdapter);

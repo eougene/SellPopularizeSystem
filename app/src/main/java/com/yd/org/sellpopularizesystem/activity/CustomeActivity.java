@@ -8,6 +8,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -31,10 +32,15 @@ import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,7 +100,24 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
         jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
         if (null != jsonStr && !TextUtils.isEmpty(jsonStr)) {
-            jsonParse(jsonStr, true);
+            Log.e("jsonStr", "initView: " + jsonStr);
+            try {
+                JSONObject jsonObject = new JSONObject(jsonStr);
+                JSONArray jsonArray = jsonObject.getJSONArray("result");
+                if (jsonObject.getString("msg").equals("暂无数据")) {
+                    Log.e("jsonStr", "initView: " + jsonStr);
+                    tvNofriends.setVisibility(View.VISIBLE);
+                    return;
+                }
+                if (jsonArray.length() > 0) {
+                    Log.e("jsonStr", "initView: " + jsonStr);
+                    jsonParse(jsonStr, true);
+                } else {
+                    ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         } else {
             getCustomeListData(true, page);
         }
@@ -220,9 +243,25 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 closeDialog();
                 if (null != s) {
                     if (b) {
-                        BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
+                        try {
+                            JSONObject jsonObject = new JSONObject(s);
+                            JSONArray jsonArray = jsonObject.getJSONArray("result");
+                            if (jsonObject.getString("msg").equals("暂无数据")) {
+                                tvNofriends.setVisibility(View.VISIBLE);
+                                return;
+                            }
+                            if (jsonArray.length() > 0) {
+                                BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
+                                //jsonParse(s, b);
+                                Log.e("s", "initView: " + s);
+                            } else {
+                                ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    jsonParse(s, b);
+
                 }
             }
 

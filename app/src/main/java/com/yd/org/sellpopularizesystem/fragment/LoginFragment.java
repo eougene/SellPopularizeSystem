@@ -3,7 +3,9 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,6 +68,18 @@ public class LoginFragment extends BaseFragmentView {
     protected void setListener() {
         tvLogin.setOnClickListener(mOnClickListener);
         tvloginWechat.setOnClickListener(mOnClickListener);
+        /*
+         * 键盘是完成按钮的功能,直接登陆
+          */
+                usePassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                        if (actionId == EditorInfo.IME_ACTION_DONE) {
+                            getUserInfo();
+                        }
+                        return false;
+                    }
+                });
     }
 
     @Override
@@ -116,7 +130,7 @@ public class LoginFragment extends BaseFragmentView {
     }
 
     private void getLogin(String name, String password, String client_id) {
-        //showDialog();
+       showLoadingDialog();
         final FinalHttp fh = new FinalHttp();
         fh.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
@@ -128,7 +142,7 @@ public class LoginFragment extends BaseFragmentView {
 
             @Override
             public void onSuccess(String json) {
-                //closeDialog();
+                dismissLoadingDialog();
                 if (!TextUtils.isEmpty(json)) {
                     Gson gson = new Gson();
                     UserBean userBean = gson.fromJson(json, UserBean.class);
@@ -153,7 +167,7 @@ public class LoginFragment extends BaseFragmentView {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                //closeDialog();
+                dismissLoadingDialog();
                 ToasShow.showToast(getActivity(), strMsg);
             }
         });
@@ -162,13 +176,13 @@ public class LoginFragment extends BaseFragmentView {
     UMAuthListener authListener = new UMAuthListener() {
         @Override
         public void onStart(SHARE_MEDIA platform) {
-            //showDialog();
+            showLoadingDialog();
             Log.e("开始授权", "platform:" + platform);
         }
 
         @Override
         public void onComplete(SHARE_MEDIA platform, int action, Map<String, String> data) {
-            //closeDialog();
+            dismissLoadingDialog();
             Log.e("授权成功", "platform:" + platform);
             String openId = data.get("openid");
             SharedPreferencesHelps.setOpenId(openId);
@@ -196,7 +210,7 @@ public class LoginFragment extends BaseFragmentView {
     };
 
     private void third_login(String openid) {
-        //showDialog();
+        showLoadingDialog();
         FinalHttp finalHttp = new FinalHttp();
         finalHttp.addHeader("Content-Type", "application/x-www-form-urlencoded");
         AjaxParams ajaxParams = new AjaxParams();
@@ -206,13 +220,13 @@ public class LoginFragment extends BaseFragmentView {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                //closeDialog();
+                dismissLoadingDialog();
                 ToasShow.showToast(getActivity(), strMsg);
             }
 
             @Override
             public void onSuccess(String json) {
-                //closeDialog();
+                dismissLoadingDialog();
                 if (!TextUtils.isEmpty(json)) {
                     Gson gson = new Gson();
                     UserBean userBean = gson.fromJson(json, UserBean.class);
