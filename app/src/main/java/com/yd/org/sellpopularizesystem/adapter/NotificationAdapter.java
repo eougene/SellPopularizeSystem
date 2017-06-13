@@ -97,7 +97,7 @@ public class NotificationAdapter extends BaseAdapter {
         }else if (title.contains(mContext.getString(R.string.createsuccess))){
             strStatus="["+mContext.getString(R.string.createsuccess)+"]";
         }
-        if (informationtents.get(position).getIs_read()!=1){
+        if (informationtents.get(position).getIs_read()!=1 && strStatus.length()>0){
             SpannableStringBuilder spanBuilder =new SpannableStringBuilder(strStatus);
         //style 为0 即是正常的，还有Typeface.BOLD(粗体) Typeface.ITALIC(斜体)等
         //size  为0 即采用原始的正常的 size大小

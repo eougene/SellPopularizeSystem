@@ -460,4 +460,10 @@
     <string name="inputoldpassword">请输入原密码</string>
     <string name="confirm_new_password">请确认新密码</string>
     <string name="input_new_password">请输入新密码</string>
+    <string name="login">登陆</string>
+    <string name="register">注册</string>
+    <string name="forget_password">忘记密码?</string>
+    <string name="register_hint">用户名|手机号码|邮箱</string>
+    <string name="check_wechat_install">检查是否安装微信</string>
+
 </resources>

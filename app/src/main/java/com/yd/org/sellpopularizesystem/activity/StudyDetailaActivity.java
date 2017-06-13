@@ -118,6 +118,7 @@ public class StudyDetailaActivity extends FragmentActivity {
 
             @Override
             public void onPageSelected(final int position) {
+
                 setImageBackground(position);
 
             }

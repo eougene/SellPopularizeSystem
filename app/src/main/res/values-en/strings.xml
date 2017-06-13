@@ -444,8 +444,6 @@
     <string name="exit_scale">Are you sure you want to end the promotion?</string>
     <string name="playplatform">Play the platform</string>
     <string name="successlaw">Success principle</string>
-    <string name="basickonwledge">Basic konwledge</string>
-    <string name="salestechniques">Sales techniques</string>
     <string name="checkdes">assessment is not completed</string>
     <string name="checkdes1">you have </string>
     <string name="studymaterialdes">learning materials,</string>
@@ -461,4 +459,8 @@
     <string name="inputoldpassword">Please enter the original password</string>
     <string name="confirm_new_password">Please confirm the new password</string>
     <string name="input_new_password">Please enter a new password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="forget_password">Forgot password?</string>
+    <string name="check_wechat_install">Check to see if WeChat is installed</string>
 </resources>

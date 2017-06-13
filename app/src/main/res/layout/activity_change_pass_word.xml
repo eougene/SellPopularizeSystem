@@ -64,8 +64,7 @@
             android:textSize="@dimen/tv_size_15" />
 
         <RelativeLayout
-            style="@style/WrapWrap"
-            android:layout_marginTop="@dimen/padding_margin_10">
+            style="@style/WrapWrap">
 
             <ImageView
                 android:id="@+id/ivLock1"

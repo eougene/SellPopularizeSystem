@@ -1,18 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@mipmap/loginbackground"
-                android:clipToPadding="true"
-                android:fitsSystemWindows="true"
-                android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/llLogin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@mipmap/login"
+        android:orientation="horizontal">
+
+        <com.yd.org.sellpopularizesystem.myView.ViewPagerIndicator
+            android:id="@+id/indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:paddingBottom="@dimen/padding_margin_10">
+
+        </com.yd.org.sellpopularizesystem.myView.ViewPagerIndicator>
+
+        <!--<TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_margin_20"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_20" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_margin_20"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_20" />-->
+    </LinearLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_weight="2"
+        android:id="@+id/lrViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </android.support.v4.view.ViewPager>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/llLogin"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvUseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginTop="@dimen/padding_margin_20"
+            android:text="@string/login_activity_userName"
+            android:textSize="@dimen/padding_margin_16" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_margin_30"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:background="@drawable/editbac" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvPassWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/padding_margin_20"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:text="@string/login_activity_password"
+                android:textSize="@dimen/padding_margin_16" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:text="@string/forget_password"
+                android:textSize="@dimen/padding_margin_16" />
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_margin_30"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:background="@drawable/editbac" />
+
+        <TextView
+            android:id="@+id/sureChangeTextview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_margin_50"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginLeft="@dimen/padding_margin_14"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_30"
+            android:background="@drawable/loginbut_bac"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_15" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/loginWechat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/wechat"
+                android:drawablePadding="@dimen/padding_margin_10"
+                android:gravity="center"
+                android:text="微信登陆"
+                android:textColor="#7BCE89" />
+        </RelativeLayout>
+
+    </LinearLayout>-->
 
     <View
         android:id="@+id/login_view"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:layout_centerInParent="true"
-        android:background="@color/transparent">
+        android:background="@color/transparent"
+        android:visibility="gone">
 
     </View>
 
@@ -21,9 +159,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/login_view"
         android:layout_marginTop="@dimen/padding_margin_20"
-
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -37,7 +175,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:src="@mipmap/usernameicon"/>
+                android:src="@mipmap/usernameicon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -45,7 +183,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:text="@string/login_activity_userName"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
             <EditText
                 android:id="@+id/useName"
@@ -57,9 +195,8 @@
                 android:background="@null"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
-                android:singleLine="true"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
         </LinearLayout>
 
@@ -76,7 +213,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:src="@mipmap/passwordicon"/>
+                android:src="@mipmap/passwordicon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,7 +221,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:text="@string/login_activity_password"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
             <EditText
                 android:id="@+id/usePassword"
@@ -98,27 +235,27 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
             <ImageView
                 android:id="@+id/loginImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                android:src="@mipmap/gobutton"/>
+                android:src="@mipmap/gobutton" />
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/loginWechat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/padding_margin_50"
-        android:src="@mipmap/loginwechat"/>
+        android:src="@mipmap/loginwechat" />-->
 
-</RelativeLayout>
+</LinearLayout>

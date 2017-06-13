@@ -29,4 +29,9 @@
         <attr name="right_width" format="dimension"></attr>
     </declare-styleable>
 
+    <!--三角形指示器-->
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="visible_tab_count" format="integer"/>
+    </declare-styleable>
+
 </resources>
