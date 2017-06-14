@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -41,7 +42,8 @@ import static com.yd.org.sellpopularizesystem.utils.ToasShow.showToast;
 
 public class LoginFragment extends BaseFragmentView {
     private EditText useName, usePassword;
-    private TextView tvloginWechat,tvLogin;
+    private TextView tvLogin;
+    private RelativeLayout rlloginWechat;
     private String client_id = "";
     private Class userPushService = PushService.class;
     @Override
@@ -55,7 +57,7 @@ public class LoginFragment extends BaseFragmentView {
         useName = getViewById(R.id.useName);
         usePassword = getViewById(R.id.usePassword);
         tvLogin = getViewById(R.id.tvLogin);
-        tvloginWechat = getViewById(R.id.loginWechat);
+        rlloginWechat = getViewById(R.id.loginWechat);
         startGeTui();
     }
 
@@ -67,7 +69,7 @@ public class LoginFragment extends BaseFragmentView {
     @Override
     protected void setListener() {
         tvLogin.setOnClickListener(mOnClickListener);
-        tvloginWechat.setOnClickListener(mOnClickListener);
+        rlloginWechat.setOnClickListener(mOnClickListener);
         /*
          * 键盘是完成按钮的功能,直接登陆
           */

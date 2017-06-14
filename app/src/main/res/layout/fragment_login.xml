@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/shallow_gray"
     android:orientation="vertical">
 
     <LinearLayout
@@ -28,10 +29,10 @@
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:background="@drawable/editbac"
             android:imeOptions="actionNext"
-            android:background="@drawable/editbac" />
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -66,10 +67,10 @@
             android:layout_marginLeft="@dimen/padding_margin_20"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_10"
-            android:maxLines="1"
-            android:singleLine="true"
+            android:background="@drawable/editbac"
             android:imeOptions="actionDone"
-            android:background="@drawable/editbac" />
+            android:maxLines="1"
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/tvLogin"
@@ -86,26 +87,30 @@
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_15" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/loginWechat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:drawableLeft="@mipmap/wechat"
-                android:drawablePadding="@dimen/padding_margin_10"
-                android:gravity="center"
-                android:text="微信登陆"
-                android:textColor="#7BCE89" />
-        </RelativeLayout>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/loginWechat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/padding_margin_10"
+        android:layout_marginLeft="@dimen/padding_margin_14"
+        android:layout_marginRight="@dimen/padding_margin_10"
+        android:background="@color/white"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/wechat"
+            android:drawablePadding="@dimen/padding_margin_10"
+            android:gravity="center"
+            android:paddingBottom="@dimen/padding_margin_14"
+            android:paddingTop="@dimen/padding_margin_14"
+            android:text="@string/wechat_load"
+            android:textColor="#7BCE89" />
+    </RelativeLayout>
 
 </LinearLayout>
