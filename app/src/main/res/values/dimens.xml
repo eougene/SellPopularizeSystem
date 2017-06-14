@@ -12,6 +12,7 @@
     <dimen name="tv_size_10">10sp</dimen>
     <dimen name="tv_size_12">12sp</dimen>
     <dimen name="tv_size_15">15sp</dimen>
+    <dimen name="tv_size_18">18sp</dimen>
     <dimen name="tv_size_20">20sp</dimen>
     <dimen name="tv_size_22">22sp</dimen>
     <!-- 间距 -->
