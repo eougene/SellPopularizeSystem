@@ -436,10 +436,10 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //邮箱
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail())) {
+        if (TextUtils.isEmpty((String)customeDetailedBean.getResult().getE_mail())) {
             edcustmomeDetailedEmail.setText("");
         } else {
-            edcustmomeDetailedEmail.setText(customeDetailedBean.getResult().getE_mail());
+            edcustmomeDetailedEmail.setText((String)customeDetailedBean.getResult().getE_mail());
         }
 
         //微信号
@@ -531,10 +531,10 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //亲属姓
 
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_name())) {
+        if (TextUtils.isEmpty((String)customeDetailedBean.getResult().getFamily_name())) {
             edcustmomeDetailedKinsfolk.setText("");
         } else {
-            edcustmomeDetailedKinsfolk.setText(customeDetailedBean.getResult().getFamily_name());
+            edcustmomeDetailedKinsfolk.setText((String)customeDetailedBean.getResult().getFamily_name());
         }
         //亲属名
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_first_name())) {

@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,8 +12,8 @@ public class CustomBean extends Domine {
     /**
      * code : 1
      * msg : 成功获取客户列表
-     * total_number : 1
-     * result : [{"customer_id":76,"company_id":1,"customer_nick":null,"head_img":"","true_name":"客户一","sex":0,"birth_date":0,"age":null,"mobile":"15345678901","province":"","city":"","area":"","address":null,"open_id":null,"wechat_number":null,"wechat_nick":"","wechat_img":"","qq_number":null,"e_mail":"","job":null,"income":0,"family_name":null,"family_relationship":null,"family_mobile":null,"sign_number":0,"card_id":null,"passport_id":null,"passport_country":null,"card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1484888568,"update_time":1484815607,"add_ip":"180.114.133.77","add_admin":"4","add_user":0,"is_del":0,"status":0,"id":491,"user_id":100014,"sort":99}]
+     * total_number : 2
+     * result : [{"customer_id":7784,"company_id":1,"customer_nick":null,"head_img":"","true_name":null,"surname":"len","first_name":"ka","en_name":"nickName","sex":0,"title":"","gender":"","birth_date":"","mid_name":"","ext_id":"","customer_type":1,"abn":"","acn":"","age":null,"mobile":"1391","unit_number":"","street_number":"","street_address_line_1":"","street_address_line_2":"","suburb":"","state":"","postcode":"","country":"","province":"","city":"","area":"","address":"","zip_code":"-","openid":null,"wechat_number":"","wechat_nick":"","wechat_img":"","qq_number":"","e_mail":null,"job":"","income":0,"family_name":null,"family_first_name":"","family_relationship":"","family_mobile":"","family_email":"","sign_number":0,"card_id":"","passport_id":"","passport_country":"","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1497424638,"update_time":1497424638,"add_ip":"116.226.190.44","add_admin":null,"add_user":183,"is_del":0,"is_firb":0,"status":0,"memo":""},{"customer_id":7782,"company_id":1,"customer_nick":null,"head_img":"","true_name":null,"surname":"mike","first_name":"jack","en_name":"nickname","sex":0,"title":"","gender":"","birth_date":"","mid_name":"le","ext_id":"","customer_type":1,"abn":"","acn":"","age":null,"mobile":"131","unit_number":"","street_number":"","street_address_line_1":"","street_address_line_2":"","suburb":"","state":"","postcode":"","country":"","province":"","city":"","area":"","address":"","zip_code":"-","openid":null,"wechat_number":"","wechat_nick":"","wechat_img":"","qq_number":"","e_mail":null,"job":"","income":0,"family_name":null,"family_first_name":"","family_relationship":"","family_mobile":"","family_email":"","sign_number":0,"card_id":"","passport_id":"","passport_country":"","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1497415086,"update_time":1497415086,"add_ip":"116.226.190.44","add_admin":null,"add_user":183,"is_del":0,"is_firb":0,"status":0,"memo":""}]
      */
 
     private int code;
@@ -54,87 +53,122 @@ public class CustomBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean implements Serializable{
+
+    public static class ResultBean extends Domine {
         /**
-         * customer_id : 76
+         * customer_id : 7784
          * company_id : 1
          * customer_nick : null
          * head_img :
-         * true_name : 客户一
+         * true_name : null
+         * surname : len
+         * first_name : ka
+         * en_name : nickName
          * sex : 0
-         * birth_date : 0
+         * title :
+         * gender :
+         * birth_date :
+         * mid_name :
+         * ext_id :
+         * customer_type : 1
+         * abn :
+         * acn :
          * age : null
-         * mobile : 15345678901
+         * mobile : 1391
+         * unit_number :
+         * street_number :
+         * street_address_line_1 :
+         * street_address_line_2 :
+         * suburb :
+         * state :
+         * postcode :
+         * country :
          * province :
          * city :
          * area :
-         * address : null
-         * open_id : null
-         * wechat_number : null
+         * address :
+         * zip_code : -
+         * openid : null
+         * wechat_number :
          * wechat_nick :
          * wechat_img :
-         * qq_number : null
-         * e_mail :
-         * job : null
+         * qq_number :
+         * e_mail : null
+         * job :
          * income : 0
          * family_name : null
-         * family_relationship : null
-         * family_mobile : null
+         * family_first_name :
+         * family_relationship :
+         * family_mobile :
+         * family_email :
          * sign_number : 0
-         * card_id : null
-         * passport_id : null
-         * passport_country : null
+         * card_id :
+         * passport_id :
+         * passport_country :
          * card_validity : null
          * is_experience : 0
          * flight_date : null
          * flight_number : null
-         * add_time : 1484888568
-         * update_time : 1484815607
-         * add_ip : 180.114.133.77
-         * add_admin : 4
-         * add_user : 0
+         * add_time : 1497424638
+         * update_time : 1497424638
+         * add_ip : 116.226.190.44
+         * add_admin : null
+         * add_user : 183
          * is_del : 0
+         * is_firb : 0
          * status : 0
-         * id : 491;
-         * user_id : 100014
-         * sort : 99
+         * memo :
          */
 
-        private String sortLetters;
         private int customer_id;
         private int company_id;
-        private String customer_nick;
+        private Object customer_nick;
         private String head_img;
-        private String true_name;
+        private Object true_name;
         private String surname;
         private String first_name;
         private String en_name;
         private int sex;
         private String title;
-        private int birth_date;
-        private int age;
+        private String gender;
+        private String birth_date;
+        private String mid_name;
+        private String ext_id;
+        private int customer_type;
+        private String abn;
+        private String acn;
+        private Object age;
         private String mobile;
+        private String unit_number;
+        private String street_number;
+        private String street_address_line_1;
+        private String street_address_line_2;
+        private String suburb;
+        private String state;
+        private String postcode;
+        private String country;
         private String province;
         private String city;
         private String area;
-        private Object address;
+        private String address;
         private String zip_code;
-        private Object  open_id;
-        private Object  wechat_number;
+        private Object openid;
+        private String wechat_number;
         private String wechat_nick;
         private String wechat_img;
-        private Object  qq_number;
-        private String e_mail;
+        private String qq_number;
+        private Object e_mail;
         private String job;
         private int income;
         private Object family_name;
         private String family_first_name;
-        private Object family_relationship;
-        private Object family_mobile;
+        private String family_relationship;
+        private String family_mobile;
+        private String family_email;
         private int sign_number;
-        private Object card_id;
-        private Object passport_id;
-        private Object passport_country;
+        private String card_id;
+        private String passport_id;
+        private String passport_country;
         private Object card_validity;
         private int is_experience;
         private Object flight_date;
@@ -142,23 +176,22 @@ public class CustomBean extends Domine {
         private int add_time;
         private int update_time;
         private String add_ip;
-        private String add_admin;
+        private Object add_admin;
         private int add_user;
         private int is_del;
         private int is_firb;
         private int status;
-        /*private int id;
-        private int user_id;
-        private int sort;*/
-
-
+        private String memo;
 
         public String getSortLetters() {
             return sortLetters;
         }
+
         public void setSortLetters(String sortLetters) {
             this.sortLetters = sortLetters;
         }
+
+        private String sortLetters;
 
         public int getCustomer_id() {
             return customer_id;
@@ -176,11 +209,11 @@ public class CustomBean extends Domine {
             this.company_id = company_id;
         }
 
-        public String getCustomer_nick() {
+        public Object getCustomer_nick() {
             return customer_nick;
         }
 
-        public void setCustomer_nick(String customer_nick) {
+        public void setCustomer_nick(Object customer_nick) {
             this.customer_nick = customer_nick;
         }
 
@@ -192,12 +225,20 @@ public class CustomBean extends Domine {
             this.head_img = head_img;
         }
 
-        public String getTrue_name() {
+        public Object getTrue_name() {
             return true_name;
         }
 
-        public void setTrue_name(String true_name) {
+        public void setTrue_name(Object true_name) {
             this.true_name = true_name;
+        }
+
+        public String getSurname() {
+            return surname;
+        }
+
+        public void setSurname(String surname) {
+            this.surname = surname;
         }
 
         public String getFirst_name() {
@@ -220,6 +261,10 @@ public class CustomBean extends Domine {
             return sex;
         }
 
+        public void setSex(int sex) {
+            this.sex = sex;
+        }
+
         public String getTitle() {
             return title;
         }
@@ -228,23 +273,67 @@ public class CustomBean extends Domine {
             this.title = title;
         }
 
-        public void setSex(int sex) {
-            this.sex = sex;
+        public String getGender() {
+            return gender;
         }
 
-        public int getBirth_date() {
+        public void setGender(String gender) {
+            this.gender = gender;
+        }
+
+        public String getBirth_date() {
             return birth_date;
         }
 
-        public void setBirth_date(int birth_date) {
+        public void setBirth_date(String birth_date) {
             this.birth_date = birth_date;
+        }
+
+        public String getMid_name() {
+            return mid_name;
+        }
+
+        public void setMid_name(String mid_name) {
+            this.mid_name = mid_name;
+        }
+
+        public String getExt_id() {
+            return ext_id;
+        }
+
+        public void setExt_id(String ext_id) {
+            this.ext_id = ext_id;
+        }
+
+        public int getCustomer_type() {
+            return customer_type;
+        }
+
+        public void setCustomer_type(int customer_type) {
+            this.customer_type = customer_type;
+        }
+
+        public String getAbn() {
+            return abn;
+        }
+
+        public void setAbn(String abn) {
+            this.abn = abn;
+        }
+
+        public String getAcn() {
+            return acn;
+        }
+
+        public void setAcn(String acn) {
+            this.acn = acn;
         }
 
         public Object getAge() {
             return age;
         }
 
-        public void setAge(int age) {
+        public void setAge(Object age) {
             this.age = age;
         }
 
@@ -254,6 +343,70 @@ public class CustomBean extends Domine {
 
         public void setMobile(String mobile) {
             this.mobile = mobile;
+        }
+
+        public String getUnit_number() {
+            return unit_number;
+        }
+
+        public void setUnit_number(String unit_number) {
+            this.unit_number = unit_number;
+        }
+
+        public String getStreet_number() {
+            return street_number;
+        }
+
+        public void setStreet_number(String street_number) {
+            this.street_number = street_number;
+        }
+
+        public String getStreet_address_line_1() {
+            return street_address_line_1;
+        }
+
+        public void setStreet_address_line_1(String street_address_line_1) {
+            this.street_address_line_1 = street_address_line_1;
+        }
+
+        public String getStreet_address_line_2() {
+            return street_address_line_2;
+        }
+
+        public void setStreet_address_line_2(String street_address_line_2) {
+            this.street_address_line_2 = street_address_line_2;
+        }
+
+        public String getSuburb() {
+            return suburb;
+        }
+
+        public void setSuburb(String suburb) {
+            this.suburb = suburb;
+        }
+
+        public String getState() {
+            return state;
+        }
+
+        public void setState(String state) {
+            this.state = state;
+        }
+
+        public String getPostcode() {
+            return postcode;
+        }
+
+        public void setPostcode(String postcode) {
+            this.postcode = postcode;
+        }
+
+        public String getCountry() {
+            return country;
+        }
+
+        public void setCountry(String country) {
+            this.country = country;
         }
 
         public String getProvince() {
@@ -280,8 +433,12 @@ public class CustomBean extends Domine {
             this.area = area;
         }
 
-        public Object getAddress() {
+        public String getAddress() {
             return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
         }
 
         public String getZip_code() {
@@ -292,23 +449,19 @@ public class CustomBean extends Domine {
             this.zip_code = zip_code;
         }
 
-        public void setAddress(Object address) {
-            this.address = address;
+        public Object getOpenid() {
+            return openid;
         }
 
-        public Object getOpen_id() {
-            return open_id;
+        public void setOpenid(Object openid) {
+            this.openid = openid;
         }
 
-        public void setOpen_id(Object open_id) {
-            this.open_id = open_id;
-        }
-
-        public Object getWechat_number() {
+        public String getWechat_number() {
             return wechat_number;
         }
 
-        public void setWechat_number(Object wechat_number) {
+        public void setWechat_number(String wechat_number) {
             this.wechat_number = wechat_number;
         }
 
@@ -328,32 +481,24 @@ public class CustomBean extends Domine {
             this.wechat_img = wechat_img;
         }
 
-        public Object getQq_number() {
+        public String getQq_number() {
             return qq_number;
         }
 
-        public void setQq_number(Object qq_number) {
+        public void setQq_number(String qq_number) {
             this.qq_number = qq_number;
         }
 
-        public String getE_mail() {
+        public Object getE_mail() {
             return e_mail;
         }
 
-        public void setE_mail(String e_mail) {
+        public void setE_mail(Object e_mail) {
             this.e_mail = e_mail;
         }
 
         public String getJob() {
             return job;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public void setSurname(String surname) {
-            this.surname = surname;
         }
 
         public void setJob(String job) {
@@ -384,20 +529,28 @@ public class CustomBean extends Domine {
             this.family_first_name = family_first_name;
         }
 
-        public Object getFamily_relationship() {
+        public String getFamily_relationship() {
             return family_relationship;
         }
 
-        public void setFamily_relationship(Object family_relationship) {
+        public void setFamily_relationship(String family_relationship) {
             this.family_relationship = family_relationship;
         }
 
-        public Object getFamily_mobile() {
+        public String getFamily_mobile() {
             return family_mobile;
         }
 
-        public void setFamily_mobile(Object family_mobile) {
+        public void setFamily_mobile(String family_mobile) {
             this.family_mobile = family_mobile;
+        }
+
+        public String getFamily_email() {
+            return family_email;
+        }
+
+        public void setFamily_email(String family_email) {
+            this.family_email = family_email;
         }
 
         public int getSign_number() {
@@ -408,27 +561,27 @@ public class CustomBean extends Domine {
             this.sign_number = sign_number;
         }
 
-        public Object getCard_id() {
+        public String getCard_id() {
             return card_id;
         }
 
-        public void setCard_id(Object card_id) {
+        public void setCard_id(String card_id) {
             this.card_id = card_id;
         }
 
-        public Object getPassport_id() {
+        public String getPassport_id() {
             return passport_id;
         }
 
-        public void setPassport_id(Object passport_id) {
+        public void setPassport_id(String passport_id) {
             this.passport_id = passport_id;
         }
 
-        public Object getPassport_country() {
+        public String getPassport_country() {
             return passport_country;
         }
 
-        public void setPassport_country(Object passport_country) {
+        public void setPassport_country(String passport_country) {
             this.passport_country = passport_country;
         }
 
@@ -488,11 +641,11 @@ public class CustomBean extends Domine {
             this.add_ip = add_ip;
         }
 
-        public String getAdd_admin() {
+        public Object getAdd_admin() {
             return add_admin;
         }
 
-        public void setAdd_admin(String add_admin) {
+        public void setAdd_admin(Object add_admin) {
             this.add_admin = add_admin;
         }
 
@@ -528,28 +681,12 @@ public class CustomBean extends Domine {
             this.status = status;
         }
 
-       /* public int getId() {
-            return id;
+        public String getMemo() {
+            return memo;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setMemo(String memo) {
+            this.memo = memo;
         }
-
-        public int getUser_id() {
-            return user_id;
-        }
-
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
-        }
-
-        public int getSort() {
-            return sort;
-        }
-
-        public void setSort(int sort) {
-            this.sort = sort;
-        }*/
     }
 }

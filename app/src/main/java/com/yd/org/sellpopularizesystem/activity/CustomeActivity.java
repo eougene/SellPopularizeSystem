@@ -29,7 +29,6 @@ import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
-import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
@@ -94,14 +93,29 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
         jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
-
-        if (null != jsonStr && !TextUtils.isEmpty(jsonStr)) {
-            Log.e("jsonStr", "initView: " + jsonStr);
-            jsonParse(jsonStr, true);
-        } else {
-            getCustomeListData(true, 1);
-        }
-
+//        if (null != jsonStr && !TextUtils.isEmpty(jsonStr)) {
+//            Log.e("jsonStr", "initView: " + jsonStr);
+//            try {
+//                JSONObject jsonObject = new JSONObject(jsonStr);
+//                JSONArray jsonArray = jsonObject.getJSONArray("result");
+//                if (jsonObject.getString("msg").equals("暂无数据")) {
+//                    Log.e("jsonStr", "initView: " + jsonStr);
+//                    tvNofriends.setVisibility(View.VISIBLE);
+//                    return;
+//                }
+//                if (jsonArray.length() > 0) {
+//                    Log.e("jsonStr", "initView: " + jsonStr);
+//                    jsonParse(jsonStr, true);
+//                } else {
+//                    ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
+//                }
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            getCustomeListData(true, page);
+//        }
+        getCustomeListData(true, page);
 
     }
 
@@ -219,18 +233,39 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         fh.get(Contants.CUSTOMER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
+                super.onSuccess(s);
                 closeDialog();
                 if (null != s) {
+
                     jsonParse(s, b);
-                    if (b) {
-                        BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
-                    }
+
+                    Log.e("用户信息","s:"+s);
+//                    if (b) {
+//                        try {
+//                            JSONObject jsonObject = new JSONObject(s);
+//                            JSONArray jsonArray = jsonObject.getJSONArray("result");
+//                            if (jsonObject.getString("msg").equals("暂无数据")) {
+//                                tvNofriends.setVisibility(View.VISIBLE);
+//                                return;
+//                            }
+//                            if (jsonArray.length() > 0) {
+//                                BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
+//                                //jsonParse(s, b);
+//                                Log.e("s", "initView: " + s);
+//                            } else {
+//                                ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
+//                            }
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
 
                 }
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
                 closeDialog();
             }
         });
@@ -247,15 +282,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
 
         if (isRefresh) {
+
             if (SourceDateList.size() == 0) {
                 tvNofriends.setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
-                sideBar.setVisibility(View.GONE);
             } else {
                 tvNofriends.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-                sideBar.setVisibility(View.VISIBLE);
-
             }
 
 
