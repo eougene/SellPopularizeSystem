@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@mipmap/homebac">
 
         <View
             android:layout_width="match_parent"
@@ -54,10 +55,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableTop="@mipmap/saletui"
-                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:text="@string/sale_pro"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
+                            android:textSize="@dimen/tv_size_18"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -118,10 +121,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableTop="@mipmap/studygarden"
-                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:text="@string/home_study"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
+                            android:textSize="@dimen/tv_size_18"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -188,10 +191,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableTop="@mipmap/client"
-                            android:drawablePadding="@dimen/padding_margin_10"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:text="@string/home_scale"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"
+                            android:textSize="@dimen/tv_size_18"
                             />
 
                         <LinearLayout
@@ -254,9 +257,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:drawableTop="@mipmap/previouspro"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:text="@string/oldproject"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
+                            android:textSize="@dimen/tv_size_18"/>
 
                         <!--<LinearLayout
                             android:layout_width="wrap_content"

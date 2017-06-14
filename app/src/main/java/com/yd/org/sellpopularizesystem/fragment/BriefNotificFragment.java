@@ -179,6 +179,14 @@ public class BriefNotificFragment extends BaseFragmentView implements PullToRefr
         }
 
         if (isRefresh) {
+            if (informationContents.size()==0) {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
+            } else {
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
+            }
+
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             adapter = new NotificationAdapter(getActivity());
             listView.setAdapter(adapter);
