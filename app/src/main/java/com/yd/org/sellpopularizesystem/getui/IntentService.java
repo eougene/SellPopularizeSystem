@@ -25,6 +25,7 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
  * onReceiveCommandResult 各种事件处理回执 <br>
  */
 public class IntentService extends GTIntentService {
+    private int  messageNotificationID = 1000;
 
     private static final String TAG = "GetuiSdkDemo";
 
@@ -39,14 +40,12 @@ public class IntentService extends GTIntentService {
 
     @Override
     public void onReceiveMessageData(Context context, GTTransmitMessage msg) {
-
         String appid = msg.getAppid();
         String taskid = msg.getTaskId();
         String messageid = msg.getMessageId();
         byte[] payload = msg.getPayload();
         String pkg = msg.getPkgName();
         String cid = msg.getClientId();
-
 
 
         // 第三方回执调用接口，actionid范围为90000-90999，可根据业务场景执行
@@ -58,7 +57,7 @@ public class IntentService extends GTIntentService {
         if (payload != null) {
             //如果收到消息更新数据
             String data = new String(payload);
-            Log.e(TAG, "receiver payload = " + data+"::"+msg.getPayloadId());
+            Log.e(TAG, "receiver payload = " + data + "::" + msg.getPayloadId());
             // 测试消息为了观察数据变化
             sendMessage(data, 0);
             setNotificationManager(getString(R.string.gettui), data);
@@ -106,6 +105,7 @@ public class IntentService extends GTIntentService {
         builder.setContentIntent(PendingIntent.getActivity(this, 0x102, new Intent(this, SaleRecordActivity.class), 0));//设置点击通知后将要启动的程序组件对应的PendingIntent
         Notification notification = builder.build();
         //发送通知
-        notificationManager.notify(0x101, notification);
+        notificationManager.notify(messageNotificationID, notification);
+      //  messageNotificationID++;
     }
 }

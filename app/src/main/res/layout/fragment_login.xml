@@ -11,91 +11,87 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvUseName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_20"
-            android:text="@string/login_activity_userName"
-            android:textColor="@color/gray"
-            android:textSize="@dimen/padding_margin_16"/>
-
         <EditText
             android:id="@+id/useName"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
-            android:layout_marginLeft="@dimen/padding_margin_30"
-            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_height="wrap_content"
             android:background="@null"
+            android:hint="@string/login_activity_userName"
             android:imeOptions="actionNext"
             android:maxLines="1"
+            android:padding="@dimen/padding_margin_20"
             android:singleLine="true"
-            android:textColor="@color/gray"/>
+            android:textColor="@color/gray"
+            android:textColorHint="@color/setting_bac"
+            android:textSize="@dimen/tv_size_15"/>
+
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_30"
+            android:layout_marginLeft="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_20">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/tvPassWord"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/usePassword"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginTop="@dimen/padding_margin_20"
-                android:text="@string/login_activity_password"
+                android:background="@null"
+                android:hint="@string/login_activity_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/padding_margin_16"/>
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
 
             <TextView
                 android:id="@+id/tvForget"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/padding_margin_20"
-                android:layout_marginTop="@dimen/padding_margin_20"
+                android:padding="@dimen/padding_margin_20"
                 android:text="@string/forget_password"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/padding_margin_16"/>
+                android:textColor="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
         </RelativeLayout>
-
-        <EditText
-            android:id="@+id/usePassword"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_30"
-            android:layout_marginLeft="@dimen/padding_margin_30"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:background="@null"
-            android:imeOptions="actionDone"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="@color/gray"/>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_30"
+            android:layout_marginLeft="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"/>
 
 
         <TextView
             android:id="@+id/tvLogin"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_40"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/padding_margin_14"
+            android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:layout_marginTop="@dimen/padding_margin_30"
             android:background="#EE781F"
             android:gravity="center"
+            android:padding="@dimen/padding_margin_10"
             android:text="@string/login"
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_15"/>
@@ -103,25 +99,29 @@
 
     </LinearLayout>
 
+
     <RelativeLayout
         android:id="@+id/loginWechat"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_margin_40"
-        android:layout_marginLeft="@dimen/padding_margin_14"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_margin_10"
         android:layout_marginRight="@dimen/padding_margin_10"
         android:layout_marginTop="@dimen/padding_margin_30"
         android:background="@color/white">
 
+
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:drawableLeft="@mipmap/wechat"
             android:drawablePadding="@dimen/padding_margin_10"
-            android:gravity="center_vertical"
+            android:padding="@dimen/padding_margin_10"
             android:text="@string/wechat_load"
             android:textColor="#7BCE89"/>
+
+
     </RelativeLayout>
+
 
 </LinearLayout>
