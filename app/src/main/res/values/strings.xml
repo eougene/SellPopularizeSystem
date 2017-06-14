@@ -148,8 +148,8 @@
     <string name="totalnum">合计:0.00/0.00/0.00</string>
     <string name="noeoi">客户没有EOI,点击右上角充值</string>
     <string name="headerphoto">头像</string>
-    <string name="firstname">姓</string>
-    <string name="lastname">名</string>
+    <string name="firstname">姓氏</string>
+    <string name="lastname">名字</string>
     <string name="englishname">英文名</string>
     <string name="birthday">生日</string>
     <string name="mobilephone">手机</string>
