@@ -40,15 +40,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Map;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 /**
  * Created by hejin on 2017/4/10.
  */
 
 public class MeFragment extends BaseFragmentView {
-    private RelativeLayout changePassWordRel, bindAccountRel, rlSaleRecord, rlTeam,rlSetting;
-    private TextView cancelLoginTv, versionTv, tvUserName;
+    private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting;
+    private TextView tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private RelativeLayout rlCommission;
@@ -67,10 +66,6 @@ public class MeFragment extends BaseFragmentView {
                 //销售记录
                 case R.id.saleRecord:
                     ActivitySkip.forward(getActivity(), SaleRecordActivity.class);
-                    break;
-                //注销登录
-                case R.id.cancelLoginTv:
-                    logOut();
                     break;
                 //我的佣金
                 case R.id.rlCommission:
@@ -246,30 +241,24 @@ public class MeFragment extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_me);
-       /* int color = getResources().getColor(R.color.home_scale);
-        StatusBarUtil.setColor(getActivity(), color, 0);*/
         StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(), 0, null);
         initWidget();
     }
 
     private void initWidget() {
-
+        saleRecord = getViewById(R.id.saleRecord);
         rlCommission = getViewById(R.id.rlCommission);
         rlCommission.setOnClickListener(mOnClickListener);
         rlTeam = getViewById(R.id.rlTeam);
         rlTeam.setOnClickListener(mOnClickListener);
         ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
-        rlSetting=getViewById(R.id.rlSetting);
+        rlSetting = getViewById(R.id.rlSetting);
         rlSetting.setOnClickListener(mOnClickListener);
         changePassWordRel = getViewById(R.id.changePassWordRel);
         bindAccountRel = getViewById(R.id.bindAccountRel);
-        rlSaleRecord = getViewById(R.id.saleRecord);
         tvUserName = getViewById(R.id.tvCustomeName);
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
-        //settiing_noticTv = getViewById(R.id.settiing_noticTv);
-        cancelLoginTv = getViewById(R.id.cancelLoginTv);
-        versionTv = getViewById(R.id.versionTv);
-        versionTv.setText(getVersion());
+
         acountPopupWindow = new BindAcountPopupWindow(getActivity(), mItemClick);
         CustomBean.ResultBean resultBean = BaseApplication.getInstance().getResultBean();
         if (resultBean != null) {
@@ -282,8 +271,7 @@ public class MeFragment extends BaseFragmentView {
     protected void setListener() {
         changePassWordRel.setOnClickListener(mOnClickListener);
         bindAccountRel.setOnClickListener(mOnClickListener);
-        cancelLoginTv.setOnClickListener(mOnClickListener);
-        rlSaleRecord.setOnClickListener(mOnClickListener);
+        saleRecord.setOnClickListener(mOnClickListener);
     }
 
     @Override

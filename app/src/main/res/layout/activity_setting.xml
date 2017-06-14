@@ -1,107 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch"
-    android:orientation="vertical">
+              style="@style/MatchMatch"
+              android:background="@color/search_edit_bac"
+              android:orientation="vertical">
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:background="@color/white"
         android:orientation="vertical">
-
 
         <RelativeLayout
             android:id="@+id/changePassWordRel"
             style="@style/MatchWrap"
-            android:padding="@dimen/padding_margin_12">
+            android:layout_marginTop="@dimen/padding_margin_20"
+            android:background="@drawable/button_back">
 
             <TextView
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_toRightOf="@+id/change"
+                android:padding="@dimen/padding_margin_16"
                 android:text="@string/version_info"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
             <TextView
                 android:id="@+id/versionTv"
                 style="@style/WrapWrap"
-                android:padding="@dimen/padding_margin_6"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:text="@string/ver_1_0_0"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true" />
+                android:textSize="@dimen/tv_size_12"/>
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/search_edit_bac">
-
-        </View>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/padding_margin_20"
-            android:background="@color/search_edit_bac">
-
-        </View>
 
         <TextView
             android:id="@+id/textView"
             style="@style/MatchWrap"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:padding="@dimen/padding_margin_12"
+            android:layout_marginTop="@dimen/padding_margin_20"
+            android:background="@drawable/button_back"
+            android:padding="@dimen/padding_margin_16"
             android:text="@string/about_us"
             android:textColor="@color/gray"
-            android:textSize="@dimen/tv_size_15" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/search_edit_bac">
+            android:textSize="@dimen/tv_size_15"/>
 
-        </View>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="@dimen/padding_margin_50"
-        android:background="@color/search_edit_bac">
-
-    </View>
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/padding_margin_16"
-        android:paddingTop="@dimen/padding_margin_16">
+        android:layout_marginTop="@dimen/padding_margin_40"
+        android:background="@drawable/button_back"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/cancelLoginTv"
             android:layout_width="@dimen/padding_margin_100"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/padding_margin_6"
-            android:layout_marginTop="@dimen/padding_margin_6"
-            android:background="@drawable/button"
             android:gravity="center"
+            android:padding="@dimen/padding_margin_16"
             android:text="@string/setting_cancellogin"
-            android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_15" />
+            android:textColor="@color/home_custom"
+            android:textSize="@dimen/tv_size_15"/>
 
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:background="@color/search_edit_bac">
-
-    </View>
 
 </LinearLayout>

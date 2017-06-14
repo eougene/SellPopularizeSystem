@@ -192,12 +192,12 @@ public class CustomDetailedActivity extends BaseActivity {
                 //城市选择
                 case R.id.edcustmomeDetailedCity:
                     if (isDataLoaded) {
-                        Log.e(TAG, "onClick: "+edcustmomeDetailedNationality.getText());
-                        if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))){
+                        Log.e(TAG, "onClick: " + edcustmomeDetailedNationality.getText());
+                        if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))) {
                             edcustmomeDetailedCity.setFocusable(false);
                             addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
-                        }else {
-                            Log.e(TAG, "onClick***: "+edcustmomeDetailedNationality.getText());
+                        } else {
+                            Log.e(TAG, "onClick***: " + edcustmomeDetailedNationality.getText());
                             edcustmomeDetailedCity.setFocusable(true);
                             edcustmomeDetailedCity.requestFocus();
                         }
@@ -205,12 +205,12 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //国家选择
                 case R.id.edcustmomeDetailedNationality:
-                    flag=1;
+                    flag = 1;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国籍选择
                 case R.id.etNation:
-                    flag=2;
+                    flag = 2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.etFirb:
@@ -234,13 +234,13 @@ public class CustomDetailedActivity extends BaseActivity {
                 //推广记录
                 case R.id.tvExpandRe:
                     bundle.putString("custocora", "custoexpand");
-                    bundle.putSerializable("customer_id",resultBean);
+                    bundle.putSerializable("customer_id", resultBean);
                     ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
                 //购房记录
                 case R.id.tvPurchaseRe:
                     bundle.putString("custocora", "custopurchase");
-                    bundle.putSerializable("customer_id",resultBean);
+                    bundle.putSerializable("customer_id", resultBean);
                     ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
             }
@@ -269,7 +269,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 getCustomInfo(resultBean);
             }
         }
-        if (bundle.getString(ExtraName.SCALETOCUSTOME)!=null){
+        if (bundle.getString(ExtraName.SCALETOCUSTOME) != null) {
             setTitle(R.string.customdetaild_title);
             resultBean = BaseApplication.getInstance().getResultBean();
             getCustomInfo(resultBean);
@@ -422,7 +422,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //生日
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || customeDetailedBean.getResult().getBirth_date().equals("") ) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
             edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date() + "");
@@ -647,9 +647,9 @@ public class CustomDetailedActivity extends BaseActivity {
                     countryName = mAllCountryList.get(position).countryName;
                     countryNumber = mAllCountryList.get(position).countryNumber;
                 }
-                if (flag==1){
+                if (flag == 1) {
                     edcustmomeDetailedNationality.setText(countryName);
-                }else {
+                } else {
                     etNation.setText(countryName);
                 }
                 nationSelectPopWindow.dismiss();
@@ -736,9 +736,9 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 isAddrChoosed = true;
-                String addr = mCurrentProviceName + getString(R.string.single_blank_space)+mCurrentCityName;
+                String addr = mCurrentProviceName + getString(R.string.single_blank_space) + mCurrentCityName;
                 if (!mCurrentDistrictName.equals(getString(R.string.other))) {
-                    addr += getString(R.string.single_blank_space)+mCurrentDistrictName;
+                    addr += getString(R.string.single_blank_space) + mCurrentDistrictName;
                 }
                 edcustmomeDetailedCity.setText(addr);
                 addrPopWindow.dismiss();

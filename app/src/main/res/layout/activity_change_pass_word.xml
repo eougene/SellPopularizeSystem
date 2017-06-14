@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch"
-    >
+                style="@style/MatchMatch"
+                android:background="@color/search_edit_bac">
 
     <LinearLayout
-        style="@style/MatchWrap"
-        android:layout_marginTop="@dimen/padding_margin_6"
         android:background="@color/white"
-        android:orientation="vertical">
+        style="@style/MatchWrap.Vertical">
 
         <TextView
             android:id="@+id/oldes"
@@ -16,8 +14,8 @@
             android:layout_marginLeft="@dimen/padding_margin_16"
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/inputoldpassword"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_15" />
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"/>
 
 
         <RelativeLayout
@@ -31,7 +29,7 @@
                 android:layout_marginBottom="@dimen/padding_margin_14"
                 android:layout_marginLeft="@dimen/padding_margin_14"
                 android:layout_marginTop="@dimen/padding_margin_14"
-                android:src="@mipmap/lock1" />
+                android:src="@mipmap/lock1"/>
 
             <EditText
                 android:id="@+id/oldPassWord"
@@ -47,7 +45,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_4"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </RelativeLayout>
@@ -60,8 +58,8 @@
             android:layout_marginLeft="@dimen/padding_margin_16"
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/input_new_password"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_15" />
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"/>
 
         <RelativeLayout
             style="@style/WrapWrap">
@@ -73,7 +71,7 @@
                 android:layout_marginBottom="@dimen/padding_margin_14"
                 android:layout_marginLeft="@dimen/padding_margin_14"
                 android:layout_marginTop="@dimen/padding_margin_14"
-                android:src="@mipmap/lock1" />
+                android:src="@mipmap/lock1"/>
 
             <EditText
                 android:id="@+id/newPassWord"
@@ -89,11 +87,10 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_4"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </RelativeLayout>
-
 
 
         <TextView
@@ -103,8 +100,8 @@
             android:layout_marginLeft="@dimen/padding_margin_16"
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/confirm_new_password"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_15" />
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"/>
 
         <RelativeLayout style="@style/WrapWrap">
 
@@ -115,7 +112,7 @@
                 android:layout_marginBottom="@dimen/padding_margin_14"
                 android:layout_marginLeft="@dimen/padding_margin_14"
                 android:layout_marginTop="@dimen/padding_margin_14"
-                android:src="@mipmap/lock1" />
+                android:src="@mipmap/lock1"/>
 
             <EditText
                 android:id="@+id/surePassWord"
@@ -131,7 +128,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_4"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </RelativeLayout>
@@ -143,15 +140,15 @@
             android:layout_height="@dimen/padding_margin_50"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/padding_margin_6"
-            android:layout_marginTop="@dimen/padding_margin_30"
+            android:layout_marginBottom="@dimen/padding_margin_20"
             android:layout_marginLeft="@dimen/padding_margin_14"
             android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_30"
             android:background="@drawable/button_bac"
             android:gravity="center"
             android:text="@string/sure"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
 
     </LinearLayout>
 

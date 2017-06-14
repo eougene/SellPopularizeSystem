@@ -1,64 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch"
-    android:orientation="vertical">
+              style="@style/MatchMatch"
+              android:background="@color/search_edit_bac"
+              android:orientation="vertical">
 
-    <RelativeLayout
-        style="@style/MatchAuto"
-        android:background="@mipmap/bac"
-        android:layout_weight="1">
 
-        <LinearLayout
-            style="@style/WrapWrap.Vertical"
-            android:layout_centerInParent="true">
+    <LinearLayout
+        style="@style/MatchAuto.Vertical"
+        android:layout_weight="1"
+        android:background="@mipmap/bac">
 
-            <com.yd.org.sellpopularizesystem.myView.CircleImageView
-                android:id="@+id/ivCustomePhoto"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="@dimen/padding_margin_50"
-                android:layout_centerInParent="true"
-                android:src="@mipmap/settingbt" />
+        <com.yd.org.sellpopularizesystem.myView.CircleImageView
+            android:id="@+id/ivCustomePhoto"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding_margin_50"
+            android:src="@mipmap/settingbt"/>
 
-            <TextView
-                android:id="@+id/tvCustomeName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/ivCustomePhoto"
-                android:layout_alignRight="@+id/ivCustomePhoto"
-                android:layout_below="@+id/ivCustomePhoto"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="@dimen/padding_margin_20"
-                android:gravity="center"
-                android:text="@string/customename"
-                android:textColor="@color/white" />
-        </LinearLayout>
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tvCustomeName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:text="@string/customename"
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
-    <RelativeLayout
-        style="@style/MatchAuto"
-        android:layout_weight="2.3"
-        android:background="@color/search_edit_bac">
+
+    <LinearLayout
+        style="@style/MatchAuto.Vertical"
+        android:layout_weight="2"
+        android:orientation="vertical">
 
         <LinearLayout
-            style="@style/MatchWrap"
-            android:background="@color/search_edit_bac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_back"
             android:orientation="vertical">
 
 
             <RelativeLayout
                 android:id="@+id/changePassWordRel"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/change"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/changepassword" />
+                    android:src="@mipmap/changepassword"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -67,34 +59,28 @@
                     android:layout_toRightOf="@+id/change"
                     android:text="@string/setting_changepassword"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
-                <ImageView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/rightarrow" />
+
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
+                android:layout_marginLeft="@dimen/padding_margin_50"
+                android:background="@color/shallow_gray"/>
 
-            </View>
 
             <RelativeLayout
                 android:id="@+id/bindAccountRel"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/bind"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/bindaccount" />
+                    android:src="@mipmap/bindaccount"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -103,42 +89,31 @@
                     android:layout_toRightOf="@+id/bind"
                     android:text="@string/setting_bindaccount"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
-                <ImageView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:src="@mipmap/rightarrow" />
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
 
-            </View>
+        </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/padding_margin_30"
-                android:background="@color/search_edit_bac">
 
-            </View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin_20"
+            android:background="@drawable/button_back"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/saleRecord"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/sale"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/salarecord" />
+                    android:src="@mipmap/salarecord"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -147,49 +122,28 @@
                     android:layout_toRightOf="@+id/sale"
                     android:text="@string/sale_record"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
 
-                <ImageView
-                    android:id="@+id/rightArraw"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow" />
-
-                <!--<TextView
-                    android:id="@+id/settiing_noticTv"
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_toLeftOf="@id/rightArraw"
-                    android:background="@drawable/circle_shape"
-                    android:gravity="center"
-                    android:text="10"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_08" />-->
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
+                android:layout_marginLeft="@dimen/padding_margin_50"
+                android:background="@color/shallow_gray"/>
 
-            </View>
 
             <RelativeLayout
                 android:id="@+id/rlCommission"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/commission"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/mycommission" />
+                    android:src="@mipmap/mycommission"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -198,38 +152,28 @@
                     android:layout_toRightOf="@+id/commission"
                     android:text="@string/mycommission"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
-
-                <ImageView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow" />
 
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
+                android:layout_marginLeft="@dimen/padding_margin_50"
+                android:background="@color/shallow_gray"/>
 
-            </View>
 
             <RelativeLayout
                 android:id="@+id/rlTeam"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/myteam"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/myteam" />
+                    android:src="@mipmap/myteam"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -238,47 +182,32 @@
                     android:layout_toRightOf="@+id/myteam"
                     android:text="@string/myteam"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
+                    android:textSize="@dimen/tv_size_15"/>
 
-
-                <ImageView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow" />
 
             </RelativeLayout>
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
+        </LinearLayout>
 
-            </View>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="@dimen/padding_margin_30"
-                android:background="@color/search_edit_bac">
-
-            </View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin_20"
+            android:background="@drawable/button_back"
+            android:orientation="vertical">
 
             <RelativeLayout
                 android:id="@+id/rlSetting"
                 style="@style/MatchWrap"
-                android:background="@color/white"
                 android:padding="@dimen/padding_margin_12">
 
                 <ImageView
                     android:id="@+id/ivSetting"
                     style="@style/WrapWrap"
-                    android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/setting" />
+                    android:src="@mipmap/setting"/>
 
                 <TextView
                     style="@style/WrapWrap"
@@ -287,59 +216,13 @@
                     android:layout_toRightOf="@+id/ivSetting"
                     android:text="@string/setting"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_15" />
-
-
-                <ImageView
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/rightarrow" />
+                    android:textSize="@dimen/tv_size_15"/>
             </RelativeLayout>
+
+
         </LinearLayout>
 
 
-        <LinearLayout
-            style="@style/MatchWrap"
-            android:layout_alignParentBottom="true"
-            android:background="@color/white"
-            android:orientation="vertical"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/cancelLoginTv"
-                android:layout_width="@dimen/padding_margin_100"
-                android:layout_height="30dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/padding_margin_6"
-                android:layout_marginTop="@dimen/padding_margin_6"
-                android:background="@drawable/button"
-                android:gravity="center"
-                android:text="@string/setting_cancellogin"
-                android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_15" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac">
-
-            </View>
-
-            <TextView
-                android:id="@+id/versionTv"
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/padding_margin_6"
-                android:padding="@dimen/padding_margin_6"
-                android:text="@string/ver_1_0_0"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
-
-        </LinearLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
