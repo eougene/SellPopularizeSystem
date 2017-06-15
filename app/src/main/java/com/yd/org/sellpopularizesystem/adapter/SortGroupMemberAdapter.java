@@ -88,11 +88,11 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
     public View getView(final int position, View view, ViewGroup arg2) {
         ViewHolder viewHolder = null;
 
-
         if (view == null) {
             viewHolder = new ViewHolder();
             view = LayoutInflater.from(mContext).inflate(R.layout.activity_group_member_item, null);
             viewHolder.tvTitle = (TextView) view.findViewById(R.id.customName);
+            viewHolder.tvNickName= (TextView) view.findViewById(R.id.tvNickName);
             viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
             viewHolder.imageView = (ImageView) view.findViewById(R.id.customImageiView);
             view.setTag(viewHolder);
@@ -117,6 +117,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
             viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+            viewHolder.tvNickName.setText(list.get(position).getEn_name().equals("")?"":list.get(position).getEn_name());
             if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
@@ -151,7 +152,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
     public class ViewHolder {
         TextView tvLetter;
-        TextView tvTitle;
+        TextView tvTitle,tvNickName;
         ImageView imageView;
         public CustomBean.ResultBean resultBean;
         public LawyerBean.ResultBean m;
