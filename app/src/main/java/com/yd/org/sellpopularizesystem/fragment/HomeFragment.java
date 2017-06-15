@@ -112,6 +112,55 @@ public class HomeFragment extends BaseFragmentView {
         getHomeData();
     }
 
+
+    private void initWidget() {
+        //消息管理
+        rlBefore = getViewById(R.id.rlBefore);
+        //资料
+        saleLinearLayyout = getViewById(R.id.saleLinearLayyout);
+        //客户管理
+        customLinerLayout = getViewById(R.id.customLinerLayout);
+        //学习园地
+        studyLinearLayout = getViewById(R.id.studyLinearLayout);
+
+        tvScaleSource = getViewById(R.id.tvScaleSource);
+        tvNewAddSource = getViewById(R.id.tvNewAddSource);
+        tvCustomNumber = getViewById(R.id.tvCustomNumber);
+        tvNewCustomNumber = getViewById(R.id.tvNewCustomNumber);
+        tvStydyDatumCount = getViewById(R.id.tvStydyDatumCount);
+        tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
+        //tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
+
+        //渐变动画
+        homeGradient = getViewById(R.id.homeGradient);
+
+        //初始化imageview
+        ImageView imageView = new ImageView(getActivity());
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageView.setImageResource(R.mipmap.homebg);
+
+        ImageView imageViewOne = new ImageView(getActivity());
+        imageViewOne.setScaleType(ImageView.ScaleType.FIT_XY);
+        imageViewOne.setImageResource(R.mipmap.home);
+
+        //添加要渐变的ImageView
+        imageViews.add(imageView);
+        imageViews.add(imageViewOne);
+        //设置ImageView集合
+        homeGradient.setImageViews(imageViews);
+
+
+    }
+
+    @Override
+    protected void setListener() {
+        rlBefore.setOnClickListener(mOnClickListener);
+        saleLinearLayyout.setOnClickListener(mOnClickListener);
+        customLinerLayout.setOnClickListener(mOnClickListener);
+        studyLinearLayout.setOnClickListener(mOnClickListener);
+    }
+
+
     private void getHomeData() {
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -169,52 +218,6 @@ public class HomeFragment extends BaseFragmentView {
 
     }
 
-    private void initWidget() {
-        //消息管理
-        rlBefore = getViewById(R.id.rlBefore);
-        //资料
-        saleLinearLayyout = getViewById(R.id.saleLinearLayyout);
-        //客户管理
-        customLinerLayout = getViewById(R.id.customLinerLayout);
-        //学习园地
-        studyLinearLayout = getViewById(R.id.studyLinearLayout);
-
-        tvScaleSource = getViewById(R.id.tvScaleSource);
-        tvNewAddSource = getViewById(R.id.tvNewAddSource);
-        tvCustomNumber = getViewById(R.id.tvCustomNumber);
-        tvNewCustomNumber = getViewById(R.id.tvNewCustomNumber);
-        tvStydyDatumCount = getViewById(R.id.tvStydyDatumCount);
-        tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
-        //tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
-
-        //渐变动画
-        homeGradient = getViewById(R.id.homeGradient);
-
-        //初始化imageview
-        ImageView imageView = new ImageView(getActivity());
-        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageView.setImageResource(R.mipmap.homebg);
-
-        ImageView imageViewOne = new ImageView(getActivity());
-        imageViewOne.setScaleType(ImageView.ScaleType.FIT_XY);
-        imageViewOne.setImageResource(R.mipmap.home);
-
-        //添加要渐变的ImageView
-        imageViews.add(imageView);
-        imageViews.add(imageViewOne);
-        //设置ImageView集合
-        homeGradient.setImageViews(imageViews);
-
-
-    }
-
-    @Override
-    protected void setListener() {
-        rlBefore.setOnClickListener(mOnClickListener);
-        saleLinearLayyout.setOnClickListener(mOnClickListener);
-        customLinerLayout.setOnClickListener(mOnClickListener);
-        studyLinearLayout.setOnClickListener(mOnClickListener);
-    }
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {

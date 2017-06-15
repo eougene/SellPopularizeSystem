@@ -101,7 +101,7 @@
     <string name="lawyer_id">请选择律师</string>
     <string name="picpath">请上传支付凭证</string>
     <string name="issaling">在售</string>
-    <string name="issalingnum">在售数量:</string>
+    <string name="issalingnum">在售数量</string>
     <string name="hadsaled">已售</string>
     <string name="sale_list">销售列表</string>
     <string name="apply_contract">申请合同</string>
@@ -207,7 +207,7 @@
     <string name="productdes">好房不等人,快来抢房了</string>
     <string name="introduce">这里是简介</string>
     <string name="details">详情</string>
-    <string name="hashsalenum">已售数量:</string>
+    <string name="hashsalenum">已售数量</string>
     <string name="firbnum">FIRB有效数量:</string>
     <string name="eoiopen">EOI开放时间:</string>
     <string name="starttime">1970/01/01</string>

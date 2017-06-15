@@ -16,13 +16,13 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
 public class FilterActivity extends BaseActivity {
-    private TextView tvSelect,tvAreaDes,tvHouseType,tvSelectType,tvSelectPrice,tvProductSearch;
+    private TextView tvSelect,tvAreaDes,tvHouseType,tvSelectPrice,tvProductSearch;
     private ImageView ivSearch;
     //获取到筛选条件内容对应代号如1,2,3等
     private String selectStrTag;
     //获取到筛选条件内容
     private String selectContent;
-    private RelativeLayout rlArea,rlHouseType,rlType,rlPrice;
+    private RelativeLayout rlArea,rlHouseType,rlPrice;
     @Override
     protected int setContentView() {
         return R.layout.activity_filter;

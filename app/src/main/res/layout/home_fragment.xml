@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/search_edit_bac">
 
     <com.yd.org.sellpopularizesystem.myView.Gradient
         android:id="@+id/homeGradient"
@@ -23,6 +24,7 @@
         </View>
 
         <LinearLayout
+            android:layout_marginBottom="@dimen/padding_margin_10"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -102,6 +104,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:id="@+id/studyLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"

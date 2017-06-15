@@ -7,6 +7,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -35,7 +37,9 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
@@ -51,14 +55,14 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductItemDetailActivity extends BaseActivity {
+public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
             tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
-            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile;
+            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
-    ProductDetailBean.ResultBean prs;
+    private ProductDetailBean.ResultBean prs;
     private List childs = new ArrayList();
     private UMShareListener mUmShareListener;
     private ShareAction mShareAction;
@@ -66,30 +70,40 @@ public class ProductItemDetailActivity extends BaseActivity {
     private static Bitmap bitmap;
     private Bundle bun = new Bundle();
     private String product_id;
-    protected ImageView backLinearLayou;
+    protected ImageView backImageView, imageViewShare;
+
+
 
     @Override
-    protected int setContentView() {
-        return R.layout.activity_product_item_des;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_product_item_des);
+        StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
+        initView();
+
+
     }
 
-    @Override
     public void initView() {
 
         //保存推广开始时间
         SharedPreferencesHelps.setTime((System.currentTimeMillis() / 1000) + "");
-        backLinearLayou = getViewById(R.id.backLinearLayout);
-        backLinearLayou.setOnClickListener(mOnClickListener);
+        backImageView = (ImageView) findViewById(R.id.backImageView);
+        backImageView.setOnClickListener(mOnClickListener);
+
+
+        imageViewShare = (ImageView) findViewById(R.id.imageViewShare);
+        imageViewShare.setOnClickListener(mOnClickListener);
         //
         Bundle bundle = getIntent().getExtras();
         string = bundle.getString("productName");
         resultBean = (ProductListBean.ResultBean) bundle.getSerializable("bean");
         product_id = String.valueOf(resultBean.getProduct_id());
         childs.addAll(resultBean.getChilds());
-        setTitle(string);
+
         initViews();
         initData();
-
+        setListener();
 
     }
 
@@ -147,9 +161,9 @@ public class ProductItemDetailActivity extends BaseActivity {
     }
 
     private void initViews() {
-        // ivCart= (ImageView) findViewById(R.id.ivCustomePhoto);
+        // ivCart= (ImageView) findVById(R.id.ivCustomePhoto);
         //轮播图控件
-        rpv = getViewById(R.id.rpv);
+        rpv = (RollPagerView) findViewById(R.id.rpv);
         //设置轮播时间间隔
         rpv.setPlayDelay(3000);
         //设置轮播动画持续时间
@@ -158,39 +172,38 @@ public class ProductItemDetailActivity extends BaseActivity {
         //rpv.setHintView(new IconHintView(this,R.mipmap.dian_true,R.mipmap.dian_false));
         rpv.setHintView(new ColorPointHintView(this, Color.WHITE, Color.parseColor("#7F7F7F")));
         rpv.setOnItemClickListener(mOnItemClickListener);
-        tvId = getViewById(R.id.tvId);
-        rightSearchLinearLayout.setVisibility(View.GONE);
-        ivShare.setVisibility(View.VISIBLE);
-        ivShare.setOnClickListener(mOnClickListener);
-        tvProdes = getViewById(R.id.tvProdes);
-        tvIsSalingNum = getViewById(R.id.tvIsSalingNum);
-        tvHasSaledNum = getViewById(R.id.tvHasSaledNum);
-        tvFirbNum = getViewById(R.id.tvFirbNum);
-        tvEoiTime = getViewById(R.id.tvEoiTime);
-        tvSaleDeadTime = getViewById(R.id.tvSaleDeadTime);
-        tvCloseDate = getViewById(R.id.tvCloseDate);
-        tvMemo = getViewById(R.id.tvMemo);
-        tvProjectPro = getViewById(R.id.tvProjectPro);
-        tvSupplier = getViewById(R.id.tvSupplier);
-        tvBuilder = getViewById(R.id.tvBuilder);
-        tvLawyer = getViewById(R.id.tvLawyer);
-        tvDespositHolder = getViewById(R.id.tvDespositHolder);
-        tvForeignMoney = getViewById(R.id.tvForeignMoney);
-        tvCashDesposit = getViewById(R.id.tvCashDesposit);
-        tvSubscription = getViewById(R.id.tvSubscription);
-        tvIntroduce = getViewById(R.id.tvIntroduce);
-        tvVideo = getViewById(R.id.tvVideo);
-        tvOrder = getViewById(R.id.tvOrder);
-        tvFloor = getViewById(R.id.tvFloor);
-        tvContract = getViewById(R.id.tvContract);
-        tvFile = getViewById(R.id.tvFile);
+        tvId = (TextView) findViewById(R.id.tvId);
+        tvProdes = (TextView) findViewById(R.id.tvProdes);
+        tvIsSalingNum = (TextView) findViewById(R.id.tvIsSalingNum);
+        tvHasSaledNum = (TextView) findViewById(R.id.tvHasSaledNum);
+        tvFirbNum = (TextView) findViewById(R.id.tvFirbNum);
+        tvEoiTime = (TextView) findViewById(R.id.tvEoiTime);
+        tvSaleDeadTime = (TextView) findViewById(R.id.tvSaleDeadTime);
+        tvCloseDate = (TextView) findViewById(R.id.tvCloseDate);
+        tvMemo = (TextView) findViewById(R.id.tvMemo);
+        tvProjectPro = (TextView) findViewById(R.id.tvProjectPro);
+        tvSupplier = (TextView) findViewById(R.id.tvSupplier);
+        tvBuilder = (TextView) findViewById(R.id.tvBuilder);
+        tvLawyer = (TextView) findViewById(R.id.tvLawyer);
+        tvDespositHolder = (TextView) findViewById(R.id.tvDespositHolder);
+        tvForeignMoney = (TextView) findViewById(R.id.tvForeignMoney);
+        tvCashDesposit = (TextView) findViewById(R.id.tvCashDesposit);
+        tvSubscription = (TextView) findViewById(R.id.tvSubscription);
+        tvIntroduce = (TextView) findViewById(R.id.tvIntroduce);
+        tvVideo = (TextView) findViewById(R.id.tvVideo);
+        tvOrder = (TextView) findViewById(R.id.tvOrder);
+        tvFloor = (TextView) findViewById(R.id.tvFloor);
+        tvContract = (TextView) findViewById(R.id.tvContract);
+        tvFile = (TextView) findViewById(R.id.tvFile);
+
+        tvrojectDe = (TextView) findViewById(R.id.tvrojectDe);
+        tvrojectDe.setText(string);
         mUmShareListener = new CustomShareListener(this);
         mShareAction = new ShareAction(ProductItemDetailActivity.this);
 
     }
 
     private void initData() {
-        showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("product_id", resultBean.getProduct_id() + "");
@@ -198,7 +211,6 @@ public class ProductItemDetailActivity extends BaseActivity {
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                closeDialog();
                 Gson gson = new Gson();
                 ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
                 if (pdb.getCode().equals("1")) {
@@ -211,9 +223,9 @@ public class ProductItemDetailActivity extends BaseActivity {
                     tvIsSalingNum.setText(prs.getSell_number() + "");
                     tvHasSaledNum.setText(prs.getSign_number() + "");
                     tvFirbNum.setText(prs.getFirb_number() + "");
-                    tvEoiTime.setText(prs.getEoi_open_time() + "");
-                    tvSaleDeadTime.setText(prs.getStop_sales_time() + "");
-                    tvCloseDate.setText(prs.getSettlement_time() + "");
+                    tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getEoi_open_time() + "000")));
+                    tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getStop_sales_time() + "000")));
+                    tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getSettlement_time() + "000")));
                     tvMemo.setText(prs.getPreview_memo());
                     tvProjectPro.setText(prs.getProduct_type());
                     tvSupplier.setText(prs.getVendor());
@@ -229,7 +241,6 @@ public class ProductItemDetailActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                showDialog();
                 ToasShow.showToastCenter(ProductItemDetailActivity.this, strMsg);
             }
         });
@@ -259,7 +270,7 @@ public class ProductItemDetailActivity extends BaseActivity {
 
             switch (v.getId()) {
                 //分享
-                case R.id.ivShare:
+                case R.id. imageViewShare:
                     openShareDialog();
                     break;
                 //介绍
@@ -312,7 +323,7 @@ public class ProductItemDetailActivity extends BaseActivity {
 
 
                 //返回按钮
-                case R.id.backLinearLayout:
+                case R.id. backImageView:
                     addSaleLog();
                     finish();
                     break;
@@ -328,14 +339,8 @@ public class ProductItemDetailActivity extends BaseActivity {
         }
     };
 
-    @Override
+
     public void setListener() {
-        clickRightImageView(R.mipmap.share, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openShareDialog();
-            }
-        });
         tvIntroduce.setOnClickListener(mOnClickListener);
         tvVideo.setOnClickListener(mOnClickListener);
         tvOrder.setOnClickListener(mOnClickListener);
@@ -446,15 +451,13 @@ public class ProductItemDetailActivity extends BaseActivity {
             jsonObj.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
             jsonObj.put("content", string);
             jsonObj.put("start_time", SharedPreferencesHelps.getTime());
-            jsonObj.put("end_time", ((System.currentTimeMillis()/1000)+ ""));
+            jsonObj.put("end_time", ((System.currentTimeMillis() / 1000) + ""));
             jsonObj.put("gps_x_y", resultBean.getLongitude() + "," + resultBean.getLatitude());
             jsonarray.put(jsonObj);
 
             SharedPreferencesHelps.setData(jsonarray.toString());
 
             HomeActiviyt.homeActiviyt.recordHandler.sendEmptyMessage(0x001);
-
-
 
 
         } catch (JSONException e) {

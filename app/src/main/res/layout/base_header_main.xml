@@ -59,7 +59,7 @@
                 style="@style/MatchMatch"
                 android:gravity="center"
                 android:text="title"
-                android:textSize="@dimen/tv_size_20"
+                android:textSize="@dimen/tv_size_15"
                 android:visibility="gone" />
 
             <TextView

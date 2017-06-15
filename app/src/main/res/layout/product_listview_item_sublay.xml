@@ -12,6 +12,7 @@
         android:padding="@dimen/padding_margin_8">
 
         <TextView
+            android:textStyle="bold"
             android:id="@+id/tvPriceRange"
             style="@style/WrapWrap"
             android:text="@string/au_0_00_to_au_0_00"
