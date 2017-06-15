@@ -25,6 +25,7 @@
     <!-- 半透明 -->
     <color name="reansoarent_oneoftwo">#5a000000</color>
     <color name="light_blue">#6593cb</color>
+    <color name="blue">#0050FF</color>
     <color name="home_scale">#34495E</color>
     <color name="home_scale_t">#a134495E</color>
     <color name="home_scale_d">#5a34495E</color>

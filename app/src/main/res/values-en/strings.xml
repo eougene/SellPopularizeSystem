@@ -148,7 +148,9 @@
     <string name="noeoi">Please EOI firstly by click the recharge button on the top right</string>
     <string name="headerphoto">Photo</string>
     <string name="firstname">Surname</string>
+    <string name="middlename">Middle name</string>
     <string name="lastname">First Name</string>
+    <string name="nickname">Nickname</string>
     <string name="englishname">English Name</string>
     <string name="birthday">Date of Birth</string>
     <string name="mobilephone">Mobile</string>
@@ -167,6 +169,7 @@
     <string name="idcard">ID</string>
     <string name="passport">Passport</string>
     <string name="nation">Nationality</string>
+    <string name="country">Country</string>
     <string name="relationshipfirstname">Surname</string>
     <string name="relationlastname">Family name</string>
     <string name="relation">Relationship</string>
@@ -463,8 +466,17 @@
     <string name="register">Register</string>
     <string name="forget_password">Forgot password?</string>
     <string name="check_wechat_install">Check to see if WeChat is installed</string>
-    <string name="issalingnum">在售数量:</string>
-    <string name="login_toas">您的账号在另外一台设备登录.</string>
-    <string name="hint_toas">提示</string>
-    <string name="home_reminder">您的账号在另外一台设备登录，为确保安全，请核实情况!</string>
+    <string name="issalingnum">The number of saling :</string>
+    <string name="login_toas">Your account is logged on to another device</string>
+    <string name="hint_toas">Prompt</string>
+    <string name="home_reminder">Your account is logged on to another device. Please verify the situation to ensure security!</string>
+    <string name="if_company_cus">&#160;&#160;Is it for company clients?</string>
+    <string name="comname">Company name</string>
+    <string name="business_account">Business registration account</string>
+    <string name="company_register_account">Company registered account number</string>
+    <string name="company_tel">Company telphone</string>
+    <string name="company_fax">Company fax</string>
+    <string name="street_num">Street number</string>
+    <string name="street1">Street address 1</string>
+    <string name="street2">Street address 2</string>
 </resources>

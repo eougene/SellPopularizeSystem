@@ -149,7 +149,9 @@
     <string name="noeoi">客户没有EOI,点击右上角充值</string>
     <string name="headerphoto">头像</string>
     <string name="firstname">姓氏</string>
+    <string name="middlename">中间名</string>
     <string name="lastname">名字</string>
+    <string name="nickname">昵称</string>
     <string name="englishname">英文名</string>
     <string name="birthday">生日</string>
     <string name="mobilephone">手机</string>
@@ -168,6 +170,7 @@
     <string name="idcard">身份证</string>
     <string name="passport">护照</string>
     <string name="nation">国籍</string>
+    <string name="country">国家</string>
     <string name="relationshipfirstname">亲属姓</string>
     <string name="relationlastname">亲属名</string>
     <string name="relation">关系</string>
@@ -469,4 +472,15 @@
     <string name="hint_toas">提示</string>
     <string name="home_reminder">您的账号在另外一台设备登录，为确保安全，请核实情况!</string>
     <string name="wechat_load">微信登录</string>
+    <string name="if_company_cus">&#160;&#160;是否为公司客户</string>
+    <string name="comname">公司名称</string>
+    <string name="business_account">业务注册账号</string>
+    <string name="company_register_account">公司注册账号</string>
+    <string name="company_tel">公司电话</string>
+    <string name="company_email">公司邮箱</string>
+    <string name="company_fax">公司传真</string>
+    <string name="person_in_charge">负责人(客户)</string>
+    <string name="street_num">街道号码</string>
+    <string name="street1">街道地址1</string>
+    <string name="street2">街道地址2</string>
 </resources>
