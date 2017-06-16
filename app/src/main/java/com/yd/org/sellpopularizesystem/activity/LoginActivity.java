@@ -45,7 +45,7 @@ public class LoginActivity extends FragmentActivity {
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
         login = getResources().getString(R.string.login);
         register = getResources().getString(R.string.register);
-        mTitles = Arrays.asList(login, register);
+        mTitles = Arrays.asList(login);
         initView();
         initData();
         //动态设置tab
@@ -63,7 +63,7 @@ public class LoginActivity extends FragmentActivity {
 
     private void initData() {
         fragments.add(new LoginFragment());
-        fragments.add(new RegisterFragment());
+        //fragments.add(new RegisterFragment());
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
