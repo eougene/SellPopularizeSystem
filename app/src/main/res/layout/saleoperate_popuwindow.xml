@@ -28,7 +28,7 @@
                     android:id="@+id/btApplyContract"
                     style="@style/MatchWrap"
                     android:background="@color/white"
-                    android:text="@string/apply_contract"
+                    android:text="@string/saler_15"
                     android:textColor="@color/light_blue"
                     android:textSize="@dimen/tv_size_15"/>
 

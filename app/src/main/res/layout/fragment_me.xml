@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.yd.org.sellpopularizesystem.myView.HeadZoomScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch"
     android:background="@color/search_edit_bac"
@@ -233,4 +233,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</com.yd.org.sellpopularizesystem.myView.HeadZoomScrollView>
+</LinearLayout>

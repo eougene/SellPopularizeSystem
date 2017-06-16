@@ -404,7 +404,7 @@
     <string name="payment">支付</string>
     <string name="saler_01">订单放弃中</string>
     <string name="saler_02">订单已取消</string>
-    <string name="saler_03">意向金凭证已上传 &#034; \n &#034;  请申请合同</string>
+    <string name="saler_03">意向金凭证已上传 &#034; \n &#034;  请等待管理员审核</string>
     <string name="saler_04">尚未支付意向金  &#034; \n &#034;请付款</string>
     <string name="saler_05">合同首页已审核 &#034; \n &#034; 首付款凭证审核中</string>
     <string name="saler_06">正在申请合同  &#034; \n &#034;请等待管理员审核</string>

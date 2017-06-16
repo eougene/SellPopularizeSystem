@@ -403,7 +403,7 @@
     <string name="payment">Payment</string>
     <string name="saler_01">Order Cancelling</string>
     <string name="saler_02">Order Cancelled</string>
-    <string name="saler_03">Receipt of deposit uploaded &#034; \n &#034;Please Apply Contract</string>
+    <string name="saler_03">Receipt of deposit uploaded &#034; \n &#034;Please wait for the approval</string>
     <string name="saler_04">Has not paid the intention &#034; \n &#034;Please payment</string>
     <string name="saler_05">Front Page Approved &#034; \n &#034;Down Payment Approving</string>
     <string name="saler_06">Contract Applying &#034; \n &#034;Please wait for the approval</string>

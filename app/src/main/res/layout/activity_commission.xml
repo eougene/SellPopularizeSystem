@@ -8,9 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="@color/scale_tab5"
         android:orientation="horizontal"
-        android:padding="@dimen/padding_margin_4">
+        android:padding="@dimen/padding_margin_10">
 
         <TextView
             android:layout_width="0dp"
