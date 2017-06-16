@@ -1303,7 +1303,7 @@ public class CustomDetailedActivity extends BaseActivity {
                             if (!dir.exists()) {
                                 dir.mkdirs();
                             }
-                            File pic = new File(dir, System.currentTimeMillis() + "jpg");
+                            File pic = new File(dir, System.currentTimeMillis() + ".jpg");
                             try {
                                 BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
                                 cameraFile.delete();
