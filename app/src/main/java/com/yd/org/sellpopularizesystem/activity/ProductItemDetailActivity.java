@@ -73,15 +73,12 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     protected ImageView backImageView, imageViewShare;
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_item_des);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
         initView();
-
-
     }
 
     public void initView() {
@@ -211,6 +208,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
+
+                Log.e("s***","s:"+s);
                 Gson gson = new Gson();
                 ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
                 if (pdb.getCode().equals("1")) {
@@ -218,14 +217,17 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     BaseApplication.getInstance().setPrs(prs);
                     //轮播控件适配器
                     rpv.setAdapter(new NormalAdapter(rpv));
+
+
+
                     tvId.setText(prs.getProduct_id() + "");
                     tvProdes.setText(prs.getDescription());
                     tvIsSalingNum.setText(prs.getSell_number() + "");
                     tvHasSaledNum.setText(prs.getSign_number() + "");
                     tvFirbNum.setText(prs.getFirb_number() + "");
-                    tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getEoi_open_time() + "000")));
-                    tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getStop_sales_time() + "000")));
-                    tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd",Long.parseLong(prs.getSettlement_time() + "000")));
+                    tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getEoi_open_time() + "000")));
+                    tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStop_sales_time() + "000")));
+                    tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getSettlement_time() + "000")));
                     tvMemo.setText(prs.getPreview_memo());
                     tvProjectPro.setText(prs.getProduct_type());
                     tvSupplier.setText(prs.getVendor());
@@ -270,11 +272,15 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             switch (v.getId()) {
                 //分享
-                case R.id. imageViewShare:
+                case R.id.imageViewShare:
                     openShareDialog();
                     break;
                 //介绍
                 case R.id.tvIntroduce:
+                    if (tvIntroduce.getAlpha() == 1.0f) {
+                        bun.putString("introduce", prs.getDescription_url() + "");
+                        ActivitySkip.forward(ProductItemDetailActivity.this, IntroduceActivity.class, bun);
+                    }
 
                     break;
                 //视频
@@ -323,7 +329,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
 
                 //返回按钮
-                case R.id. backImageView:
+                case R.id.backImageView:
                     addSaleLog();
                     finish();
                     break;
@@ -404,6 +410,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
         @Override
         public View getView(ViewGroup container, int position) {
+
+            Log.e("hhh**","Url:"+Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
             ImageView view = new ImageView(container.getContext());
             Picasso.with(ProductItemDetailActivity.this).load(Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL()).into(view);
             view.setScaleType(ImageView.ScaleType.FIT_XY);

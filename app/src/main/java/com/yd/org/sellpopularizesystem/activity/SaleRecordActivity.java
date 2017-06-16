@@ -112,17 +112,25 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 && resultBean.getSale_advice_status() == 0
                 && resultBean.getStatus() == 0) {
 
-            //测试用
-            btOrderUpdate.setVisibility(View.GONE);
             if (resultBean.getPayment_method() == 1 || resultBean.getPayment_method() == 4) {
                 //意向金已支付
                 btPayIntention.setVisibility(View.GONE);
+                btApplyContract.setVisibility(View.GONE);
+                btOrderUpdate.setVisibility(View.GONE);
 
 
             } else {
                 //意向金未支付
                 btApplyContract.setVisibility(View.GONE);
+                btOrderUpdate.setVisibility(View.GONE);
             }
+
+            //上传合同首页,上传首付款凭证
+        } else if (resultBean.getContract_apply_status() == 2
+                && resultBean.getUpload_contract_status() == 0
+                && resultBean.getBuy_money_status() == 0
+                && resultBean.getCancel_apply_status() == 0) {
+            btPayIntention.setVisibility(View.GONE);
         }
 
 
@@ -236,7 +244,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         }
 
         if (isRefresh) {
-            if (sobRbData.size()==0) {
+            if (sobRbData.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 lvSaleRecord.setVisibility(View.GONE);
             } else {

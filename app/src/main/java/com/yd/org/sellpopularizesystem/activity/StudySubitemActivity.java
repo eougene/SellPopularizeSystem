@@ -47,36 +47,42 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
         tvNoMessage = getViewById(R.id.noInfomation);
         String flagStr = getIntent().getExtras().getString("tossia");
         if (flagStr.equals("palyplatform")) {
-            type_id="6";
+            //玩转平台
+            type_id = "6";
             setTitle(R.string.playplatform);
-            getStudyListData(true, page,type_id);
+            getStudyListData(true, page, type_id);
+            //成功原理
         } else if (flagStr.equals("success")) {
-            type_id="2";
+            type_id = "5";
             setTitle(R.string.successlaw);
-            getStudyListData(true, page,type_id);
+            getStudyListData(true, page, type_id);
+
+            //基础知识
         } else if (flagStr.equals("basic")) {
-            type_id="3";
+            type_id = "2";
             setTitle(R.string.basic_konwledge);
-            getStudyListData(true, page,type_id);
+            getStudyListData(true, page, type_id);
         } else if (flagStr.equals("saleTec")) {
-            type_id="4";
+            //销售秘籍
+            type_id = "4";
             setTitle(R.string.sales_techniques);
-            getStudyListData(true, page,type_id);
+            getStudyListData(true, page, type_id);
         } else {
+            //项目
             setTitle(R.string.project);
-            type_id="1";
-            getStudyListData(true, page,type_id);
+            type_id = "1";
+            getStudyListData(true, page, type_id);
         }
     }
 
-    private void getStudyListData(final boolean b, int page,String type_id) {
+    private void getStudyListData(final boolean b, int page, String type_id) {
         showDialog();
         final FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
         ajaxParams.put("number", "10");
-        ajaxParams.put("type_id",type_id);
+        ajaxParams.put("type_id", type_id);
 
         fh.get(Contants.STUDY_LIST, ajaxParams, new AjaxCallBack<String>() {
 
@@ -147,12 +153,12 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
-        getStudyListData(true, page,type_id);
+        getStudyListData(true, page, type_id);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getStudyListData(false, page,type_id);
+        getStudyListData(false, page, type_id);
     }
 }

@@ -13,7 +13,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -123,7 +122,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         backLinearLayou = getViewById(R.id.backLinearLayout);
         backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
-        parent_container= getViewById(R.id.parent_container);
+        parent_container = getViewById(R.id.parent_container);
         btScaleSearch = getViewById(R.id.btScaleSearch);
         tvProjectNum = getViewById(R.id.tvProjectNum);
         ptrl = getViewById(R.id.refresh_view);
@@ -149,8 +148,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         //下拉加载
         //showView();
     }
-
-
 
 
     @Override
@@ -257,7 +254,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ProductListBean product = gson.fromJson(json, ProductListBean.class);
         if (product.getCode().equals("1")) {
             productData = product.getResult();
-            tvProjectNum.setText(getString(R.string.sum) + productData.size() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+            tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
             if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
