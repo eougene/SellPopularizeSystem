@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,20 +14,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
-import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,16 +86,17 @@ public class CustomeListAdapter extends BaseAdapter {
         }
 
         viewHolder.productListBean = list.get(position);
+        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
 
-        if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
-            if (BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) != null) {
-                viewHolder.prductImageView.setImageBitmap(BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()));
-            } else {
-                ToasShow.showToastCenter(mContext, mContext.getString(R.string.network_error));
-            }
-        } else {
-            Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).transform(new CropSquareTransformation(position)).into(viewHolder.prductImageView);
-        }
+        // if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
+//            if (BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) != null) {
+//                viewHolder.prductImageView.setImageBitmap(BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()));
+//            } else {
+//                ToasShow.showToastCenter(mContext, mContext.getString(R.string.network_error));
+//            }
+        // } else {
+        //
+        // }
 
         final String title = list.get(position).getProduct_name().trim();
         final String product_id = list.get(position).getProduct_id() + "";
@@ -110,7 +106,7 @@ public class CustomeListAdapter extends BaseAdapter {
         tempChilds.addAll(viewHolder.childs);*/
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
         final ViewHolder finalViewHolder = viewHolder;
-        if (list.get(position).getIs_study()==0) {
+        if (list.get(position).getIs_study() == 0) {
             //点击查看单个item
             viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
             //点击查看所有
@@ -122,16 +118,16 @@ public class CustomeListAdapter extends BaseAdapter {
                     ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
                 }
             });
-        }else {
+        } else {
             viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
             viewHolder.lvSubItem.setVisibility(View.GONE);
             viewHolder.rlViewAll.setVisibility(View.GONE);
             viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Bundle bundle =new Bundle();
-                    bundle.putString("studynum","0");
-                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class,bundle);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("studynum", "0");
+                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class, bundle);
                 }
             });
         }
@@ -141,27 +137,27 @@ public class CustomeListAdapter extends BaseAdapter {
     /**
      * 自定义接口
      */
-    public class CropSquareTransformation implements Transformation {
-        private int position;
-
-        public CropSquareTransformation(int position) {
-            this.position = position;
-
-        }
-
-        @Override
-        public Bitmap transform(Bitmap source) {
-            if (isBoolean && BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) == null) {
-                BaseApplication.getInstance().getaCache().put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
-            }
-            return source;
-        }
-
-        @Override
-        public String key() {
-            return "square()";
-        }
-    }
+//    public class CropSquareTransformation implements Transformation {
+//        private int position;
+//
+//        public CropSquareTransformation(int position) {
+//            this.position = position;
+//
+//        }
+//
+//        @Override
+//        public Bitmap transform(Bitmap source) {
+//            if (isBoolean && BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) == null) {
+//                BaseApplication.getInstance().getaCache().put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
+//            }
+//            return source;
+//        }
+//
+//        @Override
+//        public String key() {
+//            return "square()";
+//        }
+//    }
 
     private class MyOnClick implements View.OnClickListener {
         private Object mObject;
@@ -189,7 +185,6 @@ public class CustomeListAdapter extends BaseAdapter {
             }
         }
     }
-
 
 
     public class ViewHolder {

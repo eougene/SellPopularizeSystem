@@ -97,10 +97,10 @@ public class SaleRecordAdapter extends BaseAdapter {
 
 
         if (mCurrentItem == viewHolder.resultBean.getProduct_orders_id()) {
-            viewHolder.tvStatus.setBackgroundColor(getColor(mContext, R.color.transparent));
+            viewHolder.tvStatus.setBackgroundColor(getColor(mContext, R.color.scale_tab5));
             convertView.setBackgroundColor(getColor(mContext, R.color.home_scale));
         } else {
-            viewHolder.tvStatus.setBackgroundColor(ContextCompat.getColor(mContext, R.color.home_scale));
+            viewHolder.tvStatus.setBackgroundColor(ContextCompat.getColor(mContext, R.color.scale_tab5));
             convertView.setBackground(null);
         }
 
@@ -188,6 +188,13 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getBuy_money_status() == 1
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_12));
+
+
+            //订单已完成
+        }else if (viewHolder.resultBean.getStatus() == 11){
+
+            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
+
         }
 
         return convertView;
