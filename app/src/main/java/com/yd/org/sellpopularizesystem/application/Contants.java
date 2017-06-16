@@ -27,7 +27,8 @@ public class Contants {
 
     //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
-    public static final String PRODUCT_DETAIL = DOMAIN + "/index.php/app/product/product_info";
+    //public static final String PRODUCT_DETAIL = DOMAIN + "/index.php/app/product/product_info";
+    public static final String PRODUCT_DETAIL = DOMAIN + "/index.php/appv2/product/product_info";
     //获取产品子单元列表
     public static final String PRODUCT_SUBUNIT_LIST = DOMAIN + "/index.php/appv2/product/product_childs_list";
     //获取产品子单元详情
