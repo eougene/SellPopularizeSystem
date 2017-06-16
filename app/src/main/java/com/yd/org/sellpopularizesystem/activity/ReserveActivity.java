@@ -202,9 +202,16 @@ public class ReserveActivity extends BaseActivity {
 
     private void initData() {
         tvRePrice.setText("$"+getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
-        tvRetype.setText(bean.getFloor_type());
-        //tvReFirb.setText(bean.get);
-        tvReSale.setText(bean.getSales_commission_type() + "");
+        tvRetype.setText(bean.getCate_name());
+        if (BaseApplication.getInstance().getIs_firb()==0){
+            tvReFirb.setText(R.string.bushi);
+        }else {
+            if (BaseApplication.getInstance().getFirb_number()!=0){
+                tvReFirb.setText(getString(R.string.bushi));
+            }
+        }
+
+        tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         tvValidity.setText(bean.getPrice());
         String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
         customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";

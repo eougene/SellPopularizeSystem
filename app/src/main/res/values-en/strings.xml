@@ -479,4 +479,6 @@
     <string name="street_num">Street number</string>
     <string name="street1">Street address 1</string>
     <string name="street2">Street address 2</string>
+    <string name="order_prompt">This information is important attached. Please make sure to fill in properly!</string>
+    <string name="bushi">No</string>
 </resources>

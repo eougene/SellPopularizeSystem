@@ -19,6 +19,7 @@ import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
@@ -37,6 +38,7 @@ public class CustomeListAdapter extends BaseAdapter {
     private List<ProductListBean.ResultBean> list = new ArrayList<>();// 数据
     private LayoutInflater inflater;
     private boolean isBoolean;
+    private int pos;
 
     public CustomeListAdapter(Activity mContext, boolean isBoolean) {
         this.mContext = mContext;
@@ -72,6 +74,7 @@ public class CustomeListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
+        pos = position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_layout, null);
@@ -115,6 +118,8 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
+                    BaseApplication.getInstance().setIs_firb(list.get(pos).getIs_firb());
+                    BaseApplication.getInstance().setFirb_number(list.get(pos).getFirb_number());
                     ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
                 }
             });
@@ -166,6 +171,10 @@ public class CustomeListAdapter extends BaseAdapter {
         private String productId;
 
         public MyOnClick(Object mObject, Class<?> mClass, String title, String productId) {
+            int is_firb = list.get(pos).getIs_firb();
+            int firb_number=list.get(pos).getIs_firb();
+            BaseApplication.getInstance().setIs_firb(is_firb);
+            BaseApplication.getInstance().setFirb_number(firb_number);
             this.mObject = mObject;
             this.mClass = mClass;
             this.title = title;

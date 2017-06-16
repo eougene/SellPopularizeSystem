@@ -488,6 +488,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                Log.e("eoi", "onSuccess: "+s);
                 closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
@@ -515,6 +516,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
+                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
                 closeDialog();
             }
         });

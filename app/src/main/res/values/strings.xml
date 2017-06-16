@@ -484,4 +484,5 @@
     <string name="street1">街道地址1</string>
     <string name="street2">街道地址2</string>
     <string name="order_prompt">此信息为重要附件,请务必正确填写!</string>
+    <string name="bushi">不是</string>
 </resources>

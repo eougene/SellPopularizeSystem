@@ -448,6 +448,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(String s) {
                     super.onSuccess(s);
+                    Log.e("result", "onSuccess: "+s);
                     try {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
