@@ -376,8 +376,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         && resultBean.getCancel_apply_status() == 0
                         && resultBean.getUpload_contract_status() == 2
                         && resultBean.getStatus() == 0) {
-
-
                     //请上传合同首页 ,请上传首付款凭证
                 } else if (resultBean.getContract_apply_status() == 2
                         && resultBean.getUpload_contract_status() == 0
@@ -495,8 +493,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 strUrl = Contants.UPLOAD_FIRST_COMMISSION;
                 ajaxParams.put("money_where", "1");
                 ajaxParams.put("pay_method", resultBean.getPayment_method() + "");
-                ajaxParams.put("pay_time", resultBean.getPay_time()+"");
-                ajaxParams.put("amount", resultBean.getPrice()+"");
+                ajaxParams.put("pay_time", resultBean.getPay_time() + "");
+                ajaxParams.put("amount", resultBean.getPrice() + "");
                 ajaxParams.put("remark", resultBean.getRemark() + "");
                 ajaxParams.put("image", "");
             }
