@@ -28,7 +28,7 @@ public class BaseApplication extends Application {
     private ACache aCache;
     public String cid="";
     private static MainHandler handler;
-
+    private int is_firb,firb_number;
 
     //个推结束
     public BaseApplication() {
@@ -56,6 +56,21 @@ public class BaseApplication extends Application {
         return aCache;
     }
 
+    public int getIs_firb() {
+        return is_firb;
+    }
+
+    public void setIs_firb(int is_firb) {
+        this.is_firb = is_firb;
+    }
+
+    public int getFirb_number() {
+        return firb_number;
+    }
+
+    public void setFirb_number(int firb_number) {
+        this.firb_number = firb_number;
+    }
 
     @Override
     public void onCreate() {
@@ -97,9 +112,11 @@ public class BaseApplication extends Application {
                     Message message = new Message();
                     message.obj = msg.obj;
                     msg.what = 1;
-                    HomeActiviyt.homeActiviyt.showToasHandler.sendMessage(message);
-                    //更新数据
-                    HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    if (HomeActiviyt.homeActiviyt!=null){
+                        HomeActiviyt.homeActiviyt.showToasHandler.sendMessage(message);
+                        //更新数据
+                        HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    }
                     break;
 
                 case 1:
