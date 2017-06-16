@@ -8,7 +8,7 @@
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:background="@color/black"
+        android:background="@color/gray2"
         android:orientation="horizontal"
         android:paddingBottom="@dimen/padding_margin_4"
         android:paddingTop="@dimen/padding_margin_4">

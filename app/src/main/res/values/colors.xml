@@ -6,9 +6,11 @@
     <color name="white">#FFFFFF</color>
     <!-- 白色 -->
     <color name="gray">#807d7d</color>
-    <!-- 灰色 -->
-    <color name="black">#000000</color>
     <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <!-- 灰色 -->
+    <color name="gray2">#666666</color>
+    <!-- 橘黄色 -->
     <color name="yellowish">#e99323</color>
     <!-- 橘黄色 -->
     <color name="redyellow">#ED791F</color>
