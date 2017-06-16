@@ -35,12 +35,12 @@ public class RegisterFragment extends BaseFragmentView {
 
     @Override
     protected void setListener() {
-        /*tvRegister.setOnClickListener(new View.OnClickListener() {
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 getRegisterInfo();
             }
-        });*/
+        });
     }
 
     private void getRegisterInfo() {
