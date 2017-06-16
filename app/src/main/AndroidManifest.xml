@@ -286,6 +286,8 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name=".activity.StudySubitemActivity"/>
+
+        <activity android:name=".activity.IntroduceActivity"/>
     </application>
 
 </manifest>
