@@ -45,6 +45,7 @@
                         android:drawableLeft="@mipmap/xinghao"
                         android:hint="@string/firstname"
                         android:imeOptions="actionNext"
+                        android:singleLine="true"
                         android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
@@ -64,6 +65,7 @@
                         android:hint="@string/middlename"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
+                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
@@ -83,6 +85,7 @@
                         android:hint="@string/lastname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
+                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
@@ -120,6 +123,7 @@
                         android:hint="@string/englishname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
+                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
@@ -170,6 +174,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -218,6 +223,7 @@
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
@@ -276,6 +282,7 @@
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
@@ -331,6 +338,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -376,6 +384,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -391,7 +400,8 @@
 
             <include
                 android:id="@+id/llCompany"
-                layout="@layout/company_layout" />
+                layout="@layout/company_layout"
+                android:visibility="gone"/>
 
             <View
                 android:layout_width="match_parent"
@@ -433,6 +443,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -480,6 +491,7 @@
                     android:hint="@string/procidis"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
@@ -526,6 +538,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -571,6 +584,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -618,6 +632,7 @@
                     android:hint="@string/no"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
@@ -664,6 +679,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -709,6 +725,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -754,6 +771,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -799,6 +817,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -844,6 +863,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -902,6 +922,7 @@
                         android:gravity="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
+                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15" />
@@ -944,6 +965,7 @@
                         android:gravity="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
+                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15" />
@@ -994,6 +1016,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
@@ -1040,6 +1063,7 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
+                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />

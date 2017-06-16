@@ -1,7 +1,9 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -55,7 +57,7 @@ import java.util.regex.Pattern;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
-    private TextView tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
+    private TextView tvProName,tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
@@ -93,6 +95,8 @@ public class ReserveActivity extends BaseActivity {
         lawBean = (LawyerBean.ResultBean) bundle.get("custome");
         hideRightImagview();
         setTitle(R.string.reserver);
+        tvProName=getViewById(R.id.tvReNameOne);
+        tvProName.setText(bean.getProduct_name()+"-"+bean.getProduct_childs_unit_number());
         tvRePrice = (TextView) findViewById(R.id.tvRePrice);
         tvRetype = (TextView) findViewById(R.id.tvRetype);
         tvReFirb = (TextView) findViewById(R.id.tvReFirb);
@@ -197,7 +201,7 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvRePrice.setText(bean.getPrice());
+        tvRePrice.setText("$"+getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvRetype.setText(bean.getFloor_type());
         //tvReFirb.setText(bean.get);
         tvReSale.setText(bean.getSales_commission_type() + "");
@@ -280,6 +284,7 @@ public class ReserveActivity extends BaseActivity {
                     ActivitySkip.forward(ReserveActivity.this, LawyerActivity.class, ExtraName.RESERVE_TO_LAWYER, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     break;
+                //购房目的弹出框
                 case R.id.rlReGoal:
                     mCustomePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
@@ -291,51 +296,64 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.rlPop:
                     mCustomePopuWindow.dismiss();
                     break;
+                //未知
                 case R.id.btReUnknow:
                     tvReGoal.setText(btReUnknow.getText());
                     mCustomePopuWindow.dismiss();
                     break;
+                //投资
                 case R.id.btReinv:
                     tvReGoal.setText(btReinv.getText());
                     mCustomePopuWindow.dismiss();
                     break;
+                //自住
                 case R.id.btReSelf:
                     tvReGoal.setText(btReSelf.getText());
                     mCustomePopuWindow.dismiss();
                     break;
+                //海外投资
                 case R.id.btRefoin:
                     tvReGoal.setText(btRefoin.getText());
                     mCustomePopuWindow.dismiss();
                     break;
+                //取消
                 case R.id.btReCancel:
                     mCustomePopuWindow.dismiss();
                     break;
+                //支付方式弹出框
                 case R.id.rlPayTypePop:
                     rePayTypePopuWindow.dismiss();
                     break;
+                //现金
                 case R.id.btCash:
                     tvRePayType.setText(btCash.getText());
                     rePayTypePopuWindow.dismiss();
                     break;
+                //信用卡
                 case R.id.btCredit:
                     tvRePayType.setText(btCredit.getText());
                     rePayTypePopuWindow.dismiss();
                     break;
+                //银行卡
                 case R.id.btDesposit:
                     tvRePayType.setText(btDesposit.getText());
                     rePayTypePopuWindow.dismiss();
                     break;
+                //转账
                 case R.id.btTransfer:
                     tvRePayType.setText(btTransfer.getText());
                     rePayTypePopuWindow.dismiss();
                     break;
+                //支票
                 case R.id.btCheck:
                     tvRePayType.setText(btCheck.getText());
                     rePayTypePopuWindow.dismiss();
                     break;
+                //取消
                 case R.id.btReTypeCancel:
                     rePayTypePopuWindow.dismiss();
                     break;
+                //提交预定
                 case R.id.btReSubmit:
                     getInfo();
                     break;
@@ -377,6 +395,7 @@ public class ReserveActivity extends BaseActivity {
                     tvMoneyNum.setText("￥ 2000.00");
                     payment_method = "7";
                     break;
+                //开启相机
                 case R.id.ivCertificate:
                     BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
                     break;
@@ -432,12 +451,25 @@ public class ReserveActivity extends BaseActivity {
             Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
 
-
         } else {
-            commit(payment_method);
+            //显示提示框
+            showAlertDialog();
+            //commit(payment_method);
         }
 
 
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(ReserveActivity.this)
+                .setMessage(R.string.order_prompt)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commit(payment_method);
+                        //finish();
+                    }
+                }).setNegativeButton(R.string.cancel, null).create().show();
     }
 
     private void commit(final String payment_method) {
@@ -473,7 +505,7 @@ public class ReserveActivity extends BaseActivity {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
                             ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-                            if (payment_method.equals("6") || payment_method.equals(7)) {
+                            if (payment_method.equals("6") || payment_method.equals("7")) {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("payurlId", json.getString("trust_account_id"));
                                 bundle.putString("payment_method", payment_method);

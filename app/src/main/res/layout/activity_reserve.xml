@@ -20,40 +20,41 @@
 
             <RelativeLayout
                 style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:layout_marginRight="@dimen/padding_margin_10"
                 android:gravity="center"
                 android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
-
-                <TextView
-                    android:id="@+id/tvPrice"
-                    style="@style/WrapWrap"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/sada"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
+                android:paddingTop="@dimen/padding_margin_10"
+                android:background="@color/scale_tab5">
 
                 <TextView
                     android:id="@+id/tvReNameOne"
                     style="@style/WrapWrap"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sada"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/tv_size_15"/>
+
+                <TextView
+                    android:id="@+id/tv"
+                    style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:layout_toRightOf="@+id/tvPrice"
+                    android:layout_toRightOf="@+id/tvReNameOne"
                     android:text="@string/seprate"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:textSize="@dimen/tv_size_12"
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvReNameTwo"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:layout_toRightOf="@+id/tvReNameOne"
+                    android:layout_toRightOf="@+id/tv"
                     android:text="@string/sada"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:textSize="@dimen/tv_size_12"
+                    android:visibility="gone"/>
             </RelativeLayout>
 
             <RelativeLayout

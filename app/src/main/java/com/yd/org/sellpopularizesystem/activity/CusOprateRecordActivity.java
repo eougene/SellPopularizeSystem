@@ -733,6 +733,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 visitAdapter.notifyDataSetChanged();
                                 if (vrrb.size() == 0) {
                                     tvDes.setVisibility(View.VISIBLE);
+                                    tvDes.setText(getString(R.string.noinformation));
                                 }
                                 removeVistOrResRecord(vlog_id);
                             }
@@ -744,6 +745,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 subscribeAdapter.notifyDataSetChanged();
                                 if (rbList.size() == 0) {
                                     tvDes.setVisibility(View.VISIBLE);
+                                    tvDes.setText(getString(R.string.noinformation));
                                 }
                                 removeVistOrResRecord(log_id);
                             }

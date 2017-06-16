@@ -148,7 +148,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             }
         }).setTitleText(getString(R.string.doneinpecifi)).setTitleColor(R.color.black)
                 .setCyclic(true, true, true)/*.setOutSideCancelable(false)*/
-                .setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))))
+                .setSelectOptions(weeks.indexOf(getString(R.string.today)), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))))
                 .isDialog(true);
 
         builder.setLayoutRes(R.layout.pickerview_custom_time, new CustomListener() {
@@ -246,11 +246,14 @@ public class DialogOptionActivity extends AppCompatActivity {
                 m.find();
                 String newStr = m.group();*/
         String[] nums = new String[2];
-        if (str1.equals(R.string.today)) {
+
+        if (str1.equals(getString(R.string.today))|| str1==getString(R.string.today)) {
             nums[0] = String.format("%02d", cal.get(Calendar.MONTH) + 1);
             nums[1] = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH));
+            Log.e("date", "setText: " + str1 + nums[0] + nums[1]);
         } else {
             nums = str1.split("\\D+");
+            Log.e("date", "setText: " + str1 +str1.equals(R.string.today));
         }
         ca.set(ca.get(Calendar.YEAR), ca.get(Calendar.MONTH), ca.get(Calendar.DAY_OF_MONTH), ca.get(Calendar.HOUR_OF_DAY), ca.get(Calendar.MINUTE), 0);
         long currentTime = ca.getTimeInMillis();
@@ -258,11 +261,11 @@ public class DialogOptionActivity extends AppCompatActivity {
         if (strFlag != null) {
             if (strFlag.equals("reserver")) {
                 if (etReserTime.isFocused()) {
+                    Log.e("etReserTime", "setText: " + str1 + nums[0] + nums[1]);
                     if (!TextUtils.isEmpty(etRemindTime.getText())) {
                         reminderTime = MyUtils.getInstance().getTimeMillis(etRemindTime);
                     }
                     ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
-                    Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
                     Log.e("TAG", "setText: " + ca.getTime());
                     reserverTime = ca.getTimeInMillis();
                     String str = sdf.format(ca.getTime());
@@ -278,9 +281,9 @@ public class DialogOptionActivity extends AppCompatActivity {
                     }
 
                 } else if (etRemindTime.isFocused()) {
+                    Log.e("etRemindTime", "setText: " + str1 + nums[0] + nums[1]);
                     ca.set(ca.get(Calendar.YEAR), Integer.parseInt(nums[0]) - 1, Integer.parseInt(nums[1]), Integer.parseInt(str2), Integer.parseInt(str3), 0);
                     reminderTime = ca.getTimeInMillis();
-                    Log.e("TAG", "setText: " + str1 + nums[0] + nums[1]);
                     Log.e("TAG", "setText: " + ca.getTime() + ca.getTimeInMillis());
                     if (!TextUtils.isEmpty(etReserTime.getText())) {
                         reserverTime = MyUtils.getInstance().getTimeMillis(etReserTime);
@@ -316,7 +319,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                     if (TextUtils.isEmpty(etReserTime.getText())) {
                         etReserTime.setInputType(InputType.TYPE_NULL);
                     }
-                    pvCustomTime.setSelectOptions(weeks.indexOf("今天"), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))));
+                    pvCustomTime.setSelectOptions(weeks.indexOf(getString(R.string.today)), hours.indexOf(String.format("%02d", cal.get(Calendar.HOUR_OF_DAY))), minutes.indexOf(String.format("%02d", cal.get(Calendar.MINUTE))));
                     pvCustomTime.show();
                     break;
                 case R.id.etRemindTime:

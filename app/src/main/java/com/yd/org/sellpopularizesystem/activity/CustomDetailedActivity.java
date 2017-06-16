@@ -91,25 +91,24 @@ public class CustomDetailedActivity extends BaseActivity {
     private String TAG = CustomDetailedActivity.class.getSimpleName();
     private CircleImageView customeIcon;
     private CheckBox cbCom;
-    private EditText edCustomeTrueName, etMiddleName,edcustmomeDetailedBie, edCustomeMobile,
+    private EditText edCustomeTrueName, etMiddleName, edcustmomeDetailedBie, edCustomeMobile,
             edcustmomeDetailedWeChat, edcustmomeDetailedQQ, edcustmomeDetailedCity,
             edcustmomeDetailedAddress, edcustmomeDetailedEmail, edcustmomeDetailedWeJob,
             edcustmomeDetailedSalary, edcustmomeDetailedCard, edcustmomeDetailedPassPort,
             edcustmomeDetailedNationality, edcustmomeDetailedKinsfolk, edcustmomeDetailedRelation,
-            edcustmomeDetailedPhone, edZipCode, etNationSearch, etFirb, etFistName, etEnglishName, etLn, etNation
-            ,comName,etBusaccount,etComaccount,etComTel,etComEmail,etComFax,etComRes,etUnit,etStreetNum,
-            etStreet1,etStreet2,etEma;
+            edcustmomeDetailedPhone, edZipCode, etNationSearch, etFirb, etFistName, etEnglishName, etLn, etNation, comName, etBusaccount, etComaccount, etComTel, etComEmail, etComFax, etComRes, etUnit, etStreetNum,
+            etStreet1, etStreet2, etEma;
     //国家选择列表
     private ListView lvNation;
     private ImageView ivDelete, ivPhone, ivEmail;
-    private TextView tvEoi, tvVisit, tvReserver, tvExpandRe, tvPurchase,tvCountry;
-    private LinearLayout llOperate,llComContent;
+    private TextView tvEoi, tvVisit, tvReserver, tvExpandRe, tvPurchase, tvCountry;
+    private LinearLayout llOperate, llComContent;
     private MyPopupwindow myPopupwindow;
     private List<CountrySortModel> mAllCountryList;
 
     private PopupWindow addrPopWindow, nationSelectPopWindow, firbSelectPopWindow;
     private CustomBean.ResultBean resultBean;
-    private String tag, imagePath;
+    private String tag, imagePath="";
 
     private String strUrl;
     /**
@@ -308,7 +307,7 @@ public class CustomDetailedActivity extends BaseActivity {
         customeIcon = getViewById(R.id.customeIcon);
         edCustomeTrueName = getViewById(R.id.edCustomeTrueName);
         etFistName = getViewById(R.id.etFistName);
-        etMiddleName= getViewById(R.id.etMiddleName);
+        etMiddleName = getViewById(R.id.etMiddleName);
         etEnglishName = getViewById(R.id.etEnglishName);
         edcustmomeDetailedBie = getViewById(R.id.edcustmomeDetailedBie);
         edCustomeMobile = getViewById(R.id.edCustomeMobile);
@@ -316,21 +315,21 @@ public class CustomDetailedActivity extends BaseActivity {
         edcustmomeDetailedWeChat = getViewById(R.id.edcustmomeDetailedWeChat);
         edcustmomeDetailedQQ = getViewById(R.id.edcustmomeDetailedQQ);
 
-        llComContent=getViewById(R.id.llComContent);
-        cbCom=getViewById(R.id.cbCom);
-        comName=getViewById(R.id.comName);
-        etBusaccount=getViewById(R.id.etBusaccount);
-        etComaccount=getViewById(R.id.etComaccount);
-        etComTel=getViewById(R.id.etComTel);
-        etComEmail=getViewById(R.id.etComEmail);
-        etComFax=getViewById(R.id.etComFax);
-        etComRes=getViewById(R.id.etComRes);
-        tvCountry=getViewById(R.id.tvCountry);
-        etUnit=getViewById(R.id.etUnit);
-        etStreetNum=getViewById(R.id.etStreetNum);
-        etStreet1=getViewById(R.id.etStreet1);
-        etStreet2=getViewById(R.id.etStreet2);
-        etEma=getViewById(R.id.etEma);
+        llComContent = getViewById(R.id.llComContent);
+        cbCom = getViewById(R.id.cbCom);
+        comName = getViewById(R.id.comName);
+        etBusaccount = getViewById(R.id.etBusaccount);
+        etComaccount = getViewById(R.id.etComaccount);
+        etComTel = getViewById(R.id.etComTel);
+        etComEmail = getViewById(R.id.etComEmail);
+        etComFax = getViewById(R.id.etComFax);
+        etComRes = getViewById(R.id.etComRes);
+        tvCountry = getViewById(R.id.tvCountry);
+        etUnit = getViewById(R.id.etUnit);
+        etStreetNum = getViewById(R.id.etStreetNum);
+        etStreet1 = getViewById(R.id.etStreet1);
+        etStreet2 = getViewById(R.id.etStreet2);
+        etEma = getViewById(R.id.etEma);
 
         edcustmomeDetailedCity = getViewById(R.id.edcustmomeDetailedCity);
         edcustmomeDetailedAddress = getViewById(R.id.edcustmomeDetailedAddress);
@@ -510,10 +509,10 @@ public class CustomDetailedActivity extends BaseActivity {
             etComTel.setText(customeDetailedBean.getResult().getCompany_id()+"");
         }*/
         //公司邮箱
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail()+"")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
             etComEmail.setText("");
         } else {
-            etComEmail.setText(customeDetailedBean.getResult().getE_mail()+"");
+            etComEmail.setText(customeDetailedBean.getResult().getE_mail() + "");
         }
         //公司传真
         /*if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
@@ -531,13 +530,13 @@ public class CustomDetailedActivity extends BaseActivity {
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
             tvCountry.setText("");
         } else {
-            tvCountry.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            tvCountry.setText(customeDetailedBean.getResult().getCompany_id() + "");
         }
         //单元号
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getUnit_number())) {
             etUnit.setText("");
         } else {
-            etUnit.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            etUnit.setText(customeDetailedBean.getResult().getCompany_id() + "");
         }
         //街道号码
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_number())) {
@@ -549,19 +548,19 @@ public class CustomDetailedActivity extends BaseActivity {
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_1())) {
             etStreet1.setText("");
         } else {
-            etStreet1.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            etStreet1.setText(customeDetailedBean.getResult().getCompany_id() + "");
         }
         //街道地址2
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_2())) {
             etStreet2.setText("");
         } else {
-            etStreet2.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            etStreet2.setText(customeDetailedBean.getResult().getCompany_id() + "");
         }
         //邮箱
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail()+"")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
             etEma.setText("");
         } else {
-            etEma.setText(customeDetailedBean.getResult().getE_mail()+"");
+            etEma.setText(customeDetailedBean.getResult().getE_mail() + "");
         }
 
 
@@ -947,9 +946,9 @@ public class CustomDetailedActivity extends BaseActivity {
         cbCom.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     llComContent.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     llComContent.setVisibility(View.GONE);
                 }
             }
@@ -996,7 +995,7 @@ public class CustomDetailedActivity extends BaseActivity {
             String address, String e_mail, String job, String income, String card_id, String passport_id,
             String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
             String zip_code, String is_firb, String wechat_number, String qq_number) {
-        showDialog();
+            showDialog();
 
 
         //更新
@@ -1013,6 +1012,13 @@ public class CustomDetailedActivity extends BaseActivity {
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+            try {
+                if (!imagePath.equals("")){
+                    ajaxParams.put("file",new File(imagePath));
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         } else {
             ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
         }
@@ -1285,7 +1291,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-
+                //拍照
                 case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
 
@@ -1319,7 +1325,9 @@ public class CustomDetailedActivity extends BaseActivity {
                         imagePath = data.getStringExtra("bitmap");
                         Picasso.with(this).load("file://" + imagePath).into(customeIcon);
                         if (null != imagePath) {
-                            changeHeadImage(imagePath);
+                            if (!tag.equals("add")) {
+                                changeHeadImage(imagePath);
+                            }
                         }
                     } else {
                     }
