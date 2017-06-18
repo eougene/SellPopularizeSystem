@@ -30,6 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+import com.yd.org.sellpopularizesystem.BuildConfig;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -270,7 +271,7 @@ public class ReserveActivity extends BaseActivity {
             if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
             } else if (grantResults.length == 1 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                ToasShow.showToastCenter(ReserveActivity.this, "该应用相机权限被禁止导致后续操作无法进行！");
+                ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.camera_hint));
             }
         }
     }
@@ -278,7 +279,6 @@ public class ReserveActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
 
         private Bundle bun = new Bundle();
-        ;
 
         @Override
         public void onClick(View v) {
@@ -645,10 +645,16 @@ public class ReserveActivity extends BaseActivity {
                             e.printStackTrace();
                         }
                     }*/
-                    Uri takePhotoUri=data.getData();
-                    if (takePhotoUri!=null){
-                        Picasso.with(this).load(takePhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
-                    }
+                    /*if (takePhotoUri!=null){
+                        if (Build.VERSION.SDK_INT < 23){
+                            Picasso.with(this).load(takePhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
+                        }else {
+
+                        }
+                    }*/
+                    Uri photoUri=Uri.fromFile(BitmapUtil.createPublicImageFile());
+                    picPath=BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
+                    Picasso.with(this).load(picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
                     break;
                 //从相册选取图片
                 case ExtraName.ALBUM_PICTURE:

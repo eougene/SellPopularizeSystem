@@ -96,6 +96,16 @@
             android:name="com.amap.api.v2.apikey"
             android:value="a7b0249d16ed843bfc62d915c4d9d421"/>
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="applicationId.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
         <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -288,6 +298,7 @@
         <activity android:name=".activity.StudySubitemActivity"/>
 
         <activity android:name=".activity.IntroduceActivity"/>
+
     </application>
 
 </manifest>

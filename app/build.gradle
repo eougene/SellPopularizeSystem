@@ -86,5 +86,5 @@ dependencies {
     compile 'com.r0adkll:slidableactivity:2.0.5'
     compile 'com.getui:sdk:2.10.2.0'
     compile 'com.tencent.bugly:crashreport:latest.release'
-
+    compile 'com.lovedise:permissiongen:0.0.6'
 }

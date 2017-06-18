@@ -13,11 +13,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StatFs;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 
 import com.yd.org.sellpopularizesystem.clippicture.MonitoredActivity;
@@ -56,12 +58,57 @@ public class BitmapUtil {
      * @return
      */
     public static void startImageCapture(Activity act, int resultCode) {
+        Uri photoURI=null;
+        String mPublicPhotoPath="";
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        //判断是否有相机应用
+        if (takePictureIntent.resolveActivity(act.getPackageManager()) != null) {
+            //创建临时图片文件
+            File photoFile = null;
+            try {
+                photoFile = createPublicImageFile();
+                mPublicPhotoPath = photoFile.getAbsolutePath();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            //设置Action为拍照
+            if (photoFile != null) {
+                takePictureIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                //这里加入flag
+                takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    //如果是7.0或以上
+                    photoURI = FileProvider.getUriForFile(act, "applicationId.fileprovider", photoFile);
+                }else {
+                    photoURI=Uri.fromFile(photoFile);
+                }
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                act.startActivityForResult(takePictureIntent, resultCode);
+            }
+        }
 
-        File cameraFile = new File(BitmapUtil.getCacheDir(act), "camera.jpg");
+
+        /*File photoFile=createPublicImageFile();
+        Uri outputUri = Uri.fromFile(photoFile);
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+        act.startActivityForResult(intent, resultCode);*/
+
+        /*File cameraFile = new File(BitmapUtil.getCacheDir(act), "camera.jpg");
         Uri outputUri = Uri.fromFile(cameraFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
-        act.startActivityForResult(intent, resultCode);
+        act.startActivityForResult(intent, resultCode);*/
+    }
+
+    public static File createPublicImageFile() {
+        File appDir = new File(Environment.getExternalStorageDirectory() + "/yingjia");
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        return file;
     }
 
     /**
