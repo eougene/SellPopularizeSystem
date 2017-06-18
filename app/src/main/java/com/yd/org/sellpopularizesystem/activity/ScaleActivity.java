@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -168,6 +170,20 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 rotateHelper.applyFirstRotation(parent_container, 0, -90);*/
             }
         });
+
+
+
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    strSearch =(!TextUtils.isEmpty(etSearch.getText().toString() + "")) ? etSearch.getText().toString() : "";
+                    Log.e("strSearch**","strSearch:"+strSearch);
+                    getProductListData(true, 1, space, price, house, area);
+                }
+                return false;
+            }
+        });
     }
 
 
@@ -217,7 +233,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ajaxParams.put("page", page + "");
         ajaxParams.put("number", "10");
         ajaxParams.put("cate_id", cate_id);
-        strSearch = !TextUtils.isEmpty(etSearch.getText().toString() + "") ? etSearch.getText().toString() : "";
         ajaxParams.put("search_key", strSearch);
         ajaxParams.put("area", area);
         ajaxParams.put("house", house);

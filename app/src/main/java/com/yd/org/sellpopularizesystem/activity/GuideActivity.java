@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.ViewPagerAdapter;
@@ -21,6 +22,7 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     private ViewPagerAdapter vpAdapter;
     private List<View> views;
     private int currentItem;
+    private TextView tvSkip;
     // 引导图片资源
     private static final int[] pics = {R.mipmap.guild1, R.mipmap.guild2, R.mipmap.guild3};
 
@@ -36,6 +38,19 @@ public class GuideActivity extends BaseActivity implements ViewPager.OnPageChang
     public void initView() {
         hideBaseTab();
         hideBaseView();
+
+
+        tvSkip = getViewById(R.id.tvSkip);
+
+        tvSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivitySkip.forward(GuideActivity.this, LoginActivity.class);
+                finish();
+            }
+        });
+
+
         views = new ArrayList<>();
         LinearLayout.LayoutParams mParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
         // 初始化引导图片列表
