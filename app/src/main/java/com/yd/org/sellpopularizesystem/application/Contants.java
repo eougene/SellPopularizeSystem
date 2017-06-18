@@ -14,14 +14,14 @@ public class Contants {
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
     //登录
-    public static final String HOME_LOGIN = DOMAIN + "/index.php/app/login/index";
+    public static final String HOME_LOGIN = DOMAIN + "/index.php/appv2/login/index";
     //微信登录
     // public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/app/login/third_login";
     public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/appv2/login/third_login";
     //修改密码
-    public static final String CHANGE_PASSWORD = DOMAIN + "/index.php/app/user/user_setpassword";
+    public static final String CHANGE_PASSWORD = DOMAIN + "/index.php/appv2/user/user_setpassword";
     //获取推广筛选数据
-    public static final String SCALE_SEARCH = DOMAIN + "/index.php/app/product/product_search_option";
+    public static final String SCALE_SEARCH = DOMAIN + "/index.php/appv2/product/product_search_option";
     //获取产品推广筛选数据
     public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
 
@@ -41,23 +41,23 @@ public class Contants {
     //删除销售关联的客户
     public static final String USER_CUSTOMER_DEL = DOMAIN + "/index.php/appv2/user/user_customer_del";
     //获取律师列表
-    public static final String LAWYER_LIST = DOMAIN + "/index.php/app/lawyer/lawyer_list";
+    public static final String LAWYER_LIST = DOMAIN + "/index.php/appv2/lawyer/lawyer_list";
     //获取我的团队列表
     public static final String TEAM_LIST = DOMAIN + "/index.php/appv2/user/my_team_users";
     //获取学习列表
     //public static final String STUDY_LIST = DOMAIN + "/index.php/app/study/study_list";
     public static final String STUDY_LIST = DOMAIN + "/index.php/appv2/study/study_list";
     //获取学习完成反馈
-    public static final String STUDY_COMPLETE = DOMAIN + "/index.php/app/study/study_complete";
+    public static final String STUDY_COMPLETE = DOMAIN + "/index.php/appv2/study/study_complete";
     //获取试卷详情
-    public static final String PAPER_DETAILS = DOMAIN + "/index.php/app/check/paper_info";
+    public static final String PAPER_DETAILS = DOMAIN + "/index.php/appv2/check/paper_info";
     //获取考核列表
-    public static final String CHECK_LIST = DOMAIN + "/index.php/app/check/paper_list";
+    public static final String CHECK_LIST = DOMAIN + "/index.php/appv2/check/paper_list";
     //获取客户详情
     //public static final String CUSTOME_DETAILED = DOMAIN + "/index.php/app/customer/customer_info";
     public static final String CUSTOME_DETAILED = DOMAIN + "/index.php/appv2/customer/customer_info";
     //获取客户详情列表
-    public static final String SCALE_LIST = DOMAIN + "/index.php/app/product/product_childs_list";
+    public static final String SCALE_LIST = DOMAIN + "/index.php/appv2/product/product_childs_list";
     //更新客户信息
     //public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/app/customer/customer_update";
     public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_update";
@@ -70,11 +70,13 @@ public class Contants {
     // public static final String NEW_CUSTOME = DOMAIN + "/index.php/app/customer/customer_add";
     public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_add";
     //新增律师
-    public static final String NEW_LAWYER = DOMAIN + "/index.php/app/lawyer/add_lawyer";
+    //public static final String NEW_LAWYER = DOMAIN + "/index.php/app/lawyer/add_lawyer";
+
+    public static final String NEW_LAWYER = DOMAIN + "/index.php/appv2/lawyer/add_lawyer";
     //提交试卷
-    public static final String SUBMIT_PAPER = DOMAIN + "/index.php/app/check/sub_paper";
+    public static final String SUBMIT_PAPER = DOMAIN + "/index.php/appv2/check/sub_paper";
     //获取考核结果
-    public static final String GET_TEST_RESULT = DOMAIN + "/index.php/app/check/check_logs_detail";
+    public static final String GET_TEST_RESULT = DOMAIN + "/index.php/appv2/check/check_logs_detail";
     //获取系统公告列表数据
     // public static final String SYSTEM_ANNOUNCEMENT = DOMAIN + "/index.php/app/notice/index";
     public static final String SYSTEM_ANNOUNCEMENT = DOMAIN + "/index.php/appv2/notice/index";
@@ -102,9 +104,11 @@ public class Contants {
     //查询订单列表
     public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //订单详情
-    public static final String ORDER_DETAIL = DOMAIN + "/index.php/app/order/order_info";
+    public static final String ORDER_DETAIL = DOMAIN + "/index.php/appv2/order/order_info";
     //申请合同
-    public static final String APPLY_CONTRACT = DOMAIN + "/index.php/app/order/ask_ontract";
+    //public static final String APPLY_CONTRACT = DOMAIN + "/index.php/app/order/ask_ontract";
+    public static final String APPLY_CONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontrac";
+
     //修改订单
     public static final String UPDATE_ORDER = DOMAIN + "/index.php/appv2/order/edit_order";
     //取消订单
@@ -142,7 +146,8 @@ public class Contants {
     //eoi列表
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //佣金
-    public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
+   // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
+    public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
     /**
