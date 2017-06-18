@@ -8,44 +8,7 @@
         style="@style/MatchWrap"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/rlArea"
-            style="@style/MatchWrap"
-            android:padding="@dimen/padding_margin_14">
 
-            <TextView
-                android:id="@+id/tvMessageTitle"
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true"
-                android:text="@string/area"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12"/>
-
-            <TextView
-                android:id="@+id/tvAreaDes"
-                style="@style/WrapWrap"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/padding_margin_6"
-                android:layout_toLeftOf="@+id/ivIndicator"
-                android:gravity="center"
-                android:text="@string/nolimit"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12"/>
-
-            <ImageView
-                android:id="@+id/ivIndicator"
-                style="@style/WrapWrap"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/padding_margin_6"
-                android:src="@mipmap/rightarrow"/>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
 
         <RelativeLayout
             android:id="@+id/rlHouseType"
@@ -85,6 +48,45 @@
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"/>
 
+        <RelativeLayout
+            android:id="@+id/rlArea"
+            style="@style/MatchWrap"
+            android:padding="@dimen/padding_margin_14">
+
+            <TextView
+                android:id="@+id/tvMessageTitle"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:text="@string/type"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12"/>
+
+            <TextView
+                android:id="@+id/tvAreaDes"
+                style="@style/WrapWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_margin_6"
+                android:layout_toLeftOf="@+id/ivIndicator"
+                android:gravity="center"
+                android:text="@string/nolimit"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_12"/>
+
+            <ImageView
+                android:id="@+id/ivIndicator"
+                style="@style/WrapWrap"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/padding_margin_6"
+                android:src="@mipmap/rightarrow"/>
+        </RelativeLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
 
         <RelativeLayout
             android:id="@+id/rlPrice"

@@ -29,7 +29,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areaone"
+                android:text="@string/house_land"
                 android:textColor="@drawable/cbtextcolor_select"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
@@ -49,7 +49,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areatwo"
+                android:text="Land"
                 android:textColor="@drawable/cbtextcolor_select"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
@@ -69,7 +69,7 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areathree"
+                android:text="APT"
                 android:textColor="@drawable/cbtextcolor_select"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
@@ -80,6 +80,7 @@
                 android:background="@color/shallow_gray" />
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/rbArea4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,11 +96,13 @@
                 android:textSize="@dimen/tv_size_12" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/shallow_gray" />
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/rbArea5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -115,6 +118,7 @@
                 android:textSize="@dimen/tv_size_12" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/shallow_gray" />
