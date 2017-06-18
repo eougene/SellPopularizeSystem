@@ -1,15 +1,22 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -57,7 +64,7 @@ import java.util.regex.Pattern;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
-    private TextView tvProName,tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
+    private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
@@ -95,8 +102,8 @@ public class ReserveActivity extends BaseActivity {
         lawBean = (LawyerBean.ResultBean) bundle.get("custome");
         hideRightImagview();
         setTitle(R.string.reserver);
-        tvProName=getViewById(R.id.tvReNameOne);
-        tvProName.setText(bean.getProduct_name()+"-"+bean.getProduct_childs_unit_number());
+        tvProName = getViewById(R.id.tvReNameOne);
+        tvProName.setText(bean.getProduct_name() + "-" + bean.getProduct_childs_unit_number());
         tvRePrice = (TextView) findViewById(R.id.tvRePrice);
         tvRetype = (TextView) findViewById(R.id.tvRetype);
         tvReFirb = (TextView) findViewById(R.id.tvReFirb);
@@ -201,12 +208,12 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvRePrice.setText("$"+getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
+        tvRePrice.setText("$" + getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvRetype.setText(bean.getCate_name());
-        if (BaseApplication.getInstance().getIs_firb()==0){
+        if (BaseApplication.getInstance().getIs_firb() == 0) {
             tvReFirb.setText(R.string.bushi);
-        }else {
-            if (BaseApplication.getInstance().getFirb_number()!=0){
+        } else {
+            if (BaseApplication.getInstance().getFirb_number() != 0) {
                 tvReFirb.setText(getString(R.string.bushi));
             }
         }
@@ -253,6 +260,18 @@ public class ReserveActivity extends BaseActivity {
         btFromCamera.setOnClickListener(mOnClickListener);
         btFromAlbum.setOnClickListener(mOnClickListener);
         btPhotoCancel.setOnClickListener(mOnClickListener);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == 1) {
+            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+            } else if (grantResults.length == 1 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                ToasShow.showToastCenter(ReserveActivity.this, "该应用相机权限被禁止导致后续操作无法进行！");
+            }
+        }
     }
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -404,7 +423,21 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //开启相机
                 case R.id.ivCertificate:
-                    BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                    if (Build.VERSION.SDK_INT < 23) {
+                        BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                    } else {
+                        boolean bCamera = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+                        boolean bFile = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+                        if (bCamera && bFile) {
+                            BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                        } else if (!bCamera){
+                            //申请相机权限
+                            ActivityCompat.requestPermissions(ReserveActivity.this, new String[]{Manifest.permission.CAMERA}, 1);
+                        }else if(!bFile){
+                            //申请WRITE_EXTERNAL_STORAGE权限
+                            ActivityCompat.requestPermissions(ReserveActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                        }
+                    }
                     break;
 
                 //提交支付
@@ -558,6 +591,7 @@ public class ReserveActivity extends BaseActivity {
         protected int getLayoutId() {
             return R.layout.reserver_goal_popwindow;
         }
+
     }
 
     @Override
