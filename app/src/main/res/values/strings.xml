@@ -487,4 +487,6 @@
     <string name="bushi">不是</string>
     <string name="ensure_sd">请确认已经插入SD卡</string>
     <string name="camera_hint">该应用相机权限被禁止将导致后续操作无法进行！</string>
+    <string name="skip_p">跳过</string>
+    <string name="house_land">House&#038;Land</string>
 </resources>
