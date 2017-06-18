@@ -61,6 +61,7 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.igexin.push.core.g.U;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
@@ -597,7 +598,7 @@ public class ReserveActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        boolean mCrop = true;
+        boolean mCrop = false;
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case ExtraName.RESERVE_TO_LAWYER:
@@ -618,7 +619,7 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
-                    File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
+                    /*File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
                     if (cameraFile.exists()) {
                         // copy 照片到指定目录下
                         String path = BitmapUtil.getCacheDir(this);
@@ -643,8 +644,11 @@ public class ReserveActivity extends BaseActivity {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    }*/
+                    Uri takePhotoUri=data.getData();
+                    if (takePhotoUri!=null){
+                        Picasso.with(this).load(takePhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
                     }
-
                     break;
                 //从相册选取图片
                 case ExtraName.ALBUM_PICTURE:
