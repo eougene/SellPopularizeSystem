@@ -219,13 +219,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 } else {
                     //预定推送消息
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("announcementBean", resultBean);
+                   // bundle.putSerializable("announcementBean", resultBean);
 //                    bundle.putString("title", resultBean.getTitle());
 //                    bundle.putString("notice_id", resultBean.getId() + "");
 //                    bundle.putString("data", resultBean.getContent());
                    // commitHasRead()
+                    bundle.putString("saletoorder", "saletoorder");
                     ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE,bundle);
-
+                    //startActivityForResult(intent,ExtraName.ORDER_TO_SALE);
                 }
             }
 
@@ -324,7 +325,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         if (resultCode== Activity.RESULT_OK){
             switch (requestCode){
                 case ExtraName.ORDER_TO_SALE:
-                    String flag=data.getExtras().getString("saletoorder");
+                    String flag=data.getStringExtra("saletoorder");
                     Log.e("TAG", "onActivityResult: "+flag);
                     //((AnnouncementBean.ResultBean)adapter.getItem(pos)).setIs_read(1);
                     //resultBean.setIs_read(1);

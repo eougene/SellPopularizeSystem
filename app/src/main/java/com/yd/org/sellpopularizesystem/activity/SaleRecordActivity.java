@@ -18,6 +18,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
+import com.yd.org.sellpopularizesystem.fragment.OrderNotificFragment;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
@@ -413,10 +414,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         backLinearLayou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                Intent intent = new Intent();
-                intent.putExtra("saletoorder", "saletoorder");
-                setResult(Activity.RESULT_OK, intent);
+                OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
                 finish();
             }
         });
@@ -425,10 +423,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode==KeyEvent.KEYCODE_BACK){
-            Bundle bundle = new Bundle();
             Intent intent = new Intent();
             intent.putExtra("saletoorder", "saletoorder");
             setResult(Activity.RESULT_OK, intent);
+            //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
             finish();
             return true;
         }
