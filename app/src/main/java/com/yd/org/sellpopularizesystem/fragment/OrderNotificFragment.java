@@ -27,6 +27,8 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -171,7 +173,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         is_read += 1;
                     }
                 }
-                if (is_read > 0) {
+                if (is_read >= 0) {
                     Message message = new Message();
                     message.what = 0;
                     message.obj = String.valueOf(is_read);
@@ -223,10 +225,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 //                    bundle.putString("title", resultBean.getTitle());
 //                    bundle.putString("notice_id", resultBean.getId() + "");
 //                    bundle.putString("data", resultBean.getContent());
-                   // commitHasRead()
                     bundle.putString("saletoorder", "saletoorder");
                     ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE,bundle);
-                    //startActivityForResult(intent,ExtraName.ORDER_TO_SALE);
                 }
             }
 
@@ -327,13 +327,31 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 case ExtraName.ORDER_TO_SALE:
                     String flag=data.getStringExtra("saletoorder");
                     Log.e("TAG", "onActivityResult: "+flag);
-                    //((AnnouncementBean.ResultBean)adapter.getItem(pos)).setIs_read(1);
-                    //resultBean.setIs_read(1);
                     adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
+                    commitHasRead(resultBean.getId());
+                    Log.e(TAG, "onActivityResult: "+resultBean.getId());
                     break;
             }
         }
+    }
+
+    private void commitHasRead(int id) {
+        FinalHttp http = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("notice_logs_id", id+"");
+        http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                Log.e(TAG, "onSuccess: "+s );
+              //  getData(page, true, cate_id);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+            }
+        });
     }
 
 }
