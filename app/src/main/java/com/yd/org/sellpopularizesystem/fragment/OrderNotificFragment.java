@@ -345,7 +345,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             @Override
             public void onSuccess(String s) {
                 Log.e(TAG, "onSuccess: "+s );
-              //  getData(page, true, cate_id);
             }
 
             @Override
