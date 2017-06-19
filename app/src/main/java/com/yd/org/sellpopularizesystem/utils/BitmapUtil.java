@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -22,6 +23,7 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.MonitoredActivity;
 
 import java.io.File;
@@ -29,6 +31,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.UUID;
 
 
 /**
@@ -58,6 +61,7 @@ public class BitmapUtil {
      * @return
      */
     public static String imgPath;
+    public static Uri imgUri;
     public static void startImageCapture(Activity act, int resultCode) {
         Uri photoURI=null;
         String mPublicPhotoPath="";
@@ -69,10 +73,11 @@ public class BitmapUtil {
             try {
                 photoFile = createPublicImageFile();
                 mPublicPhotoPath = photoFile.getAbsolutePath();
-               imgPath=getPhotoPath(mPublicPhotoPath);
+               imgPath=mPublicPhotoPath;
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
             //设置Action为拍照
             if (photoFile != null) {
                 takePictureIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -82,8 +87,15 @@ public class BitmapUtil {
                     takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     photoURI = FileProvider.getUriForFile(act, "applicationId.fileprovider", photoFile);
                 }else {
-                    photoURI=Uri.fromFile(photoFile);
+                   // photoURI=Uri.fromFile(photoFile);
+                    ContentValues contentValues = new ContentValues(2);
+                    //如果想拍完存在系统相机的默认目录,改为
+                    contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, UUID.randomUUID().toString() + ".jpg");
+                    contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+                    contentValues.put(MediaStore.Images.Media.SIZE, 1024 * 200);
+                    photoURI =act.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
                 }
+                imgUri=photoURI;
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 act.startActivityForResult(takePictureIntent, resultCode);
             }
@@ -102,11 +114,6 @@ public class BitmapUtil {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
         act.startActivityForResult(intent, resultCode);*/
     }
-
-    private static String getPhotoPath(String mPublicPhotoPath) {
-        return mPublicPhotoPath;
-    }
-
 
     public static File createPublicImageFile() {
         File appDir = new File(Environment.getExternalStorageDirectory() + "/yingjia");

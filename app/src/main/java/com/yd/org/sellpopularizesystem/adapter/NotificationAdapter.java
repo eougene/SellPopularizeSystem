@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,6 +92,7 @@ public class NotificationAdapter extends BaseAdapter {
 
         //已读
         if (informationtents.get(position).getIs_read() == 1) {
+            viewHoler.tvMessage.setTextColor(Color.parseColor("#cac9cf"));
             viewHoler.tvPoint.setVisibility(View.GONE);
         } else {
             viewHoler.tvPoint.setVisibility(View.VISIBLE);

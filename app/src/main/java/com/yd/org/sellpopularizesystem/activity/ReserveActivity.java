@@ -7,6 +7,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -637,6 +639,7 @@ public class ReserveActivity extends BaseActivity {
                     customeId = cun.getCustomer_id() + "";
                     tvReCus.setTextColor(Color.RED);
                     break;
+
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
                     /*File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
@@ -672,10 +675,22 @@ public class ReserveActivity extends BaseActivity {
 
                         }
                     }*/
-                    Uri photoUri=Uri.parse(BitmapUtil.imgPath);
+                   // Uri photoUri=Uri.parse(BitmapUtil.imgPath);
+                    Uri photoUri=BitmapUtil.imgUri;
                     picPath=BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                    Picasso.with(this).load(picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
+                    Log.e("imgPath", "onActivityResult: "+picPath);
+                    //picPath=BitmapUtil.imgPath;
+                    Bitmap bitmap = null;
+                    try {
+                    //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
+                        bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
+                    ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
                     break;
+
                 //从相册选取图片
                 case ExtraName.ALBUM_PICTURE:
                     Uri selectedPhotoUri = null;

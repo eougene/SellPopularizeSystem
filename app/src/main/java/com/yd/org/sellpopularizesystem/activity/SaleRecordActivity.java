@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -409,7 +410,29 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             }
         });
 
+        backLinearLayou.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                Intent intent = new Intent();
+                intent.putExtra("saletoorder", "saletoorder");
+                setResult(Activity.RESULT_OK, intent);
+                finish();
+            }
+        });
+    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode==KeyEvent.KEYCODE_BACK){
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent();
+            intent.putExtra("saletoorder", "saletoorder");
+            setResult(Activity.RESULT_OK, intent);
+            finish();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
