@@ -37,6 +37,14 @@ public class NotificationAdapter extends BaseAdapter {
 
     }
 
+    public List<AnnouncementBean.ResultBean> getInformationtents() {
+        return informationtents;
+    }
+
+    public void setInformationtents(List<AnnouncementBean.ResultBean> informationtents) {
+        this.informationtents = informationtents;
+    }
+
     public void setsShowI(Boolean isShow) {
         this.isShow = isShow;
         notifyDataSetChanged();
