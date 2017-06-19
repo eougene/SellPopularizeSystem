@@ -93,11 +93,15 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                     deleteNoticeLog(isSelected());
                     break;
+                case ExtraName.UPDATE:
+                    adapter.getInformationtents().get(pos).setIs_read(1);
+                    adapter.notifyDataSetChanged();
             }
         }
     };
 
     private AnnouncementBean.ResultBean resultBean;
+    private int pos;
 
     public static OrderNotificFragment getInstnce(int cate_id) {
         OrderNotificFragment notificFragmen = new OrderNotificFragment();
@@ -201,7 +205,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                pos = position;
                 resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
 
 
@@ -321,7 +325,10 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             switch (requestCode){
                 case ExtraName.ORDER_TO_SALE:
                     String flag=data.getExtras().getString("saletoorder");
-                    resultBean.setIs_read(1);
+                    Log.e("TAG", "onActivityResult: "+flag);
+                    //((AnnouncementBean.ResultBean)adapter.getItem(pos)).setIs_read(1);
+                    //resultBean.setIs_read(1);
+                    adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
                     break;
             }
