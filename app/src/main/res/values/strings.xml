@@ -26,7 +26,7 @@
     <string name="scale_tab_hourse">房型</string>
     <string name="scale_tab_prop">面积</string>
     <string name="scale_tab_price">价格区间</string>
-    <string name="reserver">预定</string>
+    <string name="reserver">预订</string>
     <string name="home_custom">客户管理</string>
     <string name="home_custom_en">Customer&#160;&#160;management</string>
     <string name="home_study">学习园地</string>
@@ -489,4 +489,6 @@
     <string name="camera_hint">该应用相机权限被禁止将导致后续操作无法进行！</string>
     <string name="skip_p">跳过</string>
     <string name="house_land">House&#038;Land</string>
+    <string name="cus_address">客户地址</string>
+    <string name="landarea">土地面积</string>
 </resources>

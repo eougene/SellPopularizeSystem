@@ -71,7 +71,7 @@ import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
     private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
-            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate;
+            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate,tvReCusAdd;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
@@ -96,6 +96,7 @@ public class ReserveActivity extends BaseActivity {
     private LinearLayout llCertificate;
     private String payment_method;
 
+
     @Override
     protected int setContentView() {
         return R.layout.activity_reserve;
@@ -110,23 +111,24 @@ public class ReserveActivity extends BaseActivity {
         setTitle(R.string.reserver);
         tvProName = getViewById(R.id.tvReNameOne);
         tvProName.setText(bean.getProduct_name() + "-" + bean.getProduct_childs_unit_number());
-        tvRePrice = (TextView) findViewById(R.id.tvRePrice);
-        tvRetype = (TextView) findViewById(R.id.tvRetype);
-        tvReFirb = (TextView) findViewById(R.id.tvReFirb);
-        tvReSale = (TextView) findViewById(R.id.tvReSale);
-        tvValidity = (TextView) findViewById(R.id.tvValidity);
-        tvReCus = (TextView) findViewById(R.id.tvReCus);
-        ivReLawyer = (ImageView) findViewById(R.id.ivReLawyer);
-        //ivCertificate = (ImageView) findViewById(R.id.ivCertificate);
-        rlRecus = (RelativeLayout) findViewById(R.id.rlRecus);
-        rlReLawyer = (RelativeLayout) findViewById(R.id.rlReLawyer);
-        tvReLawyer = (TextView) findViewById(R.id.tvReLawyer);
-        rlReGoal = (RelativeLayout) findViewById(R.id.rlReGoal);
-        tvReGoal = (TextView) findViewById(R.id.tvReGoal);
-        tvRePay = (TextView) findViewById(R.id.tvRePay);
-        tvRePayType = (TextView) findViewById(R.id.tvRePayType);
-        rlPayType = (RelativeLayout) findViewById(R.id.rlPayType);
-        tvCertificate = (TextView) findViewById(R.id.tvCertificate);
+        tvRePrice = getViewById(R.id.tvRePrice);
+        tvRetype = getViewById(R.id.tvRetype);
+        tvReFirb = getViewById(R.id.tvReFirb);
+        tvReSale = getViewById(R.id.tvReSale);
+        tvValidity = getViewById(R.id.tvValidity);
+        tvReCus = getViewById(R.id.tvReCus);
+        tvReCusAdd=getViewById(R.id.tvReCusAdd);
+        ivReLawyer =  getViewById(R.id.ivReLawyer);
+        //ivCertificate = (ImageView) getViewById(R.id.ivCertificate);
+        rlRecus = getViewById (R.id.rlRecus);
+        rlReLawyer =  getViewById(R.id.rlReLawyer);
+        tvReLawyer = getViewById(R.id.tvReLawyer);
+        rlReGoal = getViewById(R.id.rlReGoal);
+        tvReGoal = getViewById(R.id.tvReGoal);
+        tvRePay = getViewById(R.id.tvRePay);
+        tvRePayType = getViewById(R.id.tvRePayType);
+        rlPayType = getViewById(R.id.rlPayType);
+        tvCertificate = getViewById(R.id.tvCertificate);
 
         mCustomePopuWindow = new CustomePopuWindow(ReserveActivity.this);
         mView = mCustomePopuWindow.getContentView();
@@ -172,7 +174,7 @@ public class ReserveActivity extends BaseActivity {
         btTransfer = (Button) mPayTypeView.findViewById(R.id.btTransfer);
         btCheck = (Button) mPayTypeView.findViewById(R.id.btCheck);
         btReTypeCancel = (Button) mPayTypeView.findViewById(R.id.btReTypeCancel);
-        btReSubmit = (Button) findViewById(R.id.btReSubmit);
+        btReSubmit = (Button) getViewById(R.id.btReSubmit);
 
         btFromCamera = (Button) msetPhotoView.findViewById(R.id.btFromCamera);
         btFromAlbum = (Button) msetPhotoView.findViewById(R.id.btFromAlbum);
@@ -223,7 +225,7 @@ public class ReserveActivity extends BaseActivity {
                 tvReFirb.setText(getString(R.string.bushi));
             }
         }
-
+        tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress());
         tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         tvValidity.setText(bean.getPrice());
         String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
@@ -242,7 +244,7 @@ public class ReserveActivity extends BaseActivity {
         tvReCus.setOnClickListener(mOnClickListener);
         ivReLawyer.setOnClickListener(mOnClickListener);
         tvReGoal.setOnClickListener(mOnClickListener);
-        tvRePayType.setOnClickListener(mOnClickListener);
+        //tvRePayType.setOnClickListener(mOnClickListener);
         // ivCertificate.setOnClickListener(mOnClickListener);
         rlRecus.setOnClickListener(mOnClickListener);
         rlReLawyer.setOnClickListener(mOnClickListener);
@@ -289,7 +291,7 @@ public class ReserveActivity extends BaseActivity {
 
             switch (v.getId()) {
                 case R.id.rlRecus:
-                    cusSelectPop.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    cusSelectPop.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.btSelecCus:
                     bun.putString(ExtraName.SCALETOCUSTOME, ExtraName.TORESVER_TOCUSTOME);
@@ -317,11 +319,11 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //购房目的弹出框
                 case R.id.rlReGoal:
-                    mCustomePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    mCustomePopuWindow.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
                 //支付方式
                 case R.id.rlPayType:
-                    // rePayTypePopuWindow.showAtLocation(ReserveActivity.this.findViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    // rePayTypePopuWindow.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     payMethodDialog.show();
                     break;
                 case R.id.rlPop:
@@ -634,7 +636,7 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 case ExtraName.RESERVE_TO_CUSTOME:
                     lawBean = data.getExtras();
-                    CustomBean.ResultBean cun = (CustomBean.ResultBean) lawBean.getSerializable("custome");
+                    CustomBean.ResultBean cun= (CustomBean.ResultBean) lawBean.getSerializable("custome");
                     tvReCus.setText(cun.getEn_name());
                     customeId = cun.getCustomer_id() + "";
                     tvReCus.setTextColor(Color.RED);

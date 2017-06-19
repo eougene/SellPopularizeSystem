@@ -246,6 +246,38 @@
                 android:background="@color/search_edit_bac"/>
 
             <RelativeLayout
+                android:id="@+id/rlRecusAddress"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/cus_address"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
+
+                <TextView
+                    android:id="@+id/tvReCusAdd"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/jinliu"
+                    android:textColor="#ff0000"
+                    android:textSize="@dimen/tv_size_12"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/search_edit_bac"/>
+
+            <RelativeLayout
                 android:id="@+id/rlReLawyer"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
@@ -327,7 +359,7 @@
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/zhifu"
+                    android:text="@string/money"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 
