@@ -1,5 +1,7 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +14,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.adapter.NotificationAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
@@ -94,6 +97,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         }
     };
 
+    private AnnouncementBean.ResultBean resultBean;
 
     public static OrderNotificFragment getInstnce(int cate_id) {
         OrderNotificFragment notificFragmen = new OrderNotificFragment();
@@ -198,7 +202,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                AnnouncementBean.ResultBean resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
+                resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
 
 
                 if (type == 1) {
@@ -210,11 +214,13 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     getIsSelected().put(position, holder.check_box.isChecked());
                 } else {
                     //预定推送消息
-//                    Bundle bundle = new Bundle();
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("announcementBean", resultBean);
 //                    bundle.putString("title", resultBean.getTitle());
 //                    bundle.putString("notice_id", resultBean.getId() + "");
 //                    bundle.putString("data", resultBean.getContent());
-                    ActivitySkip.forward(getActivity(), SaleRecordActivity.class);
+                   // commitHasRead()
+                    ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE,bundle);
 
                 }
             }
@@ -306,6 +312,20 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode== Activity.RESULT_OK){
+            switch (requestCode){
+                case ExtraName.ORDER_TO_SALE:
+                    String flag=data.getExtras().getString("saletoorder");
+                    resultBean.setIs_read(1);
+                    adapter.notifyDataSetChanged();
+                    break;
+            }
+        }
     }
 
 }
