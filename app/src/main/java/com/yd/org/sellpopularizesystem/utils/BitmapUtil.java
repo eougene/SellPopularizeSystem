@@ -57,6 +57,7 @@ public class BitmapUtil {
      * @param
      * @return
      */
+    public static String imgPath;
     public static void startImageCapture(Activity act, int resultCode) {
         Uri photoURI=null;
         String mPublicPhotoPath="";
@@ -68,6 +69,7 @@ public class BitmapUtil {
             try {
                 photoFile = createPublicImageFile();
                 mPublicPhotoPath = photoFile.getAbsolutePath();
+               imgPath=getPhotoPath(mPublicPhotoPath);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -100,6 +102,11 @@ public class BitmapUtil {
         intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
         act.startActivityForResult(intent, resultCode);*/
     }
+
+    private static String getPhotoPath(String mPublicPhotoPath) {
+        return mPublicPhotoPath;
+    }
+
 
     public static File createPublicImageFile() {
         File appDir = new File(Environment.getExternalStorageDirectory() + "/yingjia");
