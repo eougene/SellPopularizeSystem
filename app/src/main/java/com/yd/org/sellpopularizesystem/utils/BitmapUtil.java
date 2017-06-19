@@ -74,10 +74,10 @@ public class BitmapUtil {
             //设置Action为拍照
             if (photoFile != null) {
                 takePictureIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                //这里加入flag
-                takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     //如果是7.0或以上
+                    //这里加入flag
+                    takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     photoURI = FileProvider.getUriForFile(act, "applicationId.fileprovider", photoFile);
                 }else {
                     photoURI=Uri.fromFile(photoFile);

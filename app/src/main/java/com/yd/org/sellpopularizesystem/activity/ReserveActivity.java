@@ -28,6 +28,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.BuildConfig;
@@ -59,6 +60,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -264,7 +266,7 @@ public class ReserveActivity extends BaseActivity {
         btPhotoCancel.setOnClickListener(mOnClickListener);
     }
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1) {
@@ -274,7 +276,7 @@ public class ReserveActivity extends BaseActivity {
                 ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.camera_hint));
             }
         }
-    }
+    }*/
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
 
@@ -427,7 +429,25 @@ public class ReserveActivity extends BaseActivity {
                     if (Build.VERSION.SDK_INT < 23) {
                         BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
-                        boolean bCamera = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+                        requestPermissions(new String[]{ Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                                new PermissionListener() {
+                            @Override
+                            public void onGranted() {// 全部授权成功回调
+                                // 执行具体业务
+                                BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                            }
+
+                            @Override
+                            public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                                for (String permission : deniedPermissionList) {
+                                    ToasShow.showToastCenter(ReserveActivity.this,permission.toString());
+                                }
+                            }
+                        });
+
+                        /*boolean bCamera = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
                         boolean bFile = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
                         if (bCamera && bFile) {
                             BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
@@ -437,7 +457,7 @@ public class ReserveActivity extends BaseActivity {
                         }else if(!bFile){
                             //申请WRITE_EXTERNAL_STORAGE权限
                             ActivityCompat.requestPermissions(ReserveActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-                        }
+                        }*/
                     }
                     break;
 

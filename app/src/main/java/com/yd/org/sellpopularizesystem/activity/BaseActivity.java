@@ -1,9 +1,14 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +22,11 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.ACache;
+import com.yd.org.sellpopularizesystem.utils.ActivityCollector;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by bai on 2017/1/10.
@@ -30,7 +39,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     private CustomProgressDialog loading_Dialog;
     private ACache aCache;
     private View baseView;
-
+    /**
+     * 回调接口实例
+     */
+    private static PermissionListener mlistener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             setListener();
 
         }
-
+        ActivityCollector.addActivity(this);
     }
 
     public void hideBaseView() {
@@ -236,6 +248,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        ActivityCollector.removeActivity(this);
         super.onDestroy();
     }
 
@@ -257,7 +270,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
-
     protected void setImmerseLayout(View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             Window window = getWindow();
@@ -268,4 +280,60 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * 运行时权限执行方法（static修饰的必要性--在非Activity类中也可以调用）
+     * @param permissions 需要授权的权限
+     * @param mlistener 接口回调实例（运行时权限处理结果）
+     */
+    public static void requestPermissions(String[] permissions, PermissionListener mlistener) {
+
+        // 获得栈顶Activity作为授权时的参数
+        Activity topActivity = ActivityCollector.getTopActivity();
+        if (topActivity == null) {
+            return;
+        }
+
+        mlistener = mlistener;
+        List<String> unGrantedPermissionsList = new ArrayList<String>(); // 未授权权限的集合
+
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(topActivity, permission) != PackageManager.PERMISSION_GRANTED) {
+                unGrantedPermissionsList.add(permission);
+            }
+        }
+        // 授权业务
+        if (!unGrantedPermissionsList.isEmpty()) {
+            ActivityCompat.requestPermissions(topActivity, unGrantedPermissionsList.
+                    toArray(new String[unGrantedPermissionsList.size()]), 1);
+        } else { // 为空说明已全部授权，执行后续业务
+            // TODO Something
+            mlistener.onGranted();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0) {
+                    List<String> deniedPermissionList = new ArrayList<>();
+                    for (int i = 0; i < grantResults.length; i++) {
+                        int grantResult = grantResults[i];
+                        String permission = permissions[i];
+                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
+                            deniedPermissionList.add(permission);
+                        }
+                    }
+                    if (deniedPermissionList.isEmpty()) {
+                        mlistener.onGranted();
+                    } else {
+                        mlistener.onDenied(deniedPermissionList);
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
