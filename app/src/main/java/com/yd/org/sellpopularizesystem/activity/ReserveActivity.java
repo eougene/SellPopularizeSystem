@@ -672,7 +672,7 @@ public class ReserveActivity extends BaseActivity {
 
                         }
                     }*/
-                    Uri photoUri=Uri.fromFile(BitmapUtil.createPublicImageFile());
+                    Uri photoUri=Uri.parse(BitmapUtil.imgPath);
                     picPath=BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
                     Picasso.with(this).load(picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
                     break;
