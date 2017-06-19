@@ -414,7 +414,11 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         backLinearLayou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
+                //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
+                Intent intent = new Intent();
+                intent.putExtra("saletoorder", "saletoorder");
+                setResult(Activity.RESULT_OK, intent);
+                //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
                 finish();
             }
         });
