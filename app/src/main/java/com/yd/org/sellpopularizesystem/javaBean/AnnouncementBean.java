@@ -52,7 +52,7 @@ public class AnnouncementBean {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean extends Domine {
         /**
          * id : 61
          * cate_id : 4
