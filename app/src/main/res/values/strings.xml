@@ -498,5 +498,6 @@
     <string name="complete_cusinfo">客户信息不完整,请完善客户信息</string>
     <string name="complete_user">完善客户信息</string>
     <string name="time_long">时长</string>
+    <string name="lineup">排队</string>
 
 </resources>

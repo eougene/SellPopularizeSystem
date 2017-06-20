@@ -147,6 +147,8 @@ public class Contants {
     public static final String EOI_RECHARGE = DOMAIN + "/index.php/appv2/eoi/create_eoi";
     //eoi列表
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
+    //使用eoi
+    public static final String EOI_USE =DOMAIN +"index.php/appv2/eoi/use_eoi";
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";

@@ -42,7 +42,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProductSubunitListActivity extends BaseActivity {
-    private Button btViewDetail, btRemain, btCancel;
+    private Button btViewDetail, btRemain, btLineup, btCancel;
     private int pos;
     private RelativeLayout rlPop;
     private TextView tvSelect, tvNoInfo,
@@ -86,7 +86,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         product_id = (String) bundle.get("productId");
         flag = (String) bundle.get("pidatopsla");
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
-        if (flag != null && flag.equals("maptopsla")){
+        if (flag != null && flag.equals("maptopsla")) {
             string = (String) bundle.get("title");
             setTitle(string);
             getListData();
@@ -124,7 +124,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private void getViews() {
         /*tvSelect = getViewById(R.id.tvSelect);
         tvSelect.setVisibility(View.VISIBLE);*/
-        rightRtitle.setTextColor(ContextCompat.getColor(this,R.color.redyellow));
+        rightRtitle.setTextColor(ContextCompat.getColor(this, R.color.redyellow));
         setRightTitle(R.string.select, mOnClickListener);
         ivSearch = getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
@@ -149,6 +149,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         rlPop.setOnClickListener(mOnClickListener);
         btViewDetail = (Button) mView.findViewById(R.id.btViewDetail);
         btRemain = (Button) mView.findViewById(R.id.btRemain);
+        btLineup = (Button) mView.findViewById(R.id.btLineup);
         btCancel = (Button) mView.findViewById(R.id.btCancel);
         initOptionData();
         initOptionsPickerView();
@@ -190,11 +191,11 @@ public class ProductSubunitListActivity extends BaseActivity {
                 }
                 //getListData();
                 List<ProSubunitListBean.ResultBean.PropertyBean> filterList = findAllByPro(data, strHouseType, strNum);
-                if (filterList.size()>0){
+                if (filterList.size() > 0) {
                     adapter.setmDatas(filterList);
                     adapter.notifyDataSetChanged();
-                }else {
-                    ToasShow.showToastCenter(ProductSubunitListActivity.this,getString(R.string.nomatchdata));
+                } else {
+                    ToasShow.showToastCenter(ProductSubunitListActivity.this, getString(R.string.nomatchdata));
                 }
             }
         }).setTitleColor(R.color.black)
@@ -204,13 +205,12 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
 
-
     private List<ProSubunitListBean.ResultBean.PropertyBean> findAllByPro(List<ProSubunitListBean.ResultBean.PropertyBean> data, String strHouseType, String strNum) {
-         List<ProSubunitListBean.ResultBean.PropertyBean> filterList = new ArrayList<>();
+        List<ProSubunitListBean.ResultBean.PropertyBean> filterList = new ArrayList<>();
         if (strNum.equals("")) {
             filterList.clear();
             filterList.addAll(data);
-        }else {
+        } else {
             for (int i = 0; i < data.size(); i++) {
                 if (strHouseType.equals(getString(R.string.bedroom))) {
                     if (data.get(i).getBedroom().equals(strNum)) {
@@ -290,6 +290,17 @@ public class ProductSubunitListActivity extends BaseActivity {
                 return -1;
             }
         });
+
+        //找出eoi元素
+        for (int i = 0; i < data.size(); i++) {
+            if (data.get(i).getIf_eoi() == 1) {
+                ProSubunitListBean.ResultBean.PropertyBean p = data.get(i);
+                data.remove(i);
+                //把eoi元素放在第一位
+                data.add(0, p);
+            }
+        }
+
         if (data.size() > 0) {
             if (tvNoInfo.getVisibility() == View.VISIBLE) {
                 tvNoInfo.setVisibility(View.GONE);
@@ -309,12 +320,18 @@ public class ProductSubunitListActivity extends BaseActivity {
             @Override
             public void convert(ViewHolder holder, ProSubunitListBean.ResultBean.PropertyBean item) {
                 Log.e("tag", "convert: " + item.getIs_lock());
+                //没有预订时颜色
                 if (item.getIs_lock() == 0) {
                     holder.setImageResource(R.id.ivHouse, R.mipmap.greenhome);
                 } else if (item.getIs_lock() == 1) {
+                    //预定过的颜色
                     holder.setImageResource(R.id.ivHouse, R.mipmap.redhome);
+                    //为eoi时的颜色
                 } else {
                     holder.setImageResource(R.id.ivHouse, R.mipmap.yellowhome);
+                }
+                if (item.getIf_eoi() == 1) {
+                    holder.setImageResource(R.id.ivHouse, R.mipmap.eoi);
                 }
                 if (!item.getThumb().equals("")) {
                     //holder.setImageByUrl(R.id.ivHousePhoto,item.getThumb(),mOnClickListener);
@@ -387,6 +404,9 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+                case R.id.btLineup:
+                    eoiLineUp(data.get(pos));
+                    break;
                 case R.id.btCancel:
                     if (mCustomePopuWindow != null) {
                         mCustomePopuWindow.dismiss();
@@ -431,6 +451,30 @@ public class ProductSubunitListActivity extends BaseActivity {
         }
     };
 
+    //eoi排队请求
+    private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
+        showDialog();
+        FinalHttp http = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("eoi_id", "");
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("product_id", product_id);
+        ajaxParams.put("product_child_id", propertyBean.getProduct_childs_id() + "");
+        http.post(Contants.EOI_USE, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+                super.onSuccess(s);
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                super.onFailure(t, errorNo, strMsg);
+            }
+        });
+    }
+
     private void getItemProductDetail() {
         showDialog();
         FinalHttp fh = new FinalHttp();
@@ -458,7 +502,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         });
 
     }
-
+    //控制控件颜色
     private void controlColor() {
         if (prs.getDescription_url() != null) {
             tvIntroduce.setAlpha(1.0f);
@@ -481,6 +525,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     public void setListener() {
         btViewDetail.setOnClickListener(mOnClickListener);
         btRemain.setOnClickListener(mOnClickListener);
+        btLineup.setOnClickListener(mOnClickListener);
         btCancel.setOnClickListener(mOnClickListener);
         lvHouseDetail.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -489,8 +534,14 @@ public class ProductSubunitListActivity extends BaseActivity {
                 pos = position;
                 if (data.get(pos).getIs_lock() == 1) {
                     btRemain.setVisibility(View.GONE);
+                    btLineup.setVisibility(View.GONE);
                 } else if (data.get(pos).getIs_lock() == 0) {
                     btRemain.setVisibility(View.VISIBLE);
+                    btLineup.setVisibility(View.GONE);
+                }
+                if (data.get(pos).getIf_eoi() == 1) {
+                    btRemain.setVisibility(View.GONE);
+                    btLineup.setVisibility(View.VISIBLE);
                 }
             }
         });
