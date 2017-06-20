@@ -27,8 +27,6 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +74,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 //编辑,取消
                 case 1:
 
-                    Log.e("编辑**", "JJ:" + msg.obj + "type:" + msg.arg2);
+                    Log.e("编辑**", "J:" + msg.obj + "type:" + msg.arg2);
                     isShow = (boolean) msg.obj;
                     type = msg.arg2;
                     //还原数据,默认全不选
@@ -137,7 +135,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", pages + "");
         ajaxParams.put("cate_id", cate_id + "");
-        ajaxParams.put("number", "10");
+        ajaxParams.put("number", "50");
         fh.get(Contants.SYSTEM_ANNOUNCEMENT, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {

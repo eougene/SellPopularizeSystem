@@ -9,9 +9,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
@@ -255,28 +253,13 @@ public class NotificationFragment extends BaseFragmentView {
     protected void initView(Bundle savedInstanceState) {
         notificationFragment = this;
         setContentView(R.layout.activity_notification);
-
         int color = getResources().getColor(R.color.white);
-        StatusBarUtil.setColor(getActivity(), color,20);
-
-        startGeTui();
+        StatusBarUtil.setColor(getActivity(), color, 20);
         initWedget();
         //第一次初始化首页默认显示第一个fragment
         initFragment1(cate_id);
     }
 
-
-    //启动个推服务
-    private void startGeTui() {
-        //cid= PushManager.getInstance().getClientid(this);
-        // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 IntentService 传递数据,
-        // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
-        // IntentService, 必须在 AndroidManifest 中声明)
-        PushManager.getInstance().initialize(getActivity().getApplicationContext(), userPushService);
-        PushManager.getInstance().registerPushIntentService(getActivity().getApplicationContext(), IntentService.class);
-
-
-    }
 
     //显示第一个fragment
     private void initFragment1(int cate_id) {
