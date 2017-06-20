@@ -173,7 +173,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         is_read += 1;
                     }
                 }
-                if (is_read >= 0) {
+                if (is_read > 0) {
                     Message message = new Message();
                     message.what = 0;
                     message.obj = String.valueOf(is_read);

@@ -45,9 +45,9 @@
                         android:drawableLeft="@mipmap/xinghao"
                         android:hint="@string/firstname"
                         android:imeOptions="actionNext"
-                        android:singleLine="true"
                         android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_15" />
@@ -65,8 +65,8 @@
                         android:hint="@string/middlename"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_15" />
@@ -85,8 +85,8 @@
                         android:hint="@string/lastname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_15" />
@@ -120,11 +120,11 @@
                         style="@style/MatchWrap"
                         android:background="@null"
                         android:drawableLeft="@mipmap/xinghao"
-                        android:hint="@string/englishname"
+                        android:hint="@string/Nickname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_15" />
@@ -174,8 +174,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -223,8 +223,8 @@
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
                     android:textSize="@dimen/tv_size_15" />
@@ -282,8 +282,8 @@
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
                     android:textSize="@dimen/tv_size_15" />
@@ -338,8 +338,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -384,8 +384,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -401,7 +401,7 @@
             <include
                 android:id="@+id/llCompany"
                 layout="@layout/company_layout"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
@@ -416,22 +416,33 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/ivCon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:src="@mipmap/xinghao"
+                    android:visibility="gone" />
+
+
                 <TextView
+                    android:id="@+id/textView4"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/nationorarea"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
-
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/search_edit_bac" />
-
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedNationality"
@@ -443,8 +454,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -463,10 +474,19 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/ivPro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:src="@mipmap/xinghao"
+                    android:visibility="gone" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/pcd"
@@ -491,8 +511,8 @@
                     android:hint="@string/procidis"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
                     android:textSize="@dimen/tv_size_15" />
@@ -512,10 +532,19 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/ivAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:src="@mipmap/xinghao"
+                    android:visibility="gone" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/address"
@@ -538,8 +567,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -558,10 +587,19 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/ivZipcode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:src="@mipmap/xinghao"
+                    android:visibility="gone" />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/postcode"
@@ -584,8 +622,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -604,10 +642,20 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/ivfirb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:src="@mipmap/xinghao"
+                    android:visibility="gone"
+                     />
+
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2"
+                    android:layout_weight="1.76"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/firb"
@@ -632,8 +680,8 @@
                     android:hint="@string/no"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textColorHint="@color/setting_bac"
                     android:textSize="@dimen/tv_size_15" />
@@ -679,8 +727,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -725,8 +773,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -771,8 +819,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -817,8 +865,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -863,8 +911,8 @@
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -897,9 +945,8 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:drawableRight="@mipmap/right_sm"
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/relationshipfirstname"
@@ -919,11 +966,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:gravity="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15" />
 
@@ -939,12 +985,11 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:drawableRight="@mipmap/right_sm"
                         android:padding="@dimen/padding_margin_10"
-                        android:text="@string/relationlastname"
+                        android:text="@string/Lastname"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15" />
 
@@ -961,12 +1006,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:focusable="false"
-                        android:gravity="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:singleLine="true"
                         android:padding="@dimen/padding_margin_10"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15" />
 
@@ -1012,12 +1055,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:background="@null"
-                    android:focusable="false"
-                    android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -1059,12 +1100,10 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="4"
                     android:background="@null"
-                    android:focusable="false"
-                    android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:singleLine="true"
                     android:padding="@dimen/padding_margin_10"
+                    android:singleLine="true"
                     android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_15" />
 
@@ -1076,9 +1115,8 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:background="@color/search_edit_bac" />
-
-
         </LinearLayout>
+
     </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
 
 

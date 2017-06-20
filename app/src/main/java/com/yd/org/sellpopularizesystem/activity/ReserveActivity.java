@@ -174,7 +174,7 @@ public class ReserveActivity extends BaseActivity {
         btTransfer = (Button) mPayTypeView.findViewById(R.id.btTransfer);
         btCheck = (Button) mPayTypeView.findViewById(R.id.btCheck);
         btReTypeCancel = (Button) mPayTypeView.findViewById(R.id.btReTypeCancel);
-        btReSubmit = (Button) getViewById(R.id.btReSubmit);
+        btReSubmit = getViewById(R.id.btReSubmit);
 
         btFromCamera = (Button) msetPhotoView.findViewById(R.id.btFromCamera);
         btFromAlbum = (Button) msetPhotoView.findViewById(R.id.btFromAlbum);
@@ -290,15 +290,18 @@ public class ReserveActivity extends BaseActivity {
         public void onClick(View v) {
 
             switch (v.getId()) {
+                //客户选择对话框
                 case R.id.rlRecus:
                     cusSelectPop.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
+                //选择客户
                 case R.id.btSelecCus:
                     bun.putString(ExtraName.SCALETOCUSTOME, ExtraName.TORESVER_TOCUSTOME);
                     ActivitySkip.forward(ReserveActivity.this, CustomeActivity.class, ExtraName.RESERVE_TO_CUSTOME, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
                     break;
+                //编辑客户信息
                 case R.id.btEditCusInfo:
                     bun.putString("add", "list");
                     BaseApplication app = BaseApplication.getInstance();
@@ -309,9 +312,11 @@ public class ReserveActivity extends BaseActivity {
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
                     break;
+                //取消客户选择
                 case R.id.btCusCancel:
                     cusSelectPop.dismiss();
                     break;
+                //选择律师
                 case R.id.rlReLawyer:
                     bun.putString(ExtraName.RESVERTOLAWYER, ExtraName.TORESVER);
                     ActivitySkip.forward(ReserveActivity.this, LawyerActivity.class, ExtraName.RESERVE_TO_LAWYER, bun);
@@ -386,6 +391,7 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.btReTypeCancel:
                     rePayTypePopuWindow.dismiss();
                     break;
+
                 //提交预定
                 case R.id.btReSubmit:
                     getInfo();
@@ -483,15 +489,17 @@ public class ReserveActivity extends BaseActivity {
                         payMethodDialog.dismiss();
                     }
                     break;
-
+                 //相机拍照
                 case R.id.btFromCamera:
                     setPhotoPopuWindow.dismiss();
                     BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
                     break;
+                //从相册中选择
                 case R.id.btFromAlbum:
                     setPhotoPopuWindow.dismiss();
                     BitmapUtil.gotoSysPic(ReserveActivity.this, ExtraName.ALBUM_PICTURE);
                     break;
+                //取消选择
                 case R.id.btPhotoCancel:
                     setPhotoPopuWindow.dismiss();
                     break;
@@ -516,7 +524,9 @@ public class ReserveActivity extends BaseActivity {
             Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
 
-        } else {
+        }else if (!judgeCusInfo(BaseApplication.getInstance().getResultBean())){
+            return;
+        }else {
             //显示提示框
             showAlertDialog();
             //commit(payment_method);
@@ -625,6 +635,7 @@ public class ReserveActivity extends BaseActivity {
         boolean mCrop = false;
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
+                //选择律师
                 case ExtraName.RESERVE_TO_LAWYER:
                     Bundle lawBean = data.getExtras();
                     Lawyer.ResultBean.LawyerListBean lawyerBean = (Lawyer.ResultBean.LawyerListBean) lawBean.getSerializable("lawyer");
@@ -634,12 +645,20 @@ public class ReserveActivity extends BaseActivity {
                     tvReLawyer.setTextColor(Color.BLUE);
                     lawyer_id = lawyerBean.getLawyer_id();
                     break;
+                //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
                     lawBean = data.getExtras();
                     CustomBean.ResultBean cun= (CustomBean.ResultBean) lawBean.getSerializable("custome");
                     tvReCus.setText(cun.getEn_name());
                     customeId = cun.getCustomer_id() + "";
                     tvReCus.setTextColor(Color.RED);
+                    //判断用户信息是否完整
+                    if(!judgeCusInfo(cun)){
+                        Bundle bundle=new Bundle();
+                        bundle.putString("add","completeinfo");
+                        bundle.putSerializable("cun",cun);
+                        ActivitySkip.forward(ReserveActivity.this,CustomDetailedActivity.class,bundle);
+                    }
                     break;
 
                 //拍照上传
@@ -714,6 +733,19 @@ public class ReserveActivity extends BaseActivity {
                     }
             }
         }
+    }
+
+    private boolean judgeCusInfo(CustomBean.ResultBean cun) {
+        if (!cun.getSurname().equals("") && !cun.getFirst_name().equals("") &&
+                !cun.getMobile().equals("") && !cun.getE_mail().equals("") &&
+                !cun.getCountry().equals("") && !cun.getProvince().equals("") &&
+                !cun.getAddress().equals("") && !cun.getZip_code().equals("")){
+            return true;
+        }else {
+            ToasShow.showToastCenter(ReserveActivity.this,getString(R.string.complete_cusinfo));
+            return false;
+        }
+
     }
 
     // 裁剪图片

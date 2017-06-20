@@ -152,6 +152,7 @@
     <string name="middlename">中间名</string>
     <string name="lastname">名字</string>
     <string name="nickname">昵称</string>
+    <string name="Nickname">Nickname</string>
     <string name="englishname">英文名</string>
     <string name="birthday">生日</string>
     <string name="mobilephone">手机</string>
@@ -328,6 +329,7 @@
     <string name="payintentmoney">支付意向金</string>
     <string name="des">描述</string>
     <string name="name">名字</string>
+    <string name="Lastname">名</string>
     <string name="askcontract">意向金凭证已经上传\n请申请合同</string>
     <string name="localarea">所在区域</string>
     <string name="rangeprice">价格区间</string>
@@ -491,4 +493,7 @@
     <string name="house_land">House&#038;Land</string>
     <string name="cus_address">客户地址</string>
     <string name="landarea">土地面积</string>
+    <string name="saletime">销售时间:</string>
+    <string name="complete_cusinfo">客户信息不完整,请完善客户信息</string>
+    <string name="complete_user">完善客户信息</string>
 </resources>

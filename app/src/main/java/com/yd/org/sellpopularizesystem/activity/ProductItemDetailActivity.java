@@ -59,7 +59,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
             tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
-            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe;
+            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe,tvSaleTime;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
@@ -175,6 +175,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         tvHasSaledNum = (TextView) findViewById(R.id.tvHasSaledNum);
         tvFirbNum = (TextView) findViewById(R.id.tvFirbNum);
         tvEoiTime = (TextView) findViewById(R.id.tvEoiTime);
+        tvSaleTime = (TextView) findViewById(R.id.tvSaleTime);
         tvSaleDeadTime = (TextView) findViewById(R.id.tvSaleDeadTime);
         tvCloseDate = (TextView) findViewById(R.id.tvCloseDate);
         tvMemo = (TextView) findViewById(R.id.tvMemo);
@@ -226,6 +227,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     tvHasSaledNum.setText(prs.getSign_number() + "");
                     tvFirbNum.setText(prs.getFirb_number() + "");
                     tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getEoi_open_time() + "000")));
+                    tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStart_sales_time() + "000")));
                     tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStop_sales_time() + "000")));
                     tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getSettlement_time() + "000")));
                     tvMemo.setText(prs.getPreview_memo());

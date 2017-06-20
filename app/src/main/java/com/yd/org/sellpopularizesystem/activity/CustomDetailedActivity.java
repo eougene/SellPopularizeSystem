@@ -147,6 +147,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
 
     private int flag;
+
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -271,8 +272,18 @@ public class CustomDetailedActivity extends BaseActivity {
             if (tag.equals("add")) {
                 setTitle(R.string.custome_add);
                 llOperate.setVisibility(View.GONE);
-                //更新客户
-            } else {
+                //完善用户信息
+            }else if (tag.equals("completeinfo")){
+                setTitle(R.string.complete_user);
+                getViewById(R.id.ivCon).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivPro).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivAddress).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
+                getViewById(R.id.llOperate).setVisibility(View.GONE);
+                resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
+                getCustomInfo(resultBean);
+            }else {//更新客户
                 setTitle(R.string.customdetaild_title);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("custome");
                 getCustomInfo(resultBean);

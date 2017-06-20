@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -75,9 +77,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private String picPath = "";
     private LinearLayout llSpace, llCertificate, llChooseSpace;
     private Dialog eoiDialog, methodDialog, optionDialog;
-    private List<String> weeks=new ArrayList<>();
-    private List<String> hours=new ArrayList<>();
-    private List<String> minutes=new ArrayList<>();
+    private List<String> weeks = new ArrayList<>();
+    private List<String> hours = new ArrayList<>();
+    private List<String> minutes = new ArrayList<>();
     private CommonAdapter visitAdapter, eoiAdapter, subscribeAdapter;
     private OptionsPickerView pvCustomTime;
     private SwipeMenuListView listView;
@@ -191,10 +193,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         //etCertificateTime.setOnClickListener(mOnClickListener);
         ivCertificate.setOnClickListener(mOnClickListener);
         //初始化自定义选择器的数据
-        MyUtils.getInstance().getOptionData(CusOprateRecordActivity.this,weeks,hours,minutes);
+        MyUtils.getInstance().getOptionData(CusOprateRecordActivity.this, weeks, hours, minutes);
         //初始化自定义选择器
         initOptionPicker();
     }
+
     private Calendar cal;
 
     private void initOptionPicker() {
@@ -236,9 +239,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void setText(Calendar cal, int options1, int options2, int options3) {
         Calendar ca = Calendar.getInstance();
-        String str1 =weeks.get(options1);
-        String str2 =hours.get(options2);
-        String str3 =minutes.get(options3);
+        String str1 = weeks.get(options1);
+        String str2 = hours.get(options2);
+        String str3 = minutes.get(options3);
                 /*Pattern p = Pattern.compile("\\d+");
                 Matcher m = p.matcher(str);
                 m.find();
@@ -315,7 +318,29 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 case R.id.ivCertificate:
                     //initOptionDialog();
                     //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    takePhoto();
+                    if (Build.VERSION.SDK_INT < 23) {
+                        //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                        takePhoto();
+                    } else {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA,
+                                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                new PermissionListener() {
+                                    @Override
+                                    public void onGranted() {// 全部授权成功回调
+                                        // 执行具体业务
+                                        //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                                        takePhoto();
+                                    }
+
+                                    @Override
+                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                                        for (String permission : deniedPermissionList) {
+                                            ToasShow.showToastCenter(CusOprateRecordActivity.this, permission.toString());
+                                        }
+                                    }
+                                });
+                    }
                     //BitmapUtil.gotoSysPic(CusOprateRecordActivity.this,ExtraName.ALBUM_PICTURE);
                     break;
                 case R.id.tvEoiSubmit:
@@ -488,7 +513,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
-                Log.e("eoi", "onSuccess: "+s);
+                Log.e("eoi", "onSuccess: " + s);
                 closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
@@ -547,7 +572,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                 if (isRel) {
 
-                    if (eoiList.size()==0) {
+                    if (eoiList.size() == 0) {
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
@@ -664,7 +689,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                 if (isRel) {
 
-                    if (vrrb.size() ==0) {
+                    if (vrrb.size() == 0) {
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {
@@ -795,7 +820,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void getReservertData(int page, final boolean isRel) {
-        if(!isFinishing()){
+        if (!isFinishing()) {
             showDialog();
         }
         FinalHttp fh = new FinalHttp();
@@ -814,7 +839,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 rbList = slb.getResult();
 
                 if (isRel) {
-                    if (rbList.size() ==0) {
+                    if (rbList.size() == 0) {
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         listView.setVisibility(View.GONE);
                     } else {

@@ -151,6 +151,7 @@
     <string name="middlename">Middle name</string>
     <string name="lastname">First Name</string>
     <string name="nickname">Nickname</string>
+    <string name="Nickname">Nickname</string>
     <string name="englishname">English Name</string>
     <string name="birthday">Date of Birth</string>
     <string name="mobilephone">Mobile</string>
@@ -483,4 +484,8 @@
     <string name="bushi">No</string>
     <string name="cus_address">Customer address</string>
     <string name="landarea">Land area</string>
+    <string name="saletime">Selling time:</string>
+    <string name="complete_cusinfo">Customer information is incomplete, please improve customer information</string>
+    <string name="complete_user">Improve customer information</string>
+
 </resources>
