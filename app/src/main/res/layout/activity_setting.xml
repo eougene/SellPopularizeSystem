@@ -36,6 +36,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/textView"
             style="@style/MatchWrap"
             android:layout_marginTop="@dimen/padding_margin_20"
