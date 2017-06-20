@@ -414,6 +414,7 @@
     <string name="saler_08">正在申请合同  &#034; \n &#034;请等待管理员审核</string>
     <string name="saler_09">请上传合同首页  &#034; \n &#034;请上传首付款凭证</string>
     <string name="saler_10">合同首页审核中  &#034; \n &#034;请上传首付款凭证</string>
+    <string name="saler_10_01">合同首页审核中  &#034; \n &#034;首付款凭证已审核</string>
     <string name="saler_11">合同首页已审核  &#034; \n &#034;请上传首付款凭证</string>
     <string name="saler_12">合同首页已审核  &#034; \n &#034;首付款凭证审核中</string>
     <string name="saler_13">准备交换合同</string>
@@ -496,4 +497,6 @@
     <string name="saletime">销售时间:</string>
     <string name="complete_cusinfo">客户信息不完整,请完善客户信息</string>
     <string name="complete_user">完善客户信息</string>
+    <string name="time_long">时长</string>
+
 </resources>
