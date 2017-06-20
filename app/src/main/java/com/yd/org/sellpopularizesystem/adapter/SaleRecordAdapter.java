@@ -136,10 +136,9 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getStatus() == 0) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_01));
 
+
             //订单已取消
-        } else if (viewHolder.resultBean.getOrder_money_status() == 1
-                && viewHolder.resultBean.getCancel_apply_status() == 2
-                && viewHolder.resultBean.getStatus() == 10) {
+        } else if (viewHolder.resultBean.getStatus() == 10) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_02));
 
 
@@ -186,8 +185,8 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_11));
 
             //合同首页已审核,首付款凭证审核中
-        } else if (viewHolder.resultBean.getOrder_money_status()==2
-                &&viewHolder.resultBean.getContract_apply_status() == 2
+        } else if (viewHolder.resultBean.getOrder_money_status() == 2
+                && viewHolder.resultBean.getContract_apply_status() == 2
                 && viewHolder.resultBean.getUpload_contract_status() == 2
                 && viewHolder.resultBean.getBuy_money_status() == 1
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
@@ -195,11 +194,21 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_12));
 
 
-            //订单已完成
-        } else if (viewHolder.resultBean.getStatus() == 11) {
+            //合同首页审核中,首付款凭证已审核
+        } else if (viewHolder.resultBean.getOrder_money_status() == 2
+                && viewHolder.resultBean.getContract_apply_status() == 2
+                && viewHolder.resultBean.getUpload_contract_status() == 1
+                && viewHolder.resultBean.getBuy_money_status() == 2
+                && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
+            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10_01));
+
+        }
+
+
+        //订单已完成
+        else if (viewHolder.resultBean.getStatus() == 11) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
-
         }
 
         return convertView;
