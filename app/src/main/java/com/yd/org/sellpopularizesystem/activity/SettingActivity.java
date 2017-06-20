@@ -15,7 +15,7 @@ import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
  * 设置中心
  */
 public class SettingActivity extends BaseActivity {
-    private TextView  cancelLoginTv, versionTv, tvUserName;
+    private TextView cancelLoginTv, versionTv, tvUserName;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -59,7 +59,7 @@ public class SettingActivity extends BaseActivity {
             PackageManager manager = this.getPackageManager();
             PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
             String version = info.versionName;
-            return "Ver: " + version;
+            return " " + version;
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,8 +83,6 @@ public class SettingActivity extends BaseActivity {
         ActivitySkip.forward(SettingActivity.this, LoginActivity.class);
         finish();
     }
-
-
 
 
 }

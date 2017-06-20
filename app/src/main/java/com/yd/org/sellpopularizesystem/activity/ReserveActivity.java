@@ -6,7 +6,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -15,10 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,10 +25,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
-import com.yd.org.sellpopularizesystem.BuildConfig;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -58,15 +51,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.igexin.push.core.g.U;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
@@ -439,23 +428,23 @@ public class ReserveActivity extends BaseActivity {
                     if (Build.VERSION.SDK_INT < 23) {
                         BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
-                        requestPermissions(new String[]{ Manifest.permission.CAMERA,
-                                Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                        requestPermissions(new String[]{Manifest.permission.CAMERA,
+                                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
                                 new PermissionListener() {
-                            @Override
-                            public void onGranted() {// 全部授权成功回调
-                                // 执行具体业务
-                                BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
-                            }
+                                    @Override
+                                    public void onGranted() {// 全部授权成功回调
+                                        // 执行具体业务
+                                        BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
+                                    }
 
-                            @Override
-                            public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                for (String permission : deniedPermissionList) {
-                                    ToasShow.showToastCenter(ReserveActivity.this,permission.toString());
-                                }
-                            }
-                        });
+                                    @Override
+                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                                        for (String permission : deniedPermissionList) {
+                                            ToasShow.showToastCenter(ReserveActivity.this, permission.toString());
+                                        }
+                                    }
+                                });
 
                         /*boolean bCamera = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
                         boolean bFile = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
@@ -579,7 +568,7 @@ public class ReserveActivity extends BaseActivity {
                     try {
                         JSONObject json = new JSONObject(s);
                         if (json.getString("code").equals("1")) {
-                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+                            ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
                             if (payment_method.equals("6") || payment_method.equals("7")) {
                                 Bundle bundle = new Bundle();
                                 bundle.putString("payurlId", json.getString("trust_account_id"));
@@ -588,7 +577,7 @@ public class ReserveActivity extends BaseActivity {
                             }
                             finish();
                         } else {
-                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+                            ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -696,7 +685,7 @@ public class ReserveActivity extends BaseActivity {
 
                         }
                     }*/
-                   // Uri photoUri=Uri.parse(BitmapUtil.imgPath);
+
                     Uri photoUri=BitmapUtil.imgUri;
                     picPath=BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
                     Log.e("imgPath", "onActivityResult: "+picPath);
@@ -710,6 +699,7 @@ public class ReserveActivity extends BaseActivity {
                     }
                     //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
                     ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+
                     break;
 
                 //从相册选取图片

@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,7 +19,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.fragment.OrderNotificFragment;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
@@ -34,10 +34,7 @@ import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -168,6 +165,16 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             btApplyContract.setVisibility(View.GONE);
             btPayIntention.setVisibility(View.GONE);
 
+        } else if (resultBean.getOrder_money_status() == 2
+                && resultBean.getContract_apply_status() == 2
+                && resultBean.getUpload_contract_status() == 1
+                && resultBean.getBuy_money_status() == 2
+                && resultBean.getCancel_apply_status() == 0) {
+
+            btPayIntention.setVisibility(View.GONE);
+            btOrderUpdate.setVisibility(View.GONE);
+            btOrderCancel.setVisibility(View.GONE);
+
         }
 
 
@@ -201,16 +208,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     flag = "1";
                     mSalePopuwindow.dismiss();
                     BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    // ActivitySkip.forward(SaleRecordActivity.this, AskContractActivity.class, bundle);
-//                    if (btApplyContract.getText().equals(getString(R.string.saler_15))) {
-//                        mSalePopuwindow.dismiss();
-//                        flag ="1";
-//                        BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-//                    } else {
-//                        flag ="4";
-//                        mSalePopuwindow.dismiss();
-//                        ActivitySkip.forward(SaleRecordActivity.this, AskContractActivity.class, bundle);
-//                    }
                     break;
                 //点击意向金
                 case R.id.btPayIntention:
@@ -405,6 +402,15 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         && resultBean.getCancel_apply_status() == 0) {
                     showDialogWindow(resultBean);
 
+
+                    ////合同首页审核中,首付款凭证已审核
+                } else if (viewHolder.resultBean.getOrder_money_status() == 2
+                        && viewHolder.resultBean.getContract_apply_status() == 2
+                        && viewHolder.resultBean.getUpload_contract_status() == 1
+                        && viewHolder.resultBean.getBuy_money_status() == 2
+                        && viewHolder.resultBean.getCancel_apply_status() == 0) {
+                    showDialogWindow(resultBean);
+
                 }
 
 
@@ -426,7 +432,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode==KeyEvent.KEYCODE_BACK){
+
+
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            Bundle bundle = new Bundle();
             Intent intent = new Intent();
             intent.putExtra("saletoorder", "saletoorder");
             setResult(Activity.RESULT_OK, intent);
@@ -458,28 +467,34 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 //拍照
                 case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
+//
+//                        File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
+//                        if (cameraFile.exists()) {
+//                            // copy 照片到指定目录下
+//                            String path = BitmapUtil.getCacheDir(this);
+//                            File dir = new File(path, "camera");
+//                            if (!dir.exists()) {
+//                                dir.mkdirs();
+//                            }
+//                            File pic = new File(dir, System.currentTimeMillis() + ".jpg");
+//                            try {
+//                                BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
+//                                cameraFile.delete();
+//                                picPath = pic.getAbsolutePath();
+//                                Log.e("picPath**", "picPath:" + picPath);
+//                                setPicPath(picPath);
+//                            } catch (FileNotFoundException e) {
+//                                e.printStackTrace();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
 
-                        File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
-                        if (cameraFile.exists()) {
-                            // copy 照片到指定目录下
-                            String path = BitmapUtil.getCacheDir(this);
-                            File dir = new File(path, "camera");
-                            if (!dir.exists()) {
-                                dir.mkdirs();
-                            }
-                            File pic = new File(dir, System.currentTimeMillis() + ".jpg");
-                            try {
-                                BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
-                                cameraFile.delete();
-                                picPath = pic.getAbsolutePath();
-                                Log.e("picPath**", "picPath:" + picPath);
-                                setPicPath(picPath);
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
+
+                        Uri photoUri = BitmapUtil.imgUri;
+                        picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
+                        Log.e("picPath**", "picPath:" + picPath);
+                        setPicPath(picPath);
 
                     }
                     break;
@@ -521,7 +536,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 ajaxParams.put("pay_time", resultBean.getPay_time() + "");
                 ajaxParams.put("amount", resultBean.getPrice() + "");
                 ajaxParams.put("remark", resultBean.getRemark() + "");
-                ajaxParams.put("image", "");
+
+                if (null != picPath && !picPath.equals("")) {
+                    File picFile = new File(picPath);
+                    ajaxParams.put("image[]", picFile);
+
+                }
+
             }
 
             finalHttp.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
@@ -542,6 +563,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
                 @Override
                 public void onFailure(Throwable t, int errorNo, String strMsg) {
+                    Log.e("s**", "s:" + errorNo);
                     closeDialog();
 
                 }

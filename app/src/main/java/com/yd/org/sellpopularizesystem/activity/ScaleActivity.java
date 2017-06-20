@@ -172,13 +172,12 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         });
 
 
-
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    strSearch =(!TextUtils.isEmpty(etSearch.getText().toString() + "")) ? etSearch.getText().toString() : "";
-                    Log.e("strSearch**","strSearch:"+strSearch);
+                    strSearch = (!TextUtils.isEmpty(etSearch.getText().toString() + "")) ? etSearch.getText().toString() : "";
+                    Log.e("strSearch**", "strSearch:" + strSearch);
                     getProductListData(true, 1, space, price, house, area);
                 }
                 return false;
@@ -231,7 +230,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         final AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "10");
+        ajaxParams.put("number", "20");
         ajaxParams.put("cate_id", cate_id);
         ajaxParams.put("search_key", strSearch);
         ajaxParams.put("area", area);

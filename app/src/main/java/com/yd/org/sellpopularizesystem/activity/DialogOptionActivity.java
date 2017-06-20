@@ -1,14 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.app.Activity;
-import android.content.ContentUris;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Handler;
-import android.provider.CalendarContract;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -16,26 +10,20 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bigkoo.pickerview.OptionsPickerView;
-import com.bigkoo.pickerview.lib.WheelView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.bigkoo.pickerview.view.WheelOptions;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
-import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -47,14 +35,10 @@ import net.tsz.afinal.http.AjaxParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.jar.JarEntry;
 
 public class DialogOptionActivity extends AppCompatActivity {
     private EditText etReserTime, etRemindTime, etReserContent, etVistTitle, etVistContent;
@@ -442,7 +426,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
             ajaxParams.put("title", etVistTitle.getText().toString());
-            ajaxParams.put("content", etVistTitle.toString());
+            ajaxParams.put("content", etVistTitle.getText().toString());
             ajaxParams.put("visit_time", tvVistTime.getText().toString());
             fh.post(Contants.NEW_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
                 @Override
