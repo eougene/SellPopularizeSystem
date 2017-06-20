@@ -487,5 +487,11 @@
     <string name="saletime">Selling time:</string>
     <string name="complete_cusinfo">Customer information is incomplete, please improve customer information</string>
     <string name="complete_user">Improve customer information</string>
-
+    <string name="register_hint">用户名|手机号码|邮箱</string>
+    <string name="wechat_load">微信登录</string>
+    <string name="company_email">公司邮箱</string>
+    <string name="person_in_charge">负责人(客户)</string>
+    <string name="skip_p">跳过</string>
+    <string name="saler_10_01">合同首页审核中  &#034; \n &#034;首付款凭证已审核</string>
+    <string name="time_long">时长</string>
 </resources>
