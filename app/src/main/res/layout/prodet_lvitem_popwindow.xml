@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rlPop"
     style="@style/MatchMatch">
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:orientation="vertical"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
 
         <LinearLayout
             style="@style/MatchWrap"
@@ -28,7 +27,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"  />
+                android:background="@color/search_edit_bac" />
 
             <Button
                 android:id="@+id/btRemain"
@@ -37,6 +36,20 @@
                 android:text="@string/remain"
                 android:textColor="@color/light_blue"
                 android:textSize="@dimen/tv_size_15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/search_edit_bac" />
+
+            <Button
+                android:id="@+id/btLineup"
+                style="@style/MatchWrap"
+                android:background="@drawable/base_square"
+                android:text="@string/lineup"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/tv_size_15"
+                android:visibility="gone"/>
         </LinearLayout>
 
         <Button
