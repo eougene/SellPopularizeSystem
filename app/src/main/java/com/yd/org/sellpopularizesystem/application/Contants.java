@@ -101,6 +101,8 @@ public class Contants {
     public static final String UPLOAD_CONTRACT_PHOTO = DOMAIN + "/index.php/appv2/order/upload_contract";
     //上传首付款凭证
     public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
+
+
     //查询订单列表
     public static final String INQUIRE_ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //订单详情
@@ -140,13 +142,13 @@ public class Contants {
 
 
     //购房记录
-    public static final String ORDER_LIST = "/index.php/appv2/order/order_list";
+    public static final String ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //eoi充值
     public static final String EOI_RECHARGE = DOMAIN + "/index.php/appv2/eoi/create_eoi";
     //eoi列表
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //佣金
-   // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
+    // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
