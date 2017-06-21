@@ -26,6 +26,7 @@ import com.yd.org.sellpopularizesystem.utils.ActivityCollector;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 /**
@@ -249,6 +250,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         ActivityCollector.removeActivity(this);
+        if (loading_Dialog != null && loading_Dialog.isShowing()) {
+            loading_Dialog.dismiss();
+        }
         super.onDestroy();
     }
 
@@ -256,7 +260,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 显示数据加载对话框
      */
     public void showDialog() {
-        loading_Dialog.show();
+        if (hasWindowFocus()){
+            loading_Dialog.show();
+        }
+
     }
 
     /**
