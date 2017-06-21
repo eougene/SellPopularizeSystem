@@ -298,12 +298,11 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //编辑客户信息
                 case R.id.btEditCusInfo:
-                    bun.putString("add", "list");
                     BaseApplication app = BaseApplication.getInstance();
                     app.getResultBean();
-                    bun.putSerializable("custome", app.getResultBean());
-                    bun.putString("add", "list");
-                    ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
+                    bun.putSerializable("cun", app.getResultBean());
+                    bun.putString("add","completeinfo");
+                    ActivitySkip.forward(ReserveActivity.this,CustomDetailedActivity.class,bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
                     break;

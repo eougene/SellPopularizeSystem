@@ -1071,7 +1071,9 @@ public class CustomDetailedActivity extends BaseActivity {
                 } else {
                     ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.updatesuccess));
                 }
-                CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                if(!tag.equals("completeinfo")){
+                    CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                }
                 finish();
 
             }
