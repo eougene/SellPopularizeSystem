@@ -499,5 +499,7 @@
     <string name="complete_user">完善客户信息</string>
     <string name="time_long">时长</string>
     <string name="lineup">排队</string>
+    <string name="zhou">州</string>
+    <string name="qu">区</string>
 
 </resources>

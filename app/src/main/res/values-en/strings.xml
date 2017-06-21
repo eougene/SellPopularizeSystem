@@ -495,4 +495,6 @@
     <string name="saler_10_01">Home review of contract  &#034; \n &#034;the down payment voucher has been audited</string>
     <string name="time_long">duration</string>
     <string name="lineup">Line up</string>
+    <string name="zhou">state</string>
+    <string name="qu">District</string>
 </resources>
