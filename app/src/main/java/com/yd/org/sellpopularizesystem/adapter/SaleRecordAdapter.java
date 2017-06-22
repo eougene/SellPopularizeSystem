@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +9,12 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.support.v4.content.ContextCompat.getColor;
 
 /**
  * Created by e-dot on 2017/6/8.
@@ -24,7 +22,6 @@ import static android.support.v4.content.ContextCompat.getColor;
  */
 
 public class SaleRecordAdapter extends BaseAdapter {
-    private int mCurrentItem = 0;
     private Context mContext;
     private LayoutInflater layoutInflater;
     private List<SaleOrderBean.ResultBean> sobRbData = new ArrayList<>();
@@ -35,10 +32,6 @@ public class SaleRecordAdapter extends BaseAdapter {
         this.layoutInflater = LayoutInflater.from(mContext);
     }
 
-    public void setCurrentItem(int mCurrentItem) {
-        this.mCurrentItem = mCurrentItem;
-        notifyDataSetChanged();
-    }
 
     public void addMore(List<SaleOrderBean.ResultBean> sobRbData) {
         this.sobRbData.addAll(sobRbData);
@@ -73,6 +66,12 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvSalePrice = (TextView) convertView.findViewById(R.id.tvSalePrice);
             viewHolder.tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
             viewHolder.tvSaleName = (TextView) convertView.findViewById(R.id.tvSaleName);
+
+
+            viewHolder.saleRecorTv1 = (TextView) convertView.findViewById(R.id.saleRecorTv1);
+            viewHolder.saleRecorTv2 = (TextView) convertView.findViewById(R.id.saleRecorTv2);
+            viewHolder.saleRecorTv3 = (TextView) convertView.findViewById(R.id.saleRecorTv3);
+            viewHolder.saleRecorTv4 = (TextView) convertView.findViewById(R.id.saleRecorTv4);
             convertView.setTag(viewHolder);
         } else {
 
@@ -96,15 +95,6 @@ public class SaleRecordAdapter extends BaseAdapter {
         }
 
 
-        if (mCurrentItem == viewHolder.resultBean.getProduct_orders_id()) {
-            viewHolder.tvStatus.setBackgroundColor(getColor(mContext, R.color.scale_tab5));
-            convertView.setBackgroundColor(getColor(mContext, R.color.home_scale));
-        } else {
-            viewHolder.tvStatus.setBackgroundColor(ContextCompat.getColor(mContext, R.color.scale_tab5));
-            convertView.setBackground(null);
-        }
-
-
         //正在申请合同,等待管理员审核
         if (viewHolder.resultBean.getOrder_money_status() == 1
                 && viewHolder.resultBean.getSales_advice_status() == 0
@@ -113,21 +103,34 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_08));
+            viewHolder.saleRecorTv1.setVisibility(View.GONE);
 
+
+        } else if (viewHolder.resultBean.getOrder_money_status() == 1
+                && viewHolder.resultBean.getCancel_apply_status() == 0
+                && viewHolder.resultBean.getSale_advice_status() == 0
+                && viewHolder.resultBean.getContract_apply_status() == 0
+                && viewHolder.resultBean.getStatus() == 0
+                && (viewHolder.resultBean.getPayment_method() != 1 && viewHolder.resultBean.getPayment_method() != 4)) {
+
+            //意向金未支付,支付意向金
+            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
+
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv2.setVisibility(View.VISIBLE);
 
         }
         //意向金凭证已上传,,,请申请合同
         else if (viewHolder.resultBean.getOrder_money_status() == 1
                 && viewHolder.resultBean.getCancel_apply_status() == 0
                 && viewHolder.resultBean.getSale_advice_status() == 0
-                && viewHolder.resultBean.getStatus() == 0) {
+                && viewHolder.resultBean.getContract_apply_status() == 0
+                && viewHolder.resultBean.getStatus() == 0
+                && (viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4)) {
 
-            if (viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4) {
-                //意向金已支付
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
-            } else {
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
-            }
+            //意向金凭证已上传,请等待管理员审核,可以取消订单
+            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
 
 
             //订单放弃中
@@ -135,11 +138,12 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getCancel_apply_status() == 1
                 && viewHolder.resultBean.getStatus() == 0) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_01));
-
+            viewHolder.saleRecorTv1.setVisibility(View.GONE);
 
             //订单已取消
         } else if (viewHolder.resultBean.getStatus() == 10) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_02));
+            viewHolder.saleRecorTv1.setVisibility(View.GONE);
 
 
             //准备交换合同
@@ -151,6 +155,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getStatus() == 0) {
 
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
+            viewHolder.saleRecorTv1.setVisibility(View.GONE);
 
 
             //合同首页已审核 , 首付款凭证审核中
@@ -159,6 +164,9 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_05));
 
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+
 
             //请上传合同首页 ,请上传首付款凭证
         } else if (viewHolder.resultBean.getOrder_money_status() == 2
@@ -166,7 +174,14 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getUpload_contract_status() == 0
                 && viewHolder.resultBean.getBuy_money_status() == 0
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
+
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_09));
+
+
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+
 
             //合同首页审核中,请上传首付款凭证
         } else if (viewHolder.resultBean.getContract_apply_status() == 2
@@ -174,6 +189,10 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getBuy_money_status() == 0
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10));
+
+
+            viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+
 
             // 合同首页已审核,请上传首付款凭证
         } else if (viewHolder.resultBean.getOrder_money_status() == 2
@@ -183,6 +202,11 @@ public class SaleRecordAdapter extends BaseAdapter {
                 && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_11));
+
+
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+
 
             //合同首页已审核,首付款凭证审核中
         } else if (viewHolder.resultBean.getOrder_money_status() == 2
@@ -194,6 +218,9 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_12));
 
 
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+
             //合同首页审核中,首付款凭证已审核
         } else if (viewHolder.resultBean.getOrder_money_status() == 2
                 && viewHolder.resultBean.getContract_apply_status() == 2
@@ -203,22 +230,71 @@ public class SaleRecordAdapter extends BaseAdapter {
 
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10_01));
 
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
+
+
         }
 
 
         //订单已完成
         else if (viewHolder.resultBean.getStatus() == 11) {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
+            viewHolder.saleRecorTv1.setVisibility(View.GONE);
+
         }
+
+
+        viewHolder.saleRecorTv1.setOnClickListener(new OnClick(viewHolder.resultBean));
+        viewHolder.saleRecorTv2.setOnClickListener(new OnClick(viewHolder.resultBean));
+        viewHolder.saleRecorTv3.setOnClickListener(new OnClick(viewHolder.resultBean));
+        viewHolder.saleRecorTv4.setOnClickListener(new OnClick(viewHolder.resultBean));
 
         return convertView;
 
 
     }
 
+    public class OnClick implements View.OnClickListener {
+        private SaleOrderBean.ResultBean resultBean;
+
+        public OnClick(SaleOrderBean.ResultBean resultBean) {
+            this.resultBean = resultBean;
+
+        }
+
+        @Override
+        public void onClick(View v) {
+
+            switch (v.getId()) {
+
+
+                //取消订单
+                case R.id.saleRecorTv1:
+                    SaleRecordActivity.saleRecordActivity.canceOrder(resultBean.getProduct_orders_id());
+                    break;
+                //支付意向金
+                case R.id.saleRecorTv2:
+                    SaleRecordActivity.saleRecordActivity.payMoney(resultBean);
+                    break;
+                //上传合同首页
+                case R.id.saleRecorTv3:
+                    SaleRecordActivity.saleRecordActivity.startPhotos("1");
+                    break;
+                //上传首付款凭证
+                case R.id.saleRecorTv4:
+                    SaleRecordActivity.saleRecordActivity.startPhotos("2");
+                    break;
+
+
+            }
+
+        }
+    }
+
     public class ViewHolder {
         public SaleOrderBean.ResultBean resultBean;
-        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus;
+        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4;
 
     }
 }
