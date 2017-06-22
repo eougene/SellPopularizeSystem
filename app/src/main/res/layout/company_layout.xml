@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <CheckBox
         android:id="@+id/cbCom"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:button="@drawable/checkbox_company"
         android:checked="true"
+        android:padding="@dimen/padding_margin_10"
         android:text="@string/if_company_cus"
-        android:textColor="@drawable/cbcomtextcolor_select" />
+        android:textColor="@drawable/cbcomtextcolor_select"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="@dimen/padding_margin_10"
-        android:background="@color/search_edit_bac" />
+        android:background="@color/search_edit_bac"/>
 
     <LinearLayout
         android:id="@+id/llComContent"
@@ -40,13 +41,13 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/comname"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -60,7 +61,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </LinearLayout>
@@ -69,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,13 +85,13 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/business_account"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -104,7 +105,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
         </LinearLayout>
@@ -113,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -128,13 +129,13 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/company_register_account"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -148,14 +149,14 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -170,13 +171,13 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/company_tel"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -190,14 +191,14 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -213,13 +214,13 @@
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/company_email"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -234,12 +235,12 @@
                 android:paddingBottom="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -249,13 +250,13 @@
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/company_fax"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -270,14 +271,14 @@
                 android:paddingBottom="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -293,13 +294,13 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/person_in_charge"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <View
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <EditText
@@ -313,14 +314,14 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
         </LinearLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -336,7 +337,7 @@
                 android:layout_centerVertical="true"
                 android:drawableRight="@mipmap/right_sm"
                 android:src="@mipmap/settingbt"
-                android:text="公司地址" />
+                android:text="公司地址"/>
 
             <View
                 android:id="@+id/v"
@@ -344,7 +345,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_toRightOf="@+id/tvComAdd"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -360,7 +361,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         style="@style/WrapWrap"
@@ -370,31 +371,31 @@
                         android:text="@string/country"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:id="@+id/tvCountry"
                         style="@style/MatchWrap"
                         android:background="@null"
-                        android:maxLines="1"
                         android:drawableRight="@mipmap/right_sm"
+                        android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/country"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -404,7 +405,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -414,12 +415,12 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/unitnum"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -432,12 +433,12 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -447,13 +448,13 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/street_num"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -466,14 +467,14 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -483,7 +484,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -493,12 +494,12 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/qu"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -511,12 +512,12 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -526,13 +527,13 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/zhou"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -545,14 +546,14 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -562,7 +563,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -571,13 +572,13 @@
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/street1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -590,14 +591,14 @@
                         android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -607,7 +608,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -616,13 +617,13 @@
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/street2"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
@@ -635,14 +636,14 @@
                         android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -652,7 +653,7 @@
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -661,12 +662,12 @@
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/email"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
                     <EditText
                         android:id="@+id/etEma"
@@ -678,7 +679,7 @@
                         android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15" />
+                        android:textSize="@dimen/tv_size_15"/>
                 </LinearLayout>
 
             </LinearLayout>

@@ -400,8 +400,7 @@
 
             <include
                 android:id="@+id/llCompany"
-                layout="@layout/company_layout"
-                android:visibility="gone" />
+                layout="@layout/company_layout"/>
 
             <View
                 android:layout_width="match_parent"
