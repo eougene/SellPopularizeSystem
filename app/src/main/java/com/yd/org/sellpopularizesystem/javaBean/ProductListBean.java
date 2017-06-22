@@ -56,6 +56,14 @@ public class ProductListBean extends Domine {
     public static class ResultBean implements Serializable {
 
 
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
+        }
+
         /**
          * cate_name :
          * product_id : 9
@@ -120,6 +128,10 @@ public class ProductListBean extends Domine {
          * product_name : 好房不等人，快来抢房啦
          * description : null
          */
+
+        private int type=0;
+
+
         private String cate_name;
         private int product_id;
         private int company_id;

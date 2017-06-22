@@ -52,7 +52,7 @@ public class SaleOrderBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean {
+    public static class ResultBean extends Domine {
         /**
          * product_orders_id : 48
          * company_id : 1
