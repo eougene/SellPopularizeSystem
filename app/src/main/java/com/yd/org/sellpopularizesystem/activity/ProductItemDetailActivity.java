@@ -132,22 +132,25 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         final UMWeb web = new UMWeb("http://www.maclandgroup.com/");
         web.setTitle(string);
         web.setDescription(resultBean.getProduct_name());
-        Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                ProductItemDetailActivity.bitmap = bitmap;
-            }
+        if (resultBean.getThumb()!=null && !resultBean.getThumb().equals("")){
+            Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    ProductItemDetailActivity.bitmap = bitmap;
+                }
 
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
 
-            }
+                }
 
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
 
-            }
-        });
+                }
+            });
+        }
+
         web.setThumb(new UMImage(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + resultBean.getThumb()));
         Log.e("TAG", "shareToMedia: " + Contants.DOMAIN + resultBean.getThumb());
         mShareAction.setPlatform(share_MEDIA).setCallback(mUmShareListener).withMedia(web).share();

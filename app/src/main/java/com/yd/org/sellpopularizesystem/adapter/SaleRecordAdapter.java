@@ -83,7 +83,7 @@ public class SaleRecordAdapter extends BaseAdapter {
         //ID
         viewHolder.tvSaleNum.setText(viewHolder.resultBean.getProduct_orders_id() + "");
         //价格
-        viewHolder.tvSalePrice.setText("$" + " " + MyUtils.getInstance().addComma(viewHolder.resultBean.getPrice()));
+        viewHolder.tvSalePrice.setText("$" + " " + MyUtils.getInstance().addComma(viewHolder.resultBean.getPrice().split("\\.")[0]));
         //姓名
         viewHolder.tvSaleName.setText(viewHolder.resultBean.getCustomer_surname() + mContext.getString(R.string.single_blank_space) + viewHolder.resultBean.getCustomer_first_name());
 
