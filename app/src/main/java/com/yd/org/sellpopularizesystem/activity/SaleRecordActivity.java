@@ -7,12 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -22,8 +19,8 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
-import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -43,18 +40,12 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private PullableListView lvSaleRecord;
     private PullToRefreshLayout ptrlSaleRecord;
     private int page = 1;
-    private View mSalePopView;
-    private Button btApplyContract, btOrderUpdate, btPayIntention, btOrderCancel, btSaleCancel;
-    private LinearLayout llSalePop;
     private List<SaleOrderBean.ResultBean> sobRbData = new ArrayList<>();
     private SaleRecordAdapter saleAdapter;
-    private CommonPopuWindow mSalePopuwindow;
-    public static SaleRecordActivity sra;
-    private String picPath;
+    public static SaleRecordActivity saleRecordActivity;
     private SaleOrderBean.ResultBean resultBean;
-
     //上传合同首页还是首付款标志
-    private String flag;
+    private String flag, picPath;
 
 
     public Handler handler = new Handler() {
@@ -72,7 +63,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public void initView() {
-        sra = this;
+        saleRecordActivity = this;
         hideRightImagview();
         setTitle(getString(R.string.sale_list));
         lvSaleRecord = getViewById(R.id.content_view);
@@ -80,162 +71,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         ptrlSaleRecord.setOnRefreshListener(this);
         //加载数据
         getSaleData(page, true);
-    }
-
-    private void showDialogWindow(SaleOrderBean.ResultBean resultBean) {
-        mSalePopuwindow = new CommonPopuWindow(SaleRecordActivity.this) {
-            @Override
-            protected int getLayoutId() {
-                return R.layout.saleoperate_popuwindow;
-            }
-        };
-        mSalePopView = mSalePopuwindow.getContentView();
-        llSalePop = (LinearLayout) mSalePopView.findViewById(R.id.llSalePop);
-        btApplyContract = (Button) mSalePopView.findViewById(R.id.btApplyContract);
-        btPayIntention = (Button) mSalePopView.findViewById(R.id.btPayIntention);
-        btOrderUpdate = (Button) mSalePopView.findViewById(R.id.btOrderUpdate);
-        btOrderCancel = (Button) mSalePopView.findViewById(R.id.btOrderCancel);
-        btSaleCancel = (Button) mSalePopView.findViewById(R.id.btSaleCancel);
-
-        mSalePopuwindow.showAtLocation(SaleRecordActivity.this.findViewById(R.id.flSale), Gravity.CENTER, 0, 0);
-
-
-        //事件
-        llSalePop.setOnClickListener(new MOnClickListener(resultBean));
-        btApplyContract.setOnClickListener(new MOnClickListener(resultBean));
-        btOrderCancel.setOnClickListener(new MOnClickListener(resultBean));
-        btSaleCancel.setOnClickListener(new MOnClickListener(resultBean));
-        btPayIntention.setOnClickListener(new MOnClickListener(resultBean));
-        btOrderUpdate.setOnClickListener(new MOnClickListener(resultBean));
-
-
-        //意向金凭证已上传,,,请申请合同
-        if (resultBean.getOrder_money_status() == 1
-                && resultBean.getCancel_apply_status() == 0
-                && resultBean.getSale_advice_status() == 0
-                && resultBean.getStatus() == 0) {
-
-            if (resultBean.getPayment_method() == 1 || resultBean.getPayment_method() == 4) {
-                //意向金已支付
-                btPayIntention.setVisibility(View.GONE);
-                btApplyContract.setVisibility(View.GONE);
-                btOrderUpdate.setVisibility(View.GONE);
-
-
-            } else {
-                //意向金未支付
-                btApplyContract.setVisibility(View.GONE);
-                btOrderUpdate.setVisibility(View.GONE);
-            }
-
-            //上传合同首页,上传首付款凭证
-        } else if (resultBean.getOrder_money_status() == 2
-                && resultBean.getContract_apply_status() == 2
-                && resultBean.getUpload_contract_status() == 1
-                && resultBean.getBuy_money_status() == 0
-                && resultBean.getCancel_apply_status() == 0) {
-            btPayIntention.setVisibility(View.GONE);
-
-            // 上传合同首页,上传首付款凭证
-        } else if (resultBean.getOrder_money_status() == 2
-                && resultBean.getContract_apply_status() == 2
-                && resultBean.getUpload_contract_status() == 0
-                && resultBean.getBuy_money_status() == 0
-                && resultBean.getCancel_apply_status() == 0) {
-
-            btPayIntention.setVisibility(View.GONE);
-
-
-            // 上传合同首页,上传首付款凭证
-        } else if (resultBean.getOrder_money_status() == 2
-                && resultBean.getContract_apply_status() == 2
-                && resultBean.getUpload_contract_status() == 2
-                && resultBean.getBuy_money_status() == 0
-                && resultBean.getCancel_apply_status() == 0) {
-
-            btApplyContract.setVisibility(View.GONE);
-            btPayIntention.setVisibility(View.GONE);
-
-        } else if (resultBean.getOrder_money_status() == 2
-                && resultBean.getContract_apply_status() == 2
-                && resultBean.getUpload_contract_status() == 2
-                && resultBean.getBuy_money_status() == 1
-                && resultBean.getCancel_apply_status() == 0) {
-
-            btApplyContract.setVisibility(View.GONE);
-            btPayIntention.setVisibility(View.GONE);
-
-        } else if (resultBean.getOrder_money_status() == 2
-                && resultBean.getContract_apply_status() == 2
-                && resultBean.getUpload_contract_status() == 1
-                && resultBean.getBuy_money_status() == 2
-                && resultBean.getCancel_apply_status() == 0) {
-
-            btPayIntention.setVisibility(View.GONE);
-            btOrderUpdate.setVisibility(View.GONE);
-            btOrderCancel.setVisibility(View.GONE);
-
-        }
-
-
-    }
-
-
-    public class MOnClickListener implements View.OnClickListener {
-
-        private SaleOrderBean.ResultBean resultBeans;
-
-        public MOnClickListener(SaleOrderBean.ResultBean resultBeans) {
-            this.resultBeans = resultBeans;
-
-        }
-
-
-        @Override
-        public void onClick(View v) {
-            Bundle bundle = new Bundle();
-            bundle.putString("orderId", resultBeans.getProduct_orders_id() + "");
-            bundle.putString("sale_advice_url", resultBeans.getSale_advice_url());
-            bundle.putString("price", resultBeans.getPrice());
-            bundle.putString("surname", resultBeans.getCustomer_surname() + " " + resultBeans.getCustomer_first_name());
-            switch (v.getId()) {
-                //点击pop内容区之外pop消失
-                case R.id.llSalePop:
-                    mSalePopuwindow.dismiss();
-                    break;
-                //上传合同首页
-                case R.id.btApplyContract:
-                    flag = "1";
-                    mSalePopuwindow.dismiss();
-                    BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    break;
-                //点击意向金
-                case R.id.btPayIntention:
-                    mSalePopuwindow.dismiss();
-                    Bundle bun = new Bundle();
-                    bun.putString("payurlId", resultBeans.getOrder_money_url());
-                    bun.putString("payment_method", resultBeans.getPayment_method() + "");
-                    ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
-
-                    break;
-                //上传首付款凭证
-                case R.id.btOrderUpdate:
-                    mSalePopuwindow.dismiss();
-                    flag = "2";
-                    BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    break;
-                //点击放弃订单
-                case R.id.btOrderCancel:
-                    mSalePopuwindow.dismiss();
-                    canceOrder(resultBeans.getProduct_orders_id());
-
-                    break;
-                //点击取消
-                case R.id.btSaleCancel:
-                    mSalePopuwindow.dismiss();
-                    break;
-            }
-        }
     }
 
 
@@ -298,12 +133,18 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
     }
 
+
+    public void startPhotos(String type) {
+        flag = type;
+        BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
+    }
+
     /**
      * 取消订单
      *
      * @param orderId
      */
-    private void canceOrder(int orderId) {
+    public void canceOrder(int orderId) {
         showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
@@ -336,83 +177,19 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
                 resultBean = viewHolder.resultBean;
-                saleAdapter.setCurrentItem(resultBean.getProduct_orders_id());
-                saleAdapter.notifyDataSetChanged();
 
-                //正在申请合同,等待管理员审核
-                if (resultBean.getOrder_money_status() == 1
-                        && resultBean.getSales_advice_status() == 0
-                        && resultBean.getContract_apply_status() == 1
-                        && resultBean.getStatus() == 0
-                        && resultBean.getCancel_apply_status() == 0) {
+                ProductListBean.ResultBean pp = new ProductListBean.ResultBean();
+                pp.setProduct_id(Integer.parseInt(resultBean.getProduct_id()));
+                pp.setProduct_name(resultBean.getProduct_name().getProduct_name());
+                pp.setThumb(resultBean.getProduct_info().getThumb());
+                pp.setType(1);
 
 
-                }
-                //意向金凭证已上传,,,请申请合同
-                else if (resultBean.getOrder_money_status() == 1
-                        && resultBean.getCancel_apply_status() == 0
-                        && resultBean.getSale_advice_status() == 0
-                        && resultBean.getStatus() == 0) {
-
-                    showDialogWindow(resultBean);
-
-
-                    //订单放弃中
-                } else if ((resultBean.getOrder_money_status() == 1 || resultBean.getOrder_money_status() == 2)
-                        && resultBean.getCancel_apply_status() == 1
-                        && resultBean.getStatus() == 0) {
-
-                    //订单已取消
-                } else if (resultBean.getOrder_money_status() == 1
-                        && resultBean.getCancel_apply_status() == 2
-                        && resultBean.getStatus() == 10) {
-
-
-                    //准备交换合同
-                } else if (resultBean.getOrder_money_status() == 2
-                        && resultBean.getContract_apply_status() == 2
-                        && resultBean.getBuy_money_status() == 2
-                        && resultBean.getCancel_apply_status() == 0
-                        && resultBean.getUpload_contract_status() == 2
-                        && resultBean.getStatus() == 0) {
-                    //请上传合同首页 ,请上传首付款凭证
-                } else if (resultBean.getContract_apply_status() == 2
-                        && resultBean.getUpload_contract_status() == 0
-                        && resultBean.getBuy_money_status() == 0
-                        && resultBean.getCancel_apply_status() == 0) {
-                    showDialogWindow(resultBean);
-                    //合同首页审核中,请上传首付款凭证
-                } else if (resultBean.getContract_apply_status() == 2
-                        && resultBean.getUpload_contract_status() == 1
-                        && resultBean.getBuy_money_status() == 0
-                        && resultBean.getCancel_apply_status() == 0) {
-                    showDialogWindow(resultBean);
-                    // 合同首页已审核,请上传首付款凭证
-                } else if (resultBean.getContract_apply_status() == 2
-                        && resultBean.getUpload_contract_status() == 2
-                        && resultBean.getBuy_money_status() == 0
-                        && resultBean.getCancel_apply_status() == 0) {
-                    showDialogWindow(resultBean);
-                    //合同首页已审核,首付款凭证审核中
-                } else if (resultBean.getStatus() == 0
-                        && resultBean.getOrder_money_status() == 2
-                        && resultBean.getContract_apply_status() == 2
-                        && resultBean.getUpload_contract_status() == 2
-                        && resultBean.getBuy_money_status() == 1
-                        && resultBean.getCancel_apply_status() == 0) {
-                    showDialogWindow(resultBean);
-
-
-                    ////合同首页审核中,首付款凭证已审核
-                } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                        && viewHolder.resultBean.getContract_apply_status() == 2
-                        && viewHolder.resultBean.getUpload_contract_status() == 1
-                        && viewHolder.resultBean.getBuy_money_status() == 2
-                        && viewHolder.resultBean.getCancel_apply_status() == 0) {
-                    showDialogWindow(resultBean);
-
-                }
-
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("bean", pp);
+                bundle.putString("productName", resultBean.getProduct_name().getProduct_name());
+                bundle.putString("productId", resultBean.getProduct_id());
+                ActivitySkip.forward(SaleRecordActivity.this, ProductItemDetailActivity.class, bundle);
 
             }
         });
@@ -420,11 +197,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         backLinearLayou.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
                 Intent intent = new Intent();
                 intent.putExtra("saletoorder", "saletoorder");
                 setResult(Activity.RESULT_OK, intent);
-                //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
                 finish();
             }
         });
@@ -439,7 +214,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             Intent intent = new Intent();
             intent.putExtra("saletoorder", "saletoorder");
             setResult(Activity.RESULT_OK, intent);
-            //OrderNotificFragment.notificFragment.mHandle.sendEmptyMessage(ExtraName.UPDATE);
             finish();
             return true;
         }
@@ -467,30 +241,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 //拍照
                 case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
-//
-//                        File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
-//                        if (cameraFile.exists()) {
-//                            // copy 照片到指定目录下
-//                            String path = BitmapUtil.getCacheDir(this);
-//                            File dir = new File(path, "camera");
-//                            if (!dir.exists()) {
-//                                dir.mkdirs();
-//                            }
-//                            File pic = new File(dir, System.currentTimeMillis() + ".jpg");
-//                            try {
-//                                BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
-//                                cameraFile.delete();
-//                                picPath = pic.getAbsolutePath();
-//                                Log.e("picPath**", "picPath:" + picPath);
-//                                setPicPath(picPath);
-//                            } catch (FileNotFoundException e) {
-//                                e.printStackTrace();
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-
-
                         Uri photoUri = BitmapUtil.imgUri;
                         picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
                         Log.e("picPath**", "picPath:" + picPath);
@@ -506,6 +256,19 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     }
 
+
+    /**
+     * 支付意向金
+     *
+     * @param resultBean
+     */
+    public void payMoney(SaleOrderBean.ResultBean resultBean) {
+        Bundle bun = new Bundle();
+        bun.putString("payurlId", resultBean.getOrder_money_url());
+        bun.putString("payment_method", resultBean.getPayment_method() + "");
+        ActivitySkip.forward(SaleRecordActivity.this, PaymentQrActivity.class, bun);
+
+    }
 
     /**
      * 上传支付凭证

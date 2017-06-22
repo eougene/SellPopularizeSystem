@@ -77,6 +77,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.ToDoubleBiFunction;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -108,7 +109,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
     private PopupWindow addrPopWindow, nationSelectPopWindow, firbSelectPopWindow;
     private CustomBean.ResultBean resultBean;
-    private String tag, imagePath="";
+    private String tag, imagePath = "";
 
     private String strUrl;
     /**
@@ -168,13 +169,6 @@ public class CustomDetailedActivity extends BaseActivity {
                     } else {
                         Intent intentPhone = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + edCustomeMobile.getText().toString()));
                         if (ActivityCompat.checkSelfPermission(CustomDetailedActivity.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                            // TODO: Consider calling
-                            //    ActivityCompat#requestPermissions
-                            // here to request the missing permissions, and then overriding
-                            //   public void onReques+tPermissionsResult(int requestCode, String[] permissions,
-                            //                  int[] grantResults)
-                            // to handle the case where the user grants the permission. See the documentation
-                            // for ActivityCompat#requestPermissions for more details.
                             return;
                         }
                         startActivity(intentPhone);
@@ -273,7 +267,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 setTitle(R.string.custome_add);
                 llOperate.setVisibility(View.GONE);
                 //完善用户信息
-            }else if (tag.equals("completeinfo")){
+            } else if (tag.equals("completeinfo")) {
                 setTitle(R.string.complete_user);
                 getViewById(R.id.ivCon).setVisibility(View.VISIBLE);
                 getViewById(R.id.ivPro).setVisibility(View.VISIBLE);
@@ -283,7 +277,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 getViewById(R.id.llOperate).setVisibility(View.GONE);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
                 getCustomInfo(resultBean);
-            }else {//更新客户
+            } else {//更新客户
                 setTitle(R.string.customdetaild_title);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("custome");
                 getCustomInfo(resultBean);
@@ -1006,7 +1000,7 @@ public class CustomDetailedActivity extends BaseActivity {
             String address, String e_mail, String job, String income, String card_id, String passport_id,
             String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
             String zip_code, String is_firb, String wechat_number, String qq_number) {
-            showDialog();
+        showDialog();
 
 
         //更新
@@ -1024,8 +1018,8 @@ public class CustomDetailedActivity extends BaseActivity {
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
             try {
-                if (!imagePath.equals("")){
-                    ajaxParams.put("file",new File(imagePath));
+                if (!imagePath.equals("")) {
+                    ajaxParams.put("file", new File(imagePath));
                 }
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

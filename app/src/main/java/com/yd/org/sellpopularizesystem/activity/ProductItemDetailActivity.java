@@ -52,18 +52,15 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
             tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
-            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe,tvSaleTime;
+            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
-    private List childs = new ArrayList();
     private UMShareListener mUmShareListener;
     private ShareAction mShareAction;
     private String string;
@@ -96,7 +93,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         string = bundle.getString("productName");
         resultBean = (ProductListBean.ResultBean) bundle.getSerializable("bean");
         product_id = String.valueOf(resultBean.getProduct_id());
-        childs.addAll(resultBean.getChilds());
 
         initViews();
         initData();
@@ -210,7 +206,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String s) {
 
-                Log.e("s***","s:"+s);
+                Log.e("s***", "s:" + s);
                 Gson gson = new Gson();
                 ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
                 if (pdb.getCode().equals("1")) {
@@ -218,7 +214,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     BaseApplication.getInstance().setPrs(prs);
                     //轮播控件适配器
                     rpv.setAdapter(new NormalAdapter(rpv));
-
 
 
                     tvId.setText(prs.getProduct_id() + "");
@@ -332,7 +327,10 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                 //返回按钮
                 case R.id.backImageView:
-                    addSaleLog();
+                    if (resultBean.getType() == 0) {
+                        addSaleLog();
+                    }
+
                     finish();
                     break;
             }
@@ -413,7 +411,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         @Override
         public View getView(ViewGroup container, int position) {
 
-            Log.e("hhh**","Url:"+Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
+            Log.e("hhh**", "Url:" + Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
             ImageView view = new ImageView(container.getContext());
             Picasso.with(ProductItemDetailActivity.this).load(Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL()).into(view);
             view.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -442,7 +440,11 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            addSaleLog();
+
+            if (resultBean.getType() == 0) {
+                addSaleLog();
+            }
+
             finish();
             return true;
         }

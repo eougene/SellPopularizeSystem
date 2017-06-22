@@ -108,7 +108,7 @@ public class AskContractActivity extends BaseActivity {
                 try {
                     JSONObject json = new JSONObject(s);
                     if (json.getString("code").equals("1")) {
-                        SaleRecordActivity.sra.handler.sendEmptyMessage(0x00);
+                        SaleRecordActivity.saleRecordActivity.handler.sendEmptyMessage(0x00);
                         ToasShow.showToastBottom(AskContractActivity.this, json.getString("msg"));
                     } else {
                         ToasShow.showToastBottom(AskContractActivity.this, json.getString("msg"));
