@@ -404,16 +404,16 @@
     <string name="payment">Payment</string>
     <string name="saler_01">Order Cancelling</string>
     <string name="saler_02">Order Cancelled</string>
-    <string name="saler_03">Receipt of deposit uploaded &#034; \n &#034;Please wait for the approval</string>
-    <string name="saler_04">Has not paid the intention &#034; \n &#034;Please payment</string>
-    <string name="saler_05">Front Page Approved &#034; \n &#034;Down Payment Approving</string>
-    <string name="saler_06">Contract Applying &#034; \n &#034;Please wait for the approval</string>
-    <string name="saler_07">Gold has paid &#034; \n &#034;Please Apply Contract</string>
-    <string name="saler_08">Contract Applying &#034; \n &#034;Please wait for the approval</string>
-    <string name="saler_09">Upload Front Page &#034; \n &#034;Please Upload the Receipt of Down Payment</string>
-    <string name="saler_10">Front Page Under Review &#034; \n &#034;Please Upload the Receipt of Down Payment</string>
-    <string name="saler_11">Front Page Approved &#034; \n &#034;Please Upload the Receipt of Down Payment</string>
-    <string name="saler_12">Front Page Approved&#034; \n &#034; Down Payment Approving</string>
+    <string name="saler_03">Receipt of deposit uploaded  \n Please wait for the approval</string>
+    <string name="saler_04">Has not paid the intention  \n Please payment</string>
+    <string name="saler_05">Front Page Approved  \n Down Payment Approving</string>
+    <string name="saler_06">Contract Applying  \nPlease wait for the approval</string>
+    <string name="saler_07">Gold has paid  \n Please Apply Contract</string>
+    <string name="saler_08">Contract Applying  \n Please wait for the approval</string>
+    <string name="saler_09">Upload Front Page  \n Please Upload the Receipt of Down Payment</string>
+    <string name="saler_10">Front Page Under Review  \n Please Upload the Receipt of Down Payment</string>
+    <string name="saler_11">Front Page Approved  \n Please Upload the Receipt of Down Payment</string>
+    <string name="saler_12">Front Page Approved \n  Down Payment Approving</string>
     <string name="saler_13">Ready to exchange contract</string>
     <string name="saler_14">Order Completed</string>
     <string name="saler_15">Upload Front Page</string>
@@ -497,4 +497,5 @@
     <string name="lineup">Line up</string>
     <string name="zhou">state</string>
     <string name="qu">District</string>
+    <string name="cancel_order">取消订单</string>
 </resources>
