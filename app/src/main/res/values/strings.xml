@@ -406,17 +406,17 @@
     <string name="payment">支付</string>
     <string name="saler_01">订单放弃中</string>
     <string name="saler_02">订单已取消</string>
-    <string name="saler_03">意向金凭证已上传 &#034; \n &#034;  请等待管理员审核</string>
-    <string name="saler_04">尚未支付意向金  &#034; \n &#034;请付款</string>
-    <string name="saler_05">合同首页已审核 &#034; \n &#034; 首付款凭证审核中</string>
-    <string name="saler_06">正在申请合同  &#034; \n &#034;请等待管理员审核</string>
-    <string name="saler_07">意向金已支付  &#034; \n &#034;请申请合同</string>
-    <string name="saler_08">正在申请合同  &#034; \n &#034;请等待管理员审核</string>
-    <string name="saler_09">请上传合同首页  &#034; \n &#034;请上传首付款凭证</string>
-    <string name="saler_10">合同首页审核中  &#034; \n &#034;请上传首付款凭证</string>
-    <string name="saler_10_01">合同首页审核中  &#034; \n &#034;首付款凭证已审核</string>
-    <string name="saler_11">合同首页已审核  &#034; \n &#034;请上传首付款凭证</string>
-    <string name="saler_12">合同首页已审核  &#034; \n &#034;首付款凭证审核中</string>
+    <string name="saler_03">意向金凭证已上传  \n请等待管理员审核</string>
+    <string name="saler_04">尚未支付意向金   \n请付款</string>
+    <string name="saler_05">合同首页已审核  \n首付款凭证审核中</string>
+    <string name="saler_06">正在申请合同   \n请等待管理员审核</string>
+    <string name="saler_07">意向金已支付  \n请申请合同</string>
+    <string name="saler_08">正在申请合同   \n请等待管理员审核</string>
+    <string name="saler_09">请上传合同首页  \n请上传首付款凭证</string>
+    <string name="saler_10">合同首页审核中   \n请上传首付款凭证</string>
+    <string name="saler_10_01">合同首页审核中  \n首付款凭证已审核</string>
+    <string name="saler_11">合同首页已审核  \n请上传首付款凭证</string>
+    <string name="saler_12">合同首页已审核  \n首付款凭证审核中</string>
     <string name="saler_13">准备交换合同</string>
     <string name="saler_14">订单已完成</string>
     <string name="saler_15">上传合同首页</string>
@@ -501,5 +501,6 @@
     <string name="lineup">排队</string>
     <string name="zhou">州</string>
     <string name="qu">区</string>
+    <string name="cancel_order">取消订单</string>
 
 </resources>
