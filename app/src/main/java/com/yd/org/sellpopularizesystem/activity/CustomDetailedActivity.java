@@ -207,19 +207,19 @@ public class CustomDetailedActivity extends BaseActivity {
                         }
                     }
                     break;
-                //国家选择
+                //国家或地区选择
                 case R.id.edcustmomeDetailedNationality:
                     flag = 1;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国家选择2
                 case R.id.tvCountry:
-                    flag = 1;
+                    flag = 2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国籍选择
                 case R.id.etNation:
-                    flag = 2;
+                    flag = 3;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.etFirb:
@@ -540,19 +540,19 @@ public class CustomDetailedActivity extends BaseActivity {
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
             tvCountry.setText("");
         } else {
-            tvCountry.setText(customeDetailedBean.getResult().getCompany_id() + "");
+            tvCountry.setText(customeDetailedBean.getResult().getCountry());
         }
         //单元号
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getUnit_number())) {
             etUnit.setText("");
         } else {
-            etUnit.setText(customeDetailedBean.getResult().getCompany_id() + "");
+            etUnit.setText(customeDetailedBean.getResult().getUnit_number());
         }
         //街道号码
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_number())) {
             etStreetNum.setText("");
         } else {
-            etStreetNum.setText(customeDetailedBean.getResult().getCompany_id());
+            etStreetNum.setText(customeDetailedBean.getResult().getStreet_number());
         }
         //街道地址1
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_1())) {
@@ -769,7 +769,9 @@ public class CustomDetailedActivity extends BaseActivity {
                     if (!countryName.equals(getResources().getString(R.string.china)) && !TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())){
                         edcustmomeDetailedCity.setText("");
                     }
-                } else {
+                }else if (flag == 2){
+                    tvCountry.setText(countryName);
+                }else {
                     etNation.setText(countryName);
                 }
                 nationSelectPopWindow.dismiss();
