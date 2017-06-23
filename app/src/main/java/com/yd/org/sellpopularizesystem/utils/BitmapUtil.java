@@ -23,7 +23,6 @@ import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
 
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.MonitoredActivity;
 
 import java.io.File;
@@ -143,13 +142,13 @@ public class BitmapUtil {
         String picPath = "null";
         String id = null;
         if (android.os.Build.VERSION.SDK_INT <= android.os.Build.VERSION_CODES.KITKAT) {
-            Log.e("content", selectedPhotoUri.toString());
+            Log.e("content1", selectedPhotoUri.toString());
             //获取图片的路径：
             String str = getDataColumn(act, selectedPhotoUri, null, null);
             Log.e("str", "getImagePath: " + str);
             return str;
         } else {
-            Log.e("content", selectedPhotoUri.toString());
+            Log.e("content2", selectedPhotoUri.toString());
             if (selectedPhotoUri.toString().startsWith("content://media/external/images/media/")){
                 String str = getDataColumn(act, selectedPhotoUri, null, null);
                 return str;
