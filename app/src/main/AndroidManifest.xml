@@ -180,12 +180,6 @@
         <activity
             android:name=".activity.MapActivity"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <meta-data
             android:name="UMENG_APPKEY"
@@ -291,13 +285,47 @@
         <activity
             android:name=".activity.PDFActivity"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.PaymentQrActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name=".activity.StudySubitemActivity"/>
 
         <activity android:name=".activity.IntroduceActivity"/>
+
+
+        <!--支付功能 -->
+
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:scheme="wxaaa583d7b2f02dc3"/>
+            </intent-filter>
+        </activity>
+        // alipay sdk begin
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <!-- alipay sdk end -->
+
+        <!-- 新加支付宝支付功能2016/12/20 end -->
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
     </application>
 
