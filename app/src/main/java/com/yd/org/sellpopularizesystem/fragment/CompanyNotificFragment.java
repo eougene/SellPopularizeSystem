@@ -94,6 +94,7 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
             }
         }
     };
+
     /**
      * 判断是否选中
      *
@@ -188,21 +189,18 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
                         is_read += 1;
                     }
                 }
-
-                if (is_read > 0) {
-                    Message message = new Message();
-                    message.what = 2;
-                    message.obj = String.valueOf(is_read);
-                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                    NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-                }
+                Message message = new Message();
+                message.what = 2;
+                message.obj = String.valueOf(is_read);
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
 
             }
         }
 
         if (isRefresh) {
-            if (informationContents.size()==0) {
+            if (informationContents.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
             } else {

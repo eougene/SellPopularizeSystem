@@ -43,6 +43,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private int cate_id;
     private boolean isShow = true;
     private int type = 0;
+    private AnnouncementBean.ResultBean resultBean;
+    private int pos;
 
 
     public Handler mHandle = new Handler() {
@@ -53,7 +55,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //全选
                 case 0:
-
                     //全选,全不选
                     if (msg.arg1 == 0) {
                         // 遍历list的长度，将MyAdapter中的map值全部设为true
@@ -90,19 +91,27 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
-
                     deleteNoticeLog(isSelected());
                     break;
+
+                //动态改变消息是否已读
                 case ExtraName.UPDATE:
+
                     adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
+
+                    break;
             }
         }
     };
 
-    private AnnouncementBean.ResultBean resultBean;
-    private int pos;
 
+    /**
+     * 创建实体类
+     *
+     * @param cate_id
+     * @return
+     */
     public static OrderNotificFragment getInstnce(int cate_id) {
         OrderNotificFragment notificFragmen = new OrderNotificFragment();
         Bundle bundle = new Bundle();
@@ -139,17 +148,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         fh.get(Contants.SYSTEM_ANNOUNCEMENT, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
                 dismissLoadingDialog();
                 if (null != s) {
-                    HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                     jsonParse(s, isRefresh, cate_id);
                 }
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
                 dismissLoadingDialog();
             }
         });
@@ -171,20 +177,21 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         is_read += 1;
                     }
                 }
-                if (is_read > 0) {
-                    Message message = new Message();
-                    message.what = 0;
-                    message.obj = String.valueOf(is_read);
-                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                    NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-                }
+
+                Message message = new Message();
+                message.what = 0;
+                message.arg1 = is_read;
+                //通知首页加载消息数量
+                HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
 
             }
         }
 
         if (isRefresh) {
-            if (informationContents.size()==0) {
+            if (informationContents.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
             } else {
@@ -219,12 +226,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 } else {
                     //预定推送消息
                     Bundle bundle = new Bundle();
-                   // bundle.putSerializable("announcementBean", resultBean);
-//                    bundle.putString("title", resultBean.getTitle());
-//                    bundle.putString("notice_id", resultBean.getId() + "");
-//                    bundle.putString("data", resultBean.getContent());
                     bundle.putString("saletoorder", "saletoorder");
-                    ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE,bundle);
+                    ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE, bundle);
                 }
             }
 
@@ -244,14 +247,11 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("notice_logs_id", notice_id);
-
-        Log.e("参数**", "notice_id:" + notice_id);
         finalHttp.get(Contants.DELETE_NOTICE, ajaxParams, new AjaxCallBack<String>() {
 
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("失败", "errorNo:" + errorNo);
                 ToasShow.showToastCenter(getActivity(), strMsg);
                 dismissLoadingDialog();
 
@@ -259,7 +259,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
             @Override
             public void onSuccess(String s) {
-                Log.e("成功", "errorNo:" + s);
                 dismissLoadingDialog();
                 Gson g = new Gson();
                 ErrorBean e = g.fromJson(s, ErrorBean.class);
@@ -320,15 +319,12 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode== Activity.RESULT_OK){
-            switch (requestCode){
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
                 case ExtraName.ORDER_TO_SALE:
-                    String flag=data.getStringExtra("saletoorder");
-                    Log.e("TAG", "onActivityResult: "+flag);
                     adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
                     commitHasRead(resultBean.getId());
-                    Log.e(TAG, "onActivityResult: "+resultBean.getId());
                     break;
             }
         }
@@ -338,11 +334,13 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("notice_logs_id", id+"");
+        ajaxParams.put("notice_logs_id", id + "");
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.e(TAG, "onSuccess: "+s );
+                Log.e(TAG, "onSucess: " + s);
+
+                getData(page, true, cate_id);
             }
 
             @Override

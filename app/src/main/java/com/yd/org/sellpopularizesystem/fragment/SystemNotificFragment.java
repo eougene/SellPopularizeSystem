@@ -166,20 +166,18 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
                         is_read += 1;
                     }
                 }
+                Message message = new Message();
+                message.what = 3;
+                message.obj = String.valueOf(bean.getTotal_number());
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
-                if (is_read > 0) {
-                    Message message = new Message();
-                    message.what = 3;
-                    message.obj = String.valueOf(bean.getTotal_number());
-                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                    NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-                }
 
             }
         }
 
         if (isRefresh) {
-            if (informationContents.size()==0) {
+            if (informationContents.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
             } else {

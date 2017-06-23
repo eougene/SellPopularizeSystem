@@ -19,7 +19,6 @@ import com.yd.org.sellpopularizesystem.activity.OldProjectActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.HomeDataBean;
-import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
 import com.yd.org.sellpopularizesystem.myView.Gradient;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BadgeUtil;
@@ -45,6 +44,8 @@ public class HomeFragment extends BaseFragmentView {
             tvStydyDatumCount, tvNotCompleteCount, tvNoNewsCount, tvMessage;
     private Gradient homeGradient;
     private List<ImageView> imageViews = new ArrayList<>();
+    private HomeDataBean homeDataBean;
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -65,12 +66,12 @@ public class HomeFragment extends BaseFragmentView {
                 //学习园地
                 case R.id.studyLinearLayout:
                     Bundle bundle3 = new Bundle();
-                    if (homeDataBean!=null){
-                        bundle3.putString("studynum",homeDataBean.getResult().getTotal_study()+"");
-                    }else {
-                        bundle3.putString("studynum",0+"");
+                    if (homeDataBean != null) {
+                        bundle3.putString("studynum", homeDataBean.getResult().getTotal_study() + "");
+                    } else {
+                        bundle3.putString("studynum", 0 + "");
                     }
-                    ActivitySkip.forward(getActivity(), LearningGardenActivity.class,bundle3);
+                    ActivitySkip.forward(getActivity(), LearningGardenActivity.class, bundle3);
                     break;
                 //往期项目
                 case R.id.rlBefore:
@@ -84,7 +85,6 @@ public class HomeFragment extends BaseFragmentView {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-
                 case 1:
                     getHomeData();
                     break;
@@ -92,7 +92,6 @@ public class HomeFragment extends BaseFragmentView {
             }
         }
     };
-    private HomeDataBean homeDataBean;
 
 
     @Override
@@ -175,30 +174,31 @@ public class HomeFragment extends BaseFragmentView {
                     homeDataBean = gson.fromJson(json, HomeDataBean.class);
                     if (homeDataBean.getCode() == 1) {
 
-                        tvScaleSource.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_product() + " " + getString(R.string.home_01));
-                        tvNewAddSource.setText(getString(R.string.newly_increased) + " " + homeDataBean.getResult().getNew_product() + " " + getString(R.string.home_02));
-                        tvCustomNumber.setText(getString(R.string.your_there) + " " + homeDataBean.getResult().getTotal_customer() + " " + getString(R.string.home_03));
-                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) + " " + homeDataBean.getResult().getNew_customer() + " " + getString(R.string.home_04));
+//                        tvScaleSource.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_product() + " " + getString(R.string.home_01));
+//                        tvNewAddSource.setText(getString(R.string.newly_increased) + " " + homeDataBean.getResult().getNew_product() + " " + getString(R.string.home_02));
+//                        tvCustomNumber.setText(getString(R.string.your_there) + " " + homeDataBean.getResult().getTotal_customer() + " " + getString(R.string.home_03));
+//                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) + " " + homeDataBean.getResult().getNew_customer() + " " + getString(R.string.home_04));
                         //tvStydyDatumCount.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_study() + " " + getString(R.string.home_05));
                         tvNotCompleteCount.setVisibility(View.INVISIBLE);
                         //如果首次进去有消息条数.则通知显示
                         if (homeDataBean.getResult().getUnread() > 0) {
 
-                            MessageCountBean messageCount = new MessageCountBean();
-                            messageCount.state = "1";
-                            messageCount.count = homeDataBean.getResult().getUnread() + "";
-
                             Message message = new Message();
                             message.what = 1;
-                            message.obj = messageCount;
+                            message.arg1 = homeDataBean.getResult().getUnread();
 
 
                             //通知主页面显示消息条目
                             HomeActiviyt.homeActiviyt.handler.sendMessage(message);
                             //通知App icon显示未读消息
-                            BadgeUtil.setBadgeCount(getActivity(), Integer.parseInt(messageCount.count));
+                            BadgeUtil.setBadgeCount(getActivity(), homeDataBean.getResult().getUnread());
 
                         } else {
+                            Message message = new Message();
+                            message.what = 1;
+                            message.arg1 = 0;
+                            //通知主页面显示消息条目
+                            HomeActiviyt.homeActiviyt.handler.sendMessage(message);
                             //清楚消息,
                             BadgeUtil.resetBadgeCount(getActivity());
                         }

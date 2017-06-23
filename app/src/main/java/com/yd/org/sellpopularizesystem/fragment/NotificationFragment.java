@@ -10,7 +10,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 /**
@@ -24,7 +23,6 @@ public class NotificationFragment extends BaseFragmentView {
 
     private TextView allCheck, deleteNotification, tvCancel, tvOrderSum, tvBriefSum, tvCompanySum, tvSystemSum;
     private RadioButton rbOrder, rbBrief, rbCompany, rbSystem;
-    //private View viewOrderSum, viewBriefSum, viewCompanySum, viewSystemSum;
     private RelativeLayout orderRelat, brifeRelat, companyRelat, systemRelat;
     private int type = 0, array = 0;
     //
@@ -35,11 +33,6 @@ public class NotificationFragment extends BaseFragmentView {
     private CompanyNotificFragment notificFragment2;
     private SystemNotificFragment notificFragment3;
     private int fragmentID = 0;
-
-
-    private Class userPushService = PushService.class;
-
-
     /**
      * 接收消息,显示当前消息数量
      */
@@ -50,27 +43,45 @@ public class NotificationFragment extends BaseFragmentView {
 
                 //订单消息数
                 case 0:
-                    tvOrderSum.setVisibility(View.VISIBLE);
-                    tvOrderSum.setText((String) msg.obj);
+                    if (msg.arg1 > 0) {
+                        tvOrderSum.setVisibility(View.VISIBLE);
+                    } else {
+                        tvOrderSum.setVisibility(View.GONE);
+                    }
+
+                    tvOrderSum.setText(String.valueOf(msg.arg1));
 
                     break;
                 //小组
                 case 1:
-                    tvBriefSum.setVisibility(View.VISIBLE);
-                    tvBriefSum.setText((String) msg.obj);
+                    if (msg.arg1 > 0) {
+                        tvBriefSum.setVisibility(View.VISIBLE);
+                    } else {
+                        tvBriefSum.setVisibility(View.GONE);
+                    }
+                    tvBriefSum.setText(String.valueOf(msg.arg1));
 
                     break;
 
                 //公司
                 case 2:
-                    tvCompanySum.setVisibility(View.VISIBLE);
-                    tvCompanySum.setText((String) msg.obj);
+
+                    if (msg.arg1 > 0) {
+                        tvCompanySum.setVisibility(View.VISIBLE);
+                    } else {
+                        tvCompanySum.setVisibility(View.GONE);
+                    }
+                    tvCompanySum.setText(String.valueOf(msg.arg1));
 
                     break;
                 //系统
                 case 3:
-                    tvSystemSum.setVisibility(View.VISIBLE);
-                    tvSystemSum.setText((String) msg.obj);
+                    if (msg.arg1 > 0) {
+                        tvSystemSum.setVisibility(View.VISIBLE);
+                    } else {
+                        tvSystemSum.setVisibility(View.GONE);
+                    }
+                    tvSystemSum.setText(String.valueOf(msg.arg1));
 
                     break;
 
@@ -382,10 +393,6 @@ public class NotificationFragment extends BaseFragmentView {
         rbBrief.setOnClickListener(mOnClickListener);
         rbCompany.setOnClickListener(mOnClickListener);
         rbSystem.setOnClickListener(mOnClickListener);
-        /*viewOrderSum = getViewById(R.id.viewOrderSum);
-        viewBriefSum = getViewById(R.id.viewBriefSum);
-        viewCompanySum = getViewById(R.id.viewCompanySum);
-        viewSystemSum = getViewById(R.id.viewSystemSum);*/
 
 
     }
