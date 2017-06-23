@@ -8,10 +8,10 @@
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:background="@color/gray2"
+        android:background="@color/gray"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/padding_margin_4"
-        android:paddingTop="@dimen/padding_margin_4">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             android:id="@+id/tvLocation"

@@ -19,7 +19,20 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/padding_margin_50"
+        android:layout_marginBottom="@dimen/padding_margin_200"
         android:textSize="@dimen/tv_size_15"/>
+
+
+    <TextView
+        android:id="@+id/payTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/scale_tab5"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10"
+        android:text="待支付"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

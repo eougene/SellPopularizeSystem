@@ -38,7 +38,7 @@
                     android:imeOptions="actionSearch"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:singleLine="true"
-                    android:textColorHint="@color/search_edit"
+                    android:textColorHint="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <Button
