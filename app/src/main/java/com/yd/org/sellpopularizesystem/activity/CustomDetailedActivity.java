@@ -77,7 +77,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.ToDoubleBiFunction;
+
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -194,9 +194,14 @@ public class CustomDetailedActivity extends BaseActivity {
                         Log.e(TAG, "onClick: " + edcustmomeDetailedNationality.getText());
                         if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))) {
                             edcustmomeDetailedCity.setFocusable(false);
+                            edcustmomeDetailedCity.setFocusableInTouchMode(false);
                             addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                         } else {
                             Log.e(TAG, "onClick***: " + edcustmomeDetailedNationality.getText());
+                            /*edcustmomeDetailedCity.setFocusable(true);
+                            edcustmomeDetailedCity.setEnabled(true);
+                            edcustmomeDetailedCity.requestFocus();*/
+                            edcustmomeDetailedCity.setFocusableInTouchMode(true);
                             edcustmomeDetailedCity.setFocusable(true);
                             edcustmomeDetailedCity.requestFocus();
                         }
@@ -756,11 +761,14 @@ public class CustomDetailedActivity extends BaseActivity {
                     countryNumber = fileterList.get(position).countryNumber;
                 } else {
                     // 点击后返回
-                    countryName = mAllCountryList.get(position).countryName;
+                    countryName = mAllCountryList.get(position).countryName.trim();
                     countryNumber = mAllCountryList.get(position).countryNumber;
                 }
                 if (flag == 1) {
                     edcustmomeDetailedNationality.setText(countryName);
+                    if (!countryName.equals(getResources().getString(R.string.china)) && !TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())){
+                        edcustmomeDetailedCity.setText("");
+                    }
                 } else {
                     etNation.setText(countryName);
                 }
