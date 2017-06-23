@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -38,6 +37,7 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 public class PaymentQrActivity extends BaseActivity {
+
     private WebView wvQr;
     private String strId;
     private String qrcodeUrl, payment_method;
@@ -53,7 +53,6 @@ public class PaymentQrActivity extends BaseActivity {
     /*****
      * 支付返回支付状态
      */
-    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -220,34 +219,24 @@ public class PaymentQrActivity extends BaseActivity {
             req.packageValue = "Sign=WXPay";
             req.nonceStr = wXpayBean.getResult().getNonce_str();
             req.timeStamp = (System.currentTimeMillis() / 1000) + "";
-           // req.sign = wXpayBean.getResult().getSign();
-           // api.sendReq(req);
-
-
-
-
             //***********
             // 把参数的值传进去SortedMap集合里面
-            SortedMap<Object, Object> parameters = new TreeMap< >();
+            SortedMap<Object, Object> parameters = new TreeMap<>();
             parameters.put("appid", req.appId);
             parameters.put("noncestr", req.nonceStr);
             parameters.put("package", req.packageValue);
             parameters.put("partnerid", req.partnerId);
             parameters.put("prepayid", req.prepayId);
             parameters.put("timestamp", req.timeStamp);
-
-
-
             String mySign = createSign("UTF-8", parameters);
             req.sign = mySign;
             api.sendReq(req);
-           Log.e("我的签名是：" ,"mySign:"+ mySign);
+
 
         }
 
 
     }
-
 
 
     /**
@@ -272,7 +261,7 @@ public class PaymentQrActivity extends BaseActivity {
                 sb.append(k + "=" + v + "&");
             }
         }
-        //sb.append("key=" + ConstantsMember.KEY); //KEY是商户秘钥
+        sb.append("key=" + Contants.API_KEY); //KEY是商户秘钥
         String sign = MD5Util.MD5Encode(sb.toString(), characterEncoding)
                 .toUpperCase();
         return sign;
@@ -283,7 +272,7 @@ public class PaymentQrActivity extends BaseActivity {
         showDialog();
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("trust_account_id", "110");
+        ajaxParams.put("trust_account_id", strId);
         fh.post(playUrl, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -301,7 +290,13 @@ public class PaymentQrActivity extends BaseActivity {
                     WXpayBean wXpayBean = gson.fromJson(s, WXpayBean.class);
 
                     if (wXpayBean.getCode().equals("1")) {
-                        WeiXinPlay(wXpayBean);
+
+                        if (wXpayBean.getResult().getResult_code().equals("FAIL")) {
+                            ToasShow.showToastCenter(PaymentQrActivity.this, "支付失败");
+                        } else {
+                            WeiXinPlay(wXpayBean);
+                        }
+
                     }
                 }
 
