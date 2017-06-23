@@ -1,8 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -67,8 +65,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     private Bundle bund;
     //筛选
     private OptionsPickerView optionsPickerView;
-    private List houseTypes = new ArrayList<String>();
-    private List numbers = new ArrayList<String>();
+    private List houseTypes = new ArrayList<>();
+    private List numbers = new ArrayList<>();
     private String strHouseType;
     private String strNum;
 
@@ -361,9 +359,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 case R.id.rightTitle:
                     optionsPickerView.show();
                     break;
-                /*case R.id.tvSelect:
-                    optionsPickerView.show();
-                    break;*/
+
                 case R.id.ivHousePic:
                     if (bund == null) {
                         bund = new Bundle();
@@ -423,6 +419,11 @@ public class ProductSubunitListActivity extends BaseActivity {
                     break;
                 //介绍
                 case R.id.tvIntroduce:
+
+                    if (tvIntroduce.getAlpha() == 1.0f) {
+                        bund.putString("introduce", prs.getDescription_url() + "");
+                        ActivitySkip.forward(ProductSubunitListActivity.this, IntroduceActivity.class, bund);
+                    }
                     break;
                 //平面图
                 case R.id.tvFloor:

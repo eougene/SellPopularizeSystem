@@ -28,7 +28,6 @@ import com.yd.org.sellpopularizesystem.fragment.MeFragment;
 import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
-import com.yd.org.sellpopularizesystem.javaBean.MessageCountBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
@@ -58,11 +57,10 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
-                MessageCountBean messageCountBean = (MessageCountBean) msg.obj;
                 //有消息
-                if (messageCountBean.state.equals("1")) {
+                if (msg.arg1 > 0) {
                     tvMessageCount.setVisibility(View.VISIBLE);
-                    tvMessageCount.setText(messageCountBean.count);
+                    tvMessageCount.setText(msg.arg1 + "");
                     //没有有新的消息
                 } else {
                     tvMessageCount.setVisibility(View.GONE);

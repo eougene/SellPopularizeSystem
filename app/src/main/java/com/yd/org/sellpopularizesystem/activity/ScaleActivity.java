@@ -4,7 +4,6 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -143,10 +142,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             getProductListData(true, page, space, price, house, area);
         }
 
-        setBackImageView(R.mipmap.backbt);
+       // setBackImageView(R.mipmap.backbt);
         setTitle(getResources().getString(R.string.home_scale));
-        setColor(Color.BLACK);
-        setBaseLayoutBackground(Color.WHITE);
+        //setColor(Color.BLACK);
+        //setBaseLayoutBackground(Color.WHITE);
         //下拉加载
         //showView();
     }

@@ -60,7 +60,7 @@ import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
     private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
-            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate,tvReCusAdd;
+            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate, tvReCusAdd;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
@@ -106,11 +106,11 @@ public class ReserveActivity extends BaseActivity {
         tvReSale = getViewById(R.id.tvReSale);
         tvValidity = getViewById(R.id.tvValidity);
         tvReCus = getViewById(R.id.tvReCus);
-        tvReCusAdd=getViewById(R.id.tvReCusAdd);
-        ivReLawyer =  getViewById(R.id.ivReLawyer);
+        tvReCusAdd = getViewById(R.id.tvReCusAdd);
+        ivReLawyer = getViewById(R.id.ivReLawyer);
         //ivCertificate = (ImageView) getViewById(R.id.ivCertificate);
-        rlRecus = getViewById (R.id.rlRecus);
-        rlReLawyer =  getViewById(R.id.rlReLawyer);
+        rlRecus = getViewById(R.id.rlRecus);
+        rlReLawyer = getViewById(R.id.rlReLawyer);
         tvReLawyer = getViewById(R.id.tvReLawyer);
         rlReGoal = getViewById(R.id.rlReGoal);
         tvReGoal = getViewById(R.id.tvReGoal);
@@ -214,16 +214,16 @@ public class ReserveActivity extends BaseActivity {
                 tvReFirb.setText(getString(R.string.bushi));
             }
         }
-        tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress()+BaseApplication.getInstance().getResultBean().getZip_code());
+        tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress() + BaseApplication.getInstance().getResultBean().getZip_code());
         tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         tvValidity.setText(bean.getPrice());
         String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
         customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";
         if (en_name != null) {
             tvReCus.setText(BaseApplication.getInstance().getResultBean().getSurname() + BaseApplication.getInstance().getResultBean().getFirst_name());
-            if (judgeCusInfo(BaseApplication.getInstance().getResultBean())){
+            if (judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
                 tvReCus.setTextColor(Color.BLUE);
-            }else {
+            } else {
                 tvReCus.setTextColor(Color.RED);
             }
 
@@ -301,8 +301,8 @@ public class ReserveActivity extends BaseActivity {
                     BaseApplication app = BaseApplication.getInstance();
                     app.getResultBean();
                     bun.putSerializable("cun", app.getResultBean());
-                    bun.putString("add","completeinfo");
-                    ActivitySkip.forward(ReserveActivity.this,CustomDetailedActivity.class,bun);
+                    bun.putString("add", "completeinfo");
+                    ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
                     break;
@@ -483,7 +483,7 @@ public class ReserveActivity extends BaseActivity {
                         payMethodDialog.dismiss();
                     }
                     break;
-                 //相机拍照
+                //相机拍照
                 case R.id.btFromCamera:
                     setPhotoPopuWindow.dismiss();
                     BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
@@ -518,9 +518,9 @@ public class ReserveActivity extends BaseActivity {
             Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
 
-        }else if (!judgeCusInfo(BaseApplication.getInstance().getResultBean())){
+        } else if (!judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
             return;
-        }else {
+        } else {
             //显示提示框
             showAlertDialog();
             //commit(payment_method);
@@ -642,22 +642,22 @@ public class ReserveActivity extends BaseActivity {
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
                     lawBean = data.getExtras();
-                    CustomBean.ResultBean cun= (CustomBean.ResultBean) lawBean.getSerializable("custome");
+                    CustomBean.ResultBean cun = (CustomBean.ResultBean) lawBean.getSerializable("custome");
                     tvReCus.setText(cun.getEn_name());
-                    if (cun.getAddress()!=null && cun.getZip_code()!=null){
-                        tvReCusAdd.setText(cun.getAddress()+cun.getZip_code());
-                    }else {
+                    if (cun.getAddress() != null && cun.getZip_code() != null) {
+                        tvReCusAdd.setText(cun.getAddress() + cun.getZip_code());
+                    } else {
                         tvReCusAdd.setText("");
                     }
                     customeId = cun.getCustomer_id() + "";
                     //判断用户信息是否完整
-                    if(!judgeCusInfo(cun)){
+                    if (!judgeCusInfo(cun)) {
                         tvReCus.setTextColor(Color.RED);
-                        Bundle bundle=new Bundle();
-                        bundle.putString("add","completeinfo");
-                        bundle.putSerializable("cun",cun);
-                        ActivitySkip.forward(ReserveActivity.this,CustomDetailedActivity.class,bundle);
-                    }else {
+                        Bundle bundle = new Bundle();
+                        bundle.putString("add", "completeinfo");
+                        bundle.putSerializable("cun", cun);
+                        ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bundle);
+                    } else {
                         tvReCus.setTextColor(Color.BLUE);
                     }
                     break;
@@ -698,13 +698,13 @@ public class ReserveActivity extends BaseActivity {
                         }
                     }*/
 
-                    Uri photoUri=BitmapUtil.imgUri;
-                    picPath=BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                    Log.e("imgPath", "onActivityResult: "+picPath);
+                    Uri photoUri = BitmapUtil.imgUri;
+                    picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
+                    Log.e("imgPath", "onActivityResult: " + picPath);
                     //picPath=BitmapUtil.imgPath;
                     Bitmap bitmap = null;
                     try {
-                    //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
+                        //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
                         bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -738,21 +738,21 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private boolean judgeCusInfo(CustomBean.ResultBean cun) {
-        if(cun.getSurname()!=null && cun.getFirst_name()!=null &&
-                cun.getMobile()!=null && cun.getE_mail()!=null &&
-                cun.getCountry()!=null && cun.getProvince()!=null &&
-                cun.getAddress()!=null && cun.getZip_code()!=null){
+        if (cun.getSurname() != null && cun.getFirst_name() != null &&
+                cun.getMobile() != null && cun.getE_mail() != null &&
+                cun.getCountry() != null && cun.getProvince() != null &&
+                cun.getAddress() != null && cun.getZip_code() != null) {
             if (!cun.getSurname().equals("") && !cun.getFirst_name().equals("") &&
                     !cun.getMobile().equals("") && !cun.getE_mail().equals("") &&
                     !cun.getCountry().equals("") && !cun.getProvince().equals("") &&
-                    !cun.getAddress().equals("") && !cun.getZip_code().equals("")){
+                    !cun.getAddress().equals("") && !cun.getZip_code().equals("")) {
                 return true;
-            }else {
-                ToasShow.showToastCenter(ReserveActivity.this,getString(R.string.complete_cusinfo));
+            } else {
+                ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.complete_cusinfo));
                 return false;
             }
-        }else {
-            ToasShow.showToastCenter(ReserveActivity.this,getString(R.string.complete_cusinfo));
+        } else {
+            ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.complete_cusinfo));
             return false;
         }
 
