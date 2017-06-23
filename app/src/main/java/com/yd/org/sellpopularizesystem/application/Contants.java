@@ -93,8 +93,16 @@ public class Contants {
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
     //支付宝支付接口
     public static final String ALIPAY_INTERFACE = DOMAIN + "/index.php/api/index/alipay";
+    public static final String AIL_APPPAY = DOMAIN +"/index.php/api/apppay/ali_apppay";
+
+
+
+
     //微信支付接口
     public static final String WEICHAT_INTERFACE = DOMAIN + "/index.php/api/index/wxpay";
+    //
+    public static final String WXAPP_PAY = DOMAIN + "/index.php/api/apppay/wx_app_pay";
+
     //请求合同
     public static final String ASK_ONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontract";
     //上传合同图片
