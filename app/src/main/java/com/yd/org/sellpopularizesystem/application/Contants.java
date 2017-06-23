@@ -171,6 +171,7 @@ public class Contants {
      */
     public static final String CACHE_PATH = "cache";
     //微信相关
+    public static final String API_KEY = "cvtLF1xMofV888WMeSUrze41HpntYz7p";
     public static final String WEXIN_APP_ID = "wxaaa583d7b2f02dc3";
     public static final String WEXIN_APP_SECRET = "856425a0db943831154d248d32c761c2";
     public static final String WEXIN_URL_STRING = "https://api.weixin.qq.com/sns/oauth2/access_token";
