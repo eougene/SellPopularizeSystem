@@ -498,4 +498,7 @@
     <string name="zhou">state</string>
     <string name="qu">District</string>
     <string name="cancel_order">取消订单</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="pay_su">支付成功</string>
+    <string name="pay_error">支付错误</string>
 </resources>
