@@ -3,7 +3,7 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,35 +77,36 @@ public class ImagePagerAdapter extends PagerAdapter {
         progress_text = (TextView) view.findViewById(R.id.progress_text);
         progress = (ProgressBar) view.findViewById(R.id.progress);
         retry = (TextView) view.findViewById(R.id.retry);//加载失败
-        progress_text.setText(String.valueOf(position));
+        progress_text.setText(String.valueOf(position/imgsUrl.size()));
         imageLoader.init(ImageLoaderConfiguration.createDefault(context));
         imageLoader.displayImage(imgsUrl.get(position), full_image, options, new ImageLoadingListener() {
 
             @Override
             public void onLoadingStarted(String imageUri, View view) {
-                // TODO Auto-generated method stub
-                progress.setVisibility(View.VISIBLE);
-                progress_text.setVisibility(View.VISIBLE);
-                full_image.setVisibility(View.GONE);
+                full_image.setVisibility(View.VISIBLE);
                 retry.setVisibility(View.GONE);
+                progress.setVisibility(View.GONE);
+                progress_text.setVisibility(View.GONE);
+                Log.e("onLoading1","onLoadingStarted");
             }
 
             @Override
             public void onLoadingFailed(String imageUri, View view,
                                         FailReason failReason) {
-                // TODO Auto-generated method stub
                 progress.setVisibility(View.GONE);
                 progress_text.setVisibility(View.GONE);
                 full_image.setVisibility(View.GONE);
                 retry.setVisibility(View.VISIBLE);
+                Log.e("onLoading2","onLoadingFailed");
             }
 
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                 progress.setVisibility(View.GONE);
                 progress_text.setVisibility(View.GONE);
-                full_image.setVisibility(View.VISIBLE);
                 retry.setVisibility(View.GONE);
+                full_image.setVisibility(View.VISIBLE);
+                Log.e("onLoading3","onLoadingComplete");
             }
 
             @Override
@@ -113,15 +114,17 @@ public class ImagePagerAdapter extends PagerAdapter {
                 progress.setVisibility(View.GONE);
                 progress_text.setVisibility(View.GONE);
                 full_image.setVisibility(View.GONE);
-                retry.setVisibility(View.VISIBLE);
+                retry.setVisibility(View.GONE);
+                Log.e("onLoading4","onLoadingCancelled");
+
             }
         });
-        ((ViewPager) container).addView(view);
+        container.addView(view);
         return view;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ((ViewPager) container).removeView((View) object);
+        container.removeView((View) object);
     }
 }
