@@ -43,9 +43,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private List<SaleOrderBean.ResultBean> sobRbData = new ArrayList<>();
     private SaleRecordAdapter saleAdapter;
     public static SaleRecordActivity saleRecordActivity;
-    private SaleOrderBean.ResultBean resultBean;
     //上传合同首页还是首付款标志
     private String flag, picPath;
+    private SaleOrderBean.ResultBean rBean;
 
 
     public Handler handler = new Handler() {
@@ -134,7 +134,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     }
 
 
-    public void startPhotos(String type) {
+    public void startPhotos(String type, SaleOrderBean.ResultBean resultBeans) {
+        rBean = resultBeans;
         flag = type;
         BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
     }
@@ -176,8 +177,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
-                resultBean = viewHolder.resultBean;
-
+                SaleOrderBean.ResultBean resultBean = viewHolder.resultBean;
                 ProductListBean.ResultBean pp = new ProductListBean.ResultBean();
                 pp.setProduct_id(Integer.parseInt(resultBean.getProduct_id()));
                 pp.setProduct_name(resultBean.getProduct_name().getProduct_name());
@@ -210,7 +210,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Bundle bundle = new Bundle();
             Intent intent = new Intent();
             intent.putExtra("saletoorder", "saletoorder");
             setResult(Activity.RESULT_OK, intent);
@@ -244,7 +243,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         Uri photoUri = BitmapUtil.imgUri;
                         picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
                         Log.e("picPath**", "picPath:" + picPath);
-                        setPicPath(picPath);
+                        setPicPath(picPath, rBean);
 
                     }
                     break;
@@ -275,7 +274,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      *
      * @param picPath
      */
-    private void setPicPath(String picPath) {
+    private void setPicPath(String picPath, SaleOrderBean.ResultBean resultBean) {
         Log.e("picPath", "picPath:" + picPath);
         try {
             showDialog();
