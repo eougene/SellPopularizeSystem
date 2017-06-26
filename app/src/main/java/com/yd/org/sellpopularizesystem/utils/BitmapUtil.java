@@ -39,7 +39,7 @@ import java.util.UUID;
 
 public class BitmapUtil {
 
-
+    private static final String FILE_PROVIDER_AUTHORITY = MyUtils.getPackageName() + ".fileprovider";
     private static final int BUFFER_SIZE = 10 * 1024;
     /**
      * 预设SD卡空间 (单位M)
@@ -70,9 +70,11 @@ public class BitmapUtil {
             //创建临时图片文件
             File photoFile = null;
             try {
-                photoFile = createPublicImageFile();
+                //photoFile = createPublicImageFile();
+                photoFile =new File(FileUtils.generateImgePath());
                 mPublicPhotoPath = photoFile.getAbsolutePath();
-               imgPath=mPublicPhotoPath;
+                imgPath= photoFile.getAbsolutePath();
+               //imgPath=mPublicPhotoPath;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -83,8 +85,8 @@ public class BitmapUtil {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     //如果是7.0或以上
                     //这里加入flag
-                    takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    photoURI = FileProvider.getUriForFile(act, "applicationId.fileprovider", photoFile);
+                    //takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    photoURI = FileProvider.getUriForFile(act,FILE_PROVIDER_AUTHORITY , photoFile);
                 }else {
                    // photoURI=Uri.fromFile(photoFile);
                     ContentValues contentValues = new ContentValues(2);

@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <paths>
+        <external-path path="" name="myFile"></external-path>
+    </paths>
+</resources>
 <!--
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path name="my_images" path="Android/data/com.taoweiw.taoweiw/files/Pictures/" />
@@ -7,8 +13,4 @@
     <external-path name="dcim" path="DCIM/" />
 
 </paths>-->
-<resources>
-    <paths>
-        <external-path path="" name="myFile"></external-path>
-    </paths>
-</resources>
+

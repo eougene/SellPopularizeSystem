@@ -7,6 +7,7 @@ import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import java.io.BufferedInputStream;
@@ -35,6 +36,8 @@ public class FileUtils {
     public static final long MB = KB * 1024;
     public static final long GB = MB * 1024;
     private static final int BUFFER = 8192;
+    public static final String	ICON_DIR = "icon";
+    public static final String APP_STORAGE_ROOT = "AndroidNAdaption";
     /**
      * 格式化文件大小<b> 带有单位
      *
@@ -81,8 +84,86 @@ public class FileUtils {
      * @return
      */
     public static boolean isSdCardMounted() {
-        return android.os.Environment.getExternalStorageState().equals(
-                android.os.Environment.MEDIA_MOUNTED);
+        /*return android.os.Environment.getExternalStorageState().equals(
+                android.os.Environment.MEDIA_MOUNTED);*/
+        if (Environment.MEDIA_MOUNTED.equals(Environment
+                .getExternalStorageState()))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**产生图片的路径，带文件夹和文件名，文件名为当前毫秒数*/
+    public static String generateImgePath(){
+        return getAppDir(ICON_DIR) + String.valueOf(System.currentTimeMillis()) + ".jpg";
+    }
+
+    /**
+     * 获取app在外置SD卡的路径
+     * @param name
+     * @return
+     */
+    public static String getAppDir(String name)
+    {
+        StringBuilder sb = new StringBuilder();
+        if (isSdCardMounted())
+        {
+            sb.append(getAppExternalStoragePath());
+        }
+        else
+        {
+            sb.append(getCachePath());
+        }
+        sb.append(name);
+        sb.append(File.separator);
+        String path = sb.toString();
+        if (createDirs(path))
+        {
+            return path;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    /** 获取SD下当前APP的目录 */
+    public static String getAppExternalStoragePath()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+        sb.append(File.separator);
+        sb.append(APP_STORAGE_ROOT);
+        sb.append(File.separator);
+        sb.append("yingjia");
+        sb.append(File.separator);
+        return sb.toString();
+    }
+
+    /** 获取应用的cache目录 */
+    public static String getCachePath()
+    {
+        File f = MyUtils.getContext().getCacheDir();
+        if (null == f)
+        {
+            return null;
+        }
+        else
+        {
+            return f.getAbsolutePath() + "/";
+        }
+    }
+
+    /** 创建文件夹 */
+    public static boolean createDirs(String dirPath)
+    {
+        File file = new File(dirPath);
+        if (!file.exists() || !file.isDirectory()) { return  file.mkdirs(); }
+        return true;
     }
 
     /**

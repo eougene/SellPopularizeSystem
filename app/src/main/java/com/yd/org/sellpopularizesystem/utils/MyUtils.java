@@ -33,6 +33,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.myView.WebViewClientBase;
 
@@ -977,7 +978,22 @@ public class MyUtils {
         int height = wm.getDefaultDisplay().getHeight();
         return height;
     }
-
+    /**
+     * 得到上下文
+     *
+     * @return
+     */
+    public static Context getContext() {
+        return BaseApplication.getContext();
+    }
+    /**
+     * 得到应用程序的包名
+     *
+     * @return
+     */
+    public static String getPackageName() {
+        return getContext().getPackageName();
+    }
     //获取状态栏高度
     public static int getStatusHeight(Activity context) {
         Rect rectangle = new Rect();
