@@ -116,8 +116,8 @@ public class Contants {
     //订单详情
     public static final String ORDER_DETAIL = DOMAIN + "/index.php/appv2/order/order_info";
     //申请合同
-    //public static final String APPLY_CONTRACT = DOMAIN + "/index.php/app/order/ask_ontract";
-    public static final String APPLY_CONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontrac";
+    public static final String APPLY_CONTRACT = DOMAIN + "/index.php/app/order/ask_ontract";
+    //public static final String APPLY_CONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontrac";
 
     //修改订单
     public static final String UPDATE_ORDER = DOMAIN + "/index.php/appv2/order/edit_order";
