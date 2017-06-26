@@ -293,7 +293,7 @@ public class PaymentQrActivity extends BaseActivity {
                     if (wXpayBean.getCode().equals("1")) {
 
                         if (wXpayBean.getResult().getResult_code().equals("FAIL")) {
-                            ToasShow.showToastCenter(PaymentQrActivity.this, "支付失败");
+                            ToasShow.showToastCenter(PaymentQrActivity.this, getString(R.string.pay_error));
                         } else {
                             WeiXinPlay(wXpayBean);
                         }
