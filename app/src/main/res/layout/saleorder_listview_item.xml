@@ -105,7 +105,6 @@
             android:orientation="horizontal">
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/saleRecorTv1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,10 +115,10 @@
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/cancel_order"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10"
+                android:visibility="gone"/>
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/saleRecorTv2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -131,10 +130,10 @@
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/payintentmoney"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10"
+                android:visibility="gone"/>
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/saleRecorTv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,10 +145,10 @@
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/saler_15"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10"
+                android:visibility="gone"/>
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/saleRecorTv4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -161,7 +160,8 @@
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/saler_16"
                 android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tvStatus"
@@ -175,7 +175,6 @@
                 android:paddingLeft="@dimen/padding_margin_10"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_6"
-                android:text="@string/saler_02"
                 android:textColor="@color/scale_tab5"
                 android:textSize="@dimen/tv_size_10"/>
 
