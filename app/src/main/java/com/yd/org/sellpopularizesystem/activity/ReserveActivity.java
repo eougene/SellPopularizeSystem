@@ -207,28 +207,31 @@ public class ReserveActivity extends BaseActivity {
     private void initData() {
         tvRePrice.setText("$" + getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvRetype.setText(bean.getCate_name());
-        if (BaseApplication.getInstance().getIs_firb() == 0) {
-            tvReFirb.setText(R.string.bushi);
-        } else {
-            if (BaseApplication.getInstance().getFirb_number() != 0) {
-                tvReFirb.setText(getString(R.string.bushi));
-            }
-        }
-        tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress() + BaseApplication.getInstance().getResultBean().getZip_code());
-        tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
-        tvValidity.setText(bean.getPrice());
-        String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
-        customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";
-        if (en_name != null) {
-            tvReCus.setText(BaseApplication.getInstance().getResultBean().getSurname() + BaseApplication.getInstance().getResultBean().getFirst_name());
-            if (judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
-                tvReCus.setTextColor(Color.BLUE);
+        if (BaseApplication.getInstance().getResultBean() != null) {
+            if (BaseApplication.getInstance().getIs_firb() == 0) {
+                tvReFirb.setText(R.string.bushi);
             } else {
-                tvReCus.setTextColor(Color.RED);
+                if (BaseApplication.getInstance().getFirb_number() != 0) {
+                    tvReFirb.setText(getString(R.string.bushi));
+                }
             }
+            if (BaseApplication.getInstance().getResultBean() != null) {
+                tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress() + BaseApplication.getInstance().getResultBean().getZip_code());
+            }
+            tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
+            tvValidity.setText(bean.getPrice());
+            //String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
+            customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";
+            if (BaseApplication.getInstance().getResultBean().getEn_name() != null) {
+                tvReCus.setText(BaseApplication.getInstance().getResultBean().getSurname() + BaseApplication.getInstance().getResultBean().getFirst_name());
+                if (judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
+                    tvReCus.setTextColor(Color.BLUE);
+                } else {
+                    tvReCus.setTextColor(Color.RED);
+                }
 
+            }
         }
-
     }
 
     @Override
@@ -699,19 +702,24 @@ public class ReserveActivity extends BaseActivity {
                     }*/
 
                     Uri photoUri = BitmapUtil.imgUri;
-                    picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                    Log.e("imgPath", "onActivityResult: " + picPath);
-                    //picPath=BitmapUtil.imgPath;
-                    Bitmap bitmap = null;
-                    try {
-                        //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
-                        bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                        picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
+                        Log.e("imgPath", "onActivityResult: " + picPath);
+                        //picPath=BitmapUtil.imgPath;
+                        Bitmap bitmap = null;
+                        try {
+                            //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
+                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
+                        ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                    }else {
+                        Uri imgUri = Uri.parse(BitmapUtil.imgPath);
+                        picPath = imgUri.getPath();
+                        ivCertificate.setImageBitmap(BitmapFactory.decodeFile(picPath));
                     }
-                    //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
-                    ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
-
                     break;
 
                 //从相册选取图片
