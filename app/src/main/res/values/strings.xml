@@ -79,15 +79,6 @@
 
     <string name="rephotograph">重拍</string>
     <string name="use">使用照片</string>
-    <string name="questionTitle">1.我国铁路部门规定身高多少的儿童要买全票(单选)?</string>
-    <string name="question1option1">1.20米</string>
-    <string name="question1option2">1.30米</string>
-    <string name="question1option3">1.40米</string>
-    <string name="questionTitle2">2.变压器的损耗一般包括(多选)</string>
-    <string name="question2option1">铁损</string>
-    <string name="question2option2">磁损</string>
-    <string name="question2option3">线损</string>
-    <string name="question2option4">铜损</string>
     <string name="inverstigation">选择客户</string>
 
     <!--微信相关-->
