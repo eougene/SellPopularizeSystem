@@ -21,7 +21,9 @@ public class ImageShowActivity extends Activity {
     /**
      * 图片展示
      */
-    private ImageShowViewPager image_pager;
+    //private ImageShowViewPager image_pager;
+    private ViewPager image_pager;
+
     private TextView page_number;
     /**
      * 图片下载按钮
@@ -50,7 +52,7 @@ public class ImageShowActivity extends Activity {
 
     public void initView() {
 
-        image_pager = (ImageShowViewPager) findViewById(R.id.image_pager);
+        image_pager = (ViewPager) findViewById(R.id.image_pager);
         page_number = (TextView) findViewById(R.id.page_number);
         ivBack = (ImageView) findViewById(R.id.ivBack);
         initData();

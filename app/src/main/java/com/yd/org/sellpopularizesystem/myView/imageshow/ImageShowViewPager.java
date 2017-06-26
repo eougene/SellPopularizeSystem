@@ -7,10 +7,12 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
+import com.bosong.frescozoomablelib.zoomable.ZoomableDraweeView;
+
 public class ImageShowViewPager extends ViewPager {
     PointF last;
     public TouchImageView mCurrentView;
-
+    //public ZoomableDraweeView mCurrentView;
     public ImageShowViewPager(Context context) {
         super(context);
     }

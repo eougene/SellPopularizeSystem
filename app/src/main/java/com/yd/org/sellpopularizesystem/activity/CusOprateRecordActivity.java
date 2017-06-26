@@ -343,6 +343,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     }
                     //BitmapUtil.gotoSysPic(CusOprateRecordActivity.this,ExtraName.ALBUM_PICTURE);
                     break;
+                //提交eoi
                 case R.id.tvEoiSubmit:
                     Log.e("submitEoi", "onClick: " + "submitEoi");
                     if (llCertificate.getVisibility() == View.VISIBLE) {
@@ -379,6 +380,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 case R.id.llChooseSpace:
                     optionDialog.dismiss();
                     break;
+                //提交拜访记录
                 case R.id.tvVisitSubmit:
                     if (etVistTitle.getText().toString().equals(visitRecord.getTitle().toString()) && etVistContent.getText().toString().equals(visitRecord.getContent().toString())) {
                         ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.tips));

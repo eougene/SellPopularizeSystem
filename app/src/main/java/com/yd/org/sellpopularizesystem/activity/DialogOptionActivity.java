@@ -317,6 +317,7 @@ public class DialogOptionActivity extends AppCompatActivity {
                 case R.id.tvVisitTime:
                     pvCustomTime.show();
                     break;
+                //提交拜访记录
                 case R.id.tvVisitSubmit:
                     submitVisit();
                     break;
@@ -426,7 +427,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
             ajaxParams.put("title", etVistTitle.getText().toString());
-            ajaxParams.put("content", etVistTitle.getText().toString());
+            ajaxParams.put("content", etVistContent.getText().toString());
             ajaxParams.put("visit_time", tvVistTime.getText().toString());
             fh.post(Contants.NEW_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
                 @Override
