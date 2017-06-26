@@ -319,11 +319,12 @@ public class SaleRecordAdapter extends BaseAdapter {
                     break;
                 //上传合同首页
                 case R.id.saleRecorTv3:
-                    SaleRecordActivity.saleRecordActivity.startPhotos("1",resultBean);
+                    SaleRecordActivity.saleRecordActivity.askntractO(resultBean, "1");
+
                     break;
                 //上传首付款凭证
                 case R.id.saleRecorTv4:
-                    SaleRecordActivity.saleRecordActivity.startPhotos("2",resultBean);
+                    SaleRecordActivity.saleRecordActivity.startPhotos(resultBean, "2");
                     break;
 
 

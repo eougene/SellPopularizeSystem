@@ -134,7 +134,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     }
 
 
-    public void startPhotos(String type, SaleOrderBean.ResultBean resultBeans) {
+    public void startPhotos(SaleOrderBean.ResultBean resultBeans,String type) {
         rBean = resultBeans;
         flag = type;
         BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
@@ -335,5 +335,41 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             e.printStackTrace();
         }
 
+    }
+
+    public void askntractO(final SaleOrderBean.ResultBean resultBeans,final String type) {
+        showDialog();
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("order_id", String.valueOf(resultBeans.getProduct_orders_id()));
+        ajaxParams.put("remark", "test");
+        ajaxParams.put("sales_advice_is_true", "1");
+        Log.e("参数***","ajaxParams:"+ajaxParams.toString());
+        finalHttp.post(Contants.APPLY_CONTRACT, ajaxParams, new AjaxCallBack<String>() {
+
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+                Log.e("请求合同*", "s:" + s);
+
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                if (errorBean.getCode().equals("1")) {
+                    SaleRecordActivity.saleRecordActivity.startPhotos(resultBeans,type);
+                } else {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                closeDialog();
+                Log.e("请求合同*", "errorNo:" + errorNo);
+                ToasShow.showToastCenter(SaleRecordActivity.this, strMsg);
+
+            }
+        });
     }
 }

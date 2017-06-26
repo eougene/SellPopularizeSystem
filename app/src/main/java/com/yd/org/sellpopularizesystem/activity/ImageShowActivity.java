@@ -12,7 +12,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.ImagePagerAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
-import com.yd.org.sellpopularizesystem.myView.imageshow.ImageShowViewPager;
 
 import java.util.ArrayList;
 import java.util.List;

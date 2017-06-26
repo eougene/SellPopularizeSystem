@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/padding_margin_20"
         android:layout_marginTop="@dimen/padding_margin_8"
-        android:maxLines="1"
-        android:text="@string/questionTitle" />
+        android:maxLines="1"/>
 
     <RadioGroup
         android:id="@+id/childRadioGroup"

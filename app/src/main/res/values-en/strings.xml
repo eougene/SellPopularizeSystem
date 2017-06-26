@@ -79,15 +79,6 @@
 
     <string name="rephotograph">Remake</string>
     <string name="use">Use pictures</string>
-    <string name="questionTitle">1.我国铁路部门规定身高多少的儿童要买全票(单选)?</string>
-    <string name="question1option1">1.20米</string>
-    <string name="question1option2">1.30米</string>
-    <string name="question1option3">1.40米</string>
-    <string name="questionTitle2">2.变压器的损耗一般包括(多选)</string>
-    <string name="question2option1">铁损</string>
-    <string name="question2option2">磁损</string>
-    <string name="question2option3">线损</string>
-    <string name="question2option4">铜损</string>
     <string name="inverstigation">Select Client</string>
 
     <!--微信相关-->
@@ -497,8 +488,12 @@
     <string name="lineup">Line up</string>
     <string name="zhou">state</string>
     <string name="qu">District</string>
-    <string name="cancel_order">取消订单</string>
-    <string name="pay_fail">支付失败</string>
-    <string name="pay_su">支付成功</string>
-    <string name="pay_error">支付错误</string>
+    <string name="cancel_order">Cancel order</string>
+    <string name="pay_fail">Pay failure</string>
+    <string name="pay_su">Pay success</string>
+    <string name="pay_error">Pay wrong</string>
+    <string name="Lastname">Name</string>
+    <string name="ensure_sd">Please make sure the insert SD card already</string>
+    <string name="camera_hint">The application of camera permission prohibited would lead to subsequent operation cannot be performed！</string>
+    <string name="house_land">House&#038;Land</string>
 </resources>
