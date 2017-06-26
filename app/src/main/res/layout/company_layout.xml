@@ -383,9 +383,9 @@
                         style="@style/MatchWrap"
                         android:background="@null"
                         android:drawableRight="@mipmap/right_sm"
-                        android:maxLines="1"
                         android:padding="@dimen/padding_margin_10"
                         android:text="@string/country"
+                        android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_15"/>

@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170616
-        versionName "1.0.1"
+        versionCode 20170532
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         //个推配置文件
@@ -90,7 +90,7 @@ dependencies {
     compile 'com.getui:sdk:2.10.2.0'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.lovedise:permissiongen:0.0.6'
-    compile files('libs/alipaySDK-20150724.jar')
-    compile files('libs/libammsdk.jar')
-
+    compile 'com.github.ibosong.CommentGallery:frescozoomablelib:1.0.1'
+    compile 'com.github.ibosong.CommentGallery:largeimagegallerylib:1.0.1'
+    compile 'com.github.ibosong.CommentGallery:commentgallerylib:1.0.1'
 }

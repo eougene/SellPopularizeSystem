@@ -5,6 +5,11 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.facebook.common.logging.FLog;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.imagepipeline.listener.RequestListener;
+import com.facebook.imagepipeline.listener.RequestLoggingListener;
 import com.igexin.sdk.PushManager;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.umeng.socialize.Config;
@@ -15,6 +20,9 @@ import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 /**
@@ -92,7 +100,13 @@ public class BaseApplication extends Application {
             handler = new MainHandler();
         }
 
-
+        FLog.setMinimumLoggingLevel(FLog.VERBOSE);
+        Set<RequestListener> listeners = new HashSet<>();
+        listeners.add(new RequestLoggingListener());
+        ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
+                .setRequestListeners(listeners)
+                .build();
+        Fresco.initialize(this, config);
     }
 
 
