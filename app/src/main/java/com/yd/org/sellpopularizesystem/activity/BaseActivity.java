@@ -297,7 +297,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             return;
         }
 
-        mlistener = mlistener;
         List<String> unGrantedPermissionsList = new ArrayList<String>(); // 未授权权限的集合
 
         for (String permission : permissions) {
