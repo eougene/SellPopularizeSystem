@@ -34,14 +34,14 @@ public class ViewPagerIndicator extends LinearLayout {
     /**
      * 三角形底边的最大宽度
      */
-    private final int DIMENSION_TRIANGLE_WIDTH_MAX = (int) (getScreenWidth()/3*RADIO_TRIANGLE_WIDTH);
+    private final int DIMENSION_TRIANGLE_WIDTH_MAX = (int) (getScreenWidth() / 3 * RADIO_TRIANGLE_WIDTH);
     private int mInitTranslationX;// 第一个三角形初始化的偏移位置
     private int mTranslationX;// 移动时候的三角形偏移位置
     private int mTabVisibleCount;// 可见tab的数量
     private static final int COUNT_DEFAULT_TAB = 4;// 默认可见tab为4个
     private List<String> mTitles;// 接收传递过来的title
     private static final int COLOR_TEXT_NORMAL = Color.parseColor("#FFFFFF");
-    private static final int COLOR_TEXT_HIGHLIGHT = Color.parseColor("#FF4CDA0F");
+    private static final int COLOR_TEXT_HIGHLIGHT = Color.parseColor("#FFFFFF");
 
     public ViewPagerIndicator(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -79,7 +79,7 @@ public class ViewPagerIndicator extends LinearLayout {
     /**
      * 绘制三角形
      * 绘制VIew本身的内容，通过调用View.onDraw(canvas)函数实现,绘制自己的孩子通过dispatchDraw（canvas）实现
-     *
+     * <p>
      * 画完背景后，draw过程会调用onDraw(Canvas canvas)方法，然后就是dispatchDraw(Canvas canvas)方法,
      * dispatchDraw
      * ()主要是分发给子组件进行绘制，我们通常定制组件的时候重写的是onDraw()方法。值得注意的是ViewGroup容器组件的绘制
@@ -110,7 +110,7 @@ public class ViewPagerIndicator extends LinearLayout {
 
     /**
      * 设置三角形的大小
-     *
+     * <p>
      * onSizeChanged()在控件大小发生变化的时候调用(例如第一次初始化控件的时候) 布局过程中，
      * 先调onMeasure计算每个child的大小， 然后调用onLayout对child进行布局，
      * onSizeChanged（）是在布局发生变化时的回调函数，间接回去调用onMeasure, onLayout函数重新布局
@@ -141,7 +141,7 @@ public class ViewPagerIndicator extends LinearLayout {
         mPath = new Path();
         mPath.moveTo(0, 0);
         mPath.lineTo(mTriangleWidth, 0);
-        mPath.lineTo(mTriangleWidth/2, -mTriangleHeight*2);
+        mPath.lineTo(mTriangleWidth / 2, -mTriangleHeight * 2);
         // 关闭当前轮廓，完成闭合
         mPath.close();
     }
@@ -160,7 +160,7 @@ public class ViewPagerIndicator extends LinearLayout {
          * 容器移动,在tab处于移动至最后一个时
          */
         if (position >= (mTabVisibleCount - 2) && positionOffset > 0
-                && getChildCount() > mTabVisibleCount&&position<getChildCount()-2) {
+                && getChildCount() > mTabVisibleCount && position < getChildCount() - 2) {
 
             if (mTabVisibleCount != 1) {
                 this.scrollTo((position - (mTabVisibleCount - 2)) * tabWidth
@@ -182,7 +182,7 @@ public class ViewPagerIndicator extends LinearLayout {
 
     /**
      * xml加载完成之后，回调此方法
-     *
+     * <p>
      * 设置每个tab的LayoutParams
      */
     @Override
@@ -243,7 +243,6 @@ public class ViewPagerIndicator extends LinearLayout {
     }
 
 
-
     /**
      * 根据title创建tab
      *
@@ -270,7 +269,6 @@ public class ViewPagerIndicator extends LinearLayout {
      * 提供一个接口供外部ViewPager使用
      *
      * @author Administrator
-     *
      */
     public interface PageOnChangeListener {
         public void onPageScrolled(int position, float positionOffset,
@@ -332,19 +330,21 @@ public class ViewPagerIndicator extends LinearLayout {
 
     /**
      * 高亮被点击的tab
+     *
      * @param position
      */
-    private void highLightTextView(int position){
+    private void highLightTextView(int position) {
         resetTextViewColor();
         View view = getChildAt(position);
         if (view instanceof TextView) {
             ((TextView) view).setTextColor(COLOR_TEXT_HIGHLIGHT);
         }
     }
+
     /**
      * 重置tab文本颜色
      */
-    private void resetTextViewColor(){
+    private void resetTextViewColor() {
         for (int i = 0; i < getChildCount(); i++) {
             View view = getChildAt(i);
             if (view instanceof TextView) {
@@ -356,7 +356,7 @@ public class ViewPagerIndicator extends LinearLayout {
     /**
      * 设置Tab的点击事件
      */
-    private void setItemClickEvent(){
+    private void setItemClickEvent() {
         int childCount = getChildCount();
         for (int i = 0; i < childCount; i++) {
             final int j = i;
