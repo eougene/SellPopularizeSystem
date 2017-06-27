@@ -8,9 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170532
-        versionName "1.0.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode 20170626
+        versionName "1.2.0"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -24,7 +23,7 @@ android {
         release {
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('keystore/sellpopularizesystem.jks')
+            storeFile file('/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }
@@ -90,7 +89,5 @@ dependencies {
     compile 'com.getui:sdk:2.10.2.0'
     compile 'com.tencent.bugly:crashreport:latest.release'
     compile 'com.lovedise:permissiongen:0.0.6'
-    compile 'com.github.ibosong.CommentGallery:frescozoomablelib:1.0.1'
-    compile 'com.github.ibosong.CommentGallery:largeimagegallerylib:1.0.1'
-    compile 'com.github.ibosong.CommentGallery:commentgallerylib:1.0.1'
+
 }
