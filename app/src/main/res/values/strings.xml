@@ -504,5 +504,7 @@
     <string name="pro_city_area">省市区不能为空</string>
     <string name="contact_address">联系地址不能为空</string>
     <string name="firb_not_empty">firb不能为空</string>
+    <string name="more">查看更多</string>
+    <string name="order_id">订单号</string>
 
 </resources>
