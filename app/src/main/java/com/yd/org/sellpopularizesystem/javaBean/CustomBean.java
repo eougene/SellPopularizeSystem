@@ -157,7 +157,7 @@ public class CustomBean extends Domine {
         private String wechat_nick;
         private String wechat_img;
         private String qq_number;
-        private Object e_mail;
+        private String e_mail;
         private String job;
         private int income;
         private Object family_name;
@@ -489,11 +489,11 @@ public class CustomBean extends Domine {
             this.qq_number = qq_number;
         }
 
-        public Object getE_mail() {
+        public String getE_mail() {
             return e_mail;
         }
 
-        public void setE_mail(Object e_mail) {
+        public void setE_mail(String e_mail) {
             this.e_mail = e_mail;
         }
 

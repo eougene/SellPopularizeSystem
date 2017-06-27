@@ -36,8 +36,8 @@ public class FileUtils {
     public static final long MB = KB * 1024;
     public static final long GB = MB * 1024;
     private static final int BUFFER = 8192;
-    public static final String	ICON_DIR = "icon";
-    public static final String APP_STORAGE_ROOT = "AndroidNAdaption";
+    public static final String	ICON_DIR = "pictrue";
+    public static final String APP_STORAGE_ROOT = "yingjia";
     /**
      * 格式化文件大小<b> 带有单位
      *
@@ -138,8 +138,6 @@ public class FileUtils {
         sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
         sb.append(File.separator);
         sb.append(APP_STORAGE_ROOT);
-        sb.append(File.separator);
-        sb.append("yingjia");
         sb.append(File.separator);
         return sb.toString();
     }
