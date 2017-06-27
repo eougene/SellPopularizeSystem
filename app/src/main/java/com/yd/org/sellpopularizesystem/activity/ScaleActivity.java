@@ -101,6 +101,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 area = psu.getArea();
                 house = psu.getHouse();
                 price = psu.getPrice();
+                Log.e("area:::","area::"+area);
+                Log.e("house:::","house::"+house);
+                Log.e("price:::","price::"+price);
                 if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
                     ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.network_error));
                 } else {
@@ -142,7 +145,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             getProductListData(true, page, space, price, house, area);
         }
 
-       // setBackImageView(R.mipmap.backbt);
+        // setBackImageView(R.mipmap.backbt);
         setTitle(getResources().getString(R.string.home_scale));
         //setColor(Color.BLACK);
         //setBaseLayoutBackground(Color.WHITE);

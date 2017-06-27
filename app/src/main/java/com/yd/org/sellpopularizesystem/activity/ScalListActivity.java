@@ -84,7 +84,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
 
 
         ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "10");
+        ajaxParams.put("number", "20");
 
         fh.get(Contants.SCALE_LIST, ajaxParams, new AjaxCallBack<String>() {
 

@@ -86,7 +86,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     @Override
     public void initView() {
         customeActivity = this;
-        setTitle(getResources().getString(R.string.home_custom));
+        setTitle(getResources().getString(R.string.inverstigation));
         initViews();
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();

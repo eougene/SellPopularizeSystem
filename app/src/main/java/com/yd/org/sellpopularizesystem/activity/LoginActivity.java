@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.fragment.LoginFragment;
-import com.yd.org.sellpopularizesystem.fragment.RegisterFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.myView.ViewPagerIndicator;
@@ -27,8 +26,6 @@ import java.util.List;
 
 public class LoginActivity extends FragmentActivity {
     private Class userPushService = PushService.class;
-    private String client_id = "";
-
     private ViewPagerIndicator vpi;
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;// ViewPager适配器

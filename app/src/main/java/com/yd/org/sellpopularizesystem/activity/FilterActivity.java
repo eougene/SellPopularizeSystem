@@ -104,15 +104,21 @@ public class FilterActivity extends BaseActivity {
                     break;
                 case R.id.tvProductSearch:
                     Message message=ScaleActivity.scaleActivity.handler.obtainMessage();
+
                     ScaleActivity.scaleActivity.psu.setArea(tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
                     ScaleActivity.scaleActivity.psu.setHouse(tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
+
                     //ScaleActivity.scaleActivity.psu.setSpace(tvSelectType.getText().toString().equals("不限")?"":selectStrTag);
+
                     ScaleActivity.scaleActivity.psu.setPrice(tvSelectPrice.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
+
                     message.obj=ScaleActivity.scaleActivity.psu;
                     ScaleActivity.scaleActivity.handler.handleMessage(message);
+
                     String strArea=tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":tvAreaDes.getText().toString();
                     String strHt=tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":tvHouseType.getText().toString();
                     String strPrice=tvSelectPrice.getText().toString().equals(getString(R.string.unlimited_))?"":tvSelectPrice.getText().toString();
+
                     selectContent=strArea+strHt+strPrice;
                     ScaleActivity.scaleActivity.strSelect=selectContent;
                     finish();

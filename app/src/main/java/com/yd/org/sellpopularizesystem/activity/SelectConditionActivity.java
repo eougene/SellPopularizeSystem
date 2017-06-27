@@ -1,12 +1,10 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.IdRes;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -37,7 +35,7 @@ public class SelectConditionActivity extends BaseActivity {
         initStting();
         str = getIntent().getExtras().getString("fatosca");
         if (str.equals("area")){
-            setTitle(R.string.area);
+            setTitle(R.string.type);
             llHouseType.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
@@ -136,6 +134,8 @@ public class SelectConditionActivity extends BaseActivity {
                     RadioButton rbArea= (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbArea.getTag();
                     selectStr=rbArea.getText().toString();
+
+                    Log.e("选择***","selectStr:"+selectStr);
                     break;
                 case R.id.rgType:
                     RadioButton rbType = (RadioButton) findViewById(group.getCheckedRadioButtonId());

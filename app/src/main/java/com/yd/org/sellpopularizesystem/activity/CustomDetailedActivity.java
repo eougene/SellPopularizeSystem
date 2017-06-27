@@ -1408,6 +1408,8 @@ public class CustomDetailedActivity extends BaseActivity {
                             try {
                                 BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
                                 cameraFile.delete();
+
+                                Log.e("imagePath*1*","imagePath:"+pic.getAbsolutePath());
                                 CropImage(pic.getAbsolutePath());
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
@@ -1449,6 +1451,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 case CROP_IMAGE:
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
+                        Log.e("imagePath*2*","imagePath:"+imagePath);
                         Picasso.with(this).load("file://" + imagePath).into(customeIcon);
                         if (null != imagePath) {
                             if (!tag.equals("add")) {
