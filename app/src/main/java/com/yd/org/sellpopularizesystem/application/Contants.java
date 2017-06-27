@@ -23,7 +23,8 @@ public class Contants {
     //获取推广筛选数据
     public static final String SCALE_SEARCH = DOMAIN + "/index.php/appv2/product/product_search_option";
     //获取产品推广筛选数据
-    public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
+   public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
+   // public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list";
 
     //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
