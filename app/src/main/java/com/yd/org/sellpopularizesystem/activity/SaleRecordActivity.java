@@ -1,8 +1,10 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -137,7 +139,30 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void startPhotos(SaleOrderBean.ResultBean resultBeans,String type) {
         rBean = resultBeans;
         flag = type;
-        BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
+        if (Build.VERSION.SDK_INT < 23) {
+            //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+            BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
+        } else {
+            requestPermissions(new String[]{Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    new PermissionListener() {
+                        @Override
+                        public void onGranted() {// 全部授权成功回调
+                            // 执行具体业务
+                            //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                            BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
+                        }
+
+                        @Override
+                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                            for (String permission : deniedPermissionList) {
+                                ToasShow.showToastCenter(SaleRecordActivity.this, permission.toString());
+                            }
+                        }
+                    });
+        }
+
     }
 
     /**
@@ -176,7 +201,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         lvSaleRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
+               /* SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
                 SaleOrderBean.ResultBean resultBean = viewHolder.resultBean;
                 ProductListBean.ResultBean pp = new ProductListBean.ResultBean();
                 pp.setProduct_id(Integer.parseInt(resultBean.getProduct_id()));
@@ -188,8 +213,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("bean", pp);
                 bundle.putString("productName", resultBean.getProduct_name().getProduct_name());
-                bundle.putString("productId", resultBean.getProduct_id());
-                ActivitySkip.forward(SaleRecordActivity.this, ProductItemDetailActivity.class, bundle);
+                bundle.putString("productId", resultBean.getProduct_id());*/
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("order", sobRbData.get(position));
+                ActivitySkip.forward(SaleRecordActivity.this, OrderDetailActivity.class,bundle);
 
             }
         });
@@ -355,11 +382,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 Gson gson = new Gson();
                 ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                 if (errorBean.getCode().equals("1")) {
-                    SaleRecordActivity.saleRecordActivity.startPhotos(resultBeans,type);
+                        SaleRecordActivity.saleRecordActivity.startPhotos(resultBeans,type);
                 } else {
                     ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                 }
-
 
             }
 

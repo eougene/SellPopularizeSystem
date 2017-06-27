@@ -496,4 +496,12 @@
     <string name="ensure_sd">Please make sure the insert SD card already</string>
     <string name="camera_hint">The application of camera permission prohibited would lead to subsequent operation cannot be performed！</string>
     <string name="house_land">House&#038;Land</string>
+    <string name="orde_num">Order number</string>
+    <string name="order_info">Order information</string>
+    <string name="order_success_info">Order information successfully obtained.</string>
+    <string name="complete">complete</string>
+    <string name="nation_and_area">Nationality or area cannot be empty</string>
+    <string name="pro_city_area"> Province, urban and areas can not be empty</string>
+    <string name="contact_address">Contact address cannot be empty</string>
+    <string name="firb_not_empty">FIRB cannot be empty</string>
 </resources>

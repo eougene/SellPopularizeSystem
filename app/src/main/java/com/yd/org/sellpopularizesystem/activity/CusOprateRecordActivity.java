@@ -888,13 +888,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         if (null != data && null != data.getData()) {
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
-                            ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         } else {
                             Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imgUri));
                             Log.e("Authority", "onActivityResult: " + imgUri + "\n" + imgUri.getAuthority());
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, imgUri, null, null);
                             Log.e("picPath", "onActivityResult: " + picPath);
-                            ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
                     } catch (IOException e) {
                         e.printStackTrace();

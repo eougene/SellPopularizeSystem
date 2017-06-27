@@ -5,8 +5,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -64,6 +67,9 @@ import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -766,12 +772,12 @@ public class CustomDetailedActivity extends BaseActivity {
                 }
                 if (flag == 1) {
                     edcustmomeDetailedNationality.setText(countryName);
-                    if (!countryName.equals(getResources().getString(R.string.china)) && !TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())){
+                    if (!countryName.equals(getResources().getString(R.string.china)) && !TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())) {
                         edcustmomeDetailedCity.setText("");
                     }
-                }else if (flag == 2){
+                } else if (flag == 2) {
                     tvCountry.setText(countryName);
-                }else {
+                } else {
                     etNation.setText(countryName);
                 }
                 nationSelectPopWindow.dismiss();
@@ -1066,16 +1072,31 @@ public class CustomDetailedActivity extends BaseActivity {
         Log.e("生日**", "bir:" + birth_date);
         //Log.e("头像", "file:" + file.getAbsolutePath());
         http.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
+
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 closeDialog();
+                Log.e(TAG, "onSuccess: "+s);
                 if (updateOrAdd.equals(ADD)) {
                     ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.addsuccess));
                 } else {
                     ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.updatesuccess));
+                    try {
+                        JSONObject jsonObject = new JSONObject(s);
+                        if (jsonObject.getString("msg").equals(getString(R.string.updatesuccess))){
+                            if (tag.equals("completeinfo")){
+                                ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
+                                //重新赋值
+                                setCustomerValue(BaseApplication.getInstance().getResultBean());
+                            }
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
                 }
-                if(!tag.equals("completeinfo")){
+                if (!tag.equals("completeinfo")) {
                     CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
                 }
                 finish();
@@ -1094,6 +1115,30 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
+    private void setCustomerValue(CustomBean.ResultBean resultBean) {
+        resultBean.setFirst_name(TextUtils.isEmpty(etFistName.getText().toString().trim())?"":etFistName.getText().toString().trim());
+        resultBean.setSurname(TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())?"":edCustomeTrueName.getText().toString().trim());
+        resultBean.setEn_name(TextUtils.isEmpty(etEnglishName.getText().toString().trim())?"":etEnglishName.getText().toString().trim());
+        resultBean.setBirth_date(TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())?"":edcustmomeDetailedBie.getText().toString().trim());
+        resultBean.setMobile(TextUtils.isEmpty(edCustomeMobile.getText().toString().trim())?"":edCustomeMobile.getText().toString().trim());
+        resultBean.setCountry(TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim())?"":edcustmomeDetailedNationality.getText().toString().trim());
+        resultBean.setProvince(TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())?"":edcustmomeDetailedCity.getText().toString().trim());
+        resultBean.setAddress(TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString().trim())?"":edcustmomeDetailedAddress.getText().toString().trim());
+        resultBean.setE_mail(TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())?"":edcustmomeDetailedEmail.getText().toString().trim());
+        resultBean.setJob(TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim())?"":edcustmomeDetailedWeJob.getText().toString().trim());
+        resultBean.setIncome(TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString().trim())?0:Integer.parseInt(edcustmomeDetailedSalary.getText().toString().trim()));
+        resultBean.setCard_id(TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())?"":edcustmomeDetailedCard.getText().toString().trim());
+        resultBean.setPassport_id(TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString().trim())?"":edcustmomeDetailedPassPort.getText().toString().trim());
+        resultBean.setPassport_country(TextUtils.isEmpty(etNation.getText().toString().trim())?"":etNation.getText().toString().trim());
+        resultBean.setFamily_name(TextUtils.isEmpty(etLn.getText().toString().trim())?"":etLn.getText().toString().trim());
+        resultBean.setFamily_first_name(TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString().trim())?"":edcustmomeDetailedKinsfolk.getText().toString().trim());
+        resultBean.setFamily_relationship(TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString().trim())?"":edcustmomeDetailedRelation.getText().toString().trim());
+        resultBean.setFamily_mobile(TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString().trim())?"":edcustmomeDetailedPhone.getText().toString().trim());
+        resultBean.setZip_code(TextUtils.isEmpty(edZipCode.getText().toString().trim())?"":edZipCode.getText().toString().trim());
+        resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim())?0:1);
+        resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim())?"":edcustmomeDetailedWeChat.getText().toString().trim());
+        resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim())?"":edcustmomeDetailedQQ.getText().toString().trim());
+    }
 
     private void getEditTextData(String updateOrAdd) {
         String surname = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", province = "", city = "", area = "", address = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
@@ -1149,6 +1194,12 @@ public class CustomDetailedActivity extends BaseActivity {
         //国籍或地区
         if (!TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim())) {
             country = edcustmomeDetailedNationality.getText().toString().trim();
+        } else {
+            if (tag.equals("completeinfo")) {
+                ToasShow.showToastCenter(this, getString(R.string.nation_and_area));
+                return;
+            }
+
         }
 
         //省
@@ -1157,12 +1208,22 @@ public class CustomDetailedActivity extends BaseActivity {
             //市区
             city = "";
             area = "";
+        } else {
+            if (tag.equals("completeinfo")) {
+                ToasShow.showToastCenter(this, getString(R.string.pro_city_area));
+                return;
+            }
         }
 
         //联系地址
         if (!TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString())) {
             address = edcustmomeDetailedAddress.getText().toString();
 
+        } else {
+            if (tag.equals("completeinfo")) {
+                ToasShow.showToastCenter(this, getString(R.string.contact_address));
+                return;
+            }
         }
 
         //工作
@@ -1230,6 +1291,9 @@ public class CustomDetailedActivity extends BaseActivity {
             } else {
                 is_firb = "0";
             }
+        } else {
+            ToasShow.showToastCenter(this, getString(R.string.firb_not_empty));
+            return;
         }
 
         //微信
@@ -1257,7 +1321,27 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (v.getId()) {
                 case R.id.photoButton:
                     myPopupwindow.dismiss();
-                    BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
+                    if (Build.VERSION.SDK_INT < 23) {
+                        BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
+                    } else {
+                        requestPermissions(new String[]{Manifest.permission.CAMERA,
+                                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                new PermissionListener() {
+                                    @Override
+                                    public void onGranted() {// 全部授权成功回调
+                                        // 执行具体业务
+                                        BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
+                                    }
+
+                                    @Override
+                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                                        for (String permission : deniedPermissionList) {
+                                            ToasShow.showToastCenter(CustomDetailedActivity.this, permission.toString());
+                                        }
+                                    }
+                                });
+                    }
                     break;
 
                 case R.id.cancelButton:
@@ -1310,7 +1394,7 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (requestCode) {
                 //拍照
                 case ExtraName.TAKE_PICTURE:
-                    if (resultCode == RESULT_OK) {
+                    /*if (resultCode == RESULT_OK) {
 
                         File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
                         if (cameraFile.exists()) {
@@ -1332,6 +1416,31 @@ public class CustomDetailedActivity extends BaseActivity {
                             }
                         }
 
+                    }*/
+
+                    Uri photoUri = BitmapUtil.imgUri;
+                    String picPath = "";
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+                        picPath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
+                        //picPath=BitmapUtil.imgPath;
+                        Bitmap bitmap = null;
+                        try {
+                            //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
+                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                    } else {
+                        Uri imgUri = Uri.parse(BitmapUtil.imgPath);
+                        picPath = imgUri.getPath();
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                    }
+                    if (null != imagePath) {
+                        if (!tag.equals("add")) {
+                            changeHeadImage(picPath);
+                        }
                     }
                     break;
 

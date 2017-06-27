@@ -50,7 +50,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
 
-
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
 
         baseView = getViewById(R.id.baseView);

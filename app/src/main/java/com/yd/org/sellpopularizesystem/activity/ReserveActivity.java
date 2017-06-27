@@ -72,19 +72,13 @@ public class ReserveActivity extends BaseActivity {
             btCheck, btReTypeCancel, btReSubmit, btFromCamera, btFromAlbum, btPhotoCancel, btSelecCus, btEditCusInfo, btCusCancel;
     private CustomePopuWindow mCustomePopuWindow;
     private CommonPopuWindow rePayTypePopuWindow, setPhotoPopuWindow, cusSelectPop;
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    };
     private String imagePath;
     private String picPath = "";
     private String customeId;
     private Dialog payMethodDialog;
     private LinearLayout llCertificate;
     private String payment_method;
-
+    public static ReserveActivity reserveActivity;
 
     @Override
     protected int setContentView() {
@@ -93,6 +87,7 @@ public class ReserveActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        reserveActivity=this;
         Bundle bundle = getIntent().getExtras();
         bean = (ProSubunitListBean.ResultBean.PropertyBean) bundle.get("item");
         lawBean = (LawyerBean.ResultBean) bundle.get("custome");
@@ -170,6 +165,15 @@ public class ReserveActivity extends BaseActivity {
         btPhotoCancel = (Button) msetPhotoView.findViewById(R.id.btPhotoCancel);
         initData();
     }
+    //接受来自客户详情页发送过来的消息
+    public Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                tvReCus.setTextColor(Color.BLUE);
+            }
+        }
+    };
 
     private void initPayMethodDialog() {
         payMethodDialog = new Dialog(this);
@@ -714,11 +718,11 @@ public class ReserveActivity extends BaseActivity {
                             e.printStackTrace();
                         }
                         //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
-                        ivCertificate.setImageBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath));
+                        ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                     }else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
                         picPath = imgUri.getPath();
-                        ivCertificate.setImageBitmap(BitmapFactory.decodeFile(picPath));
+                        ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
                     }
                     break;
 
