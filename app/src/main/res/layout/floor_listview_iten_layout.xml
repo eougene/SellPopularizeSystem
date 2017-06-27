@@ -6,8 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/home_scale">
+        android:layout_height="180dp"
+        android:background="@color/setting_bac">
 
         <ImageView
             android:id="@+id/ivFloorImage"

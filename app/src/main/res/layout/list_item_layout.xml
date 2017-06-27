@@ -10,7 +10,7 @@
         <ImageView
             android:id="@+id/prductImageView"
             style="@style/MatchMatch"
-            android:background="@color/search_edit_bac"
+            android:background="@color/shallow_gray"
             android:scaleType="fitXY"/>
 
         <TextView
