@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.application;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -37,12 +38,15 @@ public class BaseApplication extends Application {
     public String cid="";
     private static MainHandler handler;
     private int is_firb,firb_number;
-
+    private static Context mContext;
     //个推结束
     public BaseApplication() {
         mApp = this;
     }
 
+    public static Context getContext() {
+        return mContext;
+    }
 
     public CustomBean.ResultBean getResultBean() {
         return resultBean;
@@ -107,6 +111,8 @@ public class BaseApplication extends Application {
                 .setRequestListeners(listeners)
                 .build();
         Fresco.initialize(this, config);
+        // 上下文
+        mContext = getApplicationContext();
     }
 
 
