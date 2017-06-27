@@ -504,4 +504,7 @@
     <string name="pro_city_area"> Province, urban and areas can not be empty</string>
     <string name="contact_address">Contact address cannot be empty</string>
     <string name="firb_not_empty">FIRB cannot be empty</string>
+    <string name="more">查看更多</string>
+    <string name="order_id">订单号</string>
+
 </resources>
