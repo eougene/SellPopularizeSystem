@@ -58,6 +58,7 @@
     <string name="check">考核</string>
     <string name="check_results">查看成绩</string>
     <string name="check_exam">开始考试</string>
+    <string name="start_check">开始考核</string>
     <string name="customdetaild_title">编辑</string>
     <string name="customdetaild_save">保存</string>
     <string name="custome_add">新增用户</string>
