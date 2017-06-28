@@ -47,7 +47,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
 
-        listView.setDividerHeight(20);
+        listView.setDividerHeight(30);
 
         getInfo(1, true);
 

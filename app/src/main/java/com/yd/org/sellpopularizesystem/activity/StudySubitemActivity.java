@@ -59,7 +59,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
 
             //基础知识
         } else if (flagStr.equals("basic")) {
-            type_id = "2";
+            type_id = "3";
             setTitle(R.string.basic_konwledge);
             getStudyListData(true, page, type_id);
         } else if (flagStr.equals("saleTec")) {
