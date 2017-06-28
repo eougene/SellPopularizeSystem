@@ -510,5 +510,6 @@
     <string name="land">Land</string>
     <string name="apt">Apt</string>
     <string name="order_detail">订单详情</string>
+    <string name="exchange_fee">交换合同保证金</string>
 
 </resources>

@@ -20,6 +20,7 @@ import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
+import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -62,7 +63,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     //从产品中点击预订跳转标志
     private String flag = "";
     private ProductDetailBean.ResultBean prs;
-    private Bundle bund;
+    private Bundle bund=new Bundle();
     //筛选
     private OptionsPickerView optionsPickerView;
     private List houseTypes = new ArrayList<>();
@@ -316,7 +317,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private void setAdapter() {
         adapter = new CommonAdapter<ProSubunitListBean.ResultBean.PropertyBean>(this, data, R.layout.productdetaill_activity_listview_item) {
             @Override
-            public void convert(ViewHolder holder, ProSubunitListBean.ResultBean.PropertyBean item) {
+            public void convert(ViewHolder holder, final ProSubunitListBean.ResultBean.PropertyBean item) {
                 Log.e("tag", "convert: " + item.getIs_lock());
                 //没有预订时颜色
                 if (item.getIs_lock() == 0) {
@@ -335,7 +336,17 @@ public class ProductSubunitListActivity extends BaseActivity {
                     //holder.setImageByUrl(R.id.ivHousePhoto,item.getThumb(),mOnClickListener);
                     holder.getView(R.id.tvNoPhoto).setVisibility(View.GONE);
                     holder.getView(R.id.ivHousePic).setVisibility(View.VISIBLE);
-                    holder.getView(R.id.ivHousePic).setOnClickListener(mOnClickListener);
+                    holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            List<ImageContent> imgContents=new ArrayList<ImageContent>();
+                            ImageContent imageContent=new ImageContent();
+                            imageContent.setUrl(item.getThumb());
+                            imgContents.add(imageContent);
+                            bund.putSerializable("img_content", (Serializable) imgContents);
+                            ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
+                        }
+                    });
                 } else {
                     holder.getView(R.id.tvNoPhoto).setVisibility(View.VISIBLE);
                     holder.getView(R.id.ivHousePic).setVisibility(View.GONE);
@@ -354,13 +365,12 @@ public class ProductSubunitListActivity extends BaseActivity {
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            bund = new Bundle();
             switch (v.getId()) {
                 case R.id.rightTitle:
                     optionsPickerView.show();
                     break;
 
-                case R.id.ivHousePic:
+                /*case R.id.ivHousePic:
                     if (bund == null) {
                         bund = new Bundle();
                     }
@@ -378,7 +388,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                             getItemProductDetail();
                         }
                     }
-                    break;
+                    break;*/
                 case R.id.rlPop:
                     if (mCustomePopuWindow != null) {
                         mCustomePopuWindow.dismiss();

@@ -298,7 +298,7 @@
         <activity android:name=".activity.StudySubitemActivity" />
         <activity android:name=".activity.IntroduceActivity" />
         <activity android:name=".activity.OrderDetailActivity"/>
-
+        <activity android:name=".activity.VideoActivity"/>
     </application>
 
 </manifest>

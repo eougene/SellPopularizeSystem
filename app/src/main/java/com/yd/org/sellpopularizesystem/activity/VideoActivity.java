@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
@@ -17,12 +18,14 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
         playerStandard= (JCVideoPlayerStandard) findViewById(R.id.video);
-        /*Bundle bundle = getIntent().getExtras();
-        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");*/
+        Bundle bundle = getIntent().getExtras();
+        prs= (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
       // playerStandard.setUp((String) prs.getVideo_url(),JCVideoPlayerStandard.SCREEN_LAYOUT_NORMAL,"123");
         //playerStandard.thumbImageView.setImageURI(Uri.parse());
         //视频url
-        String videoUrl="http://www.maclandgroup.com/video/2016.10.18_Macland_Video_2016.mp4";
+        //String videoUrl="http://www.maclandgroup.com/video/2016.10.18_Macland_Video_2016.mp4";
+
+        String videoUrl= Contants.DOMAIN+"/"+prs.getVideo_url();
         //设置视频地址
         playerStandard.setUp(videoUrl,JCVideoPlayerStandard.SCREEN_LAYOUT_LIST,getString(R.string.vp));
         //直接进入全屏

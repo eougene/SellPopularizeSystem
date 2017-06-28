@@ -507,7 +507,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             }
             ajaxParams.put("pay_time", "");
             ajaxParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
-            ajaxParams.put("purchaseReason", "");
+            //ajaxParams.put("purchaseReason", "");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

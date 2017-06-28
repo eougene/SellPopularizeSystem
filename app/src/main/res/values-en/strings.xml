@@ -510,4 +510,5 @@
     <string name="land">Land</string>
     <string name="apt">Apt</string>
     <string name="order_detail">Order details</string>
+    <string name="exchange_fee">Exchange contract security</string>
 </resources>

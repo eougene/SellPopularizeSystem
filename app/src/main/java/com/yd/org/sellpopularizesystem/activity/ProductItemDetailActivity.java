@@ -234,7 +234,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     tvLawyer.setText(prs.getVendor_lawyer());
                     tvBuilder.setText(prs.getBuilder());
                     tvDespositHolder.setText(prs.getDesposit_holder());
-                    tvForeignMoney.setText(prs.getExchange_deposit());
+                    tvForeignMoney.setText(prs.getExchange_deposit()+"%");
                     tvCashDesposit.setText(prs.getFirb_exchange_deposit());
                     tvSubscription.setText(prs.getMin_reservation_fee());
                     controlColor();
