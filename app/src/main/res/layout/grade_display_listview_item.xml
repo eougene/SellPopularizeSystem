@@ -12,8 +12,11 @@
 
         <TextView
             android:id="@+id/questionTitle"
-            style="@style/WrapWrap"
+            style="@style/MatchWrap"
+            android:layout_toLeftOf="@+id/ivFlag"
             android:layout_centerVertical="true"
+            android:lineSpacingExtra="3dp"
+            android:lineSpacingMultiplier="1.5"
             android:text="@string/yesorno" />
 
         <ImageView
@@ -22,6 +25,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/padding_margin_20"
+            android:layout_marginLeft="@dimen/padding_margin_4"
             android:src="@mipmap/incorrecticonx" />
 
 
