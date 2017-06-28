@@ -102,6 +102,7 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("customer_id", "");
         ajaxParams.put("law_firm", "");
+        ajaxParams.put("company_id","");
         http.get(Contants.LAWYER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
