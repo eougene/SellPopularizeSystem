@@ -120,10 +120,21 @@ public class ExamineAdapter extends BaseAdapter {
             holder.lockImageView.setVisibility(View.VISIBLE);
             holder.examineLinearLayout.setVisibility(View.GONE);
         }
-        if (list.get(position).getCan_check()==1){
-            holder.examTextView.setText(context.getString(R.string.examination_));
-            holder.examTextView.setTextColor(Color.GREEN);
+        if (list.get(position).getIs_check() == 0) {//开始考核
+            holder.examTextView.setText(context.getString(R.string.start_check));
+            holder.examTextView.setTextColor(Color.WHITE);
             holder.resultsTextView.setVisibility(View.INVISIBLE);
+        }
+        if (list.get(position).getAnswer_id() != null) {
+            holder.examTextView.setText(context.getString(R.string.examination_));
+            if (list.get(position).getIs_check() == 1) {
+                holder.examTextView.setTextColor(Color.GREEN);
+                holder.resultsTextView.setVisibility(View.INVISIBLE);
+            } else {
+                holder.examTextView.setText(context.getString(R.string.start_check));
+                holder.examTextView.setTextColor(Color.WHITE);
+                holder.resultsTextView.setVisibility(View.VISIBLE);
+            }
         }
 
         holder.resultsTextView.setOnClickListener(new View.OnClickListener() {
@@ -141,12 +152,14 @@ public class ExamineAdapter extends BaseAdapter {
         holder.examTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (finalHolder.examTextView.getText().equals(context.getString(R.string.examination_))){
+                if (finalHolder.examTextView.getText().equals(context.getString(R.string.examination_))) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("key", list.get(position));
                     ActivitySkip.forward(activity, GradeActivity.class, bundle);
-                }else{
-                    ActivitySkip.forward(activity, ExaminationActivity.class);
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("paper_id", list.get(position).getPaper_id() + "");
+                    ActivitySkip.forward(activity, ExaminationActivity.class, bundle);
                 }
 
             }
