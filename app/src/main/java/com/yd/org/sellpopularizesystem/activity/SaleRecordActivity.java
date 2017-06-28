@@ -21,7 +21,6 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
@@ -136,7 +135,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     }
 
 
-    public void startPhotos(SaleOrderBean.ResultBean resultBeans,String type) {
+    public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
         rBean = resultBeans;
         flag = type;
         if (Build.VERSION.SDK_INT < 23) {
@@ -201,22 +200,11 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         lvSaleRecord.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               /* SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
+                SaleRecordAdapter.ViewHolder viewHolder = (SaleRecordAdapter.ViewHolder) view.getTag();
                 SaleOrderBean.ResultBean resultBean = viewHolder.resultBean;
-                ProductListBean.ResultBean pp = new ProductListBean.ResultBean();
-                pp.setProduct_id(Integer.parseInt(resultBean.getProduct_id()));
-                pp.setProduct_name(resultBean.getProduct_name().getProduct_name());
-                pp.setThumb(resultBean.getProduct_info().getThumb());
-                pp.setType(1);
-
-
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("bean", pp);
-                bundle.putString("productName", resultBean.getProduct_name().getProduct_name());
-                bundle.putString("productId", resultBean.getProduct_id());*/
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("order", sobRbData.get(position));
-                ActivitySkip.forward(SaleRecordActivity.this, OrderDetailActivity.class,bundle);
+                bundle.putSerializable("order", resultBean);
+                ActivitySkip.forward(SaleRecordActivity.this, OrderDetailActivity.class, bundle);
 
             }
         });
@@ -364,14 +352,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     }
 
-    public void askntractO(final SaleOrderBean.ResultBean resultBeans,final String type) {
+    public void askntractO(final SaleOrderBean.ResultBean resultBeans, final String type) {
         showDialog();
         FinalHttp finalHttp = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("order_id", String.valueOf(resultBeans.getProduct_orders_id()));
         ajaxParams.put("remark", "test");
         ajaxParams.put("sales_advice_is_true", "1");
-        Log.e("参数***","ajaxParams:"+ajaxParams.toString());
+        Log.e("参数***", "ajaxParams:" + ajaxParams.toString());
         finalHttp.post(Contants.APPLY_CONTRACT, ajaxParams, new AjaxCallBack<String>() {
 
             @Override
@@ -382,7 +370,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 Gson gson = new Gson();
                 ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                 if (errorBean.getCode().equals("1")) {
-                        SaleRecordActivity.saleRecordActivity.startPhotos(resultBeans,type);
+                    SaleRecordActivity.saleRecordActivity.startPhotos(resultBeans, type);
                 } else {
                     ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                 }

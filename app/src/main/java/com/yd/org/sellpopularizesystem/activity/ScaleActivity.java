@@ -101,9 +101,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 area = psu.getArea();
                 house = psu.getHouse();
                 price = psu.getPrice();
-                Log.e("area:::","area::"+area);
-                Log.e("house:::","house::"+house);
-                Log.e("price:::","price::"+price);
+                Log.e("area:::", "area::" + area);
+                Log.e("house:::", "house::" + house);
+                Log.e("price:::", "price::" + price);
                 if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
                     ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.network_error));
                 } else {
@@ -210,7 +210,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         // 千万别忘了告诉控件刷新完毕了哦！
-
         page = 1;
         getProductListData(true, page, space, price, house, area);
 

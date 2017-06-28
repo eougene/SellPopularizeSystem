@@ -132,7 +132,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         final UMWeb web = new UMWeb("http://www.maclandgroup.com/");
         web.setTitle(string);
         web.setDescription(resultBean.getProduct_name());
-        if (resultBean.getThumb()!=null && !resultBean.getThumb().equals("")){
+        if (resultBean.getThumb() != null && !resultBean.getThumb().equals("")) {
             Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
                 @Override
                 public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
@@ -330,10 +330,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                 //返回按钮
                 case R.id.backImageView:
-                    if (resultBean.getType() == 0) {
-                        addSaleLog();
-                    }
-
+                    addSaleLog();
                     finish();
                     break;
             }
@@ -443,11 +440,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-            if (resultBean.getType() == 0) {
-                addSaleLog();
-            }
-
+            addSaleLog();
             finish();
             return true;
         }
