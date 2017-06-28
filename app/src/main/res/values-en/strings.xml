@@ -395,7 +395,7 @@
     <string name="payment">Payment</string>
     <string name="saler_01">Order Cancelling</string>
     <string name="saler_02">Order Cancelled</string>
-    <string name="saler_03">Receipt of deposit uploaded  \n Please wait for the approval</string>
+    <string name="saler_03">Please wait for the approval</string>
     <string name="saler_04">Has not paid the intention  \n Please payment</string>
     <string name="saler_05">Front Page Approved  \n Down Payment Approving</string>
     <string name="saler_06">Contract Applying  \nPlease wait for the approval</string>
