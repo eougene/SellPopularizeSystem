@@ -44,6 +44,7 @@ public class ExaminationActivity extends BaseActivity {
     private View que_view;
     private LayoutInflater mInflater;
     private JSONArray jsonArray;
+    private String paper_id;
 
 
     @Override
@@ -56,10 +57,11 @@ public class ExaminationActivity extends BaseActivity {
 
         setTitle(R.string.check);
         hideRightImagview();
+        paper_id = getIntent().getExtras().getString("paper_id");
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 提交按钮
         Button button = (Button) findViewById(R.id.btnSubmit);
-        initData(7 + "");
+        initData(paper_id);
         button.setOnClickListener(new ExaminationActivity.submitOnClickListener());
 
     }
@@ -73,6 +75,7 @@ public class ExaminationActivity extends BaseActivity {
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("paper_id", paperId);
+        Log.e("paperId", "initData: "+paperId );
         showDialog();
         http.get(Contants.PAPER_DETAILS, ajaxParams, new AjaxCallBack<String>() {
             @Override
@@ -291,7 +294,7 @@ public class ExaminationActivity extends BaseActivity {
 
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("paper_id", 7 + "");
+        ajaxParams.put("paper_id", paper_id);
         ajaxParams.put("answer", jsonArray.toString());
         ajaxParams.put("add_ip", "");
 
