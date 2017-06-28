@@ -146,6 +146,7 @@ public class LastFragmentView extends BaseFragmentView {
     public void controlViewVisibility() {
         if (tvEnd != null && tvStart != null) {
             tvEnd.setVisibility(View.GONE);
+            tvStart.setVisibility(View.VISIBLE);
             tvStart.setText(R.string.complete_learning);
         }
     }
