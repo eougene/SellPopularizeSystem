@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,17 +20,13 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
-import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -90,12 +85,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 if (space.equals("") && price.equals("") && house.equals("") && area.equals("")) {
                     return;
                 } else {
-                    if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-                        String jsonStr = BaseApplication.getInstance().getaCache().getAsString("product_list_json");
-                        jsonParse(jsonStr, true);
-                    } else {
-                        getProductListData(true, page, null, null, null, null);
-                    }
+                    getProductListData(true, page, null, null, null, null);
                 }
             } else {
                 area = psu.getArea();
@@ -104,11 +94,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 Log.e("area:::", "area::" + area);
                 Log.e("house:::", "house::" + house);
                 Log.e("price:::", "price::" + price);
-                if (!MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-                    ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.network_error));
-                } else {
-                    getProductListData(true, page, space, price, house, area);
-                }
+                getProductListData(true, page, space, price, house, area);
 
             }
         }
@@ -132,25 +118,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
-        //获取产品数据
-        if (!MyUtils.getInstance().isNetworkConnected(this)) {
-            String jsonStr = BaseApplication.getInstance().getaCache().getAsString("product_list_json");
-            if (jsonStr != null) {
-                jsonParse(jsonStr, true);
-            } else {
-                ToasShow.showToastCenter(this, getString(R.string.nonetwork));
-            }
-
-        } else {
-            getProductListData(true, page, space, price, house, area);
-        }
-
-        // setBackImageView(R.mipmap.backbt);
         setTitle(getResources().getString(R.string.home_scale));
-        //setColor(Color.BLACK);
-        //setBaseLayoutBackground(Color.WHITE);
-        //下拉加载
-        //showView();
+
+
+        getProductListData(true, page, space, price, house, area);
+
     }
 
 
@@ -167,9 +139,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("data", (Serializable) productData);
                 ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
-                //overridePendingTransition(R.anim.reverse_anim, 0);
-                /*rotateHelper = new RotationHelper(ScaleActivity.this, ExtraName.KEY_FIRST_INVERSE);
-                rotateHelper.applyFirstRotation(parent_container, 0, -90);*/
             }
         });
 
@@ -188,20 +157,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
 
-    public void jumpToMapAcitivity() {
-        Intent in = new Intent();
-        in.setClass(this, MapActivity.class);
-        // new一个Bundle对象，并将要传递的数据传入
-        Bundle bundle = new Bundle();
-        bundle.putString("front", "First");
-        bundle.putSerializable("data", (Serializable) productData);
-        /* 将Bundle对象assign给Intent */
-        in.putExtras(bundle);
-        // 如果已经打开过的实例，将不会重新打开新的Activity
-        // in.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        startActivity(in);
-    }
-
     /**
      * 上下拉相关
      *
@@ -218,7 +173,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         // 千万别忘了告诉控件刷新完毕了哦！
-
         page++;
         getProductListData(false, page, space, price, house, area);
 
@@ -244,11 +198,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 super.onSuccess(s);
                 closeDialog();
                 if (null != s) {
-                    if (BaseApplication.getInstance().getaCache() != null) {
-                        if (boool) {
-                            BaseApplication.getInstance().getaCache().put("product_list_json", s, ACache.TIME_HOUR);
-                        }
-                    }
                     jsonParse(s, boool);
                 }
 
@@ -272,15 +221,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
-            if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-                ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-            }
+            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             adapter = new CustomeListAdapter(ScaleActivity.this, isRefresh);
             listView.setAdapter(adapter);
         }
-        if (MyUtils.getInstance().isNetworkConnected(ScaleActivity.this)) {
-            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        }
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         adapter.addData(productData);
 
     }
