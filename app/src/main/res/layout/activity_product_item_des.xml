@@ -470,7 +470,7 @@
 
                         <TextView
                             style="@style/WrapWrap"
-                            android:text="@string/fore"
+                            android:text="@string/exchange_fee"
                             android:textColor="@color/gray"
                             android:textSize="@dimen/tv_size_15"/>
 
