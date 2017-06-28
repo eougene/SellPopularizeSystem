@@ -58,6 +58,7 @@
     <string name="check">Assessment</string>
     <string name="check_results">View Results</string>
     <string name="check_exam">Start Reviewing</string>
+    <string name="start_check">Begin assessment</string>
     <string name="customdetaild_title">Editor</string>
     <string name="customdetaild_save">Save</string>
     <string name="custome_add">Create User</string>
