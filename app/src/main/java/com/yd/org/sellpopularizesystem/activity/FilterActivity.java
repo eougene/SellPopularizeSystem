@@ -102,6 +102,7 @@ public class FilterActivity extends BaseActivity {
                     bun.putString("fatosca","price");
                     ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class,ExtraName.PRICE,bun);
                     break;
+                //点击搜索
                 case R.id.tvProductSearch:
                     Message message=ScaleActivity.scaleActivity.handler.obtainMessage();
 

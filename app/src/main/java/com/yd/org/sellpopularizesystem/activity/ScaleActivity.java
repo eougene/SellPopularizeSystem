@@ -186,7 +186,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", page + "");
         ajaxParams.put("number", "20");
-        ajaxParams.put("cate_id", cate_id);
+        ajaxParams.put("cate_id", area);
         ajaxParams.put("search_key", strSearch);
         ajaxParams.put("area", area);
         ajaxParams.put("house", house);

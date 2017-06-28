@@ -130,6 +130,7 @@ public class SelectConditionActivity extends BaseActivity {
         @Override
         public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
             switch (group.getId()){
+                //房屋类型
                 case R.id.rgArea:
                     RadioButton rbArea= (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbArea.getTag();
@@ -137,11 +138,13 @@ public class SelectConditionActivity extends BaseActivity {
 
                     Log.e("选择***","selectStr:"+selectStr);
                     break;
+                //类型
                 case R.id.rgType:
                     RadioButton rbType = (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbType.getTag();
                     selectStr=rbType.getText().toString();
                     break;
+                //价格
                 case R.id.rgPrice:
                     RadioButton rbPrice= (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbPrice.getTag();
