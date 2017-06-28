@@ -498,13 +498,15 @@
     <string name="house_land">House&#038;Land</string>
     <string name="orde_num">Order number</string>
     <string name="order_info">Order information</string>
-    <string name="order_success_info">Order information successfully obtained.</string>
+    <string name="order_success_info">Order information successfully obtained</string>
     <string name="complete">complete</string>
     <string name="nation_and_area">Nationality or area cannot be empty</string>
     <string name="pro_city_area"> Province, urban and areas can not be empty</string>
     <string name="contact_address">Contact address cannot be empty</string>
     <string name="firb_not_empty">FIRB cannot be empty</string>
-    <string name="more">查看更多</string>
-    <string name="order_id">订单号</string>
-
+    <string name="more">View more</string>
+    <string name="order_id">Order number</string>
+    <string name="land">Land</string>
+    <string name="apt">Apt</string>
+    <string name="order_detail">Order details</string>
 </resources>

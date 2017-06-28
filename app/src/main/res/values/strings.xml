@@ -498,7 +498,7 @@
     <string name="pay_error">支付错误</string>
     <string name="orde_num">订单号</string>
     <string name="order_info">订单信息</string>
-    <string name="order_success_info">成功获取订单信息.</string>
+    <string name="order_success_info">成功获取订单信息</string>
     <string name="complete">完成</string>
     <string name="nation_and_area">国籍或地区不能为空</string>
     <string name="pro_city_area">省市区不能为空</string>
@@ -506,5 +506,8 @@
     <string name="firb_not_empty">firb不能为空</string>
     <string name="more">查看更多</string>
     <string name="order_id">订单号</string>
+    <string name="land">Land</string>
+    <string name="apt">Apt</string>
+    <string name="order_detail">订单详情</string>
 
 </resources>
