@@ -23,8 +23,8 @@ public class Contants {
     //获取推广筛选数据
     public static final String SCALE_SEARCH = DOMAIN + "/index.php/appv2/product/product_search_option";
     //获取产品推广筛选数据
-   public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
-   // public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list";
+    public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
+    // public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list";
 
     //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
@@ -94,9 +94,7 @@ public class Contants {
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
     //支付宝支付接口
     public static final String ALIPAY_INTERFACE = DOMAIN + "/index.php/api/index/alipay";
-    public static final String AIL_APPPAY = DOMAIN +"/index.php/api/apppay/ali_apppay";
-
-
+    public static final String AIL_APPPAY = DOMAIN + "/index.php/api/apppay/ali_apppay";
 
 
     //微信支付接口
@@ -119,6 +117,10 @@ public class Contants {
     //申请合同
     public static final String APPLY_CONTRACT = DOMAIN + "/index.php/app/order/ask_ontract";
     //public static final String APPLY_CONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontrac";
+
+
+    //预创建create_sale_advice
+    public static final String CREATE_SALE_ADVICE = DOMAIN + "/index.php/appv2/order/create_sale_advice";
 
     //修改订单
     public static final String UPDATE_ORDER = DOMAIN + "/index.php/appv2/order/edit_order";
@@ -157,7 +159,7 @@ public class Contants {
     //eoi列表
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //使用eoi
-    public static final String EOI_USE =DOMAIN +"index.php/appv2/eoi/use_eoi";
+    public static final String EOI_USE = DOMAIN + "index.php/appv2/eoi/use_eoi";
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
