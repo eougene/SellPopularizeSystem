@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/home_study"
+        android:background="@color/scale_tab5"
         android:gravity="center_vertical">
 
         <TextView

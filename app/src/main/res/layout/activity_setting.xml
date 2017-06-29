@@ -36,7 +36,6 @@
 
 
         <TextView
-            android:visibility="gone"
             android:id="@+id/textView"
             style="@style/MatchWrap"
             android:layout_marginTop="@dimen/padding_margin_20"
@@ -44,7 +43,8 @@
             android:padding="@dimen/padding_margin_16"
             android:text="@string/about_us"
             android:textColor="@color/gray"
-            android:textSize="@dimen/tv_size_15"/>
+            android:textSize="@dimen/tv_size_15"
+            android:visibility="gone"/>
 
 
     </LinearLayout>
@@ -58,11 +58,11 @@
 
         <TextView
             android:id="@+id/cancelLoginTv"
-            android:layout_width="@dimen/padding_margin_100"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:padding="@dimen/padding_margin_16"
+            android:padding="@dimen/padding_margin_10"
             android:text="@string/setting_cancellogin"
             android:textColor="@color/home_custom"
             android:textSize="@dimen/tv_size_15"/>
