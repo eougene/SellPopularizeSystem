@@ -17,8 +17,8 @@ import java.io.StreamCorruptedException;
  */
 
 public class ObjectSaveUtil {
-    private final static String FILENAME = "login_data_save";
-    private final static String KEY = "loginResult";
+    private final static String FILENAME = "wingaid_data_save";
+    //private final static String KEY = "loginResult";
 
     /**
      * desc:保存对象
@@ -28,7 +28,7 @@ public class ObjectSaveUtil {
      * @param obj     要保存的对象，只能保存实现了serializable的对象
      *                modified:
      */
-    public static void saveObject(Context context, Object obj) {
+    public static void saveObject(Context context,String key, Object obj) {
         try {
             // 保存对象
             SharedPreferences.Editor sharedata = context.getSharedPreferences(FILENAME, 0).edit();
@@ -40,11 +40,12 @@ public class ObjectSaveUtil {
             //将序列化的数据转为16进制保存
             String bytesToHexString = bytesToHexString(bos.toByteArray());
             //保存该16进制数组
-            sharedata.putString(KEY, bytesToHexString);
+            sharedata.putString(key, bytesToHexString);
             sharedata.commit();
+            Log.e("---", "保存obj成功");
         } catch (IOException e) {
             e.printStackTrace();
-            Log.e("", "保存obj失败");
+            Log.e("---", "保存obj失败");
         }
     }
 
@@ -79,11 +80,11 @@ public class ObjectSaveUtil {
      * @param
      * @return modified:
      */
-    public static Object readObject(Context context) {
+    public static Object readObject(Context context,String key) {
         try {
             SharedPreferences sharedata = context.getSharedPreferences(FILENAME, 0);
-            if (sharedata.contains(KEY)) {
-                String string = sharedata.getString(KEY, "");
+            if (sharedata.contains(key)) {
+                String string = sharedata.getString(key, "");
                 if (TextUtils.isEmpty(string)) {
                     return null;
                 } else {

@@ -30,6 +30,7 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
@@ -376,31 +377,27 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
                 Bundle bundle = new Bundle();
+                SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
+                CustomBean.ResultBean resultBean = viewHolder.resultBean;
+                ObjectSaveUtil.saveObject(CustomeActivity.this,"custome",resultBean);
                 //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
-                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
-                    BaseApplication app = BaseApplication.getInstance();
-                    app.setResultBean(resultBean);
+                    /*BaseApplication app = BaseApplication.getInstance();
+                    app.setResultBean(resultBean);*/
                     ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
                     finish();
                 } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
-                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                    CustomBean.ResultBean lawBean = viewHolder.resultBean;
                     Intent i = new Intent();
-                    i.putExtra("custome", lawBean);
+                    i.putExtra("custome", resultBean);
                     setResult(Activity.RESULT_OK, i);
                     finish();
-                } else {
-                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
-                    BaseApplication app = BaseApplication.getInstance();
-                    app.setResultBean(resultBean);
+                } else {//正常选择客户
                     bundle.putSerializable("custome", resultBean);
                     bundle.putString("add", "list");
                     ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
                 }
+                Log.e("---", "onItemClick: "+((CustomBean.ResultBean)ObjectSaveUtil.readObject(CustomeActivity.this,"custome")).getFirst_name());
             }
         });
 
