@@ -249,7 +249,7 @@
 
                 <LinearLayout
                     style="@style/MatchWrap"
-                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_marginLeft="@dimen/padding_margin_20"
                     android:orientation="vertical">
 
 
@@ -299,7 +299,7 @@
 
                         <TextView
                             style="@style/WrapWrap"
-                            android:text="@string/saletime"
+                            android:text="@string/saledate"
                             android:textColor="@color/gray"
                             android:textSize="@dimen/tv_size_15"/>
 
@@ -337,7 +337,26 @@
 
                         <TextView
                             style="@style/WrapWrap"
-                            android:text="@string/closedate"
+                            android:text="@string/expected_date_of_launch"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"/>
+
+                        <TextView
+                            android:id="@+id/tvStartDate"
+                            style="@style/WrapWrap"
+                            android:text="1970/01/01"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/MatchWrap"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/padding_margin_6">
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:text="@string/date_of_final_launch"
                             android:textColor="@color/gray"
                             android:textSize="@dimen/tv_size_15"/>
 
