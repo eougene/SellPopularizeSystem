@@ -129,7 +129,7 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
         Lawyer lawyerBean = gson.fromJson(json, Lawyer.class);
         if (lawyerBean.getCode() == 1) {
             lawyerGroupListData = lawyerBean.getResult();
-            //律师行按姓名排序
+            /*//律师行按姓名排序
             Collections.sort(lawyerGroupListData, new Comparator<Lawyer.ResultBean>() {
                 @Override
                 public int compare(Lawyer.ResultBean o1, Lawyer.ResultBean o2) {
@@ -143,10 +143,10 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
                     }
                     else
                     {
-                        return o1.getLaw_firm().compareTo(o2.getLaw_firm());
+                        return o1.getLaw_firm().substring(0,1).compareToIgnoreCase(o2.getLaw_firm().substring(0,1));
                     }
                 }
-            });
+            });*/
 
             for (int i = 0; i < lawyerGroupListData.size(); i++) {
                 for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {

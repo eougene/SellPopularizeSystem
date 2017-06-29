@@ -219,11 +219,10 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     //轮播控件适配器
                     rpv.setAdapter(new NormalAdapter(rpv));
 
-
                     tvId.setText(prs.getProduct_id() + "");
                     tvProdes.setText(prs.getDescription());
-                    tvIsSalingNum.setText(prs.getSell_number() + "");
-                    tvHasSaledNum.setText(prs.getSign_number() + "");
+                    tvIsSalingNum.setText(resultBean.getSell_number() + "");
+                    tvHasSaledNum.setText(resultBean.getSign_number() + "");
                     tvFirbNum.setText(prs.getFirb_number() + "");
                     tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getEoi_open_time() + "000")));
                     tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStart_sales_time() + "000")));
@@ -237,7 +236,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     tvBuilder.setText(prs.getBuilder());
                     tvDespositHolder.setText(prs.getDesposit_holder());
                     tvForeignMoney.setText(prs.getExchange_deposit()+"%");
-                    tvCashDesposit.setText(prs.getFirb_exchange_deposit());
+                    tvCashDesposit.setText(prs.getFirb_exchange_deposit()+"%");
                     tvSubscription.setText(prs.getMin_reservation_fee());
                     controlColor();
                 }
@@ -458,6 +457,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             jsonObj.put("product_id", product_id);
             jsonObj.put("user_id", SharedPreferencesHelps.getUserID());
+            Log.e("addSaleLog", "customer_id: "+ BaseApplication.getInstance().getResultBean().getCustomer_id());
             jsonObj.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
             jsonObj.put("content", string);
             jsonObj.put("start_time", SharedPreferencesHelps.getTime());

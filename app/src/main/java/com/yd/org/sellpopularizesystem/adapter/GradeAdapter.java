@@ -63,10 +63,15 @@ public class GradeAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        if (data.get(position).getOptions().size()>2){
+        if (data.get(position).getCorrect_answer().contains(",")){
             viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.multiple_choice));
         }else{
-            viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.single_choice));
+            if (data.get(position).getOptions().size()>2){
+                viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.single_choice));
+            }else {
+                viewHolder.textView.setText((position + 1) + ". " + data.get(position).getCheck_title()+mContext.getString(R.string.yesornoquestion));
+            }
+
         }
         if (data.get(position).getCheck_result().equals("1")) {
             viewHolder.ivFlag.setImageResource(R.mipmap.correcticonx);

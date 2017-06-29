@@ -60,4 +60,5 @@ public class VideoActivity extends BaseActivity {
         super.onPause();
         JCVideoPlayer.releaseAllVideos();
     }
+
 }
