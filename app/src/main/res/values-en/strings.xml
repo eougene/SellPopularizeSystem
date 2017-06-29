@@ -205,6 +205,8 @@
     <string name="starttime">1970/01/01</string>
     <string name="deadtime">Close Sale Date:</string>
     <string name="closedate">Settlement Date:</string>
+    <string name="expected_date_of_launch">Expected date of launch:</string>
+    <string name="date_of_final_launch">Date of final launch:</string>
     <string name="memo">Preview Memo:</string>
     <string name="projectpropety">Project Attribute:</string>
     <string name="supplier">Vendor:</string>
@@ -477,6 +479,7 @@
     <string name="cus_address">Customer address</string>
     <string name="landarea">Land area</string>
     <string name="saletime">Selling time:</string>
+    <string name="saledate">Sale date:</string>
     <string name="complete_cusinfo">Customer information is incomplete, please improve customer information</string>
     <string name="complete_user">Improve customer information</string>
     <string name="register_hint">User name|Phone number|mailbox</string>

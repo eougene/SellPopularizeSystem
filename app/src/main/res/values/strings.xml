@@ -206,6 +206,8 @@
     <string name="starttime">1970/01/01</string>
     <string name="deadtime">销售截止日期:</string>
     <string name="closedate">结算日期:</string>
+    <string name="expected_date_of_launch">预计交房日期:</string>
+    <string name="date_of_final_launch">最后交房日期:</string>
     <string name="memo">预览备忘录:</string>
     <string name="projectpropety">项目属性:</string>
     <string name="supplier">供应商:</string>
@@ -487,6 +489,7 @@
     <string name="cus_address">客户地址</string>
     <string name="landarea">土地面积</string>
     <string name="saletime">销售时间:</string>
+    <string name="saledate">销售日期:</string>
     <string name="complete_cusinfo">客户信息不完整,请完善客户信息</string>
     <string name="complete_user">完善客户信息</string>
     <string name="time_long">时长</string>
