@@ -33,6 +33,7 @@ import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
@@ -128,6 +129,25 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
         Lawyer lawyerBean = gson.fromJson(json, Lawyer.class);
         if (lawyerBean.getCode() == 1) {
             lawyerGroupListData = lawyerBean.getResult();
+            //律师行按姓名排序
+            Collections.sort(lawyerGroupListData, new Comparator<Lawyer.ResultBean>() {
+                @Override
+                public int compare(Lawyer.ResultBean o1, Lawyer.ResultBean o2) {
+                    if (o1.getLaw_firm().equals("@") || o2.getLaw_firm().equals("#"))
+                    {
+                        return -1;
+                    }
+                    else if (o1.getLaw_firm().equals("#") || o2.getLaw_firm().equals("@"))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return o1.getLaw_firm().compareTo(o2.getLaw_firm());
+                    }
+                }
+            });
+
             for (int i = 0; i < lawyerGroupListData.size(); i++) {
                 for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {
                     Lawyer.ResultBean.LawyerListBean lawyer = lawyerGroupListData.get(i).getLawyer_list().get(j);

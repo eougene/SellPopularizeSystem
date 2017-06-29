@@ -79,6 +79,7 @@ public class ReserveActivity extends BaseActivity {
     private LinearLayout llCertificate;
     private String payment_method;
     public static ReserveActivity reserveActivity;
+    private CustomBean.ResultBean resultBean;
 
     @Override
     protected int setContentView() {
@@ -209,9 +210,10 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void initData() {
+        resultBean = BaseApplication.getInstance().getResultBean();
         tvRePrice.setText("$" + getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvRetype.setText(bean.getCate_name());
-        if (BaseApplication.getInstance().getResultBean() != null) {
+        if (resultBean != null) {
             if (BaseApplication.getInstance().getIs_firb() == 0) {
                 tvReFirb.setText(R.string.bushi);
             } else {
@@ -219,16 +221,16 @@ public class ReserveActivity extends BaseActivity {
                     tvReFirb.setText(getString(R.string.bushi));
                 }
             }
-            if (BaseApplication.getInstance().getResultBean() != null) {
-                tvReCusAdd.setText(BaseApplication.getInstance().getResultBean().getAddress() + BaseApplication.getInstance().getResultBean().getZip_code());
+            if (resultBean!= null) {
+                tvReCusAdd.setText(resultBean.getCountry()+getString(R.string.single_blank_space)+resultBean.getProvince()+getString(R.string.single_blank_space)+resultBean.getAddress() +getString(R.string.single_blank_space)+ resultBean.getZip_code());
             }
             tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
             tvValidity.setText(bean.getPrice());
             //String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
-            customeId = BaseApplication.getInstance().getResultBean().getCustomer_id() + "";
-            if (BaseApplication.getInstance().getResultBean().getEn_name() != null) {
-                tvReCus.setText(BaseApplication.getInstance().getResultBean().getSurname() + BaseApplication.getInstance().getResultBean().getFirst_name());
-                if (judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
+            customeId = resultBean.getCustomer_id() + "";
+            if (resultBean.getEn_name() != null) {
+                tvReCus.setText(resultBean.getSurname() +getString(R.string.single_blank_space)+ resultBean.getFirst_name());
+                if (judgeCusInfo(resultBean)) {
                     tvReCus.setTextColor(Color.BLUE);
                 } else {
                     tvReCus.setTextColor(Color.RED);
