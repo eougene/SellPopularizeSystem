@@ -71,8 +71,6 @@ public class BriefNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //编辑,取消
                 case 1:
-
-                    Log.e("编辑**", "JJ:" + msg.obj + "type:" + msg.arg2);
                     isShow = (boolean) msg.obj;
                     type = msg.arg2;
                     //还原数据,默认全不选
