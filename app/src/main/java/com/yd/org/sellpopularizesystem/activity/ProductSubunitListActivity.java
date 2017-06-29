@@ -70,6 +70,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private List numbers = new ArrayList<>();
     private String strHouseType;
     private String strNum;
+    List<ImageContent> imgContents=new ArrayList<ImageContent>();
 
     @Override
     protected int setContentView() {
@@ -339,9 +340,9 @@ public class ProductSubunitListActivity extends BaseActivity {
                     holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            List<ImageContent> imgContents=new ArrayList<ImageContent>();
                             ImageContent imageContent=new ImageContent();
                             imageContent.setUrl(item.getThumb());
+                            imgContents.clear();
                             imgContents.add(imageContent);
                             bund.putSerializable("img_content", (Serializable) imgContents);
                             ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
