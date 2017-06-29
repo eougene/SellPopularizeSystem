@@ -17,6 +17,8 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.yd.org.sellpopularizesystem.R.id.tvStatus;
+
 /**
  * Created by e-dot on 2017/6/8.
  * 订单页面
@@ -65,7 +67,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvSaleNum = (TextView) convertView.findViewById(R.id.tvSaleNum);
             viewHolder.tvSaleDes = (TextView) convertView.findViewById(R.id.tvSaleDes);
             viewHolder.tvSalePrice = (TextView) convertView.findViewById(R.id.tvSalePrice);
-            viewHolder.tvStatus = (TextView) convertView.findViewById(R.id.tvStatus);
+            viewHolder.tvStatus = (TextView) convertView.findViewById(tvStatus);
             viewHolder.tvSaleName = (TextView) convertView.findViewById(R.id.tvSaleName);
 
 
@@ -104,12 +106,13 @@ public class SaleRecordAdapter extends BaseAdapter {
 
                 if ((viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4)) {
                     //意向金凭证已上传,请等待管理员审核,可以取消订单
-                    viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
-                    viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
 
+                    viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                     viewHolder.saleRecorTv2.setVisibility(View.GONE);
                     viewHolder.saleRecorTv3.setVisibility(View.GONE);
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                    viewHolder.tvStatus.setVisibility(View.VISIBLE);
+                    viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
 
 
                 } else {
@@ -117,35 +120,27 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
                     viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                     viewHolder.saleRecorTv2.setVisibility(View.VISIBLE);
-
-
                     viewHolder.saleRecorTv3.setVisibility(View.GONE);
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                    viewHolder.tvStatus.setVisibility(View.GONE);
 
 
                 }
 
 
-                //正在申请合同,等待管理员审核
-            } else if (viewHolder.resultBean.getOrder_money_status() == 1
-                    && viewHolder.resultBean.getSales_advice_status() == 0
-                    && viewHolder.resultBean.getContract_apply_status() == 1
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_08));
-                viewHolder.saleRecorTv1.setVisibility(View.GONE);
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
-                viewHolder.saleRecorTv4.setVisibility(View.GONE);
 
-
-                // //订单放弃中
-            } else if ((viewHolder.resultBean.getOrder_money_status() == 1 || viewHolder.resultBean.getOrder_money_status() == 2)
-                    && viewHolder.resultBean.getCancel_apply_status() == 1) {
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_01));
-                viewHolder.saleRecorTv1.setVisibility(View.GONE);
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
-                viewHolder.saleRecorTv4.setVisibility(View.GONE);
+//            }
+//            //正在申请合同,等待管理员审核
+//            else if (viewHolder.resultBean.getOrder_money_status() == 1
+//                    && viewHolder.resultBean.getSales_advice_status() == 0
+//                    && viewHolder.resultBean.getContract_apply_status() == 1
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_08));
+//                viewHolder.saleRecorTv1.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv4.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
 
 
                 //准备交换合同
@@ -156,33 +151,35 @@ public class SaleRecordAdapter extends BaseAdapter {
                     && viewHolder.resultBean.getUpload_contract_status() == 2) {
 
 
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
                 viewHolder.saleRecorTv1.setVisibility(View.GONE);
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                viewHolder.tvStatus.setVisibility(View.VISIBLE);
+                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
 
 
-            }
-
-            //合同首页已审核 , 首付款凭证审核中
-            else if (viewHolder.resultBean.getUpload_contract_status() == 2
-                    && viewHolder.resultBean.getBuy_money_status() == 1
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_05));
-
-                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
-
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//            }
+//
+//            //合同首页已审核 , 首付款凭证审核中
+//            else if (viewHolder.resultBean.getUpload_contract_status() == 2
+//                    && viewHolder.resultBean.getBuy_money_status() == 1
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_05));
+//
+//                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+//                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+//
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
 
 
                 //请上传合同首页 ,请上传首付款凭证
             } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                    && viewHolder.resultBean.getContract_apply_status() == 1
-                    && viewHolder.resultBean.getUpload_contract_status() == 0
-                    && viewHolder.resultBean.getBuy_money_status() == 0
+                    && (viewHolder.resultBean.getContract_apply_status() == 1 || viewHolder.resultBean.getContract_apply_status() == 2)
+                    && (viewHolder.resultBean.getUpload_contract_status() == 0 || viewHolder.resultBean.getUpload_contract_status() == 1|| viewHolder.resultBean.getUpload_contract_status() == 3)
+                    && (viewHolder.resultBean.getBuy_money_status() == 0 || viewHolder.resultBean.getBuy_money_status() == 1 || viewHolder.resultBean.getBuy_money_status() == 2)
                     && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_09));
@@ -193,93 +190,106 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
 
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
+                viewHolder.tvStatus.setVisibility(View.GONE);
+
+//
+//                //合同首页审核中,请上传首付款凭证
+//            } else if (viewHolder.resultBean.getContract_apply_status() == 2
+//                    && viewHolder.resultBean.getUpload_contract_status() == 1
+//                    && viewHolder.resultBean.getBuy_money_status() == 0
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10));
+//
+//
+//                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+//
+//                viewHolder.saleRecorTv1.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
+
+//
+//                // 合同首页已审核,请上传首付款凭证
+//            } else if (viewHolder.resultBean.getOrder_money_status() == 2
+//                    && viewHolder.resultBean.getContract_apply_status() == 2
+//                    && viewHolder.resultBean.getUpload_contract_status() == 2
+//                    && viewHolder.resultBean.getBuy_money_status() == 0
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_11));
+//
+//
+//                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+//                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+//
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
 
 
-                //合同首页审核中,请上传首付款凭证
-            } else if (viewHolder.resultBean.getContract_apply_status() == 2
-                    && viewHolder.resultBean.getUpload_contract_status() == 1
-                    && viewHolder.resultBean.getBuy_money_status() == 0
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10));
+//                //合同首页已审核,首付款凭证审核中
+//            } else if (viewHolder.resultBean.getOrder_money_status() == 2
+//                    && viewHolder.resultBean.getContract_apply_status() == 2
+//                    && viewHolder.resultBean.getUpload_contract_status() == 2
+//                    && viewHolder.resultBean.getBuy_money_status() == 1
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_12));
+//
+//
+//                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+//                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
 
-
-                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
-
-                viewHolder.saleRecorTv1.setVisibility(View.GONE);
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
-
-
-                // 合同首页已审核,请上传首付款凭证
-            } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                    && viewHolder.resultBean.getContract_apply_status() == 2
-                    && viewHolder.resultBean.getUpload_contract_status() == 2
-                    && viewHolder.resultBean.getBuy_money_status() == 0
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_11));
-
-
-                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
-
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
-
-
-                //合同首页已审核,首付款凭证审核中
-            } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                    && viewHolder.resultBean.getContract_apply_status() == 2
-                    && viewHolder.resultBean.getUpload_contract_status() == 2
-                    && viewHolder.resultBean.getBuy_money_status() == 1
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_12));
-
-
-                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
-
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv3.setVisibility(View.GONE);
-
-                //合同首页审核中,首付款凭证已审核
-            } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                    && viewHolder.resultBean.getContract_apply_status() == 2
-                    && viewHolder.resultBean.getUpload_contract_status() == 1
-                    && viewHolder.resultBean.getBuy_money_status() == 2
-                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
-
-                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10_01));
-
-
-                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
-
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
-                viewHolder.saleRecorTv4.setVisibility(View.GONE);
-
-
-            }
+//                //合同首页审核中,首付款凭证已审核
+//            } else if (viewHolder.resultBean.getOrder_money_status() == 2
+//                    && viewHolder.resultBean.getContract_apply_status() == 2
+//                    && viewHolder.resultBean.getUpload_contract_status() == 1
+//                    && viewHolder.resultBean.getBuy_money_status() == 2
+//                    && viewHolder.resultBean.getCancel_apply_status() == 0) {
+//
+//                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_10_01));
+//                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+//                viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
+//
+//                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+//                viewHolder.saleRecorTv4.setVisibility(View.GONE);
+//                viewHolder.tvStatus.setVisibility(View.GONE);
+//
+//
+           }
 
             //订单已取消
         } else if (viewHolder.resultBean.getStatus() == 10) {
 
-            Log.e("已取消", "id:" + viewHolder.resultBean.getProduct_orders_id());
-            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_02));
+
             viewHolder.saleRecorTv1.setVisibility(View.GONE);
             viewHolder.saleRecorTv2.setVisibility(View.GONE);
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
+            viewHolder.tvStatus.setVisibility(View.VISIBLE);
+
+
+            //订单放弃中
+            if (viewHolder.resultBean.getCancel_apply_status() == 2) {
+                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_01));
+                //订单已取消
+            } else {
+                viewHolder.tvStatus.setText(mContext.getString(R.string.saler_02));
+            }
+
 
         } //订单已完成
         else if (viewHolder.resultBean.getStatus() == 11) {
-            Log.e("已完成", "id:" + viewHolder.resultBean.getProduct_orders_id());
-            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
+
             viewHolder.saleRecorTv1.setVisibility(View.GONE);
             viewHolder.saleRecorTv2.setVisibility(View.GONE);
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
+            viewHolder.tvStatus.setVisibility(View.VISIBLE);
+            viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
 
 
         }

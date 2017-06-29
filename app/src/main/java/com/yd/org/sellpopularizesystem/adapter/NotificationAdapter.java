@@ -32,7 +32,7 @@ public class NotificationAdapter extends BaseAdapter {
     public NotificationAdapter(Context mContext) {
         this.mContext = mContext;
         this.mLayout = LayoutInflater.from(mContext);
-        isSelected = new HashMap<Integer, Boolean>();
+        isSelected = new HashMap<>();
 
     }
 

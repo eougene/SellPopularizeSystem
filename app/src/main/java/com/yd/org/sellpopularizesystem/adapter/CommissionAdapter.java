@@ -13,8 +13,9 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
-import com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity;
+import com.yd.org.sellpopularizesystem.activity.OrderDetailActivity;
 import com.yd.org.sellpopularizesystem.javaBean.CommissionBean;
+import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
@@ -99,15 +100,15 @@ public class CommissionAdapter extends BaseAdapter {
 
         //佣金1
         viewHolder.firstCommissionSum.setText(viewHolder.resultBean.getFirst_commossion());
-        viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd HH:mm", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+        viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
 
         //佣金2
         viewHolder.secondCommissionSum.setText(viewHolder.resultBean.getSecond_commossion());
-        viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd HH:mm", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
+        viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
 
         //佣金3
         viewHolder.thirdCommissionSum.setText(viewHolder.resultBean.getThird_commossion());
-        viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd HH:mm", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
+        viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
 
 
         viewHolder.commissionRel.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
@@ -136,9 +137,14 @@ public class CommissionAdapter extends BaseAdapter {
 
                 //右边按钮事件
                 case R.id.commissionRightImageView:
+
+                    SaleOrderBean.ResultBean bean = new SaleOrderBean.ResultBean();
+                    bean.setProduct_orders_id(resultBean.getOrder_id());
+
+
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("commission", resultBean);
-                    ActivitySkip.forward(CommissionActivity.commissionActivity, CommissionDetailsActivity.class, bundle);
+                    bundle.putSerializable("order", bean);
+                    ActivitySkip.forward(CommissionActivity.commissionActivity, OrderDetailActivity.class, bundle);
                     break;
 
 
