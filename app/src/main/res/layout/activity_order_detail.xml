@@ -30,7 +30,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:text="APT"
                 android:textColor="@color/black"/>
         </LinearLayout>
 
@@ -65,7 +64,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/singlezero"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -94,7 +92,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/singlezero"
+
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -123,7 +121,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/singlezero"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -151,7 +148,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/singlezero"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -180,7 +176,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/jinliu"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -209,7 +204,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/jinliu"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -237,7 +231,6 @@
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/lawyer"
                 android:textColor="@color/black"/>
 
             <TextView
@@ -267,14 +260,12 @@
                 android:text="@string/buyhousetention"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
-
             <TextView
                 android:id="@+id/tvGoal"
                 style="@style/WrapWrap"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/unknow"
                 android:textColor="@color/black"/>
         </RelativeLayout>
 
@@ -302,7 +293,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center_vertical"
-                android:text="@string/singlezero"
                 android:textColor="@color/read"/>
         </RelativeLayout>
 

@@ -30,9 +30,8 @@
         android:layout_marginLeft="@dimen/padding_margin_4"
         android:layout_marginRight="@dimen/padding_margin_4"
         android:layout_weight="1"
-        android:text="efewfgrgrsg"
         android:textColor="@color/black"
-        android:textSize="@dimen/tv_size_15"/>
+        android:textSize="@dimen/tv_size_12"/>
 
     <TextView
         android:id="@+id/tvPoint"
