@@ -45,6 +45,7 @@ public class ExaminationActivity extends BaseActivity {
     private LayoutInflater mInflater;
     private JSONArray jsonArray;
     private String paper_id;
+    private Button btnSkip, button;
 
 
     @Override
@@ -60,28 +61,35 @@ public class ExaminationActivity extends BaseActivity {
         paper_id = getIntent().getExtras().getString("paper_id");
         mInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // 提交按钮
-        Button button = (Button) findViewById(R.id.btnSubmit);
+        button = getViewById(R.id.btnSubmit);
         initData(paper_id);
         button.setOnClickListener(new ExaminationActivity.submitOnClickListener());
+
+
+        btnSkip = getViewById(R.id.btnSkip);
 
     }
 
     @Override
     public void setListener() {
-
+        btnSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initData(String paperId) {
+        showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("paper_id", paperId);
-        Log.e("paperId", "initData: "+paperId );
-        showDialog();
         http.get(Contants.PAPER_DETAILS, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 Log.e("试题数据", "s:" + s);
-                super.onSuccess(s);
+                closeDialog();
                 if (null != s) {
                     jsonParse(s);
                 }
@@ -90,6 +98,8 @@ public class ExaminationActivity extends BaseActivity {
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                closeDialog();
+                ToasShow.showToastCenter(ExaminationActivity.this, strMsg);
             }
         });
     }
@@ -100,14 +110,10 @@ public class ExaminationActivity extends BaseActivity {
         if (pagerDetail.getCode().equals("1")) {
             questions = pagerDetail.getResult();
             addViews(questions);
-            closeDialog();
         }
     }
 
     private void addViews(List<QuestionBean> questions) {
-        Log.e("questions*", "questions:" + questions.size());
-
-
         test_layout = (LinearLayout) findViewById(R.id.examinaltionLinearLayout);
 
         for (int i = 0; i < questions.size(); i++) {
@@ -303,15 +309,15 @@ public class ExaminationActivity extends BaseActivity {
             @Override
             public void onSuccess(String s) {
                 closeDialog();
-                if (null!=s){
-                    Gson gson=new Gson();
-                    ErrorBean errorBean=gson.fromJson(s,ErrorBean.class);
-                    if (errorBean.getCode().equals("1")){
+                if (null != s) {
+                    Gson gson = new Gson();
+                    ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                    if (errorBean.getCode().equals("1")) {
                         ExamineFragment.examineFragment.handler.sendEmptyMessage(1);
-                        ToasShow.showToastBottom(ExaminationActivity.this,errorBean.getMsg());
+                        ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
                         finish();
-                    }else {
-                        ToasShow.showToastBottom(ExaminationActivity.this,errorBean.getMsg());
+                    } else {
+                        ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
                     }
                 }
                 Log.e("提交成功", "s:" + s);
