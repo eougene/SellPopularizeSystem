@@ -55,7 +55,7 @@ import java.lang.ref.WeakReference;
 
 public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
-            tvSaleDeadTime, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
+            tvSaleDeadTime, tvStartDate,tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
             tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime;
     private RollPagerView rpv;
@@ -176,6 +176,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         tvEoiTime = (TextView) findViewById(R.id.tvEoiTime);
         tvSaleTime = (TextView) findViewById(R.id.tvSaleTime);
         tvSaleDeadTime = (TextView) findViewById(R.id.tvSaleDeadTime);
+        tvStartDate = (TextView) findViewById(R.id.tvStartDate);
         tvCloseDate = (TextView) findViewById(R.id.tvCloseDate);
         tvMemo = (TextView) findViewById(R.id.tvMemo);
         tvProjectPro = (TextView) findViewById(R.id.tvProjectPro);
@@ -227,6 +228,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getEoi_open_time() + "000")));
                     tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStart_sales_time() + "000")));
                     tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStop_sales_time() + "000")));
+                    tvStartDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getSunset_time() + "000")));
                     tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getSettlement_time() + "000")));
                     tvMemo.setText(prs.getPreview_memo());
                     tvProjectPro.setText(prs.getProduct_type());
