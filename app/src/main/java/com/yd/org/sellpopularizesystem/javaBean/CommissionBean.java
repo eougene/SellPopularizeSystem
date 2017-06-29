@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,11 +8,13 @@ import java.util.List;
  */
 
 public class CommissionBean extends Domine {
+
+
     /**
      * code : 1
      * msg : 成功获取佣金列表
-     * total_number : 3
-     * result : [{"id":73,"company_id":1,"user_id":187,"true_name":"","user_first_name":"leon","user_surname":"xu","user_en_name":"leonXu","customer_id":7800,"customer_first_name":"leon","customer_surname":"xu","customer_en_name":"leonXu","order_id":40,"product_id":72,"product_childs_id":2190,"product_name":"S测试项目01","product_childs_lot_number":"12","product_childs_unit_number":"12","order_price":"300000.00","commossion":"22500.00","gst":"2250.00","total":"24750.00","first_money":"1.50","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1497516137,"update_time":0,"is_value":0,"status":0,"first_commossion":"1.50","first_gst":0.15,"first_total":1.65,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0},{"id":69,"company_id":1,"user_id":187,"true_name":"","user_first_name":"leon","user_surname":"xu","user_en_name":"leonXu","customer_id":7800,"customer_first_name":"leon","customer_surname":"xu","customer_en_name":"leonXu","order_id":38,"product_id":72,"product_childs_id":2189,"product_name":"S测试项目01","product_childs_lot_number":"11","product_childs_unit_number":"11","order_price":"100000.00","commossion":"7500.00","gst":"750.00","total":"8250.00","first_money":"1.50","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1497514707,"update_time":0,"is_value":0,"status":0,"first_commossion":"1.50","first_gst":0.15,"first_total":1.65,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0},{"id":67,"company_id":1,"user_id":187,"true_name":"","user_first_name":"leon","user_surname":"xu","user_en_name":"leonXu","customer_id":7800,"customer_first_name":"leon","customer_surname":"xu","customer_en_name":"leonXu","order_id":37,"product_id":72,"product_childs_id":2188,"product_name":"S测试项目01","product_childs_lot_number":"10","product_childs_unit_number":"10","order_price":"80000.00","commossion":"6000.00","gst":"600.00","total":"6600.00","first_money":"1.50","first_status":0,"first_time":0,"second_money":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1497513527,"update_time":0,"is_value":0,"status":0,"first_commossion":"1.50","first_gst":0.15,"first_total":1.65,"second_commossion":"0.00","second_gst":0,"second_total":0,"third_commossion":"0.00","third_gst":0,"third_total":0}]
+     * total_number : 1
+     * result : [{"id":128,"company_id":1,"user_id":402,"true_name":"","user_first_name":"android","user_surname":"android","user_en_name":"android","customer_id":1217,"customer_first_name":"android","customer_surname":"android","customer_en_name":"android","order_id":1756,"product_id":7,"product_childs_id":69,"product_name":"APT- Rousehill Stage 3 - Building F","product_childs_lot_number":"125","product_childs_unit_number":"F305","order_price":"700000.00","commossion":"10395.00","gst":"1155.00","total":"11550.00","first_money":"37.50","first_status":0,"first_time":0,"second_money":"37.50","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1498614297,"update_time":0,"is_value":0,"status":0,"first_commossion":"37.50","first_gst":"4.1666666666667","first_total":"41.666666666667","second_commossion":"37.50","second_gst":"4.1666666666667","second_total":"41.666666666667","third_commossion":"0.00","third_gst":"0","third_total":"0"}]
      */
 
     private int code;
@@ -51,48 +54,48 @@ public class CommissionBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean extends Domine{
+    public static class ResultBean implements Serializable{
         /**
-         * id : 73
+         * id : 128
          * company_id : 1
-         * user_id : 187
+         * user_id : 402
          * true_name :
-         * user_first_name : leon
-         * user_surname : xu
-         * user_en_name : leonXu
-         * customer_id : 7800
-         * customer_first_name : leon
-         * customer_surname : xu
-         * customer_en_name : leonXu
-         * order_id : 40
-         * product_id : 72
-         * product_childs_id : 2190
-         * product_name : S测试项目01
-         * product_childs_lot_number : 12
-         * product_childs_unit_number : 12
-         * order_price : 300000.00
-         * commossion : 22500.00
-         * gst : 2250.00
-         * total : 24750.00
-         * first_money : 1.50
+         * user_first_name : android
+         * user_surname : android
+         * user_en_name : android
+         * customer_id : 1217
+         * customer_first_name : android
+         * customer_surname : android
+         * customer_en_name : android
+         * order_id : 1756
+         * product_id : 7
+         * product_childs_id : 69
+         * product_name : APT- Rousehill Stage 3 - Building F
+         * product_childs_lot_number : 125
+         * product_childs_unit_number : F305
+         * order_price : 700000.00
+         * commossion : 10395.00
+         * gst : 1155.00
+         * total : 11550.00
+         * first_money : 37.50
          * first_status : 0
          * first_time : 0
-         * second_money : 0.00
+         * second_money : 37.50
          * second_status : 0
          * second_time : 0
          * third_money : 0.00
          * third_status : 0
          * third_time : 0
-         * add_time : 1497516137
+         * add_time : 1498614297
          * update_time : 0
          * is_value : 0
          * status : 0
-         * first_commossion : 1.50
-         * first_gst : 0.15
-         * first_total : 1.65
-         * second_commossion : 0.00
-         * second_gst : 0
-         * second_total : 0
+         * first_commossion : 37.50
+         * first_gst : 4.1666666666667
+         * first_total : 41.666666666667
+         * second_commossion : 37.50
+         * second_gst : 4.1666666666667
+         * second_total : 41.666666666667
          * third_commossion : 0.00
          * third_gst : 0
          * third_total : 0
@@ -133,14 +136,14 @@ public class CommissionBean extends Domine {
         private int is_value;
         private int status;
         private String first_commossion;
-        private double first_gst;
-        private double first_total;
+        private String first_gst;
+        private String first_total;
         private String second_commossion;
-        private int second_gst;
-        private int second_total;
+        private String second_gst;
+        private String second_total;
         private String third_commossion;
-        private int third_gst;
-        private int third_total;
+        private String third_gst;
+        private String third_total;
 
         public int getId() {
             return id;
@@ -422,19 +425,19 @@ public class CommissionBean extends Domine {
             this.first_commossion = first_commossion;
         }
 
-        public double getFirst_gst() {
+        public String getFirst_gst() {
             return first_gst;
         }
 
-        public void setFirst_gst(double first_gst) {
+        public void setFirst_gst(String first_gst) {
             this.first_gst = first_gst;
         }
 
-        public double getFirst_total() {
+        public String getFirst_total() {
             return first_total;
         }
 
-        public void setFirst_total(double first_total) {
+        public void setFirst_total(String first_total) {
             this.first_total = first_total;
         }
 
@@ -446,19 +449,19 @@ public class CommissionBean extends Domine {
             this.second_commossion = second_commossion;
         }
 
-        public int getSecond_gst() {
+        public String getSecond_gst() {
             return second_gst;
         }
 
-        public void setSecond_gst(int second_gst) {
+        public void setSecond_gst(String second_gst) {
             this.second_gst = second_gst;
         }
 
-        public int getSecond_total() {
+        public String getSecond_total() {
             return second_total;
         }
 
-        public void setSecond_total(int second_total) {
+        public void setSecond_total(String second_total) {
             this.second_total = second_total;
         }
 
@@ -470,19 +473,19 @@ public class CommissionBean extends Domine {
             this.third_commossion = third_commossion;
         }
 
-        public int getThird_gst() {
+        public String getThird_gst() {
             return third_gst;
         }
 
-        public void setThird_gst(int third_gst) {
+        public void setThird_gst(String third_gst) {
             this.third_gst = third_gst;
         }
 
-        public int getThird_total() {
+        public String getThird_total() {
             return third_total;
         }
 
-        public void setThird_total(int third_total) {
+        public void setThird_total(String third_total) {
             this.third_total = third_total;
         }
     }
