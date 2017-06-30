@@ -80,8 +80,7 @@ public class ReserveActivity extends BaseActivity {
     private LinearLayout llCertificate;
     private String payment_method;
     public static ReserveActivity reserveActivity;
-    private CustomBean.ResultBean resultBean;
-    private CustomBean.ResultBean custome = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ReserveActivity.this, "custome"));
+    private CustomBean.ResultBean custome;
 
     @Override
     protected int setContentView() {
@@ -90,7 +89,8 @@ public class ReserveActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        reserveActivity=this;
+        custome = (CustomBean.ResultBean) ObjectSaveUtil.readObject(ReserveActivity.this, "custome");
+        reserveActivity = this;
         Bundle bundle = getIntent().getExtras();
         bean = (ProSubunitListBean.ResultBean.PropertyBean) bundle.get("item");
         lawBean = (LawyerBean.ResultBean) bundle.get("custome");
@@ -168,6 +168,7 @@ public class ReserveActivity extends BaseActivity {
         btPhotoCancel = (Button) msetPhotoView.findViewById(R.id.btPhotoCancel);
         initData();
     }
+
     //接受来自客户详情页发送过来的消息
     public Handler handler = new Handler() {
         @Override
@@ -212,34 +213,31 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void initData() {
-        resultBean = BaseApplication.getInstance().getResultBean();
         tvRePrice.setText("$" + getString(R.string.single_blank_space) + MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvRetype.setText(bean.getCate_name());
-        if (resultBean != null) {
-            if (BaseApplication.getInstance().getIs_firb() == 0) {
-                tvReFirb.setText(R.string.bushi);
-            } else {
-                if (BaseApplication.getInstance().getFirb_number() != 0) {
-                    tvReFirb.setText(getString(R.string.bushi));
-                }
-            }
-            if (resultBean!= null) {
-                tvReCusAdd.setText(resultBean.getCountry()+getString(R.string.single_blank_space)+resultBean.getProvince()+getString(R.string.single_blank_space)+resultBean.getAddress() +getString(R.string.single_blank_space)+ resultBean.getZip_code());
-            }
-            tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
-            tvValidity.setText(bean.getPrice());
-            //String en_name = BaseApplication.getInstance().getResultBean().getEn_name();
-            customeId = resultBean.getCustomer_id() + "";
-            if (resultBean.getEn_name() != null) {
-                tvReCus.setText(resultBean.getSurname() +getString(R.string.single_blank_space)+ resultBean.getFirst_name());
-                if (judgeCusInfo(resultBean)) {
-                    tvReCus.setTextColor(Color.BLUE);
-                } else {
-                    tvReCus.setTextColor(Color.RED);
-                }
-
+        if (BaseApplication.getInstance().getIs_firb() == 0) {
+            tvReFirb.setText(R.string.bushi);
+        } else {
+            if (BaseApplication.getInstance().getFirb_number() != 0) {
+                tvReFirb.setText(getString(R.string.bushi));
             }
         }
+
+        tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space) + custome.getProvince() + getString(R.string.single_blank_space) + custome.getAddress() + getString(R.string.single_blank_space) + custome.getZip_code());
+
+        tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
+        tvValidity.setText(bean.getPrice());
+        customeId = custome.getCustomer_id() + "";
+        if (custome.getEn_name() != null) {
+            tvReCus.setText(custome.getSurname() + getString(R.string.single_blank_space) + custome.getFirst_name());
+            if (judgeCusInfo(custome)) {
+                tvReCus.setTextColor(Color.BLUE);
+            } else {
+                tvReCus.setTextColor(Color.RED);
+            }
+
+        }
+
     }
 
     @Override
@@ -309,7 +307,7 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //编辑客户信息
                 case R.id.btEditCusInfo:
-                    bun.putSerializable("cun", (CustomBean.ResultBean)ObjectSaveUtil.readObject(ReserveActivity.this,"custome"));
+                    bun.putSerializable("cun", custome);
                     bun.putString("add", "completeinfo");
                     ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
@@ -642,8 +640,7 @@ public class ReserveActivity extends BaseActivity {
             switch (requestCode) {
                 //选择律师
                 case ExtraName.RESERVE_TO_LAWYER:
-                    Bundle lawBean = data.getExtras();
-                    Lawyer.ResultBean.LawyerListBean lawyerBean = (Lawyer.ResultBean.LawyerListBean) lawBean.getSerializable("lawyer");
+                    Lawyer.ResultBean.LawyerListBean lawyerBean = (Lawyer.ResultBean.LawyerListBean) data.getExtras().getSerializable("lawyer");
                     ivReLawyer.setVisibility(View.GONE);
                     tvReLawyer.setVisibility(View.VISIBLE);
                     tvReLawyer.setText(lawyerBean.getFirst_name() + lawyerBean.getSurname());
@@ -652,11 +649,12 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
-                    lawBean = data.getExtras();
-                    CustomBean.ResultBean cun = (CustomBean.ResultBean) lawBean.getSerializable("custome");
+                    CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
                     tvReCus.setText(cun.getEn_name());
                     if (cun.getAddress() != null && cun.getZip_code() != null) {
-                        tvReCusAdd.setText(cun.getAddress() + cun.getZip_code());
+                        tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
+                                + cun.getProvince() + getString(R.string.single_blank_space)
+                                + cun.getAddress() + getString(R.string.single_blank_space) + cun.getZip_code());
                     } else {
                         tvReCusAdd.setText("");
                     }
@@ -723,7 +721,7 @@ public class ReserveActivity extends BaseActivity {
                         }
                         //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
                         ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
-                    }else {
+                    } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
                         picPath = imgUri.getPath();
                         ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
