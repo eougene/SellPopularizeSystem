@@ -20,6 +20,7 @@ import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
 import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
+import com.yd.org.sellpopularizesystem.activity.ReserveActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.activity.SettingActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -28,6 +29,7 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.BindAcountPopupWindow;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -260,7 +262,7 @@ public class MeFragment extends BaseFragmentView {
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
 
         acountPopupWindow = new BindAcountPopupWindow(getActivity(), mItemClick);
-        CustomBean.ResultBean resultBean = BaseApplication.getInstance().getResultBean();
+        CustomBean.ResultBean resultBean = (CustomBean.ResultBean) ObjectSaveUtil.readObject(getActivity(),"custome");
         if (resultBean != null) {
             Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + resultBean.getHead_img())
                     .error(R.mipmap.settingbt).into(ivCustomePhoto);

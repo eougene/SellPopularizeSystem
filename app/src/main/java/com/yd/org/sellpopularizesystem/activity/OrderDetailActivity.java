@@ -7,9 +7,11 @@ import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -17,6 +19,7 @@ import net.tsz.afinal.http.AjaxParams;
 
 public class OrderDetailActivity extends BaseActivity {
     TextView tvOrderDes, tvOrderNum, tvtype, tvFirb, tvSale, tvCus, tvCusAdd, tvLawyer, tvGoal, tvPrice, tvComplete;
+    private CustomBean.ResultBean custome;
 
     @Override
     protected int setContentView() {
@@ -76,7 +79,8 @@ public class OrderDetailActivity extends BaseActivity {
         tvFirb.setText(result.getIs_firb() == 0 ? getString(R.string.yes) : getString(R.string.bushi));
         tvSale.setText(result.getSales_id() + "");
         tvCus.setText(result.getCustomer_surname());
-        tvCusAdd.setText(BaseApplication.getInstance().getResultBean() != null ? BaseApplication.getInstance().getResultBean().getAddress() : "");
+        custome = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(OrderDetailActivity.this, "custome"));
+        tvCusAdd.setText(custome != null ? custome.getAddress() : "");
         tvLawyer.setText(result.getLawyer_name());
         tvGoal.setText(result.getPurchaseReason());
         tvPrice.setText("$" + MyUtils.addComma(result.getPrice().split("\\.")[0]));

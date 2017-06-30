@@ -33,11 +33,13 @@ import com.umeng.socialize.media.UMWeb;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -68,6 +70,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     private Bundle bun = new Bundle();
     private String product_id;
     protected ImageView backImageView, imageViewShare;
+    private CustomBean.ResultBean custome ;
 
 
     @Override
@@ -75,6 +78,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_item_des);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
+        custome= ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductItemDetailActivity.this, "custome"));
         initView();
     }
 
@@ -221,8 +225,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                     tvId.setText(prs.getProduct_id() + "");
                     tvProdes.setText(prs.getDescription());
-                    tvIsSalingNum.setText(resultBean.getSell_number() + "");
-                    tvHasSaledNum.setText(resultBean.getSign_number() + "");
+                    tvIsSalingNum.setText(prs.getSell_number() + "");
+                    tvHasSaledNum.setText(prs.getSign_number() + "");
                     tvFirbNum.setText(prs.getFirb_number() + "");
                     tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getEoi_open_time() + "000")));
                     tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(prs.getStart_sales_time() + "000")));
@@ -457,8 +461,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             jsonObj.put("product_id", product_id);
             jsonObj.put("user_id", SharedPreferencesHelps.getUserID());
-            Log.e("addSaleLog", "customer_id: "+ BaseApplication.getInstance().getResultBean().getCustomer_id());
-            jsonObj.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
+            //Log.e("addSaleLog", "customer_id: "+ BaseApplication.getInstance().getResultBean().getCustomer_id());
+            jsonObj.put("customer_id", custome.getCustomer_id() + "");
             jsonObj.put("content", string);
             jsonObj.put("start_time", SharedPreferencesHelps.getTime());
             jsonObj.put("end_time", ((System.currentTimeMillis() / 1000) + ""));

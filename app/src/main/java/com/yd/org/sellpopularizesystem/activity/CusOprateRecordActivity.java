@@ -42,12 +42,14 @@ import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenu;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuCreator;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -557,8 +559,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", page + "");
         ajaxParams.put("number", "20");
-        ajaxParams.put("company_id", BaseApplication.getInstance().getResultBean().getCompany_id() + "");
-        ajaxParams.put("client", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
+        ajaxParams.put("company_id",((CustomBean.ResultBean)ObjectSaveUtil.readObject(CusOprateRecordActivity.this,"custome")).getCompany_id() + "");
+        ajaxParams.put("client", ((CustomBean.ResultBean)ObjectSaveUtil.readObject(CusOprateRecordActivity.this,"custome")).getCustomer_id() + "");
         ajaxParams.put("property_id", "");
         ajaxParams.put("is_use", "");
         ajaxParams.put("house", "");

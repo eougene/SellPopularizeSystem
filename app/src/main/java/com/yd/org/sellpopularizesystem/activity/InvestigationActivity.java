@@ -19,6 +19,7 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
@@ -60,7 +61,7 @@ public class InvestigationActivity extends BaseActivity {
         etAddress = getViewById(R.id.etAddress);
         ivCustomePhoto = getViewById(R.id.ivHeadPhoto);
         edtTime = getViewById(R.id.edtTime);
-        resultBean = BaseApplication.getInstance().getResultBean();
+        resultBean = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(InvestigationActivity.this,"custome"));
 
 
         if (!TextUtils.isEmpty(resultBean.getSurname()) || !TextUtils.isEmpty(resultBean.getFirst_name())) {

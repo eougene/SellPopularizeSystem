@@ -23,8 +23,10 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -351,7 +353,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id",BaseApplication.getInstance().getResultBean().getCustomer_id() + "" );
+        ajaxParams.put("customer_id",((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "" );
         ajaxParams.put("title","");
         ajaxParams.put("content",etReserContent.getText().toString());
         ajaxParams.put("is_tixing","");
@@ -389,7 +391,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("o_log_id",slbRb.getO_log_id()+"" );
-        ajaxParams.put("customer_id",BaseApplication.getInstance().getResultBean().getCustomer_id() + "" );
+        ajaxParams.put("customer_id",((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "" );
         ajaxParams.put("title",slbRb.getTitle());
         ajaxParams.put("content",etReserContent.getText().toString());
         ajaxParams.put("cue_time",MyUtils.getInstance().getTimeMillis(etReserTime)+"");
@@ -425,7 +427,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             FinalHttp fh = new FinalHttp();
             AjaxParams ajaxParams = new AjaxParams();
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("customer_id", BaseApplication.getInstance().getResultBean().getCustomer_id() + "");
+            ajaxParams.put("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "");
             ajaxParams.put("title", etVistTitle.getText().toString());
             ajaxParams.put("content", etVistContent.getText().toString());
             ajaxParams.put("visit_time", tvVistTime.getText().toString());

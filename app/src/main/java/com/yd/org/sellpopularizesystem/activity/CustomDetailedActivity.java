@@ -61,6 +61,7 @@ import com.yd.org.sellpopularizesystem.utils.CharacterParserUtil;
 import com.yd.org.sellpopularizesystem.utils.CountryComparator;
 import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -296,7 +297,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
         if (bundle.getString(ExtraName.SCALETOCUSTOME) != null) {
             setTitle(R.string.customdetaild_title);
-            resultBean = BaseApplication.getInstance().getResultBean();
+            resultBean = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this,"custome"));
             getCustomInfo(resultBean);
         }
         initProviceSelectView();
@@ -1088,7 +1089,7 @@ public class CustomDetailedActivity extends BaseActivity {
                             if (tag.equals("completeinfo")){
                                 ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
                                 //重新赋值
-                                setCustomerValue(BaseApplication.getInstance().getResultBean());
+                                setCustomerValue(((CustomBean.ResultBean)ObjectSaveUtil.readObject(CustomDetailedActivity.this,"custome")));
                             }
                         }
                     } catch (JSONException e) {

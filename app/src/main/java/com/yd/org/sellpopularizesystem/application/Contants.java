@@ -8,8 +8,8 @@ public class Contants {
     /**
      * 域名
      */
-    //public static final String DOMAIN = "http://crm.vxda.cn";
-    public static final String DOMAIN = "https://www.wingaid.com";
+    public static final String DOMAIN = "http://crm.vxda.cn";
+    //public static final String DOMAIN = "https://www.wingaid.com";
     //首页数据
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";

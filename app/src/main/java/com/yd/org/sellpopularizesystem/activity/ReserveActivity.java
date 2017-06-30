@@ -40,6 +40,7 @@ import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -80,6 +81,7 @@ public class ReserveActivity extends BaseActivity {
     private String payment_method;
     public static ReserveActivity reserveActivity;
     private CustomBean.ResultBean resultBean;
+    private CustomBean.ResultBean custome = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ReserveActivity.this, "custome"));
 
     @Override
     protected int setContentView() {
@@ -307,9 +309,7 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //编辑客户信息
                 case R.id.btEditCusInfo:
-                    BaseApplication app = BaseApplication.getInstance();
-                    app.getResultBean();
-                    bun.putSerializable("cun", app.getResultBean());
+                    bun.putSerializable("cun", (CustomBean.ResultBean)ObjectSaveUtil.readObject(ReserveActivity.this,"custome"));
                     bun.putString("add", "completeinfo");
                     ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
@@ -527,12 +527,14 @@ public class ReserveActivity extends BaseActivity {
             Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
 
-        } else if (!judgeCusInfo(BaseApplication.getInstance().getResultBean())) {
-            return;
         } else {
-            //显示提示框
-            showAlertDialog();
-            //commit(payment_method);
+            if (!judgeCusInfo(custome)) {
+                return;
+            } else {
+                //显示提示框
+                showAlertDialog();
+                //commit(payment_method);
+            }
         }
 
 
