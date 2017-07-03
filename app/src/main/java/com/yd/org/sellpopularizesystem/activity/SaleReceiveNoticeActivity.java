@@ -32,7 +32,7 @@ public class SaleReceiveNoticeActivity extends BaseActivity {
         sale_advice_url = bundle.getString("sale_advice_url");
         pdfView = getViewById(R.id.pdfView);
         Log.e("合同**", "sale_rl:" + sale_advice_url);
-        MyUtils.getInstance().showWebView(SaleReceiveNoticeActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + sale_advice_url);
+        MyUtils.getInstance().showWebView(SaleReceiveNoticeActivity.this, pdfView, Contants.PDF_TEST  + sale_advice_url);
 
     }
 

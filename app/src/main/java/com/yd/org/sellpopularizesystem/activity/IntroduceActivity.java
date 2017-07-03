@@ -29,7 +29,7 @@ public class IntroduceActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         sale_advice_url = bundle.getString("introduce");
 
-        MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + Contants.DOMAIN + "/" + sale_advice_url);
+        MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + sale_advice_url);
 
 
     }

@@ -31,12 +31,12 @@ public class PDFActivity extends BaseActivity {
         if (orderId == null || sale_advice_url == null) {
             fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
             setTitle(fileContent.getDetail_name());
-            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + Contants.DOMAIN + "/" + fileContent.getUrl());
+            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + fileContent.getUrl());
 
         } else {
 
             setTitle(getString(R.string.sale_notice));
-            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, "http://dcsapi.com?k=140337680&url=" + sale_advice_url);
+            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + sale_advice_url);
 
         }
 

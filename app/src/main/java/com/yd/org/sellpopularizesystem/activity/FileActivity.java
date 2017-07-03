@@ -53,7 +53,7 @@ public class FileActivity extends BaseActivity {
             setTitle(getString(R.string.contract));
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            MyUtils.getInstance().showWebView(FileActivity.this,pdfView,"http://dcsapi.com?k=140337680&url=" +Contants.DOMAIN + "/" + prs.getContract_url());
+            MyUtils.getInstance().showWebView(FileActivity.this,pdfView,Contants.PDF_TEST +Contants.DOMAIN + "/" + prs.getContract_url());
 
 
         }
