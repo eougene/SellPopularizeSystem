@@ -1,6 +1,8 @@
 package com.yd.org.sellpopularizesystem.utils;
 
 import java.text.DecimalFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by hejin on 2017/6/1.
@@ -28,4 +30,11 @@ public class StringUtils {
                 + "MB" : (var0 < 0L ? var2.format((double) ((float) var0 / 1024.0F / 1024.0F / 1024.0F))
                 + "GB" : "error")));
     }
+    public static String getDigtalFromString(String string){
+        String regEx="[^0-9]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(string);
+       return m.replaceAll("").trim();
+    }
+
 }
