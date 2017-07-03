@@ -400,7 +400,8 @@
             <include
                 android:id="@+id/llCompany"
                 layout="@layout/company_layout"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                />
 
             <View
                 android:layout_width="match_parent"
@@ -592,14 +593,12 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:src="@mipmap/xinghao"
-                    android:visibility="gone" />
+                    android:src="@mipmap/xinghao" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
-                    android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/postcode"
@@ -649,14 +648,12 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
-                    android:visibility="gone"
                      />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.76"
-                    android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/firb"

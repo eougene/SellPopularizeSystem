@@ -175,6 +175,7 @@ public class ReserveActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
                 tvReCus.setTextColor(Color.BLUE);
+                custome = (CustomBean.ResultBean) ObjectSaveUtil.readObject(ReserveActivity.this, "custome");
             }
         }
     };

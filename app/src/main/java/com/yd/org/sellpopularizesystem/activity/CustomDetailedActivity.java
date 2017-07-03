@@ -284,8 +284,8 @@ public class CustomDetailedActivity extends BaseActivity {
                 getViewById(R.id.ivCon).setVisibility(View.VISIBLE);
                 getViewById(R.id.ivPro).setVisibility(View.VISIBLE);
                 getViewById(R.id.ivAddress).setVisibility(View.VISIBLE);
-                getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
-                getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
+                //getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
+               // getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
                 getViewById(R.id.llOperate).setVisibility(View.GONE);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
                 getCustomInfo(resultBean);
@@ -477,7 +477,8 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //生日
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "") || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "")
+                || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
             edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date() + "");
@@ -1096,9 +1097,9 @@ public class CustomDetailedActivity extends BaseActivity {
                         ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
                         if (json.getString("msg").equals(getString(R.string.updatesuccess))) {
                             if (tag.equals("completeinfo")) {
-                                ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
                                 //重新赋值
                                 setCustomerValue(((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome")));
+                                ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
                             }
                         }
                     }
@@ -1144,6 +1145,7 @@ public class CustomDetailedActivity extends BaseActivity {
         resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim()) ? 0 : 1);
         resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim()) ? "" : edcustmomeDetailedWeChat.getText().toString().trim());
         resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim()) ? "" : edcustmomeDetailedQQ.getText().toString().trim());
+        ObjectSaveUtil.saveObject(CustomDetailedActivity.this,"custome",resultBean);
     }
 
     private void getEditTextData(String updateOrAdd) {
