@@ -320,7 +320,7 @@
     <string name="content">内容</string>
     <string name="add">添加</string>
     <string name="reminder">请指定时间提醒</string>
-    <string name="payintentmoney">支付意向金</string>
+    <string name="payintentmoney">Pay Receipt</string>
     <string name="des">描述</string>
     <string name="name">名字</string>
     <string name="Lastname">名</string>
@@ -413,12 +413,13 @@
     <string name="saler_12">合同首页已审核  \n首付款凭证审核中</string>
     <string name="saler_13">准备交换合同</string>
     <string name="saler_14">订单已完成</string>
-    <string name="saler_15">上传合同首页</string>
-    <string name="saler_16">上传首款凭证</string>
+    <string name="saler_15">Upload Front Page</string>
+    <string name="saler_16">Upload Receipt</string>
     <string name="saler_17">正在申请合同 请等待管理员审核</string>
     <string name="saler_18">支付意向金</string>
     <string name="saler_19">合同首页已审核 首付款凭证审核中</string>
     <string name="saler_20">准备交换合同</string>
+    <string name="saler_21">意向金凭证已拒绝,订单已取消</string>
     <string name="sum">共</string>
     <string name="individuaproject">个项目</string>
     <string name="vp">视频介绍</string>
@@ -496,7 +497,7 @@
     <string name="lineup">排队</string>
     <string name="zhou">州</string>
     <string name="qu">区</string>
-    <string name="cancel_order">取消订单</string>
+    <string name="cancel_order">Cancel Order</string>
     <string name="pay_fail">支付失败</string>
     <string name="pay_su">支付成功</string>
     <string name="pay_error">支付错误</string>
