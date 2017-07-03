@@ -411,7 +411,7 @@
     <string name="saler_13">Ready to exchange contract</string>
     <string name="saler_14">Order Completed</string>
     <string name="saler_15">Upload Front Page</string>
-    <string name="saler_16">Upload Down Payment Receipt</string>
+    <string name="saler_16">Upload Receipt</string>
     <string name="saler_17">Contract Applying Please wait for the approval</string>
     <string name="saler_18">The interest paid</string>
     <string name="saler_19">Front Page Approved Down Payment Approving</string>
@@ -516,4 +516,6 @@
     <string name="exchange_fee">Exchange contract security</string>
     <string name="select_birth">The selection time must not exceed the current time</string>
     <string name="firstname_ensure">Surname must begin with a letter</string>
+
+    <string name="saler_21">意向金凭证已拒绝,订单已取消</string>
 </resources>
