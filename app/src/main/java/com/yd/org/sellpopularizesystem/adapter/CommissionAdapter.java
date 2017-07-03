@@ -98,6 +98,36 @@ public class CommissionAdapter extends BaseAdapter {
         viewHolder.sumCommission.setText(datas.get(position).getTotal() + "");
 
 
+        //佣金已发放
+        if (viewHolder.resultBean.getFirst_status() == 1) {
+            viewHolder.firstCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+        } else {
+            viewHolder.firstCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
+            viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+        }
+
+
+        //佣金已发放
+        if (viewHolder.resultBean.getSecond_status() == 1) {
+            viewHolder.secondCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+        } else {
+            viewHolder.secondCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
+            viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+        }
+
+
+        //佣金已发放
+        if (viewHolder.resultBean.getThird_status() == 1) {
+            viewHolder.thirdCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+        } else {
+            viewHolder.thirdCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
+            viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+        }
+
+
         //佣金1
         viewHolder.firstCommissionSum.setText(viewHolder.resultBean.getFirst_commossion());
         viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
