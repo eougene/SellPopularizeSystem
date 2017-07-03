@@ -514,4 +514,6 @@
     <string name="apt">Apt</string>
     <string name="order_detail">Order details</string>
     <string name="exchange_fee">Exchange contract security</string>
+    <string name="select_birth">The selection time must not exceed the current time</string>
+    <string name="firstname_ensure">Surname must begin with a letter</string>
 </resources>

@@ -514,5 +514,7 @@
     <string name="apt">Apt</string>
     <string name="order_detail">订单详情</string>
     <string name="exchange_fee">交换合同保证金</string>
+    <string name="select_birth">选择时间不得大于当前时间</string>
+    <string name="firstname_ensure">姓氏必须以字母开头</string>
 
 </resources>

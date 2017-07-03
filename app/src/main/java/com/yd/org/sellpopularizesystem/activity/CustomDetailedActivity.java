@@ -297,7 +297,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
         if (bundle.getString(ExtraName.SCALETOCUSTOME) != null) {
             setTitle(R.string.customdetaild_title);
-            resultBean = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this,"custome"));
+            resultBean = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome"));
             getCustomInfo(resultBean);
         }
         initProviceSelectView();
@@ -380,7 +380,12 @@ public class CustomDetailedActivity extends BaseActivity {
         TimePickerView.Builder builder = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
-                edcustmomeDetailedBie.setText(MyUtils.getTime(date));
+                if (date.getTime() > (new Date()).getTime()) {
+                    ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.select_birth));
+                } else {
+                    edcustmomeDetailedBie.setText(MyUtils.getTime(date));
+                }
+
             }
         });
         builder.setType(TimePickerView.Type.YEAR_MONTH_DAY);
@@ -1078,27 +1083,27 @@ public class CustomDetailedActivity extends BaseActivity {
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 closeDialog();
-                Log.e(TAG, "onSuccess: "+s);
-                if (updateOrAdd.equals(ADD)) {
-                    ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.addsuccess));
-                } else {
-                    ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.updatesuccess));
-                    try {
-                        JSONObject jsonObject = new JSONObject(s);
-                        if (jsonObject.getString("msg").equals(getString(R.string.updatesuccess))){
-                            if (tag.equals("completeinfo")){
+                Log.e(TAG, "onSuccess: " + s);
+                JSONObject json = null;
+                try {
+                    json = new JSONObject(s);
+                    if (updateOrAdd.equals(ADD)) {//新增
+                        ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
+                        if (!tag.equals("completeinfo") && json.getString("msg").equals(getString(R.string.addsuccess))) {
+                            CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                        }
+                    } else {//更新
+                        ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
+                        if (json.getString("msg").equals(getString(R.string.updatesuccess))) {
+                            if (tag.equals("completeinfo")) {
                                 ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
                                 //重新赋值
-                                setCustomerValue(((CustomBean.ResultBean)ObjectSaveUtil.readObject(CustomDetailedActivity.this,"custome")));
+                                setCustomerValue(((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome")));
                             }
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
-
-                }
-                if (!tag.equals("completeinfo")) {
-                    CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 finish();
 
@@ -1117,28 +1122,28 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void setCustomerValue(CustomBean.ResultBean resultBean) {
-        resultBean.setFirst_name(TextUtils.isEmpty(etFistName.getText().toString().trim())?"":etFistName.getText().toString().trim());
-        resultBean.setSurname(TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())?"":edCustomeTrueName.getText().toString().trim());
-        resultBean.setEn_name(TextUtils.isEmpty(etEnglishName.getText().toString().trim())?"":etEnglishName.getText().toString().trim());
-        resultBean.setBirth_date(TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())?"":edcustmomeDetailedBie.getText().toString().trim());
-        resultBean.setMobile(TextUtils.isEmpty(edCustomeMobile.getText().toString().trim())?"":edCustomeMobile.getText().toString().trim());
-        resultBean.setCountry(TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim())?"":edcustmomeDetailedNationality.getText().toString().trim());
-        resultBean.setProvince(TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim())?"":edcustmomeDetailedCity.getText().toString().trim());
-        resultBean.setAddress(TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString().trim())?"":edcustmomeDetailedAddress.getText().toString().trim());
-        resultBean.setE_mail(TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())?"":edcustmomeDetailedEmail.getText().toString().trim());
-        resultBean.setJob(TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim())?"":edcustmomeDetailedWeJob.getText().toString().trim());
-        resultBean.setIncome(TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString().trim())?0:Integer.parseInt(edcustmomeDetailedSalary.getText().toString().trim()));
-        resultBean.setCard_id(TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())?"":edcustmomeDetailedCard.getText().toString().trim());
-        resultBean.setPassport_id(TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString().trim())?"":edcustmomeDetailedPassPort.getText().toString().trim());
-        resultBean.setPassport_country(TextUtils.isEmpty(etNation.getText().toString().trim())?"":etNation.getText().toString().trim());
-        resultBean.setFamily_name(TextUtils.isEmpty(etLn.getText().toString().trim())?"":etLn.getText().toString().trim());
-        resultBean.setFamily_first_name(TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString().trim())?"":edcustmomeDetailedKinsfolk.getText().toString().trim());
-        resultBean.setFamily_relationship(TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString().trim())?"":edcustmomeDetailedRelation.getText().toString().trim());
-        resultBean.setFamily_mobile(TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString().trim())?"":edcustmomeDetailedPhone.getText().toString().trim());
-        resultBean.setZip_code(TextUtils.isEmpty(edZipCode.getText().toString().trim())?"":edZipCode.getText().toString().trim());
-        resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim())?0:1);
-        resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim())?"":edcustmomeDetailedWeChat.getText().toString().trim());
-        resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim())?"":edcustmomeDetailedQQ.getText().toString().trim());
+        resultBean.setFirst_name(TextUtils.isEmpty(etFistName.getText().toString().trim()) ? "" : etFistName.getText().toString().trim());
+        resultBean.setSurname(TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim()) ? "" : edCustomeTrueName.getText().toString().trim());
+        resultBean.setEn_name(TextUtils.isEmpty(etEnglishName.getText().toString().trim()) ? "" : etEnglishName.getText().toString().trim());
+        resultBean.setBirth_date(TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim()) ? "" : edcustmomeDetailedBie.getText().toString().trim());
+        resultBean.setMobile(TextUtils.isEmpty(edCustomeMobile.getText().toString().trim()) ? "" : edCustomeMobile.getText().toString().trim());
+        resultBean.setCountry(TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim()) ? "" : edcustmomeDetailedNationality.getText().toString().trim());
+        resultBean.setProvince(TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim()) ? "" : edcustmomeDetailedCity.getText().toString().trim());
+        resultBean.setAddress(TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString().trim()) ? "" : edcustmomeDetailedAddress.getText().toString().trim());
+        resultBean.setE_mail(TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim()) ? "" : edcustmomeDetailedEmail.getText().toString().trim());
+        resultBean.setJob(TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim()) ? "" : edcustmomeDetailedWeJob.getText().toString().trim());
+        resultBean.setIncome(TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString().trim()) ? 0 : Integer.parseInt(edcustmomeDetailedSalary.getText().toString().trim()));
+        resultBean.setCard_id(TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim()) ? "" : edcustmomeDetailedCard.getText().toString().trim());
+        resultBean.setPassport_id(TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString().trim()) ? "" : edcustmomeDetailedPassPort.getText().toString().trim());
+        resultBean.setPassport_country(TextUtils.isEmpty(etNation.getText().toString().trim()) ? "" : etNation.getText().toString().trim());
+        resultBean.setFamily_name(TextUtils.isEmpty(etLn.getText().toString().trim()) ? "" : etLn.getText().toString().trim());
+        resultBean.setFamily_first_name(TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString().trim()) ? "" : edcustmomeDetailedKinsfolk.getText().toString().trim());
+        resultBean.setFamily_relationship(TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString().trim()) ? "" : edcustmomeDetailedRelation.getText().toString().trim());
+        resultBean.setFamily_mobile(TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString().trim()) ? "" : edcustmomeDetailedPhone.getText().toString().trim());
+        resultBean.setZip_code(TextUtils.isEmpty(edZipCode.getText().toString().trim()) ? "" : edZipCode.getText().toString().trim());
+        resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim()) ? 0 : 1);
+        resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim()) ? "" : edcustmomeDetailedWeChat.getText().toString().trim());
+        resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim()) ? "" : edcustmomeDetailedQQ.getText().toString().trim());
     }
 
     private void getEditTextData(String updateOrAdd) {
@@ -1148,6 +1153,10 @@ public class CustomDetailedActivity extends BaseActivity {
         //姓
         if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
             surname = edCustomeTrueName.getText().toString().trim();
+            if (!surname.substring(0, 1).matches("[a-zA-Z]")){
+                ToasShow.showToastCenter(this, getString(R.string.firstname_ensure));
+                return;
+            }
         } else {
             ToasShow.showToastCenter(this, getString(R.string.fistnamenonull));
             return;
@@ -1452,7 +1461,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 case CROP_IMAGE:
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
-                        Log.e("imagePath*2*","imagePath:"+imagePath);
+                        Log.e("imagePath*2*", "imagePath:" + imagePath);
                         Picasso.with(this).load("file://" + imagePath).into(customeIcon);
                         if (null != imagePath) {
                             if (!tag.equals("add")) {

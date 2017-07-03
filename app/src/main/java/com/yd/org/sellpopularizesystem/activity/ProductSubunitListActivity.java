@@ -281,10 +281,10 @@ public class ProductSubunitListActivity extends BaseActivity {
         Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
             @Override
             public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
-                if (Integer.parseInt(o1.getBedroom()) > Integer.parseInt(o2.getBedroom())) {
+                if (Integer.parseInt(o1.getProduct_childs_unit_number()) > Integer.parseInt(o2.getProduct_childs_unit_number())) {
                     return 1;
                 }
-                if (Integer.parseInt(o1.getBedroom()) == Integer.parseInt(o2.getBedroom())) {
+                if (Integer.parseInt(o1.getProduct_childs_unit_number()) == Integer.parseInt(o2.getProduct_childs_unit_number())) {
                     return 0;
                 }
                 return -1;
