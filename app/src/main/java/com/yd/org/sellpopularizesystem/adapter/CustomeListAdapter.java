@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,7 +90,8 @@ public class CustomeListAdapter extends BaseAdapter {
         }
 
         viewHolder.productListBean = list.get(position);
-        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(viewHolder.prductImageView);
+        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into(viewHolder.prductImageView);
 
         // if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
 //            if (BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) != null) {
@@ -105,8 +107,6 @@ public class CustomeListAdapter extends BaseAdapter {
         final String product_id = list.get(position).getProduct_id() + "";
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.childs = list.get(position).getChilds();
-        /*tempChilds.clear();
-        tempChilds.addAll(viewHolder.childs);*/
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
         final ViewHolder finalViewHolder = viewHolder;
         if (list.get(position).getIs_study() == 0) {

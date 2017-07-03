@@ -397,10 +397,10 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:background="@color/search_edit_bac" />
-
             <include
                 android:id="@+id/llCompany"
-                layout="@layout/company_layout"/>
+                layout="@layout/company_layout"
+                android:visibility="gone"/>
 
             <View
                 android:layout_width="match_parent"
@@ -599,6 +599,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
+                    android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/postcode"
@@ -655,6 +656,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.76"
+                    android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
                     android:padding="@dimen/padding_margin_10"
                     android:text="@string/firb"
