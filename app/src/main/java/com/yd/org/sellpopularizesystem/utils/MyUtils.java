@@ -1024,7 +1024,15 @@ public class MyUtils {
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
         webSettings.setDomStorageEnabled(true);
         view.setWebViewClient(new WebViewClientBase(activity));
-        view.loadUrl(url);
+        if (url.contains("qrcode")){
+            String html="<html><head><style type='text/css'>body{margin:auto auto;margin-top:150px;text-align:center;} " +
+                    "img{width:80%;height:50%} </style></head><body><center><img src='"+url+"'/></center></body></html>";
+            view.loadData( html,"text/html",  "UTF-8");
+        }else {
+            view.loadUrl(url);
+        }
+
+        //view.loadDataWithBaseURL();
 
     }
 }
