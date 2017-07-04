@@ -7,6 +7,7 @@ import android.webkit.WebView;
 
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.BaseFragmentView;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
@@ -40,7 +41,7 @@ public class PhotoViewFragment extends BaseFragmentView {
             title = getArguments().getString("title");
             pdfView.setVisibility(View.VISIBLE);
             photoIm.setVisibility(View.GONE);
-            MyUtils.getInstance().showWebView(getActivity(), pdfView, "http://dcsapi.com?k=140337680&url=" + url);
+            MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF_TEST + url);
 
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
