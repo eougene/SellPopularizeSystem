@@ -54,7 +54,7 @@ public class SaleReceiveNoticeActivity extends BaseActivity {
         ajaxParams.put("sales_advice_is_true", "");
 
 
-        finalHttp.post(Contants.ASK_ONTRACT, ajaxParams, new AjaxCallBack<String>() {
+        finalHttp.post(Contants.APPLY_CONTRACT, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 closeDialog();

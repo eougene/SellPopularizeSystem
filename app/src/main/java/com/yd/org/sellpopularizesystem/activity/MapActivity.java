@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -26,9 +25,9 @@ import com.amap.api.maps2d.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,23 +50,23 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     private String proName;
     private int proId;
     private String flag;
-    private BitmapDescriptor getBitmapDescriptor(int i) {
-        tvDes.setText( productData.get(i).getProduct_name());
-        //启用绘图缓存
-        mMakerView.setDrawingCacheEnabled(true);
-        //调用下面这个方法非常重要，如果没有调用这个方法，得到的bitmap为null
-        mMakerView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
-                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        //这个方法也非常重要，设置布局的尺寸和位置
-        //LogUtils.e("测量后的尺寸：" + mViewInflater.getMeasuredWidth() + "....." + mViewInflater.getMeasuredHeight());
-        mMakerView.layout(0, 0, mMakerView.getMeasuredWidth(), mMakerView.getMeasuredHeight());
-        //获得绘图缓存中的Bitmap
-        mMakerView.buildDrawingCache();
-        Bitmap mCacheBitmap = mMakerView.getDrawingCache();
-        Bitmap mBitmap = Bitmap.createBitmap(mCacheBitmap);
-        BitmapDescriptor bdBitMap= BitmapDescriptorFactory.fromBitmap(mBitmap);
-        return bdBitMap;
-    }
+//    private BitmapDescriptor getBitmapDescriptor(int i) {
+//        tvDes.setText( productData.get(i).getProduct_name());
+//        //启用绘图缓存
+//        mMakerView.setDrawingCacheEnabled(true);
+//        //调用下面这个方法非常重要，如果没有调用这个方法，得到的bitmap为null
+//        mMakerView.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
+//                View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+//        //这个方法也非常重要，设置布局的尺寸和位置
+//        //LogUtils.e("测量后的尺寸：" + mViewInflater.getMeasuredWidth() + "....." + mViewInflater.getMeasuredHeight());
+//        mMakerView.layout(0, 0, mMakerView.getMeasuredWidth(), mMakerView.getMeasuredHeight());
+//        //获得绘图缓存中的Bitmap
+//        mMakerView.buildDrawingCache();
+//        Bitmap mCacheBitmap = mMakerView.getDrawingCache();
+//        Bitmap mBitmap = Bitmap.createBitmap(mCacheBitmap);
+//        BitmapDescriptor bdBitMap= BitmapDescriptorFactory.fromBitmap(mBitmap);
+//        return bdBitMap;
+//    }
 
     @Override
     protected int setContentView() {
