@@ -16,16 +16,16 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
 import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
+import com.yd.org.sellpopularizesystem.activity.StudySubitemActivity;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +38,9 @@ public class CustomeListAdapter extends BaseAdapter {
     private Context mContext;
     private List<ProductListBean.ResultBean> list = new ArrayList<>();// 数据
     private LayoutInflater inflater;
-    private boolean isBoolean;
-    private int pos;
 
-    public CustomeListAdapter(Activity mContext, boolean isBoolean) {
+    public CustomeListAdapter(Activity mContext) {
         this.mContext = mContext;
-        this.isBoolean = isBoolean;
         this.inflater = LayoutInflater.from(mContext);
     }
 
@@ -73,9 +70,8 @@ public class CustomeListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-        pos = position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item_layout, null);
@@ -89,38 +85,32 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+
         viewHolder.productListBean = list.get(position);
+
+        viewHolder.productName.setText(list.get(position).getProduct_name().trim());
+        viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.productListBean.getChilds()));
+
         Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
                 config(Bitmap.Config.RGB_565).into(viewHolder.prductImageView);
 
-        // if (!MyUtils.getInstance().isNetworkConnected(mContext)) {
-//            if (BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) != null) {
-//                viewHolder.prductImageView.setImageBitmap(BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()));
-//            } else {
-//                ToasShow.showToastCenter(mContext, mContext.getString(R.string.network_error));
-//            }
-        // } else {
-        //
-        // }
 
-        final String title = list.get(position).getProduct_name().trim();
-        final String product_id = list.get(position).getProduct_id() + "";
-        viewHolder.productName.setText(list.get(position).getProduct_name().trim());
-        viewHolder.childs = list.get(position).getChilds();
-        viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.childs));
-        final ViewHolder finalViewHolder = viewHolder;
-        if (list.get(position).getIs_study() == 0) {
+        //根据getIs_can_sale(),getIs_study()判断是否需要学习
+        if (list.get(position).getIs_can_sale().equals("0") && list.get(position).getIs_study() == 0) {
+            viewHolder.ivLockImageView.setVisibility(View.GONE);
+            viewHolder.lvSubItem.setVisibility(View.VISIBLE);
+            viewHolder.rlViewAll.setVisibility(View.VISIBLE);
             //点击查看单个item
-            viewHolder.prductImageView.setOnClickListener(new MyOnClick(viewHolder.productListBean, ProductItemDetailActivity.class, title, product_id));
+            viewHolder.prductImageView.setOnClickListener(new MyOnClick(position, viewHolder.productListBean, ProductItemDetailActivity.class, viewHolder.productListBean.getProduct_name().toLowerCase(), viewHolder.productListBean.getProduct_id() + ""));
             //点击查看所有
-            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(viewHolder.childs, ProductSubunitListActivity.class, title, product_id));
+            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(position, viewHolder.productListBean.getChilds(), ProductSubunitListActivity.class, viewHolder.productListBean.getProduct_name().toLowerCase(), viewHolder.productListBean.getProduct_id() + ""));
             //产品子单元listview点击
             viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
-                public void onItemClick(AdapterView<?> parent, View view, int positions, long id) {
-                    BaseApplication.getInstance().setIs_firb(list.get(pos).getIs_firb());
-                    BaseApplication.getInstance().setFirb_number(list.get(pos).getFirb_number());
-                    ScaleActivity.scaleActivity.goTo(finalViewHolder.childs.get(positions), ProductSubunitListActivity.class, title, product_id);
+                public void onItemClick(AdapterView<?> parent, View view, int p, long id) {
+                    BaseApplication.getInstance().setIs_firb(list.get(position).getIs_firb());
+                    BaseApplication.getInstance().setFirb_number(list.get(position).getFirb_number());
+                    ScaleActivity.scaleActivity.goTo(list.get(position).getChilds().get(p), ProductSubunitListActivity.class, list.get(position).getProduct_name().toLowerCase(), list.get(position).getProduct_id() + "");
                 }
             });
         } else {
@@ -130,51 +120,30 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    //对应的学习项目
+                    ToasShow.showToastCenter(mContext, mContext.getString(R.string.sale_toas) + list.get(position).getProduct_name());
                     Bundle bundle = new Bundle();
-                    bundle.putString("studynum", "0");
-                    ActivitySkip.forward((Activity) mContext, LearningGardenActivity.class, bundle);
+                    bundle.putString("type_id", String.valueOf(list.get(position).getStudy_type_id()));
+                    ActivitySkip.forward((Activity) mContext, StudySubitemActivity.class, bundle);
                 }
             });
         }
         return convertView;
     }
 
-    /**
-     * 自定义接口
-     */
-//    public class CropSquareTransformation implements Transformation {
-//        private int position;
-//
-//        public CropSquareTransformation(int position) {
-//            this.position = position;
-//
-//        }
-//
-//        @Override
-//        public Bitmap transform(Bitmap source) {
-//            if (isBoolean && BaseApplication.getInstance().getaCache().getAsBitmap(list.get(position).getThumb()) == null) {
-//                BaseApplication.getInstance().getaCache().put(list.get(position).getThumb(), source, ACache.TIME_HOUR);
-//            }
-//            return source;
-//        }
-//
-//        @Override
-//        public String key() {
-//            return "square()";
-//        }
-//    }
 
     private class MyOnClick implements View.OnClickListener {
         private Object mObject;
         private Class<?> mClass;
         private String title;
         private String productId;
+        private int postion;
 
-        public MyOnClick(Object mObject, Class<?> mClass, String title, String productId) {
-            int is_firb = list.get(pos).getIs_firb();
-            int firb_number=list.get(pos).getIs_firb();
-            BaseApplication.getInstance().setIs_firb(is_firb);
-            BaseApplication.getInstance().setFirb_number(firb_number);
+        public MyOnClick(int postions, Object mObject, Class<?> mClass, String title, String productId) {
+            this.postion = postions;
+            BaseApplication.getInstance().setIs_firb(list.get(postion).getIs_firb());
+            BaseApplication.getInstance().setFirb_number(list.get(postion).getIs_firb());
             this.mObject = mObject;
             this.mClass = mClass;
             this.title = title;
@@ -202,15 +171,14 @@ public class CustomeListAdapter extends BaseAdapter {
         private ListView lvSubItem;
         private RelativeLayout rlViewAll;
         public ProductListBean.ResultBean productListBean;
-        public List<ProSubUnitClassifyBean> childs = new ArrayList();
     }
 
     class ItemAdapter extends BaseAdapter {
         private Context mItemContext;
-        private List<ProSubUnitClassifyBean> childs = new ArrayList<>();
+        private List<ProductListBean.ResultBean.ChildsBean> childs = new ArrayList<>();
         private LayoutInflater inflater;
 
-        public ItemAdapter(Context mContext, List<ProSubUnitClassifyBean> childs) {
+        public ItemAdapter(Context mContext, List<ProductListBean.ResultBean.ChildsBean> childs) {
             this.mItemContext = mContext;
             this.childs = childs;
             this.inflater = LayoutInflater.from(mItemContext);
@@ -222,7 +190,7 @@ public class CustomeListAdapter extends BaseAdapter {
         }
 
         @Override
-        public ProSubUnitClassifyBean getItem(int position) {
+        public ProductListBean.ResultBean.ChildsBean getItem(int position) {
             return childs.get(position);
         }
 
@@ -246,10 +214,17 @@ public class CustomeListAdapter extends BaseAdapter {
                 holder1 = (Holder1) convertView.getTag();
             }
             holder1.childBean = childs.get(position);
-            holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
-                    MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000).split("\\.")[0]) + "k"
-                    + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
-                    + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
+            if (Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000 < 1) {
+                holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) + "1k"
+                        + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
+                        + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
+            } else {
+                holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
+                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000 ).split("\\.")[0]) + "k"
+                        + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
+                        + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
+            }
+
             holder1.tvHouse.setText(holder1.childBean.getBedroom());
             holder1.tvBathroom.setText(holder1.childBean.getBathroom());
             holder1.tvCar.setText(holder1.childBean.getCar_space());
@@ -258,7 +233,7 @@ public class CustomeListAdapter extends BaseAdapter {
 
         class Holder1 {
             private TextView tvPriceRange, tvHouse, tvBathroom, tvCar;
-            public ProSubUnitClassifyBean childBean;
+            public ProductListBean.ResultBean.ChildsBean childBean;
 
         }
     }
