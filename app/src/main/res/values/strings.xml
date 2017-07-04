@@ -399,7 +399,7 @@
     <string name="notic_info">消息详情</string>
     <string name="payment">支付</string>
     <string name="saler_01">订单放弃中</string>
-    <string name="saler_02">订单已取消</string>
+    <string name="saler_02">订单已放弃</string>
     <string name="saler_03">请等待管理员审核</string>
     <string name="saler_04">尚未支付意向金   \n请付款</string>
     <string name="saler_05">合同首页已审核  \n首付款凭证审核中</string>
@@ -517,5 +517,6 @@
     <string name="exchange_fee">交换合同保证金</string>
     <string name="select_birth">选择时间不得大于当前时间</string>
     <string name="firstname_ensure">姓氏必须以字母开头</string>
+    <string name="sale_toas">请先学习课程:</string>
 
 </resources>
