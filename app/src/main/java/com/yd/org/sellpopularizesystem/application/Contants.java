@@ -12,12 +12,8 @@ public class Contants {
     //public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式
-    public static final String PDF= "http://dcsapi.com?k=140337680&url=";
-
-    public static final String PDF_TEST= "http://dcsapi.com?k=140387567&url=";
-
-
-
+    public static final String PDF = "http://dcsapi.com?k=140337680&url=";
+    public static final String PDF_TEST = "http://dcsapi.com?k=140387567&url=";
     //首页数据
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
@@ -109,9 +105,6 @@ public class Contants {
     public static final String WEICHAT_INTERFACE = DOMAIN + "/index.php/api/index/wxpay";
     //
     public static final String WXAPP_PAY = DOMAIN + "/index.php/api/apppay/wx_app_pay";
-
-    //请求合同
-    public static final String ASK_ONTRACT = DOMAIN + "/index.php/appv2/order/ask_ontract";
     //上传合同图片
     public static final String UPLOAD_CONTRACT_PHOTO = DOMAIN + "/index.php/appv2/order/upload_contract";
     //上传首付款凭证
@@ -173,19 +166,10 @@ public class Contants {
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
-    /**
-     * 用户文件夹
-     */
-    public static final String USER_PATH = "USER/user";
-    /**
-     * 缓存文件夹目录
-     */
-    public static final String CACHE_PATH = "cache";
     //微信相关
     public static final String API_KEY = "cvtLF1xMofV888WMeSUrze41HpntYz7p";
     public static final String WEXIN_APP_ID = "wxaaa583d7b2f02dc3";
     public static final String WEXIN_APP_SECRET = "856425a0db943831154d248d32c761c2";
-    public static final String WEXIN_URL_STRING = "https://api.weixin.qq.com/sns/oauth2/access_token";
     public static final String BINDING_THIRD = DOMAIN + "/index.php/appv2/login/binding_third";
 
 }

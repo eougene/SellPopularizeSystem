@@ -518,4 +518,5 @@
     <string name="firstname_ensure">Surname must begin with a letter</string>
 
     <string name="saler_21">意向金凭证已拒绝,订单已取消</string>
+    <string name="sale_toas">请先学习课程:</string>
 </resources>

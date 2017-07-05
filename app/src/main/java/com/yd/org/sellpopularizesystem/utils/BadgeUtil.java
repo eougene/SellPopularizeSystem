@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
-import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
@@ -39,7 +38,7 @@ public class BadgeUtil {
         } else if (Build.MANUFACTURER.toLowerCase().contains("samsung")) {
             sendToSamsumg(context, count);
         } else {
-            Toast.makeText(context, "Not Support", Toast.LENGTH_LONG).show();
+           // Toast.makeText(context, "Not Support", Toast.LENGTH_LONG).show();
         }
     }
 

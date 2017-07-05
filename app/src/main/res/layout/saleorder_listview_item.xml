@@ -31,7 +31,6 @@
                 android:drawableLeft="@mipmap/redhome"
                 android:drawablePadding="@dimen/padding_margin_6"
                 android:gravity="center"
-                android:text="22"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"
                 android:textStyle="bold"/>
@@ -43,7 +42,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
-                android:text="Aangela"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -72,7 +70,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="2"
-                android:text="dddddddddddddddddddddddddddddddd"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"
                 android:textStyle="bold"/>
@@ -85,7 +82,6 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="ddd"
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
@@ -136,6 +132,21 @@
                 android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/saleRecorTv4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:background="@drawable/button_back6"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:paddingLeft="@dimen/padding_margin_10"
+                android:paddingRight="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_6"
+                android:text="@string/saler_16"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tv_size_10"
+                android:visibility="gone"/>
+
+            <TextView
                 android:id="@+id/saleRecorTv3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -150,20 +161,6 @@
                 android:textSize="@dimen/tv_size_10"
                 android:visibility="gone"/>
 
-            <TextView
-                android:id="@+id/saleRecorTv4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@drawable/button_back6"
-                android:paddingBottom="@dimen/padding_margin_6"
-                android:paddingLeft="@dimen/padding_margin_10"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:text="@string/saler_16"
-                android:textColor="@color/white"
-                android:textSize="@dimen/tv_size_10"
-                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tvStatus"

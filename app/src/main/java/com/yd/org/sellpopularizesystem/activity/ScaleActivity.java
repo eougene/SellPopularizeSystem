@@ -222,7 +222,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         }
         if (isRefresh) {
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-            adapter = new CustomeListAdapter(ScaleActivity.this, isRefresh);
+            adapter = new CustomeListAdapter(ScaleActivity.this);
             listView.setAdapter(adapter);
         }
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);

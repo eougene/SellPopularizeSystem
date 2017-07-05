@@ -21,9 +21,9 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
-import com.yd.org.sellpopularizesystem.javaBean.ProSubUnitClassifyBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
+import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -53,7 +53,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private List<ProSubunitListBean.ResultBean.PropertyBean> data = new ArrayList<>();
     private CommonAdapter adapter;
     private Object bean;
-    private ProSubUnitClassifyBean childBean;
+    private ProductListBean.ResultBean.ChildsBean childBean;
     private CustomePopuWindow mCustomePopuWindow;
     private String bedRoomNum;
     private String bathRoomNum = "";
@@ -110,7 +110,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 setTitle(proName);
                 getListData();
             } else {//点击单个item传递过来的对象
-                childBean = (ProSubUnitClassifyBean) bean;
+                childBean = (ProductListBean.ResultBean.ChildsBean) bean;
             /*data.clear();
             data.add(childBean);*/
                 bedRoomNum = childBean.getBedroom();

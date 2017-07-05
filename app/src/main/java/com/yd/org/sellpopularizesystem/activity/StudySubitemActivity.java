@@ -45,32 +45,27 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
         tvNoMessage = getViewById(R.id.noInfomation);
-        String flagStr = getIntent().getExtras().getString("tossia");
-        if (flagStr.equals("palyplatform")) {
+        type_id = getIntent().getExtras().getString("type_id");
+        if (type_id.equals("6")) {
             //玩转平台
-            type_id = "6";
             setTitle(R.string.playplatform);
             getStudyListData(true, page, type_id);
             //成功原理
-        } else if (flagStr.equals("success")) {
-            type_id = "5";
+        } else if (type_id.equals("5")) {
             setTitle(R.string.successlaw);
             getStudyListData(true, page, type_id);
 
             //基础知识
-        } else if (flagStr.equals("basic")) {
-            type_id = "3";
+        } else if (type_id.equals("3")) {
             setTitle(R.string.basic_konwledge);
             getStudyListData(true, page, type_id);
-        } else if (flagStr.equals("saleTec")) {
+        } else if (type_id.equals("4")) {
             //销售秘籍
-            type_id = "4";
             setTitle(R.string.sales_techniques);
             getStudyListData(true, page, type_id);
         } else {
             //项目
             setTitle(R.string.project);
-            type_id = "1";
             getStudyListData(true, page, type_id);
         }
     }

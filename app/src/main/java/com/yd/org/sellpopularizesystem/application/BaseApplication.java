@@ -13,7 +13,6 @@ import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
 
@@ -24,7 +23,6 @@ import com.yd.org.sellpopularizesystem.utils.ACache;
 
 public class BaseApplication extends Application {
     public static BaseApplication mApp;
-    private CustomBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
     public String cid="";
@@ -40,13 +38,7 @@ public class BaseApplication extends Application {
         return mContext;
     }
 
-    public CustomBean.ResultBean getResultBean() {
-        return resultBean;
-    }
 
-    public void setResultBean(CustomBean.ResultBean resultBean) {
-        this.resultBean = resultBean;
-    }
 
     public ProductDetailBean.ResultBean getPrs() {
         return prs;
