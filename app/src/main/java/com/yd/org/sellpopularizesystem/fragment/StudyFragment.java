@@ -41,24 +41,29 @@ public class StudyFragment extends BaseFragmentView {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                //玩转平台
                 case R.id.tvPlayPlatform:
-                    bundle.putString("tossia", "palyplatform");
+                    bundle.putString("type_id", "6");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
+                //成功原理
                 case R.id.tvSuccess:
-                    bundle.putString("tossia", "success");
+                    bundle.putString("type_id", "5");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
+                //基础知识
                 case R.id.tvBasic:
-                    bundle.putString("tossia", "basic");
+                    bundle.putString("type_id", "3");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
+                //  //销售秘籍
                 case R.id.tvSaleTec:
-                    bundle.putString("tossia", "saleTec");
+                    bundle.putString("type_id", "4");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
                 case R.id.tvProject:
-                    bundle.putString("tossia", "project");
+                    //项目
+                    bundle.putString("type_id", "6");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
             }
