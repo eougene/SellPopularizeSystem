@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 /**
@@ -25,7 +27,7 @@ public class NotificationFragment extends BaseFragmentView {
     private RadioButton rbOrder, rbBrief, rbCompany, rbSystem;
     private RelativeLayout orderRelat, brifeRelat, companyRelat, systemRelat;
     private int type = 0, array = 0;
-    //
+    Message msg =new Message();;
     private Boolean isShow = false;
     private int cate_id = 4;
     private OrderNotificFragment notificFragment;
@@ -33,6 +35,7 @@ public class NotificationFragment extends BaseFragmentView {
     private CompanyNotificFragment notificFragment2;
     private SystemNotificFragment notificFragment3;
     private int fragmentID = 0;
+    private int size=0x11;
     /**
      * 接收消息,显示当前消息数量
      */
@@ -94,8 +97,14 @@ public class NotificationFragment extends BaseFragmentView {
                     deleteNotification.setVisibility(View.INVISIBLE);
                     type = 0;
                     break;
-
-
+                //对应fragment里没有数据
+                case ExtraName.NO_DATA:
+                    size=0;
+                    break;
+                    //对应fragment里有数据
+                case ExtraName.NORMAL_DATA:
+                    size=1;
+                    break;
             }
         }
     };
@@ -109,38 +118,40 @@ public class NotificationFragment extends BaseFragmentView {
 
                 //编辑
                 case R.id.tvCancel:
+                    Log.e("tvCancel", "onClick: "+size );
+                    if (size!=0) {
+                        //是否显示全选,删除等
+                        if (type == 0) {
+                            //是否全选
+                            isShow = true;
+                            tvCancel.setText(R.string.cancel);
+                            allCheck.setVisibility(View.VISIBLE);
+                            deleteNotification.setVisibility(View.VISIBLE);
+                            //标识符
+                            type = 1;
+                            //发送消息,通知
+                            message = new Message();
+                            message.what = 1;
+                            message.obj = isShow;
+                            message.arg1 = cate_id;
+                            message.arg2 = type;
+                            setNotific(fragmentID, message);
 
-                    //是否显示全选,删除等
-                    if (type == 0) {
-                        //是否全选
-                        isShow = true;
-                        tvCancel.setText(R.string.cancel);
-                        allCheck.setVisibility(View.VISIBLE);
-                        deleteNotification.setVisibility(View.VISIBLE);
-                        //标识符
-                        type = 1;
-                        //发送消息,通知
-                        message = new Message();
-                        message.what = 1;
-                        message.obj = isShow;
-                        message.arg1 = cate_id;
-                        message.arg2 = type;
-                        setNotific(fragmentID, message);
 
-
-                    } else {
-                        isShow = false;
-                        tvCancel.setText(R.string.customdetaild_title);
-                        allCheck.setVisibility(View.INVISIBLE);
-                        deleteNotification.setVisibility(View.INVISIBLE);
-                        type = 0;
-                        message = new Message();
-                        message.what = 1;
-                        message.obj = isShow;
-                        message.arg1 = cate_id;
-                        message.arg2 = type;
-                        setNotific(fragmentID, message);
-                        array = 0;
+                        } else {
+                            isShow = false;
+                            tvCancel.setText(R.string.customdetaild_title);
+                            allCheck.setVisibility(View.INVISIBLE);
+                            deleteNotification.setVisibility(View.INVISIBLE);
+                            type = 0;
+                            message = new Message();
+                            message.what = 1;
+                            message.obj = isShow;
+                            message.arg1 = cate_id;
+                            message.arg2 = type;
+                            setNotific(fragmentID, message);
+                            array = 0;
+                        }
                     }
                     break;
 
@@ -176,7 +187,16 @@ public class NotificationFragment extends BaseFragmentView {
                 //订单数
                 case R.id.tvOrder:
                     fragmentID = 0;
-
+                    cate_id = 4;
+                    resetStatus();
+                    if (notificFragment.size==0){
+                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+                    }else {
+                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+                        notificFragment.getAdapter().setsShowI(isShow);
+                        notificFragment.setType(0);
+                        //setNotific(fragmentID, msg);
+                    }
                     rbOrder.setChecked(true);
                     //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
@@ -190,7 +210,6 @@ public class NotificationFragment extends BaseFragmentView {
 
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
-                    cate_id = 4;
 
                     initFragment1(cate_id);
 
@@ -199,6 +218,17 @@ public class NotificationFragment extends BaseFragmentView {
                 //小组
                 case R.id.tvBrief:
                     fragmentID = 1;
+                    cate_id = 3;
+                    resetStatus();
+                    if (notificFragment1.size==0){
+                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+                    }else {
+                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+                        notificFragment1.getAdapter().setsShowI(isShow);
+                        notificFragment1.setType(0);
+                        //setNotific(fragmentID, msg);
+                    }
+                    Log.e("tag", "onClick: "+ notificFragment1.size);
                     rbOrder.setChecked(false);
                     rbBrief.setChecked(true);
                     //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
@@ -208,14 +238,22 @@ public class NotificationFragment extends BaseFragmentView {
 
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-                    cate_id = 3;
                     initFragment2(cate_id);
 
                     break;
                 //公司
                 case R.id.tvCompany:
                     fragmentID = 2;
+                    cate_id = 2;
+                    resetStatus();
+                    if (notificFragment2.size==0){
+                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+                    }else {
+                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+                        notificFragment2.getAdapter().setsShowI(isShow);
+                        notificFragment2.setType(0);
+                        //setNotific(fragmentID, msg);
+                    }
                     rbOrder.setChecked(false);
                     //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
 
@@ -226,16 +264,23 @@ public class NotificationFragment extends BaseFragmentView {
                     rbCompany.setChecked(true);
                     //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.yellowish));
 
-
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-                    cate_id = 2;
                     initFragment3(cate_id);
                     break;
                 //系统
                 case R.id.tvSystem:
                     fragmentID = 3;
+                    cate_id = 1;
+                    resetStatus();
+                    if (notificFragment3.size==0){
+                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+                    }else {
+                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+                        notificFragment3.getAdapter().setsShowI(isShow);
+                        notificFragment3.setType(0);
+                        //setNotific(fragmentID, msg);
+                    }
                     rbOrder.setChecked(false);
                     //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
 
@@ -246,11 +291,8 @@ public class NotificationFragment extends BaseFragmentView {
                     rbCompany.setChecked(false);
                     //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
 
-
                     rbSystem.setChecked(true);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-
-                    cate_id = 1;
                     initFragment4(cate_id);
                     break;
             }
@@ -258,6 +300,21 @@ public class NotificationFragment extends BaseFragmentView {
 
         }
     };
+
+    private void resetStatus() {
+        if (type==1){
+            isShow = false;
+            tvCancel.setText(R.string.customdetaild_title);
+            allCheck.setVisibility(View.INVISIBLE);
+            deleteNotification.setVisibility(View.INVISIBLE);
+            type = 0;
+            msg.what = 1;
+            msg.obj = isShow;
+            msg.arg1 = cate_id;
+            msg.arg2 = type;
+            array = 0;
+        }
+    }
 
 
     @Override

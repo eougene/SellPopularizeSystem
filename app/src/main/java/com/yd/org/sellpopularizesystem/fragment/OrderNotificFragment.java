@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.util.Size;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -45,13 +46,12 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private int type = 0;
     private AnnouncementBean.ResultBean resultBean;
     private int pos;
-
+    public static int size;
 
     public Handler mHandle = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
-
 
                 //全选
                 case 0:
@@ -105,6 +105,21 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         }
     };
 
+    public NotificationAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(NotificationAdapter adapter) {
+        this.adapter = adapter;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     /**
      * 创建实体类
@@ -167,7 +182,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
-
+            size=informationContents.size();
+            if (informationContents.size()==0){
+                Bundle bundle=new Bundle();
+                bundle.putString("size","0");
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+            }else {
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+            }
         }
         int is_read = 0;
         if (bean.getTotal_number() > 0) {

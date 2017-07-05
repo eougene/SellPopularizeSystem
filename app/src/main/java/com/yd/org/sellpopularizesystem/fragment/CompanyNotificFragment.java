@@ -12,6 +12,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.InformationContentActivity;
 import com.yd.org.sellpopularizesystem.adapter.NotificationAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
@@ -41,7 +42,7 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
     private int cate_id;
     private boolean isShow = true;
     private int type = 0;
-
+    public static int size;
 
     public Handler mHandle = new Handler() {
         @Override
@@ -95,6 +96,20 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
         }
     };
 
+    public NotificationAdapter getAdapter() {
+        return adapter;
+    }
+
+    public void setAdapter(NotificationAdapter adapter) {
+        this.adapter = adapter;
+    }
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
     /**
      * 判断是否选中
      *
@@ -175,7 +190,14 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
-
+            size=informationContents.size();
+            if (informationContents.size()==0){
+                Bundle bundle=new Bundle();
+                bundle.putString("size","0");
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NO_DATA);
+            }else {
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
+            }
         }
 
         if (bean.getTotal_number() > 0) {
