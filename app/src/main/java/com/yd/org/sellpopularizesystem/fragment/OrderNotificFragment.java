@@ -8,6 +8,7 @@ import android.os.Message;
 import android.util.Log;
 import android.util.Size;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 
 import com.google.gson.Gson;
@@ -46,6 +47,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private int type = 0;
     private AnnouncementBean.ResultBean resultBean;
     private int pos;
+    private int flag;
     public static int size;
 
     public Handler mHandle = new Handler() {
@@ -104,6 +106,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             }
         }
     };
+    private int firstVisibleItemPos;
 
     public NotificationAdapter getAdapter() {
         return adapter;
@@ -223,6 +226,10 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             adapter = new NotificationAdapter(getActivity());
             listView.setAdapter(adapter);
+            if (flag==1){
+                listView.setSelection(firstVisibleItemPos);
+
+            }
 
         }
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
@@ -254,6 +261,18 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             }
 
 
+        });
+
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                firstVisibleItemPos = firstVisibleItem;
+            }
         });
 
     }
@@ -324,12 +343,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
+        flag=0;
         getData(page, true, cate_id);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
+        flag=0;
         getData(page, false, cate_id);
     }
 
@@ -346,6 +367,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 case ExtraName.ORDER_TO_SALE:
                     adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
+                    flag=1;
                     commitHasRead(resultBean.getId());
                     break;
             }

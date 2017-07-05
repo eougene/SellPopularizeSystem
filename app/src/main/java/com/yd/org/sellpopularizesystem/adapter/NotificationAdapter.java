@@ -102,6 +102,7 @@ public class NotificationAdapter extends BaseAdapter {
             viewHoler.tvMessage.setTextColor(mContext.getResources().getColor(R.color.gray));
             viewHoler.tvPoint.setVisibility(View.GONE);
         } else {
+            viewHoler.tvMessage.setTextColor(mContext.getResources().getColor(R.color.black));
             viewHoler.tvPoint.setVisibility(View.VISIBLE);
         }
 
