@@ -93,6 +93,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
+                    type=msg.arg2;
                     deleteNoticeLog(isSelected());
                     break;
 
@@ -389,6 +390,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
+                Log.e(TAG, "onFailure: " + strMsg);
             }
         });
     }

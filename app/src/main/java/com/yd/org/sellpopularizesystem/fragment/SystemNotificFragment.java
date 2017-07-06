@@ -89,7 +89,7 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
 
                 //删除
                 case 2:
-
+                    type=msg.arg2;
                     deleteNoticeLog(isSelected());
                     break;
             }
@@ -230,6 +230,7 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
                     NotificationAdapter.ViewHoler holder = (NotificationAdapter.ViewHoler) view.getTag();
                     // 改变CheckBox的状态
                     holder.check_box.toggle();
+                    holder.tvPoint.setVisibility(View.INVISIBLE);
                     // 将CheckBox的选中状况记录下来
                     adapter.getIsSelected().put(position, holder.check_box.isChecked());
                 } else {

@@ -159,6 +159,7 @@ public class NotificationFragment extends BaseFragmentView {
                 case R.id.deleteNotification:
                     message = new Message();
                     message.what = 2;
+                    message.arg2=0;
                     setNotific(fragmentID, message);
                     break;
 
