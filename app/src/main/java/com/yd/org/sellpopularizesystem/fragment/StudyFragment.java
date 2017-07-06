@@ -63,7 +63,7 @@ public class StudyFragment extends BaseFragmentView {
                     break;
                 case R.id.tvProject:
                     //项目
-                    bundle.putString("type_id", "6");
+                    bundle.putString("type_id", "1");
                     ActivitySkip.forward(getActivity(), StudySubitemActivity.class, bundle);
                     break;
             }
