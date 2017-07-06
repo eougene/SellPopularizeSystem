@@ -40,8 +40,7 @@ public class HomeFragment extends BaseFragmentView {
     public static HomeFragment homeFragment;
     private RelativeLayout rlBefore;
     private LinearLayout saleLinearLayyout, customLinerLayout, studyLinearLayout;
-    private TextView tvScaleSource, tvNewAddSource, tvCustomNumber, tvNewCustomNumber,
-            tvStydyDatumCount, tvNotCompleteCount, tvNoNewsCount, tvMessage;
+    private TextView  tvNotCompleteCount;
     private Gradient homeGradient;
     private List<ImageView> imageViews = new ArrayList<>();
     private HomeDataBean homeDataBean;
@@ -121,17 +120,10 @@ public class HomeFragment extends BaseFragmentView {
         customLinerLayout = getViewById(R.id.customLinerLayout);
         //学习园地
         studyLinearLayout = getViewById(R.id.studyLinearLayout);
-
-        tvScaleSource = getViewById(R.id.tvScaleSource);
-        tvNewAddSource = getViewById(R.id.tvNewAddSource);
-        tvCustomNumber = getViewById(R.id.tvCustomNumber);
-        tvNewCustomNumber = getViewById(R.id.tvNewCustomNumber);
-        tvStydyDatumCount = getViewById(R.id.tvStydyDatumCount);
         tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
-        //tvNoNewsCount = getViewById(R.id.tvNoNewsCount);
 
         //渐变动画
-        homeGradient = getViewById(R.id.homeGradient);
+       // homeGradient = getViewById(R.id.homeGradient);
 
         //初始化imageview
         ImageView imageView = new ImageView(getActivity());
@@ -143,10 +135,10 @@ public class HomeFragment extends BaseFragmentView {
         imageViewOne.setImageResource(R.mipmap.home);
 
         //添加要渐变的ImageView
-        imageViews.add(imageView);
-        imageViews.add(imageViewOne);
-        //设置ImageView集合
-        homeGradient.setImageViews(imageViews);
+//        imageViews.add(imageView);
+//        imageViews.add(imageViewOne);
+//        //设置ImageView集合
+//        homeGradient.setImageViews(imageViews);
 
 
     }
@@ -173,12 +165,6 @@ public class HomeFragment extends BaseFragmentView {
                     Gson gson = new Gson();
                     homeDataBean = gson.fromJson(json, HomeDataBean.class);
                     if (homeDataBean.getCode() == 1) {
-
-//                        tvScaleSource.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_product() + " " + getString(R.string.home_01));
-//                        tvNewAddSource.setText(getString(R.string.newly_increased) + " " + homeDataBean.getResult().getNew_product() + " " + getString(R.string.home_02));
-//                        tvCustomNumber.setText(getString(R.string.your_there) + " " + homeDataBean.getResult().getTotal_customer() + " " + getString(R.string.home_03));
-//                        tvNewCustomNumber.setText(getString(R.string.this_month_newly) + " " + homeDataBean.getResult().getNew_customer() + " " + getString(R.string.home_04));
-                        //tvStydyDatumCount.setText(getString(R.string.owned_by_all) + " " + homeDataBean.getResult().getTotal_study() + " " + getString(R.string.home_05));
                         tvNotCompleteCount.setVisibility(View.INVISIBLE);
                         //如果首次进去有消息条数.则通知显示
                         if (homeDataBean.getResult().getUnread() > 0) {

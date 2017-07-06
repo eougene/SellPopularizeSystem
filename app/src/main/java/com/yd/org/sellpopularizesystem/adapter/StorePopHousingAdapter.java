@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -134,7 +135,11 @@ public class StorePopHousingAdapter extends BaseAdapter {
         switch (type){
             case  TYPE1:
                 holder.productListBean = list.get(position);
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.prductImageView);
+                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+                        config(Bitmap.Config.RGB_565).into(holder.prductImageView);
+
+
+
                 holder.productName.setText(list.get(position).getProduct_name().trim());
                 break;
             case TYPE2:

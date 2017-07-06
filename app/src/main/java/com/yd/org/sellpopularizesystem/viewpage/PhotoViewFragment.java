@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.viewpage;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -66,7 +67,8 @@ public class PhotoViewFragment extends BaseFragmentView {
 
     private void init() {
         Log.e("图片地址**", "url:" + url);
-        Picasso.with(getActivity()).load(url).into(photoIm);
+        Picasso.with(getActivity()).load(url).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into(photoIm);
 
     }
 

@@ -2,14 +2,12 @@ package com.yd.org.sellpopularizesystem.application;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
@@ -86,6 +84,7 @@ public class ViewHolder {
         view.setText(text);
         return this;
     }
+
     //为某个view设置背景颜色
     public ViewHolder setView(int viewId, int v) {
         View view = getView(viewId);
@@ -105,13 +104,14 @@ public class ViewHolder {
         view.setText(text);
         return this;
     }
+
     public ViewHolder setTextColor(int viewId, int color) {
         TextView view = getView(viewId);
         view.setTextColor(color);
         return this;
     }
 
-    public ListView setListView(int viewId ) {
+    public ListView setListView(int viewId) {
         ChildListView view = getView(viewId);
         return view;
     }
@@ -182,7 +182,9 @@ public class ViewHolder {
      * @return
      */
     public ViewHolder setImageByUrl(int viewId, String url) {
-        Picasso.with(context).load(url).into((ImageView) getView(viewId));
+        Picasso.with(context).load(url).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into((ImageView) getView(viewId));
+
         return this;
     }
 
@@ -194,7 +196,10 @@ public class ViewHolder {
      */
     public ViewHolder setImageByUrl(int viewId, String url, View.OnClickListener click) {
         ImageView imageView = (ImageView) getView(viewId);
-        Picasso.with(context).load(url).into(imageView);
+        Picasso.with(context).load(url).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into(imageView);
+
+
         imageView.setOnClickListener(click);
         return this;
     }

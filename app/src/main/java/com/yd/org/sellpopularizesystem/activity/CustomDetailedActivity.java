@@ -41,7 +41,6 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
@@ -73,10 +72,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -84,7 +80,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -285,7 +280,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 getViewById(R.id.ivPro).setVisibility(View.VISIBLE);
                 getViewById(R.id.ivAddress).setVisibility(View.VISIBLE);
                 //getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
-               // getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
+                // getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
                 getViewById(R.id.llOperate).setVisibility(View.GONE);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
                 getCustomInfo(resultBean);
@@ -443,7 +438,8 @@ public class CustomDetailedActivity extends BaseActivity {
     private void setInfo(CustomeDetailedBean customeDetailedBean) {
         //设置头像
         if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
-            Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).into(customeIcon);
+            Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).fit().centerCrop().
+                    config(Bitmap.Config.RGB_565).into(customeIcon);
         }
 
 
@@ -1145,7 +1141,7 @@ public class CustomDetailedActivity extends BaseActivity {
         resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim()) ? 0 : 1);
         resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim()) ? "" : edcustmomeDetailedWeChat.getText().toString().trim());
         resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim()) ? "" : edcustmomeDetailedQQ.getText().toString().trim());
-        ObjectSaveUtil.saveObject(CustomDetailedActivity.this,"custome",resultBean);
+        ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 
     private void getEditTextData(String updateOrAdd) {
@@ -1155,7 +1151,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //姓
         if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
             surname = edCustomeTrueName.getText().toString().trim();
-            if (!surname.substring(0, 1).matches("[a-zA-Z]")){
+            if (!surname.substring(0, 1).matches("[a-zA-Z]")) {
                 ToasShow.showToastCenter(this, getString(R.string.firstname_ensure));
                 return;
             }
@@ -1464,7 +1460,8 @@ public class CustomDetailedActivity extends BaseActivity {
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
                         Log.e("imagePath*2*", "imagePath:" + imagePath);
-                        Picasso.with(this).load("file://" + imagePath).into(customeIcon);
+                        Picasso.with(this).load("file://" + imagePath).fit().centerCrop().
+                                config(Bitmap.Config.RGB_565).into(customeIcon);
                         if (null != imagePath) {
                             if (!tag.equals("add")) {
                                 changeHeadImage(imagePath);
