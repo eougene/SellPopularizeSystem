@@ -63,7 +63,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
             //销售秘籍
             setTitle(R.string.sales_techniques);
             getStudyListData(true, page, type_id);
-        } else {
+        } else if (type_id.equals("1")){
             //项目
             setTitle(R.string.project);
             getStudyListData(true, page, type_id);

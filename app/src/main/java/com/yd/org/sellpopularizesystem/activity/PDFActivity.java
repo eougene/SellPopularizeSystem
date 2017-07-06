@@ -36,7 +36,7 @@ public class PDFActivity extends BaseActivity {
         } else {
 
             setTitle(getString(R.string.sale_notice));
-            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + sale_advice_url);
+            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + sale_advice_url);
 
         }
 
