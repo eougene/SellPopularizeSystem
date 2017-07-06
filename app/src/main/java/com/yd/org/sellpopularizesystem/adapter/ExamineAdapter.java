@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -110,7 +111,12 @@ public class ExamineAdapter extends BaseAdapter {
             holder = (HolderView) convertView.getTag();
         }
         holder.productListBean = list.get(position);
-        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.studyDisImageView);
+
+
+        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into(holder.studyDisImageView);
+
+
         holder.studyTextView.setText(holder.productListBean.getPaper_title());
         String time = holder.productListBean.getStop_time() + "000";
         holder.dateTextView.setText(context.getString(R.string.deadline) + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.valueOf(time)));

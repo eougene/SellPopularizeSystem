@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -121,7 +122,12 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).into(viewHolder.imageView);
+
+                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).fit().centerCrop().
+                        config(Bitmap.Config.RGB_565).into(viewHolder.imageView);
+
+
+
             }
 
 

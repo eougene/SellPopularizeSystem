@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -96,7 +97,12 @@ public class StyudyAdapter extends BaseAdapter {
 
 
         holder.productListBean = list.get(position);
-        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).into(holder.studyDisImageView);
+
+        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+                config(Bitmap.Config.RGB_565).into(holder.studyDisImageView);
+
+
+
         holder.studyTextView.setText(list.get(position).getStudy_title());
         holder.descriptionTextView.setText(list.get(position).getDescription());
 //        if (list.get(position).getCan_study() == 1) {
