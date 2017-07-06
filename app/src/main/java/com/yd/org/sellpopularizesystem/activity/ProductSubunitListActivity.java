@@ -95,6 +95,8 @@ public class ProductSubunitListActivity extends BaseActivity {
         if (prs == null) {
             //获取产品详情
             getItemProductDetail();
+        }else {
+            controlColor();
         }
         if (flag != null && flag.equals("pidatopsla")) {
             string = (String) bundle.get("title");
@@ -370,6 +372,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                //筛选
                 case R.id.rightTitle:
                     optionsPickerView.show();
                     break;
@@ -414,6 +417,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+                //排队
                 case R.id.btLineup:
                     eoiLineUp(data.get(pos));
                     break;
