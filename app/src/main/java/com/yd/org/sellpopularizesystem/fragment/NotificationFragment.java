@@ -190,6 +190,7 @@ public class NotificationFragment extends BaseFragmentView {
                     fragmentID = 0;
                     cate_id = 4;
                     resetStatus();
+                    initFragment1(cate_id);
                     if (notificFragment.size==0){
                         mhandler.sendEmptyMessage(ExtraName.NO_DATA);
                     }else {
@@ -212,8 +213,6 @@ public class NotificationFragment extends BaseFragmentView {
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
 
-                    initFragment1(cate_id);
-
                     break;
 
                 //小组
@@ -221,6 +220,7 @@ public class NotificationFragment extends BaseFragmentView {
                     fragmentID = 1;
                     cate_id = 3;
                     resetStatus();
+                    initFragment2(cate_id);
                     if (notificFragment1.size==0){
                         mhandler.sendEmptyMessage(ExtraName.NO_DATA);
                     }else {
@@ -239,7 +239,6 @@ public class NotificationFragment extends BaseFragmentView {
 
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
-                    initFragment2(cate_id);
 
                     break;
                 //公司
@@ -247,6 +246,7 @@ public class NotificationFragment extends BaseFragmentView {
                     fragmentID = 2;
                     cate_id = 2;
                     resetStatus();
+                    initFragment3(cate_id);
                     if (notificFragment2.size==0){
                         mhandler.sendEmptyMessage(ExtraName.NO_DATA);
                     }else {
@@ -267,12 +267,13 @@ public class NotificationFragment extends BaseFragmentView {
 
                     rbSystem.setChecked(false);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
-                    initFragment3(cate_id);
+
                     break;
                 //系统
                 case R.id.tvSystem:
                     fragmentID = 3;
                     cate_id = 1;
+                    initFragment4(cate_id);
                     resetStatus();
                     if (notificFragment3.size==0){
                         mhandler.sendEmptyMessage(ExtraName.NO_DATA);
@@ -294,7 +295,7 @@ public class NotificationFragment extends BaseFragmentView {
 
                     rbSystem.setChecked(true);
                     //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-                    initFragment4(cate_id);
+
                     break;
             }
 
