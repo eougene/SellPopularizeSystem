@@ -136,7 +136,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     }
 
     private void locatedOrderIdPos() {
-        if (getIntent().getExtras().getString("orderid")!=null){
+        if (getIntent().getExtras()!=null && getIntent().getExtras().getString("orderid")!=null){
             for (int i = 0; i <sobRbData.size() ; i++) {
                 if (sobRbData.get(i).getProduct_orders_id()==Integer.parseInt(getIntent().getExtras().getString("orderid"))){
                     lvSaleRecord.setSelection(i);
