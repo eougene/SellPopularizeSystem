@@ -245,7 +245,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 pos = position;
                 resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
 
-
                 if (type == 1) {
                     // 取得ViewHolder对象，这样就省去了通过层层的findViewById去实例化我们需要的cb实例的步骤
                     NotificationAdapter.ViewHoler holder = (NotificationAdapter.ViewHoler) view.getTag();
@@ -257,6 +256,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     //预定推送消息
                     Bundle bundle = new Bundle();
                     bundle.putString("saletoorder", "saletoorder");
+                    bundle.putString("orderid",resultBean.getAbout_id()+"");
                     ActivitySkip.forward(getActivity(), SaleRecordActivity.class, ExtraName.ORDER_TO_SALE, bundle);
                 }
             }

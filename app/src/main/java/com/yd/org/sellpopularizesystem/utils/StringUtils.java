@@ -30,11 +30,28 @@ public class StringUtils {
                 + "MB" : (var0 < 0L ? var2.format((double) ((float) var0 / 1024.0F / 1024.0F / 1024.0F))
                 + "GB" : "error")));
     }
+    //从字符串提取数字
     public static String getDigtalFromString(String string){
         String regEx="[^0-9]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(string);
        return m.replaceAll("").trim();
+    }
+    // 判断一个字符串是否含有数字
+    public static boolean hasDigit(String content) {
+
+        boolean flag = false;
+
+        Pattern p = Pattern.compile(".*\\d+.*");
+
+        Matcher m = p.matcher(content);
+
+        if (m.matches())
+
+            flag = true;
+
+        return flag;
+
     }
 
 }

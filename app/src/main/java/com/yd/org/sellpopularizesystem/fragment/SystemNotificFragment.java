@@ -224,13 +224,11 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
 
                 AnnouncementBean.ResultBean resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
 
-
                 if (type == 1) {
                     // 取得ViewHolder对象，这样就省去了通过层层的findViewById去实例化我们需要的cb实例的步骤
                     NotificationAdapter.ViewHoler holder = (NotificationAdapter.ViewHoler) view.getTag();
                     // 改变CheckBox的状态
                     holder.check_box.toggle();
-                    holder.tvPoint.setVisibility(View.INVISIBLE);
                     // 将CheckBox的选中状况记录下来
                     adapter.getIsSelected().put(position, holder.check_box.isChecked());
                 } else {
@@ -239,6 +237,10 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
                     bundle.putString("title", resultBean.getTitle());
                     bundle.putString("notice_id", resultBean.getId() + "");
                     bundle.putString("data", resultBean.getContent());
+                    // 取得ViewHolder对象，这样就省去了通过层层的findViewById去实例化我们需要的cb实例的步骤
+                    NotificationAdapter.ViewHoler holder = (NotificationAdapter.ViewHoler) view.getTag();
+                    //隐藏红点
+                    holder.tvPoint.setVisibility(View.INVISIBLE);
                     ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
                 }
             }

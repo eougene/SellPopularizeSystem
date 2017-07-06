@@ -266,10 +266,6 @@ public class MeFragment extends BaseFragmentView {
             Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + resultBean.getHead_img()).fit().centerCrop().
                     config(Bitmap.Config.RGB_565).error(R.mipmap.settingbt).into(ivCustomePhoto);
 
-
-
-
-
         }
     }
 
