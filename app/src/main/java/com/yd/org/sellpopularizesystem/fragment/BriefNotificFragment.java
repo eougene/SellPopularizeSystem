@@ -87,8 +87,12 @@ public class BriefNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
-
-                    deleteNoticeLog(isSelected());
+                    if (!isSelected().equals("")){
+                        deleteNoticeLog(isSelected());
+                        type=msg.arg2;
+                    }else {
+                        type=1;
+                    }
                     break;
             }
         }
@@ -296,6 +300,8 @@ public class BriefNotificFragment extends BaseFragmentView implements PullToRefr
                 if (e.getCode().equals("1")) {
                     //发送消息数目
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    //发送删除成功消息
+                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
                     getData(1, true, cate_id);
 
                 }

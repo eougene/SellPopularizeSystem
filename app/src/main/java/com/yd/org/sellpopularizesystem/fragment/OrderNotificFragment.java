@@ -93,8 +93,13 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
-                    type=msg.arg2;
-                    deleteNoticeLog(isSelected());
+                    if (!isSelected().equals("")){
+                        deleteNoticeLog(isSelected());
+                         type=msg.arg2;
+                    }else {
+                        type=1;
+                    }
+
                     break;
 
                 //动态改变消息是否已读
@@ -228,6 +233,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             adapter = new NotificationAdapter(getActivity());
             listView.setAdapter(adapter);
             if (flag==1){
+                //定位上一次的position位置
                 listView.setSelection(firstVisibleItemPos);
 
             }
@@ -308,6 +314,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 if (e.getCode().equals("1")) {
                     //发送消息数目
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                    //发送删除成功消息
                     NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
                     getData(1, true, cate_id);
 

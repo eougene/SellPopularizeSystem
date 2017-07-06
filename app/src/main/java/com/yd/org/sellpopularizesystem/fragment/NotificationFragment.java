@@ -273,8 +273,8 @@ public class NotificationFragment extends BaseFragmentView {
                 case R.id.tvSystem:
                     fragmentID = 3;
                     cate_id = 1;
-                    initFragment4(cate_id);
                     resetStatus();
+                    initFragment4(cate_id);
                     if (notificFragment3.size==0){
                         mhandler.sendEmptyMessage(ExtraName.NO_DATA);
                     }else {
