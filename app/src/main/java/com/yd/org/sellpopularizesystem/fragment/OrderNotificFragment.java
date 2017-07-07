@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.util.Size;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -191,34 +190,32 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
-            size=informationContents.size();
-            if (informationContents.size()==0){
-                Bundle bundle=new Bundle();
-                bundle.putString("size","0");
+            size = informationContents.size();
+            if (informationContents.size() == 0) {
+                Bundle bundle = new Bundle();
+                bundle.putString("size", "0");
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-            }else {
+            } else {
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
             }
         }
         int is_read = 0;
         if (bean.getTotal_number() > 0) {
-            if (cate_id == 4) {
-                for (int i = 0; i < informationContents.size(); i++) {
-                    if (informationContents.get(i).getIs_read() != 1) {
-                        is_read += 1;
-                    }
+            for (int i = 0; i < informationContents.size(); i++) {
+                if (informationContents.get(i).getIs_read() != 1) {
+                    is_read += 1;
                 }
-
-                Message message = new Message();
-                message.what = 0;
-                message.arg1 = is_read;
-                //通知首页加载消息数量
-                HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
-                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-
-
             }
+
+            Message message = new Message();
+            message.what = 0;
+            message.arg1 = is_read;
+            //通知首页加载消息数量
+            HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+            NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+            NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+
+
         }
 
         if (isRefresh) {
@@ -232,8 +229,10 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             adapter = new NotificationAdapter(getActivity());
             listView.setAdapter(adapter);
-            if (flag==1){
+
                 //定位上一次的position位置
+            if (flag == 1) {
+
                 listView.setSelection(firstVisibleItemPos);
 
             }
@@ -351,14 +350,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
-        flag=0;
+        flag = 0;
         getData(page, true, cate_id);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        flag=0;
+        flag = 0;
         getData(page, false, cate_id);
     }
 
@@ -375,7 +374,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 case ExtraName.ORDER_TO_SALE:
                     adapter.getInformationtents().get(pos).setIs_read(1);
                     adapter.notifyDataSetChanged();
-                    flag=1;
+                    flag = 1;
                     commitHasRead(resultBean.getId());
                     break;
             }
