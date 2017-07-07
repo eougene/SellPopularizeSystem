@@ -1,5 +1,7 @@
 package com.yd.org.sellpopularizesystem.utils;
 
+import android.util.Log;
+
 import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,13 +32,23 @@ public class StringUtils {
                 + "MB" : (var0 < 0L ? var2.format((double) ((float) var0 / 1024.0F / 1024.0F / 1024.0F))
                 + "GB" : "error")));
     }
+
     //从字符串提取数字
-    public static String getDigtalFromString(String string){
-        String regEx="[^0-9]";
+    public static String getDigtalFromString(String string) {
+        String regEx = "[^0-9]";
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(string);
-       return m.replaceAll("").trim();
+        return m.replaceAll("").trim();
     }
+
+    //从字符串提取数字
+    public static String getLetterFromString(String string) {
+        String regEx = "[^a-zA-Z]";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(string);
+        return m.replaceAll("").trim();
+    }
+
     // 判断一个字符串是否含有数字
     public static boolean hasDigit(String content) {
 
@@ -54,4 +66,69 @@ public class StringUtils {
 
     }
 
+    /**
+     * 判断字符串是否只包含数字
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        Pattern pattern = Pattern.compile("[0-9]*");
+        return pattern.matcher(str).matches();
+    }
+
+    // 判断一个字符串是否是字母
+    public static boolean hasLeter(String content) {
+
+        boolean flag = false;
+
+        Pattern p = Pattern.compile("[^a-zA-Z]");
+
+        Matcher m = p.matcher(content);
+
+        if (m.matches()){
+            return true;
+        }
+        return flag;
+
+    }
+
+    // 判断一个字符串是否是字母
+    public static boolean containLeter(String str) {
+
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+                return false;
+            }
+            if (Character.isLetter(str.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+                return  true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isLetterDigit(String str) {
+        boolean isDigit = false;//定义一个boolean值，用来表示是否包含数字
+        boolean isLetter = false;//定义一个boolean值，用来表示是否包含字母
+        for (int i = 0; i < str.length(); i++) {
+            if (Character.isDigit(str.charAt(i))) {   //用char包装类中的判断数字的方法判断每一个字符
+                isDigit = true;
+            }
+            if (Character.isLetter(str.charAt(i))) {  //用char包装类中的判断字母的方法判断每一个字符
+                isLetter = true;
+            }
+        }
+
+        String regex = "^[a-zA-Z0-9]+$";
+        boolean isRight = isDigit && isLetter && str.matches(regex);
+        return str.matches(regex);
+    }
+
+    //从字符串中获取数字和字母
+    public static String getLetterAndDigit(String str) {
+        String regEx = "^[a-zA-Z0-9]+$";
+        Pattern p = Pattern.compile(regEx);
+        Matcher m = p.matcher(str);
+        return m.replaceAll("").trim();
+    }
 }

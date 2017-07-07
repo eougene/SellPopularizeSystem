@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -284,14 +285,35 @@ public class ProductSubunitListActivity extends BaseActivity {
         Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
             @Override
             public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
-                if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) >
-                        Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
-                    return 1;
+                if (TextUtils.isDigitsOnly(o1.getProduct_childs_unit_number()) && TextUtils.isDigitsOnly(o2.getProduct_childs_unit_number())){
+                    if (Integer.parseInt(o1.getProduct_childs_unit_number()) >
+                            Integer.parseInt(o2.getProduct_childs_unit_number())) {
+                        return 1;
+                    }
+                    if (Integer.parseInt(o1.getProduct_childs_unit_number()) ==
+                            Integer.parseInt(o2.getProduct_childs_unit_number())) {
+                        return 0;
+                    }
+                }else {
+                    if (StringUtils.containLeter(o1.getProduct_childs_unit_number()) && StringUtils.containLeter(o2.getProduct_childs_unit_number())){
+                        if (StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
+                                    .equals(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()))){
+                               if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) >
+                                       Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number())) ){
+                                   return 1;
+                               }
+                                if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) ==
+                                        Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number())) ){
+                                    return 0;
+                                }
+                            }else {
+                               return StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
+                                        .compareTo(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()));
+                            }
+                    }
+                    return o1.getProduct_childs_unit_number().compareTo(o2.getProduct_childs_unit_number());
                 }
-                if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) ==
-                        Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
-                    return 0;
-                }
+
                 return -1;
             }
         });
@@ -312,9 +334,7 @@ public class ProductSubunitListActivity extends BaseActivity {
             }
             setAdapter();
         } else {
-            Log.e("data", "parseJson: " + adapter.getmDatas().size());
             adapter.CleaDates(data);
-            Log.e("data**", "parseJson: " + adapter.getmDatas().size());
             tvNoInfo.setVisibility(View.VISIBLE);
         }
 
@@ -324,7 +344,6 @@ public class ProductSubunitListActivity extends BaseActivity {
         adapter = new CommonAdapter<ProSubunitListBean.ResultBean.PropertyBean>(this, data, R.layout.productdetaill_activity_listview_item) {
             @Override
             public void convert(ViewHolder holder, final ProSubunitListBean.ResultBean.PropertyBean item) {
-                Log.e("tag", "convert: " + item.getIs_lock());
                 //没有预订时颜色
                 if (item.getIs_lock() == 0) {
                     holder.setImageResource(R.id.ivHouse, R.mipmap.greenhome);
