@@ -49,10 +49,8 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
         public void handleMessage(Message msg) {
             switch (msg.what) {
 
-
                 //全选
                 case 0:
-
                     //全选,全不选
                     if (msg.arg1 == 0) {
                         // 遍历list的长度，将MyAdapter中的map值全部设为true
@@ -107,6 +105,7 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
     public void setAdapter(NotificationAdapter adapter) {
         this.adapter = adapter;
     }
+
     public int getType() {
         return type;
     }
@@ -173,33 +172,28 @@ public class SystemNotificFragment extends BaseFragmentView implements PullToRef
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
-            size=informationContents.size();
-            if (informationContents.size()==0){
-                Bundle bundle=new Bundle();
-                bundle.putString("size","0");
+            size = informationContents.size();
+            if (informationContents.size() == 0) {
+                Bundle bundle = new Bundle();
+                bundle.putString("size", "0");
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-            }else {
+            } else {
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
             }
         }
 
         int is_read = 0;
         if (bean.getTotal_number() > 0) {
-            if (cate_id == 16) {
-
-                for (int i = 0; i < informationContents.size(); i++) {
-                    if (informationContents.get(i).getIs_read() != 1) {
-                        is_read += 1;
-                    }
+            for (int i = 0; i < informationContents.size(); i++) {
+                if (informationContents.get(i).getIs_read() != 1) {
+                    is_read += 1;
                 }
-                Message message = new Message();
-                message.what = 3;
-                message.obj = String.valueOf(bean.getTotal_number());
-                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
-                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-
-
             }
+            Message message = new Message();
+            message.what = 3;
+            message.arg1 = is_read;
+            NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(3);
+            NotificationFragment.notificationFragment.mhandler.sendMessage(message);
         }
 
         if (isRefresh) {

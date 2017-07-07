@@ -126,7 +126,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                 }
 
 
-
                 //准备交换合同
             } else if (viewHolder.resultBean.getOrder_money_status() == 2
                     && viewHolder.resultBean.getContract_apply_status() == 2
@@ -143,12 +142,11 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
 
 
-
                 //请上传合同首页 ,请上传首付款凭证
             } else if (viewHolder.resultBean.getOrder_money_status() == 2
                     && (viewHolder.resultBean.getContract_apply_status() == 1 || viewHolder.resultBean.getContract_apply_status() == 2)
-                    && (viewHolder.resultBean.getUpload_contract_status() == 0 || viewHolder.resultBean.getUpload_contract_status() == 1|| viewHolder.resultBean.getUpload_contract_status() == 2|| viewHolder.resultBean.getUpload_contract_status() == 3)
-                    && (viewHolder.resultBean.getBuy_money_status() == 0 || viewHolder.resultBean.getBuy_money_status() == 1 || viewHolder.resultBean.getBuy_money_status() == 2|| viewHolder.resultBean.getBuy_money_status() == 3)
+                    && (viewHolder.resultBean.getUpload_contract_status() == 0 || viewHolder.resultBean.getUpload_contract_status() == 1 || viewHolder.resultBean.getUpload_contract_status() == 2 || viewHolder.resultBean.getUpload_contract_status() == 3)
+                    && (viewHolder.resultBean.getBuy_money_status() == 0 || viewHolder.resultBean.getBuy_money_status() == 1 || viewHolder.resultBean.getBuy_money_status() == 2 || viewHolder.resultBean.getBuy_money_status() == 3)
                     && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
 
@@ -160,7 +158,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.tvStatus.setVisibility(View.GONE);
 
 
-           }
+            }
 
             //订单已取消
         } else if (viewHolder.resultBean.getStatus() == 10) {
@@ -173,13 +171,11 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
 
 
-            if (viewHolder.resultBean.getOrder_money_status()==3){
+            if (viewHolder.resultBean.getOrder_money_status() == 3 && viewHolder.resultBean.getCancel_apply_status() == 0) {
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_21));
-            }else {
+            } else {
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_02));
             }
-
-
 
 
         } //订单已完成

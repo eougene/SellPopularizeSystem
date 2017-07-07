@@ -27,7 +27,7 @@ public class NotificationFragment extends BaseFragmentView {
     private RadioButton rbOrder, rbBrief, rbCompany, rbSystem;
     private RelativeLayout orderRelat, brifeRelat, companyRelat, systemRelat;
     private int type = 0, array = 0;
-    Message msg =new Message();;
+    private Message msg =new Message();;
     private Boolean isShow = false;
     private int cate_id = 4;
     private OrderNotificFragment notificFragment;
