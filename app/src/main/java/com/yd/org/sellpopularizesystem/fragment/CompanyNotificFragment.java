@@ -107,7 +107,6 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
     public void setAdapter(NotificationAdapter adapter) {
         this.adapter = adapter;
     }
-
     public int getType() {
         return type;
     }
@@ -115,7 +114,6 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
     public void setType(int type) {
         this.type = type;
     }
-
     /**
      * 判断是否选中
      *
@@ -196,12 +194,12 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
-            size = informationContents.size();
-            if (informationContents.size() == 0) {
-                Bundle bundle = new Bundle();
-                bundle.putString("size", "0");
+            size=informationContents.size();
+            if (informationContents.size()==0){
+                Bundle bundle=new Bundle();
+                bundle.putString("size","0");
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-            } else {
+            }else {
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
             }
         }
@@ -209,18 +207,23 @@ public class CompanyNotificFragment extends BaseFragmentView implements PullToRe
         if (bean.getTotal_number() > 0) {
 
             int is_read = 0;
-            for (int i = 0; i < informationContents.size(); i++) {
-                if (informationContents.get(i).getIs_read() != 1) {
-                    is_read += 1;
+            if (cate_id == 2) {
+                //cate_id == 15
+
+                for (int i = 0; i < informationContents.size(); i++) {
+                    if (informationContents.get(i).getIs_read() != 1) {
+                        is_read += 1;
+                    }
                 }
+                Message message = new Message();
+                message.what = 2;
+                message.arg1 = is_read;
+                message.obj = String.valueOf(is_read);
+                //NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+
+
             }
-            Message message = new Message();
-            message.what = 2;
-            message.arg1 = is_read;
-            NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(2);
-            NotificationFragment.notificationFragment.mhandler.sendMessage(message);
-
-
         }
 
         if (isRefresh) {
