@@ -46,6 +46,8 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
         listView = getViewById(R.id.content_view);
         tvNoMessage = getViewById(R.id.noInfomation);
         type_id = getIntent().getExtras().getString("type_id");
+
+        Log.e("type_id***","type_id:"+type_id);
         if (type_id.equals("6")) {
             //玩转平台
             setTitle(R.string.playplatform);
