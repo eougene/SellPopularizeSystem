@@ -3,16 +3,18 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RadioButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
+import com.yd.org.sellpopularizesystem.adapter.FragAdapter;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by hejin on 2017/4/10.
@@ -20,22 +22,21 @@ import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 public class NotificationFragment extends BaseFragmentView {
 
+
+    private ViewPager studyViewPager;
+    private FragAdapter adapter;
+    private List<Fragment> fragments = new ArrayList<>();
+
     //基本控件
     public static NotificationFragment notificationFragment;
 
     private TextView allCheck, deleteNotification, tvCancel, tvOrderSum, tvBriefSum, tvCompanySum, tvSystemSum;
     private RadioButton rbOrder, rbBrief, rbCompany, rbSystem;
-    private RelativeLayout orderRelat, brifeRelat, companyRelat, systemRelat;
     private int type = 0, array = 0;
-    private Message msg =new Message();;
     private Boolean isShow = false;
+    //对应数据的Id,4表示订单消息
     private int cate_id = 4;
-    private OrderNotificFragment notificFragment;
-    private BriefNotificFragment notificFragment1;
-    private CompanyNotificFragment notificFragment2;
-    private SystemNotificFragment notificFragment3;
-    private int fragmentID = 0;
-    private int size=0x11;
+    private OrderNotificFragment notificFragment, notificFragment1, notificFragment2, notificFragment3;
     /**
      * 接收消息,显示当前消息数量
      */
@@ -89,7 +90,7 @@ public class NotificationFragment extends BaseFragmentView {
                     break;
 
 
-                //删除成功
+                //删除成功,回复编辑状态
                 case 4:
                     isShow = false;
                     tvCancel.setText(R.string.customdetaild_title);
@@ -97,14 +98,7 @@ public class NotificationFragment extends BaseFragmentView {
                     deleteNotification.setVisibility(View.INVISIBLE);
                     type = 0;
                     break;
-                //对应fragment里没有数据
-                case ExtraName.NO_DATA:
-                    size=0;
-                    break;
-                    //对应fragment里有数据
-                case ExtraName.NORMAL_DATA:
-                    size=1;
-                    break;
+
             }
         }
     };
@@ -113,73 +107,184 @@ public class NotificationFragment extends BaseFragmentView {
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Message message = null;
             switch (v.getId()) {
 
                 //编辑
                 case R.id.tvCancel:
-                    Log.e("tvCancel", "onClick: "+size );
-                    if (size!=0) {
-                        //是否显示全选,删除等
-                        if (type == 0) {
-                            //是否全选
-                            isShow = true;
-                            tvCancel.setText(R.string.cancel);
-                            allCheck.setVisibility(View.VISIBLE);
-                            deleteNotification.setVisibility(View.VISIBLE);
-                            //标识符
-                            type = 1;
-                            //发送消息,通知
-                            message = new Message();
-                            message.what = 1;
-                            message.obj = isShow;
-                            message.arg1 = cate_id;
-                            message.arg2 = type;
-                            setNotific(fragmentID, message);
+
+                    //是否显示全选,删除等
+                    if (type == 0) {
+                        //是否全选
+                        isShow = true;
+                        tvCancel.setText(R.string.cancel);
+                        allCheck.setVisibility(View.VISIBLE);
+                        deleteNotification.setVisibility(View.VISIBLE);
+                        //标识符,用于判断是否选中或直接进入详情页
+                        type = 1;
 
 
-                        } else {
-                            isShow = false;
-                            tvCancel.setText(R.string.customdetaild_title);
-                            allCheck.setVisibility(View.INVISIBLE);
-                            deleteNotification.setVisibility(View.INVISIBLE);
-                            type = 0;
-                            message = new Message();
-                            message.what = 1;
-                            message.obj = isShow;
-                            message.arg1 = cate_id;
-                            message.arg2 = type;
-                            setNotific(fragmentID, message);
-                            array = 0;
-                        }
+                        Message message = new Message();
+                        message.arg2 = type;
+                        message.obj = isShow;
+                        message.what = 1;
+
+                        notificFragment.mHandle.sendMessage(message);
+
+
+                        Message message1 = new Message();
+                        message1.arg2 = type;
+                        message1.obj = isShow;
+                        message1.what = 1;
+
+                        notificFragment1.mHandle.sendMessage(message1);
+
+
+                        Message message2 = new Message();
+                        message2.arg2 = type;
+                        message2.obj = isShow;
+                        message2.what = 1;
+
+                        notificFragment2.mHandle.sendMessage(message2);
+
+
+                        Message message3 = new Message();
+                        message3.arg2 = type;
+                        message3.obj = isShow;
+                        message3.what = 1;
+
+                        notificFragment3.mHandle.sendMessage(message3);
+
+
+                    } else {
+                        isShow = false;
+                        tvCancel.setText(R.string.customdetaild_title);
+                        allCheck.setVisibility(View.INVISIBLE);
+                        deleteNotification.setVisibility(View.INVISIBLE);
+                        type = 0;
+
+                        Message message = new Message();
+                        message.arg2 = type;
+                        message.obj = isShow;
+                        message.what = 1;
+
+                        notificFragment.mHandle.sendMessage(message);
+
+
+                        Message message1 = new Message();
+                        message1.arg2 = type;
+                        message1.obj = isShow;
+                        message1.what = 1;
+
+                        notificFragment1.mHandle.sendMessage(message1);
+
+
+                        Message message2 = new Message();
+                        message2.arg2 = type;
+                        message2.obj = isShow;
+                        message2.what = 1;
+
+                        notificFragment2.mHandle.sendMessage(message2);
+
+
+                        Message message3 = new Message();
+                        message3.arg2 = type;
+                        message3.obj = isShow;
+                        message3.what = 1;
+
+                        notificFragment3.mHandle.sendMessage(message3);
+
+
                     }
+
                     break;
 
                 //删除
                 case R.id.deleteNotification:
-                    message = new Message();
-                    message.what = 2;
-                    message.arg2=0;
-                    setNotific(fragmentID, message);
+
+
+                    Message messages = new Message();
+                    messages.what = 2;
+                    messages.arg2 = type;
+                    notificFragment.mHandle.sendMessage(messages);
+
+                    //
+                    Message messages2 = new Message();
+                    messages2.what = 2;
+                    messages2.arg2 = type;
+                    notificFragment1.mHandle.sendMessage(messages2);
+
+                    //
+                    Message messages3 = new Message();
+                    messages3.what = 2;
+                    messages3.arg2 = type;
+                    notificFragment2.mHandle.sendMessage(messages3);
+                    //
+                    Message messages4 = new Message();
+                    messages4.what = 2;
+                    messages4.arg2 = type;
+                    notificFragment3.mHandle.sendMessage(messages4);
+
                     break;
 
                 //全选
                 case R.id.allCheck:
-                    message = new Message();
 
                     //全选,全不选
                     if (array == 0) {
+
+
+                        Message message = new Message();
                         message.what = 0;
                         message.arg1 = array;
-                        setNotific(fragmentID, message);
+                        notificFragment.mHandle.sendMessage(message);
+
+                        //
+                        Message message1 = new Message();
+                        message1.what = 0;
+                        message1.arg1 = array;
+                        notificFragment1.mHandle.sendMessage(message1);
+
+                        //
+                        Message message2 = new Message();
+                        message2.what = 0;
+                        message2.arg1 = array;
+                        notificFragment2.mHandle.sendMessage(message2);
+                        //
+                        Message message3 = new Message();
+                        message3.what = 0;
+                        message3.arg1 = array;
+                        notificFragment3.mHandle.sendMessage(message3);
                         array = 1;
+
 
                     } else {
                         // 遍历list的长度，
+
+
+                        Message message = new Message();
                         message.what = 0;
                         message.arg1 = array;
-                        setNotific(fragmentID, message);
+                        notificFragment.mHandle.sendMessage(message);
+
+                        //
+                        Message message1 = new Message();
+                        message1.what = 0;
+                        message1.arg1 = array;
+                        notificFragment1.mHandle.sendMessage(message1);
+
+                        //
+                        Message message2 = new Message();
+                        message2.what = 0;
+                        message2.arg1 = array;
+                        notificFragment2.mHandle.sendMessage(message2);
+                        //
+                        Message message3 = new Message();
+                        message3.what = 0;
+                        message3.arg1 = array;
+                        notificFragment3.mHandle.sendMessage(message3);
+
                         array = 0;
+
                     }
 
 
@@ -187,115 +292,44 @@ public class NotificationFragment extends BaseFragmentView {
 
                 //订单数
                 case R.id.tvOrder:
-                    fragmentID = 0;
                     cate_id = 4;
-                    resetStatus();
-                    initFragment1(cate_id);
-                    if (notificFragment.size==0){
-                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-                    }else {
-                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
-                        notificFragment.getAdapter().setsShowI(isShow);
-                        notificFragment.setType(0);
-                        //setNotific(fragmentID, msg);
-                    }
                     rbOrder.setChecked(true);
-                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-
                     rbBrief.setChecked(false);
-                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
                     rbCompany.setChecked(false);
-                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
                     rbSystem.setChecked(false);
-                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    studyViewPager.setCurrentItem(0);
+
 
                     break;
 
                 //小组
                 case R.id.tvBrief:
-                    fragmentID = 1;
                     cate_id = 3;
-                    resetStatus();
-                    initFragment2(cate_id);
-                    if (notificFragment1.size==0){
-                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-                    }else {
-                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
-                        notificFragment1.getAdapter().setsShowI(isShow);
-                        notificFragment1.setType(0);
-                        //setNotific(fragmentID, msg);
-                    }
-                    Log.e("tag", "onClick: "+ notificFragment1.size);
                     rbOrder.setChecked(false);
                     rbBrief.setChecked(true);
-                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-
                     rbCompany.setChecked(false);
-                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
-
                     rbSystem.setChecked(false);
-                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    studyViewPager.setCurrentItem(1);
 
                     break;
                 //公司
                 case R.id.tvCompany:
-                    fragmentID = 2;
                     cate_id = 2;
-                    resetStatus();
-                    initFragment3(cate_id);
-                    if (notificFragment2.size==0){
-                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-                    }else {
-                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
-                        notificFragment2.getAdapter().setsShowI(isShow);
-                        notificFragment2.setType(0);
-                        //setNotific(fragmentID, msg);
-                    }
                     rbOrder.setChecked(false);
-                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
-
                     rbBrief.setChecked(false);
-                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
                     rbCompany.setChecked(true);
-                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-
                     rbSystem.setChecked(false);
-                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.black));
+                    studyViewPager.setCurrentItem(2);
 
                     break;
                 //系统
                 case R.id.tvSystem:
-                    fragmentID = 3;
                     cate_id = 1;
-                    resetStatus();
-                    initFragment4(cate_id);
-                    if (notificFragment3.size==0){
-                        mhandler.sendEmptyMessage(ExtraName.NO_DATA);
-                    }else {
-                        mhandler.sendEmptyMessage(ExtraName.NORMAL_DATA);
-                        notificFragment3.getAdapter().setsShowI(isShow);
-                        notificFragment3.setType(0);
-                        //setNotific(fragmentID, msg);
-                    }
                     rbOrder.setChecked(false);
-                    //viewOrderSum.setBackgroundColor(getResources().getColor(R.color.black));
-
                     rbBrief.setChecked(false);
-                    //viewBriefSum.setBackgroundColor(getResources().getColor(R.color.black));
-
-
                     rbCompany.setChecked(false);
-                    //viewCompanySum.setBackgroundColor(getResources().getColor(R.color.black));
-
                     rbSystem.setChecked(true);
-                    //viewSystemSum.setBackgroundColor(getResources().getColor(R.color.yellowish));
-
+                    studyViewPager.setCurrentItem(3);
                     break;
             }
 
@@ -303,132 +337,28 @@ public class NotificationFragment extends BaseFragmentView {
         }
     };
 
-    private void resetStatus() {
-        if (type==1){
-            isShow = false;
-            tvCancel.setText(R.string.customdetaild_title);
-            allCheck.setVisibility(View.INVISIBLE);
-            deleteNotification.setVisibility(View.INVISIBLE);
-            type = 0;
-            msg.what = 1;
-            msg.obj = isShow;
-            msg.arg1 = cate_id;
-            msg.arg2 = type;
-            array = 0;
-        }
-    }
-
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         notificationFragment = this;
         setContentView(R.layout.activity_notification);
-        int color = getResources().getColor(R.color.white);
-        StatusBarUtil.setColor(getActivity(), color, 20);
+        StatusBarUtil.setColor(getActivity(), getResources().getColor(R.color.white), 20);
         initWedget();
-        //第一次初始化首页默认显示第一个fragment
-        initFragment1(cate_id);
-    }
-
-
-    //显示第一个fragment
-    private void initFragment1(int cate_id) {
-        //开启事务，fragment的控制是由事务来实现的
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-        //初始化fragment并添加到事务中，如果为null就new一个
-        if (notificFragment == null) {
-            notificFragment = OrderNotificFragment.getInstnce(cate_id);
-            transaction.add(R.id.main_frame_layout, notificFragment);
-        }
-        //隐藏所有fragment
-        hideFragment(transaction);
-        //显示需要显示的fragment
-        transaction.show(notificFragment);
-        //提交事务
-        transaction.commit();
-    }
-
-    //显示第二个fragment
-    private void initFragment2(int cate_id) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-        if (notificFragment1 == null) {
-            notificFragment1 = BriefNotificFragment.getInstnce(cate_id);
-            transaction.add(R.id.main_frame_layout, notificFragment1);
-        }
-        hideFragment(transaction);
-        transaction.show(notificFragment1);
-        transaction.commit();
-    }
-
-    //显示第三个fragment
-    private void initFragment3(int cate_id) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-        if (notificFragment2 == null) {
-            notificFragment2 = CompanyNotificFragment.getInstnce(cate_id);
-            transaction.add(R.id.main_frame_layout, notificFragment2);
-        }
-        hideFragment(transaction);
-        transaction.show(notificFragment2);
-        transaction.commit();
-    }
-
-
-    //显示第三个fragment
-    private void initFragment4(int cate_id) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-
-        if (notificFragment3 == null) {
-            notificFragment3 = SystemNotificFragment.getInstnce(cate_id);
-            transaction.add(R.id.main_frame_layout, notificFragment3);
-        }
-        hideFragment(transaction);
-        transaction.show(notificFragment3);
-        transaction.commit();
-    }
-
-    //隐藏所有的fragment
-    private void hideFragment(FragmentTransaction transaction) {
-        if (notificFragment != null) {
-            transaction.hide(notificFragment);
-        }
-        if (notificFragment1 != null) {
-            transaction.hide(notificFragment1);
-        }
-        if (notificFragment2 != null) {
-            transaction.hide(notificFragment2);
-        }
-        if (notificFragment3 != null) {
-            transaction.hide(notificFragment3);
-        }
+        initViewPage();
     }
 
 
     private void initWedget() {
-        orderRelat = getViewById(R.id.orderRelat);
-        orderRelat.setOnClickListener(mOnClickListener);
-
-        brifeRelat = getViewById(R.id.brifeRelat);
-        brifeRelat.setOnClickListener(mOnClickListener);
-
-        companyRelat = getViewById(R.id.companyRelat);
-        companyRelat.setOnClickListener(mOnClickListener);
-
-        systemRelat = getViewById(R.id.systemRelat);
-        systemRelat.setOnClickListener(mOnClickListener);
-
 
         //全选
         allCheck = getViewById(R.id.allCheck);
-        allCheck.setOnClickListener(mOnClickListener);
+
         //删除
         deleteNotification = getViewById(R.id.deleteNotification);
-        deleteNotification.setOnClickListener(mOnClickListener);
+
         //编辑
         tvCancel = getViewById(R.id.tvCancel);
-        tvCancel.setOnClickListener(mOnClickListener);
+
 
         //订单数据
         tvOrderSum = getViewById(R.id.tvOrderSum);
@@ -439,7 +369,6 @@ public class NotificationFragment extends BaseFragmentView {
         //系统
         tvSystemSum = getViewById(R.id.tvSystemSum);
 
-
         //订单
         rbOrder = getViewById(R.id.tvOrder);
         //小结
@@ -448,26 +377,76 @@ public class NotificationFragment extends BaseFragmentView {
         rbCompany = getViewById(R.id.tvCompany);
         //系统
         rbSystem = getViewById(R.id.tvSystem);
-        rbOrder.setOnClickListener(mOnClickListener);
-        rbBrief.setOnClickListener(mOnClickListener);
-        rbCompany.setOnClickListener(mOnClickListener);
-        rbSystem.setOnClickListener(mOnClickListener);
+        //viewpager
+        studyViewPager = getViewById(R.id.studyViewPager);
 
 
     }
 
-    private void setNotific(int fnID, Message message) {
-        if (fnID == 0) {
-            OrderNotificFragment.notificFragment.mHandle.sendMessage(message);
+    private void initViewPage() {
+        notificFragment = OrderNotificFragment.getInstnce(4);
+        notificFragment1 = OrderNotificFragment.getInstnce(3);
+        notificFragment2 = OrderNotificFragment.getInstnce(2);
+        notificFragment3 = OrderNotificFragment.getInstnce(1);
 
-        } else if (fnID == 1) {
-            BriefNotificFragment.notificFragment.mHandle.sendMessage(message);
+        fragments.add(notificFragment);
+        fragments.add(notificFragment1);
+        fragments.add(notificFragment2);
+        fragments.add(notificFragment3);
 
-        } else if (fnID == 2) {
-            CompanyNotificFragment.notificFragment.mHandle.sendMessage(message);
+        adapter = new FragAdapter(getActivity().getSupportFragmentManager(), fragments);
+        studyViewPager.setAdapter(adapter);
+        studyViewPager.setCurrentItem(0);
+        studyViewPager.setOffscreenPageLimit(4);
+        studyViewPager.setOnPageChangeListener(new MyVPageChangeListener());
 
-        } else if (fnID == 3) {
-            SystemNotificFragment.notificFragment.mHandle.sendMessage(message);
+    }
+
+    private class MyVPageChangeListener implements ViewPager.OnPageChangeListener {
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+
+        }
+
+        @Override
+        public void onPageSelected(int location) {
+            changeTextColor(location);
+        }
+
+    }
+
+    private void changeTextColor(int location) {
+        switch (location) {
+            case 0:
+                rbOrder.setChecked(true);
+                rbBrief.setChecked(false);
+                rbCompany.setChecked(false);
+                rbSystem.setChecked(false);
+                break;
+            case 1:
+                rbOrder.setChecked(false);
+                rbBrief.setChecked(true);
+                rbCompany.setChecked(false);
+                rbSystem.setChecked(false);
+                break;
+            case 2:
+                rbOrder.setChecked(false);
+                rbBrief.setChecked(false);
+                rbCompany.setChecked(true);
+                rbSystem.setChecked(false);
+                break;
+            case 3:
+                rbOrder.setChecked(false);
+                rbBrief.setChecked(false);
+                rbCompany.setChecked(false);
+                rbSystem.setChecked(true);
+                break;
 
         }
     }
@@ -475,8 +454,13 @@ public class NotificationFragment extends BaseFragmentView {
 
     @Override
     protected void setListener() {
-
-
+        rbOrder.setOnClickListener(mOnClickListener);
+        rbBrief.setOnClickListener(mOnClickListener);
+        rbCompany.setOnClickListener(mOnClickListener);
+        rbSystem.setOnClickListener(mOnClickListener);
+        tvCancel.setOnClickListener(mOnClickListener);
+        deleteNotification.setOnClickListener(mOnClickListener);
+        allCheck.setOnClickListener(mOnClickListener);
     }
 
 
