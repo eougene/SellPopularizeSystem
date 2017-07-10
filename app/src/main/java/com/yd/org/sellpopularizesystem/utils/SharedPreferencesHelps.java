@@ -102,6 +102,14 @@ public class SharedPreferencesHelps {
         return getPreferences().getString(ExtraName.COMPANY_ID, "null");
     }
 
+    public synchronized static final void setCompanyName(String companyId) {
+        getPreferences().edit().putString(ExtraName.COMPANY_NAME, companyId).commit();
+    }
+
+    public synchronized static final String getCompanyNmae() {
+        return getPreferences().getString(ExtraName.COMPANY_NAME, "null");
+    }
+
     //获取历史记录
     public synchronized static final String getHistory() {
         return getPreferences().getString(ExtraName.HISTORY_NAME, "");
@@ -204,7 +212,6 @@ public class SharedPreferencesHelps {
     public synchronized static final String getTime() {
         return getPreferences().getString("time", "null");
     }
-
 
 
 }
