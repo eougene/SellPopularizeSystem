@@ -97,6 +97,39 @@ public class NotificationFragment extends BaseFragmentView {
                     allCheck.setVisibility(View.INVISIBLE);
                     deleteNotification.setVisibility(View.INVISIBLE);
                     type = 0;
+
+                    Message message = new Message();
+                    message.arg2 = type;
+                    message.obj = isShow;
+                    message.what = 1;
+
+                    notificFragment.mHandle.sendMessage(message);
+
+
+                    Message message1 = new Message();
+                    message1.arg2 = type;
+                    message1.obj = isShow;
+                    message1.what = 1;
+
+                    notificFragment1.mHandle.sendMessage(message1);
+
+
+                    Message message2 = new Message();
+                    message2.arg2 = type;
+                    message2.obj = isShow;
+                    message2.what = 1;
+
+                    notificFragment2.mHandle.sendMessage(message2);
+
+
+                    Message message3 = new Message();
+                    message3.arg2 = type;
+                    message3.obj = isShow;
+                    message3.what = 1;
+
+                    notificFragment3.mHandle.sendMessage(message3);
+
+
                     break;
 
             }
@@ -202,27 +235,33 @@ public class NotificationFragment extends BaseFragmentView {
                 case R.id.deleteNotification:
 
 
-                    Message messages = new Message();
-                    messages.what = 2;
-                    messages.arg2 = type;
-                    notificFragment.mHandle.sendMessage(messages);
+                    if (cate_id == 4) {
+                        Message messages = new Message();
+                        messages.what = 2;
+                        messages.arg2 = type;
+                        notificFragment.mHandle.sendMessage(messages);
 
-                    //
-                    Message messages2 = new Message();
-                    messages2.what = 2;
-                    messages2.arg2 = type;
-                    notificFragment1.mHandle.sendMessage(messages2);
+                    } else if (cate_id == 3) {
+                        Message messages2 = new Message();
+                        messages2.what = 2;
+                        messages2.arg2 = type;
+                        notificFragment1.mHandle.sendMessage(messages2);
 
-                    //
-                    Message messages3 = new Message();
-                    messages3.what = 2;
-                    messages3.arg2 = type;
-                    notificFragment2.mHandle.sendMessage(messages3);
-                    //
-                    Message messages4 = new Message();
-                    messages4.what = 2;
-                    messages4.arg2 = type;
-                    notificFragment3.mHandle.sendMessage(messages4);
+
+                    } else if (cate_id == 2) {
+                        Message messages3 = new Message();
+                        messages3.what = 2;
+                        messages3.arg2 = type;
+                        notificFragment2.mHandle.sendMessage(messages3);
+
+                    } else if (cate_id == 1) {
+                        Message messages4 = new Message();
+                        messages4.what = 2;
+                        messages4.arg2 = type;
+                        notificFragment3.mHandle.sendMessage(messages4);
+
+                    }
+
 
                     break;
 
@@ -233,55 +272,69 @@ public class NotificationFragment extends BaseFragmentView {
                     if (array == 0) {
 
 
-                        Message message = new Message();
-                        message.what = 0;
-                        message.arg1 = array;
-                        notificFragment.mHandle.sendMessage(message);
+                        if (cate_id == 4) {
 
-                        //
-                        Message message1 = new Message();
-                        message1.what = 0;
-                        message1.arg1 = array;
-                        notificFragment1.mHandle.sendMessage(message1);
+                            Message message = new Message();
+                            message.what = 0;
+                            message.arg1 = array;
+                            notificFragment.mHandle.sendMessage(message);
 
-                        //
-                        Message message2 = new Message();
-                        message2.what = 0;
-                        message2.arg1 = array;
-                        notificFragment2.mHandle.sendMessage(message2);
-                        //
-                        Message message3 = new Message();
-                        message3.what = 0;
-                        message3.arg1 = array;
-                        notificFragment3.mHandle.sendMessage(message3);
+                        } else if (cate_id == 3) {
+                            Message message1 = new Message();
+                            message1.what = 0;
+                            message1.arg1 = array;
+                            notificFragment1.mHandle.sendMessage(message1);
+
+                        } else if (cate_id == 2) {
+                            //
+                            Message message2 = new Message();
+                            message2.what = 0;
+                            message2.arg1 = array;
+                            notificFragment2.mHandle.sendMessage(message2);
+
+                        } else if (cate_id == 1) {
+
+                            //
+                            Message message3 = new Message();
+                            message3.what = 0;
+                            message3.arg1 = array;
+                            notificFragment3.mHandle.sendMessage(message3);
+
+
+                        }
+
                         array = 1;
 
 
                     } else {
                         // 遍历list的长度，
 
+                        if (cate_id == 4) {
 
-                        Message message = new Message();
-                        message.what = 0;
-                        message.arg1 = array;
-                        notificFragment.mHandle.sendMessage(message);
+                            Message message = new Message();
+                            message.what = 0;
+                            message.arg1 = array;
+                            notificFragment.mHandle.sendMessage(message);
+                        } else if (cate_id == 3) {
+                            //
+                            Message message1 = new Message();
+                            message1.what = 0;
+                            message1.arg1 = array;
+                            notificFragment1.mHandle.sendMessage(message1);
+                        } else if (cate_id == 2) {
+                            //
+                            Message message2 = new Message();
+                            message2.what = 0;
+                            message2.arg1 = array;
+                            notificFragment2.mHandle.sendMessage(message2);
+                        } else if (cate_id == 1) {
+                            //
+                            Message message3 = new Message();
+                            message3.what = 0;
+                            message3.arg1 = array;
+                            notificFragment3.mHandle.sendMessage(message3);
+                        }
 
-                        //
-                        Message message1 = new Message();
-                        message1.what = 0;
-                        message1.arg1 = array;
-                        notificFragment1.mHandle.sendMessage(message1);
-
-                        //
-                        Message message2 = new Message();
-                        message2.what = 0;
-                        message2.arg1 = array;
-                        notificFragment2.mHandle.sendMessage(message2);
-                        //
-                        Message message3 = new Message();
-                        message3.what = 0;
-                        message3.arg1 = array;
-                        notificFragment3.mHandle.sendMessage(message3);
 
                         array = 0;
 
@@ -300,6 +353,13 @@ public class NotificationFragment extends BaseFragmentView {
                     studyViewPager.setCurrentItem(0);
 
 
+                    Message message = new Message();
+                    message.what = 0;
+                    message.arg1 = 1;
+                    notificFragment.mHandle.sendMessage(message);
+                    array = 0;
+
+
                     break;
 
                 //小组
@@ -311,6 +371,13 @@ public class NotificationFragment extends BaseFragmentView {
                     rbSystem.setChecked(false);
                     studyViewPager.setCurrentItem(1);
 
+                    //
+                    Message message1 = new Message();
+                    message1.what = 0;
+                    message1.arg1 = 1;
+                    notificFragment1.mHandle.sendMessage(message1);
+                    array = 0;
+
                     break;
                 //公司
                 case R.id.tvCompany:
@@ -321,6 +388,12 @@ public class NotificationFragment extends BaseFragmentView {
                     rbSystem.setChecked(false);
                     studyViewPager.setCurrentItem(2);
 
+                    Message message2 = new Message();
+                    message2.what = 0;
+                    message2.arg1 = 1;
+                    notificFragment2.mHandle.sendMessage(message2);
+                    array = 0;
+
                     break;
                 //系统
                 case R.id.tvSystem:
@@ -330,6 +403,13 @@ public class NotificationFragment extends BaseFragmentView {
                     rbCompany.setChecked(false);
                     rbSystem.setChecked(true);
                     studyViewPager.setCurrentItem(3);
+
+
+                    Message message3 = new Message();
+                    message3.what = 0;
+                    message3.arg1 = 1;
+                    notificFragment3.mHandle.sendMessage(message3);
+                    array = 0;
                     break;
             }
 
@@ -424,28 +504,58 @@ public class NotificationFragment extends BaseFragmentView {
     private void changeTextColor(int location) {
         switch (location) {
             case 0:
+                cate_id = 4;
                 rbOrder.setChecked(true);
                 rbBrief.setChecked(false);
                 rbCompany.setChecked(false);
                 rbSystem.setChecked(false);
+
+                Message message = new Message();
+                message.what = 0;
+                message.arg1 = 1;
+                notificFragment.mHandle.sendMessage(message);
+                array = 0;
                 break;
             case 1:
+                cate_id = 3;
                 rbOrder.setChecked(false);
                 rbBrief.setChecked(true);
                 rbCompany.setChecked(false);
                 rbSystem.setChecked(false);
+
+                //
+                Message message1 = new Message();
+                message1.what = 0;
+                message1.arg1 = 1;
+                notificFragment1.mHandle.sendMessage(message1);
+                array = 0;
                 break;
             case 2:
+                cate_id = 2;
                 rbOrder.setChecked(false);
                 rbBrief.setChecked(false);
                 rbCompany.setChecked(true);
                 rbSystem.setChecked(false);
+
+                Message message2 = new Message();
+                message2.what = 0;
+                message2.arg1 = 1;
+                notificFragment2.mHandle.sendMessage(message2);
+                array = 0;
                 break;
             case 3:
+                cate_id = 1;
                 rbOrder.setChecked(false);
                 rbBrief.setChecked(false);
                 rbCompany.setChecked(false);
                 rbSystem.setChecked(true);
+
+
+                Message message3 = new Message();
+                message3.what = 0;
+                message3.arg1 = 1;
+                notificFragment3.mHandle.sendMessage(message3);
+                array = 0;
                 break;
 
         }

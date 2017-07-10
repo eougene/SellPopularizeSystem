@@ -89,7 +89,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
-                    if (!isSelected().equals("")) {
+                    if (null!=isSelected()&&!isSelected().equals("")) {
                         deleteNoticeLog(isSelected());
                         type = msg.arg2;
                     } else {
@@ -157,7 +157,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", pages + "");
         ajaxParams.put("cate_id", cate_id + "");
-        ajaxParams.put("number", "50");
+        ajaxParams.put("number", "1000");
         fh.get(Contants.SYSTEM_ANNOUNCEMENT, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
@@ -176,13 +176,13 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
 
     private void jsonParse(String s, boolean isRefresh, int cate_id) {
-        //通知首页加载消息数量
-        HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
         Gson gson = new Gson();
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
         }
+        //通知首页加载消息数量
+        HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
         int is_read = 0;
         if (bean.getTotal_number() > 0) {
             for (int i = 0; i < informationContents.size(); i++) {
@@ -221,6 +221,37 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             }
 
+
+        } else {
+            Message message = null;
+            if (cate_id == 4) {
+                message = new Message();
+                message.what = 0;
+                message.arg1 = 0;
+
+
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+
+            } else if (cate_id == 3) {
+                message = new Message();
+                message.what = 1;
+                message.arg1 = 0;
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(1);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+            } else if (cate_id == 2) {
+                message = new Message();
+                message.what = 2;
+                message.arg1 = 0;
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(2);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+            } else if (cate_id == 1) {
+                message = new Message();
+                message.what = 3;
+                message.arg1 = 0;
+                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(3);
+                NotificationFragment.notificationFragment.mhandler.sendMessage(message);
+            }
 
         }
 
@@ -267,15 +298,15 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     NotificationAdapter.ViewHoler holder = (NotificationAdapter.ViewHoler) view.getTag();
                     holder.tvPoint.setVisibility(View.INVISIBLE);
                     holder.tvMessage.setTextColor(getResources().getColor(R.color.gray));
+
+
+                    //发送消息已读
+                    Message message = new Message();
+                    message.what = 3;
+                    message.obj = String.valueOf(resultBean.getId());
+                    mHandle.sendMessage(message);
+
                     if (cate_id == 4) {
-
-
-                        //发送消息已读
-                        Message message = new Message();
-                        message.what = 3;
-                        message.obj = String.valueOf(resultBean.getId());
-                        mHandle.sendMessage(message);
-
 
                         //预定推送消息
                         Bundle bundle = new Bundle();
@@ -288,7 +319,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         bundle.putString("title", resultBean.getTitle());
                         bundle.putString("notice_id", resultBean.getId() + "");
                         bundle.putString("data", resultBean.getContent());
-
 
 
                         ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
@@ -330,6 +360,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
+                type = 0;
                 ToasShow.showToastCenter(getActivity(), strMsg);
                 dismissLoadingDialog();
 
@@ -343,8 +374,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 ToasShow.showToastCenter(getActivity(), e.getMsg());
                 if (e.getCode().equals("1")) {
                     type = 0;
-                    //发送消息数目
-                    HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                     //发送删除成功消息
                     NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
                     getData(1, true, cate_id);
@@ -405,14 +434,16 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.e("已读","s:"+s);
+                Log.e("已读", "s:" + s);
                 //通知首页加载消息数量
                 HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                //获取数据
+                getData(1, true, cate_id);
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("已读","s:"+strMsg);
+                Log.e("已读", "s:" + strMsg);
             }
         });
     }
