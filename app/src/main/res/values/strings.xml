@@ -518,5 +518,6 @@
     <string name="select_birth">选择时间不得大于当前时间</string>
     <string name="firstname_ensure">姓氏必须以字母开头</string>
     <string name="sale_toas">请先学习课程:</string>
+    <string name="su">上传成功</string>
 
 </resources>
