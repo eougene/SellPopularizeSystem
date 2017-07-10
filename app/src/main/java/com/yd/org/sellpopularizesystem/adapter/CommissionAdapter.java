@@ -95,7 +95,7 @@ public class CommissionAdapter extends BaseAdapter {
         viewHolder.resultBean = datas.get(position);
         viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + "");
         viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + " - " + datas.get(position).getProduct_childs_unit_number());
-        viewHolder.sumCommission.setText(datas.get(position).getTotal() + "");
+        viewHolder.sumCommission.setText(datas.get(position).getCommossion() + "");
 
 
         //佣金已发放
@@ -129,16 +129,32 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         //佣金1
-        viewHolder.firstCommissionSum.setText(viewHolder.resultBean.getFirst_commossion());
-        viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+        viewHolder.firstCommissionSum.setText(viewHolder.resultBean.getFirst_money());
 
+        if (viewHolder.resultBean.getFirst_status() == 1) {
+            viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+        } else {
+            viewHolder.firstCommissionDate.setText("--/--/--");
+        }
         //佣金2
-        viewHolder.secondCommissionSum.setText(viewHolder.resultBean.getSecond_commossion());
-        viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
+        viewHolder.secondCommissionSum.setText(viewHolder.resultBean.getSecond_money());
+
+
+        if (viewHolder.resultBean.getFirst_status() == 1) {
+            viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+        } else {
+            viewHolder.secondCommissionDate.setText("--/--/--");
+        }
 
         //佣金3
-        viewHolder.thirdCommissionSum.setText(viewHolder.resultBean.getThird_commossion());
-        viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
+        viewHolder.thirdCommissionSum.setText(viewHolder.resultBean.getThird_money());
+
+
+        if (viewHolder.resultBean.getFirst_status() == 1) {
+            viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+        } else {
+            viewHolder.thirdCommissionDate.setText("--/--/--");
+        }
 
 
         viewHolder.commissionRel.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));

@@ -96,7 +96,23 @@ public class CustomeListAdapter extends BaseAdapter {
 
 
         //根据getIs_can_sale(),getIs_study()判断是否需要学习
-        if (list.get(position).getIs_can_sale().equals("0") && list.get(position).getIs_study() == 0) {
+        if (list.get(position).getIs_can_sale().equals("1") && list.get(position).getIs_study() == 0) {
+
+            viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
+            viewHolder.lvSubItem.setVisibility(View.GONE);
+            viewHolder.rlViewAll.setVisibility(View.GONE);
+            viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    //对应的学习项目
+                    ToasShow.showToastCenter(mContext, mContext.getString(R.string.sale_toas) + list.get(position).getProduct_name());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type_id", String.valueOf(list.get(position).getStudy_type_id()));
+                    ActivitySkip.forward((Activity) mContext, StudySubitemActivity.class, bundle);
+                }
+            });
+        } else {
             viewHolder.ivLockImageView.setVisibility(View.GONE);
             viewHolder.lvSubItem.setVisibility(View.VISIBLE);
             viewHolder.rlViewAll.setVisibility(View.VISIBLE);
@@ -113,21 +129,15 @@ public class CustomeListAdapter extends BaseAdapter {
                     ScaleActivity.scaleActivity.goTo(list.get(position).getChilds().get(p), ProductSubunitListActivity.class, list.get(position).getProduct_name().toLowerCase(), list.get(position).getProduct_id() + "");
                 }
             });
-        } else {
-            viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
-            viewHolder.lvSubItem.setVisibility(View.GONE);
-            viewHolder.rlViewAll.setVisibility(View.GONE);
-            viewHolder.prductImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
 
-                    //对应的学习项目
-                    ToasShow.showToastCenter(mContext, mContext.getString(R.string.sale_toas) + list.get(position).getProduct_name());
-                    Bundle bundle = new Bundle();
-                    bundle.putString("type_id", String.valueOf(list.get(position).getStudy_type_id()));
-                    ActivitySkip.forward((Activity) mContext, StudySubitemActivity.class, bundle);
-                }
-            });
+
+
+
+
+
+
+
+
         }
         return convertView;
     }
