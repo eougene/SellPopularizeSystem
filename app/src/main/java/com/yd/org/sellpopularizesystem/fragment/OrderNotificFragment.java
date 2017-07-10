@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -94,6 +95,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     } else {
                         type = 1;
                     }
+
+                    break;
+
+
+                //查看已读
+                case 3:
+                    String notID = (String) msg.obj;
+                    commitNotice(notID);
 
                     break;
 
@@ -259,6 +268,15 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     holder.tvPoint.setVisibility(View.INVISIBLE);
                     holder.tvMessage.setTextColor(getResources().getColor(R.color.gray));
                     if (cate_id == 4) {
+
+
+                        //发送消息已读
+                        Message message = new Message();
+                        message.what = 3;
+                        message.obj = String.valueOf(resultBean.getId());
+                        mHandle.sendMessage(message);
+
+
                         //预定推送消息
                         Bundle bundle = new Bundle();
                         bundle.putString("saletoorder", "saletoorder");
@@ -270,6 +288,9 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         bundle.putString("title", resultBean.getTitle());
                         bundle.putString("notice_id", resultBean.getId() + "");
                         bundle.putString("data", resultBean.getContent());
+
+
+
                         ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
                     }
 
@@ -321,6 +342,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 ErrorBean e = g.fromJson(s, ErrorBean.class);
                 ToasShow.showToastCenter(getActivity(), e.getMsg());
                 if (e.getCode().equals("1")) {
+                    type = 0;
                     //发送消息数目
                     HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                     //发送删除成功消息
@@ -374,6 +396,26 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     }
 
+
+    private void commitNotice(String str) {
+        FinalHttp http = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("notice_logs_id", str);
+        http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                Log.e("已读","s:"+s);
+                //通知首页加载消息数量
+                HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                Log.e("已读","s:"+strMsg);
+            }
+        });
+    }
 
 
 }
