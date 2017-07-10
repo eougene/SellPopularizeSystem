@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
@@ -42,7 +43,8 @@ public class InformationContentActivity extends BaseActivity {
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-
+                //通知首页加载消息数量
+                HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
             }
 
             @Override

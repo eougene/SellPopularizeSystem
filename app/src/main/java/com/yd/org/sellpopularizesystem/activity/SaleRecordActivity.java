@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -132,20 +131,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         }
         saleAdapter.addMore(sobRbData);
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        locatedOrderIdPos();
+        // locatedOrderIdPos();
     }
 
-    private void locatedOrderIdPos() {
-        if (getIntent().getExtras()!=null && getIntent().getExtras().getString("orderid")!=null){
-            for (int i = 0; i <sobRbData.size() ; i++) {
-                if (sobRbData.get(i).getProduct_orders_id()==Integer.parseInt(getIntent().getExtras().getString("orderid"))){
-                    lvSaleRecord.setSelection(i);
-                    Log.e("TAG", "initView: "+i );
-                    return;
-                }
-            }
-        }
-    }
+//
 
 
     public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
@@ -222,30 +211,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             }
         });
 
-        backLinearLayou.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.putExtra("saletoorder", "saletoorder");
-                setResult(Activity.RESULT_OK, intent);
-                finish();
-            }
-        });
+
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-
-
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            Intent intent = new Intent();
-            intent.putExtra("saletoorder", "saletoorder");
-            setResult(Activity.RESULT_OK, intent);
-            finish();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
@@ -270,7 +238,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     if (resultCode == RESULT_OK) {
                         Uri photoUri = BitmapUtil.imgUri;
                         picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
-                        Log.e("picPath**", "picPath:" + picPath);
                         setPicPath(picPath, rBean);
 
                     }
@@ -343,7 +310,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     Gson gson = new Gson();
                     ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                     if (errorBean.getCode().equals("1")) {
-                        ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                        ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
                     } else {
                         ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                     }
@@ -354,6 +321,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 @Override
                 public void onFailure(Throwable t, int errorNo, String strMsg) {
                     Log.e("s**", "s:" + errorNo);
+                    ToasShow.showToastCenter(SaleRecordActivity.this, strMsg.toString());
                     closeDialog();
 
                 }

@@ -152,18 +152,10 @@ public class LearningGardenActivity extends FragmentActivity {
         if (type == 0) {
             studyRadion.setChecked(true);
             checkRadion.setChecked(false);
-            /*studyView.setBackgroundColor(getResources().getColor(R.color.home_custom));
-            checkView.setBackgroundColor(getResources().getColor(R.color.gray));
-            studyRadion.setTextColor(getResources().getColor(R.color.home_custom));
-            checkRadion.setTextColor(getResources().getColor(R.color.gray));*/
 
         } else {
             studyRadion.setChecked(false);
             checkRadion.setChecked(true);
-            /*studyView.setBackgroundColor(getResources().getColor(R.color.gray));
-            checkView.setBackgroundColor(getResources().getColor(R.color.home_custom));
-            studyRadion.setTextColor(getResources().getColor(R.color.gray));
-            checkRadion.setTextColor(getResources().getColor(R.color.home_custom));*/
         }
 
     }
