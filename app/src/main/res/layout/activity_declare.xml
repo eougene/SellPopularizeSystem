@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:gravity="center_horizontal"
+            android:text="@string/declaretitle"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_18"
+            android:textStyle="bold"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:text="@string/s_0"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:text="@string/s_1"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:text="@string/s_2"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"
+            />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_10"
+            android:text="@string/s_3"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_15"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/argge"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/padding_margin_20"
+        android:background="@color/scale_tab5"
+        android:text="@string/s_4"
+        android:textColor="@color/black"/>
+</RelativeLayout>

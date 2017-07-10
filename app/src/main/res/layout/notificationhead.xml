@@ -34,7 +34,7 @@
             android:gravity="center"
             android:text="@string/message"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_tv_size"/>
+            android:textSize="@dimen/one_tv_size"/>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -118,14 +118,6 @@
                 android:visibility="gone"/>
 
 
-            <!--<View
-                android:id="@+id/viewOrderSum"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/yellowish" />-->
-
-
         </RelativeLayout>
 
         <View
@@ -165,13 +157,6 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
-
-            <!--<View
-                android:id="@+id/viewBriefSum"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/black" />-->
 
 
         </RelativeLayout>
@@ -213,14 +198,6 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08"
                 android:visibility="gone"/>
-
-            <!--<View
-                android:id="@+id/viewCompanySum"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_alignParentBottom="true"
-                android:background="@color/black" />-->
-
 
         </RelativeLayout>
 

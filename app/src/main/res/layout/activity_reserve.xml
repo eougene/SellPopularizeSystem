@@ -3,15 +3,14 @@
               android:id="@+id/rlReserver"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:background="@color/search_edit_bac"
               android:orientation="vertical">
 
 
-    <com.yd.org.sellpopularizesystem.myView.BounceScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="0.5dp"
-        android:layout_weight="1"
-        android:background="@color/search_edit_bac">
+        android:layout_weight="1">
 
         <LinearLayout
             style="@style/MatchWrap"
@@ -20,56 +19,53 @@
 
             <RelativeLayout
                 style="@style/MatchWrap"
-                android:gravity="center"
                 android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:background="@color/scale_tab5">
+                android:paddingTop="@dimen/padding_margin_10">
 
                 <TextView
                     android:id="@+id/tvReNameOne"
                     style="@style/WrapWrap"
-                    android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:drawableLeft="@mipmap/order"
+                    android:drawablePadding="@dimen/padding_margin_6"
                     android:text="@string/sada"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_15"/>
 
-                <TextView
-                    android:id="@+id/tv"
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:layout_toRightOf="@+id/tvReNameOne"
-                    android:text="@string/seprate"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"
-                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/search_edit"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10">
+
 
                 <TextView
-                    android:id="@+id/tvReNameTwo"
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/padding_margin_4"
-                    android:layout_toRightOf="@+id/tv"
-                    android:text="@string/sada"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"
-                    android:visibility="gone"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:text="@string/order_info"
+                    android:textColor="@color/black"/>
+
+
             </RelativeLayout>
 
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/price"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -78,39 +74,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/singlezero"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-            </RelativeLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/type"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvRetype"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/singlezero"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray2"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -123,15 +87,45 @@
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/type"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/tv_size_12"/>
+
+                <TextView
+                    android:id="@+id/tvRetype"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/tv_size_12"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray"/>
+
+            <RelativeLayout
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/available_for_firb"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -140,29 +134,28 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/singlezero"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray2"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/sale"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -171,62 +164,30 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/singlezero"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray2"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
-            <!--<View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />-->
-
-            <RelativeLayout
-                style="@style/MatchWrap"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:visibility="gone">
-
-                <TextView
-                    style="@style/WrapWrap"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/validity"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvValidity"
-                    style="@style/WrapWrap"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center_vertical"
-                    android:text="@string/threemonth"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-            </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlRecus"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/custome"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -235,7 +196,6 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/jinliu"
                     android:textColor="#ff0000"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
@@ -243,22 +203,22 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlRecusAddress"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/cus_address"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -267,29 +227,94 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/jinliu"
-                    android:textColor="#ff0000"
+                    android:textColor="@color/gray2"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
+
+
+            <RelativeLayout
+                android:id="@+id/relCompany"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/comname"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/tv_size_12"/>
+
+                <TextView
+                    android:id="@+id/tvCompany"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/tv_size_12"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray"/>
+
+
+            <RelativeLayout
+                android:id="@+id/relShareholder"
+                style="@style/MatchWrap"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_marginRight="@dimen/padding_margin_10"
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
+
+                <TextView
+                    style="@style/WrapWrap"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/shareholder"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/tv_size_12"/>
+
+                <TextView
+                    android:text="未知"
+                    android:id="@+id/tvShareholder"
+                    style="@style/WrapWrap"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/gray2"
+                    android:textSize="@dimen/tv_size_12"/>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray"/>
+
 
             <RelativeLayout
                 android:id="@+id/rlReLawyer"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:text="@string/cuslawyer"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
@@ -312,22 +337,22 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlReGoal"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/buyhousetention"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -337,22 +362,22 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/unknow"
-                    android:textColor="#0000ff"
+                    android:textColor="@color/light_blue"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/search_edit_bac"/>
+                android:background="@color/shallow_gray"/>
 
             <RelativeLayout
                 android:id="@+id/rlPayType"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10">
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
                     android:id="@+id/tvPay"
@@ -360,7 +385,7 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/money"
-                    android:textColor="@color/black"
+                    android:textColor="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -371,7 +396,7 @@
                     android:layout_marginLeft="@dimen/padding_margin_30"
                     android:layout_toRightOf="@+id/tvPay"
                     android:text="$0000"
-                    android:textColor="@color/black"
+                    android:textColor="@color/read"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
@@ -381,102 +406,74 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:text="@string/pay_method"
-                    android:textColor="#0000ff"
+                    android:textColor="@color/light_blue"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:visibility="gone">
+                android:layout_height="160dp"
+                android:background="@color/search_edit_bac"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/ivBpay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/bpay"/>
-
-                <ImageView
-                    android:id="@+id/ivWeixin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
-                    android:layout_toRightOf="@+id/ivBpay"
-                    android:src="@mipmap/alipay"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
-                    android:layout_toRightOf="@+id/ivWeixin"
-                    android:src="@mipmap/weichatpay"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_margin_10"
-                android:gravity="center"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/ivBank"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/dollar"/>
-
-                <ImageView
-                    android:id="@+id/ivWallet"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_30"
-                    android:layout_toRightOf="@+id/ivBank"
-                    android:src="@mipmap/wallet"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="60dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/ivCertificate"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/padding_margin_10"
-                    android:layout_weight="1"
-                    android:background="@color/home_custom"
-                    android:scaleType="centerInside"
-                    />
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/padding_margin_10">
 
-                <TextView
-                    android:id="@+id/tvCertificate"
-                    style="@style/WrapWrap"
-                    android:layout_centerInParent="true"
-                    android:text="@string/uploadeevidence"
+
+                    <CheckBox
+                        android:id="@+id/check_box"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_margin_14"
+                        android:background="@drawable/isread"
+                        android:button="@null"
+                        android:padding="@dimen/padding_margin_4"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:drawableLeft="@mipmap/xinghao"
+                        android:text="@string/consent"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                    <TextView
+                        android:id="@+id/isRead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:text="@string/declare"
+                        android:textColor="@color/light_blue"
+                        android:textSize="@dimen/tv_size_12"
+                        android:textStyle="bold"/>
+
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btReSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="@dimen/padding_margin_20"
+                    android:layout_marginRight="@dimen/padding_margin_20"
+                    android:layout_marginTop="@dimen/padding_margin_20"
+                    android:background="@color/scale_tab5"
+                    android:text="@string/submit"
                     android:textColor="@color/white"/>
-            </RelativeLayout>
+
+            </LinearLayout>
+
+
         </LinearLayout>
-    </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
+    </ScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/padding_margin_35"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/padding_margin_4"
-        android:layout_marginTop="@dimen/padding_margin_4"
-        android:background="@color/white"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btReSubmit"
-            style="@style/WrapWrap"
-            android:background="@color/home_scale"
-            android:paddingBottom="@dimen/padding_margin_4"
-            android:paddingTop="@dimen/padding_margin_4"
-            android:text="@string/submit"
-            android:textColor="@color/white"/>
-    </RelativeLayout>
 </LinearLayout>
