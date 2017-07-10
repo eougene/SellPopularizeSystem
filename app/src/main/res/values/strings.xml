@@ -519,5 +519,21 @@
     <string name="firstname_ensure">姓氏必须以字母开头</string>
     <string name="sale_toas">请先学习课程:</string>
     <string name="su">上传成功</string>
+    <string name="shareholder">代表股东</string>
+    <string name="consent">我已阅读并同意</string>
+    <string name="declare"><![CDATA[<<定金支付申明>>]]></string>
+    <string name="dingjin">请阅读定金支付申明</string>
+    <string name="declaretitle">用户定金支付申明</string>
+    <string name="declaretitle_01">定金申明</string>
+
+
+    <string name="s_0">尊敬的客户</string>
+    <string name="s_1"> 恭喜您通过赢家平台预定了此物业。 每套物业的预定费是300 澳币 （ 或者2000 人民币）。 请使用下列方式中的任意一种来支付。</string>
+    <string name="s_2"> 如果您成功完成了此物业的合同交换， 并且支付了10% 全额定金， 赢家系统将退还300 澳币 定金（ 或者2000 元人民币）到您指定的账户。</string>
+    <string name="s_3"> 如果您由于任何原因，没有完成合同交换， 或者如果您改变主意，决定通过赢家购买另一个物业， 您交付的300 澳币 将作为系统的服务费， 不予以退还。
+在您同意以上条件之后，系统将进一步处理您的物业预定事宜。</string>
+
+    <string name="s_4">同意</string>
+
 
 </resources>
