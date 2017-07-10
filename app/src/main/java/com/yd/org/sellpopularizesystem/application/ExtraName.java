@@ -10,6 +10,7 @@ public class ExtraName {
     public static final String USER_PASSWORD = "password";
     public static final String USER_ID = "user_id";
     public static final String COMPANY_ID = "company_id";
+    public static final String COMPANY_NAME = "company_name";
     public static final String USER_NAME = "user_name";
     public static final String FIRST_NAME = "first_name";
     public static final String SUR_NAME = "sur_name";
