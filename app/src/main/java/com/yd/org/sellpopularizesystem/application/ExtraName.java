@@ -1,8 +1,5 @@
 package com.yd.org.sellpopularizesystem.application;
 
-import android.content.SharedPreferences;
-import android.opengl.Visibility;
-
 /**
  * Created by bai on 2017/1/13.
  */
@@ -36,12 +33,6 @@ public class ExtraName {
     public static final String INVISIBILITY="2";
     //充值成功
     public static final int SUCCESS=0x011;
-    //订单消息跳转至销售订单界面
-    public static final int ORDER_TO_SALE =0x012;
-    //没有数据
-    public static final int NO_DATA =0x013;
-    //有数据
-    public static final int NORMAL_DATA =0x014;
     //点击销售推广跳转customeactivity标志
     public static final String SCALETOCUSTOME="from_scale_to_custome";
     //点击律师列表跳转预约列表
