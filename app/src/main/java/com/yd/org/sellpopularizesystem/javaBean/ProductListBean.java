@@ -224,7 +224,7 @@ public class ProductListBean extends Domine {
         private Object description;
         private String is_can_sale;
         private Object study_type_name;
-        private Object study_type_id;
+        private int study_type_id;
         private List<ChildsBean> childs;
 
         public String getCate_name() {
@@ -891,11 +891,11 @@ public class ProductListBean extends Domine {
             this.study_type_name = study_type_name;
         }
 
-        public Object getStudy_type_id() {
+        public int getStudy_type_id() {
             return study_type_id;
         }
 
-        public void setStudy_type_id(Object study_type_id) {
+        public void setStudy_type_id(int study_type_id) {
             this.study_type_id = study_type_id;
         }
 
