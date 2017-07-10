@@ -204,4 +204,7 @@ public class SharedPreferencesHelps {
     public synchronized static final String getTime() {
         return getPreferences().getString("time", "null");
     }
+
+
+
 }
