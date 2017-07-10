@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -59,8 +60,8 @@ import java.util.regex.Pattern;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 public class ReserveActivity extends BaseActivity {
-    private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale, tvValidity,
-            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvCertificate, tvReCusAdd;
+    private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale,
+            tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvReCusAdd, tvCompany, tvShareholder, isRead;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
@@ -80,6 +81,16 @@ public class ReserveActivity extends BaseActivity {
     private String payment_method;
     public static ReserveActivity reserveActivity;
     private CustomBean.ResultBean custome;
+    private CheckBox check_box;
+
+    public Handler mHan = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x001) {
+                check_box.setChecked(true);
+            }
+        }
+    };
 
     @Override
     protected int setContentView() {
@@ -101,11 +112,9 @@ public class ReserveActivity extends BaseActivity {
         tvRetype = getViewById(R.id.tvRetype);
         tvReFirb = getViewById(R.id.tvReFirb);
         tvReSale = getViewById(R.id.tvReSale);
-        tvValidity = getViewById(R.id.tvValidity);
         tvReCus = getViewById(R.id.tvReCus);
         tvReCusAdd = getViewById(R.id.tvReCusAdd);
         ivReLawyer = getViewById(R.id.ivReLawyer);
-        //ivCertificate = (ImageView) getViewById(R.id.ivCertificate);
         rlRecus = getViewById(R.id.rlRecus);
         rlReLawyer = getViewById(R.id.rlReLawyer);
         tvReLawyer = getViewById(R.id.tvReLawyer);
@@ -114,7 +123,11 @@ public class ReserveActivity extends BaseActivity {
         tvRePay = getViewById(R.id.tvRePay);
         tvRePayType = getViewById(R.id.tvRePayType);
         rlPayType = getViewById(R.id.rlPayType);
-        tvCertificate = getViewById(R.id.tvCertificate);
+
+        tvCompany = getViewById(R.id.tvCompany);
+        tvShareholder = getViewById(R.id.tvShareholder);
+        check_box = getViewById(R.id.check_box);
+        isRead = getViewById(R.id.isRead);
 
         mCustomePopuWindow = new CustomePopuWindow(ReserveActivity.this);
         mView = mCustomePopuWindow.getContentView();
@@ -226,7 +239,6 @@ public class ReserveActivity extends BaseActivity {
         tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space) + custome.getProvince() + getString(R.string.single_blank_space) + custome.getAddress() + getString(R.string.single_blank_space) + custome.getZip_code());
 
         tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
-        tvValidity.setText(bean.getPrice());
         customeId = custome.getCustomer_id() + "";
         if (custome.getEn_name() != null) {
             tvReCus.setText(custome.getSurname() + getString(R.string.single_blank_space) + custome.getFirst_name());
@@ -237,6 +249,9 @@ public class ReserveActivity extends BaseActivity {
             }
 
         }
+
+        tvCompany.setText(SharedPreferencesHelps.getCompanyId() + "");
+        //tvShareholder
 
     }
 
@@ -272,6 +287,7 @@ public class ReserveActivity extends BaseActivity {
         btFromCamera.setOnClickListener(mOnClickListener);
         btFromAlbum.setOnClickListener(mOnClickListener);
         btPhotoCancel.setOnClickListener(mOnClickListener);
+        isRead.setOnClickListener(mOnClickListener);
     }
 
     /*@Override
@@ -505,6 +521,11 @@ public class ReserveActivity extends BaseActivity {
                     setPhotoPopuWindow.dismiss();
                     break;
 
+                case R.id.isRead:
+
+                    ActivitySkip.forward(ReserveActivity.this, DeclareActivity.class);
+                    break;
+
             }
         }
     };
@@ -514,24 +535,25 @@ public class ReserveActivity extends BaseActivity {
             ToasShow.showToastBottom(this, getString(R.string.lawyer_id));
             return;
         } else if (tvRePayType.getText().equals(getString(R.string.pay_method))) {
-
             ToasShow.showToastBottom(this, getString(R.string.pay_method));
-
             return;
-
         } else if (TextUtils.isEmpty(picPath) && !payment_method.equals("6") && !payment_method.equals("7")) {
-
             ToasShow.showToastBottom(this, getString(R.string.picpath));
-            Log.e("payment_method1**", "payment_method:" + payment_method);
             return;
-
         } else {
             if (!judgeCusInfo(custome)) {
                 return;
             } else {
                 //显示提示框
-                showAlertDialog();
-                //commit(payment_method);
+
+                if (check_box.isChecked()) {
+                    showAlertDialog();
+                } else {
+                    ToasShow.showToastCenter(this, getString(R.string.dingjin));
+                    return;
+                }
+
+
             }
         }
 
@@ -545,7 +567,6 @@ public class ReserveActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         commit(payment_method);
-                        //finish();
                     }
                 }).setNegativeButton(R.string.cancel, null).create().show();
     }
@@ -743,7 +764,7 @@ public class ReserveActivity extends BaseActivity {
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
                         Picasso.with(this).load("file://" + imagePath).into(ivCertificate);
-                        tvCertificate.setVisibility(View.GONE);
+
                     } else {
 
                     }
