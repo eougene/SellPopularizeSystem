@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -13,8 +12,8 @@ public class CommissionBean extends Domine {
     /**
      * code : 1
      * msg : 成功获取佣金列表
-     * total_number : 1
-     * result : [{"id":128,"company_id":1,"user_id":402,"true_name":"","user_first_name":"android","user_surname":"android","user_en_name":"android","customer_id":1217,"customer_first_name":"android","customer_surname":"android","customer_en_name":"android","order_id":1756,"product_id":7,"product_childs_id":69,"product_name":"APT- Rousehill Stage 3 - Building F","product_childs_lot_number":"125","product_childs_unit_number":"F305","order_price":"700000.00","commossion":"10395.00","gst":"1155.00","total":"11550.00","first_money":"37.50","first_status":0,"first_time":0,"second_money":"37.50","second_status":0,"second_time":0,"third_money":"0.00","third_status":0,"third_time":0,"add_time":1498614297,"update_time":0,"is_value":0,"status":0,"first_commossion":"37.50","first_gst":"4.1666666666667","first_total":"41.666666666667","second_commossion":"37.50","second_gst":"4.1666666666667","second_total":"41.666666666667","third_commossion":"0.00","third_gst":"0","third_total":"0"}]
+     * total_number : 16
+     * result : [{"id":3121,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":2010,"product_id":71,"product_childs_id":2216,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"212","product_childs_unit_number":"212","order_price":"991900.00","commossion":"14878.50","gst":"0.00","total":"14878.50","first_money":"5951.40","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8927.10","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499664727,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3118,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1995,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"577000.00","commossion":"8655.00","gst":"0.00","total":"8655.00","first_money":"3462.00","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"5193.00","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499664165,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3115,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1990,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"577000.00","commossion":"8655.00","gst":"0.00","total":"8655.00","first_money":"3462.00","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"5193.00","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499663823,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3112,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1988,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499663578,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3109,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1981,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658751,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3106,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1980,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658738,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3103,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1979,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658570,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3100,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1978,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658501,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3097,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1977,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658438,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""},{"id":3094,"company_id":1,"sale_id":391,"user_id":391,"user_first_name":"gang","user_surname":"cao","user_en_name":"","customer_id":4190,"customer_first_name":"Gang","customer_surname":"cao","customer_en_name":"caogang","order_id":1976,"product_id":71,"product_childs_id":2215,"product_name":"House - Boxhill (Brass Homes)","product_childs_lot_number":"211","product_childs_unit_number":"211","order_price":"945200.00","commossion":"14178.00","gst":"0.00","total":"14178.00","first_money":"5671.20","first_gst":"0.00","first_status":0,"first_time":0,"second_money":"8506.80","second_gst":"0.00","second_status":0,"second_time":0,"third_money":"0.00","third_gst":"0.00","third_status":0,"third_time":0,"exit_commossion":"256.00","exit_status":0,"exit_time":0,"add_time":1499658422,"update_time":0,"is_value":0,"status":0,"remark_1":"","remark_2":""}]
      */
 
     private int code;
@@ -54,57 +53,56 @@ public class CommissionBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean implements Serializable{
+    public static class ResultBean {
         /**
-         * id : 128
+         * id : 3121
          * company_id : 1
-         * user_id : 402
-         * true_name :
-         * user_first_name : android
-         * user_surname : android
-         * user_en_name : android
-         * customer_id : 1217
-         * customer_first_name : android
-         * customer_surname : android
-         * customer_en_name : android
-         * order_id : 1756
-         * product_id : 7
-         * product_childs_id : 69
-         * product_name : APT- Rousehill Stage 3 - Building F
-         * product_childs_lot_number : 125
-         * product_childs_unit_number : F305
-         * order_price : 700000.00
-         * commossion : 10395.00
-         * gst : 1155.00
-         * total : 11550.00
-         * first_money : 37.50
+         * sale_id : 391
+         * user_id : 391
+         * user_first_name : gang
+         * user_surname : cao
+         * user_en_name :
+         * customer_id : 4190
+         * customer_first_name : Gang
+         * customer_surname : cao
+         * customer_en_name : caogang
+         * order_id : 2010
+         * product_id : 71
+         * product_childs_id : 2216
+         * product_name : House - Boxhill (Brass Homes)
+         * product_childs_lot_number : 212
+         * product_childs_unit_number : 212
+         * order_price : 991900.00
+         * commossion : 14878.50
+         * gst : 0.00
+         * total : 14878.50
+         * first_money : 5951.40
+         * first_gst : 0.00
          * first_status : 0
          * first_time : 0
-         * second_money : 37.50
+         * second_money : 8927.10
+         * second_gst : 0.00
          * second_status : 0
          * second_time : 0
          * third_money : 0.00
+         * third_gst : 0.00
          * third_status : 0
          * third_time : 0
-         * add_time : 1498614297
+         * exit_commossion : 256.00
+         * exit_status : 0
+         * exit_time : 0
+         * add_time : 1499664727
          * update_time : 0
          * is_value : 0
          * status : 0
-         * first_commossion : 37.50
-         * first_gst : 4.1666666666667
-         * first_total : 41.666666666667
-         * second_commossion : 37.50
-         * second_gst : 4.1666666666667
-         * second_total : 41.666666666667
-         * third_commossion : 0.00
-         * third_gst : 0
-         * third_total : 0
+         * remark_1 :
+         * remark_2 :
          */
 
         private int id;
         private int company_id;
+        private int sale_id;
         private int user_id;
-        private String true_name;
         private String user_first_name;
         private String user_surname;
         private String user_en_name;
@@ -123,27 +121,26 @@ public class CommissionBean extends Domine {
         private String gst;
         private String total;
         private String first_money;
+        private String first_gst;
         private int first_status;
         private int first_time;
         private String second_money;
+        private String second_gst;
         private int second_status;
         private int second_time;
         private String third_money;
+        private String third_gst;
         private int third_status;
         private int third_time;
+        private String exit_commossion;
+        private int exit_status;
+        private int exit_time;
         private int add_time;
         private int update_time;
         private int is_value;
         private int status;
-        private String first_commossion;
-        private String first_gst;
-        private String first_total;
-        private String second_commossion;
-        private String second_gst;
-        private String second_total;
-        private String third_commossion;
-        private String third_gst;
-        private String third_total;
+        private String remark_1;
+        private String remark_2;
 
         public int getId() {
             return id;
@@ -161,20 +158,20 @@ public class CommissionBean extends Domine {
             this.company_id = company_id;
         }
 
+        public int getSale_id() {
+            return sale_id;
+        }
+
+        public void setSale_id(int sale_id) {
+            this.sale_id = sale_id;
+        }
+
         public int getUser_id() {
             return user_id;
         }
 
         public void setUser_id(int user_id) {
             this.user_id = user_id;
-        }
-
-        public String getTrue_name() {
-            return true_name;
-        }
-
-        public void setTrue_name(String true_name) {
-            this.true_name = true_name;
         }
 
         public String getUser_first_name() {
@@ -321,6 +318,14 @@ public class CommissionBean extends Domine {
             this.first_money = first_money;
         }
 
+        public String getFirst_gst() {
+            return first_gst;
+        }
+
+        public void setFirst_gst(String first_gst) {
+            this.first_gst = first_gst;
+        }
+
         public int getFirst_status() {
             return first_status;
         }
@@ -343,6 +348,14 @@ public class CommissionBean extends Domine {
 
         public void setSecond_money(String second_money) {
             this.second_money = second_money;
+        }
+
+        public String getSecond_gst() {
+            return second_gst;
+        }
+
+        public void setSecond_gst(String second_gst) {
+            this.second_gst = second_gst;
         }
 
         public int getSecond_status() {
@@ -369,6 +382,14 @@ public class CommissionBean extends Domine {
             this.third_money = third_money;
         }
 
+        public String getThird_gst() {
+            return third_gst;
+        }
+
+        public void setThird_gst(String third_gst) {
+            this.third_gst = third_gst;
+        }
+
         public int getThird_status() {
             return third_status;
         }
@@ -383,6 +404,30 @@ public class CommissionBean extends Domine {
 
         public void setThird_time(int third_time) {
             this.third_time = third_time;
+        }
+
+        public String getExit_commossion() {
+            return exit_commossion;
+        }
+
+        public void setExit_commossion(String exit_commossion) {
+            this.exit_commossion = exit_commossion;
+        }
+
+        public int getExit_status() {
+            return exit_status;
+        }
+
+        public void setExit_status(int exit_status) {
+            this.exit_status = exit_status;
+        }
+
+        public int getExit_time() {
+            return exit_time;
+        }
+
+        public void setExit_time(int exit_time) {
+            this.exit_time = exit_time;
         }
 
         public int getAdd_time() {
@@ -417,76 +462,20 @@ public class CommissionBean extends Domine {
             this.status = status;
         }
 
-        public String getFirst_commossion() {
-            return first_commossion;
+        public String getRemark_1() {
+            return remark_1;
         }
 
-        public void setFirst_commossion(String first_commossion) {
-            this.first_commossion = first_commossion;
+        public void setRemark_1(String remark_1) {
+            this.remark_1 = remark_1;
         }
 
-        public String getFirst_gst() {
-            return first_gst;
+        public String getRemark_2() {
+            return remark_2;
         }
 
-        public void setFirst_gst(String first_gst) {
-            this.first_gst = first_gst;
-        }
-
-        public String getFirst_total() {
-            return first_total;
-        }
-
-        public void setFirst_total(String first_total) {
-            this.first_total = first_total;
-        }
-
-        public String getSecond_commossion() {
-            return second_commossion;
-        }
-
-        public void setSecond_commossion(String second_commossion) {
-            this.second_commossion = second_commossion;
-        }
-
-        public String getSecond_gst() {
-            return second_gst;
-        }
-
-        public void setSecond_gst(String second_gst) {
-            this.second_gst = second_gst;
-        }
-
-        public String getSecond_total() {
-            return second_total;
-        }
-
-        public void setSecond_total(String second_total) {
-            this.second_total = second_total;
-        }
-
-        public String getThird_commossion() {
-            return third_commossion;
-        }
-
-        public void setThird_commossion(String third_commossion) {
-            this.third_commossion = third_commossion;
-        }
-
-        public String getThird_gst() {
-            return third_gst;
-        }
-
-        public void setThird_gst(String third_gst) {
-            this.third_gst = third_gst;
-        }
-
-        public String getThird_total() {
-            return third_total;
-        }
-
-        public void setThird_total(String third_total) {
-            this.third_total = third_total;
+        public void setRemark_2(String remark_2) {
+            this.remark_2 = remark_2;
         }
     }
 }
