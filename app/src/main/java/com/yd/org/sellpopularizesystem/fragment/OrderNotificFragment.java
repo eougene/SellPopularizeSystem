@@ -37,10 +37,11 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     private List<AnnouncementBean.ResultBean> informationContents = new ArrayList<>();
+    private List<AnnouncementBean.ResultBean> sumnData = new ArrayList<>();
     private NotificationAdapter adapter;
     private int page = 1;
     private int cate_id, type = 0;
-    private boolean isShow = true;
+    private boolean isShow = false;
     private AnnouncementBean.ResultBean resultBean;
     private int flag;
     private int firstVisibleItemPos;
@@ -89,7 +90,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                 //删除
                 case 2:
-                    if (null!=isSelected()&&!isSelected().equals("")) {
+                    if (null != isSelected() && !isSelected().equals("")) {
                         deleteNoticeLog(isSelected());
                         type = msg.arg2;
                     } else {
@@ -111,14 +112,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     };
 
 
-    public NotificationAdapter getAdapter() {
-        return adapter;
-    }
-
-    public void setAdapter(NotificationAdapter adapter) {
-        this.adapter = adapter;
-    }
-
     /**
      * 创建实体类
      *
@@ -139,6 +132,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         notificFragment = this;
         setContentView(R.layout.fragment_notific);
         initViews();
+        //获取数据
+        getData(1, true, cate_id);
     }
 
     private void initViews() {
@@ -146,8 +141,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
-        //获取数据
-        getData(1, true, cate_id);
+
     }
 
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
@@ -180,13 +174,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
             informationContents = bean.getResult();
+            sumnData.addAll(informationContents);
         }
         //通知首页加载消息数量
         HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
         int is_read = 0;
         if (bean.getTotal_number() > 0) {
-            for (int i = 0; i < informationContents.size(); i++) {
-                if (informationContents.get(i).getIs_read() != 1) {
+            for (int i = 0; i < sumnData.size(); i++) {
+                if (sumnData.get(i).getIs_read() != 1) {
                     is_read += 1;
                 }
             }
@@ -264,7 +259,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 listView.setVisibility(View.VISIBLE);
             }
             ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-            adapter = new NotificationAdapter(getActivity());
+            adapter = new NotificationAdapter(getActivity(), isShow);
             listView.setAdapter(adapter);
 
             //定位上一次的position位置
@@ -373,9 +368,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 ErrorBean e = g.fromJson(s, ErrorBean.class);
                 ToasShow.showToastCenter(getActivity(), e.getMsg());
                 if (e.getCode().equals("1")) {
+                    //如果删除成功,此时的状态是可以点击查看详情的
                     type = 0;
                     //发送删除成功消息
                     NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
+
+                    if (sumnData != null) {
+                        sumnData.clear();
+                    }
                     getData(1, true, cate_id);
 
 
@@ -397,7 +397,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         StringBuffer stringBuffer = new StringBuffer();
         if (informationContents.size() > 0) {
             for (int i = 0; i < informationContents.size(); i++) {
-                if (adapter.getIsSelected().get(i)) {
+                if (getIsSelected().get(i)) {
                     stringBuffer.append(informationContents.get(i).getId() + ",");
                 }
             }
@@ -411,13 +411,17 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
+        if (sumnData != null) {
+            sumnData.clear();
+        }
         getData(page, true, cate_id);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getData(page, false, cate_id);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getData(page, false, cate_id);
     }
 
     @Override
@@ -437,6 +441,9 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 Log.e("已读", "s:" + s);
                 //通知首页加载消息数量
                 HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                if (sumnData != null) {
+                    sumnData.clear();
+                }
                 //获取数据
                 getData(1, true, cate_id);
             }
