@@ -22,6 +22,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -88,6 +89,9 @@ public class ReserveActivity extends BaseActivity {
         public void handleMessage(Message msg) {
             if (msg.what == 0x001) {
                 check_box.setChecked(true);
+                btReSubmit.setBackgroundColor(getResources().getColor(R.color.scale_tab5));
+                btReSubmit.setClickable(true);
+                btReSubmit.setEnabled(true);
             }
         }
     };
@@ -263,8 +267,6 @@ public class ReserveActivity extends BaseActivity {
         tvReCus.setOnClickListener(mOnClickListener);
         ivReLawyer.setOnClickListener(mOnClickListener);
         tvReGoal.setOnClickListener(mOnClickListener);
-        //tvRePayType.setOnClickListener(mOnClickListener);
-        // ivCertificate.setOnClickListener(mOnClickListener);
         rlRecus.setOnClickListener(mOnClickListener);
         rlReLawyer.setOnClickListener(mOnClickListener);
         tvReLawyer.setOnClickListener(mOnClickListener);
@@ -288,19 +290,24 @@ public class ReserveActivity extends BaseActivity {
         btFromAlbum.setOnClickListener(mOnClickListener);
         btPhotoCancel.setOnClickListener(mOnClickListener);
         isRead.setOnClickListener(mOnClickListener);
+
+
+        check_box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    btReSubmit.setBackgroundColor(getResources().getColor(R.color.scale_tab5));
+                    btReSubmit.setClickable(true);
+                    btReSubmit.setEnabled(true);
+                } else {
+                    btReSubmit.setBackgroundColor(getResources().getColor(R.color.gray));
+                    btReSubmit.setClickable(false);
+                    btReSubmit.setEnabled(false);
+                }
+            }
+        });
     }
 
-    /*@Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == 1) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
-            } else if (grantResults.length == 1 && grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.camera_hint));
-            }
-        }
-    }*/
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
 
@@ -474,17 +481,6 @@ public class ReserveActivity extends BaseActivity {
                                     }
                                 });
 
-                        /*boolean bCamera = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
-                        boolean bFile = ActivityCompat.checkSelfPermission(ReserveActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
-                        if (bCamera && bFile) {
-                            BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
-                        } else if (!bCamera){
-                            //申请相机权限
-                            ActivityCompat.requestPermissions(ReserveActivity.this, new String[]{Manifest.permission.CAMERA}, 1);
-                        }else if(!bFile){
-                            //申请WRITE_EXTERNAL_STORAGE权限
-                            ActivityCompat.requestPermissions(ReserveActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-                        }*/
                     }
                     break;
 
@@ -521,8 +517,9 @@ public class ReserveActivity extends BaseActivity {
                     setPhotoPopuWindow.dismiss();
                     break;
 
-                case R.id.isRead:
 
+                //定金支付申明
+                case R.id.isRead:
                     ActivitySkip.forward(ReserveActivity.this, DeclareActivity.class);
                     break;
 
@@ -694,39 +691,6 @@ public class ReserveActivity extends BaseActivity {
 
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
-                    /*File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
-                    if (cameraFile.exists()) {
-                        // copy 照片到指定目录下
-                        String path = BitmapUtil.getCacheDir(this);
-                        File dir = new File(path, "camera");
-                        if (!dir.exists()) {
-                            dir.mkdirs();
-                        }
-                        File picFile = new File(dir, System.currentTimeMillis() + ".jpg");
-                        Log.e("picFile", picFile.getAbsolutePath());
-                        try {
-                            BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(picFile));
-                            cameraFile.delete();
-                            if (mCrop) {
-                                picPath = picFile.getAbsolutePath();
-                                CropImage(picPath);
-                            } else {
-                                Picasso.with(this).load(picFile).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
-                            }
-
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }*/
-                    /*if (takePhotoUri!=null){
-                        if (Build.VERSION.SDK_INT < 23){
-                            Picasso.with(this).load(takePhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
-                        }else {
-
-                        }
-                    }*/
 
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
