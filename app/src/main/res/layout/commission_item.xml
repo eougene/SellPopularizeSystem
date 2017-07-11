@@ -87,6 +87,14 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_15"/>
 
+            <TextView
+                android:id="@+id/nameCommission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_margin_4"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_15"/>
+
         </LinearLayout>
 
 
