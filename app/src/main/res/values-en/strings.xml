@@ -535,5 +535,16 @@
     <string name="s_3"> The reservation will be proceeded only after .</string>
 
     <string name="s_4">Agree</string>
+    <string name="declaretitle_01">定金申明</string>
+
+
+    <string name="s_00">Dear Purchaser</string>
+    <string name="s_11"> Congratulation on your reservation for the property through Wingaid system! The reservation fee for each property is AUD$300,equivalent to RMB2,000,please use one of the following paymend options to pay for the reservation fee.
+</string>
+    <string name="s_22"> When you have successfully completed the contract exchange of your property and paid full 10% deposit to the vendor solictor ,the system will refund your deposit of AUD300 to your nominated account .If you are not proceeing with exchange of contracts for any reason ,or if you change your mind and decide to purchase another property through Wingaid system,the fee of AUD$300 you have paid will be charged as the system service fee,and it is not reundable.
+</string>
+    <string name="s_33"> The reservation will be proceeded only after you agree the above condition.\n\nThank you for you understanding.</string>
+
+
 </resources>
 
