@@ -117,9 +117,9 @@ public class CustomeListAdapter extends BaseAdapter {
             viewHolder.lvSubItem.setVisibility(View.VISIBLE);
             viewHolder.rlViewAll.setVisibility(View.VISIBLE);
             //点击查看单个item
-            viewHolder.prductImageView.setOnClickListener(new MyOnClick(position, viewHolder.productListBean, ProductItemDetailActivity.class, viewHolder.productListBean.getProduct_name().toLowerCase(), viewHolder.productListBean.getProduct_id() + ""));
+            viewHolder.prductImageView.setOnClickListener(new MyOnClick(position, viewHolder.productListBean, ProductItemDetailActivity.class, viewHolder.productListBean.getProduct_name(), viewHolder.productListBean.getProduct_id() + ""));
             //点击查看所有
-            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(position, viewHolder.productListBean.getChilds(), ProductSubunitListActivity.class, viewHolder.productListBean.getProduct_name().toLowerCase(), viewHolder.productListBean.getProduct_id() + ""));
+            viewHolder.rlViewAll.setOnClickListener(new MyOnClick(position, viewHolder.productListBean.getChilds(), ProductSubunitListActivity.class, viewHolder.productListBean.getProduct_name(), viewHolder.productListBean.getProduct_id() + ""));
             //产品子单元listview点击
             viewHolder.lvSubItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
