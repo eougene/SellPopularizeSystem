@@ -79,6 +79,8 @@ public class CommissionAdapter extends BaseAdapter {
             viewHolder.thirdCommissionSum = (TextView) convertView.findViewById(R.id.thirdCommissionSum);
             viewHolder.thirdCommissionDate = (TextView) convertView.findViewById(R.id.thirdCommissionDate);
 
+            viewHolder.nameCommission = (TextView) convertView.findViewById(R.id.nameCommission);
+
 
             viewHolder.commissionRightImageView = (ImageView) convertView.findViewById(R.id.commissionRightImageView);
             viewHolder.moreImageView = (ImageView) convertView.findViewById(R.id.moreImageView);
@@ -96,6 +98,15 @@ public class CommissionAdapter extends BaseAdapter {
         viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + "");
         viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + " - " + datas.get(position).getProduct_childs_unit_number());
         viewHolder.sumCommission.setText(datas.get(position).getCommossion() + "");
+
+
+        //sale_id拿钱的人    user_id下单的人
+        if ( viewHolder.resultBean.getSale_id()!=viewHolder.resultBean.getUser_id()){
+            viewHolder.nameCommission.setVisibility(View.VISIBLE);
+           // viewHolder.nameCommission.setText(viewHolder.resultBean.);
+        }else {
+            viewHolder.nameCommission.setVisibility(View.GONE);
+        }
 
 
         //佣金已发放
@@ -129,31 +140,31 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         //佣金1
-        viewHolder.firstCommissionSum.setText(viewHolder.resultBean.getFirst_money());
+        viewHolder.firstCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getFirst_money())+Double.valueOf(viewHolder.resultBean.getFirst_gst())+"");
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
             viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
         } else {
-            viewHolder.firstCommissionDate.setText("--/--/--");
+            viewHolder.firstCommissionDate.setText("-/-/-");
         }
         //佣金2
-        viewHolder.secondCommissionSum.setText(viewHolder.resultBean.getSecond_money());
+        viewHolder.secondCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getSecond_money())+Double.valueOf(viewHolder.resultBean.getSecond_gst())+"");
 
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
             viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
         } else {
-            viewHolder.secondCommissionDate.setText("--/--/--");
+            viewHolder.secondCommissionDate.setText("-/-/-");
         }
 
         //佣金3
-        viewHolder.thirdCommissionSum.setText(viewHolder.resultBean.getThird_money());
+        viewHolder.thirdCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getThird_money())+Double.valueOf(viewHolder.resultBean.getThird_gst())+"");
 
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
             viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
         } else {
-            viewHolder.thirdCommissionDate.setText("--/--/--");
+            viewHolder.thirdCommissionDate.setText("-/-/-");
         }
 
 
@@ -214,7 +225,7 @@ public class CommissionAdapter extends BaseAdapter {
     }
 
     public class ViewHoler {
-        private TextView commissionID,
+        private TextView commissionID,nameCommission,
                 titleCommission, sumCommission, firstCommissionSum, firstCommissionDate, secondCommissionSum, secondCommissionDate, thirdCommissionSum, thirdCommissionDate;
         private RelativeLayout commissionRel;
         private LinearLayout commissionLinear;

@@ -29,7 +29,8 @@ public class NotificationAdapter extends BaseAdapter {
     private Boolean isShow = false;
 
 
-    public NotificationAdapter(Context mContext) {
+    public NotificationAdapter(Context mContext,boolean isShow) {
+        this.isShow=isShow;
         this.mContext = mContext;
         this.mLayout = LayoutInflater.from(mContext);
         isSelected = new HashMap<>();

@@ -131,13 +131,6 @@ public class CustomeListAdapter extends BaseAdapter {
             });
 
 
-
-
-
-
-
-
-
         }
         return convertView;
     }
@@ -230,7 +223,7 @@ public class CustomeListAdapter extends BaseAdapter {
                         + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
             } else {
                 holder1.tvPriceRange.setText("$" + mContext.getString(R.string.single_blank_space) +
-                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000 ).split("\\.")[0]) + "k"
+                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMin_price())) / 1000).split("\\.")[0]) + "k"
                         + mContext.getString(R.string.single_blank_space) + "to" + mContext.getString(R.string.single_blank_space) + "$"
                         + mContext.getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(holder1.childBean.getMax_price())) / 1000).split("\\.")[0]) + "k");
             }
