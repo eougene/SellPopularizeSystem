@@ -281,9 +281,6 @@
             android:name=".activity.InvestigateListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".activity.CommissionDetailsActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".activity.PromotionRecordActivity"
             android:screenOrientation="portrait"/>
         <activity
