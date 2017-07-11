@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -438,7 +437,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.e("已读", "s:" + s);
                 //通知首页加载消息数量
                 HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                 if (sumnData != null) {
@@ -450,7 +448,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("已读", "s:" + strMsg);
             }
         });
     }
