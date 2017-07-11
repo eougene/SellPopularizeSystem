@@ -11,14 +11,14 @@
         android:layout_marginLeft="@dimen/padding_margin_10"
         android:button="@drawable/checkbox_company"
         android:checked="true"
-        android:padding="@dimen/padding_margin_10"
+        android:padding="@dimen/padding_margin_14"
         android:text="@string/if_company_cus"
         android:textColor="@drawable/cbcomtextcolor_select"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginLeft="@dimen/padding_margin_10"
+        android:layout_marginLeft="@dimen/padding_margin_14"
         android:background="@color/search_edit_bac"/>
 
     <LinearLayout
@@ -30,7 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -41,7 +41,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/comname"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
@@ -61,7 +61,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
         </LinearLayout>
@@ -75,7 +75,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -85,7 +85,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/business_account"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
@@ -105,7 +105,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
         </LinearLayout>
@@ -119,7 +119,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -129,7 +129,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/company_register_account"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
@@ -149,7 +149,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
         <View
@@ -161,7 +161,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -171,7 +171,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/company_tel"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
@@ -191,7 +191,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
         <View
@@ -203,7 +203,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -283,7 +283,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_14"
             android:orientation="horizontal">
 
             <TextView
@@ -294,7 +294,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/person_in_charge"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
 
 
             <View
@@ -314,7 +314,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
         <View
@@ -367,11 +367,11 @@
                         style="@style/WrapWrap"
                         android:background="@null"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/country"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
@@ -383,12 +383,12 @@
                         style="@style/MatchWrap"
                         android:background="@null"
                         android:drawableRight="@mipmap/right_sm"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/country"
                         android:singleLine="true"
                         android:textColor="@color/gray"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
                 <View
@@ -412,7 +412,7 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="@dimen/padding_margin_10"
                         android:paddingLeft="@dimen/padding_margin_10"
-                        android:paddingTop="@dimen/padding_margin_10"
+                        android:paddingTop="@dimen/padding_margin_14"
                         android:text="@string/unitnum"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_12"/>
@@ -433,7 +433,7 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
@@ -467,7 +467,7 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
                 <View
@@ -494,7 +494,7 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/qu"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
@@ -512,7 +512,7 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
@@ -527,7 +527,7 @@
                         android:paddingTop="@dimen/padding_margin_10"
                         android:text="@string/zhou"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
@@ -546,7 +546,7 @@
                         android:imeOptions="actionNext"
                         android:maxLines="1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
                 <View
@@ -569,10 +569,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/street1"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
@@ -589,9 +589,9 @@
                         android:background="@null"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
                 <View
@@ -614,10 +614,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/street2"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
@@ -634,9 +634,9 @@
                         android:background="@null"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
                 <View
@@ -659,10 +659,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/email"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="1dp"
@@ -677,9 +677,9 @@
                         android:background="@null"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_15"/>
+                        android:textSize="@dimen/tv_size_12"/>
                 </LinearLayout>
 
             </LinearLayout>
