@@ -127,6 +127,7 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"/>
         <activity
+            android:launchMode="singleTask"
             android:name=".activity.HomeActiviyt"
             android:screenOrientation="portrait"/>
         <activity
