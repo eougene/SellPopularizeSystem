@@ -428,6 +428,7 @@ public class NotificationFragment extends BaseFragmentView {
     }
 
 
+
     private void initWedget() {
 
         //全选
