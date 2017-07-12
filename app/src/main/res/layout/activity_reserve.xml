@@ -429,8 +429,8 @@
 
                     <CheckBox
                         android:id="@+id/check_box"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/padding_margin_14"
                         android:background="@drawable/isread"
@@ -472,7 +472,7 @@
                     android:layout_marginLeft="@dimen/padding_margin_20"
                     android:layout_marginRight="@dimen/padding_margin_20"
                     android:layout_marginTop="@dimen/padding_margin_20"
-                    android:background="@color/gray"
+                    android:background="@color/gray_g"
                     android:text="@string/submit"
                     android:textColor="@color/white"/>
 

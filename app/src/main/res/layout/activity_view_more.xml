@@ -81,8 +81,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/nodata"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_15"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_18"
             android:visibility="gone"/>
     </RelativeLayout>
 
