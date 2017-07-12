@@ -117,12 +117,22 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             } else {
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
-            viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+
+
+            if (TextUtils.isEmpty(list.get(position).getMid_name())||list.get(position).getMid_name()==null){
+                viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+
+            }else {
+                viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getMid_name()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+
+            }
+
             viewHolder.tvNickName.setText(list.get(position).getEn_name().equals("")?"":list.get(position).getEn_name());
+
+
             if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
                 viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
             } else {
-
                 Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).fit().centerCrop().
                         config(Bitmap.Config.RGB_565).into(viewHolder.imageView);
 
