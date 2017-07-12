@@ -244,7 +244,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("product_id", product_id == null ? "" : product_id);
         ajaxParams.put("page", page);
-        ajaxParams.put("number", 50 + "");
+        ajaxParams.put("number", 100 + "");
         ajaxParams.put("provice", "");
         ajaxParams.put("city", "");
         ajaxParams.put("town", "");
@@ -334,7 +334,7 @@ public class ProductSubunitListActivity extends BaseActivity {
             }
             setAdapter();
         } else {
-            adapter.CleaDates(data);
+            //adapter.CleaDates(data);
             tvNoInfo.setVisibility(View.VISIBLE);
         }
 

@@ -300,7 +300,7 @@ public class ReserveActivity extends BaseActivity {
                     btReSubmit.setClickable(true);
                     btReSubmit.setEnabled(true);
                 } else {
-                    btReSubmit.setBackgroundColor(getResources().getColor(R.color.gray));
+                    btReSubmit.setBackgroundColor(getResources().getColor(R.color.gray_g));
                     btReSubmit.setClickable(false);
                     btReSubmit.setEnabled(false);
                 }
