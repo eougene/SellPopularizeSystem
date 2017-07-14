@@ -467,8 +467,8 @@
     <string name="home_reminder">Your account is logged on to another device. Please verify the situation to ensure security!</string>
     <string name="if_company_cus">&#160;&#160;Is it for company clients?</string>
     <string name="comname">Company name</string>
-    <string name="business_account">Business registration account</string>
-    <string name="company_register_account">Company registered account number</string>
+    <string name="business_account">ABN</string>
+    <string name="company_register_account">ACN</string>
     <string name="company_tel">Company telphone</string>
     <string name="company_fax">Company fax</string>
     <string name="street_num">Street number</string>
@@ -545,6 +545,9 @@
 </string>
     <string name="s_33"> The reservation will be proceeded only after you agree the above condition.\n\nThank you for you understanding.</string>
 
-
+    <string name="family_email">Relatives Email</string>
+    <string name="select_not">Please select the relevant news</string>
+    <string name="com_noe">公司名不能为空</string>
+    <string name="comres">负责人不能为空</string>
 </resources>
 
