@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_centerVertical="true"
-                    android:src="@mipmap/settingbt" />
+                    android:src="@mipmap/settingbt"/>
 
 
                 <LinearLayout
@@ -43,97 +43,83 @@
                         style="@style/MatchWrap"
                         android:background="@null"
                         android:drawableLeft="@mipmap/xinghao"
+                        android:ellipsize="end"
                         android:hint="@string/firstname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:singleLine="true"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="@dimen/padding_margin_10"
-                        android:background="@color/search_edit_bac" />
-
-                    <EditText
-                        android:id="@+id/etMiddleName"
-                        style="@style/MatchWrap"
-                        android:background="@null"
-                        android:hint="@string/middlename"
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
-                        android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_12" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginLeft="@dimen/padding_margin_10"
-                        android:background="@color/search_edit_bac" />
-
-                    <EditText
-                        android:id="@+id/etFistName"
-                        style="@style/MatchWrap"
-                        android:background="@null"
-                        android:drawableLeft="@mipmap/xinghao"
-                        android:hint="@string/lastname"
-                        android:imeOptions="actionNext"
-                        android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
-                        android:singleLine="true"
-                        android:textColor="@color/gray"
-                        android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_12" />
-
-                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="@dimen/padding_margin_10"
                         android:background="@color/search_edit_bac"/>
 
                     <EditText
-                        android:id="@+id/etNickName"
+                        android:id="@+id/etMiddleName"
                         style="@style/MatchWrap"
                         android:background="@null"
-                        android:hint="@string/nickname"
+                        android:ellipsize="end"
+                        android:hint="@string/middlename"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
-                        android:textColor="@color/gray"
+                        android:padding="@dimen/padding_margin_14"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_15"/>-->
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="@dimen/padding_margin_10"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
+
+                    <EditText
+                        android:id="@+id/etFistName"
+                        style="@style/MatchWrap"
+                        android:background="@null"
+                        android:drawableLeft="@mipmap/xinghao"
+                        android:ellipsize="end"
+                        android:hint="@string/lastname"
+                        android:imeOptions="actionNext"
+                        android:maxLines="1"
+                        android:padding="@dimen/padding_margin_14"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/setting_bac"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
 
                     <EditText
                         android:id="@+id/etEnglishName"
                         style="@style/MatchWrap"
                         android:background="@null"
-                        android:drawableLeft="@mipmap/xinghao"
+                        android:ellipsize="end"
                         android:hint="@string/Nickname"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:singleLine="true"
-                        android:textColor="@color/gray"
+                        android:textColor="@color/black"
                         android:textColorHint="@color/setting_bac"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:layout_marginLeft="@dimen/padding_margin_10"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -152,32 +138,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/birthday"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedBie"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
                     android:focusable="false"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -186,7 +172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <LinearLayout
@@ -201,33 +187,34 @@
                     android:layout_weight="2"
                     android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/mobilephone"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edCustomeMobile"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
                     android:gravity="end"
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
+                    android:inputType="phone"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/setting_bac"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <ImageView
@@ -237,7 +224,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/padding_margin_10"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/phone" />
+                    android:src="@mipmap/phone"/>
 
 
             </LinearLayout>
@@ -246,7 +233,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -260,33 +247,34 @@
                     android:layout_weight="2"
                     android:drawableLeft="@mipmap/xinghao"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/email"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedEmail"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:hint="@string/mobileormail"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/setting_bac"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
                     android:id="@+id/ivEmail"
@@ -295,7 +283,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="@dimen/padding_margin_10"
                     android:scaleType="centerInside"
-                    android:src="@mipmap/email" />
+                    android:src="@mipmap/email"/>
 
 
             </LinearLayout>
@@ -304,7 +292,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -317,31 +305,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/wechatpay"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedWeChat"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -350,7 +338,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -363,57 +351,450 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/qq"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedQQ"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
                     android:gravity="end"
                     android:imeOptions="actionNext"
+                    android:inputType="phone"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:layout_height="5dp"
+                android:background="@color/search_edit_bac"/>
+
             <include
-                android:visibility="gone"
                 android:id="@+id/llCompany"
                 layout="@layout/company_layout"/>
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="5dp"
+                android:background="@color/search_edit_bac"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:layout_marginTop="@dimen/padding_margin_10">
+
+
+                <TextView
+                    android:id="@+id/tvComAdd_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableRight="@mipmap/right_sm"
+                    android:src="@mipmap/settingbt"
+                    android:text="联系地址"/>
+
+                <View
+                    android:id="@+id/v_01"
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/tvComAdd_01"
+                    android:background="@color/search_edit_bac"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/v_01"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <ImageView
+                            android:id="@+id/countryImage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/xinghao"
+                            android:visibility="gone"/>
+
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:background="@null"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/country"
+                            android:textColor="@color/gray"
+                            android:textColorHint="@color/setting_bac"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:id="@+id/tvCountry_01"
+                            style="@style/MatchWrap"
+                            android:background="@null"
+                            android:drawableRight="@mipmap/right_sm"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:padding="@dimen/padding_margin_14"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/setting_bac"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/unitnum"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etUnit_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/street_num"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etStreetNum_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/qu"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etDistrict_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/zhou"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etZhou_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <ImageView
+                            android:id="@+id/Street1_01Imageview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/xinghao"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/street1"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etStreet1_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_margin_14"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/street2"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+
+                        <EditText
+                            android:id="@+id/etStreet2_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:imeOptions="actionNext"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_margin_14"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:background="@color/search_edit_bac"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:drawableLeft="@mipmap/xinghao"
+                            android:padding="@dimen/padding_margin_14"
+                            android:text="@string/postcode"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_12"/>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/search_edit_bac"/>
+
+                        <EditText
+                            android:id="@+id/etEma_01"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4"
+                            android:background="@null"
+                            android:ellipsize="end"
+                            android:gravity="end"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:maxLines="1"
+                            android:padding="@dimen/padding_margin_14"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/tv_size_12"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_14"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivCon"
@@ -422,7 +803,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
 
                 <TextView
@@ -431,32 +812,33 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
-                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingBottom="@dimen/padding_margin_14"
                     android:paddingLeft="@dimen/padding_margin_10"
-                    android:paddingTop="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_14"
                     android:text="@string/nationorarea"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedNationality"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:focusable="false"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -465,13 +847,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_14"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivPro"
@@ -480,41 +863,42 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/pcd"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedCity"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:focusable="false"
                     android:gravity="end"
                     android:hint="@string/procidis"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/setting_bac"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -523,13 +907,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivAddress"
@@ -538,38 +923,39 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/address"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedAddress"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -578,13 +964,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_14"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/ivZipcode"
@@ -592,38 +979,39 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
-                    android:src="@mipmap/xinghao" />
+                    android:src="@mipmap/xinghao"/>
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.75"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/postcode"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmeZipCode"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -632,7 +1020,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -647,41 +1035,42 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
-                     />
+                    />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.76"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/firb"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/etFirb"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:focusable="false"
                     android:gravity="end"
                     android:hint="@string/no"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
                     android:textColor="@color/light_blue"
                     android:textColorHint="@color/light_blue"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -689,8 +1078,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -703,31 +1091,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/job"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedWeJob"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -736,7 +1125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -749,31 +1138,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/salary"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedSalary"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -782,7 +1172,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -795,31 +1185,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/idcard"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedCard"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -828,7 +1219,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -841,31 +1232,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/passport"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedPassPort"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -874,7 +1266,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -887,46 +1279,41 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/nation"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/etNation"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
+                    android:focusable="false"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:focusable="false"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:layout_height="5dp"
+                android:background="@color/search_edit_bac"/>
 
 
             <LinearLayout
@@ -946,30 +1333,31 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableRight="@mipmap/right_sm"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/relationshipfirstname"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
                         android:id="@+id/edcustmomeDetailedKinsfolk"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:ellipsize="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:singleLine="true"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                 </LinearLayout>
@@ -986,31 +1374,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:drawableRight="@mipmap/right_sm"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:text="@string/Lastname"
                         android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                     <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
-                        android:background="@color/search_edit_bac" />
+                        android:background="@color/search_edit_bac"/>
 
 
                     <EditText
                         android:id="@+id/etLn"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
+                        android:ellipsize="end"
                         android:gravity="end"
                         android:imeOptions="actionNext"
                         android:maxLines="1"
-                        android:padding="@dimen/padding_margin_10"
+                        android:padding="@dimen/padding_margin_14"
                         android:singleLine="true"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/tv_size_12" />
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
 
 
                 </LinearLayout>
@@ -1022,7 +1411,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
 
             <LinearLayout
@@ -1036,31 +1425,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/relation"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedRelation"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -1069,7 +1459,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -1082,31 +1472,33 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:drawableRight="@mipmap/right_sm"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:text="@string/relationphone"
                     android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textSize="@dimen/tv_size_12"/>
 
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
-                    android:background="@color/search_edit_bac" />
+                    android:background="@color/search_edit_bac"/>
 
 
                 <EditText
                     android:id="@+id/edcustmomeDetailedPhone"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:ellipsize="end"
                     android:gravity="end"
                     android:imeOptions="actionNext"
+                    android:inputType="phone"
                     android:maxLines="1"
-                    android:padding="@dimen/padding_margin_10"
+                    android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
 
             </LinearLayout>
@@ -1115,7 +1507,54 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
-                android:background="@color/search_edit_bac" />
+                android:background="@color/search_edit_bac"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:background="@color/search_edit_bac"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableRight="@mipmap/right_sm"
+                    android:padding="@dimen/padding_margin_14"
+                    android:text="@string/family_email"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/tv_size_12"/>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/search_edit_bac"/>
+
+
+                <EditText
+                    android:id="@+id/family_email"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_margin_14"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
+
+
+            </LinearLayout>
         </LinearLayout>
 
     </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
@@ -1138,12 +1577,12 @@
             android:gravity="center"
             android:text="@string/eoi"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="20dp"
-            android:background="@color/white" />
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/tvVisit"
@@ -1153,12 +1592,12 @@
             android:gravity="center"
             android:text="@string/visit"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="20dp"
-            android:background="@color/white" />
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/tvReserve"
@@ -1168,12 +1607,12 @@
             android:gravity="center"
             android:text="@string/date"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="20dp"
-            android:background="@color/white" />
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/tvExpandRe"
@@ -1183,12 +1622,12 @@
             android:gravity="center"
             android:text="@string/promoterecord"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="20dp"
-            android:background="@color/white" />
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/tvPurchaseRe"
@@ -1198,7 +1637,7 @@
             android:gravity="center"
             android:text="@string/purchasehouserecord"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_12" />
+            android:textSize="@dimen/tv_size_12"/>
     </LinearLayout>
 
 

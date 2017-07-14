@@ -75,7 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/totalmoney"
-                android:textColor="@color/gray"
+                android:textColor="@color/black"
                 android:textSize="@dimen/tv_size_12"/>
 
             <TextView
@@ -85,7 +85,8 @@
                 android:layout_marginTop="@dimen/padding_margin_4"
                 android:text="1233444"
                 android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_15"/>
+                android:textSize="@dimen/tv_size_15"
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/nameCommission"

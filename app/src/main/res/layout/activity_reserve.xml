@@ -74,7 +74,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -104,7 +104,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -134,7 +134,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -164,7 +164,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -227,7 +227,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -261,7 +261,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -296,7 +296,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:textColor="@color/gray2"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
