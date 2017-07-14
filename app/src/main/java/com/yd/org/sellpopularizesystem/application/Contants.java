@@ -65,6 +65,7 @@ public class Contants {
     public static final String SCALE_LIST = DOMAIN + "/index.php/appv2/product/product_childs_list";
     //更新客户信息
     //public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/app/customer/customer_update";
+    //public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_update";
     public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_update";
 
 
@@ -73,7 +74,8 @@ public class Contants {
 
     //新增客户
     // public static final String NEW_CUSTOME = DOMAIN + "/index.php/app/customer/customer_add";
-    public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_add";
+  //  public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_add";
+    public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/add_customer";
     //新增律师
     //public static final String NEW_LAWYER = DOMAIN + "/index.php/app/lawyer/add_lawyer";
 
