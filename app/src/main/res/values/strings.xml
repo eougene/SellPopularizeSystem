@@ -168,6 +168,7 @@
     <string name="relationlastname">亲属名</string>
     <string name="relation">关系</string>
     <string name="relationphone">亲属手机</string>
+    <string name="family_email">亲属邮箱</string>
     <string name="eoi">EOI</string>
     <string name="date">预约</string>
     <string name="promoterecord">推广记录</string>
@@ -472,8 +473,8 @@
     <string name="wechat_load">微信登录</string>
     <string name="if_company_cus">&#160;&#160;是否为公司客户</string>
     <string name="comname">公司名称</string>
-    <string name="business_account">业务注册账号</string>
-    <string name="company_register_account">公司注册账号</string>
+    <string name="business_account">ABN</string>
+    <string name="company_register_account">ACN</string>
     <string name="company_tel">公司电话</string>
     <string name="company_email">公司邮箱</string>
     <string name="company_fax">公司传真</string>
@@ -543,6 +544,9 @@
 在您同意以上条件之后，系统将进一步处理您的物业预定事宜。</string>
 
     <string name="s_4">同意</string>
+    <string name="select_not">请选择相关消息</string>
+    <string name="com_noe">公司名不能为空</string>
+    <string name="comres">负责人不能为空</string>
 
 
 </resources>
