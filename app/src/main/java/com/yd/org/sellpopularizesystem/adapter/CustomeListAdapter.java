@@ -96,7 +96,7 @@ public class CustomeListAdapter extends BaseAdapter {
 
 
         //根据getIs_can_sale(),getIs_study()判断是否需要学习
-        if (list.get(position).getIs_can_sale().equals("1") && list.get(position).getIs_study() == 0) {
+        if ((list.get(position).getIs_can_sale().equals("1") && (list.get(position).getIs_study() == 0 || list.get(position).getIs_study() == 1))) {
 
             viewHolder.ivLockImageView.setVisibility(View.VISIBLE);
             viewHolder.lvSubItem.setVisibility(View.GONE);

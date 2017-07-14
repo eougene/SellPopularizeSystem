@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,9 +97,35 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         viewHolder.resultBean = datas.get(position);
-        viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + "");
-        viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + " - " + datas.get(position).getProduct_childs_unit_number());
-        viewHolder.sumCommission.setText(datas.get(position).getCommossion() + "");
+        //订单号为空
+        if (null == datas.get(position).getOrder_id() || TextUtils.isEmpty(datas.get(position).getOrder_id() + "")) {
+
+           //订单号为空,,时间也为空
+            if (null == viewHolder.resultBean.getUpdate_time() || TextUtils.isEmpty(viewHolder.resultBean.getUpdate_time() + "")) {
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - " + " / - ");
+
+            } else {
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
+
+            }
+
+            //订单号不为空
+        } else {
+            //时间为空
+            if (null == viewHolder.resultBean.getUpdate_time() || TextUtils.isEmpty(viewHolder.resultBean.getUpdate_time() + "")) {
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + " - ");
+
+                //时间不为空
+            } else {
+                Log.e("时间**","time:"+viewHolder.resultBean.getUpdate_time());
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time()+"000")));
+
+            }
+        }
+
+        viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + "  / " + datas.get(position).getProduct_childs_unit_number());
+       //总金额
+        viewHolder.sumCommission.setText(datas.get(position).getTotal() + "");
 
 
         //sale_id拿钱的人    user_id下单的人
@@ -143,18 +171,33 @@ public class CommissionAdapter extends BaseAdapter {
         viewHolder.firstCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getFirst_money()) + Double.valueOf(viewHolder.resultBean.getFirst_gst()) + "");
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
-            viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+
+            if (null == viewHolder.resultBean.getFirst_time() || TextUtils.isEmpty(viewHolder.resultBean.getFirst_time() + "")) {
+                viewHolder.firstCommissionDate.setText("-");
+            } else {
+                viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+
+            }
         } else {
-            viewHolder.firstCommissionDate.setText("-/-/-");
+            viewHolder.firstCommissionDate.setText("-");
         }
         //佣金2
         viewHolder.secondCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getSecond_money()) + Double.valueOf(viewHolder.resultBean.getSecond_gst()) + "");
 
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
-            viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+
+
+            if (null == viewHolder.resultBean.getSecond_time() || TextUtils.isEmpty(viewHolder.resultBean.getSecond_time() + "")) {
+                viewHolder.secondCommissionDate.setText("-");
+            } else {
+                viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
+
+            }
+
+
         } else {
-            viewHolder.secondCommissionDate.setText("-/-/-");
+            viewHolder.secondCommissionDate.setText("-");
         }
 
         //佣金3
@@ -162,14 +205,32 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
-            viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+
+
+            if (null == viewHolder.resultBean.getThird_time() || TextUtils.isEmpty(viewHolder.resultBean.getThird_time() + "")) {
+                viewHolder.thirdCommissionDate.setText("-");
+            } else {
+                viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
+
+            }
+
+
         } else {
-            viewHolder.thirdCommissionDate.setText("-/-/-");
+            viewHolder.thirdCommissionDate.setText("-");
+        }
+
+
+        //查看订单
+        if (null == viewHolder.resultBean.getOrder_id() || TextUtils.isEmpty(viewHolder.resultBean.getOrder_id() + "")) {
+            viewHolder.commissionRightImageView.setVisibility(View.GONE);
+        } else {
+            viewHolder.commissionRightImageView.setVisibility(View.VISIBLE);
+            viewHolder.commissionRightImageView.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+
         }
 
 
         viewHolder.commissionRel.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
-        viewHolder.commissionRightImageView.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
 
 
         return convertView;
@@ -196,7 +257,7 @@ public class CommissionAdapter extends BaseAdapter {
                 case R.id.commissionRightImageView:
 
                     SaleOrderBean.ResultBean bean = new SaleOrderBean.ResultBean();
-                    bean.setProduct_orders_id(resultBean.getOrder_id());
+                    bean.setProduct_orders_id(Integer.parseInt(resultBean.getOrder_id() + ""));
 
 
                     Bundle bundle = new Bundle();

@@ -76,7 +76,7 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.subBeanX = tasks.get(position);
-        viewHolder.tvTeamName.setText(viewHolder.subBeanX.getSurname() + mContext.getString(R.string.single_blank_space) + viewHolder.subBeanX.getFirstname() + " " + "- $0");
+        viewHolder.tvTeamName.setText(viewHolder.subBeanX.getSurname() + mContext.getString(R.string.single_blank_space) + viewHolder.subBeanX.getFirstname() + " " + "- $"+viewHolder.subBeanX.getCommission());
         if (tasks.get(position).getSub() != null && tasks.get(position).getSub().size() > 0) {
             if (viewHolder.lvTeamMember.getVisibility() == View.GONE) {
                 viewHolder.lvTeamMember.setVisibility(View.VISIBLE);
@@ -151,7 +151,7 @@ public class TeamAdapter extends BaseAdapter implements SectionIndexer {
             }
             teamMemberViewHolder.subBean = childs.get(position);
             teamMemberViewHolder.tvTeamMemberName.setText(teamMemberViewHolder.subBean.getSurname() +
-                    mItemContext.getString(R.string.single_blank_space) + teamMemberViewHolder.subBean.getFirstname() + " " + "- $0");
+                    mItemContext.getString(R.string.single_blank_space) + teamMemberViewHolder.subBean.getFirstname() + " " + "- $"+teamMemberViewHolder.subBean.getCommission());
             return convertView;
         }
 
