@@ -23,6 +23,7 @@
     <color name="search_edit_bac">#f5f5f5</color>
     <color name="search_edit">#f1f0f0</color>
     <color name="shallow_gray">#a1d4d4d4</color>
+    <color name="gray_g">#e0e0e0</color>
 
     <!-- 半透明 -->
     <color name="reansoarent_oneoftwo">#5a000000</color>
