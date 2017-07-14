@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -24,11 +22,9 @@ import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.activity.SettingActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.BindAcountPopupWindow;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -118,6 +114,7 @@ public class MeFragment extends BaseFragmentView {
 
         //清除用户数据
         SharedPreferencesHelps.clearUserID();
+        SharedPreferencesHelps.getCompanyId();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserName();
         SharedPreferencesHelps.clearUserPassword();
@@ -259,14 +256,17 @@ public class MeFragment extends BaseFragmentView {
         bindAccountRel = getViewById(R.id.bindAccountRel);
         tvUserName = getViewById(R.id.tvCustomeName);
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
-
         acountPopupWindow = new BindAcountPopupWindow(getActivity(), mItemClick);
-        CustomBean.ResultBean resultBean = (CustomBean.ResultBean) ObjectSaveUtil.readObject(getActivity(),"custome");
-        if (resultBean != null) {
-            Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + resultBean.getHead_img()).fit().centerCrop().
-                    config(Bitmap.Config.RGB_565).error(R.mipmap.settingbt).into(ivCustomePhoto);
+    }
 
-        }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        tvUserName = getViewById(R.id.tvCustomeName);
+        tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
+
     }
 
     @Override

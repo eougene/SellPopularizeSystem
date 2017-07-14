@@ -93,6 +93,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         deleteNoticeLog(isSelected());
                         type = msg.arg2;
                     } else {
+                        ToasShow.showToastCenter(getActivity(), getString(R.string.select_not));
                         type = 1;
                     }
 

@@ -151,7 +151,7 @@ public class LoginFragment extends BaseFragmentView {
                         SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
                         SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
                         SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
-                        SharedPreferencesHelps.setUserName(userBean.getResult().getUser_nick());
+                        SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
                         SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
                         SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
                         SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
@@ -237,7 +237,7 @@ public class LoginFragment extends BaseFragmentView {
                         SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
                         SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
                         SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
-                        SharedPreferencesHelps.setUserName(userBean.getResult().getUser_nick());
+                        SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
                         SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
                         SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
                         SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
