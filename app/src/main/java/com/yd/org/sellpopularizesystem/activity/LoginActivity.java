@@ -30,7 +30,6 @@ public class LoginActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;// ViewPager适配器
     private String login;
-    private String register;
     private List<String> mTitles;
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -41,7 +40,6 @@ public class LoginActivity extends FragmentActivity {
         setContentView(R.layout.login_activty);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
         login = getResources().getString(R.string.login);
-        register = getResources().getString(R.string.register);
         mTitles = Arrays.asList(login);
         initView();
         initData();
@@ -77,7 +75,6 @@ public class LoginActivity extends FragmentActivity {
 
     //启动个推服务
     private void startGeTui() {
-        //cid= PushManager.getInstance().getClientid(this);
         // 注册 intentService 后 PushDemoReceiver 无效, sdk 会使用 IntentService 传递数据,
         // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
         // IntentService, 必须在 AndroidManifest 中声明)

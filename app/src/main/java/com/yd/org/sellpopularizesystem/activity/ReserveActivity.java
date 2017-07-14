@@ -739,12 +739,12 @@ public class ReserveActivity extends BaseActivity {
     private boolean judgeCusInfo(CustomBean.ResultBean cun) {
         if (cun.getSurname() != null && cun.getFirst_name() != null &&
                 cun.getMobile() != null && cun.getE_mail() != null &&
-                cun.getCountry() != null && cun.getProvince() != null &&
-                cun.getAddress() != null && cun.getZip_code() != null) {
+                cun.getCountry() != null && cun.getStreet_address_line_1() != null &&
+                cun.getPostcode() != null) {
             if (!cun.getSurname().equals("") && !cun.getFirst_name().equals("") &&
                     !cun.getMobile().equals("") && !cun.getE_mail().equals("") &&
-                    !cun.getCountry().equals("") && !cun.getProvince().equals("") &&
-                    !cun.getAddress().equals("") && !cun.getZip_code().equals("")) {
+                    !cun.getCountry().equals("") && !cun.getStreet_address_line_1().equals("") &&
+                    !cun.getPostcode().equals("")) {
                 return true;
             } else {
                 ToasShow.showToastCenter(ReserveActivity.this, getString(R.string.complete_cusinfo));

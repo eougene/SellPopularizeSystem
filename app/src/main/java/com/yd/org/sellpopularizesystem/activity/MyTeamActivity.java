@@ -20,8 +20,6 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
-import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -142,7 +140,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
                         } else {
                             Log.e("top***2", "LLL");
                             title.setVisibility(View.VISIBLE);
-                            title.setText(teamGroupListData.get(firstVisibleItem).getSurname() + getString(R.string.single_blank_space) + teamGroupListData.get(firstVisibleItem).getFirstname() + " " + "-$0");
+                            title.setText(teamGroupListData.get(firstVisibleItem).getSurname() + getString(R.string.single_blank_space) + teamGroupListData.get(firstVisibleItem).getFirstname() + " " + "-$"+ teamGroupListData.get(firstVisibleItem).getCommission());
 
                         }
                     }

@@ -91,6 +91,7 @@ import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
  * 客户信息详情页面
  */
 public class CustomDetailedActivity extends BaseActivity {
+    private String customer_type = "1";//默认是公司客户
     private String TAG = CustomDetailedActivity.class.getSimpleName();
     private CircleImageView customeIcon;
     private CheckBox cbCom;
@@ -100,30 +101,28 @@ public class CustomDetailedActivity extends BaseActivity {
             edcustmomeDetailedSalary, edcustmomeDetailedCard, edcustmomeDetailedPassPort,
             edcustmomeDetailedNationality, edcustmomeDetailedKinsfolk, edcustmomeDetailedRelation,
             edcustmomeDetailedPhone, edZipCode, etNationSearch, etFirb, etFistName, etEnglishName, etLn, etNation, comName, etBusaccount, etComaccount, etComTel, etComEmail, etComFax, etComRes, etUnit, etStreetNum,
-            etStreet1, etStreet2, etEma;
+            etStreet1, etStreet2, etEma, etDistrict, etZhou, etStreetNum_01, etDistrict_01, etZhou_01, etStreet1_01, etStreet2_01, etEma_01, etUnit_01, family_email_ed;
     //国家选择列表
     private ListView lvNation;
-    private ImageView ivDelete, ivPhone, ivEmail;
-    private TextView tvEoi, tvVisit, tvReserver, tvExpandRe, tvPurchase, tvCountry;
+    private ImageView ivPhone, ivEmail;
+    private TextView tvEoi, tvVisit, tvReserver, tvExpandRe, tvPurchase, tvCountry, tvCountry_01;
     private LinearLayout llOperate, llComContent;
     private MyPopupwindow myPopupwindow;
     private List<CountrySortModel> mAllCountryList;
-
     private PopupWindow addrPopWindow, nationSelectPopWindow, firbSelectPopWindow;
     private CustomBean.ResultBean resultBean;
     private String tag, imagePath = "";
-
     private String strUrl;
     /**
      * 与选择地址相关
      */
     protected ArrayList<String> mProvinceDatas;
-    protected Map<String, ArrayList<String>> mCitisDatasMap = new HashMap<String, ArrayList<String>>();
-    protected Map<String, ArrayList<String>> mDistrictDatasMap = new HashMap<String, ArrayList<String>>();
+    protected Map<String, ArrayList<String>> mCitisDatasMap = new HashMap<>();
+    protected Map<String, ArrayList<String>> mDistrictDatasMap = new HashMap<>();
     protected String mCurrentProviceName;
     protected String mCurrentCityName;
     protected String mCurrentDistrictName;
-    private TextView boxBtnCancel, boxBtnOk;
+    private TextView boxBtnOk;
     //国家选择相关
     private GetCountryNameSort countryChangeUtil;
     private CountrySortAdapter adapter;
@@ -134,18 +133,14 @@ public class CustomDetailedActivity extends BaseActivity {
     private WheelView mProvincePicker;
     private WheelView mCityPicker;
     private WheelView mCountyPicker;
-    //private WheelView mDatePicker;
     private View contentView, nationPopWindowView, firbPwView;
     protected boolean isDataLoaded = false;
-    private boolean isAddrChoosed = false;
     public static final String UPDATE = "update_custome";
     public static final String ADD = "add_custome";
     /**
      * 与日期选择相关
      */
     private TimePickerView pvTime;
-    private OptionsPickerView pvOptions;
-
     //firb选择相关
     private Button btUnknown, btSure, btFalse;
 
@@ -219,6 +214,12 @@ public class CustomDetailedActivity extends BaseActivity {
                     flag = 2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
+
+                //国家
+                case R.id.tvCountry_01:
+                    flag = 4;
+                    nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                    break;
                 //国籍选择
                 case R.id.etNation:
                     flag = 3;
@@ -278,9 +279,10 @@ public class CustomDetailedActivity extends BaseActivity {
                 setTitle(R.string.complete_user);
                 getViewById(R.id.ivCon).setVisibility(View.VISIBLE);
                 getViewById(R.id.ivPro).setVisibility(View.VISIBLE);
-                getViewById(R.id.ivAddress).setVisibility(View.VISIBLE);
-                //getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
-                // getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
+                getViewById(R.id.countryImage).setVisibility(View.VISIBLE);
+                getViewById(R.id.Street1_01Imageview).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivZipcode).setVisibility(View.VISIBLE);
+                getViewById(R.id.ivfirb).setVisibility(View.VISIBLE);
                 getViewById(R.id.llOperate).setVisibility(View.GONE);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
                 getCustomInfo(resultBean);
@@ -307,10 +309,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
         }
     });
-
-    private void setCountry() {
-        pvOptions = new OptionsPickerView(builder);
-    }
 
 
     private void Views() {
@@ -342,6 +340,18 @@ public class CustomDetailedActivity extends BaseActivity {
         etStreet1 = getViewById(R.id.etStreet1);
         etStreet2 = getViewById(R.id.etStreet2);
         etEma = getViewById(R.id.etEma);
+        etDistrict = getViewById(R.id.etDistrict);
+        etZhou = getViewById(R.id.etZhou);
+        tvCountry_01 = getViewById(R.id.tvCountry_01);
+
+        etStreetNum_01 = getViewById(R.id.etStreetNum_01);
+        etDistrict_01 = getViewById(R.id.etDistrict_01);
+        etZhou_01 = getViewById(R.id.etZhou_01);
+        etStreet1_01 = getViewById(R.id.etStreet1_01);
+        etStreet2_01 = getViewById(R.id.etStreet2_01);
+        etEma_01 = getViewById(R.id.etEma_01);
+        etUnit_01 = getViewById(R.id.etUnit_01);
+        family_email_ed = getViewById(R.id.family_email);
 
         edcustmomeDetailedCity = getViewById(R.id.edcustmomeDetailedCity);
         edcustmomeDetailedAddress = getViewById(R.id.edcustmomeDetailedAddress);
@@ -436,6 +446,118 @@ public class CustomDetailedActivity extends BaseActivity {
      * @param customeDetailedBean
      */
     private void setInfo(CustomeDetailedBean customeDetailedBean) {
+
+
+//
+//        //公司名字
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_name() + "")) {
+//            comName.setText("");
+//        } else {
+//            comName.setText(customeDetailedBean.getResult().getCompany_name() + "");
+//        }
+//
+//        124556
+//        //公司账号
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
+//            etBusaccount.setText("");
+//        } else {
+//            etBusaccount.setText(customeDetailedBean.getResult().getCompany_id() + "");
+//        }
+//        //公司电话
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
+//            etComTel.setText("");
+//        } else {
+//            etComTel.setText(customeDetailedBean.getResult().getCompany_id() + "");
+//        }
+//        //公司邮箱
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
+//            etComEmail.setText("");
+//        } else {
+//            etComEmail.setText(customeDetailedBean.getResult().getE_mail() + "");
+//        }
+//        //公司传真
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_fax() + "")) {
+//            etComFax.setText("");
+//        } else {
+//            etComFax.setText(customeDetailedBean.getResult().getCompany_fax() + "");
+//        }
+//        //公司负责人
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
+//            etComRes.setText("");
+//        } else {
+//            etComRes.setText(customeDetailedBean.getResult().getCompany_id() + "");
+//        }
+//        //国家
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
+//            tvCountry.setText("");
+//        } else {
+//            tvCountry.setText(customeDetailedBean.getResult().getCountry());
+//        }
+//        //单元号
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getUnit_number())) {
+//            etUnit.setText("");
+//        } else {
+//            etUnit.setText(customeDetailedBean.getResult().getUnit_number());
+//        }
+//        //街道号码
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_number())) {
+//            etStreetNum.setText("");
+//        } else {
+//            etStreetNum.setText(customeDetailedBean.getResult().getStreet_number());
+//        }
+//        //街道地址1
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_1())) {
+//            etStreet1.setText("");
+//        } else {
+//            etStreet1.setText(customeDetailedBean.getResult().getCompany_id() + "");
+//        }
+//        //街道地址2
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_2())) {
+//            etStreet2.setText("");
+//        } else {
+//            etStreet2.setText(customeDetailedBean.getResult().getCompany_id() + "");
+//        }
+//        //邮箱
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
+//            etEma.setText("");
+//        } else {
+//            etEma.setText(customeDetailedBean.getResult().getE_mail() + "");
+//        }
+//
+//
+//        //国家地区
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
+//            edcustmomeDetailedNationality.setText("");
+//        } else {
+//            edcustmomeDetailedNationality.setText(customeDetailedBean.getResult().getCountry());
+//        }
+//
+//        //省市区
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getProvince())) {
+//            edcustmomeDetailedCity.setText("");
+//        } else {
+//            edcustmomeDetailedCity.setText(customeDetailedBean.getResult().getProvince());
+//        }
+//
+//        //联系地址
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAddress() + "")) {
+//            edcustmomeDetailedAddress.setText("");
+//        } else {
+//            edcustmomeDetailedAddress.setText(customeDetailedBean.getResult().getAddress() + "");
+//        }
+//
+//        //邮编
+//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getZip_code())) {
+//            edZipCode.setText("");
+//        } else {
+//            edZipCode.setText(customeDetailedBean.getResult().getZip_code());
+//        }
+//
+
+        //******************
+        //******************
+        //******************
+        //*******************
         //设置头像
         if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
             Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).fit().centerCrop().
@@ -477,7 +599,8 @@ public class CustomDetailedActivity extends BaseActivity {
                 || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
-            edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date() + "");
+            edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+
         }
 
         //电话
@@ -509,109 +632,169 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
 
-        //公司名字
-        /*if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
+        //个人客户
+        if (customeDetailedBean.getResult().getCustomer_type() == 1) {
+            cbCom.setChecked(false);
+            llComContent.setVisibility(View.GONE);
+            customer_type = "1";
+        } else {
+            //公司客户
+            cbCom.setChecked(true);
+            llComContent.setVisibility(View.VISIBLE);
+            customer_type = "2";
+        }
+
+
+        //公司名称
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_name())) {
             comName.setText("");
         } else {
-            comName.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            comName.setText(customeDetailedBean.getResult().getCompany_name());
         }
-        //公司账号
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
+        //ANB
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAbn())) {
             etBusaccount.setText("");
         } else {
-            etBusaccount.setText(customeDetailedBean.getResult().getCompany_id()+"");
+            etBusaccount.setText(customeDetailedBean.getResult().getAbn());
+        }
+        //ACn
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAcn())) {
+            etComaccount.setText("");
+        } else {
+            etComaccount.setText(customeDetailedBean.getResult().getAcn());
         }
         //公司电话
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_mobile())) {
             etComTel.setText("");
         } else {
-            etComTel.setText(customeDetailedBean.getResult().getCompany_id()+"");
-        }*/
+            etComTel.setText(customeDetailedBean.getResult().getCompany_mobile());
+        }
         //公司邮箱
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_e_mail())) {
             etComEmail.setText("");
         } else {
-            etComEmail.setText(customeDetailedBean.getResult().getE_mail() + "");
+            etComEmail.setText(customeDetailedBean.getResult().getCompany_e_mail());
         }
         //公司传真
-        /*if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_fax())) {
             etComFax.setText("");
         } else {
-            etComFax.setText(customeDetailedBean.getResult().getCompany_id()+"");
-        }*/
-        //公司负责人
-        /*if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id()+"")) {
+            etComFax.setText(customeDetailedBean.getResult().getCompany_fax());
+        }
+        //负责人
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getClient())) {
             etComRes.setText("");
         } else {
-            etComRes.setText(customeDetailedBean.getResult().getCompany_id()+"");
-        }*/
-        //国家
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
+            etComRes.setText(customeDetailedBean.getResult().getClient());
+        }
+        //公司国家
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_country())) {
             tvCountry.setText("");
         } else {
-            tvCountry.setText(customeDetailedBean.getResult().getCountry());
+            tvCountry.setText(customeDetailedBean.getResult().getCompany_country());
+        }
+        //公司单元号
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_unit_number())) {
+            etUnit.setText("");
+        } else {
+            etUnit.setText(customeDetailedBean.getResult().getCompany_unit_number());
+        }
+        //公司街道号
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_street_number())) {
+            etStreetNum.setText("");
+        } else {
+            etStreetNum.setText(customeDetailedBean.getResult().getCompany_street_number());
+        }
+        //公司区
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_suburb())) {
+            etDistrict.setText("");
+        } else {
+            etDistrict.setText(customeDetailedBean.getResult().getCompany_suburb());
+        }
+        //公司州
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_state())) {
+            etZhou.setText("");
+        } else {
+            etZhou.setText(customeDetailedBean.getResult().getCompany_state());
+        }
+        //街道1
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_street_address_line_1())) {
+            etStreet1.setText("");
+        } else {
+            etStreet1.setText(customeDetailedBean.getResult().getCompany_street_address_line_1());
+        }
+        //街道2
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_street_address_line_2())) {
+            etStreet2.setText("");
+        } else {
+            etStreet2.setText(customeDetailedBean.getResult().getCompany_street_address_line_2());
+        }
+
+
+        //公司邮编
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_postcode())) {
+            etEma.setText("");
+        } else {
+            etEma.setText(customeDetailedBean.getResult().getCompany_postcode());
+        }
+
+
+        //-------------联系方式-----------------
+
+
+        //国家
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
+            tvCountry_01.setText("");
+        } else {
+            tvCountry_01.setText(customeDetailedBean.getResult().getCountry());
         }
         //单元号
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getUnit_number())) {
-            etUnit.setText("");
+            etUnit_01.setText("");
         } else {
-            etUnit.setText(customeDetailedBean.getResult().getUnit_number());
+            etUnit_01.setText(customeDetailedBean.getResult().getUnit_number());
         }
-        //街道号码
+        //街道号
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_number())) {
-            etStreetNum.setText("");
+            etStreetNum_01.setText("");
         } else {
-            etStreetNum.setText(customeDetailedBean.getResult().getStreet_number());
+            etStreetNum_01.setText(customeDetailedBean.getResult().getStreet_number());
         }
-        //街道地址1
+        //区
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getSuburb())) {
+            etDistrict_01.setText("");
+        } else {
+            etDistrict_01.setText(customeDetailedBean.getResult().getSuburb());
+        }
+        //州
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getState())) {
+            etZhou_01.setText("");
+        } else {
+            etZhou_01.setText(customeDetailedBean.getResult().getState());
+        }
+        //街道1
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_1())) {
-            etStreet1.setText("");
+            etStreet1_01.setText("");
         } else {
-            etStreet1.setText(customeDetailedBean.getResult().getCompany_id() + "");
+            etStreet1_01.setText(customeDetailedBean.getResult().getStreet_address_line_1());
         }
-        //街道地址2
+        //街道2
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_2())) {
-            etStreet2.setText("");
+            etStreet2_01.setText("");
         } else {
-            etStreet2.setText(customeDetailedBean.getResult().getCompany_id() + "");
-        }
-        //邮箱
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
-            etEma.setText("");
-        } else {
-            etEma.setText(customeDetailedBean.getResult().getE_mail() + "");
+            etStreet2_01.setText(customeDetailedBean.getResult().getStreet_address_line_2());
         }
 
-
-        //国家地区
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
-            edcustmomeDetailedNationality.setText("");
-        } else {
-            edcustmomeDetailedNationality.setText(customeDetailedBean.getResult().getCountry());
-        }
-
-        //省市区
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getProvince())) {
-            edcustmomeDetailedCity.setText("");
-        } else {
-            edcustmomeDetailedCity.setText(customeDetailedBean.getResult().getProvince());
-        }
-
-        //联系地址
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAddress())) {
-            edcustmomeDetailedAddress.setText("");
-        } else {
-            edcustmomeDetailedAddress.setText(customeDetailedBean.getResult().getAddress());
-        }
 
         //邮编
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getZip_code())) {
-            edZipCode.setText("");
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getPostcode())) {
+            etEma_01.setText("");
         } else {
-            edZipCode.setText(customeDetailedBean.getResult().getZip_code());
+            etEma_01.setText(customeDetailedBean.getResult().getPostcode());
         }
 
-        //是否是FIRB 0未知 1是  2否
+
+        //        //是否是FIRB 0未知 1是  2否
         if (customeDetailedBean.getResult().getIs_firb() == 1) {
             etFirb.setText(R.string.sur);
         } else if (customeDetailedBean.getResult().getIs_firb() == 2) {
@@ -683,6 +866,12 @@ public class CustomDetailedActivity extends BaseActivity {
             edcustmomeDetailedPhone.setText(customeDetailedBean.getResult().getFamily_mobile());
         }
 
+        //亲属邮编
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getFamily_email())) {
+            family_email_ed.setText("");
+        } else {
+            family_email_ed.setText(customeDetailedBean.getResult().getFamily_email());
+        }
 
     }
 
@@ -695,8 +884,6 @@ public class CustomDetailedActivity extends BaseActivity {
         lvNation = (ListView) nationPopWindowView.findViewById(R.id.lvNation);
 
         lvNation.setAdapter(adapter);
-
-        //ivDelete = (ImageView) nationPopWindowView.findViewById(R.id.ivDelete);
         nationSelectPopWindow = new PopupWindow(nationPopWindowView,
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
         nationSelectPopWindow.setHeight(MyUtils.getInstance().getScreenSize(this) * 2 / 3);
@@ -780,8 +967,10 @@ public class CustomDetailedActivity extends BaseActivity {
                     }
                 } else if (flag == 2) {
                     tvCountry.setText(countryName);
-                } else {
+                } else if (flag == 3) {
                     etNation.setText(countryName);
+                } else if (flag == 4) {
+                    tvCountry_01.setText(countryName);
                 }
                 nationSelectPopWindow.dismiss();
             }
@@ -793,7 +982,6 @@ public class CustomDetailedActivity extends BaseActivity {
         mProvincePicker = (WheelView) contentView.findViewById(R.id.province);
         mCityPicker = (WheelView) contentView.findViewById(R.id.city);
         mCountyPicker = (WheelView) contentView.findViewById(R.id.county);
-        boxBtnCancel = (TextView) contentView.findViewById(R.id.box_btn_cancel);
         boxBtnOk = (TextView) contentView.findViewById(R.id.box_btn_ok);
 
         addrPopWindow = new PopupWindow(contentView,
@@ -866,7 +1054,6 @@ public class CustomDetailedActivity extends BaseActivity {
         boxBtnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isAddrChoosed = true;
                 String addr = mCurrentProviceName + getString(R.string.single_blank_space) + mCurrentCityName;
                 if (!mCurrentDistrictName.equals(getString(R.string.other))) {
                     addr += getString(R.string.single_blank_space) + mCurrentDistrictName;
@@ -958,6 +1145,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone.setOnClickListener(onClickListener);
         ivEmail.setOnClickListener(onClickListener);
         tvCountry.setOnClickListener(onClickListener);
+        tvCountry_01.setOnClickListener(onClickListener);
         edcustmomeDetailedNationality.setOnClickListener(onClickListener);
         etNation.setOnClickListener(onClickListener);
         etFirb.setOnClickListener(onClickListener);
@@ -971,9 +1159,13 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
+                    //是公司客户
                     llComContent.setVisibility(View.VISIBLE);
+                    customer_type = "2";
                 } else {
+                    //个人客户
                     llComContent.setVisibility(View.GONE);
+                    customer_type = "1";
                 }
             }
         });
@@ -1014,11 +1206,13 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void updateOrAddUserInfo(
-            final String updateOrAdd, String surname, String first_name, String en_name,
+            final String updateOrAdd, String mid_name, String surname, String first_name, String en_name,
             String birth_date, String mobile, String country, String province, String city, String area,
             String address, String e_mail, String job, String income, String card_id, String passport_id,
             String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
-            String zip_code, String is_firb, String wechat_number, String qq_number) {
+            String zip_code, String is_firb, String wechat_number, String qq_number,
+            String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
+            String company_street_address_line_2, String company_postcode, String unit_number, String street_number, String suburb, String state, String street_address_line_1, String street_address_line_2, String family_email) throws FileNotFoundException {
         showDialog();
 
 
@@ -1036,49 +1230,78 @@ public class CustomDetailedActivity extends BaseActivity {
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            try {
-                if (!imagePath.equals("")) {
-                    ajaxParams.put("file", new File(imagePath));
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+            if (!imagePath.equals("")) {
+                ajaxParams.put("file", new File(imagePath));//客户头像
             }
         } else {
             ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
         }
-        //用户名
-        ajaxParams.put("surname", surname);
-        ajaxParams.put("first_name", first_name);
-        ajaxParams.put("en_name", en_name);
-        ajaxParams.put("birth_date", birth_date);
-        ajaxParams.put("mobile", mobile);
-        ajaxParams.put("country", country);
-        ajaxParams.put("province", province);
-        ajaxParams.put("city", city);
-        ajaxParams.put("area", area);
-        ajaxParams.put("address", address);
-        ajaxParams.put("e_mail", e_mail);
-        ajaxParams.put("job", job);
-        ajaxParams.put("income", income);
-        ajaxParams.put("card_id", card_id);
-        ajaxParams.put("family_first_name", family_first_name);
-        ajaxParams.put("family_relationship", family_relationship);
-        ajaxParams.put("family_mobile", family_mobile);
-        ajaxParams.put("is_firb", is_firb);
-        ajaxParams.put("passport_id", passport_id);
-        ajaxParams.put("passport_country", passport_country);
-        ajaxParams.put("family_name", family_name);
-        ajaxParams.put("zip_code", zip_code);
-        ajaxParams.put("wechat_number", wechat_number);
-        ajaxParams.put("qq_number", qq_number);
 
-        Log.e("生日**", "bir:" + birth_date);
-        //Log.e("头像", "file:" + file.getAbsolutePath());
+
+        //**************************************
+
+
+        ajaxParams.put("first_name", first_name);//姓氏
+        ajaxParams.put("surname", surname);//名字
+        ajaxParams.put("mid_name", mid_name);//中间名
+        ajaxParams.put("en_name", en_name);//英文名
+        ajaxParams.put("birth_date", birth_date);//生日（时间戳格式）
+        ajaxParams.put("mobile", mobile);//添加电话
+        ajaxParams.put("e_mail", e_mail);//添加邮箱
+        ajaxParams.put("wechat_number", wechat_number);//添加微信
+        ajaxParams.put("qq_number", qq_number);//添加QQ
+        ajaxParams.put("customer_type", customer_type);//是否为公司客户     1：个人客户   2：公司客户
+
+
+        ajaxParams.put("company_name", company_name);//公司名称
+        ajaxParams.put("abn", abn);//ABN
+        ajaxParams.put("acn", acn);//ACN
+        ajaxParams.put("company_mobile", company_mobile);//公司电话
+        ajaxParams.put("company_e_mail", company_e_mail);//公司邮箱
+        ajaxParams.put("company_fax", company_fax);//公司传真
+        ajaxParams.put("client_id", client_id);//负责人ID
+        ajaxParams.put("client", client);//负责人ID
+        ajaxParams.put("select_self", select_self);//选择自己   1：选自己  0： 选其他人
+        ajaxParams.put("company_country", company_country);//公司国家
+        ajaxParams.put("company_unit_number", company_unit_number);//公司单元号
+
+
+        ajaxParams.put("company_street_number", company_street_number);//公司街道号码
+        ajaxParams.put("company_suburb", company_suburb);//公司区
+        ajaxParams.put("company_state", company_state);//公司州
+        ajaxParams.put("company_street_address_line_1", company_street_address_line_1);//公司街道地址一
+        ajaxParams.put("company_street_address_line_2", company_street_address_line_2);//公司街道地址二
+        ajaxParams.put("company_postcode", company_postcode);//公司邮编
+        ajaxParams.put("country", country);//国家
+        ajaxParams.put("unit_number", unit_number);//单元号
+        ajaxParams.put("street_number", street_number);//街道号码
+        ajaxParams.put("suburb", suburb);//区
+
+
+        ajaxParams.put("state", state);//州
+        ajaxParams.put("street_address_line_1", street_address_line_1);//街道地址一
+        ajaxParams.put("street_address_line_2", street_address_line_2);//街道地址二
+        ajaxParams.put("postcode", zip_code);//邮编
+        ajaxParams.put("is_firb", is_firb);//FIRB   0：不确定  1：是   2：不是
+        ajaxParams.put("job", job);//职业
+        ajaxParams.put("income", income);//目前年薪
+        ajaxParams.put("card_id", card_id);//身份证号码
+        ajaxParams.put("passport_id", passport_id);//护照号码
+        ajaxParams.put("passport_country", passport_country);//护照国别
+
+
+        ajaxParams.put("family_first_name", family_first_name);//亲属姓氏
+        ajaxParams.put("family_name", family_name);//亲属名字
+        ajaxParams.put("family_relationship", family_relationship);//亲属关系
+        ajaxParams.put("family_mobile", family_mobile);//亲属手机
+        ajaxParams.put("family_email", family_email);//亲属邮箱
+
+
+        Log.e("ajaxParams**", "ajaxParams:" + ajaxParams.toString());
         http.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
 
             @Override
             public void onSuccess(String s) {
-                super.onSuccess(s);
                 closeDialog();
                 Log.e(TAG, "onSuccess: " + s);
                 JSONObject json = null;
@@ -1108,7 +1331,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
                 closeDialog();
                 ToasShow.showToastBottom(CustomDetailedActivity.this, getString(R.string.submitfail));
             }
@@ -1141,13 +1363,16 @@ public class CustomDetailedActivity extends BaseActivity {
         resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim()) ? 0 : 1);
         resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim()) ? "" : edcustmomeDetailedWeChat.getText().toString().trim());
         resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim()) ? "" : edcustmomeDetailedQQ.getText().toString().trim());
+
+
         ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 
     private void getEditTextData(String updateOrAdd) {
-        String surname = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", province = "", city = "", area = "", address = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
+        String surname = "", mid_name = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", province = "", city = "", area = "", address = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
                 passport_country = "", family_name = "", family_first_name = "", family_relationship = "", family_mobile = "",
-                zip_code = "", is_firb = "", wechat_number = "", qq_number = "";
+                zip_code = "", is_firb = "", wechat_number = "", qq_number = "", company_name = "", abn = "", acn = "", company_mobile = "", company_e_mail = "", company_fax = "", client_id = "", client = "", select_self = "", company_country = "", company_unit_number = "", company_street_number = "", company_suburb = "", company_state = "", company_street_address_line_1 = "",
+                company_street_address_line_2 = "", company_postcode = "", unit_number = "", street_number = "", suburb = "", state = "", street_address_line_1 = "", street_address_line_2 = "", family_email = "";
         //姓
         if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
             surname = edCustomeTrueName.getText().toString().trim();
@@ -1158,6 +1383,14 @@ public class CustomDetailedActivity extends BaseActivity {
         } else {
             ToasShow.showToastCenter(this, getString(R.string.fistnamenonull));
             return;
+        }
+
+        //中间名
+        //名
+        if (!TextUtils.isEmpty(etMiddleName.getText().toString().trim())) {
+            mid_name = etMiddleName.getText().toString().trim();
+        } else {
+            mid_name = "";
         }
 
         //名
@@ -1173,13 +1406,14 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(etEnglishName.getText().toString().trim())) {
             en_name = etEnglishName.getText().toString().trim();
         } else {
-            ToasShow.showToastCenter(this, getString(R.string.englishnamenonull));
-            return;
+            en_name = "";
         }
 
         //生日
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
-            birth_date = edcustmomeDetailedBie.getText().toString().trim();
+            String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy-MM-dd", edcustmomeDetailedBie.getText().toString()));
+            birth_date = bir.substring(0, bir.length() - 3);
+            Log.e("birth_date**", "birth_date:" + birth_date);
         }
 
         //电话,//邮件
@@ -1200,14 +1434,14 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
         //国籍或地区
-        if (!TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim())) {
-            country = edcustmomeDetailedNationality.getText().toString().trim();
+        if (!TextUtils.isEmpty(tvCountry_01.getText().toString().trim())) {
+            country = tvCountry_01.getText().toString().trim();
         } else {
-            if (tag.equals("completeinfo")) {
-                ToasShow.showToastCenter(this, getString(R.string.nation_and_area));
-                return;
-            }
-
+//            if (tag.equals("completeinfo")) {
+//                ToasShow.showToastCenter(this, getString(R.string.nation_and_area));
+//                return;
+//            }
+            country = "";
         }
 
         //省
@@ -1281,8 +1515,9 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //邮编
-        if (!TextUtils.isEmpty(edZipCode.getText().toString().trim())) {
-            zip_code = edZipCode.getText().toString().trim();
+        if (!TextUtils.isEmpty(etEma_01.getText().toString().trim())) {
+            //zip_code = edZipCode.getText().toString().trim();
+            zip_code = etEma_01.getText().toString().trim();
         } else {
             ToasShow.showToastCenter(this, getString(R.string.nonullpostcode));
             return;
@@ -1313,12 +1548,75 @@ public class CustomDetailedActivity extends BaseActivity {
             qq_number = edcustmomeDetailedQQ.getText().toString();
         }
 
+        family_email = family_email_ed.getText().toString().trim();
 
-        updateOrAddUserInfo(updateOrAdd, surname, first_name, en_name,
-                birth_date, mobile, country, province, city, area,
-                address, e_mail, job, income, card_id, passport_id,
-                passport_country, family_name, family_first_name, family_relationship, family_mobile,
-                zip_code, is_firb, wechat_number, qq_number);
+        //公司名称,如果为公司客户,公司名称为必填项
+
+        if (customer_type == "2") {
+            if (!TextUtils.isEmpty(comName.getText().toString())) {
+                company_name = comName.getText().toString().trim();
+            } else {
+                ToasShow.showToastCenter(this, getString(R.string.com_noe));
+                return;
+            }
+
+        } else {
+            company_name = comName.getText().toString().trim();
+        }
+
+        abn = etBusaccount.getText().toString().trim();//ABN
+        acn = etComaccount.getText().toString().trim();//ACN
+        company_mobile = etComTel.getText().toString().trim();//公司电话
+        company_e_mail = etComEmail.getText().toString().trim();//公司邮箱
+        company_fax = etComFax.getText().toString().trim();//公司传真
+
+
+        //etComRes
+
+        if (customer_type == "2") {
+            if (!TextUtils.isEmpty(etComRes.getText().toString())) {
+                client = etComRes.getText().toString().trim();//负责人名字（string)
+            } else {
+                ToasShow.showToastCenter(this, getString(R.string.comres));
+                return;
+            }
+
+        } else {
+            client = etComRes.getText().toString().trim();//负责人名字（string)
+        }
+        client_id = SharedPreferencesHelps.getUserID();//负责人ID
+        select_self = "1";//选择自己   1：选自己  0： 选其他人
+
+
+        company_country = tvCountry.getText().toString().trim();//公司国家
+        company_unit_number = etUnit.getText().toString().trim();//公司单元号
+        company_street_number = etStreetNum.getText().toString().trim();//公司街道号码
+        company_suburb = etDistrict.getText().toString().trim();//公司区
+        company_state = etZhou.getText().toString().trim();//公司州
+
+
+        company_street_address_line_1 = etStreet1.getText().toString().trim();//公司街道地址一
+        company_street_address_line_2 = etStreet2.getText().toString().trim();//公司街道地址二
+        company_postcode = etEma.getText().toString().trim();//公司邮编
+        unit_number = etUnit_01.getText().toString().trim();//单元号
+        street_number = etStreetNum_01.getText().toString().trim();//街道号码
+        suburb = etDistrict_01.getText().toString().trim();//区
+
+        state = etZhou_01.getText().toString().trim();//州
+        street_address_line_1 = etStreet1_01.getText().toString().trim();//街道地址一
+        street_address_line_2 = etStreet2_01.getText().toString().trim();//街道地址二
+
+
+        try {
+            updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
+                    birth_date, mobile, country, province, city, area,
+                    address, e_mail, job, income, card_id, passport_id,
+                    passport_country, family_name, family_first_name, family_relationship, family_mobile,
+                    zip_code, is_firb, wechat_number, qq_number, company_name, abn, acn, company_mobile, company_e_mail, company_fax, client_id, client, select_self, company_country, company_unit_number, company_street_number, company_suburb, company_state, company_street_address_line_1,
+                    company_street_address_line_2, company_postcode, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, family_email);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -1402,32 +1700,6 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (requestCode) {
                 //拍照
                 case ExtraName.TAKE_PICTURE:
-                    /*if (resultCode == RESULT_OK) {
-
-                        File cameraFile = new File(BitmapUtil.getCacheDir(this), "camera.jpg");
-                        if (cameraFile.exists()) {
-                            // copy 照片到指定目录下
-                            String path = BitmapUtil.getCacheDir(this);
-                            File dir = new File(path, "camera");
-                            if (!dir.exists()) {
-                                dir.mkdirs();
-                            }
-                            File pic = new File(dir, System.currentTimeMillis() + ".jpg");
-                            try {
-                                BitmapUtil.copyStream(new FileInputStream(cameraFile), new FileOutputStream(pic));
-                                cameraFile.delete();
-
-                                Log.e("imagePath*1*","imagePath:"+pic.getAbsolutePath());
-                                CropImage(pic.getAbsolutePath());
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                    }*/
-
                     Uri photoUri = BitmapUtil.imgUri;
                     String picPath = "";
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
