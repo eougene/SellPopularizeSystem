@@ -302,6 +302,13 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.DeclareActivity">
         </activity>
+        <!-- Bugly升级SDK配置开始  -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent"/>
+
+
     </application>
 
 </manifest>
