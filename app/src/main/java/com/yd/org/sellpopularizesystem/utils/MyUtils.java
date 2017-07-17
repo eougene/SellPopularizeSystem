@@ -791,8 +791,8 @@ public class MyUtils {
         return spa;
     }
 
-    public static String getTime(Date date) {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    public static String getTime(String fort,Date date) {
+        SimpleDateFormat format = new SimpleDateFormat(fort);
         return format.format(date);
     }
 
@@ -919,7 +919,7 @@ public class MyUtils {
         if (dates == null || dates.length < 3) {
             return 0;
         }
-        String today = utils.date2String("yyyy-MM-dd", System.currentTimeMillis());
+        String today = utils.date2String("yyyy/MM/dd", System.currentTimeMillis());
         int year = Parse.getInstance().parseInt(today.substring(0, 4));
         int month = Parse.getInstance().parseInt(today.substring(5, 7));
         int day = Parse.getInstance().parseInt(today.substring(8, 10));
