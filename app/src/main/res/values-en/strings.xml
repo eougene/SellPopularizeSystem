@@ -549,5 +549,6 @@
     <string name="select_not">Please select the relevant news</string>
     <string name="com_noe">公司名不能为空</string>
     <string name="comres">负责人不能为空</string>
+    <string name="certificate">我的证书</string>
 </resources>
 
