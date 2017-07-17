@@ -18,6 +18,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
+import com.yd.org.sellpopularizesystem.activity.MyCertificateActivity;
 import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.activity.SettingActivity;
@@ -43,7 +44,7 @@ import java.util.Map;
  */
 
 public class MeFragment extends BaseFragmentView {
-    private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting;
+    private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting, relCertificate;
     private TextView tvUserName;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
@@ -75,6 +76,11 @@ public class MeFragment extends BaseFragmentView {
                 //设置
                 case R.id.rlSetting:
                     ActivitySkip.forward(getActivity(), SettingActivity.class);
+                    break;
+
+                //我的证书
+                case R.id.relCertificate:
+                    ActivitySkip.forward(getActivity(), MyCertificateActivity.class);
                     break;
             }
         }
@@ -244,6 +250,7 @@ public class MeFragment extends BaseFragmentView {
     }
 
     private void initWidget() {
+        relCertificate = getViewById(R.id.relCertificate);
         saleRecord = getViewById(R.id.saleRecord);
         rlCommission = getViewById(R.id.rlCommission);
         rlCommission.setOnClickListener(mOnClickListener);
@@ -274,6 +281,7 @@ public class MeFragment extends BaseFragmentView {
         changePassWordRel.setOnClickListener(mOnClickListener);
         bindAccountRel.setOnClickListener(mOnClickListener);
         saleRecord.setOnClickListener(mOnClickListener);
+        relCertificate.setOnClickListener(mOnClickListener);
     }
 
     @Override
