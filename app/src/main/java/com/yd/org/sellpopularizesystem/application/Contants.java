@@ -74,7 +74,7 @@ public class Contants {
 
     //新增客户
     // public static final String NEW_CUSTOME = DOMAIN + "/index.php/app/customer/customer_add";
-  //  public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_add";
+    //  public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_add";
     public static final String NEW_CUSTOME = DOMAIN + "/index.php/appv2/customer/add_customer";
     //新增律师
     //public static final String NEW_LAWYER = DOMAIN + "/index.php/app/lawyer/add_lawyer";
@@ -168,6 +168,15 @@ public class Contants {
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
+
+
+
+
+
+    //上传证书
+    public static final String UPLOAD_LICENCE = DOMAIN + "/index.php/appv2/user/upload_licence";
+    //获取证书
+    public static final String LICENCE_INFO = DOMAIN + "/index.php/appv2/user/licence_info";
     //微信相关
     public static final String API_KEY = "cvtLF1xMofV888WMeSUrze41HpntYz7p";
     public static final String WEXIN_APP_ID = "wxaaa583d7b2f02dc3";
