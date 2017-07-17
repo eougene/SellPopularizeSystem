@@ -5,10 +5,12 @@ package com.yd.org.sellpopularizesystem.javaBean;
  */
 
 public class CustomeDetailedBean extends Domine {
+
+
     /**
      * code : 1
      * msg : 成功获取客户信息
-     * result : {"customer_id":7784,"company_id":1,"customer_nick":null,"head_img":"","true_name":null,"surname":"len","first_name":"ka","en_name":"nickName","sex":0,"title":"","gender":"","birth_date":"","mid_name":"","ext_id":"","customer_type":1,"abn":"","acn":"","age":null,"mobile":"1391","unit_number":"","street_number":"","street_address_line_1":"","street_address_line_2":"","suburb":"","state":"","postcode":"","country":"","province":"","city":"","area":"","address":"","zip_code":"-","openid":null,"wechat_number":"","wechat_nick":"","wechat_img":"","qq_number":"","e_mail":null,"job":"","income":0,"family_name":null,"family_first_name":"","family_relationship":"","family_mobile":"","family_email":"","sign_number":0,"card_id":"","passport_id":"","passport_country":"","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1497424638,"update_time":1497424638,"add_ip":"116.226.190.44","add_admin":null,"add_user":183,"is_del":0,"is_firb":0,"status":0,"memo":""}
+     * result : {"customer_id":4259,"company_id":0,"customer_nick":null,"head_img":"","true_name":null,"surname":"AndroidTest","first_name":"test","en_name":"qq123","sex":0,"title":"","gender":"","birth_date":"-28800","mid_name":"","ext_id":"","customer_type":1,"company_name":"e-dot","select_self":"e","client_id":"android","client":"","abn":"abn","acn":"anc","age":48,"mobile":"","unit_number":"12","street_number":"34","street_address_line_1":"街道3","street_address_line_2":"街道4","suburb":"区6","state":"州7","postcode":"0123445","country":"安哥拉","company_mobile":"021345678","company_e_mail":"f@edot.met","company_fax":"123345566666","company_unit_number":"1","company_street_number":"012","company_street_address_line_1":"街道1","company_street_address_line_2":"街道1二","company_suburb":"区3","company_state":"州1","company_postcode":"123@qq.com","company_country":"安哥拉","province":"","city":"","area":"","address":null,"zip_code":"","openid":null,"wechat_number":"weix 112","wechat_nick":"","wechat_img":"","qq_number":"qq123","e_mail":"11@qq.com","fax":"","job":"销售","income":12,"family_name":"ios","family_first_name":"ios","family_relationship":"BR","family_mobile":"123","family_email":"","sign_number":0,"card_id":"000000000","passport_id":"09877654","passport_country":"阿尔巴尼亚","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1499850414,"update_time":1499852864,"add_ip":"116.226.190.44","add_admin":null,"add_user":391,"is_del":0,"is_firb":0,"registe_number":1,"status":0,"memo":""}
      */
 
     private String code;
@@ -39,68 +41,85 @@ public class CustomeDetailedBean extends Domine {
         this.result = result;
     }
 
-    public static class ResultBean extends Domine {
+    public static class ResultBean {
         /**
-         * customer_id : 7784
-         * company_id : 1
+         * customer_id : 4259
+         * company_id : 0
          * customer_nick : null
          * head_img :
          * true_name : null
-         * surname : len
-         * first_name : ka
-         * en_name : nickName
+         * surname : AndroidTest
+         * first_name : test
+         * en_name : qq123
          * sex : 0
          * title :
          * gender :
-         * birth_date :
+         * birth_date : -28800
          * mid_name :
          * ext_id :
          * customer_type : 1
-         * abn :
-         * acn :
-         * age : null
-         * mobile : 1391
-         * unit_number :
-         * street_number :
-         * street_address_line_1 :
-         * street_address_line_2 :
-         * suburb :
-         * state :
-         * postcode :
-         * country :
+         * company_name : e-dot
+         * select_self : e
+         * client_id : android
+         * client :
+         * abn : abn
+         * acn : anc
+         * age : 48
+         * mobile :
+         * unit_number : 12
+         * street_number : 34
+         * street_address_line_1 : 街道3
+         * street_address_line_2 : 街道4
+         * suburb : 区6
+         * state : 州7
+         * postcode : 0123445
+         * country : 安哥拉
+         * company_mobile : 021345678
+         * company_e_mail : f@edot.met
+         * company_fax : 123345566666
+         * company_unit_number : 1
+         * company_street_number : 012
+         * company_street_address_line_1 : 街道1
+         * company_street_address_line_2 : 街道1二
+         * company_suburb : 区3
+         * company_state : 州1
+         * company_postcode : 123@qq.com
+         * company_country : 安哥拉
          * province :
          * city :
          * area :
-         * address :
-         * zip_code : -
+         * address : null
+         * zip_code :
          * openid : null
-         * wechat_number :
+         * wechat_number : weix 112
          * wechat_nick :
          * wechat_img :
-         * qq_number :
-         * e_mail : null
-         * job :
-         * income : 0
-         * family_name : null
-         * family_first_name :
-         * family_relationship :
-         * family_mobile :
+         * qq_number : qq123
+         * e_mail : 11@qq.com
+         * fax :
+         * job : 销售
+         * income : 12
+         * family_name : ios
+         * family_first_name : ios
+         * family_relationship : BR
+         * family_mobile : 123
          * family_email :
          * sign_number : 0
-         * card_id :
-         * passport_id :
-         * passport_country :
+         * card_id : 000000000
+         * passport_id : 09877654
+         * passport_country : 阿尔巴尼亚
          * card_validity : null
          * is_experience : 0
          * flight_date : null
          * flight_number : null
-         * add_time : 1497424638
-         * update_time : 1497424638
+         * add_time : 1499850414
+         * update_time : 1499852864
          * add_ip : 116.226.190.44
          * add_admin : null
-         * add_user : 183
+         * add_user : 391
          * is_del : 0
          * is_firb : 0
+         * registe_number : 1
          * status : 0
          * memo :
          */
@@ -120,9 +139,13 @@ public class CustomeDetailedBean extends Domine {
         private String mid_name;
         private String ext_id;
         private int customer_type;
+        private String company_name;
+        private String select_self;
+        private String client_id;
+        private String client;
         private String abn;
         private String acn;
-        private Object age;
+        private int age;
         private String mobile;
         private String unit_number;
         private String street_number;
@@ -132,20 +155,32 @@ public class CustomeDetailedBean extends Domine {
         private String state;
         private String postcode;
         private String country;
+        private String company_mobile;
+        private String company_e_mail;
+        private String company_fax;
+        private String company_unit_number;
+        private String company_street_number;
+        private String company_street_address_line_1;
+        private String company_street_address_line_2;
+        private String company_suburb;
+        private String company_state;
+        private String company_postcode;
+        private String company_country;
         private String province;
         private String city;
         private String area;
-        private String address;
+        private Object address;
         private String zip_code;
         private Object openid;
         private String wechat_number;
         private String wechat_nick;
         private String wechat_img;
         private String qq_number;
-        private Object e_mail;
+        private String e_mail;
+        private String fax;
         private String job;
         private int income;
-        private Object family_name;
+        private String family_name;
         private String family_first_name;
         private String family_relationship;
         private String family_mobile;
@@ -165,6 +200,7 @@ public class CustomeDetailedBean extends Domine {
         private int add_user;
         private int is_del;
         private int is_firb;
+        private int registe_number;
         private int status;
         private String memo;
 
@@ -288,6 +324,38 @@ public class CustomeDetailedBean extends Domine {
             this.customer_type = customer_type;
         }
 
+        public String getCompany_name() {
+            return company_name;
+        }
+
+        public void setCompany_name(String company_name) {
+            this.company_name = company_name;
+        }
+
+        public String getSelect_self() {
+            return select_self;
+        }
+
+        public void setSelect_self(String select_self) {
+            this.select_self = select_self;
+        }
+
+        public String getClient_id() {
+            return client_id;
+        }
+
+        public void setClient_id(String client_id) {
+            this.client_id = client_id;
+        }
+
+        public String getClient() {
+            return client;
+        }
+
+        public void setClient(String client) {
+            this.client = client;
+        }
+
         public String getAbn() {
             return abn;
         }
@@ -304,11 +372,11 @@ public class CustomeDetailedBean extends Domine {
             this.acn = acn;
         }
 
-        public Object getAge() {
+        public int getAge() {
             return age;
         }
 
-        public void setAge(Object age) {
+        public void setAge(int age) {
             this.age = age;
         }
 
@@ -384,6 +452,94 @@ public class CustomeDetailedBean extends Domine {
             this.country = country;
         }
 
+        public String getCompany_mobile() {
+            return company_mobile;
+        }
+
+        public void setCompany_mobile(String company_mobile) {
+            this.company_mobile = company_mobile;
+        }
+
+        public String getCompany_e_mail() {
+            return company_e_mail;
+        }
+
+        public void setCompany_e_mail(String company_e_mail) {
+            this.company_e_mail = company_e_mail;
+        }
+
+        public String getCompany_fax() {
+            return company_fax;
+        }
+
+        public void setCompany_fax(String company_fax) {
+            this.company_fax = company_fax;
+        }
+
+        public String getCompany_unit_number() {
+            return company_unit_number;
+        }
+
+        public void setCompany_unit_number(String company_unit_number) {
+            this.company_unit_number = company_unit_number;
+        }
+
+        public String getCompany_street_number() {
+            return company_street_number;
+        }
+
+        public void setCompany_street_number(String company_street_number) {
+            this.company_street_number = company_street_number;
+        }
+
+        public String getCompany_street_address_line_1() {
+            return company_street_address_line_1;
+        }
+
+        public void setCompany_street_address_line_1(String company_street_address_line_1) {
+            this.company_street_address_line_1 = company_street_address_line_1;
+        }
+
+        public String getCompany_street_address_line_2() {
+            return company_street_address_line_2;
+        }
+
+        public void setCompany_street_address_line_2(String company_street_address_line_2) {
+            this.company_street_address_line_2 = company_street_address_line_2;
+        }
+
+        public String getCompany_suburb() {
+            return company_suburb;
+        }
+
+        public void setCompany_suburb(String company_suburb) {
+            this.company_suburb = company_suburb;
+        }
+
+        public String getCompany_state() {
+            return company_state;
+        }
+
+        public void setCompany_state(String company_state) {
+            this.company_state = company_state;
+        }
+
+        public String getCompany_postcode() {
+            return company_postcode;
+        }
+
+        public void setCompany_postcode(String company_postcode) {
+            this.company_postcode = company_postcode;
+        }
+
+        public String getCompany_country() {
+            return company_country;
+        }
+
+        public void setCompany_country(String company_country) {
+            this.company_country = company_country;
+        }
+
         public String getProvince() {
             return province;
         }
@@ -408,11 +564,11 @@ public class CustomeDetailedBean extends Domine {
             this.area = area;
         }
 
-        public String getAddress() {
+        public Object getAddress() {
             return address;
         }
 
-        public void setAddress(String address) {
+        public void setAddress(Object address) {
             this.address = address;
         }
 
@@ -464,12 +620,20 @@ public class CustomeDetailedBean extends Domine {
             this.qq_number = qq_number;
         }
 
-        public Object getE_mail() {
+        public String getE_mail() {
             return e_mail;
         }
 
-        public void setE_mail(Object e_mail) {
+        public void setE_mail(String e_mail) {
             this.e_mail = e_mail;
+        }
+
+        public String getFax() {
+            return fax;
+        }
+
+        public void setFax(String fax) {
+            this.fax = fax;
         }
 
         public String getJob() {
@@ -488,11 +652,11 @@ public class CustomeDetailedBean extends Domine {
             this.income = income;
         }
 
-        public Object getFamily_name() {
+        public String getFamily_name() {
             return family_name;
         }
 
-        public void setFamily_name(Object family_name) {
+        public void setFamily_name(String family_name) {
             this.family_name = family_name;
         }
 
@@ -646,6 +810,14 @@ public class CustomeDetailedBean extends Domine {
 
         public void setIs_firb(int is_firb) {
             this.is_firb = is_firb;
+        }
+
+        public int getRegiste_number() {
+            return registe_number;
+        }
+
+        public void setRegiste_number(int registe_number) {
+            this.registe_number = registe_number;
         }
 
         public int getStatus() {
