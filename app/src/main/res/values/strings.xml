@@ -528,7 +528,6 @@
     <string name="declaretitle_01">定金申明</string>
 
 
-
     <string name="s_00">Dear Purchaser</string>
     <string name="s_11"> Congratulation on your reservation for the property through Wingaid system! The reservation fee for each property is AUD$300,equivalent to RMB2,000,please use one of the following paymend options to pay for the reservation fee.
 </string>
@@ -547,6 +546,7 @@
     <string name="select_not">请选择相关消息</string>
     <string name="com_noe">公司名不能为空</string>
     <string name="comres">负责人不能为空</string>
+    <string name="certificate">我的证书</string>
 
 
 </resources>
