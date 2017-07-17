@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout
+<com.yd.org.sellpopularizesystem.myView.BounceScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchMatch"
     android:background="@color/search_edit_bac"
@@ -95,6 +95,35 @@
                         android:layout_marginLeft="@dimen/padding_margin_10"
                         android:layout_toRightOf="@+id/bind"
                         android:text="@string/setting_bindaccount"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_15"/>
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/padding_margin_50"
+                    android:background="@color/shallow_gray"/>
+
+
+                <RelativeLayout
+                    android:id="@+id/relCertificate"
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/padding_margin_12">
+
+                    <ImageView
+                        android:id="@+id/myCertificate"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/certificate"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:layout_toRightOf="@+id/myCertificate"
+                        android:text="@string/certificate"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15"/>
 
@@ -233,4 +262,4 @@
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+</com.yd.org.sellpopularizesystem.myView.BounceScrollView>
