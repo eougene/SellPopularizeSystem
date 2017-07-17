@@ -20,6 +20,9 @@ import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +41,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
     /**
      * 分组上显示的字母
      */
-    private TextView title,tvNoInfo;
+    private TextView title, tvNoInfo;
     /**
      * 上次第一个可见元素，用于滚动时记录标识。
      */
@@ -53,7 +56,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
     public void initView() {
         setTitle(R.string.myteam);
         hideRightImagview();
-       tvNoInfo = getViewById(R.id.tvNoInfo);
+        tvNoInfo = getViewById(R.id.tvNoInfo);
         titleLayout = getViewById(R.id.lltitle);
         title = getViewById(R.id.title);
         ptrl = getViewById(R.id.refresh_view);
@@ -77,7 +80,22 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
                 super.onSuccess(s);
                 closeDialog();
                 if (null != s) {
-                    jsonParse(s, b);
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject(s);
+                        if (b && json.getString("msg").equals("暂无数据")) {
+                            getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                            listView.setVisibility(View.GONE);
+                        } else {
+                            getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                            listView.setVisibility(View.VISIBLE);
+                            jsonParse(s, b);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
                 }
             }
 
@@ -93,7 +111,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
         Gson gson = new Gson();
         TeamBean tb = gson.fromJson(json, TeamBean.class);
         if (tb.getCode().equals("1")) {
-            if (tb.getResult().getSub()!=null){
+            if (tb.getResult().getSub() != null) {
                 teamGroupListData = tb.getResult().getSub();
             }
 
@@ -101,7 +119,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
 
         if (isRefresh) {
 
-            if (teamGroupListData.size()==0) {
+            if (teamGroupListData.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
             } else {
@@ -140,7 +158,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
                         } else {
                             Log.e("top***2", "LLL");
                             title.setVisibility(View.VISIBLE);
-                            title.setText(teamGroupListData.get(firstVisibleItem).getSurname() + getString(R.string.single_blank_space) + teamGroupListData.get(firstVisibleItem).getFirstname() + " " + "-$"+ teamGroupListData.get(firstVisibleItem).getCommission());
+                            title.setText(teamGroupListData.get(firstVisibleItem).getSurname() + getString(R.string.single_blank_space) + teamGroupListData.get(firstVisibleItem).getFirstname() + " " + "-$" + teamGroupListData.get(firstVisibleItem).getCommission());
 
                         }
                     }

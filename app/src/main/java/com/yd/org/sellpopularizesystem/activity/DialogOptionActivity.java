@@ -20,7 +20,6 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.bigkoo.pickerview.view.WheelOptions;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
@@ -55,7 +54,7 @@ public class DialogOptionActivity extends AppCompatActivity {
     private long reserverTime = 0;
     private long reminderTime = 0;
     private String strFlag;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
     private String resTime, remindTime, strContent;
     private SubscribeListBean.ResultBean slbRb;
 

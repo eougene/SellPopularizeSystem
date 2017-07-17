@@ -388,7 +388,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 if (date.getTime() > (new Date()).getTime()) {
                     ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.select_birth));
                 } else {
-                    edcustmomeDetailedBie.setText(MyUtils.getTime(date));
+                    edcustmomeDetailedBie.setText(MyUtils.getTime("yyyy/MM/dd",date));
                 }
 
             }
@@ -1411,7 +1411,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //生日
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
-            String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy-MM-dd", edcustmomeDetailedBie.getText().toString()));
+            String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
             birth_date = bir.substring(0, bir.length() - 3);
             Log.e("birth_date**", "birth_date:" + birth_date);
         }
