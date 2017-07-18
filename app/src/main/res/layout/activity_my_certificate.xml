@@ -22,7 +22,7 @@
                 android:id="@+id/stateTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="状态:未上传"
+                android:text="@string/not_upload"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_margin_10"
-            android:text="有效日期"
+            android:text="@string/effective_date"
             android:textColor="@color/gray"
             android:textSize="@dimen/tv_size_15" />
 
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:background="@color/search_edit_bac"
                 android:padding="@dimen/padding_margin_10"
-                android:text="生效日期" />
+                android:text="@string/commencement_date" />
 
             <View
                 android:layout_width="20dp"
@@ -74,7 +74,7 @@
                 android:layout_weight="1"
                 android:background="@color/search_edit_bac"
                 android:padding="@dimen/padding_margin_10"
-                android:text="到期日期" />
+                android:text="@string/maturity_date" />
 
         </LinearLayout>
 
@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_margin_10"
-            android:text="证件编号"
+            android:text="@string/certificate_number"
             android:textColor="@color/gray"
             android:textSize="@dimen/tv_size_15" />
 
@@ -93,7 +93,7 @@
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"
-            android:hint="填写证件编号"
+            android:hint="@string/accurate"
             android:padding="@dimen/padding_margin_10"
             android:textColor="@color/gray"
             android:textColorHint="@color/gray"
@@ -127,7 +127,7 @@
                 android:layout_toLeftOf="@+id/pointImageView"
                 android:gravity="center|right"
                 android:padding="@dimen/padding_margin_10"
-                android:text="选择证件类型"
+                android:text="@string/certificate_type"
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_15" />
 
@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/padding_margin_10"
-            android:text="上传证书"
+            android:text="@string/upload_certificate"
             android:textColor="@color/gray"
             android:textSize="@dimen/tv_size_15" />
 

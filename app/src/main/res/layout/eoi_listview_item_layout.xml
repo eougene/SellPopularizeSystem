@@ -1,53 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/llLeft"
+    <RelativeLayout
+        android:id="@+id/llLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEoiNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/padding_margin_12"
+            android:layout_marginLeft="@dimen/padding_margin_16"
+            android:layout_marginTop="@dimen/padding_margin_12"
+            android:text="@string/bianhao"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_12"/>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/promtionLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_12"
+            android:layout_toLeftOf="@+id/tvEoiStatusDes"
+            android:layout_toRightOf="@+id/tvEoiNum"
+            android:orientation="horizontal"
+            >
+
 
             <TextView
-                android:id="@+id/tvEoiNum"
+                android:id="@+id/tvProm01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_gravity="center_vertical"
-                android:layout_marginBottom="@dimen/padding_margin_12"
-                android:layout_marginLeft="@dimen/padding_margin_16"
-                android:layout_marginTop="@dimen/padding_margin_12"
-                android:text="@string/bianhao"
-                android:textColor="@color/black"
-                android:textSize="@dimen/tv_size_12" />
+                android:text="0"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/tv_size_12"/>
 
-                <TextView
-                    android:id="@+id/tvEoiStatusDes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="@dimen/padding_margin_4"
-                    android:layout_marginRight="@dimen/padding_margin_4"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/title"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_4"
+                android:src="@mipmap/bedroom"/>
 
-                <!--<TextView
-                    android:id="@+id/tvVisitContent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/padding_margin_4"
-                    android:layout_marginTop="@dimen/padding_margin_4"
-                    android:layout_toRightOf="@+id/tvVisitTitle"
-                    android:text="内容"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12" />-->
+            <TextView
+                android:id="@+id/tvProm02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_4"
+                android:text="0"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/tv_size_12"/>
 
-        </RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_4"
+                android:src="@mipmap/shower"/>
+
+            <TextView
+                android:id="@+id/tvProm03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_4"
+                android:text="0"
+                android:textColor="@color/light_blue"
+                android:textSize="@dimen/tv_size_12"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_4"
+                android:src="@mipmap/car"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvEoiStatusDes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_4"
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_12"/>
+
+    </RelativeLayout>
 
 </LinearLayout>
