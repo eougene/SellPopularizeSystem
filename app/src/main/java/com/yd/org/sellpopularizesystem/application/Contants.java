@@ -162,7 +162,11 @@ public class Contants {
     //eoi列表
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //使用eoi
-    public static final String EOI_USE = DOMAIN + "index.php/appv2/eoi/use_eoi";
+    public static final String EOI_USE = DOMAIN + "/index.php/appv2/eoi/use_eoi";
+    //上传eoi付款凭证
+    public static final String UPLOAD_EOI_MONEY = DOMAIN + "/index.php/appv2/eoi/upload_eoi_money";
+    //退款
+    public static final String CANCEL_EOI = DOMAIN + "/index.php/appv2/eoi/cancel_eoi";
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
