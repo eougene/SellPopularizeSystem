@@ -514,7 +514,7 @@
     <string name="more">查看更多</string>
     <string name="order_id">订单号</string>
     <string name="land">Land</string>
-    <string name="apt">Apt</string>
+    <string name="apt">APT</string>
     <string name="order_detail">订单详情</string>
     <string name="exchange_fee">交换合同保证金</string>
     <string name="select_birth">选择时间不得大于当前时间</string>
@@ -570,6 +570,7 @@
     <string name="State_overdue">证书状态:已过期</string>
     <string name="current_time">到期日期不能小于当前时间</string>
     <string name="not_upload">证书状态:未上传</string>
+    <string name="invoice">发票信息</string>
 
 
 </resources>
