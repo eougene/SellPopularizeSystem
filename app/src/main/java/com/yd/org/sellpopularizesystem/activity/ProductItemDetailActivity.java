@@ -118,11 +118,9 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                 switch (id) {
                     case 1://微信
                         shareToMedia(SHARE_MEDIA.WEIXIN);
-                        //mShareAction.open();
                         break;
                     case 2://微信朋友圈
                         shareToMedia(SHARE_MEDIA.WEIXIN_CIRCLE);
-                        //mShareAction.open();
                         break;
                     case 3://facebook
                         shareToMedia(SHARE_MEDIA.FACEBOOK);
@@ -260,8 +258,14 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         if (prs.getVideo_url() != null) {
             tvVideo.setAlpha(1.0f);
         }
-        if (prs.getImg_content() != null && prs.getImg_content().size() > 0) {
-            tvFloor.setAlpha(1.0f);
+        if (prs.getFile_content() != null && prs.getFile_content().size() > 0) {
+
+            for (int i=0;i< prs.getFile_content().size();i++){
+                if (prs.getFile_content().get(i).getFile_type()==1){
+                    tvFloor.setAlpha(1.0f);
+                }
+            }
+
         }
         if (prs.getContract_url() != null && !prs.getContract_url().equals("")) {
             tvContract.setAlpha(1.0f);
@@ -284,6 +288,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                 case R.id.tvIntroduce:
                     if (tvIntroduce.getAlpha() == 1.0f) {
                         bun.putString("introduce", prs.getDescription_url() + "");
+                        bun.putString("type", "0");
                         ActivitySkip.forward(ProductItemDetailActivity.this, IntroduceActivity.class, bun);
                     }
 
@@ -302,7 +307,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                         bun.putString("productId", product_id == null ? "" : product_id);
                         bun.putString("title", resultBean.getProduct_name());
                         bun.putString("pidatopsla", "pidatopsla");
-                        //Log.e("prs", "onClick: " + prs.getImg_content().size());
                         ActivitySkip.forward(ProductItemDetailActivity.this, ProductSubunitListActivity.class, bun);
                     }
                     break;
@@ -310,7 +314,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                 case R.id.tvFloor:
                     if (resultBean != null) {
                         if (tvFloor.getAlpha() == 1.0f) {
-                            bun.putSerializable("floorListData", (Serializable) prs.getImg_content());
+                            bun.putSerializable("floorListData", (Serializable) prs.getFile_content());
                             ActivitySkip.forward(ProductItemDetailActivity.this, BuildingPlanActivity.class, bun);
                         }
                     }

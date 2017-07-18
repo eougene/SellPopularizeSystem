@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -10,6 +9,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
+import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
@@ -20,7 +20,9 @@ import java.util.List;
 
 public class BuildingPlanActivity extends BaseActivity {
     private ListView lvFloorPlan;
-    private List<ImageContent> floorListData = new ArrayList<>();
+    private List<FileContent> floorListData = new ArrayList<>();
+    private List<FileContent> ListData = new ArrayList<>();
+    private List<ImageContent> imagetData = new ArrayList<>();
     private CommonAdapter floorListAdapter;
 
     @Override
@@ -33,8 +35,19 @@ public class BuildingPlanActivity extends BaseActivity {
     @Override
     public void initView() {
         //获取数据
-        floorListData.addAll((Collection<? extends ImageContent>) getIntent().getExtras().getSerializable("floorListData"));
+        floorListData.addAll((Collection<? extends FileContent>) getIntent().getExtras().getSerializable("floorListData"));
         lvFloorPlan = getViewById(R.id.lvFloorPlan);
+
+
+        for (int i=0;i<floorListData.size();i++){
+
+            if (floorListData.get(i).getFile_type()==1){
+                ImageContent imageContent=new ImageContent();
+                imageContent.setUrl(floorListData.get(i).getUrl());
+                imagetData.add(imageContent);
+                ListData.add(floorListData.get(i));
+            }
+        }
 
         //设置适配器
         setAdapter();
@@ -43,11 +56,10 @@ public class BuildingPlanActivity extends BaseActivity {
     }
 
     private void setAdapter() {
-        floorListAdapter = new CommonAdapter<ImageContent>(BuildingPlanActivity.this, floorListData, R.layout.floor_listview_iten_layout) {
+        floorListAdapter = new CommonAdapter<FileContent>(BuildingPlanActivity.this, ListData, R.layout.floor_listview_iten_layout) {
             @Override
-            public void convert(ViewHolder holder, ImageContent item) {
+            public void convert(ViewHolder holder, FileContent item) {
                 String strUrl = Contants.DOMAIN + "/" + item.getUrl();
-                Log.e("tag", "convert: " + strUrl);
                 holder.setImageByUrl(R.id.ivFloorImage, Contants.DOMAIN + "/" + item.getUrl());
                 holder.setText(R.id.tvTitleName, item.getDetail_name());
             }
@@ -60,12 +72,10 @@ public class BuildingPlanActivity extends BaseActivity {
         lvFloorPlan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("img_content", (Serializable) floorListData);
+                bundle.putSerializable("img_content", (Serializable) imagetData);
                 ActivitySkip.forward(BuildingPlanActivity.this, ImageShowActivity.class, bundle);
 
-                Log.e("平面图***", "floorListData:" + floorListData.size());
 
 
             }

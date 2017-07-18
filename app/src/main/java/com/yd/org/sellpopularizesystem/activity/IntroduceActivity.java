@@ -13,7 +13,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 public class IntroduceActivity extends BaseActivity {
     private WebView pdfView;
-    private String sale_advice_url;
+    private String sale_advice_url, type = "";
 
     @Override
     protected int setContentView() {
@@ -24,12 +24,20 @@ public class IntroduceActivity extends BaseActivity {
     public void initView() {
 
         hideRightImagview();
-        setTitle(R.string.jieshao);
         pdfView = getViewById(R.id.pdfView);
         Bundle bundle = getIntent().getExtras();
         sale_advice_url = bundle.getString("introduce");
+        type = bundle.getString("type");
 
-        MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + sale_advice_url);
+        if (type.equals("1")) {
+            setTitle(R.string.floorphoto);
+
+        } else {
+            setTitle(R.string.jieshao);
+
+        }
+
+        MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + sale_advice_url);
 
 
     }

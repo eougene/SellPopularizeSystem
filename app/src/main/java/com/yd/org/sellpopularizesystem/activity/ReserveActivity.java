@@ -322,6 +322,9 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.rlRecus:
                     cusSelectPop.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
+                case R.id.tvReCus:
+                    cusSelectPop.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    break;
                 //选择客户
                 case R.id.btSelecCus:
                     bun.putString(ExtraName.SCALETOCUSTOME, ExtraName.TORESVER_TOCUSTOME);
@@ -342,13 +345,26 @@ public class ReserveActivity extends BaseActivity {
                     cusSelectPop.dismiss();
                     break;
                 //选择律师
+                case R.id.ivReLawyer:
+                    bun.putString(ExtraName.RESVERTOLAWYER, ExtraName.TORESVER);
+                    ActivitySkip.forward(ReserveActivity.this, LawyerActivity.class, ExtraName.RESERVE_TO_LAWYER, bun);
+                    overridePendingTransition(R.anim.enter_anim, 0);
+                    break;
                 case R.id.rlReLawyer:
+                    bun.putString(ExtraName.RESVERTOLAWYER, ExtraName.TORESVER);
+                    ActivitySkip.forward(ReserveActivity.this, LawyerActivity.class, ExtraName.RESERVE_TO_LAWYER, bun);
+                    overridePendingTransition(R.anim.enter_anim, 0);
+                    break;
+                case R.id.tvReLawyer:
                     bun.putString(ExtraName.RESVERTOLAWYER, ExtraName.TORESVER);
                     ActivitySkip.forward(ReserveActivity.this, LawyerActivity.class, ExtraName.RESERVE_TO_LAWYER, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     break;
                 //购房目的弹出框
                 case R.id.rlReGoal:
+                    mCustomePopuWindow.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
+                    break;
+                case R.id.tvReGoal:
                     mCustomePopuWindow.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     break;
                 //支付方式

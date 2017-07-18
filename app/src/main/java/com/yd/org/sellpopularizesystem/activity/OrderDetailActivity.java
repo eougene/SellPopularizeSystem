@@ -9,6 +9,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
@@ -73,11 +74,13 @@ public class OrderDetailActivity extends BaseActivity {
             }
 
         }
+
         tvFirb.setText(result.getIs_firb() == 0 ? getString(R.string.yes) : getString(R.string.bushi));
-        tvSale.setText(result.getSales_id() + "");
+        tvSale.setText(SharedPreferencesHelps.getSurName()+" "+SharedPreferencesHelps.getFirstName());
+
+
         tvCus.setText(result.getCustomer_surname()+" "+result.getCustomer_first_name());
-        //custome = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(OrderDetailActivity.this, "custome"));
-        //tvCusAdd.setText(custome != null ? custome.getAddress() : "");
+        tvCusAdd.setText(result.getCustomer_info().getCountry()+" "+result.getCustomer_info().getStreet_address_line_1()+" "+result.getCustomer_info().getStreet_address_line_2());
         tvLawyer.setText(result.getLawyer_name());
         tvGoal.setText(result.getPurchaseReason());
         tvPrice.setText("$" + MyUtils.addComma(result.getPrice().split("\\.")[0]));

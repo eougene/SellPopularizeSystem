@@ -21,10 +21,9 @@ public class FileActivity extends BaseActivity {
     private ListView listView;
     private ProductDetailBean.ResultBean prs;
     private List<FileContent> file_content = new ArrayList<>();
+    private List<FileContent> fileDate = new ArrayList<>();
     private FileAdapter fileAdapter;
     private String key;
-
-
     //合同
     private WebView pdfView;
 
@@ -47,13 +46,18 @@ public class FileActivity extends BaseActivity {
             listView.setVisibility(View.VISIBLE);
 
             file_content = prs.getFile_content();
-            fileAdapter = new FileAdapter(this, file_content);
+            for (int i = 0; i < file_content.size(); i++) {
+                if (file_content.get(i).getFile_type() == 2) {
+                    fileDate.add(file_content.get(i));
+                }
+            }
+            fileAdapter = new FileAdapter(this, fileDate);
             listView.setAdapter(fileAdapter);
         } else {
             setTitle(getString(R.string.contract));
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            MyUtils.getInstance().showWebView(FileActivity.this,pdfView,Contants.PDF_TEST +Contants.DOMAIN + "/" + prs.getContract_url());
+            MyUtils.getInstance().showWebView(FileActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + prs.getContract_url());
 
 
         }

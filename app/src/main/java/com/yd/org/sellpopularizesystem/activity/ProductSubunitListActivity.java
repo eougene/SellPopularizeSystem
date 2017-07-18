@@ -249,7 +249,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("product_id", product_id == null ? "" : product_id);
         ajaxParams.put("page", page);
-        ajaxParams.put("number", 100 + "");
+        ajaxParams.put("number", 1000 + "");
         ajaxParams.put("provice", "");
         ajaxParams.put("city", "");
         ajaxParams.put("town", "");
@@ -363,21 +363,45 @@ public class ProductSubunitListActivity extends BaseActivity {
                     Log.e("item", "item:" + item.getProduct_childs_id());
                     holder.setImageResource(R.id.ivHouse, R.mipmap.eoi);
                 }
+
+
+                //房型图
                 if (!item.getThumb().equals("")) {
-                    //holder.setImageByUrl(R.id.ivHousePhoto,item.getThumb(),mOnClickListener);
                     holder.getView(R.id.tvNoPhoto).setVisibility(View.GONE);
                     holder.getView(R.id.ivHousePic).setVisibility(View.VISIBLE);
-                    holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            ImageContent imageContent = new ImageContent();
-                            imageContent.setUrl(item.getThumb());
-                            imgContents.clear();
-                            imgContents.add(imageContent);
-                            bund.putSerializable("img_content", (Serializable) imgContents);
-                            ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
-                        }
-                    });
+
+                    if (item.getThumb().endsWith(".pdf")) {
+
+
+                        holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ImageContent imageContent = new ImageContent();
+                                imageContent.setUrl(item.getThumb());
+                                imgContents.clear();
+                                imgContents.add(imageContent);
+                                bund.putString("introduce", item.getThumb() + "");
+                                bund.putString("type", "1");
+                                ActivitySkip.forward(ProductSubunitListActivity.this, IntroduceActivity.class, bund);
+
+                            }
+                        });
+                    } else {
+
+                        holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ImageContent imageContent = new ImageContent();
+                                imageContent.setUrl(item.getThumb());
+                                imgContents.clear();
+                                imgContents.add(imageContent);
+                                bund.putSerializable("img_content", (Serializable) imgContents);
+                                ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
+                            }
+                        });
+                    }
+
+
                 } else {
                     holder.getView(R.id.tvNoPhoto).setVisibility(View.VISIBLE);
                     holder.getView(R.id.ivHousePic).setVisibility(View.GONE);
@@ -464,6 +488,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 case R.id.tvIntroduce:
 
                     if (tvIntroduce.getAlpha() == 1.0f) {
+                        bund.putString("type", "0");
                         bund.putString("introduce", prs.getDescription_url() + "");
                         ActivitySkip.forward(ProductSubunitListActivity.this, IntroduceActivity.class, bund);
                     }
@@ -471,7 +496,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 //平面图
                 case R.id.tvFloor:
                     if (tvFloor.getAlpha() == 1.0f) {
-                        bund.putSerializable("floorListData", (Serializable) prs.getImg_content());
+                        bund.putSerializable("floorListData", (Serializable) prs.getFile_content());
                         ActivitySkip.forward(ProductSubunitListActivity.this, BuildingPlanActivity.class, bund);
                     }
                     break;
@@ -615,9 +640,19 @@ public class ProductSubunitListActivity extends BaseActivity {
         if (prs.getVideo_url() != null) {
             tvVideo.setAlpha(1.0f);
         }
-        if (prs.getImg_content() != null && prs.getImg_content().size() > 0) {
-            tvFloor.setAlpha(1.0f);
+
+
+        if (prs.getFile_content() != null && prs.getFile_content().size() > 0) {
+
+            for (int i = 0; i < prs.getFile_content().size(); i++) {
+                if (prs.getFile_content().get(i).getFile_type() == 1) {
+                    tvFloor.setAlpha(1.0f);
+                }
+            }
+
         }
+
+
         if (prs.getContract_url() != null && !prs.getContract_url().equals("")) {
             tvContract.setAlpha(1.0f);
         }
