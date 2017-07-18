@@ -550,5 +550,8 @@
     <string name="com_noe">公司名不能为空</string>
     <string name="comres">负责人不能为空</string>
     <string name="certificate">我的证书</string>
+    <string name="nouse">尚未使用</string>
+    <string name="evidence">请重新上传凭证</string>
+    <string name="exchanged">Exchanged</string>
 </resources>
 
