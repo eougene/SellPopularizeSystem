@@ -733,8 +733,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
                     eoi_ID = eoilistBean.getProduct_eois_id() + "";
                     payMe = eoilistBean.getPayment_method() + "";
-                    Log.e("支付**", "play:" + eoilistBean.getEoi_money_url());
-                    if (eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
+                    if (eoilistBean.getEoi_money_status() == 1&&eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
                         Bundle bundle = new Bundle();
                         bundle.putString("payurlId", eoilistBean.getEoi_money_url());
                         bundle.putString("payment_method", eoilistBean.getPayment_method() + "");
@@ -772,7 +771,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
                         //已使用,申请取消
-                    } else if (eoilistBean.getEoi_money_status() == 2 || eoilistBean.getEoi_money_status() == 1 && eoilistBean.getIs_use() == 1) {
+                    } else if (eoilistBean.getEoi_money_status() == 2 && eoilistBean.getIs_use() == 1) {
                         firbSelectPopWindowCancel.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
 
                     }
