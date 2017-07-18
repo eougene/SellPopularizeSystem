@@ -131,10 +131,20 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         }
         saleAdapter.addMore(sobRbData);
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        // locatedOrderIdPos();
+         locatedOrderIdPos();
     }
 
-//
+    private void locatedOrderIdPos() {
+        if (getIntent().getExtras()!=null && getIntent().getExtras().getString("orderid")!=null){
+            for (int i = 0; i <sobRbData.size() ; i++) {
+                if (sobRbData.get(i).getProduct_orders_id()==Integer.parseInt(getIntent().getExtras().getString("orderid"))){
+                    lvSaleRecord.setSelection(i);
+                    Log.e("TAG", "initView: "+i );
+                    return;
+                }
+            }
+        }
+    }
 
 
     public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
