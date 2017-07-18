@@ -148,7 +148,7 @@ public class MyCertificateActivity extends BaseActivity {
 
                     //结束日期
                     if (date.getTime() < (new Date()).getTime()) {
-                        ToasShow.showToastCenter(MyCertificateActivity.this, "到期日期不能小于当前时间");
+                        ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.current_time));
                     } else {
                         dataTextView_02.setText(MyUtils.getTime("yyyy/MM/dd", date));
                     }
@@ -272,8 +272,8 @@ public class MyCertificateActivity extends BaseActivity {
             String sTime = "", endTime = "", licence_number = "", licence_name = "";
             File file = null;
 
-            if ((dataTextView_01.getText().toString()).equals("生效日期")) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, "请选择生效日期");
+            if ((dataTextView_01.getText().toString()).equals(getString(R.string.commencement_date))) {
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_valid_date));
                 return;
 
             } else {
@@ -281,8 +281,8 @@ public class MyCertificateActivity extends BaseActivity {
 
             }
 
-            if ((dataTextView_02.getText().toString()).equals("到期日期")) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, "请选择到期日期");
+            if ((dataTextView_02.getText().toString()).equals(getString(R.string.maturity_date))) {
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_due_date));
                 return;
 
             } else {
@@ -292,14 +292,14 @@ public class MyCertificateActivity extends BaseActivity {
 
 
             if (TextUtils.isEmpty(zhEdTextView.getText().toString().trim())) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, "选择证件类型");
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.Fill_id_number));
                 return;
             } else {
                 licence_number = zhEdTextView.getText().toString().trim();
             }
 
-            if ((zhTypeTextView.getText().toString().trim()).equals("选择证件类型")) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, "选择证件类型");
+            if ((zhTypeTextView.getText().toString().trim()).equals(getString(R.string.certificate_type))) {
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_certificate_type));
                 return;
             } else {
                 licence_name = zhTypeTextView.getText().toString().trim();
@@ -307,7 +307,7 @@ public class MyCertificateActivity extends BaseActivity {
 
 
             if (TextUtils.isEmpty(picPath) || picPath == "") {
-                ToasShow.showToastCenter(MyCertificateActivity.this, "请上传证书");
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
                 return;
             } else {
                 file = new File(picPath);
@@ -390,25 +390,24 @@ public class MyCertificateActivity extends BaseActivity {
                     if (lb.getCode() == 1) {
 
                         if (lb.getResult().getStatus() == 0) {
-                            stateTextView.setText("状态:待审核");
+                            stateTextView.setText(R.string.state_approval);
                         } else if (lb.getResult().getStatus() == 1) {
-                            stateTextView.setText("状态:已审核");
+                            stateTextView.setText(R.string.valid_state);
                         } else if (lb.getResult().getStatus() == 2) {
-                            stateTextView.setText("状态:已拒绝");
+                            stateTextView.setText(R.string.state_refused);
                         } else if (lb.getResult().getStatus() == 3) {
-                            stateTextView.setText("状态:已过期");
+                            stateTextView.setText(R.string.State_overdue);
                         }
-
-
+                        picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
                         dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date() + "000")));
                         dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
                         zhEdTextView.setText(lb.getResult().getLicence_number());
                         zhTypeTextView.setText(lb.getResult().getLicence_name());
 
+
+
                         Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).fit().centerCrop().
                                 config(Bitmap.Config.RGB_565).into(srcImageView);
-
-                        picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
 
 
                     }

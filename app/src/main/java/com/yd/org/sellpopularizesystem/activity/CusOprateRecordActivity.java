@@ -45,6 +45,7 @@ import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
+import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
@@ -96,7 +97,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private Uri imgUri;
     private List<SubscribeListBean.ResultBean> rbList = new ArrayList<>();
     private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
-    private PopupWindow firbSelectPopWindow;
+    private PopupWindow firbSelectPopWindow, firbSelectPopWindowCancel;
     private View firbPwView;
     private Button btUnknown, btSure, btFalse;
     private String eoi_ID = "", payMe = "";
@@ -116,6 +117,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         customeId = (String) bundle.get("customeId");
         initWidgets();
         showZh();
+        cancelEOI();
         if (flag.equals("custovisit") || flag.equals("custoreser")) {
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
@@ -644,8 +646,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
 
 
-                            //尚未付款
-                            if (item.getEoi_money_status() == 1) {
+                            //尚未付款,未使用
+                            if (item.getEoi_money_status() == 1 && item.getIs_use() != 1) {
 
 
                                 //凭证已上传
@@ -656,11 +658,20 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                     holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
                                 }
 
-                                //尚未使用
-                            } else if (item.getEoi_money_status() == 2) {
+                                //已付款,是否使用
+                            } else if (item.getEoi_money_status() == 2 || item.getEoi_money_status() == 1) {
+
+                                //未使用
                                 if (item.getIs_use() == 0) {
+                                    holder.setLinear_Gone(R.id.promtionLinear);
                                     holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
+
+                                    //已使用
                                 } else {
+                                    holder.setLinear(R.id.promtionLinear);
+                                    holder.setText(R.id.tvProm01, "0");
+                                    holder.setText(R.id.tvProm02, "0");
+                                    holder.setText(R.id.tvProm03, "0");
                                     holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
                                 }
 
@@ -668,7 +679,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             } else if (item.getEoi_money_status() == 3) {
                                 type = 1;
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.evidence));
+
                             }
+
 
                         }
                     };
@@ -710,6 +723,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     ActivitySkip.forward(CusOprateRecordActivity.this, DialogOptionActivity.class, bun);
                 } else {
 
+                    /**
+                     * eoi_money_status=1  EOI已充值，待审核
+                     * eoi_money_status=2  EOI充值已审核通过
+                     * eoi_money_status=3  EOI充值未审核通过
+                     */
+
 
                     EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
                     eoi_ID = eoilistBean.getProduct_eois_id() + "";
@@ -750,6 +769,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                         }
                                     });
                         }
+
+
+                        //已使用,申请取消
+                    } else if (eoilistBean.getEoi_money_status() == 2 || eoilistBean.getEoi_money_status() == 1 && eoilistBean.getIs_use() == 1) {
+                        firbSelectPopWindowCancel.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
+
                     }
                 }
             }
@@ -1066,15 +1091,19 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         closeDialog();
     }
 
+
+    /**
+     * 申请退款
+     */
     private void showZh() {
         firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
         RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
         btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
         btUnknown.setVisibility(View.GONE);
         btSure = (Button) firbPwView.findViewById(R.id.btSure);
-        btSure.setText("申请退款");
+        btSure.setText(getString(R.string.eoi_refund));
         btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
-        btFalse.setText("取消");
+        btFalse.setText(getString(R.string.cancel));
         firbSelectPopWindow = new PopupWindow(firbPwView,
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
         //设置SelectPicPopupWindow弹出窗体动画效果
@@ -1108,6 +1137,59 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     }
 
+
+    /**
+     * 取消排队
+     */
+    private void cancelEOI() {
+
+
+        firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
+        RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
+        btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
+        btUnknown.setVisibility(View.GONE);
+        btSure = (Button) firbPwView.findViewById(R.id.btSure);
+        btSure.setText(R.string.cncel_line);
+        btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
+        btFalse.setText(getString(R.string.cancel));
+        firbSelectPopWindowCancel = new PopupWindow(firbPwView,
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        //设置SelectPicPopupWindow弹出窗体动画效果
+        firbSelectPopWindowCancel.setAnimationStyle(R.style.Animation);
+        //实例化一个ColorDrawable颜色为半透明
+        ColorDrawable firb = new ColorDrawable(0xb0000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+        firbSelectPopWindowCancel.setBackgroundDrawable(firb);
+        rlFirb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindowCancel.dismiss();
+            }
+        });
+
+        btSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindowCancel.dismiss();
+                quxioaEOI(eoi_ID);
+            }
+        });
+
+        btFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindowCancel.dismiss();
+            }
+        });
+
+    }
+
+
+    /**
+     * 退款
+     *
+     * @param eoi_id
+     */
     private void cancel_eoi(String eoi_id) {
         showDialog();
         FinalHttp finalHttp = new FinalHttp();
@@ -1140,6 +1222,42 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             }
         });
 
+    }
+
+
+    /**
+     * 取消排队
+     */
+    private void quxioaEOI(String eoi) {
+        showDialog();
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("eoi_id", eoi);
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        finalHttp.post(Contants.CANCEL_EOI_SORT, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+                Log.e("onSuccess**", "onSuccess:" + s);
+
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                if (errorBean.getCode().equals("1")) {
+                    ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
+                } else {
+                    ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                closeDialog();
+                Log.e("onSuccess**", "onSuccess:" + strMsg);
+                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
+            }
+        });
     }
 
 }
