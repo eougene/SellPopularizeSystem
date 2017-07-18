@@ -21,6 +21,9 @@ import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
+import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
@@ -28,6 +31,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -65,14 +69,15 @@ public class ProductSubunitListActivity extends BaseActivity {
     //从产品中点击预订跳转标志
     private String flag = "";
     private ProductDetailBean.ResultBean prs;
-    private Bundle bund=new Bundle();
+    private Bundle bund = new Bundle();
     //筛选
     private OptionsPickerView optionsPickerView;
     private List houseTypes = new ArrayList<>();
     private List numbers = new ArrayList<>();
     private String strHouseType;
     private String strNum;
-    List<ImageContent> imgContents=new ArrayList<ImageContent>();
+    private List<ImageContent> imgContents = new ArrayList<ImageContent>();
+    private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
 
     @Override
     protected int setContentView() {
@@ -96,7 +101,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         if (prs == null) {
             //获取产品详情
             getItemProductDetail();
-        }else {
+        } else {
             controlColor();
         }
         if (flag != null && flag.equals("pidatopsla")) {
@@ -285,7 +290,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
             @Override
             public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
-                if (TextUtils.isDigitsOnly(o1.getProduct_childs_unit_number()) && TextUtils.isDigitsOnly(o2.getProduct_childs_unit_number())){
+                if (TextUtils.isDigitsOnly(o1.getProduct_childs_unit_number()) && TextUtils.isDigitsOnly(o2.getProduct_childs_unit_number())) {
                     if (Integer.parseInt(o1.getProduct_childs_unit_number()) >
                             Integer.parseInt(o2.getProduct_childs_unit_number())) {
                         return 1;
@@ -294,22 +299,22 @@ public class ProductSubunitListActivity extends BaseActivity {
                             Integer.parseInt(o2.getProduct_childs_unit_number())) {
                         return 0;
                     }
-                }else {
-                    if (StringUtils.containLeter(o1.getProduct_childs_unit_number()) && StringUtils.containLeter(o2.getProduct_childs_unit_number())){
+                } else {
+                    if (StringUtils.containLeter(o1.getProduct_childs_unit_number()) && StringUtils.containLeter(o2.getProduct_childs_unit_number())) {
                         if (StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
-                                    .equals(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()))){
-                               if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) >
-                                       Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number())) ){
-                                   return 1;
-                               }
-                                if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) ==
-                                        Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number())) ){
-                                    return 0;
-                                }
-                            }else {
-                               return StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
-                                        .compareTo(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()));
+                                .equals(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()))) {
+                            if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) >
+                                    Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
+                                return 1;
                             }
+                            if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) ==
+                                    Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
+                                return 0;
+                            }
+                        } else {
+                            return StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
+                                    .compareTo(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()));
+                        }
                     }
                     return o1.getProduct_childs_unit_number().compareTo(o2.getProduct_childs_unit_number());
                 }
@@ -355,6 +360,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                     holder.setImageResource(R.id.ivHouse, R.mipmap.yellowhome);
                 }
                 if (item.getIf_eoi() == 1) {
+                    Log.e("item", "item:" + item.getProduct_childs_id());
                     holder.setImageResource(R.id.ivHouse, R.mipmap.eoi);
                 }
                 if (!item.getThumb().equals("")) {
@@ -364,7 +370,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                     holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ImageContent imageContent=new ImageContent();
+                            ImageContent imageContent = new ImageContent();
                             imageContent.setUrl(item.getThumb());
                             imgContents.clear();
                             imgContents.add(imageContent);
@@ -438,7 +444,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                     break;
                 //排队
                 case R.id.btLineup:
-                    eoiLineUp(data.get(pos));
+                    getEoiData(data.get(pos));
                     break;
                 case R.id.btCancel:
                     if (mCustomePopuWindow != null) {
@@ -489,26 +495,86 @@ public class ProductSubunitListActivity extends BaseActivity {
         }
     };
 
-    //eoi排队请求
-    private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
+    /**
+     * 获取充值列表
+     */
+    private void getEoiData(final ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
         showDialog();
-        FinalHttp http = new FinalHttp();
+        FinalHttp fh = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("eoi_id", "");
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_id", product_id);
-        ajaxParams.put("product_child_id", propertyBean.getProduct_childs_id() + "");
-        http.post(Contants.EOI_USE, ajaxParams, new AjaxCallBack<String>() {
+        ajaxParams.put("page", "1");
+        ajaxParams.put("number", "1");
+        ajaxParams.put("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCompany_id() + "");
+        ajaxParams.put("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "");
+        ajaxParams.put("property_id", "");
+        ajaxParams.put("is_use", "0");//0未使用,1已使用
+        ajaxParams.put("house", "");
+        Log.e("参数**", "ajaxParams:" + ajaxParams.toString());
+        fh.get(Contants.EOI_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
+                Log.e("获取充值列表**", "s:" + s);
                 closeDialog();
-                super.onSuccess(s);
+                Gson gson = new Gson();
+
+                EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
+                if (eoilistBean.getCode() == 1) {
+                    eoiList = eoilistBean.getResult();
+                    if (eoilistBean.getMsg().equals("暂无数据")) {
+                        ToasShow.showToastCenter(ProductSubunitListActivity.this, "暂无可用EOI,请充值");
+                    } else {
+                        if (eoiList.size() > 0) {
+                            eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
+                        }
+                    }
+
+                }
+
 
             }
 
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                closeDialog();
+                Log.e("获取充值列表**", "errorNo:" + errorNo);
+                ToasShow.showToastCenter(ProductSubunitListActivity.this, strMsg);
+            }
+        });
+    }
+
+
+    //eoi排队请求
+    private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean, String eoi) {
+        showDialog();
+        FinalHttp http = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("eoi_id", eoi);
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        ajaxParams.put("product_id", propertyBean.getProduct_id() + "");
+        ajaxParams.put("product_child_id", propertyBean.getProduct_childs_id() + "");
+        Log.e("排队参数**", "ajaxParams:" + ajaxParams.toString());
+        http.post(Contants.EOI_USE, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+                Log.e("排队成功**", "s:" + s);
+
+                Gson gs = new Gson();
+                ErrorBean e = gs.fromJson(s, ErrorBean.class);
+                if (e.getCode().equals("1")) {
+                    ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
+                } else {
+                    ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                Log.e("排队失败**", "s:" + errorNo);
+                closeDialog();
+                ToasShow.showToastCenter(ProductSubunitListActivity.this, strMsg);
             }
         });
     }
@@ -540,6 +606,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         });
 
     }
+
     //控制控件颜色
     private void controlColor() {
         if (prs.getDescription_url() != null) {

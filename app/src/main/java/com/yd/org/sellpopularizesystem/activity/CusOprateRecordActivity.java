@@ -25,6 +25,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
@@ -33,7 +35,6 @@ import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
@@ -95,6 +96,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private Uri imgUri;
     private List<SubscribeListBean.ResultBean> rbList = new ArrayList<>();
     private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
+    private PopupWindow firbSelectPopWindow;
+    private View firbPwView;
+    private Button btUnknown, btSure, btFalse;
+    private String eoi_ID = "", payMe = "";
+    private int type = 0;
+
 
     @Override
     protected int setContentView() {
@@ -108,6 +115,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         flag = bundle.getString("custocora");
         customeId = (String) bundle.get("customeId");
         initWidgets();
+        showZh();
         if (flag.equals("custovisit") || flag.equals("custoreser")) {
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
@@ -494,6 +502,50 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         methodDialog.show();
     }
 
+    private void submitEoi_01() {
+        showDialog();
+        FinalHttp fh = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+
+        try {
+            ajaxParams.put("eoi_id", eoi_ID);
+            ajaxParams.put("pay_time", (System.currentTimeMillis() / 1000 + ""));
+            ajaxParams.put("payment_method", payMe);
+            if (!picPath.equals("")) {
+                File picFile = new File(picPath);
+                ajaxParams.put("file", picFile);
+            }
+
+
+            fh.post(Contants.UPLOAD_EOI_MONEY, ajaxParams, new AjaxCallBack<String>() {
+                @Override
+                public void onFailure(Throwable t, int errorNo, String strMsg) {
+                    closeDialog();
+                    ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
+                    Log.e("重新付款**", "errorNo:" + errorNo);
+                }
+
+                @Override
+                public void onSuccess(String s) {
+                    Log.e("重新付款**", "s:" + s);
+                    closeDialog();
+                    JSONObject json = null;
+                    try {
+                        json = new JSONObject(s);
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void submitEoi() {
         showDialog();
         FinalHttp fh = new FinalHttp();
@@ -559,8 +611,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", page + "");
         ajaxParams.put("number", "20");
-        ajaxParams.put("company_id",((CustomBean.ResultBean)ObjectSaveUtil.readObject(CusOprateRecordActivity.this,"custome")).getCompany_id() + "");
-        ajaxParams.put("client", ((CustomBean.ResultBean)ObjectSaveUtil.readObject(CusOprateRecordActivity.this,"custome")).getCustomer_id() + "");
+        ajaxParams.put("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCompany_id() + "");
+        ajaxParams.put("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCustomer_id() + "");
         ajaxParams.put("property_id", "");
         ajaxParams.put("is_use", "");
         ajaxParams.put("house", "");
@@ -568,6 +620,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                Log.e("EOI", "s:" + s);
                 closeDialog();
                 Gson gson = new Gson();
                 EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
@@ -589,15 +642,34 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         @Override
                         public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
                             holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
-                            if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 6 || item.getPayment_method() == 7)) {
-                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
-                            } else if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
-                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
-                            } else if (item.getCancel_apply_status() == 1) {
-                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
-                            } else {
-                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
+
+
+                            //尚未付款
+                            if (item.getEoi_money_status() == 1) {
+
+
+                                //凭证已上传
+                                if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
+                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
+                                    //未付款
+                                } else {
+                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
+                                }
+
+                                //尚未使用
+                            } else if (item.getEoi_money_status() == 2) {
+                                if (item.getIs_use() == 0) {
+                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
+                                } else {
+                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
+                                }
+
+                                //请重新上传凭证
+                            } else if (item.getEoi_money_status() == 3) {
+                                type = 1;
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.evidence));
                             }
+
                         }
                     };
                     ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
@@ -637,13 +709,47 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     bun.putSerializable("subrb", rbList.get(position));
                     ActivitySkip.forward(CusOprateRecordActivity.this, DialogOptionActivity.class, bun);
                 } else {
+
+
                     EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
+                    eoi_ID = eoilistBean.getProduct_eois_id() + "";
+                    payMe = eoilistBean.getPayment_method() + "";
                     Log.e("支付**", "play:" + eoilistBean.getEoi_money_url());
                     if (eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
                         Bundle bundle = new Bundle();
                         bundle.putString("payurlId", eoilistBean.getEoi_money_url());
                         bundle.putString("payment_method", eoilistBean.getPayment_method() + "");
                         ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
+
+                        //申请退款
+                    } else if (eoilistBean.getEoi_money_status() == 2 && eoilistBean.getIs_use() == 0) {
+
+                        firbSelectPopWindow.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
+
+                        //重新上传凭证
+                    } else if (eoilistBean.getEoi_money_status() == 3) {
+                        type = 1;
+                        if (Build.VERSION.SDK_INT < 23) {
+                            takePhoto();
+                        } else {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA,
+                                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                    new PermissionListener() {
+                                        @Override
+                                        public void onGranted() {// 全部授权成功回调
+                                            // 执行具体业务
+                                            takePhoto();
+                                        }
+
+                                        @Override
+                                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                                            for (String permission : deniedPermissionList) {
+                                                ToasShow.showToastCenter(CusOprateRecordActivity.this, permission.toString());
+                                            }
+                                        }
+                                    });
+                        }
                     }
                 }
             }
@@ -651,6 +757,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
     }
+
 
     private void initVisitDilaog() {
         visitDilog = new Dialog(CusOprateRecordActivity.this);
@@ -889,15 +996,26 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     try {
                         if (null != data && null != data.getData()) {
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
-                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                            if (type == 0) {
+                                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
+                                ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                            }
+
                         } else {
                             Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imgUri));
-                            Log.e("Authority", "onActivityResult: " + imgUri + "\n" + imgUri.getAuthority());
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, imgUri, null, null);
-                            Log.e("picPath", "onActivityResult: " + picPath);
-                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                            if (type == 0) {
+                                ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+
+                            }
                         }
+
+                        //重新上传凭证
+                        if (type == 1) {
+                            submitEoi_01();
+                        }
+
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -947,4 +1065,81 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         super.onDestroy();
         closeDialog();
     }
+
+    private void showZh() {
+        firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
+        RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
+        btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
+        btUnknown.setVisibility(View.GONE);
+        btSure = (Button) firbPwView.findViewById(R.id.btSure);
+        btSure.setText("申请退款");
+        btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
+        btFalse.setText("取消");
+        firbSelectPopWindow = new PopupWindow(firbPwView,
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        //设置SelectPicPopupWindow弹出窗体动画效果
+        firbSelectPopWindow.setAnimationStyle(R.style.Animation);
+        //实例化一个ColorDrawable颜色为半透明
+        ColorDrawable firb = new ColorDrawable(0xb0000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+        firbSelectPopWindow.setBackgroundDrawable(firb);
+        rlFirb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindow.dismiss();
+            }
+        });
+
+        btSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindow.dismiss();
+                cancel_eoi(eoi_ID);
+            }
+        });
+
+        btFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindow.dismiss();
+            }
+        });
+
+
+    }
+
+    private void cancel_eoi(String eoi_id) {
+        showDialog();
+        FinalHttp finalHttp = new FinalHttp();
+        AjaxParams ajaxParams = new AjaxParams();
+        ajaxParams.put("eoi_id", eoi_id);
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        finalHttp.post(Contants.CANCEL_EOI, ajaxParams, new AjaxCallBack<String>() {
+            @Override
+            public void onFailure(Throwable t, int errorNo, String strMsg) {
+                Log.e("退款**", "errorNo:" + errorNo);
+                closeDialog();
+                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
+
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                Log.e("退款**", "s:" + s);
+                closeDialog();
+
+                JSONObject json = null;
+                try {
+                    json = new JSONObject(s);
+                    ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
 }

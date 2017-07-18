@@ -388,7 +388,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 if (date.getTime() > (new Date()).getTime()) {
                     ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.select_birth));
                 } else {
-                    edcustmomeDetailedBie.setText(MyUtils.getTime("yyyy/MM/dd",date));
+                    edcustmomeDetailedBie.setText(MyUtils.getTime("yyyy/MM/dd", date));
                 }
 
             }
@@ -446,117 +446,6 @@ public class CustomDetailedActivity extends BaseActivity {
      * @param customeDetailedBean
      */
     private void setInfo(CustomeDetailedBean customeDetailedBean) {
-
-
-//
-//        //公司名字
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_name() + "")) {
-//            comName.setText("");
-//        } else {
-//            comName.setText(customeDetailedBean.getResult().getCompany_name() + "");
-//        }
-//
-//        124556
-//        //公司账号
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
-//            etBusaccount.setText("");
-//        } else {
-//            etBusaccount.setText(customeDetailedBean.getResult().getCompany_id() + "");
-//        }
-//        //公司电话
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
-//            etComTel.setText("");
-//        } else {
-//            etComTel.setText(customeDetailedBean.getResult().getCompany_id() + "");
-//        }
-//        //公司邮箱
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
-//            etComEmail.setText("");
-//        } else {
-//            etComEmail.setText(customeDetailedBean.getResult().getE_mail() + "");
-//        }
-//        //公司传真
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_fax() + "")) {
-//            etComFax.setText("");
-//        } else {
-//            etComFax.setText(customeDetailedBean.getResult().getCompany_fax() + "");
-//        }
-//        //公司负责人
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCompany_id() + "")) {
-//            etComRes.setText("");
-//        } else {
-//            etComRes.setText(customeDetailedBean.getResult().getCompany_id() + "");
-//        }
-//        //国家
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
-//            tvCountry.setText("");
-//        } else {
-//            tvCountry.setText(customeDetailedBean.getResult().getCountry());
-//        }
-//        //单元号
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getUnit_number())) {
-//            etUnit.setText("");
-//        } else {
-//            etUnit.setText(customeDetailedBean.getResult().getUnit_number());
-//        }
-//        //街道号码
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_number())) {
-//            etStreetNum.setText("");
-//        } else {
-//            etStreetNum.setText(customeDetailedBean.getResult().getStreet_number());
-//        }
-//        //街道地址1
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_1())) {
-//            etStreet1.setText("");
-//        } else {
-//            etStreet1.setText(customeDetailedBean.getResult().getCompany_id() + "");
-//        }
-//        //街道地址2
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getStreet_address_line_2())) {
-//            etStreet2.setText("");
-//        } else {
-//            etStreet2.setText(customeDetailedBean.getResult().getCompany_id() + "");
-//        }
-//        //邮箱
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getE_mail() + "")) {
-//            etEma.setText("");
-//        } else {
-//            etEma.setText(customeDetailedBean.getResult().getE_mail() + "");
-//        }
-//
-//
-//        //国家地区
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getCountry())) {
-//            edcustmomeDetailedNationality.setText("");
-//        } else {
-//            edcustmomeDetailedNationality.setText(customeDetailedBean.getResult().getCountry());
-//        }
-//
-//        //省市区
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getProvince())) {
-//            edcustmomeDetailedCity.setText("");
-//        } else {
-//            edcustmomeDetailedCity.setText(customeDetailedBean.getResult().getProvince());
-//        }
-//
-//        //联系地址
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getAddress() + "")) {
-//            edcustmomeDetailedAddress.setText("");
-//        } else {
-//            edcustmomeDetailedAddress.setText(customeDetailedBean.getResult().getAddress() + "");
-//        }
-//
-//        //邮编
-//        if (TextUtils.isEmpty(customeDetailedBean.getResult().getZip_code())) {
-//            edZipCode.setText("");
-//        } else {
-//            edZipCode.setText(customeDetailedBean.getResult().getZip_code());
-//        }
-//
-
-        //******************
-        //******************
-        //******************
         //*******************
         //设置头像
         if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
@@ -1341,30 +1230,6 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void setCustomerValue(CustomBean.ResultBean resultBean) {
-        resultBean.setFirst_name(TextUtils.isEmpty(etFistName.getText().toString().trim()) ? "" : etFistName.getText().toString().trim());
-        resultBean.setSurname(TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim()) ? "" : edCustomeTrueName.getText().toString().trim());
-        resultBean.setEn_name(TextUtils.isEmpty(etEnglishName.getText().toString().trim()) ? "" : etEnglishName.getText().toString().trim());
-        resultBean.setBirth_date(TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim()) ? "" : edcustmomeDetailedBie.getText().toString().trim());
-        resultBean.setMobile(TextUtils.isEmpty(edCustomeMobile.getText().toString().trim()) ? "" : edCustomeMobile.getText().toString().trim());
-        resultBean.setCountry(TextUtils.isEmpty(edcustmomeDetailedNationality.getText().toString().trim()) ? "" : edcustmomeDetailedNationality.getText().toString().trim());
-        resultBean.setProvince(TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString().trim()) ? "" : edcustmomeDetailedCity.getText().toString().trim());
-        resultBean.setAddress(TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString().trim()) ? "" : edcustmomeDetailedAddress.getText().toString().trim());
-        resultBean.setE_mail(TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim()) ? "" : edcustmomeDetailedEmail.getText().toString().trim());
-        resultBean.setJob(TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim()) ? "" : edcustmomeDetailedWeJob.getText().toString().trim());
-        resultBean.setIncome(TextUtils.isEmpty(edcustmomeDetailedSalary.getText().toString().trim()) ? 0 : Integer.parseInt(edcustmomeDetailedSalary.getText().toString().trim()));
-        resultBean.setCard_id(TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim()) ? "" : edcustmomeDetailedCard.getText().toString().trim());
-        resultBean.setPassport_id(TextUtils.isEmpty(edcustmomeDetailedPassPort.getText().toString().trim()) ? "" : edcustmomeDetailedPassPort.getText().toString().trim());
-        resultBean.setPassport_country(TextUtils.isEmpty(etNation.getText().toString().trim()) ? "" : etNation.getText().toString().trim());
-        resultBean.setFamily_name(TextUtils.isEmpty(etLn.getText().toString().trim()) ? "" : etLn.getText().toString().trim());
-        resultBean.setFamily_first_name(TextUtils.isEmpty(edcustmomeDetailedKinsfolk.getText().toString().trim()) ? "" : edcustmomeDetailedKinsfolk.getText().toString().trim());
-        resultBean.setFamily_relationship(TextUtils.isEmpty(edcustmomeDetailedRelation.getText().toString().trim()) ? "" : edcustmomeDetailedRelation.getText().toString().trim());
-        resultBean.setFamily_mobile(TextUtils.isEmpty(edcustmomeDetailedPhone.getText().toString().trim()) ? "" : edcustmomeDetailedPhone.getText().toString().trim());
-        resultBean.setZip_code(TextUtils.isEmpty(edZipCode.getText().toString().trim()) ? "" : edZipCode.getText().toString().trim());
-        resultBean.setIs_firb(TextUtils.isEmpty(etFirb.getText().toString().trim()) ? 0 : 1);
-        resultBean.setWechat_number(TextUtils.isEmpty(edcustmomeDetailedWeChat.getText().toString().trim()) ? "" : edcustmomeDetailedWeChat.getText().toString().trim());
-        resultBean.setQq_number(TextUtils.isEmpty(edcustmomeDetailedQQ.getText().toString().trim()) ? "" : edcustmomeDetailedQQ.getText().toString().trim());
-
-
         ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 

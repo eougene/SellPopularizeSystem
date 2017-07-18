@@ -28,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -36,7 +35,6 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
-import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
@@ -51,6 +49,9 @@ import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import net.tsz.afinal.FinalHttp;
 import net.tsz.afinal.http.AjaxCallBack;
 import net.tsz.afinal.http.AjaxParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -240,7 +241,7 @@ public class ReserveActivity extends BaseActivity {
             }
         }
 
-        tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space) + custome.getProvince() + getString(R.string.single_blank_space) + custome.getAddress() + getString(R.string.single_blank_space) + custome.getZip_code());
+        tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space) + custome.getStreet_address_line_1() + getString(R.string.single_blank_space) + custome.getStreet_address_line_2() + getString(R.string.single_blank_space) + custome.getPostcode());
 
         tvReSale.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         customeId = custome.getCustomer_id() + "";
@@ -597,20 +598,24 @@ public class ReserveActivity extends BaseActivity {
                     closeDialog();
                     Log.e("TAG", "onSuccess: " + s);
 
-                    Gson gson = new Gson();
-                    ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                    try {
+                        JSONObject json = new JSONObject(s);
+                        if (json.getString("code").equals("1")) {
+                            ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
+                            if (payment_method.equals("6") || payment_method.equals("7")) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("payurlId", json.getString("trust_account_id"));
+                                bundle.putString("payment_method", payment_method);
+                                ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
+                            }
+                            finish();
+                        } else {
+                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
 
-                    if (errorBean.getCode().equals("1")) {
-                        ToasShow.showToastCenter(ReserveActivity.this, errorBean.getMsg());
-                        if (payment_method.equals("6") || payment_method.equals("7")) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("payurlId", errorBean.getTrust_account_id());
-                            bundle.putString("payment_method", payment_method);
-                            ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
                         }
-                        finish();
-                    } else {
-                        ToasShow.showToastCenter(ReserveActivity.this, errorBean.getMsg());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
 
 

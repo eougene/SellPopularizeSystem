@@ -1,11 +1,11 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
-import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 public class ProductSubItemDetailActivity extends BaseActivity {
@@ -44,6 +44,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
     }
 
     private void initData() {
+        Log.e("getIs_lock","getIs_lock:"+bean.getIs_lock());
         tvItStatus.setText(bean.getIs_lock()==0?getString(R.string.issaling):getString(R.string.hadsaled));
         tvItPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getPrice().split("\\.")[0]));
         tvItType.setText(bean.getCate_name());
