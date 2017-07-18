@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -143,6 +144,24 @@ public class ViewHolder {
 
     public ViewHolder setText(int tvVisitTime, int viewId) {
         TextView view = getView(viewId);
+        view.setVisibility(View.GONE);
+        return this;
+    }
+
+    /**
+     * 设置线性布局隐藏
+     * @param tvVisitTime
+     * @return
+     */
+
+    public ViewHolder setLinear(int tvVisitTime) {
+        LinearLayout view = getView(tvVisitTime);
+        view.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+    public ViewHolder setLinear_Gone(int tvVisitTime) {
+        LinearLayout view = getView(tvVisitTime);
         view.setVisibility(View.GONE);
         return this;
     }
