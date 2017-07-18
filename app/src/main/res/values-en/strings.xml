@@ -547,11 +547,31 @@
 
     <string name="family_email">Relatives Email</string>
     <string name="select_not">Please select the relevant news</string>
-    <string name="com_noe">公司名不能为空</string>
-    <string name="comres">负责人不能为空</string>
-    <string name="certificate">我的证书</string>
-    <string name="nouse">尚未使用</string>
-    <string name="evidence">请重新上传凭证</string>
+    <string name="com_noe">Company name cannot empty</string>
+    <string name="comres">Head cannot empty</string>
+    <string name="certificate">My certificate</string>
+    <string name="nouse">Not used</string>
+    <string name="evidence">Please upload documents again</string>
     <string name="exchanged">Exchanged</string>
+    <string name="eoi_refund">apply refund</string>
+    <string name="cncel_line">Cancel line</string>
+    <string name="effective_date">Effective date</string>
+    <string name="commencement_date">Effective date</string>
+    <string name="maturity_date">Due date</string>
+    <string name="certificate_number">Id number</string>
+    <string name="accurate">Fill In Id Number</string>
+    <string name="certificate_type">Select certificate type</string>
+    <string name="upload_certificate">Upload certificate</string>
+    <string name="select_valid_date">Please select valid date</string>
+    <string name="select_due_date">Please select due date</string>
+    <string name="Fill_id_number">Fill In Id Number</string>
+    <string name="select_certificate_type">Select certificate type</string>
+    <string name="state_approval">Certificate State:Audit</string>
+    <string name="valid_state">Certificate State:Effective</string>
+    <string name="State_overdue">Certificate State:Expired</string>
+    <string name="state_refused">Certificate State:Refused</string>
+    <string name="current_time">Due date is not less than the current time</string>
+    <string name="not_upload">Certificate State:Not Upload</string>
+
 </resources>
 
