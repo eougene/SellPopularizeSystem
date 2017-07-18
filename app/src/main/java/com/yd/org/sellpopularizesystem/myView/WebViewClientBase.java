@@ -15,7 +15,7 @@ import com.yd.org.sellpopularizesystem.R;
 
 public class WebViewClientBase extends WebViewClient {
     private CustomProgressDialog loading_Dialog;
-
+    private Activity activity;
     @Override
     public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
         handler.proceed();  // 接受所有网站的证书
@@ -23,6 +23,7 @@ public class WebViewClientBase extends WebViewClient {
     }
 
     public WebViewClientBase(Activity activity) {
+        this.activity=activity;
         loading_Dialog = new CustomProgressDialog(activity, R.style.customLoadDialog);
 
     }
@@ -37,13 +38,17 @@ public class WebViewClientBase extends WebViewClient {
     @Override
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         super.onPageStarted(view, url, favicon);
-        loading_Dialog.show();
+        if (!activity.isFinishing()) {
+            loading_Dialog.show();
+        }
+
     }
 
     @Override
     public void onPageFinished(WebView view, String url) {
-        loading_Dialog.dismiss();
-
+        if (!activity.isFinishing()) {
+            loading_Dialog.dismiss();
+        }
     }
 
 
