@@ -14,15 +14,19 @@
         android:layout_marginTop="@dimen/padding_margin_16">
 
         <TextView
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_toLeftOf="@+id/imag"
             android:id="@+id/tvFilfeTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_30"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="@string/tit"
             android:textSize="@dimen/tv_size_12"/>
 
         <ImageView
+            android:id="@+id/imag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

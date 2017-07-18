@@ -3,7 +3,7 @@
               android:id="@+id/rlReserver"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/search_edit_bac"
+              android:background="@color/white"
               android:orientation="vertical">
 
 
@@ -183,6 +183,7 @@
                 android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
+                    android:id="@+id/reTextCustome"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
@@ -192,10 +193,12 @@
 
                 <TextView
                     android:id="@+id/tvReCus"
-                    style="@style/WrapWrap"
+                    style="@style/WrapMatch"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:layout_toRightOf="@+id/reTextCustome"
+                    android:gravity="right"
                     android:textColor="#ff0000"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
@@ -232,20 +235,20 @@
             </RelativeLayout>
 
             <View
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/shallow_gray"
+                android:visibility="gone"/>
 
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/relCompany"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:paddingBottom="@dimen/padding_margin_14"
-                android:paddingTop="@dimen/padding_margin_14">
+                android:paddingTop="@dimen/padding_margin_14"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -266,20 +269,20 @@
             </RelativeLayout>
 
             <View
-                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray"/>
+                android:background="@color/shallow_gray"
+                android:visibility="gone"/>
 
 
             <RelativeLayout
-                android:visibility="gone"
                 android:id="@+id/relShareholder"
                 style="@style/MatchWrap"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:paddingBottom="@dimen/padding_margin_14"
-                android:paddingTop="@dimen/padding_margin_14">
+                android:paddingTop="@dimen/padding_margin_14"
+                android:visibility="gone">
 
                 <TextView
                     style="@style/WrapWrap"
@@ -290,12 +293,12 @@
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
-                    android:text="未知"
                     android:id="@+id/tvShareholder"
                     style="@style/WrapWrap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:text="未知"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
@@ -331,7 +334,7 @@
 
                 <TextView
                     android:id="@+id/tvReLawyer"
-                    style="@style/WrapWrap"
+                    style="@style/WrapMatch"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center_vertical"
                     android:textSize="@dimen/tv_size_12"
@@ -361,7 +364,7 @@
 
                 <TextView
                     android:id="@+id/tvReGoal"
-                    style="@style/WrapWrap"
+                    style="@style/WrapMatch"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
@@ -464,8 +467,6 @@
 
 
                 <Button
-                    android:enabled="false"
-                    android:clickable="false"
                     android:id="@+id/btReSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -473,6 +474,8 @@
                     android:layout_marginRight="@dimen/padding_margin_20"
                     android:layout_marginTop="@dimen/padding_margin_20"
                     android:background="@color/gray_g"
+                    android:clickable="false"
+                    android:enabled="false"
                     android:text="@string/submit"
                     android:textColor="@color/white"/>
 
