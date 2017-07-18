@@ -189,6 +189,16 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
 
 
+            //交换合同
+        }else if (viewHolder.resultBean.getStatus() == 13){
+
+            viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+            viewHolder.saleRecorTv2.setVisibility(View.GONE);
+            viewHolder.saleRecorTv3.setVisibility(View.GONE);
+            viewHolder.saleRecorTv4.setVisibility(View.GONE);
+            viewHolder.tvStatus.setVisibility(View.VISIBLE);
+            viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
+
         }
 
 
