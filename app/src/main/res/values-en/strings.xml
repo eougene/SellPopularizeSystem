@@ -572,6 +572,7 @@
     <string name="state_refused">Certificate State:Refused</string>
     <string name="current_time">Due date is not less than the current time</string>
     <string name="not_upload">Certificate State:Not Upload</string>
+    <string name="invoice">Tax Invoice</string>
 
 </resources>
 
