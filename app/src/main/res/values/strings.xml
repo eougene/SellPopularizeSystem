@@ -340,6 +340,7 @@
     <string name="tips">请您改动内容后再提交</string>
     <string name="rechargesuccess">充值成功</string>
     <string name="nopay">尚未付款</string>
+    <string name="nouse">尚未使用</string>
     <string name="stillneedcheck">凭证已上传,正在审核</string>
     <string name="refund">退款申请正在审核</string>
     <string name="update">更新</string>
@@ -547,6 +548,9 @@
     <string name="com_noe">公司名不能为空</string>
     <string name="comres">负责人不能为空</string>
     <string name="certificate">我的证书</string>
+    <string name="isuse">已使用</string>
+    <string name="evidence">请重新上传凭证</string>
+    <string name="exchanged">合同已交换</string>
 
 
 </resources>
