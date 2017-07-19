@@ -733,7 +733,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
                     eoi_ID = eoilistBean.getProduct_eois_id() + "";
                     payMe = eoilistBean.getPayment_method() + "";
-                    if (eoilistBean.getEoi_money_status() == 1&&eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
+                    if (eoilistBean.getEoi_money_status() == 1 && eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
                         Bundle bundle = new Bundle();
                         bundle.putString("payurlId", eoilistBean.getEoi_money_url());
                         bundle.putString("payment_method", eoilistBean.getPayment_method() + "");
@@ -817,7 +817,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             public void onSuccess(String s) {
                 closeDialog();
                 super.onSuccess(s);
-                Log.e("tag", "onSuccess: " + s);
                 Gson gson = new Gson();
                 VisitRecord visitRecord = gson.fromJson(s, VisitRecord.class);
                 vrrb = visitRecord.getResult();

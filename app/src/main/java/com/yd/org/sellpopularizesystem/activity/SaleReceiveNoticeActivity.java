@@ -32,7 +32,17 @@ public class SaleReceiveNoticeActivity extends BaseActivity {
         sale_advice_url = bundle.getString("sale_advice_url");
         pdfView = getViewById(R.id.pdfView);
         Log.e("合同**", "sale_rl:" + sale_advice_url);
-        MyUtils.getInstance().showWebView(SaleReceiveNoticeActivity.this, pdfView, Contants.PDF_TEST  + sale_advice_url);
+
+
+        //正式域名
+        if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+            MyUtils.getInstance().showWebView(SaleReceiveNoticeActivity.this, pdfView, Contants.PDF + sale_advice_url);
+
+        } else {
+            //测试域名
+            MyUtils.getInstance().showWebView(SaleReceiveNoticeActivity.this, pdfView, Contants.PDF_TEST + sale_advice_url);
+
+        }
 
     }
 

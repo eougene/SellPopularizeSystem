@@ -57,7 +57,16 @@ public class FileActivity extends BaseActivity {
             setTitle(getString(R.string.contract));
             pdfView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            MyUtils.getInstance().showWebView(FileActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + prs.getContract_url());
+
+            //正式域名
+            if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+                MyUtils.getInstance().showWebView(FileActivity.this, pdfView, Contants.PDF + Contants.DOMAIN + "/" + prs.getContract_url());
+
+                //测试域名
+            } else {
+                MyUtils.getInstance().showWebView(FileActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + prs.getContract_url());
+
+            }
 
 
         }

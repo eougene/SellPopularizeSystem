@@ -229,7 +229,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "50");
+        ajaxParams.put("number", "100");
         final FinalHttp fh = new FinalHttp();
         fh.get(Contants.CUSTOMER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
@@ -239,27 +239,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (null != s) {
 
                     jsonParse(s, b);
-
-                    Log.e("用户信息","s:"+s);
-//                    if (b) {
-//                        try {
-//                            JSONObject jsonObject = new JSONObject(s);
-//                            JSONArray jsonArray = jsonObject.getJSONArray("result");
-//                            if (jsonObject.getString("msg").equals("暂无数据")) {
-//                                tvNofriends.setVisibility(View.VISIBLE);
-//                                return;
-//                            }
-//                            if (jsonArray.length() > 0) {
-//                                BaseApplication.getInstance().getaCache().put("customer_list", s, ACache.TIME_DAY);
-//                                //jsonParse(s, b);
-//                                Log.e("s", "initView: " + s);
-//                            } else {
-//                                ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
-//                            }
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
 
                 }
             }

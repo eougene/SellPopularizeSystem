@@ -84,6 +84,7 @@ import java.util.Map;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import static com.yd.org.sellpopularizesystem.R.id.city;
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 
@@ -869,7 +870,7 @@ public class CustomDetailedActivity extends BaseActivity {
         contentView = LayoutInflater.from(this).inflate(
                 R.layout.addr_picker, null);
         mProvincePicker = (WheelView) contentView.findViewById(R.id.province);
-        mCityPicker = (WheelView) contentView.findViewById(R.id.city);
+        mCityPicker = (WheelView) contentView.findViewById(city);
         mCountyPicker = (WheelView) contentView.findViewById(R.id.county);
         boxBtnOk = (TextView) contentView.findViewById(R.id.box_btn_ok);
 
@@ -1096,8 +1097,8 @@ public class CustomDetailedActivity extends BaseActivity {
 
     private void updateOrAddUserInfo(
             final String updateOrAdd, String mid_name, String surname, String first_name, String en_name,
-            String birth_date, String mobile, String country, String province, String city, String area,
-            String address, String e_mail, String job, String income, String card_id, String passport_id,
+            String birth_date, String mobile, String country, String city, String area,
+            String e_mail, String job, String income, String card_id, String passport_id,
             String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
             String zip_code, String is_firb, String wechat_number, String qq_number,
             String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
@@ -1230,11 +1231,22 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void setCustomerValue(CustomBean.ResultBean resultBean) {
+
+        resultBean.setFirst_name(etFistName.getText().toString().trim());
+        resultBean.setSurname(edCustomeTrueName.getText().toString().trim());
+        resultBean.setMobile(edCustomeMobile.getText().toString().trim());
+        resultBean.setE_mail(edcustmomeDetailedEmail.getText().toString().trim());
+        resultBean.setCountry(tvCountry_01.getText().toString().trim());
+        resultBean.setStreet_address_line_1(etStreet1_01.getText().toString().trim());
+        resultBean.setPostcode(etEma_01.getText().toString().trim());
+
+
+
         ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 
     private void getEditTextData(String updateOrAdd) {
-        String surname = "", mid_name = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", province = "", city = "", area = "", address = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
+        String surname = "", mid_name = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", city = "", area = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
                 passport_country = "", family_name = "", family_first_name = "", family_relationship = "", family_mobile = "",
                 zip_code = "", is_firb = "", wechat_number = "", qq_number = "", company_name = "", abn = "", acn = "", company_mobile = "", company_e_mail = "", company_fax = "", client_id = "", client = "", select_self = "", company_country = "", company_unit_number = "", company_street_number = "", company_suburb = "", company_state = "", company_street_address_line_1 = "",
                 company_street_address_line_2 = "", company_postcode = "", unit_number = "", street_number = "", suburb = "", state = "", street_address_line_1 = "", street_address_line_2 = "", family_email = "";
@@ -1302,36 +1314,9 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(tvCountry_01.getText().toString().trim())) {
             country = tvCountry_01.getText().toString().trim();
         } else {
-//            if (tag.equals("completeinfo")) {
-//                ToasShow.showToastCenter(this, getString(R.string.nation_and_area));
-//                return;
-//            }
             country = "";
         }
 
-        //省
-        if (!TextUtils.isEmpty(edcustmomeDetailedCity.getText().toString())) {
-            province = edcustmomeDetailedCity.getText().toString();
-            //市区
-            city = "";
-            area = "";
-        } else {
-            if (tag.equals("completeinfo")) {
-                ToasShow.showToastCenter(this, getString(R.string.pro_city_area));
-                return;
-            }
-        }
-
-        //联系地址
-        if (!TextUtils.isEmpty(edcustmomeDetailedAddress.getText().toString())) {
-            address = edcustmomeDetailedAddress.getText().toString();
-
-        } else {
-            if (tag.equals("completeinfo")) {
-                ToasShow.showToastCenter(this, getString(R.string.contact_address));
-                return;
-            }
-        }
 
         //工作
         if (!TextUtils.isEmpty(edcustmomeDetailedWeJob.getText().toString().trim())) {
@@ -1474,8 +1459,8 @@ public class CustomDetailedActivity extends BaseActivity {
 
         try {
             updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
-                    birth_date, mobile, country, province, city, area,
-                    address, e_mail, job, income, card_id, passport_id,
+                    birth_date, mobile, country, city, area,
+                     e_mail, job, income, card_id, passport_id,
                     passport_country, family_name, family_first_name, family_relationship, family_mobile,
                     zip_code, is_firb, wechat_number, qq_number, company_name, abn, acn, company_mobile, company_e_mail, company_fax, client_id, client, select_self, company_country, company_unit_number, company_street_number, company_suburb, company_state, company_street_address_line_1,
                     company_street_address_line_2, company_postcode, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, family_email);

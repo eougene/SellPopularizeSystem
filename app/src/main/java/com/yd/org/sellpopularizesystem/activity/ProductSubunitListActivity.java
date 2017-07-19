@@ -370,9 +370,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                     holder.getView(R.id.tvNoPhoto).setVisibility(View.GONE);
                     holder.getView(R.id.ivHousePic).setVisibility(View.VISIBLE);
 
-                    if (item.getThumb().endsWith(".pdf")) {
-
-
+                    if (item.getThumb().endsWith(".pdf") || item.getThumb().endsWith(".PDF")) {
                         holder.getView(R.id.ivHousePic).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

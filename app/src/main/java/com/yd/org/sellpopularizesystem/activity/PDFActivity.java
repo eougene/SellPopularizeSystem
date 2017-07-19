@@ -27,16 +27,35 @@ public class PDFActivity extends BaseActivity {
         orderId = bundle.getString("orderId");
         sale_advice_url = bundle.getString("sale_advice_url");
 
-        Log.e("","");
+        Log.e("", "");
         if (orderId == null || sale_advice_url == null) {
             fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
             setTitle(fileContent.getDetail_name());
-            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + fileContent.getUrl());
+
+
+            //正式域名
+            if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+                MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF + Contants.DOMAIN + "/" + fileContent.getUrl());
+
+            } else {
+                MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + fileContent.getUrl());
+
+            }
 
         } else {
 
             setTitle(getString(R.string.sale_notice));
-            MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST  + Contants.DOMAIN + "/" + sale_advice_url);
+
+
+            //正式域名
+            if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+                MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF + Contants.DOMAIN + "/" + sale_advice_url);
+
+            } else {
+                //测试域名
+                MyUtils.getInstance().showWebView(PDFActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + sale_advice_url);
+
+            }
 
         }
 

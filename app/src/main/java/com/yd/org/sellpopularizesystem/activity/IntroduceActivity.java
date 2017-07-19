@@ -37,7 +37,17 @@ public class IntroduceActivity extends BaseActivity {
 
         }
 
-        MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + sale_advice_url);
+
+        //正式域名
+        if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+            MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF + Contants.DOMAIN + "/" + sale_advice_url);
+
+
+            //测试域名
+        } else {
+            MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + sale_advice_url);
+
+        }
 
 
     }
