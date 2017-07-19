@@ -55,6 +55,8 @@ public class LawyerAddActivity extends BaseActivity {
             if (!TextUtils.isEmpty(strName) && !TextUtils.isEmpty(strAdress) && !TextUtils.isEmpty(strFirst)
                     && !TextUtils.isEmpty(strFirst) && !TextUtils.isEmpty(strLast) && !TextUtils.isEmpty(strTel) && !TextUtils.isEmpty(strEmail)) {
                 save();
+            }else {
+                ToasShow.showToastCenter(LawyerAddActivity.this,getString(R.string.complete_hint));
             }
         }
     };
