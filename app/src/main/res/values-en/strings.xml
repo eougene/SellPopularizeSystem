@@ -573,6 +573,7 @@
     <string name="current_time">Due date is not less than the current time</string>
     <string name="not_upload">Certificate State:Not Upload</string>
     <string name="invoice">Tax Invoice</string>
+    <string name="complete_hint">Please fill in the full details</string>
 
 </resources>
 
