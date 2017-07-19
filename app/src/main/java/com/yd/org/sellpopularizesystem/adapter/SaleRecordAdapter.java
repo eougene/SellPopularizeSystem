@@ -98,8 +98,18 @@ public class SaleRecordAdapter extends BaseAdapter {
 
         if (viewHolder.resultBean.getStatus() == 0) {
 
+            //正常情况不会出现此情况
+            if (viewHolder.resultBean.getOrder_money_status() == 0) {
+                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+                viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                viewHolder.tvStatus.setVisibility(View.VISIBLE);
+                viewHolder.tvStatus.setText("意向金凭证未上传");
+
+            }
             //意向金是否支付
-            if (viewHolder.resultBean.getOrder_money_status() == 1) {
+            else if (viewHolder.resultBean.getOrder_money_status() == 1) {
 
 
                 if ((viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4)) {
@@ -190,7 +200,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
 
             //交换合同
-        }else if (viewHolder.resultBean.getStatus() == 13){
+        } else if (viewHolder.resultBean.getStatus() == 13) {
 
             viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
             viewHolder.saleRecorTv2.setVisibility(View.GONE);
