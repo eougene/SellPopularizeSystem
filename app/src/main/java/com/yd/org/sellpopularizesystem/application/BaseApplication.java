@@ -25,98 +25,35 @@ import com.yd.org.sellpopularizesystem.utils.ACache;
  */
 
 public class BaseApplication extends Application {
-
-    public static final String APP_ID = "c59ee68679"; // TODO 替换成bugly上注册的appid
-
     public static BaseApplication mApp;
     private ProductDetailBean.ResultBean prs;
     private ACache aCache;
-    public String cid = "";
     private static MainHandler handler;
     private int is_firb, firb_number;
     private static Context mContext;
+    //腾讯更新
+    public static final String APP_ID = "c59ee68679";
+    //个推识别码
+    public String cid = "";
 
-    //个推结束
-    public BaseApplication() {
-        mApp = this;
+    public static BaseApplication getInstance() {
+        return mApp;
     }
 
-    public static Context getContext() {
-        return mContext;
-    }
-
-
-    public ProductDetailBean.ResultBean getPrs() {
-        return prs;
-    }
-
-    public void setPrs(ProductDetailBean.ResultBean prs) {
-        this.prs = prs;
-    }
-
-    public ACache getaCache() {
-        return aCache;
-    }
-
-    public int getIs_firb() {
-        return is_firb;
-    }
-
-    public void setIs_firb(int is_firb) {
-        this.is_firb = is_firb;
-    }
-
-    public int getFirb_number() {
-        return firb_number;
-    }
-
-    public void setFirb_number(int firb_number) {
-        this.firb_number = firb_number;
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-
-        bugly();
-        //获取设备的cid,用于绑定账号用
-        cid = PushManager.getInstance().getClientid(this);
-        Log.e("cid**", "cid:" + cid);
-        //设置友盟
-        Config.DEBUG = false;
-        UMShareAPI.get(this);
-        //微信
-        PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
-        //缓存
-        aCache = ACache.get(this);
-        mContext = getApplicationContext();
-
-        if (handler == null) {
-            handler = new MainHandler();
-        }
-
-    }
-
-
-    public static void sendMessage(Message msg) {
-        handler.sendMessage(msg);
-    }
-
-    public static class MainHandler extends Handler {
+    public class MainHandler extends Handler {
 
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
                     Log.e("返回消息数据**", "0:" + msg.obj);
-                    //通知刷新消息
-                    //主页面数据
                     Message message = new Message();
                     message.obj = msg.obj;
                     msg.what = 1;
-                    if (HomeActiviyt.homeActiviyt != null) {
+                    if (null != HomeActiviyt.homeActiviyt) {
+                        //通知首页显示Toas提示消息内容
                         HomeActiviyt.homeActiviyt.showToasHandler.sendMessage(message);
-                        //更新数据
+                        //更新未读消息数据
                         HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                     }
                     break;
@@ -129,9 +66,36 @@ public class BaseApplication extends Application {
     }
 
 
-    public static BaseApplication getInstance() {
-        return mApp;
+    public void sendMessage(Message msg) {
+        handler.sendMessage(msg);
     }
+
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mContext = getApplicationContext();
+        initView();
+        bugly();
+
+
+    }
+
+    private void initView() {
+        //获取设备的cid,用于绑定账号用
+        cid = PushManager.getInstance().getClientid(this);
+        //设置友盟
+        Config.DEBUG = false;
+        UMShareAPI.get(this);
+        //微信
+        PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
+        //缓存
+        aCache = ACache.get(this);
+        if (handler == null) {
+            handler = new MainHandler();
+        }
+    }
+
 
     private void bugly() {
         /**** Beta高级设置*****/
@@ -201,7 +165,6 @@ public class BaseApplication extends Application {
         Beta.upgradeDialogLayoutId = R.layout.upgrade_dialog;
 
 
-
         /**
          * 已经接入Bugly用户改用上面的初始化方法,不影响原有的crash上报功能;
          * init方法会自动检测更新，不需要再手动调用Beta.checkUpdate(),如需增加自动检查时机可以使用Beta.checkUpdate(false,false);
@@ -212,5 +175,43 @@ public class BaseApplication extends Application {
         Bugly.init(getApplicationContext(), APP_ID, true);
 
 
+    }
+
+
+    public BaseApplication() {
+        mApp = this;
+    }
+
+    public static Context getContext() {
+        return mContext;
+    }
+
+
+    public ProductDetailBean.ResultBean getPrs() {
+        return prs;
+    }
+
+    public void setPrs(ProductDetailBean.ResultBean prs) {
+        this.prs = prs;
+    }
+
+    public ACache getaCache() {
+        return aCache;
+    }
+
+    public int getIs_firb() {
+        return is_firb;
+    }
+
+    public void setIs_firb(int is_firb) {
+        this.is_firb = is_firb;
+    }
+
+    public int getFirb_number() {
+        return firb_number;
+    }
+
+    public void setFirb_number(int firb_number) {
+        this.firb_number = firb_number;
     }
 }

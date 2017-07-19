@@ -8,8 +8,8 @@ public class Contants {
     /**
      * 域名
      */
-    public static final String DOMAIN = "http://crm.vxda.cn";
-    //public static final String DOMAIN = "https://www.wingaid.com";
+    //  public static final String DOMAIN = "http://crm.vxda.cn";
+    public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式
     public static final String PDF = "http://dcsapi.com?k=140337680&url=";
@@ -174,9 +174,6 @@ public class Contants {
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
-
-
-
 
 
     //上传证书
