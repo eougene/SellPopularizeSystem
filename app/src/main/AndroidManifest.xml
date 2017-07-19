@@ -309,6 +309,8 @@
             android:theme="@android:style/Theme.Translucent"/>
         <activity android:name=".activity.MyCertificateActivity">
         </activity>
+        <activity android:name=".activity.InvoiceActivity">
+        </activity>
     </application>
 
 </manifest>
