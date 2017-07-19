@@ -42,7 +42,17 @@ public class PhotoViewFragment extends BaseFragmentView {
             title = getArguments().getString("title");
             pdfView.setVisibility(View.VISIBLE);
             photoIm.setVisibility(View.GONE);
-            MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF_TEST + url);
+
+
+            //正式域名
+            if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
+                MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF + url);
+
+                //测试域名
+            } else {
+                MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF_TEST + url);
+
+            }
 
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
