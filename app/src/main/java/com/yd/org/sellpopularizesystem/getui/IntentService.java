@@ -61,8 +61,9 @@ public class IntentService extends GTIntentService {
             //如果收到消息更新数据
             String data = new String(payload);
             Log.e(TAG, "receiver payload = " + data + "::" + msg.getPayloadId());
-            // 测试消息为了观察数据变化
+            //向app系统中发送通知,用于更新未读消息数量
             sendMessage(data, 0);
+            //状态栏消息通知
             setNotificationManager(getString(R.string.gettui), data);
         }
 
