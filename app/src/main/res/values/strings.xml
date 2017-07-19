@@ -571,7 +571,10 @@
     <string name="current_time">到期日期不能小于当前时间</string>
     <string name="not_upload">证书状态:未上传</string>
     <string name="invoice">发票信息</string>
+    <string name="resolute">拒绝</string>
+    <string name="accept">接受</string>
     <string name="complete_hint">请填写完整内容</string>
+
 
 
 </resources>
