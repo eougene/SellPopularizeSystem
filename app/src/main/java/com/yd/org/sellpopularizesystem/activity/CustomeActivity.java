@@ -94,28 +94,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
         jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
-//        if (null != jsonStr && !TextUtils.isEmpty(jsonStr)) {
-//            Log.e("jsonStr", "initView: " + jsonStr);
-//            try {
-//                JSONObject jsonObject = new JSONObject(jsonStr);
-//                JSONArray jsonArray = jsonObject.getJSONArray("result");
-//                if (jsonObject.getString("msg").equals("暂无数据")) {
-//                    Log.e("jsonStr", "initView: " + jsonStr);
-//                    tvNofriends.setVisibility(View.VISIBLE);
-//                    return;
-//                }
-//                if (jsonArray.length() > 0) {
-//                    Log.e("jsonStr", "initView: " + jsonStr);
-//                    jsonParse(jsonStr, true);
-//                } else {
-//                    ToasShow.showToastCenter(CustomeActivity.this, jsonObject.getString("msg"));
-//                }
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-//        } else {
-//            getCustomeListData(true, page);
-//        }
         getCustomeListData(true, page);
 
     }

@@ -148,7 +148,6 @@ public class InvoiceActivity extends BaseActivity {
      */
     private void summintInfo(String reasonString) {
         showDialog();
-
         FinalHttp finalHttp = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("", "");
