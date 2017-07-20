@@ -43,7 +43,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
 import com.yd.org.sellpopularizesystem.custom.AddrXmlParser;
 import com.yd.org.sellpopularizesystem.javaBean.CityInfoModel;
 import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
@@ -86,7 +85,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import static com.yd.org.sellpopularizesystem.R.id.city;
-import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 
 /**
@@ -1125,9 +1123,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            if (!imagePath.equals("")) {
-                ajaxParams.put("file", new File(imagePath));//客户头像
-            }
+
         } else {
             ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
         }
@@ -1135,7 +1131,9 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //**************************************
 
-
+        if (!imagePath.equals("")) {
+            ajaxParams.put("file", new File(imagePath));//客户头像
+        }
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
         ajaxParams.put("mid_name", mid_name);//中间名
@@ -1298,7 +1296,6 @@ public class CustomDetailedActivity extends BaseActivity {
             }else {
                 String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
                 birth_date = bir.substring(0, bir.length() - 3);
-                // birth_date=edcustmomeDetailedBie.getText().toString().trim();
                 Log.e("birth_date**", "birth_date:" + birth_date);
             }
 
@@ -1570,43 +1567,23 @@ public class CustomDetailedActivity extends BaseActivity {
                     String picPath = "";
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                         picPath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
-                        //picPath=BitmapUtil.imgPath;
                         Bitmap bitmap = null;
                         try {
-                            //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
                             bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                        //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
+
                         customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
                         picPath = imgUri.getPath();
                         customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
                     }
-                    if (null != imagePath) {
-                        if (!tag.equals("add")) {
-                            changeHeadImage(picPath);
-                        }
-                    }
+
                     break;
 
 
-                // 裁剪图片
-                case CROP_IMAGE:
-                    if (resultCode == RESULT_OK && null != data) {
-                        imagePath = data.getStringExtra("bitmap");
-                        Log.e("imagePath*2*", "imagePath:" + imagePath);
-                        Picasso.with(this).load("file://" + imagePath).fit().centerCrop().
-                                config(Bitmap.Config.RGB_565).into(customeIcon);
-                        if (null != imagePath) {
-                            if (!tag.equals("add")) {
-                                changeHeadImage(imagePath);
-                            }
-                        }
-                    } else {
-                    }
 
 
             }
@@ -1615,14 +1592,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
-    // 裁剪图片
-    private void CropImage(String path) {
-        Intent intent = new Intent(CustomDetailedActivity.this, ClipPictureActivity.class);
-        intent.putExtra("image-path", path);
-        startActivityForResult(intent, CROP_IMAGE);
-
-
-    }
 
     /**
      * 读取地址数据，请使用线程进行调用
@@ -1673,34 +1642,6 @@ public class CustomDetailedActivity extends BaseActivity {
             e.printStackTrace();
             return false;
         }
-    }
-
-    private void changeHeadImage(String imageURL) {
-
-        showDialog();
-        try {
-            FinalHttp finalHttp = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
-            File file = new File(imageURL);
-            ajaxParams.put("file", file);
-
-            finalHttp.post(Contants.UPDATE_HEADIMAGE, ajaxParams, new AjaxCallBack<String>() {
-
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    closeDialog();
-                }
-
-                @Override
-                public void onSuccess(String s) {
-                    closeDialog();
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
     }
 
 }
