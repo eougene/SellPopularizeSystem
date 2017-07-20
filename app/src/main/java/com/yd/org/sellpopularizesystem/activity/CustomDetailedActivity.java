@@ -489,7 +489,11 @@ public class CustomDetailedActivity extends BaseActivity {
                 || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
-            edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+            if (customeDetailedBean.getResult().getBirth_date().contains("-")){
+                edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date());
+            }else {
+                edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+            }
 
         }
 
@@ -1290,6 +1294,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
             String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
             birth_date = bir.substring(0, bir.length() - 3);
+           // birth_date=edcustmomeDetailedBie.getText().toString().trim();
             Log.e("birth_date**", "birth_date:" + birth_date);
         }
 
