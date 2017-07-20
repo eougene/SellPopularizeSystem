@@ -574,7 +574,7 @@
     <string name="resolute">拒绝</string>
     <string name="accept">接受</string>
     <string name="complete_hint">请填写完整内容</string>
-    <string name="email_hint">您输入的邮箱格式正确,请重新输入正确的邮箱地址</string>
+    <string name="email_hint">请输入正确的邮箱地址</string>
 
 
 </resources>
