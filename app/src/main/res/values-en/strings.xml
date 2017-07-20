@@ -574,6 +574,7 @@
     <string name="not_upload">Certificate State:Not Upload</string>
     <string name="invoice">Tax Invoice</string>
     <string name="complete_hint">Please fill in the full details</string>
+    <string name="email_hint">The mailbox format you entered is incorrect,please re-enter the correct email address</string>
 
 </resources>
 

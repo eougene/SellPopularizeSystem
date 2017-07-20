@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.utils;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import java.text.DecimalFormat;
@@ -130,5 +131,14 @@ public class StringUtils {
         Pattern p = Pattern.compile(regEx);
         Matcher m = p.matcher(str);
         return m.replaceAll("").trim();
+    }
+    //判断是否为邮箱
+    public static boolean isEmail(String strEmail) {
+        String strPattern = "^[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\\w\\.-]*[a-zA-Z0-9]\\.[a-zA-Z][a-zA-Z\\.]*[a-zA-Z]$";
+        if (TextUtils.isEmpty(strPattern)) {
+            return false;
+        } else {
+            return strEmail.matches(strPattern);
+        }
     }
 }

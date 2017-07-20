@@ -62,6 +62,7 @@ import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import net.tsz.afinal.FinalHttp;
@@ -1292,10 +1293,15 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //生日
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
-            String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
-            birth_date = bir.substring(0, bir.length() - 3);
-           // birth_date=edcustmomeDetailedBie.getText().toString().trim();
-            Log.e("birth_date**", "birth_date:" + birth_date);
+            if (TextUtils.isDigitsOnly(edcustmomeDetailedBie.getText().toString().trim())){
+                birth_date="0";
+            }else {
+                String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
+                birth_date = bir.substring(0, bir.length() - 3);
+                // birth_date=edcustmomeDetailedBie.getText().toString().trim();
+                Log.e("birth_date**", "birth_date:" + birth_date);
+            }
+
         }
 
         //电话,//邮件
@@ -1309,7 +1315,12 @@ public class CustomDetailedActivity extends BaseActivity {
             }
 
             if (!TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())) {
-                e_mail = edcustmomeDetailedEmail.getText().toString().trim();
+                if (StringUtils.isEmail(edcustmomeDetailedEmail.getText().toString().trim())){
+                    e_mail = edcustmomeDetailedEmail.getText().toString().trim();
+                }else {
+                    ToasShow.showToastCenter(this,getString(R.string.email_hint));
+                }
+
             }
 
         }
