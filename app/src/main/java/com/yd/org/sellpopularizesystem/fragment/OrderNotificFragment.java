@@ -302,11 +302,11 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     mHandle.sendMessage(message);
 
                     if (cate_id == 4) {
-
+                        flag=1;
                         //预定推送消息
                         Bundle bundle = new Bundle();
                         bundle.putString("saletoorder", "saletoorder");
-                        bundle.putString("orderid", resultBean.getId() + "");
+                        bundle.putString("orderid", resultBean.getAbout_id() + "");
                         ActivitySkip.forward(getActivity(), SaleRecordActivity.class, bundle);
                     } else {
                         //预定推送消息
@@ -411,6 +411,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         page = 1;
+        flag=0;
         if (sumnData != null) {
             sumnData.clear();
         }
@@ -420,6 +421,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
+        flag=0;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         //getData(page, false, cate_id);
     }
