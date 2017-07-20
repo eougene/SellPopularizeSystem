@@ -146,7 +146,7 @@ public class NotificationFragment extends BaseFragmentView {
                 case R.id.tvCancel:
 
                     //是否显示全选,删除等
-                    if (type == 0) {
+                    if (type == 0) {//显示全选,删除
                         //是否全选
                         isShow = true;
                         tvCancel.setText(R.string.cancel);
