@@ -93,17 +93,19 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             viewHolder = new ViewHolder();
             view = LayoutInflater.from(mContext).inflate(R.layout.activity_group_member_item, null);
             viewHolder.tvTitle = (TextView) view.findViewById(R.id.customName);
-            viewHolder.tvNickName= (TextView) view.findViewById(R.id.tvNickName);
+            viewHolder.tvNickName = (TextView) view.findViewById(R.id.tvNickName);
             viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
             viewHolder.imageView = (ImageView) view.findViewById(R.id.customImageiView);
             view.setTag(viewHolder);
+
         } else {
+
             viewHolder = (ViewHolder) view.getTag();
+
         }
 
 
         if (flag.equals("custome")) {
-
 
             viewHolder.resultBean = list.get(position);
             // 根据position获取分类的首字母的Char ascii值
@@ -118,26 +120,22 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
                 viewHolder.tvLetter.setVisibility(View.GONE);
             }
 
+            viewHolder.tvNickName.setText(list.get(position).getEn_name().equals("") ? "" : list.get(position).getEn_name());
 
-            if (TextUtils.isEmpty(list.get(position).getMid_name())||list.get(position).getMid_name()==null){
-                viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+            if (TextUtils.isEmpty(list.get(position).getMid_name()) || list.get(position).getMid_name() == null) {
+                viewHolder.tvTitle.setText(list.get(position).getSurname() + mContext.getString(R.string.single_blank_space) + list.get(position).getFirst_name());
 
-            }else {
-                viewHolder.tvTitle.setText(list.get(position).getSurname()+mContext.getString(R.string.single_blank_space)+list.get(position).getMid_name()+mContext.getString(R.string.single_blank_space)+list.get(position).getFirst_name());
+            } else {
+                viewHolder.tvTitle.setText(list.get(position).getSurname() + mContext.getString(R.string.single_blank_space) + list.get(position).getMid_name() + mContext.getString(R.string.single_blank_space) + list.get(position).getFirst_name());
 
             }
 
-            viewHolder.tvNickName.setText(list.get(position).getEn_name().equals("")?"":list.get(position).getEn_name());
-
-
-            if (TextUtils.isEmpty(list.get(position).getHead_img())||list.get(position).getHead_img()==""||list.get(position).getHead_img().equals("")) {
-                viewHolder.imageView.setBackgroundResource(R.mipmap.settingbt);
-            } else {
+            if (!TextUtils.isEmpty(list.get(position).getHead_img()) && list.get(position).getHead_img() != null && list.get(position).getHead_img() != "") {
                 Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).fit().centerCrop().
                         config(Bitmap.Config.RGB_565).into(viewHolder.imageView);
 
-
-
+            } else {
+                viewHolder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.settingbt));
             }
 
 
@@ -168,7 +166,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
     public class ViewHolder {
         TextView tvLetter;
-        TextView tvTitle,tvNickName;
+        TextView tvTitle, tvNickName;
         ImageView imageView;
         public CustomBean.ResultBean resultBean;
         public LawyerBean.ResultBean m;

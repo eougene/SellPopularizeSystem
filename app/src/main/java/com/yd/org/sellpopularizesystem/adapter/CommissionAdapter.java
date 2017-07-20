@@ -3,7 +3,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,6 +87,15 @@ public class CommissionAdapter extends BaseAdapter {
             viewHolder.moreImageView = (ImageView) convertView.findViewById(R.id.moreImageView);
 
 
+            //发票个数
+            viewHolder.notifText = (TextView) convertView.findViewById(R.id.notifText);
+
+            //是否查看
+            viewHolder.firstView = convertView.findViewById(R.id.firstView);
+            viewHolder.secondView = convertView.findViewById(R.id.secondView);
+            viewHolder.thirdView = convertView.findViewById(R.id.thirdView);
+
+
             convertView.setTag(viewHolder);
 
 
@@ -100,7 +108,7 @@ public class CommissionAdapter extends BaseAdapter {
         //订单号为空
         if (null == datas.get(position).getOrder_id() || TextUtils.isEmpty(datas.get(position).getOrder_id() + "")) {
 
-           //订单号为空,,时间也为空
+            //订单号为空,,时间也为空
             if (null == viewHolder.resultBean.getUpdate_time() || TextUtils.isEmpty(viewHolder.resultBean.getUpdate_time() + "")) {
                 viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - " + " / - ");
 
@@ -117,14 +125,13 @@ public class CommissionAdapter extends BaseAdapter {
 
                 //时间不为空
             } else {
-                Log.e("时间**","time:"+viewHolder.resultBean.getUpdate_time());
-                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time()+"000")));
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
 
             }
         }
 
         viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + "  / " + datas.get(position).getProduct_childs_unit_number());
-       //总金额
+        //总金额
         viewHolder.sumCommission.setText(datas.get(position).getTotal() + "");
 
 
@@ -286,12 +293,13 @@ public class CommissionAdapter extends BaseAdapter {
     }
 
     public class ViewHoler {
-        private TextView commissionID, nameCommission,
+        private TextView notifText, commissionID, nameCommission,
                 titleCommission, sumCommission, firstCommissionSum, firstCommissionDate, secondCommissionSum, secondCommissionDate, thirdCommissionSum, thirdCommissionDate;
         private RelativeLayout commissionRel;
         private LinearLayout commissionLinear;
         private ImageView commissionRightImageView, moreImageView;
         public CommissionBean.ResultBean resultBean;
+        private View firstView, secondView, thirdView;
 
     }
 }
