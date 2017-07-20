@@ -43,7 +43,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
 import com.yd.org.sellpopularizesystem.custom.AddrXmlParser;
 import com.yd.org.sellpopularizesystem.javaBean.CityInfoModel;
 import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
@@ -85,7 +84,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import static com.yd.org.sellpopularizesystem.R.id.city;
-import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
 
 /**
@@ -489,9 +487,9 @@ public class CustomDetailedActivity extends BaseActivity {
                 || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
-            if (customeDetailedBean.getResult().getBirth_date().contains("-")){
+            if (customeDetailedBean.getResult().getBirth_date().contains("-")) {
                 edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date());
-            }else {
+            } else {
                 edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
             }
 
@@ -1124,16 +1122,16 @@ public class CustomDetailedActivity extends BaseActivity {
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            if (!imagePath.equals("")) {
-                ajaxParams.put("file", new File(imagePath));//客户头像
-            }
+
         } else {
             ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
         }
 
 
         //**************************************
-
+        if (!imagePath.equals("")) {
+            ajaxParams.put("file", new File(imagePath));//客户头像
+        }
 
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
@@ -1245,7 +1243,6 @@ public class CustomDetailedActivity extends BaseActivity {
         resultBean.setPostcode(etEma_01.getText().toString().trim());
 
 
-
         ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 
@@ -1294,7 +1291,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
             String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
             birth_date = bir.substring(0, bir.length() - 3);
-           // birth_date=edcustmomeDetailedBie.getText().toString().trim();
+            // birth_date=edcustmomeDetailedBie.getText().toString().trim();
             Log.e("birth_date**", "birth_date:" + birth_date);
         }
 
@@ -1465,7 +1462,7 @@ public class CustomDetailedActivity extends BaseActivity {
         try {
             updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
                     birth_date, mobile, country, city, area,
-                     e_mail, job, income, card_id, passport_id,
+                    e_mail, job, income, card_id, passport_id,
                     passport_country, family_name, family_first_name, family_relationship, family_mobile,
                     zip_code, is_firb, wechat_number, qq_number, company_name, abn, acn, company_mobile, company_e_mail, company_fax, client_id, client, select_self, company_country, company_unit_number, company_street_number, company_suburb, company_state, company_street_address_line_1,
                     company_street_address_line_2, company_postcode, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, family_email);
@@ -1556,46 +1553,22 @@ public class CustomDetailedActivity extends BaseActivity {
                 //拍照
                 case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
-                    String picPath = "";
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        picPath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
-                        //picPath=BitmapUtil.imgPath;
+                        imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
                         Bitmap bitmap = null;
                         try {
-                            //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
                             bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                         }
-                        //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        picPath = imgUri.getPath();
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        imagePath = imgUri.getPath();
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
                     }
-                    if (null != imagePath) {
-                        if (!tag.equals("add")) {
-                            changeHeadImage(picPath);
-                        }
-                    }
+
                     break;
-
-
-                // 裁剪图片
-                case CROP_IMAGE:
-                    if (resultCode == RESULT_OK && null != data) {
-                        imagePath = data.getStringExtra("bitmap");
-                        Log.e("imagePath*2*", "imagePath:" + imagePath);
-                        Picasso.with(this).load("file://" + imagePath).fit().centerCrop().
-                                config(Bitmap.Config.RGB_565).into(customeIcon);
-                        if (null != imagePath) {
-                            if (!tag.equals("add")) {
-                                changeHeadImage(imagePath);
-                            }
-                        }
-                    } else {
-                    }
 
 
             }
@@ -1604,14 +1577,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
-    // 裁剪图片
-    private void CropImage(String path) {
-        Intent intent = new Intent(CustomDetailedActivity.this, ClipPictureActivity.class);
-        intent.putExtra("image-path", path);
-        startActivityForResult(intent, CROP_IMAGE);
-
-
-    }
 
     /**
      * 读取地址数据，请使用线程进行调用
@@ -1664,32 +1629,5 @@ public class CustomDetailedActivity extends BaseActivity {
         }
     }
 
-    private void changeHeadImage(String imageURL) {
-
-        showDialog();
-        try {
-            FinalHttp finalHttp = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
-            File file = new File(imageURL);
-            ajaxParams.put("file", file);
-
-            finalHttp.post(Contants.UPDATE_HEADIMAGE, ajaxParams, new AjaxCallBack<String>() {
-
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    closeDialog();
-                }
-
-                @Override
-                public void onSuccess(String s) {
-                    closeDialog();
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }
