@@ -52,6 +52,8 @@ public class MyCertificateActivity extends BaseActivity {
     private PopupWindow firbSelectPopWindow;
     private View firbPwView;
     private Button btUnknown, btSure, btFalse;
+    private boolean isFile = true;
+    private   File file = null;
 
     /**
      * 与日期选择相关
@@ -270,7 +272,7 @@ public class MyCertificateActivity extends BaseActivity {
 
         try {
             String sTime = "", endTime = "", licence_number = "", licence_name = "";
-            File file = null;
+
 
             if ((dataTextView_01.getText().toString()).equals(getString(R.string.commencement_date))) {
                 ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_valid_date));
@@ -306,11 +308,17 @@ public class MyCertificateActivity extends BaseActivity {
             }
 
 
-            if (TextUtils.isEmpty(picPath) || picPath == "") {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
-                return;
+            if (!picPath.startsWith("https://")) {
+                isFile = true;
+                if (TextUtils.isEmpty(picPath) || picPath == "") {
+                    ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
+                    return;
+                } else {
+                    file = new File(picPath);
+                }
+
             } else {
-                file = new File(picPath);
+                isFile = false;
             }
 
 
@@ -323,7 +331,10 @@ public class MyCertificateActivity extends BaseActivity {
             ajaxParams.put("licence_number", licence_number);
             ajaxParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
             ajaxParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
-            ajaxParams.put("file", file);
+            if (isFile) {
+                ajaxParams.put("file", file);
+            }
+
             ajaxParams.put("licence_name", licence_name);
             ajaxParams.put("abn", "");
             ajaxParams.put("acn", "");
@@ -361,6 +372,7 @@ public class MyCertificateActivity extends BaseActivity {
             });
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            Log.e("e***", "e:" + e.getMessage());
         }
 
 
@@ -403,7 +415,6 @@ public class MyCertificateActivity extends BaseActivity {
                         dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
                         zhEdTextView.setText(lb.getResult().getLicence_number());
                         zhTypeTextView.setText(lb.getResult().getLicence_name());
-
 
 
                         Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).fit().centerCrop().
