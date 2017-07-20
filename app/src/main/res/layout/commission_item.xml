@@ -108,6 +108,7 @@
             android:paddingBottom="@dimen/padding_margin_10"
             android:paddingTop="@dimen/padding_margin_10">
 
+
             <TextView
                 android:id="@+id/moreTextView"
                 android:layout_width="wrap_content"
@@ -118,13 +119,27 @@
                 android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_12"/>
 
+            <TextView
+                android:id="@+id/notifText"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
+                android:layout_toRightOf="@+id/moreTextView"
+                android:background="@drawable/circle_shape"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tv_size_08"
+                android:visibility="gone"/>
+
+
             <ImageView
                 android:id="@+id/moreImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/padding_margin_6"
-                android:layout_toRightOf="@+id/moreTextView"
+                android:layout_toRightOf="@+id/notifText"
                 android:src="@mipmap/more"/>
 
 
@@ -137,8 +152,7 @@
             android:layout_height="wrap_content"
             android:background="@color/search_edit_bac"
             android:orientation="vertical"
-            android:paddingBottom="@dimen/padding_margin_10"
-            android:visibility="gone">
+            android:paddingBottom="@dimen/padding_margin_10">
 
             <View
                 android:layout_width="match_parent"
@@ -148,10 +162,10 @@
                 android:background="@color/setting_bac"/>
 
             <LinearLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/padding_margin_10">
+                android:layout_marginTop="@dimen/padding_margin_10"
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -159,12 +173,14 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
+
                     <TextView
                         android:id="@+id/firstCommissionSum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.00"
                         android:textColor="@color/scale_tab5"/>
+
 
                     <TextView
                         android:id="@+id/firstCommissionDate"
@@ -174,6 +190,17 @@
                         android:layout_marginTop="@dimen/padding_margin_6"
                         android:text="-/-/-"
                         android:textColor="@color/gray"/>
+
+
+                    <View
+                        android:id="@+id/firstView"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:layout_toRightOf="@+id/firstCommissionSum"
+                        android:background="@drawable/circle_shape"
+                        android:visibility="gone"/>
+
 
                 </RelativeLayout>
 
@@ -204,6 +231,16 @@
                         android:text="-/-/-"
                         android:textColor="@color/gray"/>
 
+
+                    <View
+                        android:id="@+id/secondView"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:layout_toRightOf="@+id/secondCommissionSum"
+                        android:background="@drawable/circle_shape"
+                        android:visibility="gone"/>
+
                 </RelativeLayout>
 
 
@@ -233,6 +270,16 @@
                         android:layout_marginTop="@dimen/padding_margin_6"
                         android:text="-/-/-"
                         android:textColor="@color/gray"/>
+
+
+                    <View
+                        android:id="@+id/thirdView"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:layout_toRightOf="@+id/thirdCommissionSum"
+                        android:background="@drawable/circle_shape"
+                        android:visibility="gone"/>
 
                 </RelativeLayout>
             </LinearLayout>
