@@ -217,6 +217,7 @@
                 android:paddingTop="@dimen/padding_margin_14">
 
                 <TextView
+                    android:id="@+id/reT"
                     style="@style/WrapWrap"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
@@ -226,10 +227,12 @@
 
                 <TextView
                     android:id="@+id/tvReCusAdd"
-                    style="@style/WrapWrap"
+                    style="@style/MatchWrap"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_toRightOf="@+id/reT"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
