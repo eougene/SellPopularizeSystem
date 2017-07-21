@@ -510,8 +510,6 @@
     <string name="firb_not_empty">FIRB cannot be empty</string>
     <string name="more">View more</string>
     <string name="order_id">Order number</string>
-    <string name="Land">Land</string>
-    <string name="APT">Apt</string>
     <string name="order_detail">Order details</string>
     <string name="exchange_fee">Exchange contract security</string>
     <string name="select_birth">The selection time must not exceed the current time</string>
@@ -575,6 +573,10 @@
     <string name="invoice">Tax Invoice</string>
     <string name="complete_hint">Please fill in the full details</string>
     <string name="email_hint">Please enter the correct email address</string>
-
+    <string name="land">Land</string>
+    <string name="apt">APT</string>
+    <string name="isuse">used</string>
+    <string name="resolute">refuse</string>
+    <string name="accept">accept</string>
 </resources>
 
