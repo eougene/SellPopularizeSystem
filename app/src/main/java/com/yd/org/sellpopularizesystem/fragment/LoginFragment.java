@@ -36,6 +36,7 @@ import static com.yd.org.sellpopularizesystem.utils.ToasShow.showToast;
 
 /**
  * Created by hejin on 2017/6/12.
+ * transmissiontype设置成2，就不会直接启动应用
  */
 
 public class LoginFragment extends BaseFragmentView {

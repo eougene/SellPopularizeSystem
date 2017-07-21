@@ -186,12 +186,10 @@ public class HomeFragment extends BaseFragmentView {
                             //通知主页面显示消息条目
                             HomeActiviyt.homeActiviyt.handler.sendMessage(message);
                             //清楚消息,
-                            BadgeUtil.resetBadgeCount(getActivity());
+                           // BadgeUtil.resetBadgeCount(getActivity());
                         }
 
                     }
-
-                } else {
 
                 }
 
