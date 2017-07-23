@@ -293,6 +293,21 @@
         <activity
             android:name=".activity.PaymentQrActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+
+        <!-- 微信支付 -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="true"
+            android:screenOrientation="behind" >
+        </activity>
         <activity android:name=".activity.StudySubitemActivity"/>
         <activity android:name=".activity.IntroduceActivity"/>
         <activity android:name=".activity.OrderDetailActivity"/>
