@@ -1,5 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -30,6 +33,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -167,13 +171,38 @@ public class PaymentQrActivity extends BaseActivity {
 
                     //微信支付
                 } else if (payment_method.equals("7")) {
-                    goPay(strId);
+
+
+                    //先判断是否安装微信
+                    if (isWeixinAvilible(PaymentQrActivity.this)) {
+                        goPay(strId);
+                    } else {
+                        ToasShow.showToastCenter(PaymentQrActivity.this, "检查是否安装微信");
+                    }
+
+
                 }
 
 
             }
         });
     }
+
+    public boolean isWeixinAvilible(Context context) {
+        final PackageManager packageManager = context.getPackageManager();// 获取packagemanager
+        List<PackageInfo> pinfo = packageManager.getInstalledPackages(0);// 获取所有已安装程序的包信息
+        if (pinfo != null) {
+            for (int i = 0; i < pinfo.size(); i++) {
+                String pn = pinfo.get(i).packageName;
+                if (pn.equals("com.tencent.mm")) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
 
     /**
      * 去付款
