@@ -63,8 +63,8 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         tvItORoomArea.setText(bean.getExternal());
         tvTotalArea.setText(bean.getBuilding_area());
         tvTotalLandArea.setText(bean.getLand_size());
-        tvLandPrice.setText(bean.getLand_vendor_price());
-        tvBuildingPrice.setText(bean.getHouse_vendor_price());
+        tvLandPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getLand_vendor_price().split("\\.")[0]));
+        tvBuildingPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getHouse_vendor_price().split("\\.")[0]));
     }
 
     @Override
