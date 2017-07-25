@@ -233,6 +233,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:layout_toRightOf="@+id/reT"
+                    android:gravity="end"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>

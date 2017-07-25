@@ -24,14 +24,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/not_upload"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:padding="@dimen/padding_margin_10"
             android:text="@string/effective_date"
             android:textColor="@color/gray"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
 
 
         <LinearLayout
@@ -56,7 +56,7 @@
                 android:layout_weight="1"
                 android:background="@color/search_edit_bac"
                 android:padding="@dimen/padding_margin_10"
-                android:text="@string/commencement_date" />
+                android:text="@string/commencement_date"/>
 
             <View
                 android:layout_width="20dp"
@@ -64,7 +64,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:background="@color/black" />
+                android:background="@color/black"/>
 
             <TextView
                 android:id="@+id/dataTextView_02"
@@ -74,7 +74,7 @@
                 android:layout_weight="1"
                 android:background="@color/search_edit_bac"
                 android:padding="@dimen/padding_margin_10"
-                android:text="@string/maturity_date" />
+                android:text="@string/maturity_date"/>
 
         </LinearLayout>
 
@@ -84,7 +84,7 @@
             android:padding="@dimen/padding_margin_10"
             android:text="@string/certificate_number"
             android:textColor="@color/gray"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
 
         <EditText
             android:id="@+id/zhEdTextView"
@@ -97,7 +97,7 @@
             android:padding="@dimen/padding_margin_10"
             android:textColor="@color/gray"
             android:textColorHint="@color/gray"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
 
 
         <RelativeLayout
@@ -115,21 +115,21 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="证件类型"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
 
             <TextView
-                android:layout_toRightOf="@+id/zhT"
                 android:id="@+id/zhTypeTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/pointImageView"
+                android:layout_toRightOf="@+id/zhT"
                 android:gravity="center|right"
                 android:padding="@dimen/padding_margin_10"
-                android:text="@string/certificate_type"
+                android:text="Certificate of Registration"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_15" />
+                android:textSize="@dimen/tv_size_15"/>
 
             <ImageView
                 android:id="@+id/pointImageView"
@@ -138,14 +138,14 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
-                android:src="@mipmap/point" />
+                android:src="@mipmap/point"/>
 
         </RelativeLayout>
 
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:background="@color/search_edit_bac" />
+            android:background="@color/search_edit_bac"/>
 
         <TextView
             android:layout_width="match_parent"
@@ -153,7 +153,7 @@
             android:padding="@dimen/padding_margin_10"
             android:text="@string/upload_certificate"
             android:textColor="@color/gray"
-            android:textSize="@dimen/tv_size_15" />
+            android:textSize="@dimen/tv_size_15"/>
 
         <RelativeLayout
 
@@ -172,7 +172,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:background="@drawable/stroke"
                 android:scaleType="fitXY"
-                android:src="@mipmap/pic_add" />
+                android:src="@mipmap/pic_add"/>
 
 
         </RelativeLayout>
@@ -193,5 +193,5 @@
         android:gravity="center"
         android:padding="@dimen/padding_margin_10"
         android:text="@string/submit"
-        android:textColor="@color/white" />
+        android:textColor="@color/white"/>
 </RelativeLayout>

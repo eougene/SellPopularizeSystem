@@ -13,9 +13,10 @@
 
 
         <LinearLayout
-            style="@style/MatchAuto.Vertical"
-            android:layout_weight="1"
-            android:background="@mipmap/bac">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/bac"
+            android:orientation="vertical">
 
             <com.yd.org.sellpopularizesystem.myView.CircleImageView
                 android:id="@+id/ivCustomePhoto"
@@ -37,8 +38,8 @@
 
 
         <LinearLayout
-            style="@style/MatchAuto.Vertical"
-            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
