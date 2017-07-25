@@ -444,7 +444,11 @@ public class ReserveActivity extends BaseActivity {
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
-                    tvMoneyNum.setText("$ 300.00");
+                    if (bean.getCate_id()==1){
+                        tvMoneyNum.setText("$ 600.00");
+                    }else {
+                        tvMoneyNum.setText("$ 300.00");
+                    }
                     tvPayMethod.setText(getString(R.string.recash));
                     payment_method = "1";
                     break;
@@ -453,7 +457,11 @@ public class ReserveActivity extends BaseActivity {
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
-                    tvMoneyNum.setText("$ 300.00");
+                    if (bean.getCate_id()==1){
+                        tvMoneyNum.setText("$ 600.00");
+                    }else {
+                        tvMoneyNum.setText("$ 300.00");
+                    }
                     tvPayMethod.setText(getString(R.string.transfer));
                     payment_method = "4";
                     break;
@@ -463,7 +471,11 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.GONE);
                     }
                     tvPayMethod.setText(R.string.alipay);
-                    tvMoneyNum.setText("￥ 2000.00");
+                    if (bean.getCate_id()==1){
+                        tvMoneyNum.setText("￥ 4000.00");
+                    }else {
+                        tvMoneyNum.setText("￥ 2000.00");
+                    }
                     payment_method = "6";
                     break;
                 //微信
@@ -472,7 +484,11 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.GONE);
                     }
                     tvPayMethod.setText(R.string.wechatpay);
-                    tvMoneyNum.setText("￥ 2000.00");
+                    if (bean.getCate_id()==1){
+                        tvMoneyNum.setText("￥ 4000.00");
+                    }else {
+                        tvMoneyNum.setText("￥ 2000.00");
+                    }
                     payment_method = "7";
                     break;
                 //开启相机

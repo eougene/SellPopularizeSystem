@@ -12,7 +12,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
     private ProSubunitListBean.ResultBean.PropertyBean bean;
     private TextView tvItStatus,tvItPrice,tvItType,tvItBatchNum,tvItUnitNum,
             tvFloorType,tvItFloor,tvItBedRoom,tvItBath,tvItCarSquare,tvItBathNum,
-            tvItDrec,tvItRoomArea,tvItORoomArea,tvTotalArea,tvTotalLandArea;
+            tvItDrec,tvItRoomArea,tvItORoomArea,tvTotalArea,tvTotalLandArea,tvLandPrice,tvBuildingPrice;
     @Override
     protected int setContentView() {
         return R.layout.activity_product_sub_item_detail;
@@ -40,6 +40,8 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         tvItORoomArea= (TextView) findViewById(R.id.tvItORoomArea);
         tvTotalArea= (TextView) findViewById(R.id.tvTotalArea);
         tvTotalLandArea=getViewById(R.id.tvTotalLandArea);
+        tvLandPrice=getViewById(R.id.tvLandPrice);
+        tvBuildingPrice=getViewById(R.id.tvBuildingPrice);
         initData();
     }
 
@@ -61,6 +63,8 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         tvItORoomArea.setText(bean.getExternal());
         tvTotalArea.setText(bean.getBuilding_area());
         tvTotalLandArea.setText(bean.getLand_size());
+        tvLandPrice.setText(bean.getLand_vendor_price());
+        tvBuildingPrice.setText(bean.getHouse_vendor_price());
     }
 
     @Override

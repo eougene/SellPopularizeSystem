@@ -578,5 +578,8 @@
     <string name="isuse">used</string>
     <string name="resolute">refuse</string>
     <string name="accept">accept</string>
+    <string name="building_price">Building price</string>
+    <string name="land_price">Land price</string>
+
 </resources>
 
