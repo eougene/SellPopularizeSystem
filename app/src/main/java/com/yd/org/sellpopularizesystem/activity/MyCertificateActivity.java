@@ -53,7 +53,7 @@ public class MyCertificateActivity extends BaseActivity {
     private View firbPwView;
     private Button btUnknown, btSure, btFalse;
     private boolean isFile = true;
-    private   File file = null;
+    private File file = null;
 
     /**
      * 与日期选择相关
@@ -394,7 +394,6 @@ public class MyCertificateActivity extends BaseActivity {
             public void onSuccess(String s) {
                 closeDialog();
                 Log.e("s***", "s:" + s);
-
                 if (null != s) {
                     Gson gson = new Gson();
                     LicenceBean lb = gson.fromJson(s, LicenceBean.class);
@@ -410,11 +409,18 @@ public class MyCertificateActivity extends BaseActivity {
                         } else if (lb.getResult().getStatus() == 3) {
                             stateTextView.setText(R.string.State_overdue);
                         }
+
+
                         picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
                         dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date() + "000")));
                         dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
                         zhEdTextView.setText(lb.getResult().getLicence_number());
-                        zhTypeTextView.setText(lb.getResult().getLicence_name());
+
+                        if (lb.getResult().getLicence_type() == 1) {
+                            zhTypeTextView.setText("Certificate of Registration");
+                        } else {
+                            zhTypeTextView.setText("Corporation Licence");
+                        }
 
 
                         Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).fit().centerCrop().

@@ -1316,6 +1316,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     e_mail = edcustmomeDetailedEmail.getText().toString().trim();
                 }else {
                     ToasShow.showToastCenter(this,getString(R.string.email_hint));
+                    return;
                 }
 
             }
