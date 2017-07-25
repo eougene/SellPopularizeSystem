@@ -488,8 +488,11 @@ public class CustomDetailedActivity extends BaseActivity {
                 || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
             edcustmomeDetailedBie.setText("");
         } else {
-            if (customeDetailedBean.getResult().getBirth_date().contains("-")){
-                edcustmomeDetailedBie.setText(customeDetailedBean.getResult().getBirth_date());
+            if (customeDetailedBean.getResult().getBirth_date().contains("\\-")){
+                    String[] str=customeDetailedBean.getResult().getBirth_date().split("\\-");
+                String dateStr=str[0]+"/"+str[1]+"/"+str[2];
+                Log.i(TAG, "setInfo: "+dateStr );
+                edcustmomeDetailedBie.setText(dateStr);
             }else {
                 edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
             }
@@ -1344,6 +1347,9 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //证件号
         if (!TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())) {
+            if (edcustmomeDetailedCard.getText().toString().trim().length()!=18){
+
+            }
             card_id = edcustmomeDetailedCard.getText().toString().trim();
         }
 
