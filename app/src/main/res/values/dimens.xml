@@ -63,4 +63,20 @@
     <dimen name="actionbar_item_height">45dip</dimen>
     <dimen name="actionbar_item_width">45dip</dimen>
 
+
+    <!-- 弹框所需 -->
+    <!-- 窗口最小宽度 -->
+    <dimen name="size_minwidth_svprogresshuddefault">120dp</dimen>
+    <!-- padding -->
+    <dimen name="padding_svprogresshuddefault">15dp</dimen>
+    <!--图片宽高-->
+    <dimen name="size_image_bigloading">80dp</dimen>
+    <!--图片宽高-->
+    <dimen name="size_image_smallloading">60dp</dimen>
+    <!-- 圆角 -->
+    <dimen name="radius_svprogresshuddefault">25px</dimen>
+    <dimen name="margintop_svprogresshuddefault_msg">10dp</dimen>
+    <dimen name="textSize_svprogresshuddefault_msg">15sp</dimen>
+
+
 </resources>
