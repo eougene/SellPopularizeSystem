@@ -69,11 +69,13 @@
             android:background="@color/search_edit_bac" />
 
         <RelativeLayout
+            android:id="@+id/rlLandPrice"
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:paddingBottom="@dimen/padding_margin_10"
-            android:paddingTop="@dimen/padding_margin_10">
+            android:paddingTop="@dimen/padding_margin_10"
+            android:visibility="gone">
 
             <TextView
                 style="@style/WrapWrap"
@@ -99,11 +101,14 @@
             android:background="@color/search_edit_bac" />
 
         <RelativeLayout
+            android:id="@+id/rlBuildingPrice"
             style="@style/MatchWrap"
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
             android:paddingBottom="@dimen/padding_margin_10"
-            android:paddingTop="@dimen/padding_margin_10">
+            android:paddingTop="@dimen/padding_margin_10"
+            android:visibility="gone"
+            >
 
             <TextView
                 style="@style/WrapWrap"

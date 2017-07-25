@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -13,6 +15,7 @@ public class ProductSubItemDetailActivity extends BaseActivity {
     private TextView tvItStatus,tvItPrice,tvItType,tvItBatchNum,tvItUnitNum,
             tvFloorType,tvItFloor,tvItBedRoom,tvItBath,tvItCarSquare,tvItBathNum,
             tvItDrec,tvItRoomArea,tvItORoomArea,tvTotalArea,tvTotalLandArea,tvLandPrice,tvBuildingPrice;
+    private RelativeLayout rlLandPrice,rlBuildingPrice;
     @Override
     protected int setContentView() {
         return R.layout.activity_product_sub_item_detail;
@@ -42,6 +45,8 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         tvTotalLandArea=getViewById(R.id.tvTotalLandArea);
         tvLandPrice=getViewById(R.id.tvLandPrice);
         tvBuildingPrice=getViewById(R.id.tvBuildingPrice);
+        rlLandPrice=getViewById(R.id.rlLandPrice);
+        rlBuildingPrice=getViewById(R.id.rlBuildingPrice);
         initData();
     }
 
@@ -63,8 +68,13 @@ public class ProductSubItemDetailActivity extends BaseActivity {
         tvItORoomArea.setText(bean.getExternal());
         tvTotalArea.setText(bean.getBuilding_area());
         tvTotalLandArea.setText(bean.getLand_size());
-        tvLandPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getLand_vendor_price().split("\\.")[0]));
-        tvBuildingPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getHouse_vendor_price().split("\\.")[0]));
+        if (bean.getCate_id()==1){
+            rlLandPrice.setVisibility(View.VISIBLE);
+            rlBuildingPrice.setVisibility(View.VISIBLE);
+            tvLandPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getLand_vendor_price().split("\\.")[0]));
+            tvBuildingPrice.setText("$"+getString(R.string.single_blank_space)+MyUtils.addComma(bean.getHouse_vendor_price().split("\\.")[0]));
+        }
+
     }
 
     @Override
