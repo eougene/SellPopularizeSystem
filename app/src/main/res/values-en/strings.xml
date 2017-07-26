@@ -580,6 +580,8 @@
     <string name="accept">accept</string>
     <string name="building_price">Building price</string>
     <string name="land_price">Land price</string>
+    <string name="co_people">Co-purchase</string>
+    <string name="separated">separated by a comma</string>
 
 </resources>
 

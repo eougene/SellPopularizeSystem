@@ -3,6 +3,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.text.Layout;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -13,9 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.amap.api.maps2d.AMap;
+import com.amap.api.maps2d.AMapOptions;
 import com.amap.api.maps2d.CameraUpdateFactory;
 import com.amap.api.maps2d.MapView;
 import com.amap.api.maps2d.MapsInitializer;
+import com.amap.api.maps2d.UiSettings;
 import com.amap.api.maps2d.model.BitmapDescriptor;
 import com.amap.api.maps2d.model.BitmapDescriptorFactory;
 import com.amap.api.maps2d.model.LatLng;
@@ -28,6 +31,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,6 +96,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         mMakerView= LayoutInflater.from(this).inflate(R.layout.map_maker_view,null);
         tvDes= (TextView) mMakerView.findViewById(R.id.tvDescription);
         mMapView=  getViewById(R.id.mv_bmap);
+        //可以显示世界地图
         MapsInitializer.loadWorldGridMap(true);
         /*mBaiduMap=mMapView.getMap();
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(mBaiduMap.getMinZoomLevel());
@@ -99,9 +104,13 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         initOverlay();*/
         if (aMap == null) {
             aMap = mMapView.getMap();
+            UiSettings uiSettings=aMap.getUiSettings();
+            uiSettings.setCompassEnabled(true);
+            uiSettings.setLogoPosition(AMapOptions.LOGO_POSITION_BOTTOM_CENTER);
             setUpMap();
         }
         //showView();
+
     }
 
     public void jumpToScaleActivity() {
@@ -133,6 +142,10 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
             ///构建MarkerOption，用于在地图上添加
             MarkerOptions mo=new MarkerOptions().position(lat).anchor(0.5f, 0.5f)
                     .title(productData.get(i).getProduct_name())
+                    .snippet(productData.get(i).getState()+getString(R.string.single_blank_space)+productData.get(i).getAddress_suburb()
+                            +"\n"+productData.get(i).getStreet_address_1()+
+                            productData.get(i).getStreet_address_2()+getString(R.string.single_blank_space)+"\n"+
+                            productData.get(i).getPostcode())
                     .icon(BitmapDescriptorFactory.fromResource(R.mipmap.location))
                     .zIndex(9).draggable(true);
             aMap.addMarker(mo);
@@ -191,11 +204,14 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
                 if(productName.equals(proName)){
                     proId=productData.get(i).getProduct_id();
                     Bundle bundle=new Bundle();
-                    bundle.putString("productId",proId+"");
+                    /*bundle.putString("productId",proId+"");
                     bundle.putString("title",proName);
                     bundle.putString("pidatopsla","maptopsla");
                     Log.e("bundle", "onClick: "+proId+proName);
-                    ActivitySkip.forward(MapActivity.this,ProductSubunitListActivity.class,bundle);
+                    ActivitySkip.forward(MapActivity.this,ProductSubunitListActivity.class,bundle);*/
+                    bundle.putString("productName",proName);
+                    bundle.putSerializable("bean", productData.get(i));
+                    ActivitySkip.forward(MapActivity.this,ProductItemDetailActivity.class,bundle);
                 }
             }
 
@@ -210,7 +226,9 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         View infoWindow = getLayoutInflater().inflate(
                 R.layout.custom_info_window, null);
         ivPhoto = (ImageView) infoWindow.findViewById(R.id.badge);
+        ivPhoto.setVisibility(View.GONE);
         ivPhoto.setOnClickListener(this);
+        infoWindow.setOnClickListener(this);
         render(marker, infoWindow);
         return infoWindow;
     }
@@ -226,7 +244,7 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         TextView titleUi = ((TextView) view.findViewById(R.id.title));
         if (title != null) {
             SpannableString titleText = new SpannableString(title);
-            titleText.setSpan(new ForegroundColorSpan(Color.BLACK), 0,
+            titleText.setSpan(new ForegroundColorSpan(Color.WHITE), 0,
                     titleText.length(), 0);
             titleUi.setTextSize(15);
             titleUi.setText(titleText);
@@ -238,9 +256,9 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         TextView snippetUi = ((TextView) view.findViewById(R.id.snippet));
         if (snippet != null) {
             SpannableString snippetText = new SpannableString(snippet);
-            snippetText.setSpan(new ForegroundColorSpan(Color.GREEN), 0,
+            snippetText.setSpan(new ForegroundColorSpan(Color.WHITE), 0,
                     snippetText.length(), 0);
-            snippetUi.setTextSize(20);
+            snippetUi.setTextSize(15);
             snippetUi.setText(snippetText);
         } else {
             snippetUi.setText("");
@@ -256,7 +274,9 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         View infoContent = getLayoutInflater().inflate(
                 R.layout.custom_info_contents, null);
         ivPhoto= (ImageView) infoContent.findViewById(R.id.badge);
+        ivPhoto.setVisibility(View.GONE);
         ivPhoto.setOnClickListener(this);
+        infoContent.setOnClickListener(this);
         render(marker, infoContent);
         return infoContent;
     }

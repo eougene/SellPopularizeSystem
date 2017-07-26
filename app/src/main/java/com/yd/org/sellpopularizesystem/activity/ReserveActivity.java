@@ -613,7 +613,7 @@ public class ReserveActivity extends BaseActivity {
             ajaxParams.put("order_type", "1");
             ajaxParams.put("property_id", bean.getProduct_childs_id() + "");
             ajaxParams.put("client", customeId);
-            ajaxParams.put("co-purchase",etCopurchase.getText().toString());
+            ajaxParams.put("co_purchaser",etCopurchase.getText().toString());
             ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("lawyer_id", lawyer_id + "");
             ajaxParams.put("payment_method", payment_method);

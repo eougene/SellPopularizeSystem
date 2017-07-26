@@ -577,6 +577,8 @@
     <string name="email_hint">请输入正确的邮箱地址</string>
     <string name="building_price">建筑价格</string>
     <string name="land_price">土地价格</string>
+    <string name="co_people">联合购买人</string>
+    <string name="separated">用逗号隔开</string>
 
 
 </resources>
