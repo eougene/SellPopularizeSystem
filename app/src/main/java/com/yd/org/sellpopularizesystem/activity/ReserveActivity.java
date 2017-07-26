@@ -23,6 +23,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -65,6 +66,7 @@ public class ReserveActivity extends BaseActivity {
     private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale,
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvReCusAdd, tvCompany, tvShareholder, isRead;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
+    private EditText etCopurchase;
     private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
     private ProSubunitListBean.ResultBean.PropertyBean bean;
@@ -121,6 +123,7 @@ public class ReserveActivity extends BaseActivity {
         tvReCusAdd = getViewById(R.id.tvReCusAdd);
         ivReLawyer = getViewById(R.id.ivReLawyer);
         rlRecus = getViewById(R.id.rlRecus);
+        etCopurchase= getViewById(R.id.etCopurchase);
         rlReLawyer = getViewById(R.id.rlReLawyer);
         tvReLawyer = getViewById(R.id.tvReLawyer);
         rlReGoal = getViewById(R.id.rlReGoal);
@@ -610,6 +613,7 @@ public class ReserveActivity extends BaseActivity {
             ajaxParams.put("order_type", "1");
             ajaxParams.put("property_id", bean.getProduct_childs_id() + "");
             ajaxParams.put("client", customeId);
+            ajaxParams.put("co-purchase",etCopurchase.getText().toString());
             ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
             ajaxParams.put("lawyer_id", lawyer_id + "");
             ajaxParams.put("payment_method", payment_method);
