@@ -215,7 +215,7 @@ public class ViewHolder {
      */
     public ViewHolder setImageByUrl(int viewId, String url, View.OnClickListener click) {
         ImageView imageView = (ImageView) getView(viewId);
-        Picasso.with(context).load(url).fit().centerCrop().
+        Picasso.with(context).load(url).
                 config(Bitmap.Config.RGB_565).into(imageView);
 
 

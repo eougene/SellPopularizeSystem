@@ -5,9 +5,17 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.multidex.MultiDex;
 import android.util.Log;
 
 import com.igexin.sdk.PushManager;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.tencent.bugly.Bugly;
 import com.tencent.bugly.beta.Beta;
 import com.umeng.socialize.Config;
@@ -18,6 +26,8 @@ import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ACache;
+
+import java.io.File;
 
 
 /**
@@ -71,6 +81,13 @@ public class BaseApplication extends Application {
     }
 
 
+    //解决65536问题
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -78,8 +95,38 @@ public class BaseApplication extends Application {
         initView();
         bugly();
 
+        //通过配置方案来初始化ImageLoader
+        ImageLoader.getInstance().init(getSimpleConfig());
 
     }
+
+
+    /**
+     * 比较常用的配置方案
+     *
+     * @return
+     */
+    private ImageLoaderConfiguration getSimpleConfig() {
+        //设置缓存的路径
+        File cacheDir = StorageUtils.getOwnCacheDirectory(getApplicationContext(), "imageloader/Cache");
+
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration
+                .Builder(getApplicationContext())
+                .memoryCacheExtraOptions(480, 800) //即保存的每个缓存文件的最大长宽
+                .threadPriority(Thread.NORM_PRIORITY - 2) //线程池中线程的个数
+                .denyCacheImageMultipleSizesInMemory() //禁止缓存多张图片
+                .memoryCache(new LRULimitedMemoryCache(50 * 1024 * 1024)) //缓存策略
+                .memoryCacheSize(50 * 1024 * 1024) //设置内存缓存的大小
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator()) //缓存文件名的保存方式
+                .diskCacheSize(200 * 1024 * 1024) //磁盘缓存大小
+                .tasksProcessingOrder(QueueProcessingType.LIFO) //工作队列
+                .diskCacheFileCount(200) //缓存的文件数量
+                .diskCache(new UnlimitedDiskCache(cacheDir)) //自定义缓存路径
+                //.writeDebugLogs() // Remove for release app
+                .build();
+        return config;
+    }
+
 
     private void initView() {
         //获取设备的cid,用于绑定账号用
