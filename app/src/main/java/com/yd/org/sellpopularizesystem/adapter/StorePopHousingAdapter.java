@@ -135,7 +135,7 @@ public class StorePopHousingAdapter extends BaseAdapter {
         switch (type){
             case  TYPE1:
                 holder.productListBean = list.get(position);
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
                         config(Bitmap.Config.RGB_565).into(holder.prductImageView);
 
 

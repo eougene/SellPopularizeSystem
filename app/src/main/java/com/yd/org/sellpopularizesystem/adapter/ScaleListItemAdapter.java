@@ -97,7 +97,7 @@ public class ScaleListItemAdapter extends BaseAdapter {
 
         holder.lockImageView.setVisibility(View.GONE);
 
-        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
                 config(Bitmap.Config.RGB_565).into(holder.studyDisImageView);
 
 

@@ -91,7 +91,7 @@ public class CustomeListAdapter extends BaseAdapter {
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.productListBean.getChilds()));
 
-        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
                 config(Bitmap.Config.RGB_565).into(viewHolder.prductImageView);
 
 

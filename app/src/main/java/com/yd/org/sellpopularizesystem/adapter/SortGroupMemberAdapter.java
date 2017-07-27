@@ -131,7 +131,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             }
 
             if (!TextUtils.isEmpty(list.get(position).getHead_img()) && list.get(position).getHead_img() != null && list.get(position).getHead_img() != "") {
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).fit().centerCrop().
+                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).
                         config(Bitmap.Config.RGB_565).into(viewHolder.imageView);
 
             } else {

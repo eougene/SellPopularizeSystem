@@ -98,7 +98,7 @@ public class StyudyAdapter extends BaseAdapter {
 
         holder.productListBean = list.get(position);
 
-        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).fit().centerCrop().
+        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
                 config(Bitmap.Config.RGB_565).into(holder.studyDisImageView);
 
 
