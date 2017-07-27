@@ -306,7 +306,7 @@
             android:name=".wxapi.WXPayEntryActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="true"
-            android:screenOrientation="behind" >
+            android:screenOrientation="behind">
         </activity>
         <activity android:name=".activity.StudySubitemActivity"/>
         <activity android:name=".activity.IntroduceActivity"/>
@@ -326,6 +326,9 @@
         </activity>
         <activity android:name=".activity.InvoiceActivity">
         </activity>
+
+        <service
+            android:name=".rxdownloadoffice.function.DownloadService"/>
     </application>
 
 </manifest>
