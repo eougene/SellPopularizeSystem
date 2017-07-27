@@ -27,6 +27,7 @@ public class PDFActivity extends BaseActivity {
         orderId = bundle.getString("orderId");
         sale_advice_url = bundle.getString("sale_advice_url");
 
+
         Log.e("", "");
         if (orderId == null || sale_advice_url == null) {
             fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
@@ -57,7 +58,10 @@ public class PDFActivity extends BaseActivity {
 
             }
 
+
         }
+
+       // FinalDownFile finalDownFile = new FinalDownFile(this, Contants.DOMAIN + "/" + fileContent.getUrl(), fileContent.getAdd_time() + ".pdf", pdfView);
 
 
     }

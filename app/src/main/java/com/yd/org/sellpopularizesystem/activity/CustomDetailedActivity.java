@@ -449,7 +449,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //*******************
         //设置头像
         if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
-            Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).fit().centerCrop().
+            Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).
                     config(Bitmap.Config.RGB_565).into(customeIcon);
         }
 
@@ -1571,9 +1571,8 @@ public class CustomDetailedActivity extends BaseActivity {
                 //拍照
                 case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
-                    String picPath = "";
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        picPath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
+                        imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
                         Bitmap bitmap = null;
                         try {
                             bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
@@ -1581,11 +1580,11 @@ public class CustomDetailedActivity extends BaseActivity {
                             e.printStackTrace();
                         }
 
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        picPath = imgUri.getPath();
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        imagePath = imgUri.getPath();
+                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
                     }
 
                     break;

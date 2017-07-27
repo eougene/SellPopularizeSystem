@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -33,7 +34,6 @@ import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
@@ -108,6 +108,7 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
+                Log.e("s***","s:"+s);
                 closeDialog();
                 if (null != s) {
                     jsonParse(s, b);
@@ -151,6 +152,9 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
             for (int i = 0; i < lawyerGroupListData.size(); i++) {
                 for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {
                     Lawyer.ResultBean.LawyerListBean lawyer = lawyerGroupListData.get(i).getLawyer_list().get(j);
+                    if (lawyer.getLaw_firm().equals("")){
+                        lawyer.setLaw_firm("null");
+                    }
                     lawyerListData.add(lawyer);
                 }
             }

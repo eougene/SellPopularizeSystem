@@ -423,7 +423,7 @@ public class MyCertificateActivity extends BaseActivity {
                         }
 
 
-                        Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).fit().centerCrop().
+                        Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).
                                 config(Bitmap.Config.RGB_565).into(srcImageView);
 
 
