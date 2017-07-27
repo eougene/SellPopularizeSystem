@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170711
-        versionName "1.4.0"
+        versionCode 20170726
+        versionName "1.4.3"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -18,14 +18,14 @@ android {
                 GETUI_APP_SECRET: "urxKlbbHjR6FVpqd3OSvB2",
                 PACKAGE_NAMW    : applicationId
         ]
-
+        multiDexEnabled true
 
     }
     signingConfigs {
         release {
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storeFile file('/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }
@@ -49,16 +49,25 @@ android {
 }
 
 dependencies {
+
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    //网路请求
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+
+    //afinal网路请求框架
     compile files('libs/afinal_0.5_bin.jar')
     //拼音排序
     compile files('libs/pinyin4j-2.5.0.jar')
     //图片缩放
     compile files('libs/photoView.jar')
+    //微信
     compile files('libs/SocialSDK_WeiXin_Full.jar')
+    //微信
     compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    //facebook
     compile files('libs/SocialSDK_facebook.jar')
+    //友盟分享
     compile files('libs/umeng_shareboard_widget.jar')
     compile files('libs/umeng_social_api.jar')
     compile files('libs/umeng_social_net.jar')
@@ -66,23 +75,43 @@ dependencies {
     compile files('libs/umeng_social_shareview.jar')
     compile files('libs/umeng_social_tool.jar')
 
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
+    //图片加载
     compile 'com.squareup.picasso:picasso:2.3.2'
+    //Gosn
     compile 'com.google.code.gson:gson:2.7'
+    //滚动控件
     compile 'com.contrarywind:Android-PickerView:3.2.4'
+    //google
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
-    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    //google
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //选择器
     compile 'com.github.davidpizarro:pickerui:1.0.1'
+    //粘列表标题,我的团队页面效果
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    //图片轮播效果
     compile 'com.jude:rollviewpager:1.4.6'
+    //视频播放
     compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
+    //图片加载
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile 'com.r0adkll:slidableactivity:2.0.5'
+    //个推
     compile 'com.getui:sdk:2.10.2.0'
-    compile 'com.lovedise:permissiongen:0.0.6'
-    // 推荐集成方式， 其中latest.release指代最新版本号，也可以指定明确的版本号，例如1.0.0
+    //腾讯更新
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //获取运行时权限
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.2@aar'
+
+    //retrofit,okhttp,rxandroid
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'io.reactivex:rxjava:1.2.0'
+    compile 'io.reactivex:rxandroid:1.2.1'
+
+    //65536
+    compile 'com.android.support:multidex:1.0.0'
+
 }
