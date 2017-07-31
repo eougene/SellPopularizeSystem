@@ -22,7 +22,9 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.clippicture.MonitoredActivity;
 
 import java.io.ByteArrayInputStream;
@@ -63,8 +65,9 @@ public class BitmapUtil {
      */
     public static String imgPath;
     public static Uri imgUri;
+
     public static void startImageCapture(Activity act, int resultCode) {
-        Uri photoURI=null;
+        Uri photoURI = null;
         //String mPublicPhotoPath="";
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         //判断是否有相机应用
@@ -73,13 +76,13 @@ public class BitmapUtil {
             File photoFile = null;
             try {
                 //photoFile = createPublicImageFile();
-                photoFile =new File(FileUtils.generateImgePath());
-                if (!photoFile.getParentFile().exists()){
+                photoFile = new File(FileUtils.generateImgePath());
+                if (!photoFile.getParentFile().exists()) {
                     photoFile.getParentFile().mkdirs();
                 }
                 //mPublicPhotoPath = photoFile.getAbsolutePath();
-                imgPath= photoFile.getAbsolutePath();
-               //imgPath=mPublicPhotoPath;
+                imgPath = photoFile.getAbsolutePath();
+                //imgPath=mPublicPhotoPath;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -91,17 +94,17 @@ public class BitmapUtil {
                     //如果是7.0或以上
                     //这里加入flag
                     //takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    photoURI = FileProvider.getUriForFile(act,FILE_PROVIDER_AUTHORITY , photoFile);
-                }else {
-                   // photoURI=Uri.fromFile(photoFile);
+                    photoURI = FileProvider.getUriForFile(act, FILE_PROVIDER_AUTHORITY, photoFile);
+                } else {
+                    // photoURI=Uri.fromFile(photoFile);
                     ContentValues contentValues = new ContentValues(2);
                     //如果想拍完存在系统相机的默认目录,改为
                     contentValues.put(MediaStore.Images.Media.DISPLAY_NAME, UUID.randomUUID().toString() + ".jpg");
                     contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
                     contentValues.put(MediaStore.Images.Media.SIZE, 1024 * 200);
-                    photoURI =act.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+                    photoURI = act.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
                 }
-                imgUri=photoURI;
+                imgUri = photoURI;
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 act.startActivityForResult(takePictureIntent, resultCode);
             }
@@ -156,7 +159,7 @@ public class BitmapUtil {
             return str;
         } else {
             Log.e("content2", selectedPhotoUri.toString());
-            if (selectedPhotoUri.toString().startsWith("content://media/external/images/media/")){
+            if (selectedPhotoUri.toString().startsWith("content://media/external/images/media/")) {
                 String str = getDataColumn(act, selectedPhotoUri, null, null);
                 return str;
             }
@@ -311,6 +314,7 @@ public class BitmapUtil {
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
     }
+
     /**
      * 2      * 计算图片的缩放比例
      * 3      * @param options
@@ -345,7 +349,7 @@ public class BitmapUtil {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        if( baos.toByteArray().length / 1024>1024) {//判断如果图片大于1M,进行压缩避免在生成图片（BitmapFactory.decodeStream）时溢出
+        if (baos.toByteArray().length / 1024 > 1024) {//判断如果图片大于1M,进行压缩避免在生成图片（BitmapFactory.decodeStream）时溢出
             baos.reset();//重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, 50, baos);//这里压缩50%，把压缩后的数据存放到baos中
         }
@@ -381,7 +385,7 @@ public class BitmapUtil {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
         int options = 100;
-        while ( baos.toByteArray().length / 1024>100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
+        while (baos.toByteArray().length / 1024 > 100) {  //循环判断如果压缩后图片是否大于100kb,大于继续压缩
             baos.reset();//重置baos即清空baos
             image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
             options -= 10;//每次都减少10
@@ -581,5 +585,12 @@ public class BitmapUtil {
      */
     enum MountStatuds {
         SD_CARD_AVAILABLE, SD_CARD_NOT_AVAILABLE, SD_CARD_SPACE_NOT_ENOUGH
+    }
+
+    public static void loadImageView(Context activity, String url, ImageView view) {
+
+        Picasso.with(activity).load(url).skipMemoryCache().config(Bitmap.Config.RGB_565).fit().into(view);
+
+
     }
 }
