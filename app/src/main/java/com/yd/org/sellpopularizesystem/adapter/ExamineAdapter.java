@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ExaminationActivity;
 import com.yd.org.sellpopularizesystem.activity.GradeActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
@@ -112,9 +111,7 @@ public class ExamineAdapter extends BaseAdapter {
         }
         holder.productListBean = list.get(position);
 
-
-        Picasso.with(context).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
-                config(Bitmap.Config.RGB_565).into(holder.studyDisImageView);
+        BitmapUtil.loadImageView(context,Contants.DOMAIN + "/" + list.get(position).getThumb(),holder.studyDisImageView);
 
 
         holder.studyTextView.setText(holder.productListBean.getPaper_title());

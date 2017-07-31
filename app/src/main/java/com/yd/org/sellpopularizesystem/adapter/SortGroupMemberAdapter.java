@@ -1,8 +1,8 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,11 +26,13 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
     private Context mContext;
     private String flag = "custome";
 
+
     public SortGroupMemberAdapter(Context mContext, String flag) {
         this.mContext = mContext;
         this.flag = flag;
 
     }
+
 
     /**
      * 当ListView数据发生变化时,调用此方法来更新ListView
@@ -131,8 +133,8 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             }
 
             if (!TextUtils.isEmpty(list.get(position).getHead_img()) && list.get(position).getHead_img() != null && list.get(position).getHead_img() != "") {
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getHead_img()).
-                        config(Bitmap.Config.RGB_565).into(viewHolder.imageView);
+                BitmapUtil.loadImageView(mContext, Contants.DOMAIN + "/" + list.get(position).getHead_img(), viewHolder.imageView);
+                Log.e("imageview","tt:"+Contants.DOMAIN + "/" + list.get(position).getHead_img());
 
             } else {
                 viewHolder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.settingbt));

@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ProductItemDetailActivity;
 import com.yd.org.sellpopularizesystem.activity.ProductSubunitListActivity;
@@ -24,6 +22,7 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
@@ -87,12 +86,11 @@ public class CustomeListAdapter extends BaseAdapter {
 
 
         viewHolder.productListBean = list.get(position);
+        BitmapUtil.loadImageView(mContext,Contants.DOMAIN + "/" + list.get(position).getThumb(),viewHolder.prductImageView);
 
         viewHolder.productName.setText(list.get(position).getProduct_name().trim());
         viewHolder.lvSubItem.setAdapter(new ItemAdapter(mContext, viewHolder.productListBean.getChilds()));
 
-        Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
-                config(Bitmap.Config.RGB_565).into(viewHolder.prductImageView);
 
 
         //根据getIs_can_sale(),getIs_study()判断是否需要学习

@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,11 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductChildBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -135,11 +134,7 @@ public class StorePopHousingAdapter extends BaseAdapter {
         switch (type){
             case  TYPE1:
                 holder.productListBean = list.get(position);
-                Picasso.with(mContext).load(Contants.DOMAIN + "/" + list.get(position).getThumb()).
-                        config(Bitmap.Config.RGB_565).into(holder.prductImageView);
-
-
-
+                BitmapUtil.loadImageView(mContext,Contants.DOMAIN + "/" + list.get(position).getThumb(),holder.prductImageView);
                 holder.productName.setText(list.get(position).getProduct_name().trim());
                 break;
             case TYPE2:
