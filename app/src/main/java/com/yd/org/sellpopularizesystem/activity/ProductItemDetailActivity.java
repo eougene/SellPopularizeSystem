@@ -38,6 +38,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -422,7 +423,9 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             Log.e("hhh**", "Url:" + Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
             ImageView view = new ImageView(container.getContext());
-            Picasso.with(ProductItemDetailActivity.this).load(Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL()).into(view);
+            BitmapUtil.loadImageView(ProductItemDetailActivity.this,Contants.DOMAIN + "/" + prs.getImg_content().get(position).getThumbURL(),view);
+
+
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return view;

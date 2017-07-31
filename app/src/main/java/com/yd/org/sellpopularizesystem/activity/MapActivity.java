@@ -1,9 +1,9 @@
 package com.yd.org.sellpopularizesystem.activity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.text.Layout;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
@@ -25,13 +25,12 @@ import com.amap.api.maps2d.model.LatLng;
 import com.amap.api.maps2d.model.LatLngBounds;
 import com.amap.api.maps2d.model.Marker;
 import com.amap.api.maps2d.model.MarkerOptions;
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -237,7 +236,8 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
         ImageView iv= (ImageView) view.findViewById(R.id.badge);
         for (int i = 0; i <productData.size(); i++) {
             if (marker.getTitle().equals(productData.get(i).getProduct_name())){
-                Picasso.with(MapActivity.this).load(Contants.DOMAIN +"/"+productData.get(i).getThumb()).resize(100,100).into(iv);
+                BitmapUtil.loadImageView(this,Contants.DOMAIN + "/" + productData.get(i).getThumb(),iv);
+
             }
         }
         String title = marker.getTitle();

@@ -792,7 +792,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 return false;
             }
         });
-        //设置SelectPicPopupWindow弹出窗体动画效果
+        //设置SelectPicPopu  pWindow弹出窗体动画效果
         nationSelectPopWindow.setAnimationStyle(R.style.Animation);
         //实例化一个ColorDrawable颜色为半透明
         ColorDrawable cd = new ColorDrawable(0xb0000000);

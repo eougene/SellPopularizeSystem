@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
@@ -423,8 +422,8 @@ public class MyCertificateActivity extends BaseActivity {
                         }
 
 
-                        Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).
-                                config(Bitmap.Config.RGB_565).into(srcImageView);
+                        BitmapUtil.loadImageView(MyCertificateActivity.this,Contants.DOMAIN + "/" + lb.getResult().getLicence_file(),srcImageView);
+
 
 
                     }

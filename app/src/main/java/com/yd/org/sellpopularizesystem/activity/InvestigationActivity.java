@@ -11,13 +11,12 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -85,7 +84,8 @@ public class InvestigationActivity extends BaseActivity {
         }
 
         if (!TextUtils.isEmpty(resultBean.getHead_img())) {
-            Picasso.with(this).load(Contants.DOMAIN + "/" + resultBean.getHead_img()).into(ivCustomePhoto);
+            BitmapUtil.loadImageView(this,Contants.DOMAIN + "/" + resultBean.getHead_img(),ivCustomePhoto);
+
         } else {
             ivCustomePhoto.setImageResource(R.mipmap.settingbt);
         }

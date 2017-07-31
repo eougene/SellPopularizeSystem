@@ -11,7 +11,6 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.ViewPagerAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -21,6 +20,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.ExpandView;
 import com.yd.org.sellpopularizesystem.myView.ScaleAlphaPageTransformer;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.viewpage.HackyViewPager;
 import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
 import com.yd.org.sellpopularizesystem.viewpage.ViewpagerAdapter;
@@ -101,7 +101,8 @@ public class ScaleDeltaileActivity extends FragmentActivity {
             } else {
                 ImageView imageView = new ImageView(this);
                 imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-                Picasso.with(this).load(picList.get(i)).into(imageView);
+                BitmapUtil.loadImageView(this,picList.get(i),imageView);
+
                 viewList.add(i, imageView);
             }
         }

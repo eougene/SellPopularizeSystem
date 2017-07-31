@@ -763,6 +763,9 @@ public class ReserveActivity extends BaseActivity {
                         CropImage(picPath);
                     } else {
                         Picasso.with(this).load(selectedPhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
+
+
+
                     }
                     // 裁剪图片
                 case ExtraName.CROP_IMAGE:
