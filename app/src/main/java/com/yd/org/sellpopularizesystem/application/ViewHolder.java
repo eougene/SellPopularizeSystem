@@ -14,8 +14,8 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.myView.ChildListView;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 
 /**
  * Created by ${bai} on 17/2/13.
@@ -201,8 +201,8 @@ public class ViewHolder {
      * @return
      */
     public ViewHolder setImageByUrl(int viewId, String url) {
-        Picasso.with(context).load(url).fit().centerCrop().
-                config(Bitmap.Config.RGB_565).into((ImageView) getView(viewId));
+        BitmapUtil.loadImageView(context,url,(ImageView) getView(viewId));
+
 
         return this;
     }
@@ -215,8 +215,9 @@ public class ViewHolder {
      */
     public ViewHolder setImageByUrl(int viewId, String url, View.OnClickListener click) {
         ImageView imageView = (ImageView) getView(viewId);
-        Picasso.with(context).load(url).
-                config(Bitmap.Config.RGB_565).into(imageView);
+
+        BitmapUtil.loadImageView(context,url,imageView);
+
 
 
         imageView.setOnClickListener(click);
