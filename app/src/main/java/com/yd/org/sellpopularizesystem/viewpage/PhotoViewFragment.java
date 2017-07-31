@@ -1,15 +1,14 @@
 package com.yd.org.sellpopularizesystem.viewpage;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
-import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.BaseFragmentView;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import uk.co.senab.photoview.PhotoView;
@@ -38,7 +37,7 @@ public class PhotoViewFragment extends BaseFragmentView {
 
         Log.e("url***", "url:" + url);
 
-        if (url.endsWith(".pdf") || url.endsWith(".ppt") || url.endsWith(".pptx")) {
+        if (url.endsWith(".pdf") || url.endsWith(".ppt") || url.endsWith(".pptx")||url.endsWith(".PDF") || url.endsWith(".PPT") || url.endsWith(".PPTX")) {
             title = getArguments().getString("title");
             pdfView.setVisibility(View.VISIBLE);
             photoIm.setVisibility(View.GONE);
@@ -77,8 +76,8 @@ public class PhotoViewFragment extends BaseFragmentView {
 
     private void init() {
         Log.e("图片地址**", "url:" + url);
-        Picasso.with(getActivity()).load(url).fit().centerCrop().
-                config(Bitmap.Config.RGB_565).into(photoIm);
+        BitmapUtil.loadImageView(getActivity(),url,photoIm);
+
 
     }
 
