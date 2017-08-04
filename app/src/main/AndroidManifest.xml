@@ -69,6 +69,9 @@
         android:name="getui.permission.GetuiService.com.yd.org.sellpopularizesystem"
         android:protectionLevel="normal"/>
 
+
+
+
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -326,9 +329,19 @@
         </activity>
         <activity android:name=".activity.InvoiceActivity">
         </activity>
-
         <service
             android:name=".rxdownloadoffice.function.DownloadService"/>
+
+
+        <receiver android:name=".activity.MyBroadCastReciver">
+            <intent-filter>
+                <action android:name="com.kingsoft.writer.back.key.down" />
+                <action android:name="cn.wps.moffice.file.close" />
+                <action android:name="com.kingsoft.writer.back.key.down" />
+                <action android:name="com.kingsoft.writer.home.key.down" />
+
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
