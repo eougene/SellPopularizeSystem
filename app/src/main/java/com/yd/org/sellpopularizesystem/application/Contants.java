@@ -8,12 +8,13 @@ public class Contants {
     /**
      * 域名
      */
-   public static final String DOMAIN = "http://crm.vxda.cn";
-    //public static final String DOMAIN = "https://www.wingaid.com";
+   //public static final String DOMAIN = "http://crm.vxda.cn";
+    public static final String DOMAIN = "https://www.wingaid.com";
 
-    //加载PDF,正式
-    public static final String PDF = "http://dcsapi.com?k=140337680&url=";
-    public static final String PDF_TEST = "http://dcsapi.com?k=140387567&url=";
+    //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
+   // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
+    //public static final String PDF_TEST = "http://dcsapi.com?k=140387567&url=";
+
     //首页数据
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";

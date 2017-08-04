@@ -5,11 +5,11 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
+import com.github.barteksc.pdfviewer.PDFView;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.fragment.BaseFragmentView;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.FinalDownFile;
 
 import uk.co.senab.photoview.PhotoView;
 
@@ -17,6 +17,7 @@ public class PhotoViewFragment extends BaseFragmentView {
     private PhotoView photoIm;
     private String url, title;
     private WebView pdfView;
+    private PDFView pView;
 
     public static PhotoViewFragment getInstnce(String url, String title) {
         PhotoViewFragment photoViewFragment = new PhotoViewFragment();
@@ -33,25 +34,18 @@ public class PhotoViewFragment extends BaseFragmentView {
         setContentView(R.layout.fragment_photo_view);
         photoIm = getViewById(R.id.photoIm);
         pdfView = getViewById(R.id.pdfView);
+        pView = getViewById(R.id.pView);
         url = getArguments().getString("url");
 
         Log.e("url***", "url:" + url);
 
-        if (url.endsWith(".pdf") || url.endsWith(".ppt") || url.endsWith(".pptx")||url.endsWith(".PDF") || url.endsWith(".PPT") || url.endsWith(".PPTX")) {
+        if (url.endsWith(".pdf") || url.endsWith(".ppt") || url.endsWith(".pptx") || url.endsWith(".PDF") || url.endsWith(".PPT") || url.endsWith(".PPTX")) {
             title = getArguments().getString("title");
             pdfView.setVisibility(View.VISIBLE);
             photoIm.setVisibility(View.GONE);
 
 
-            //正式域名
-            if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
-                MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF + url);
-
-                //测试域名
-            } else {
-                MyUtils.getInstance().showWebView(getActivity(), pdfView, Contants.PDF_TEST + url);
-
-            }
+            new FinalDownFile(getActivity(),  url, pdfView,pView);
 
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
@@ -76,7 +70,7 @@ public class PhotoViewFragment extends BaseFragmentView {
 
     private void init() {
         Log.e("图片地址**", "url:" + url);
-        BitmapUtil.loadImageView(getActivity(),url,photoIm);
+        BitmapUtil.loadImageView(getActivity(), url, photoIm);
 
 
     }

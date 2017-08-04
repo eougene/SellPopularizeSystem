@@ -10,6 +10,7 @@ import android.graphics.drawable.NinePatchDrawable;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
@@ -26,7 +27,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**文件处理工具类
+/**
+ * 文件处理工具类
  * Created by hejin on 2017/4/6.
  */
 
@@ -36,8 +38,10 @@ public class FileUtils {
     public static final long MB = KB * 1024;
     public static final long GB = MB * 1024;
     private static final int BUFFER = 8192;
-    public static final String	ICON_DIR = "pictrue";
+    public static final String ICON_DIR = "pictrue";
     public static final String APP_STORAGE_ROOT = "yingjia";
+    private String moffice_eng = "http://www.coolapk.com/apk/cn.wps.moffice_eng_10.4.3_202.apk";
+
     /**
      * 格式化文件大小<b> 带有单位
      *
@@ -87,53 +91,47 @@ public class FileUtils {
         /*return android.os.Environment.getExternalStorageState().equals(
                 android.os.Environment.MEDIA_MOUNTED);*/
         if (Environment.MEDIA_MOUNTED.equals(Environment
-                .getExternalStorageState()))
-        {
+                .getExternalStorageState())) {
             return true;
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
 
-    /**产生图片的路径，带文件夹和文件名，文件名为当前毫秒数*/
-    public static String generateImgePath(){
+    /**
+     * 产生图片的路径，带文件夹和文件名，文件名为当前毫秒数
+     */
+    public static String generateImgePath() {
         return getAppDir(ICON_DIR) + String.valueOf(System.currentTimeMillis()) + ".jpg";
     }
 
     /**
      * 获取app在外置SD卡的路径
+     *
      * @param name
      * @return
      */
-    public static String getAppDir(String name)
-    {
+    public static String getAppDir(String name) {
         StringBuilder sb = new StringBuilder();
-        if (isSdCardMounted())
-        {
+        if (isSdCardMounted()) {
             sb.append(getAppExternalStoragePath());
-        }
-        else
-        {
+        } else {
             sb.append(getCachePath());
         }
         sb.append(name);
         sb.append(File.separator);
         String path = sb.toString();
-        if (createDirs(path))
-        {
+        if (createDirs(path)) {
             return path;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
 
-    /** 获取SD下当前APP的目录 */
-    public static String getAppExternalStoragePath()
-    {
+    /**
+     * 获取SD下当前APP的目录
+     */
+    public static String getAppExternalStoragePath() {
         StringBuilder sb = new StringBuilder();
         sb.append(Environment.getExternalStorageDirectory().getAbsolutePath());
         sb.append(File.separator);
@@ -142,25 +140,26 @@ public class FileUtils {
         return sb.toString();
     }
 
-    /** 获取应用的cache目录 */
-    public static String getCachePath()
-    {
+    /**
+     * 获取应用的cache目录
+     */
+    public static String getCachePath() {
         File f = MyUtils.getContext().getCacheDir();
-        if (null == f)
-        {
+        if (null == f) {
             return null;
-        }
-        else
-        {
+        } else {
             return f.getAbsolutePath() + "/";
         }
     }
 
-    /** 创建文件夹 */
-    public static boolean createDirs(String dirPath)
-    {
+    /**
+     * 创建文件夹
+     */
+    public static boolean createDirs(String dirPath) {
         File file = new File(dirPath);
-        if (!file.exists() || !file.isDirectory()) { return  file.mkdirs(); }
+        if (!file.exists() || !file.isDirectory()) {
+            return file.mkdirs();
+        }
         return true;
     }
 
@@ -168,7 +167,7 @@ public class FileUtils {
      * 递归创建文件目录
      *
      * @param path
-     * */
+     */
     public static void CreateDir(String path) {
         if (!isSdCardMounted())
             return;
@@ -194,7 +193,8 @@ public class FileUtils {
         InputStream is = null;
         try {
             is = new FileInputStream(file);
-            text = readTextInputStream(is);;
+            text = readTextInputStream(is);
+            ;
         } finally {
             if (is != null) {
                 is.close();
@@ -248,6 +248,7 @@ public class FileUtils {
 
     /**
      * 将Bitmap保存本地JPG图片
+     *
      * @param url
      * @return
      * @throws IOException
@@ -260,7 +261,7 @@ public class FileUtils {
         SimpleDateFormat sf = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
         String timeStamp = sf.format(new Date());
         //File targetFile = new File(Constants.ENVIROMENT_DIR_SAVE, timeStamp + ".jpg");
-       // File oldfile = ImageLoader.getInstance().getDiscCache().get(url);
+        // File oldfile = ImageLoader.getInstance().getDiscCache().get(url);
         try {
 
             //inBuff = new BufferedInputStream(new FileInputStream(oldfile));
@@ -349,6 +350,7 @@ public class FileUtils {
             file.delete();
         }
     }
+
     /**
      * InputStrem 转byte[]
      *
@@ -473,4 +475,16 @@ public class FileUtils {
         return bitmap;
 
     }
+
+    /**
+     * 截取Url最后一段作为文件保存名称
+     *
+     * @param url url
+     * @return saveName
+     */
+    public static String getSaveNameByUrl(String url) {
+        return url.substring(url.lastIndexOf('/') + 1);
+    }
+
+
 }

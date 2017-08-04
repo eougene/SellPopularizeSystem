@@ -2,10 +2,10 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
 import android.webkit.WebView;
-
+import com.github.barteksc.pdfviewer.PDFView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.FinalDownFile;
 
 /**
  * Created by e-dot on 2017/6/16.
@@ -14,6 +14,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 public class IntroduceActivity extends BaseActivity {
     private WebView pdfView;
     private String sale_advice_url, type = "";
+    private PDFView pView;
 
     @Override
     protected int setContentView() {
@@ -25,6 +26,7 @@ public class IntroduceActivity extends BaseActivity {
 
         hideRightImagview();
         pdfView = getViewById(R.id.pdfView);
+        pView = getViewById(R.id.pView);
         Bundle bundle = getIntent().getExtras();
         sale_advice_url = bundle.getString("introduce");
         type = bundle.getString("type");
@@ -37,18 +39,7 @@ public class IntroduceActivity extends BaseActivity {
 
         }
 
-
-        //正式域名
-        if (Contants.DOMAIN.equals("https://www.wingaid.com")) {
-            MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF + Contants.DOMAIN + "/" + sale_advice_url);
-
-
-            //测试域名
-        } else {
-            MyUtils.getInstance().showWebView(IntroduceActivity.this, pdfView, Contants.PDF_TEST + Contants.DOMAIN + "/" + sale_advice_url);
-
-        }
-
+        FinalDownFile finalDownFile = new FinalDownFile(this, Contants.DOMAIN + "/" + sale_advice_url, pdfView,pView);
 
     }
 

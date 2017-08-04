@@ -36,6 +36,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+/**
+ * 订单列表
+ */
 public class SaleRecordActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView lvSaleRecord;
     private PullToRefreshLayout ptrlSaleRecord;

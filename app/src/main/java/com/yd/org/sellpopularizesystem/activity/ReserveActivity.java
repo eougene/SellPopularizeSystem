@@ -62,6 +62,9 @@ import java.util.regex.Pattern;
 
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
+/**
+ * 创建订单
+ */
 public class ReserveActivity extends BaseActivity {
     private TextView tvProName, tvRePrice, tvRetype, tvReFirb, tvReSale,
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvReCusAdd, tvCompany, tvShareholder, isRead;
@@ -448,7 +451,7 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
                     if (bean.getCate_id()==1){
-                        tvMoneyNum.setText("$ 600.00");
+                        tvMoneyNum.setText("$ 300.00");
                     }else {
                         tvMoneyNum.setText("$ 300.00");
                     }
@@ -461,7 +464,7 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
                     if (bean.getCate_id()==1){
-                        tvMoneyNum.setText("$ 600.00");
+                        tvMoneyNum.setText("$ 300.00");
                     }else {
                         tvMoneyNum.setText("$ 300.00");
                     }
@@ -475,7 +478,7 @@ public class ReserveActivity extends BaseActivity {
                     }
                     tvPayMethod.setText(R.string.alipay);
                     if (bean.getCate_id()==1){
-                        tvMoneyNum.setText("￥ 4000.00");
+                        tvMoneyNum.setText("￥ 2000.00");
                     }else {
                         tvMoneyNum.setText("￥ 2000.00");
                     }
@@ -488,7 +491,7 @@ public class ReserveActivity extends BaseActivity {
                     }
                     tvPayMethod.setText(R.string.wechatpay);
                     if (bean.getCate_id()==1){
-                        tvMoneyNum.setText("￥ 4000.00");
+                        tvMoneyNum.setText("￥ 2000.00");
                     }else {
                         tvMoneyNum.setText("￥ 2000.00");
                     }
