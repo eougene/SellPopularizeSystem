@@ -148,7 +148,7 @@
     <string name="birthday">Date of Birth</string>
     <string name="mobilephone">Mobile</string>
     <string name="mobileormail">Mobile or Email</string>
-    <string name="email">Postcode</string>
+    <string name="email">Email</string>
     <string name="qq">QQ</string>
     <string name="nationorarea">Country or Region</string>
     <string name="pcd">Province City Area</string>
@@ -582,6 +582,7 @@
     <string name="land_price">Land price</string>
     <string name="co_people">Co-purchase</string>
     <string name="separated">separated by a comma</string>
+    <string name="Australian">Australian</string>
 
 </resources>
 

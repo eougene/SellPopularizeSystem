@@ -228,15 +228,16 @@
                 <EditText
                     android:id="@+id/etCopurchase"
                     style="@style/WrapMatch"
-                    android:background="@null"
-                    android:hint="@string/separated"
-                    android:textColorHint="@color/gray"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_toRightOf="@+id/reCopurchase"
+                    android:background="@null"
+                    android:focusable="false"
                     android:gravity="right"
+                    android:hint="@string/separated"
                     android:textColor="#ff0000"
+                    android:textColorHint="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
             </RelativeLayout>
 
@@ -445,7 +446,8 @@
                     android:layout_toRightOf="@+id/tvPay"
                     android:text="$0000"
                     android:textColor="@color/read"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:textSize="@dimen/tv_size_12"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/tvRePayType"

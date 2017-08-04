@@ -406,6 +406,7 @@
                         android:background="@color/search_edit_bac"/>
 
                     <TextView
+                        android:text="@string/Australian"
                         android:id="@+id/tvCountry"
                         style="@style/MatchWrap"
                         android:background="@null"
