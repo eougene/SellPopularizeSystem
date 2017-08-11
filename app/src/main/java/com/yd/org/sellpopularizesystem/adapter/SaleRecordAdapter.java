@@ -209,6 +209,9 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
 
+            //未满10%房款
+        }else if (viewHolder.resultBean.getStatus() == 4){
+
         }
 
 
