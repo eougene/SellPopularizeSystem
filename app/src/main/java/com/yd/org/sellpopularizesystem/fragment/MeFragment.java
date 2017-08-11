@@ -269,8 +269,6 @@ public class MeFragment extends BaseFragmentView {
     @Override
     public void onResume() {
         super.onResume();
-
-
         tvUserName = getViewById(R.id.tvCustomeName);
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
 
