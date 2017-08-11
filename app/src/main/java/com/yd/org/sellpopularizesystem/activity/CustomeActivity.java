@@ -40,8 +40,6 @@ import net.tsz.afinal.http.AjaxParams;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-
 /**
  * 客户管理
  */

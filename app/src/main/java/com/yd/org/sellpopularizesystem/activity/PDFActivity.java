@@ -35,7 +35,7 @@ public class PDFActivity extends BaseActivity {
         if (orderId == null || sale_advice_url == null) {
             fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
             setTitle(fileContent.getDetail_name());
-            FinalDownFile finalDownFile = new FinalDownFile(this, Contants.DOMAIN + "/" + fileContent.getUrl(), pdfView, pView);
+             new FinalDownFile(this, Contants.DOMAIN + "/" + fileContent.getUrl(), pdfView, pView);
 
         } else {
             setTitle(getString(R.string.sale_notice));

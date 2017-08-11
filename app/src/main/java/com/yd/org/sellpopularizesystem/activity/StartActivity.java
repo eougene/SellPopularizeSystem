@@ -54,10 +54,8 @@ public class StartActivity extends AppCompatActivity {
     public void initView() {
         // 判断程序与第几次运行，如果是第一次运行则跳转到引导界面，否则跳转到主界面
         iv_launcher = (RelativeLayout) findViewById(R.id.iv_launcher);
-
         /** 加载透明动画 **/
         mAnimation = AnimationUtils.loadAnimation(this, R.anim.alpha_launch_ui);
-
         /** 播放透明动画 **/
         iv_launcher.startAnimation(mAnimation);
         if (SharedPreferencesHelps.getIsFirstLauncher()) {
@@ -78,7 +76,6 @@ public class StartActivity extends AppCompatActivity {
             return true;
         }
     }
-
 
     private void goHome() {
         if (isLogining()) {
