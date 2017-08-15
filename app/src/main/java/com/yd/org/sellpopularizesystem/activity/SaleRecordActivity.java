@@ -33,6 +33,7 @@ import net.tsz.afinal.http.AjaxParams;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 
@@ -250,8 +251,11 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
                         Uri photoUri = BitmapUtil.imgUri;
-                        picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
-                        setPicPath(picPath, rBean);
+                        if (photoUri!=null){
+                            Log.e("TAG", "onActivityResult: "+photoUri.toString());
+                            picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
+                            setPicPath(picPath, rBean);
+                        }
 
                     }
                     break;
@@ -301,12 +305,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             } else {
                 //支付房款-上传凭证或在线支付
                 strUrl = Contants.UPLOAD_FIRST_COMMISSION;
-                ajaxParams.put("money_where", "1");
+                /*ajaxParams.put("money_where", "1");
                 ajaxParams.put("pay_method", resultBean.getPayment_method() + "");
                 ajaxParams.put("pay_time", resultBean.getPay_time() + "");
                 ajaxParams.put("amount", resultBean.getPrice() + "");
-                ajaxParams.put("remark", resultBean.getRemark() + "");
-
+                ajaxParams.put("remark", resultBean.getRemark() + "");*/
+                ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
+                ajaxParams.put("customer_id",resultBean.getClient()+"");
                 if (null != picPath && !picPath.equals("")) {
                     File picFile = new File(picPath);
                     ajaxParams.put("image[]", picFile);

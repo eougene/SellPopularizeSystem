@@ -6,7 +6,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean;
+
+import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean2;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -46,9 +47,9 @@ public class OrderDetailActivity extends BaseActivity {
                 closeDialog();
                 super.onSuccess(s);
                 Gson gson = new Gson();
-                OrderDetailBean orderDetailBean = gson.fromJson(s, OrderDetailBean.class);
-                if (orderDetailBean.getCode().equals("1") && orderDetailBean.getMsg().equals(getString(R.string.order_success_info))) {
-                    initData(orderDetailBean.getResult());
+                OrderDetailBean2 orderDetailBean2 = gson.fromJson(s, OrderDetailBean2.class);
+                if (orderDetailBean2.getCode().equals("1") && orderDetailBean2.getMsg().equals(getString(R.string.order_success_info))) {
+                    initData(orderDetailBean2.getResult());
                 }
             }
 
@@ -59,31 +60,32 @@ public class OrderDetailActivity extends BaseActivity {
         });
     }
 
-    private void initData(OrderDetailBean.ResultBean result) {
+    private void initData(OrderDetailBean2.ResultBean result) {
         tvOrderNum.setText(result.getProduct_orders_id() + "");
-        if (result.getProduct_info().getCate_id() != 0) {
-            if (result.getProduct_info().getCate_id() == 1) {
-                tvtype.setText(getString(R.string.house_land));
-                tvOrderDes.setText(getString(R.string.house_land) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
-            } else if (result.getProduct_info().getCate_id() == 2) {
-                tvtype.setText(getString(R.string.land));
-                tvOrderDes.setText(getString(R.string.land) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
-            } else {
-                tvtype.setText(getString(R.string.apt));
-                tvOrderDes.setText(getString(R.string.apt) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
+        if (result.getProduct_info() != null) {
+            if (result.getProduct_info().getCate_id() != 0) {
+                if (result.getProduct_info().getCate_id() == 1) {
+                    tvtype.setText(getString(R.string.house_land));
+                    tvOrderDes.setText(getString(R.string.house_land) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
+                } else if (result.getProduct_info().getCate_id() == 2) {
+                    tvtype.setText(getString(R.string.land));
+                    tvOrderDes.setText(getString(R.string.land) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
+                } else {
+                    tvtype.setText(getString(R.string.apt));
+                    tvOrderDes.setText(getString(R.string.apt) + "-" + result.getProduct_name() + "-" + result.getProduct_info().getProduct_childs_unit_number());
+                }
+
             }
 
+
+            tvFirb.setText(result.getIs_firb() == 0 ? getString(R.string.yes) : getString(R.string.bushi));
+            tvSale.setText(SharedPreferencesHelps.getSurName() + " " + SharedPreferencesHelps.getFirstName());
+            tvCus.setText(result.getCustomer_surname() + " " + result.getCustomer_first_name());
+            //tvCusAdd.setText(result.getCustomer_info().getCountry() + " " + result.getCustomer_info().getStreet_address_line_1() + " " + result.getCustomer_info().getStreet_address_line_2());
+            tvLawyer.setText(result.getLawyer_name());
+            tvGoal.setText(result.getPurchaseReason());
+            tvPrice.setText("$" + MyUtils.addComma(result.getPrice().split("\\.")[0]));
         }
-
-        tvFirb.setText(result.getIs_firb() == 0 ? getString(R.string.yes) : getString(R.string.bushi));
-        tvSale.setText(SharedPreferencesHelps.getSurName()+" "+SharedPreferencesHelps.getFirstName());
-
-
-        tvCus.setText(result.getCustomer_surname()+" "+result.getCustomer_first_name());
-        tvCusAdd.setText(result.getCustomer_info().getCountry()+" "+result.getCustomer_info().getStreet_address_line_1()+" "+result.getCustomer_info().getStreet_address_line_2());
-        tvLawyer.setText(result.getLawyer_name());
-        tvGoal.setText(result.getPurchaseReason());
-        tvPrice.setText("$" + MyUtils.addComma(result.getPrice().split("\\.")[0]));
     }
 
     private void initWidgets() {

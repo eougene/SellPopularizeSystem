@@ -82,6 +82,7 @@ public class BitmapUtil {
                 }
                 //mPublicPhotoPath = photoFile.getAbsolutePath();
                 imgPath = photoFile.getAbsolutePath();
+                Log.e("TAG", "startImageCapture: "+imgPath);
                 //imgPath=mPublicPhotoPath;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -103,6 +104,7 @@ public class BitmapUtil {
                     contentValues.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
                     contentValues.put(MediaStore.Images.Media.SIZE, 1024 * 200);
                     photoURI = act.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+                    //imgUri = photoURI;
                 }
                 imgUri = photoURI;
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);

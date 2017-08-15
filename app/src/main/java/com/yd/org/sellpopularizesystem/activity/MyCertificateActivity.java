@@ -198,21 +198,27 @@ public class MyCertificateActivity extends BaseActivity {
                     Uri photoUri = BitmapUtil.imgUri;
 
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        picPath = BitmapUtil.getImagePath(MyCertificateActivity.this, photoUri, null, null);
-                        Bitmap bitmap = null;
-                        try {
-                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
+                        if (photoUri!=null){
+                            picPath = BitmapUtil.getImagePath(MyCertificateActivity.this, photoUri, null, null);
+                            Bitmap bitmap = null;
+                            try {
+                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+
+                            Log.e("招聘***1", "picPath:" + picPath);
+                            srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
 
-                        Log.e("招聘***1", "picPath:" + picPath);
-                        srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        picPath = imgUri.getPath();
-                        Log.e("招聘***2", "picPath:" + picPath);
-                        srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        if (imgUri!=null){
+                            picPath = imgUri.getPath();
+                            Log.e("招聘***2", "picPath:" + picPath);
+                            srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        }
+
                     }
 
                     break;

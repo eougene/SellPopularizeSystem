@@ -56,6 +56,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -738,22 +739,28 @@ public class ReserveActivity extends BaseActivity {
 
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                        Log.e("imgPath", "onActivityResult: " + picPath);
-                        //picPath=BitmapUtil.imgPath;
-                        Bitmap bitmap = null;
-                        try {
-                            //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
-                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
+                        if (photoUri!=null){
+                            picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
+                            Log.e("imgPath", "onActivityResult: " + picPath);
+                            //picPath=BitmapUtil.imgPath;
+                            Bitmap bitmap = null;
+                            try {
+                                //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
+                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
+                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
-                        //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
-                        ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
+
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        picPath = imgUri.getPath();
-                        ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        if (imgUri!=null){
+                            picPath = imgUri.getPath();
+                            ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
+                        }
+
                     }
                     break;
 

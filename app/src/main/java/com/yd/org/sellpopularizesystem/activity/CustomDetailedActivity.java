@@ -1572,25 +1572,27 @@ public class CustomDetailedActivity extends BaseActivity {
                 case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
-                        Bitmap bitmap = null;
-                        try {
-                            bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
+                        if (photoUri!=null){
+                            imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
+                            Bitmap bitmap = null;
+                            try {
+                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            }
+                            customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
                         }
 
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        imagePath = imgUri.getPath();
-                        customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
+                        if (imgUri!=null){
+                            imagePath = imgUri.getPath();
+                            customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
+                        }
+
                     }
 
                     break;
-
-
-
 
             }
 

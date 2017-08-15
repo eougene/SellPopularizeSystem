@@ -120,11 +120,14 @@ public class SaleOrderBean extends Domine {
         private String product_id;
         private String eoi_id;
         private String purchaseReason;
+        private int is_two_order;
+        private String another_order_id;
         private int property_id;
         private int product_childs_type;
         private String price;
         private String currency;
         private int client;
+        private String co_purchaser;
         private int is_firb;
         private int client_type;
         private int sales_id;
@@ -149,6 +152,7 @@ public class SaleOrderBean extends Domine {
         private int contract_apply_status;
         private String buy_money_url;
         private String buy_money_account_paid;
+        private int buy_money_upload_number;
         private String buy_money_add_time;
         private String buy_money_check_time;
         private int buy_money_status;
@@ -158,17 +162,23 @@ public class SaleOrderBean extends Domine {
         private int upload_contract_status;
         private int cancel_apply_time;
         private String cancel_time;
+        private int who_cancel;
         private int cancel_apply_status;
         private String complete_time;
         private String remark;
         private String days_to_pay;
+        private int vendor_id;
+        private int vendor_lawyer_id;
         private int sale_advice_status;
+        private String sale_advice_check_time;
         private String old_status;
+        private long exchanged_time;
         private int status;
         private ProductNameBean product_name;
         private String customer_surname;
         private String customer_first_name;
         private String customer_en_name;
+        private String is_create_sr;
         private String sale_advice_url;
         private ProductInfoBean product_info;
 
@@ -220,6 +230,22 @@ public class SaleOrderBean extends Domine {
             this.purchaseReason = purchaseReason;
         }
 
+        public int getIs_two_order() {
+            return is_two_order;
+        }
+
+        public void setIs_two_order(int is_two_order) {
+            this.is_two_order = is_two_order;
+        }
+
+        public String getAnother_order_id() {
+            return another_order_id;
+        }
+
+        public void setAnother_order_id(String another_order_id) {
+            this.another_order_id = another_order_id;
+        }
+
         public int getProperty_id() {
             return property_id;
         }
@@ -258,6 +284,14 @@ public class SaleOrderBean extends Domine {
 
         public void setClient(int client) {
             this.client = client;
+        }
+
+        public String getCo_purchaser() {
+            return co_purchaser;
+        }
+
+        public void setCo_purchaser(String co_purchaser) {
+            this.co_purchaser = co_purchaser;
         }
 
         public int getIs_firb() {
@@ -444,6 +478,14 @@ public class SaleOrderBean extends Domine {
             this.buy_money_url = buy_money_url;
         }
 
+        public int getBuy_money_upload_number() {
+            return buy_money_upload_number;
+        }
+
+        public void setBuy_money_upload_number(int buy_money_upload_number) {
+            this.buy_money_upload_number = buy_money_upload_number;
+        }
+
         public String getBuy_money_account_paid() {
             return buy_money_account_paid;
         }
@@ -524,6 +566,14 @@ public class SaleOrderBean extends Domine {
             this.cancel_time = cancel_time;
         }
 
+        public int getWho_cancel() {
+            return who_cancel;
+        }
+
+        public void setWho_cancel(int who_cancel) {
+            this.who_cancel = who_cancel;
+        }
+
         public int getCancel_apply_status() {
             return cancel_apply_status;
         }
@@ -556,6 +606,22 @@ public class SaleOrderBean extends Domine {
             this.days_to_pay = days_to_pay;
         }
 
+        public int getVendor_id() {
+            return vendor_id;
+        }
+
+        public void setVendor_id(int vendor_id) {
+            this.vendor_id = vendor_id;
+        }
+
+        public int getVendor_lawyer_id() {
+            return vendor_lawyer_id;
+        }
+
+        public void setVendor_lawyer_id(int vendor_lawyer_id) {
+            this.vendor_lawyer_id = vendor_lawyer_id;
+        }
+
         public int getSale_advice_status() {
             return sale_advice_status;
         }
@@ -564,12 +630,28 @@ public class SaleOrderBean extends Domine {
             this.sale_advice_status = sale_advice_status;
         }
 
+        public String getSale_advice_check_time() {
+            return sale_advice_check_time;
+        }
+
+        public void setSale_advice_check_time(String sale_advice_check_time) {
+            this.sale_advice_check_time = sale_advice_check_time;
+        }
+
         public String getOld_status() {
             return old_status;
         }
 
         public void setOld_status(String old_status) {
             this.old_status = old_status;
+        }
+
+        public long getExchanged_time() {
+            return exchanged_time;
+        }
+
+        public void setExchanged_time(long exchanged_time) {
+            this.exchanged_time = exchanged_time;
         }
 
         public int getStatus() {
@@ -610,6 +692,14 @@ public class SaleOrderBean extends Domine {
 
         public void setCustomer_en_name(String customer_en_name) {
             this.customer_en_name = customer_en_name;
+        }
+
+        public String getIs_create_sr() {
+            return is_create_sr;
+        }
+
+        public void setIs_create_sr(String is_create_sr) {
+            this.is_create_sr = is_create_sr;
         }
 
         public String getSale_advice_url() {
@@ -785,15 +875,23 @@ public class SaleOrderBean extends Domine {
             private String house_discount_amount;
             private int is_gst;
             private String extra_commossion;
+            private String exit_commossion;
+            private String adjust_factor;
             private int is_specal_commission;
-            private int sales_commission_type;
-            private String sales_commission_value;
-            private String first_commission_type;
+            private int commossion_type;
+            //private int sales_commission_type;
+            //private String sales_commission_value;
+            private String commossion_value;
+            private int commossion_send_type;
+            private int module_one_first;
+            private int module_two_first;
+            private int module_three_first;
+            /*private String first_commission_type;
             private String commossion_first;
             private String second_commission_type;
             private String commossion_second;
             private String third_commission_type;
-            private String commossion_third;
+            private String commossion_third;*/
             private String currency;
             private String thumb;
             private String agent_notes;
@@ -803,6 +901,8 @@ public class SaleOrderBean extends Domine {
             private int is_lock;
             private int is_eoi;
             private int if_eoi;
+            private int recind_number;
+            private int old_status;
             private int status;
 
             public int getProduct_childs_id() {
@@ -1037,6 +1137,22 @@ public class SaleOrderBean extends Domine {
                 this.extra_commossion = extra_commossion;
             }
 
+            public String getExit_commossion() {
+                return exit_commossion;
+            }
+
+            public void setExit_commossion(String exit_commossion) {
+                this.exit_commossion = exit_commossion;
+            }
+
+            public String getAdjust_factor() {
+                return adjust_factor;
+            }
+
+            public void setAdjust_factor(String adjust_factor) {
+                this.adjust_factor = adjust_factor;
+            }
+
             public int getIs_specal_commission() {
                 return is_specal_commission;
             }
@@ -1045,23 +1161,64 @@ public class SaleOrderBean extends Domine {
                 this.is_specal_commission = is_specal_commission;
             }
 
-            public int getSales_commission_type() {
-                return sales_commission_type;
+            public int getCommission_type() {
+                return commossion_type;
             }
 
-            public void setSales_commission_type(int sales_commission_type) {
-                this.sales_commission_type = sales_commission_type;
+            public void setCommission_type(int commission_type) {
+                this.commossion_type = commission_type;
             }
 
-            public String getSales_commission_value() {
-                return sales_commission_value;
+            public String getCommossion_value() {
+                return commossion_value;
             }
 
-            public void setSales_commission_value(String sales_commission_value) {
-                this.sales_commission_value = sales_commission_value;
+            public void setCommossion_value(String commossion_value) {
+                this.commossion_value = commossion_value;
             }
 
-            public String getFirst_commission_type() {
+
+            public int getCommossion_send_type() {
+                return commossion_send_type;
+            }
+
+            public void setCommossion_send_type(int commossion_send_type) {
+                this.commossion_send_type = commossion_send_type;
+            }
+
+            public int getModule_one_first() {
+                return module_one_first;
+            }
+
+            public void setModule_one_first(int module_one_first) {
+                this.module_one_first = module_one_first;
+            }
+
+            public int getModule_two_first() {
+                return module_two_first;
+            }
+
+            public void setModule_two_first(int module_two_first) {
+                this.module_two_first = module_two_first;
+            }
+
+            public int getModule_three_first() {
+                return module_three_first;
+            }
+
+            public void setModule_three_first(int module_three_first) {
+                this.module_three_first = module_three_first;
+            }
+
+            public int getCommossion_type() {
+                return commossion_type;
+            }
+
+            public void setCommossion_type(int commossion_type) {
+                this.commossion_type = commossion_type;
+            }
+
+            /* public String getFirst_commission_type() {
                 return first_commission_type;
             }
 
@@ -1107,7 +1264,7 @@ public class SaleOrderBean extends Domine {
 
             public void setCommossion_third(String commossion_third) {
                 this.commossion_third = commossion_third;
-            }
+            }*/
 
             public String getCurrency() {
                 return currency;
@@ -1179,6 +1336,22 @@ public class SaleOrderBean extends Domine {
 
             public void setIf_eoi(int if_eoi) {
                 this.if_eoi = if_eoi;
+            }
+
+            public int getRecind_number() {
+                return recind_number;
+            }
+
+            public void setRecind_number(int recind_number) {
+                this.recind_number = recind_number;
+            }
+
+            public int getOld_status() {
+                return old_status;
+            }
+
+            public void setOld_status(int old_status) {
+                this.old_status = old_status;
             }
 
             public int getStatus() {

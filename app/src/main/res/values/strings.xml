@@ -580,6 +580,7 @@
     <string name="co_people">联合购买人</string>
     <string name="separated">用逗号隔开</string>
     <string name="Australian">澳大利亚</string>
+    <string name="without_full_amount">10%房款未全部付款</string>
 
 
 </resources>

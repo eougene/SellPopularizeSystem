@@ -583,6 +583,8 @@
     <string name="co_people">Co-purchase</string>
     <string name="separated">separated by a comma</string>
     <string name="Australian">Australian</string>
+    <string name="without_full_amount">10% of the house fund without full payment</string>
+
 
 </resources>
 

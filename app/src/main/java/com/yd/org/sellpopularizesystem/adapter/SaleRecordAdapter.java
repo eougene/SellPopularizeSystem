@@ -167,11 +167,21 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.GONE);
 
+                if (viewHolder.resultBean.getBuy_money_upload_number()==1){
+                    viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                }
+
 
             }
 
-            //订单已取消
-        } else if (viewHolder.resultBean.getStatus() == 10) {
+
+        }
+
+
+
+
+        //订单已取消
+        else if (viewHolder.resultBean.getStatus() == 10) {
 
 
             viewHolder.saleRecorTv1.setVisibility(View.GONE);
@@ -210,7 +220,32 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
 
             //未满10%房款
-        }else if (viewHolder.resultBean.getStatus() == 4){
+        }else if (viewHolder.resultBean.getStatus() == 14){
+
+            if (viewHolder.resultBean.getBuy_money_upload_number()==1){
+                viewHolder.tvStatus.setVisibility(View.VISIBLE);
+                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+
+                viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
+
+                if (viewHolder.resultBean.getBuy_money_status()==0){
+                    viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+                }else {
+                    viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                }
+            }else {
+                viewHolder.tvStatus.setVisibility(View.VISIBLE);
+                viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
+                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+                viewHolder.saleRecorTv3.setVisibility(View.GONE);
+                viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
+            }
+
+
+
 
         }
 
