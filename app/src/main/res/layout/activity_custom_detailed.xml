@@ -387,6 +387,51 @@
 
             <View
                 android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:background="@color/search_edit_bac"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_14"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:drawableRight="@mipmap/right_sm"
+                    android:padding="@dimen/padding_margin_14"
+                    android:text="Memo"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/tv_size_12"/>
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/search_edit_bac"/>
+
+
+                <EditText
+                    android:id="@+id/etCusMemo"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@null"
+                    android:gravity="end"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_margin_14"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
                 android:layout_height="5dp"
                 android:background="@color/search_edit_bac"/>
 

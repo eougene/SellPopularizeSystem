@@ -1,5 +1,7 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
+import java.util.List;
+
 /**
  * Created by hejin on 2017/6/27.
  */
@@ -109,6 +111,7 @@ public class OrderDetailBean extends Domine{
         private String product_id;
         private String eoi_id;
         private String purchaseReason;
+        private int is_two_order;
         private int property_id;
         private int product_childs_type;
         private String price;
@@ -161,7 +164,7 @@ public class OrderDetailBean extends Domine{
         private String customer_en_name;
         private ProductInfoBean product_info;
         private CustomerInfoBean customer_info;
-
+        private Buy_money_info  buy_money_info;
         public int getProduct_orders_id() {
             return product_orders_id;
         }
@@ -1915,6 +1918,18 @@ public class OrderDetailBean extends Domine{
 
             public void setMemo(String memo) {
                 this.memo = memo;
+            }
+        }
+
+        public static class Buy_money_info{
+            public List<String> evidences;
+
+            public List<String> getEvidences() {
+                return evidences;
+            }
+
+            public void setEvidences(List<String> evidences) {
+                this.evidences = evidences;
             }
         }
     }

@@ -96,7 +96,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private CircleImageView customeIcon;
     private CheckBox cbCom;
     private EditText edCustomeTrueName, etMiddleName, edcustmomeDetailedBie, edCustomeMobile,
-            edcustmomeDetailedWeChat, edcustmomeDetailedQQ, edcustmomeDetailedCity,
+            edcustmomeDetailedWeChat, edcustmomeDetailedQQ, etCusMemo,edcustmomeDetailedCity,
             edcustmomeDetailedAddress, edcustmomeDetailedEmail, edcustmomeDetailedWeJob,
             edcustmomeDetailedSalary, edcustmomeDetailedCard, edcustmomeDetailedPassPort,
             edcustmomeDetailedNationality, edcustmomeDetailedKinsfolk, edcustmomeDetailedRelation,
@@ -324,6 +324,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone = getViewById(R.id.ivPhone);
         edcustmomeDetailedWeChat = getViewById(R.id.edcustmomeDetailedWeChat);
         edcustmomeDetailedQQ = getViewById(R.id.edcustmomeDetailedQQ);
+        etCusMemo= getViewById(R.id.etCusMemo);
 
         llComContent = getViewById(R.id.llComContent);
         cbCom = getViewById(R.id.cbCom);
@@ -484,21 +485,21 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //生日
-        if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "")
-                || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
-            edcustmomeDetailedBie.setText("");
-        } else {
-            if (customeDetailedBean.getResult().getBirth_date().contains("\\-")){
-                    String[] str=customeDetailedBean.getResult().getBirth_date().split("\\-");
-                String dateStr=str[0]+"/"+str[1]+"/"+str[2];
-                Log.i(TAG, "setInfo: "+dateStr );
-                edcustmomeDetailedBie.setText(dateStr);
-            }else {
-                edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+        if (customeDetailedBean.getResult().getBirth_date()!=null ) {
+            if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "")
+                    || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
+                edcustmomeDetailedBie.setText("");
+            } else {
+                if (customeDetailedBean.getResult().getBirth_date().contains("\\-")) {
+                    String[] str = customeDetailedBean.getResult().getBirth_date().split("\\-");
+                    String dateStr = str[0] + "/" + str[1] + "/" + str[2];
+                    Log.i(TAG, "setInfo: " + dateStr);
+                    edcustmomeDetailedBie.setText(dateStr);
+                } else {
+                    edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+                }
             }
-
         }
-
         //电话
         if (TextUtils.isEmpty(customeDetailedBean.getResult().getMobile())) {
             edCustomeMobile.setText("");
@@ -527,6 +528,11 @@ public class CustomDetailedActivity extends BaseActivity {
             edcustmomeDetailedQQ.setText(customeDetailedBean.getResult().getQq_number());
         }
 
+        if (TextUtils.isEmpty(customeDetailedBean.getResult().getMemo())) {
+            etCusMemo.setText("");
+        } else {
+            etCusMemo.setText(customeDetailedBean.getResult().getMemo());
+        }
 
         //个人客户
         if (customeDetailedBean.getResult().getCustomer_type() == 1) {

@@ -140,13 +140,13 @@ public class ProductDetailBean extends Domine{
         private int already_firb_number;
         private String sales_method;
         private int is_promote;
-        private int eoi_open_time;
+        private Object eoi_open_time;
         private int constr_start_time;
         private int constr_end_time;
-        private int start_sales_time;
-        private int stop_sales_time;
-        private int sunset_time;
-        private int settlement_time;
+        private Object start_sales_time;
+        private Object stop_sales_time;
+        private Object sunset_time;
+        private Object settlement_time;
         private String preview_memo;
         private String product_type;
         private String vendor;
@@ -331,11 +331,11 @@ public class ProductDetailBean extends Domine{
             this.is_promote = is_promote;
         }
 
-        public int getEoi_open_time() {
+        public Object getEoi_open_time() {
             return eoi_open_time;
         }
 
-        public void setEoi_open_time(int eoi_open_time) {
+        public void setEoi_open_time(Object eoi_open_time) {
             this.eoi_open_time = eoi_open_time;
         }
 
@@ -355,35 +355,35 @@ public class ProductDetailBean extends Domine{
             this.constr_end_time = constr_end_time;
         }
 
-        public int getStart_sales_time() {
+        public Object getStart_sales_time() {
             return start_sales_time;
         }
 
-        public void setStart_sales_time(int start_sales_time) {
+        public void setStart_sales_time(Object start_sales_time) {
             this.start_sales_time = start_sales_time;
         }
 
-        public int getStop_sales_time() {
+        public Object getStop_sales_time() {
             return stop_sales_time;
         }
 
-        public void setStop_sales_time(int stop_sales_time) {
+        public void setStop_sales_time(Object stop_sales_time) {
             this.stop_sales_time = stop_sales_time;
         }
 
-        public int getSunset_time() {
+        public Object getSunset_time() {
             return sunset_time;
         }
 
-        public void setSunset_time(int sunset_time) {
+        public void setSunset_time(Object sunset_time) {
             this.sunset_time = sunset_time;
         }
 
-        public int getSettlement_time() {
+        public Object getSettlement_time() {
             return settlement_time;
         }
 
-        public void setSettlement_time(int settlement_time) {
+        public void setSettlement_time(Object settlement_time) {
             this.settlement_time = settlement_time;
         }
 
