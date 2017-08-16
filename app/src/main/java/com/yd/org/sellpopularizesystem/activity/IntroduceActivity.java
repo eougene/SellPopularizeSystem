@@ -39,7 +39,7 @@ public class IntroduceActivity extends BaseActivity {
 
         }
 
-        FinalDownFile finalDownFile = new FinalDownFile(this, Contants.DOMAIN + "/" + sale_advice_url, pdfView,pView);
+        new FinalDownFile(this, Contants.DOMAIN + "/" + sale_advice_url, pdfView,pView);
 
     }
 
