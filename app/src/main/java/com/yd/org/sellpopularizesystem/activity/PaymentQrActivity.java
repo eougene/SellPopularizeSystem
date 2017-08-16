@@ -51,8 +51,8 @@ public class PaymentQrActivity extends BaseActivity {
     public final String RESULTStatus = "9000";
     public final String RESULTStatus_FINSH = "8000";
     private IWXAPI api;
-
-
+    private int code;
+    private String des;
     /*****
      * 支付返回支付状态
      */
@@ -90,7 +90,6 @@ public class PaymentQrActivity extends BaseActivity {
             }
         }
     };
-
 
     @Override
     protected int setContentView() {
@@ -139,6 +138,8 @@ public class PaymentQrActivity extends BaseActivity {
                 closeDialog();
                 try {
                     JSONObject json = new JSONObject(s);
+                    code=Integer.parseInt(json.getString("code"));
+                    des=json.getString("msg");
                     if (json.getString("code").equals("1")) {
                         qrcodeUrl = json.getString("qrcode");
                         MyUtils.getInstance().showWebView(PaymentQrActivity.this, wvQr, qrcodeUrl);
@@ -164,7 +165,10 @@ public class PaymentQrActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-
+                if (code==0){
+                    ToasShow.showToastCenter(PaymentQrActivity.this, des);
+                    return;
+                }
                 //支付宝支付
                 if (payment_method.equals("6")) {
                     goPay(strId);
