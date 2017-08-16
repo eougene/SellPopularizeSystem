@@ -233,7 +233,6 @@
                     android:layout_gravity="center_vertical"
                     android:layout_toRightOf="@+id/reCopurchase"
                     android:background="@null"
-                    android:focusable="false"
                     android:gravity="right"
                     android:hint="@string/separated"
                     android:textColor="#ff0000"
