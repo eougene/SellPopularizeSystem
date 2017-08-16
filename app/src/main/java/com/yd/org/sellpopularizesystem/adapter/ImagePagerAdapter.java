@@ -20,8 +20,6 @@ import com.yd.org.sellpopularizesystem.myView.imageshow.TouchImageView;
 
 import java.util.List;
 
-import static com.umeng.facebook.FacebookSdk.getApplicationContext;
-
 
 /**
  * 图片浏览的PagerAdapter
@@ -116,7 +114,7 @@ public class ImagePagerAdapter extends PagerAdapter {
                                 message = "Unknown error";
                                 break;
                         }
-                        Toast.makeText(getApplicationContext(), message,
+                        Toast.makeText(context, message,
                                 Toast.LENGTH_SHORT).show();
 
                         spinner.setVisibility(View.GONE);
