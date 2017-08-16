@@ -232,7 +232,7 @@ public class FinalDownFile {
                 .onPageChange(new OnPageChangeListener() {
                     @Override
                     public void onPageChanged(int page, int pageCount) {
-                        ToasShow.showToastBottom(activity, page + 1 + "/" + pageCount);
+                        //ToasShow.showToastBottom(activity, page + 1 + "/" + pageCount);
                     }
                 })
                 .enableAnnotationRendering(true)
