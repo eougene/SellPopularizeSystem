@@ -8,8 +8,8 @@ public class Contants {
     /**
      * 域名
      */
-   //public static final String DOMAIN = "http://crm.vxda.cn";
-   public static final String DOMAIN = "https://www.wingaid.com";
+   public static final String DOMAIN = "http://crm.vxda.cn";
+  // public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
    // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
@@ -111,7 +111,9 @@ public class Contants {
     //上传合同图片
     public static final String UPLOAD_CONTRACT_PHOTO = DOMAIN + "/index.php/appv2/order/upload_contract";
     //上传首付款凭证
-    public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
+   // public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
+
+ public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money_new";
 
 
     //查询订单列表
