@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -242,8 +242,8 @@
                 android:background="@null"
                 android:ellipsize="end"
                 android:gravity="end"
-                android:inputType="textEmailAddress"
                 android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:paddingBottom="@dimen/padding_margin_14"
                 android:paddingTop="@dimen/padding_margin_14"
@@ -406,7 +406,6 @@
                         android:background="@color/search_edit_bac"/>
 
                     <TextView
-                        android:text="@string/Australian"
                         android:id="@+id/tvCountry"
                         style="@style/MatchWrap"
                         android:background="@null"
@@ -415,6 +414,7 @@
                         android:gravity="center"
                         android:padding="@dimen/padding_margin_14"
                         android:singleLine="true"
+                        android:text="@string/Australian"
                         android:textColor="@color/black"
                         android:textColorHint="@color/setting_bac"
                         android:textSize="@dimen/tv_size_12"/>
