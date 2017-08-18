@@ -142,7 +142,6 @@ public class FinalDownFile {
 
                         }
 
-                        ToasShow.showToastCenter(mActivity, e.getMessage());
                         Log.e("onError**", "onError:" + e.getMessage());
 
                     }

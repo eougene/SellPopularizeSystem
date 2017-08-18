@@ -33,7 +33,6 @@ import net.tsz.afinal.http.AjaxParams;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 
@@ -191,13 +190,17 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("order_id", orderId + "");
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+        Log.e("ajaxParams","ajaxParams:"+ajaxParams.toString());
         http.post(Contants.ORDER_CANCEL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
+                Log.e("取消订单","s:"+s);
                 closeDialog();
                 Gson gson = new Gson();
                 ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                 if (errorBean.getCode().equals("1")) {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                }else {
                     ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                 }
 
@@ -206,6 +209,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
+                Log.e("取消订单","errorNo:"+errorNo);
                 closeDialog();
             }
         });
@@ -305,11 +309,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             } else {
                 //支付房款-上传凭证或在线支付
                 strUrl = Contants.UPLOAD_FIRST_COMMISSION;
-                /*ajaxParams.put("money_where", "1");
-                ajaxParams.put("pay_method", resultBean.getPayment_method() + "");
-                ajaxParams.put("pay_time", resultBean.getPay_time() + "");
-                ajaxParams.put("amount", resultBean.getPrice() + "");
-                ajaxParams.put("remark", resultBean.getRemark() + "");*/
                 ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
                 ajaxParams.put("customer_id",resultBean.getClient()+"");
                 if (null != picPath && !picPath.equals("")) {

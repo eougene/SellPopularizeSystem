@@ -35,7 +35,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
@@ -195,9 +194,6 @@ public class CustomDetailedActivity extends BaseActivity {
                             addrPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                         } else {
                             Log.e(TAG, "onClick***: " + edcustmomeDetailedNationality.getText());
-                            /*edcustmomeDetailedCity.setFocusable(true);
-                            edcustmomeDetailedCity.setEnabled(true);
-                            edcustmomeDetailedCity.requestFocus();*/
                             edcustmomeDetailedCity.setFocusableInTouchMode(true);
                             edcustmomeDetailedCity.setFocusable(true);
                             edcustmomeDetailedCity.requestFocus();
@@ -303,12 +299,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
-    OptionsPickerView.Builder builder = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
-        @Override
-        public void onOptionsSelect(int options1, int options2, int options3, View v) {
 
-        }
-    });
 
 
     private void Views() {
@@ -397,20 +388,6 @@ public class CustomDetailedActivity extends BaseActivity {
         builder.setType(TimePickerView.Type.YEAR_MONTH_DAY);
         //时间选择器
         pvTime = new TimePickerView(builder);
-
-        //控制时间范围
-        //Calendar calendar = Calendar.getInstance();
-        //pvTime.setRange(calendar.get(Calendar.YEAR) - 20, calendar.get(Calendar.YEAR));//要在setTime 之前才有效果哦
-//        pvTime.setTime(new Date());
-//        pvTime.setCyclic(false);
-//        pvTime.setCancelable(true);
-//        pvTime.setOnTimeSelectListener(new TimePickerView.OnTimeSelectListener() {
-//
-//            @Override
-//            public void onTimeSelect(Date date) {
-//
-//            }
-//        });
     }
 
     private void getCountryList() {
@@ -819,11 +796,6 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String searchContent = etNationSearch.getText().toString();
-                /*if (searchContent.equals("")) {
-                    ivDelete.setVisibility(View.INVISIBLE);
-                } else {
-                    ivDelete.setVisibility(View.VISIBLE);
-                }*/
                 if (searchContent.length() > 0) {
                     // 按照输入内容进行匹配
                     ArrayList<CountrySortModel> fileterList = (ArrayList<CountrySortModel>) countryChangeUtil
@@ -837,13 +809,6 @@ public class CustomDetailedActivity extends BaseActivity {
             }
         });
 
-        /*ivDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                etNationSearch.setText("");
-                adapter.updateListView(mAllCountryList);
-            }
-        });*/
 
         lvNation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -1115,7 +1080,7 @@ public class CustomDetailedActivity extends BaseActivity {
             String zip_code, String is_firb, String wechat_number, String qq_number,
             String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
             String company_street_address_line_2, String company_postcode, String unit_number, String street_number, String suburb, String state, String street_address_line_1, String street_address_line_2, String family_email) throws FileNotFoundException {
-        showDialog();
+            showDialog();
 
 
         //更新

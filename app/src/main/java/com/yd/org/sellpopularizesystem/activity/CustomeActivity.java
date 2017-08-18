@@ -338,8 +338,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
-                    /*BaseApplication app = BaseApplication.getInstance();
-                    app.setResultBean(resultBean);*/
                     ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
                     finish();
                 } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
