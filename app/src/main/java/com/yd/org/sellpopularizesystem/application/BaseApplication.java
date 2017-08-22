@@ -25,7 +25,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
-import com.yd.org.sellpopularizesystem.utils.ACache;
 
 import java.io.File;
 
@@ -37,7 +36,6 @@ import java.io.File;
 public class BaseApplication extends Application {
     public static BaseApplication mApp;
     private ProductDetailBean.ResultBean prs;
-    private ACache aCache;
     private static MainHandler handler;
     private int is_firb, firb_number;
     private static Context mContext;
@@ -136,8 +134,6 @@ public class BaseApplication extends Application {
         UMShareAPI.get(this);
         //微信
         PlatformConfig.setWeixin(Contants.WEXIN_APP_ID, Contants.WEXIN_APP_SECRET);
-        //缓存
-        aCache = ACache.get(this);
         if (handler == null) {
             handler = new MainHandler();
         }
@@ -242,9 +238,7 @@ public class BaseApplication extends Application {
         this.prs = prs;
     }
 
-    public ACache getaCache() {
-        return aCache;
-    }
+
 
     public int getIs_firb() {
         return is_firb;
