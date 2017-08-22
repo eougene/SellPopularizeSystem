@@ -584,7 +584,8 @@
     <string name="separated">separated by a comma</string>
     <string name="Australian">Australian</string>
     <string name="without_full_amount">10% of the house fund without full payment</string>
-
-
+    <string name="invitedes">Placeholders invite friends to receive bonus rewards and invite more!</string>
+    <string name="recommendqr">Recommendation code</string>
+    <string name="qrdes">Invite friends to scan two-dimensional code to download APP\n TA can obtain exclusive reward, you can get 5% of the amount paid by the order as a bonus reward</string>
 </resources>
 
