@@ -26,7 +26,6 @@ import com.yd.org.sellpopularizesystem.utils.ActivityCollector;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 
 /**
@@ -34,16 +33,17 @@ import java.util.List;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
-    protected ImageView backLinearLayou, rightSearchLinearLayout,ivShare;
+    protected ImageView backLinearLayou, rightSearchLinearLayout, ivShare;
     protected TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
-    private ACache aCache;
+    public ACache aCache;
     private View baseView;
     /**
      * 回调接口实例
      */
     private static PermissionListener mlistener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         backLinearLayou = getViewById(R.id.backLinearLayout);
         // 右边图片
         rightSearchLinearLayout = getViewById(R.id.rightSearchLinearLayout);
-        ivShare= getViewById(R.id.ivShare);
+        ivShare = getViewById(R.id.ivShare);
         //左边文字按钮事件处理
         backLinearLayou.setOnClickListener(clickback);
 
@@ -82,12 +82,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         baseView.setVisibility(View.GONE);
     }
 
-    public ACache getaCache() {
-        return aCache;
+
+    public void SetACache(String key, String objects) {
+        aCache.put(key, objects, ACache.TIME_HOUR);
+
     }
 
-    public void setaCache(ACache aCache) {
-        this.aCache = aCache;
+    public String getACache(String key) {
+        return aCache.getAsString(key);
+
     }
 
 
@@ -259,7 +262,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 显示数据加载对话框
      */
     public void showDialog() {
-            loading_Dialog.show();
+        loading_Dialog.show();
     }
 
     /**
@@ -285,8 +288,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 运行时权限执行方法（static修饰的必要性--在非Activity类中也可以调用）
+     *
      * @param permissions 需要授权的权限
-     * @param mlistener 接口回调实例（运行时权限处理结果）
+     * @param mlistener   接口回调实例（运行时权限处理结果）
      */
     public static void requestPermissions(String[] permissions, PermissionListener mlistener) {
 

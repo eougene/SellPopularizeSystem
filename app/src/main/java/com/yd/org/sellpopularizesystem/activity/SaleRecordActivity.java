@@ -134,15 +134,15 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         }
         saleAdapter.addMore(sobRbData);
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-         locatedOrderIdPos();
+        locatedOrderIdPos();
     }
 
     private void locatedOrderIdPos() {
-        if (getIntent().getExtras()!=null && getIntent().getExtras().getString("orderid")!=null){
-            for (int i = 0; i <sobRbData.size() ; i++) {
-                if (sobRbData.get(i).getProduct_orders_id()==Integer.parseInt(getIntent().getExtras().getString("orderid"))){
+        if (getIntent().getExtras() != null && getIntent().getExtras().getString("orderid") != null) {
+            for (int i = 0; i < sobRbData.size(); i++) {
+                if (sobRbData.get(i).getProduct_orders_id() == Integer.parseInt(getIntent().getExtras().getString("orderid"))) {
                     lvSaleRecord.setSelection(i);
-                    Log.e("TAG", "initView: "+i );
+                    Log.e("TAG", "initView: " + i);
                     return;
                 }
             }
@@ -184,23 +184,25 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      *
      * @param orderId
      */
-    public void canceOrder(int orderId) {
+    public void canceOrder( int orderId) {
+
+
         showDialog();
         FinalHttp http = new FinalHttp();
         AjaxParams ajaxParams = new AjaxParams();
         ajaxParams.put("order_id", orderId + "");
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        Log.e("ajaxParams","ajaxParams:"+ajaxParams.toString());
+        Log.e("ajaxParams", "ajaxParams:" + ajaxParams.toString());
         http.post(Contants.ORDER_CANCEL, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.e("取消订单","s:"+s);
+                Log.e("取消订单", "s:" + s);
                 closeDialog();
                 Gson gson = new Gson();
                 ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                 if (errorBean.getCode().equals("1")) {
                     ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                }else {
+                } else {
                     ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
                 }
 
@@ -209,10 +211,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onFailure(Throwable t, int errorNo, String strMsg) {
                 super.onFailure(t, errorNo, strMsg);
-                Log.e("取消订单","errorNo:"+errorNo);
+                Log.e("取消订单", "errorNo:" + errorNo);
                 closeDialog();
             }
         });
+
+
+
     }
 
     @Override
@@ -255,8 +260,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
                         Uri photoUri = BitmapUtil.imgUri;
-                        if (photoUri!=null){
-                            Log.e("TAG", "onActivityResult: "+photoUri.toString());
+                        if (photoUri != null) {
+                            Log.e("TAG", "onActivityResult: " + photoUri.toString());
                             picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
                             setPicPath(picPath, rBean);
                         }
@@ -309,8 +314,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             } else {
                 //支付房款-上传凭证或在线支付
                 strUrl = Contants.UPLOAD_FIRST_COMMISSION;
-                ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
-                ajaxParams.put("customer_id",resultBean.getClient()+"");
+                ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
+                ajaxParams.put("customer_id", resultBean.getClient() + "");
                 if (null != picPath && !picPath.equals("")) {
                     File picFile = new File(picPath);
                     ajaxParams.put("image[]", picFile);

@@ -61,7 +61,7 @@ public class FileActivity extends BaseActivity {
             pdfView.setVisibility(View.VISIBLE);
             pView.setVisibility(View.VISIBLE);
             listView.setVisibility(View.GONE);
-            FinalDownFile finalDownFile = new FinalDownFile(this, Contants.DOMAIN + "/" + prs.getContract_url(), pdfView, pView);
+            new FinalDownFile(this, Contants.DOMAIN + "/" + prs.getContract_url(), pdfView, pView);
         }
 
     }

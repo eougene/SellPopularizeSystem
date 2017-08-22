@@ -8,7 +8,6 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SortGroupMemberAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.custom.CharacterParser;
@@ -40,6 +38,7 @@ import net.tsz.afinal.http.AjaxParams;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 /**
  * 客户管理
  */
@@ -66,7 +65,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private PinyinComparator pinyinComparator;
     //用以判断跳转不同界面
-    String str1 = "default", jsonStr = "";
+    String str1 = "default";
     private List filterDateList;
     public Handler handler = new Handler() {
         @Override
@@ -91,8 +90,16 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Bundle bundle = intent.getExtras();
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
-        jsonStr = BaseApplication.getInstance().getaCache().getAsString("customer_list");
-        getCustomeListData(true, page);
+
+
+        //如果有缓存数据,则加载缓存数据
+        if (getACache("customer") != null && !TextUtils.isEmpty(getACache("customer"))) {
+            jsonParse(getACache("customer"), true);
+        } else {
+            //网络数据
+            getCustomeListData(true, page);
+        }
+
 
     }
 
@@ -113,7 +120,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
-        setListener();
 
 
     }
@@ -207,14 +213,19 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         ajaxParams.put("page", String.valueOf(page));
         ajaxParams.put("number", "100");
         final FinalHttp fh = new FinalHttp();
+
+
+        // fh.addHeader("Last-Modified",System.currentTimeMillis()+"");
+        //fh.addHeader("If-Modified-Since", );
         fh.get(Contants.CUSTOMER_LIST, ajaxParams, new AjaxCallBack<String>() {
             @Override
             public void onSuccess(String s) {
                 super.onSuccess(s);
                 closeDialog();
                 if (null != s) {
-
                     jsonParse(s, b);
+                    //缓存数据
+                    SetACache("customer", s);
 
                 }
             }
@@ -331,10 +342,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                Bundle bundle = new Bundle();
+
                 SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                 CustomBean.ResultBean resultBean = viewHolder.resultBean;
-                ObjectSaveUtil.saveObject(CustomeActivity.this,"custome",resultBean);
+                ObjectSaveUtil.saveObject(CustomeActivity.this, "custome", resultBean);
+
+                Bundle bundle = new Bundle();
                 //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
@@ -350,26 +363,25 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     bundle.putString("add", "list");
                     ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
                 }
-                Log.e("---", "onItemClick: "+((CustomBean.ResultBean)ObjectSaveUtil.readObject(CustomeActivity.this,"custome")).getFirst_name());
             }
         });
 
 
-        //删除
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-                if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
-                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
-                    deleteCustomer(resultBean);
-
-                }
-
-                return false;
-            }
-        });
+//        //删除
+//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
+//                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
+//                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
+//                    deleteCustomer(resultBean);
+//
+//                }
+//
+//                return false;
+//            }
+//        });
 
     }
 

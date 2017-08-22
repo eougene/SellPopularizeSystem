@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import com.igexin.sdk.PushManager;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.fragment.LoginFragment;
+import com.yd.org.sellpopularizesystem.fragment.RegisterFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.myView.ViewPagerIndicator;
@@ -29,7 +30,6 @@ public class LoginActivity extends FragmentActivity {
     private ViewPagerIndicator vpi;
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;// ViewPager适配器
-    private String login;
     private List<String> mTitles;
     private List<Fragment> fragments = new ArrayList<>();
 
@@ -39,8 +39,7 @@ public class LoginActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activty);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        login = getResources().getString(R.string.login);
-        mTitles = Arrays.asList(login);
+        mTitles = Arrays.asList(getResources().getString(R.string.login),getResources().getString(R.string.register));
         initView();
         initData();
         //动态设置tab
@@ -58,7 +57,7 @@ public class LoginActivity extends FragmentActivity {
 
     private void initData() {
         fragments.add(new LoginFragment());
-        //fragments.add(new RegisterFragment());
+        fragments.add(new RegisterFragment());
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
