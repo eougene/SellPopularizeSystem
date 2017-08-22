@@ -46,7 +46,7 @@
     <dimen name="media_controller_button_width">71dip</dimen>
     <!--客户管理-->
     <dimen name="bladeview_popup_height">80dp</dimen>
-//
+    //
     <!-- body content -->
     <dimen name="body_padding_medium">10dp</dimen>
     <dimen name="body_padding_large">10dp</dimen>

@@ -581,6 +581,9 @@
     <string name="separated">用逗号隔开</string>
     <string name="Australian">澳大利亚</string>
     <string name="without_full_amount">10%房款未全部付款</string>
+    <string name="error_">您确定要放弃订单?此操作不可撤销!</string>
+    <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="regsterid">请输入邮箱账号</string>
 
 
 </resources>
