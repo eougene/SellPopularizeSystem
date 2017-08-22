@@ -1,98 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/search_edit_bac"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/llLogin"
         android:background="@color/white"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvUseName"
-            android:layout_width="wrap_content"
+            android:id="@+id/useName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_20"
-            android:text="@string/login_activity_userName"
-            android:textSize="@dimen/padding_margin_16" />
-
-        <EditText
-            android:id="@+id/etUser"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_40"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:hint="@string/register_hint"
+            android:background="@null"
             android:maxLines="1"
-            android:singleLine="true"
-            android:textColorHint="@color/gray"
-            android:background="@drawable/editbac" />
+            android:padding="@dimen/padding_margin_20"
+            android:text="填写信息"
+            android:textColor="@color/setting_bac"
+            android:textSize="@dimen/tv_size_15"/>
 
-        <TextView
-            android:id="@+id/tvPassWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:text="@string/login_activity_password"
-            android:textSize="@dimen/padding_margin_16" />
 
-        <EditText
-            android:id="@+id/etPassword"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_40"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:background="@drawable/editbac" />
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
 
-        <TextView
-            android:id="@+id/tvConfirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:text="@string/sure_password"
-            android:textSize="@dimen/padding_margin_16" />
-
-        <EditText
-            android:id="@+id/etPassAgain"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_40"
-            android:layout_marginLeft="@dimen/padding_margin_20"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="@drawable/editbac"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:imeOptions="actionDone"/>
-
-        <TextView
-            android:id="@+id/tvRegister"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/padding_margin_50"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/padding_margin_6"
-            android:layout_marginLeft="@dimen/padding_margin_14"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_20"
-            android:background="@drawable/loginbut_bac"
-            android:gravity="center"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_15"
-            />
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/regsterID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/regsterid"
+                android:imeOptions="actionDone"
+                android:inputType="textEmailSubject"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+
+                android:id="@+id/regsterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/hintpass"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+            <ImageView
+                android:id="@+id/showPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="@dimen/padding_margin_10"
+                android:scaleType="centerInside"
+                android:src="@mipmap/showpass"
+                />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+
+        <TextView
+            android:id="@+id/tvRegster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:layout_marginRight="@dimen/padding_margin_10"
+            android:layout_marginTop="@dimen/padding_margin_30"
+            android:background="#EE781F"
+            android:gravity="center"
+            android:padding="@dimen/padding_margin_10"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_15"/>
+
+
+    </LinearLayout>
+
 
 </LinearLayout>
