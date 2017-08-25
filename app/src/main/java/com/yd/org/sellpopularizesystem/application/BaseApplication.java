@@ -25,8 +25,15 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.converter.SerializableDiskConverter;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.utils.HttpLog;
 
 import java.io.File;
+
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLSession;
 
 
 /**
@@ -91,11 +98,60 @@ public class BaseApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
         initView();
-        bugly();
+
+        if (Contants.DOMAIN.contains("https://www.wingaid.com")) {
+            bugly();
+        }
 
         //通过配置方案来初始化ImageLoader
         ImageLoader.getInstance().init(getSimpleConfig());
 
+        //初始化网络请求
+        EasyHttp.init(this);
+        initEasyHttp();
+
+    }
+
+    private void initEasyHttp() {
+        EasyHttp.getInstance()
+                .debug("RxEasyHttp", true)
+                .setReadTimeOut(60 * 1000)
+                .setWriteTimeOut(60 * 1000)
+                .setConnectTimeout(60 * 1000)
+                .setRetryCount(0)//默认网络不好自动重试3次
+                .setRetryDelay(500)//每次延时500ms重试
+                .setRetryIncreaseDelay(500)//每次延时叠加500ms
+                .setBaseUrl(Contants.DOMAIN)
+                .setCacheDiskConverter(new SerializableDiskConverter())//默认缓存使用序列化转化
+                .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为100M
+               .setCacheVersion(1)//缓存版本为1
+                .setCacheMode(CacheMode.FIRSTCACHE)
+                .setCacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
+                .setHostnameVerifier(new UnSafeHostnameVerifier(Contants.DOMAIN))//全局访问规则
+                .setCertificates();//信任所有证书
+        //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
+        // .addCommonHeaders(headers)//设置全局公共头
+        //.addCommonParams(params)//设置全局公共参数
+        //.addInterceptor(new CustomSignInterceptor());//添加参数签名拦截器
+        //.addInterceptor(new HeTInterceptor());//处理自己业务的拦截器
+
+    }
+
+    public class UnSafeHostnameVerifier implements HostnameVerifier {
+        private String host;
+
+        public UnSafeHostnameVerifier(String host) {
+            this.host = host;
+            HttpLog.i("###############　UnSafeHostnameVerifier " + host);
+        }
+
+        @Override
+        public boolean verify(String hostname, SSLSession session) {
+            HttpLog.i("############### verify " + hostname + " " + this.host);
+            if (this.host == null || "".equals(this.host) || !this.host.contains(hostname))
+                return false;
+            return true;
+        }
     }
 
 
@@ -237,7 +293,6 @@ public class BaseApplication extends Application {
     public void setPrs(ProductDetailBean.ResultBean prs) {
         this.prs = prs;
     }
-
 
 
     public int getIs_firb() {

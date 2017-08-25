@@ -8,8 +8,8 @@ public class Contants {
     /**
      * 域名
      */
-   public static final String DOMAIN = "http://crm.vxda.cn";
-  //public static final String DOMAIN = "https://www.wingaid.com";
+   //public static final String DOMAIN = "http://crm.vxda.cn";
+  public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
    // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
@@ -19,7 +19,7 @@ public class Contants {
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
     //登录
-    public static final String HOME_LOGIN = DOMAIN + "/index.php/appv2/login/index";
+    public static final String HOME_LOGIN =  DOMAIN+"/index.php/appv2/login/index";
     //微信登录
     // public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/app/login/third_login";
     public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/appv2/login/third_login";
