@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170817
-        versionName "1.6.3"
+        versionCode 20170820
+        versionName "1.7.0"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -49,12 +49,11 @@ android {
 }
 
 dependencies {
+    compile project(':rxeasyhttp')
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    //afinal网路请求框架
-    compile files('libs/afinal_0.5_bin.jar')
     //拼音排序
     compile files('libs/pinyin4j-2.5.0.jar')
     //图片缩放
@@ -98,14 +97,6 @@ dependencies {
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     //获取运行时权限
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.2@aar'
-    //retrofit,okhttp,rxandroid
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
-    compile 'io.reactivex:rxjava:1.2.0'
-    compile 'io.reactivex:rxandroid:1.2.1'
     //65536
     compile 'com.android.support:multidex:1.0.0'
     //PDF
