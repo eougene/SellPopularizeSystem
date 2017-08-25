@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -20,14 +21,15 @@ import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.igexin.push.core.g.s;
 import static com.yd.org.sellpopularizesystem.adapter.NotificationAdapter.getIsSelected;
 
 
@@ -145,27 +147,35 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     }
 
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
-        showLoadingDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", pages + "");
-        ajaxParams.put("cate_id", cate_id + "");
-        ajaxParams.put("number", "1000");
-        fh.get(Contants.SYSTEM_ANNOUNCEMENT, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                dismissLoadingDialog();
-                if (null != s) {
-                    jsonParse(s, isRefresh, cate_id);
-                }
-            }
+        EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
+                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .timeStamp(true)
+                .params("cate_id", cate_id + "")
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", String.valueOf(pages))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showLoadingDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                dismissLoadingDialog();
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        dismissLoadingDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        dismissLoadingDialog();
+                        jsonParse(json, isRefresh, cate_id);
+                    }
+                });
+
+
     }
 
 
@@ -258,7 +268,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
             }
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             adapter = new NotificationAdapter(getActivity(), isShow);
             listView.setAdapter(adapter);
 
@@ -302,7 +312,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     mHandle.sendMessage(message);
 
                     if (cate_id == 4) {
-                        flag=1;
+                        flag = 1;
                         //预定推送消息
                         Bundle bundle = new Bundle();
                         bundle.putString("saletoorder", "saletoorder");
@@ -345,45 +355,49 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      * @param notice_id
      */
     private void deleteNoticeLog(String notice_id) {
-        showLoadingDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("notice_logs_id", notice_id);
-        finalHttp.get(Contants.DELETE_NOTICE, ajaxParams, new AjaxCallBack<String>() {
+        EasyHttp.get(Contants.DELETE_NOTICE)
+                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .timeStamp(true)
+                .params("notice_logs_id", notice_id)
+                .params("user_id", SharedPreferencesHelps.getUserID())
 
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                type = 0;
-                ToasShow.showToastCenter(getActivity(), strMsg);
-                dismissLoadingDialog();
-
-            }
-
-            @Override
-            public void onSuccess(String s) {
-                dismissLoadingDialog();
-                Gson g = new Gson();
-                ErrorBean e = g.fromJson(s, ErrorBean.class);
-                ToasShow.showToastCenter(getActivity(), e.getMsg());
-                if (e.getCode().equals("1")) {
-                    //如果删除成功,此时的状态是可以点击查看详情的
-                    type = 0;
-                    //发送删除成功消息
-                    NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
-
-                    if (sumnData != null) {
-                        sumnData.clear();
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showLoadingDialog();
                     }
-                    getData(1, true, cate_id);
+
+                    @Override
+                    public void onError(ApiException e) {
+                        type = 0;
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        dismissLoadingDialog();
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        dismissLoadingDialog();
+                        Gson g = new Gson();
+                        ErrorBean e = g.fromJson(s, ErrorBean.class);
+                        ToasShow.showToastCenter(getActivity(), e.getMsg());
+                        if (e.getCode().equals("1")) {
+                            //如果删除成功,此时的状态是可以点击查看详情的
+                            type = 0;
+                            //发送删除成功消息
+                            NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
+
+                            if (sumnData != null) {
+                                sumnData.clear();
+                            }
+                            getData(1, true, cate_id);
 
 
-                }
+                        }
+                    }
+                });
 
-
-            }
-        });
 
     }
 
@@ -410,8 +424,9 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
-        flag=0;
+        flag = 0;
         if (sumnData != null) {
             sumnData.clear();
         }
@@ -421,7 +436,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        flag=0;
+        flag = 0;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         //getData(page, false, cate_id);
     }
@@ -433,26 +448,40 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
 
     private void commitNotice(String str) {
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("notice_logs_id", str);
-        http.get(Contants.SUBMIT_READED, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                //通知首页加载消息数量
-                HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
-                if (sumnData != null) {
-                    sumnData.clear();
-                }
-                //获取数据
-                getData(1, true, cate_id);
-            }
+        EasyHttp.get(Contants.SUBMIT_READED)
+                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .timeStamp(true)
+                .params("notice_logs_id", str)
+                .params("user_id", SharedPreferencesHelps.getUserID())
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-            }
-        });
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        type = 0;
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        dismissLoadingDialog();
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        dismissLoadingDialog();
+                        HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
+                        if (sumnData != null) {
+                            sumnData.clear();
+                        }
+                        //获取数据
+                        getData(1, true, cate_id);
+                    }
+                });
+
+
     }
 
 

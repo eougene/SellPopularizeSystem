@@ -13,10 +13,10 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,8 +29,9 @@ public class LastFragmentView extends BaseFragmentView {
     public TextView tvStart;
     public TextView tvEnd;
     private String type = null;
-    private String studyId ;
-    public static LastFragmentView getInstnce(String type,String studyId) {
+    private String studyId;
+
+    public static LastFragmentView getInstnce(String type, String studyId) {
         LastFragmentView photoViewFragment = new LastFragmentView();
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
@@ -42,16 +43,18 @@ public class LastFragmentView extends BaseFragmentView {
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.last_pager_layout);
-        type =  getArguments().getString("type");
-        studyId=getArguments().getString("study_id");
+        type = getArguments().getString("type");
+        studyId = getArguments().getString("study_id");
         tvStart = getViewById(R.id.tvStartInvestigation);
         tvEnd = getViewById(R.id.tvEndInvestigation);
-        if (type.equals(ExtraName.INVISIBILITY)){
+        if (type.equals(ExtraName.INVISIBILITY)) {
             controlViewVisibility();
         }
         setListener();
     }
+
     Intent intent;
+
     @Override
     protected void setListener() {
         tvStart.setOnClickListener(new View.OnClickListener() {
@@ -59,12 +62,12 @@ public class LastFragmentView extends BaseFragmentView {
             public void onClick(View v) {
 
                 //开始调研
-                if(type.equals(ExtraName.VISIBILITY)){
+                if (type.equals(ExtraName.VISIBILITY)) {
                     intent = new Intent(getActivity(), InvestigationActivity.class);
                     getActivity().startActivity(intent);
 
                     //提交完成学习
-                }else{
+                } else {
                     submit();
 
                 }
@@ -83,40 +86,50 @@ public class LastFragmentView extends BaseFragmentView {
     }
 
     private void submit() {
-        showLoadingDialog();
-        FinalHttp http=new FinalHttp();
-        http.addHeader("Content-Type","application/x-www-form-urlencoded");
-        AjaxParams ajaxParams=new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("study_id",studyId.equals("")?"":studyId);
-        Log.e(TAG, "submit: "+studyId);
-        http.post(Contants.STUDY_COMPLETE, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                dismissLoadingDialog();
-                try {
-                    JSONObject json=new JSONObject(s);
-                    if(json.getString("code").equals("1")){
-                        ToasShow.showToastBottom(getActivity(),json.getString("msg"));
+
+        EasyHttp.post(Contants.STUDY_COMPLETE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params("study_id", studyId.equals("") ? "" : studyId)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showLoadingDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        dismissLoadingDialog();
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+
+                        dismissLoadingDialog();
+                        try {
+                            JSONObject json = new JSONObject(s);
+                            if (json.getString("code").equals("1")) {
+                                ToasShow.showToastBottom(getActivity(), json.getString("msg"));
                         /*intent = new Intent(getActivity(), LearningGardenActivity.class);
                         getActivity().startActivity(intent);*/
-                        getActivity().finish();
-                    }else{
-                        ToasShow.showToastBottom(getActivity(),json.getString("msg"));
+                                getActivity().finish();
+                            } else {
+                                ToasShow.showToastBottom(getActivity(), json.getString("msg"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+                });
 
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                dismissLoadingDialog();
-            }
-        });
     }
 
     @Override

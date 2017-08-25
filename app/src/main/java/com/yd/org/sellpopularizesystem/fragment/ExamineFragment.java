@@ -15,10 +15,9 @@ import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,34 +66,30 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
     }
 
     private void getStudyListData(final boolean b, int page) {
-        showLoadingDialog();
-        final FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "10");
+        EasyHttp.get(Contants.CHECK_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
 
-        fh.get(Contants.CHECK_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                dismissLoadingDialog();
+                    }
 
-                Log.e("获取考核的内容", "s:" + s);
-                if (null != s) {
-                    jsonParse(s, b);
-                }
+                    @Override
+                    public void onError(ApiException e) {
 
-            }
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-
-                dismissLoadingDialog();
-            }
-        });
-
+                    @Override
+                    public void onSuccess(String json) {
+                        jsonParse(json, b);
+                    }
+                });
 
     }
 
@@ -109,11 +104,11 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
             }
         }
         if (isRefresh) {
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             adapter = new ExamineAdapter(getActivity());
             listView.setAdapter(adapter);
         }
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+
         adapter.addData(productData);
 
     }
@@ -132,7 +127,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getStudyListData(true, page);
 
@@ -141,7 +136,8 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getStudyListData(false, page);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getStudyListData(false, page);
 
     }
 }

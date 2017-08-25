@@ -29,10 +29,10 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -170,76 +170,85 @@ public class MeFragment extends BaseFragmentView {
      * @param opendid
      */
     public void getWeiXinInfo(String access_token, final String opendid) {
+        EasyHttp.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid)
+                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .timeStamp(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
 
-        final FinalHttp fh = new FinalHttp();
-        fh.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String content) {
-                Log.e("获取微信数据*******", "new String(arg2):" + content);
-
-                if (content != null) {
-
-                    try {
-                        JSONObject UseJson = new JSONObject(content);
-                        if (!TextUtils.isEmpty(UseJson.optString("unionid"))) {
-                            sendBindAccount(opendid, UseJson.optString("unionid"));
-                        } else {
-                            ToasShow.showToastCenter(getContext(), getString(R.string.binding_f));
-                            return;
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
                     }
 
-                }
+                    @Override
+                    public void onError(ApiException e) {
 
-            }
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                ToasShow.showToastCenter(getContext(), strMsg);
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+                        try {
+                            JSONObject UseJson = new JSONObject(json);
+                            if (!TextUtils.isEmpty(UseJson.optString("unionid"))) {
+                                sendBindAccount(opendid, UseJson.optString("unionid"));
+                            } else {
+                                ToasShow.showToastCenter(getContext(), getString(R.string.binding_f));
+                                return;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
 
     }
 
     private void sendBindAccount(String openId, String unionid) {
-        showLoadingDialog();
-        FinalHttp http = new FinalHttp();
-        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("type", "wechat");
-        ajaxParams.put("openid", openId);
-        ajaxParams.put("unionid", unionid);
-        http.post(Contants.BINDING_THIRD, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                dismissLoadingDialog();
-                Log.e("TAG", "onSuccess: " + s);
-                try {
-                    JSONObject json = new JSONObject(s);
-                    ToasShow.showToastCenter(getActivity(), json.getString("msg"));
-                    if (json.getString("code").equals("1")) {
-                        logOut();
+        EasyHttp.post(Contants.BINDING_THIRD)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("type", "wechat")
+                .params("openid", openId)
+                .params("unionid", unionid)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showLoadingDialog();
                     }
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+                    @Override
+                    public void onError(ApiException e) {
+                        dismissLoadingDialog();
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                ToasShow.showToastCenter(getContext(), strMsg);
-                dismissLoadingDialog();
-            }
-        });
+                    @Override
+                    public void onSuccess(String s) {
+
+
+                        dismissLoadingDialog();
+                        try {
+                            JSONObject json = new JSONObject(s);
+                            ToasShow.showToastCenter(getActivity(), json.getString("msg"));
+                            if (json.getString("code").equals("1")) {
+                                logOut();
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
+
+
     }
 
     @Override

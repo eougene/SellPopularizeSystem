@@ -3,7 +3,7 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,10 +24,10 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BadgeUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +40,7 @@ public class HomeFragment extends BaseFragmentView {
     public static HomeFragment homeFragment;
     private RelativeLayout rlBefore;
     private LinearLayout saleLinearLayyout, customLinerLayout, studyLinearLayout;
-    private TextView  tvNotCompleteCount;
+    private TextView tvNotCompleteCount;
     private Gradient homeGradient;
     private List<ImageView> imageViews = new ArrayList<>();
     private HomeDataBean homeDataBean;
@@ -123,7 +123,7 @@ public class HomeFragment extends BaseFragmentView {
         tvNotCompleteCount = getViewById(R.id.tvNotCompleteCount);
 
         //渐变动画
-       // homeGradient = getViewById(R.id.homeGradient);
+        // homeGradient = getViewById(R.id.homeGradient);
 
         //初始化imageview
         ImageView imageView = new ImageView(getActivity());
@@ -153,52 +153,58 @@ public class HomeFragment extends BaseFragmentView {
 
 
     private void getHomeData() {
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        final FinalHttp fh = new FinalHttp();
-        fh.get(Contants.HOME_DAA, ajaxParams, new AjaxCallBack<String>() {
 
-            @Override
-            public void onSuccess(String json) {
-                if (!TextUtils.isEmpty(json)) {
-
-                    Gson gson = new Gson();
-                    homeDataBean = gson.fromJson(json, HomeDataBean.class);
-                    if (homeDataBean.getCode() == 1) {
-                        tvNotCompleteCount.setVisibility(View.INVISIBLE);
-                        //如果首次进去有消息条数.则通知显示
-                        if (homeDataBean.getResult().getUnread() > 0) {
-
-                            Message message = new Message();
-                            message.what = 1;
-                            message.arg1 = homeDataBean.getResult().getUnread();
-
-
-                            //通知主页面显示消息条目
-                            HomeActiviyt.homeActiviyt.handler.sendMessage(message);
-                            //通知App icon显示未读消息
-                            BadgeUtil.setBadgeCount(getActivity(), homeDataBean.getResult().getUnread());
-
-                        } else {
-                            Message message = new Message();
-                            message.what = 1;
-                            message.arg1 = 0;
-                            //通知主页面显示消息条目
-                            HomeActiviyt.homeActiviyt.handler.sendMessage(message);
-                            //清楚消息,
-                           // BadgeUtil.resetBadgeCount(getActivity());
-                        }
+        EasyHttp.get(Contants.HOME_DAA)
+                .cacheMode(CacheMode.DEFAULT)
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
 
                     }
 
-                }
+                    @Override
+                    public void onError(ApiException e) {
 
-            }
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+
+                        Gson gson = new Gson();
+                        homeDataBean = gson.fromJson(json, HomeDataBean.class);
+                        if (homeDataBean.getCode() == 1) {
+                            tvNotCompleteCount.setVisibility(View.INVISIBLE);
+                            //如果首次进去有消息条数.则通知显示
+                            if (homeDataBean.getResult().getUnread() > 0) {
+
+                                Message message = new Message();
+                                message.what = 1;
+                                message.arg1 = homeDataBean.getResult().getUnread();
+
+
+                                //通知主页面显示消息条目
+                                HomeActiviyt.homeActiviyt.handler.sendMessage(message);
+                                //通知App icon显示未读消息
+                                BadgeUtil.setBadgeCount(getActivity(), homeDataBean.getResult().getUnread());
+
+                            } else {
+                                Message message = new Message();
+                                message.what = 1;
+                                message.arg1 = 0;
+                                //通知主页面显示消息条目
+                                HomeActiviyt.homeActiviyt.handler.sendMessage(message);
+                                //清楚消息,
+                                // BadgeUtil.resetBadgeCount(getActivity());
+                            }
+
+                        }
+                    }
+                });
+
 
     }
 

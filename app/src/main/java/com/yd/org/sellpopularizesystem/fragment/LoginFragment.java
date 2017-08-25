@@ -25,10 +25,10 @@ import com.yd.org.sellpopularizesystem.javaBean.UserBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.Map;
 
@@ -45,6 +45,7 @@ public class LoginFragment extends BaseFragmentView {
     private RelativeLayout rlloginWechat;
     private String client_id = "";
     private Class userPushService = PushService.class;
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_login);
@@ -72,21 +73,22 @@ public class LoginFragment extends BaseFragmentView {
         /*
          * 键盘是完成按钮的功能,直接登陆
           */
-                usePassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                    @Override
-                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                        if (actionId == EditorInfo.IME_ACTION_DONE) {
-                            getUserInfo();
-                        }
-                        return false;
-                    }
-                });
+        usePassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    getUserInfo();
+                }
+                return false;
+            }
+        });
     }
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
 
     }
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -131,47 +133,61 @@ public class LoginFragment extends BaseFragmentView {
     }
 
     private void getLogin(String name, String password, String client_id) {
-       showLoadingDialog();
-        final FinalHttp fh = new FinalHttp();
-        fh.addHeader("Content-Type", "application/x-www-form-urlencoded");
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("account", name);
-        ajaxParams.put("password", password);
-        //个推识别码
-        ajaxParams.put("client_id", client_id);
-        fh.post(Contants.HOME_LOGIN, ajaxParams, new AjaxCallBack<String>() {
 
-            @Override
-            public void onSuccess(String json) {
-                dismissLoadingDialog();
-                if (!TextUtils.isEmpty(json)) {
-                    Gson gson = new Gson();
-                    UserBean userBean = gson.fromJson(json, UserBean.class);
-                    if (userBean.getCode().equals("1")) {
-                        showToast(getActivity(), userBean.getMsg());
-                        SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
-                        SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
-                        SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
-                        SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
-                        SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
-                        SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
-                        SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
-                        ActivitySkip.forward(getActivity(), HomeActiviyt.class);
-                        getActivity().finish();
-                    } else {
-                        ToasShow.showToast(getActivity(), userBean.getMsg());
+
+        EasyHttp.post(Contants.HOME_LOGIN)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params("account", name)
+                .params("password", password)
+                //个推识别码
+                .params("client_id", client_id)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showLoadingDialog();
                     }
 
+                    @Override
+                    public void onError(ApiException e) {
+                        dismissLoadingDialog();
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-                }
-            }
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                dismissLoadingDialog();
-                ToasShow.showToast(getActivity(), strMsg);
-            }
-        });
+                        dismissLoadingDialog();
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            UserBean userBean = gson.fromJson(json, UserBean.class);
+                            if (userBean.getCode().equals("1")) {
+                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+                                SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
+                                SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
+                                SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
+                                SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
+                                SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
+                                SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
+                                SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
+                                ActivitySkip.forward(getActivity(), HomeActiviyt.class);
+                                getActivity().finish();
+                            } else {
+                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+                            }
+
+
+                        }
+
+
+                    }
+                });
+
+
     }
 
     UMAuthListener authListener = new UMAuthListener() {
@@ -188,12 +204,6 @@ public class LoginFragment extends BaseFragmentView {
             String openId = data.get("openid");
             SharedPreferencesHelps.setOpenId(openId);
             String temp = "";
-         /*   for (String key : data.keySet()) {
-                temp = temp + key + " : " + data.get(key) + "\n";
-            }*/
-            Log.e("data***", "openId:" + openId);
-
-
             third_login(openId);
 
 
@@ -211,45 +221,56 @@ public class LoginFragment extends BaseFragmentView {
     };
 
     private void third_login(String openid) {
-        showLoadingDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        finalHttp.addHeader("Content-Type", "application/x-www-form-urlencoded");
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("type", "wechat");
-        ajaxParams.put("openid", openid);
-        finalHttp.post(Contants.WEIXIN_LOGIN, ajaxParams, new AjaxCallBack<String>() {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                dismissLoadingDialog();
-                ToasShow.showToast(getActivity(), strMsg);
-            }
-
-            @Override
-            public void onSuccess(String json) {
-                dismissLoadingDialog();
-                if (!TextUtils.isEmpty(json)) {
-                    Gson gson = new Gson();
-                    UserBean userBean = gson.fromJson(json, UserBean.class);
-                    if (userBean.getCode().equals("1")) {
-                        //先取消上次的授权
-                        UMShareAPI.get(getActivity()).deleteOauth(getActivity(), SHARE_MEDIA.WEIXIN, null);
-                        showToast(getActivity(), userBean.getMsg());
-                        SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
-                        SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
-                        SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
-                        SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
-                        SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
-                        SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
-                        SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
-                        ActivitySkip.forward(getActivity(), HomeActiviyt.class);
-                        getActivity().finish();
-                    } else {
-                        ToasShow.showToast(getActivity(), userBean.getMsg());
+        EasyHttp.post(Contants.WEIXIN_LOGIN)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params("type", "wechat")
+                .params("openid", openid)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showLoadingDialog();
                     }
-                }
-            }
-        });
+
+                    @Override
+                    public void onError(ApiException e) {
+                        dismissLoadingDialog();
+                        ToasShow.showToastCenter(getActivity(), e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+                        dismissLoadingDialog();
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            UserBean userBean = gson.fromJson(json, UserBean.class);
+                            if (userBean.getCode().equals("1")) {
+                                //先取消上次的授权
+                                UMShareAPI.get(getActivity()).deleteOauth(getActivity(), SHARE_MEDIA.WEIXIN, null);
+                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+                                SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
+                                SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
+                                SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
+                                SharedPreferencesHelps.setUserName(userBean.getResult().getEn_name());
+                                SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
+                                SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
+                                SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
+                                ActivitySkip.forward(getActivity(), HomeActiviyt.class);
+                                getActivity().finish();
+                            } else {
+                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+                            }
+                        }
+
+
+                    }
+                });
 
 
     }

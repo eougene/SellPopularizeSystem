@@ -2,74 +2,123 @@ package com.yd.org.sellpopularizesystem.fragment;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static com.yd.org.sellpopularizesystem.utils.ToasShow.showToast;
+import com.yd.org.sellpopularizesystem.utils.StringUtils;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 /**
  * Created by hejin on 2017/6/12.
+ * 注册
  */
 
 public class RegisterFragment extends BaseFragmentView {
-    private EditText etUser,etPassword,etPassAgain;
-    private TextView tvRegister;
+    private EditText regsterID, regsterPassword;
+    private ImageView showPassword;
+    private TextView tvRegster;
+    private int temp = 0;
+
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_register);
-        initWidget();
+        initWeight();
+
     }
 
-    private void initWidget() {
-        etUser=getViewById(R.id.etUser);
-        etPassword=getViewById(R.id.etPassword);
-        etPassAgain=getViewById(R.id.etPassAgain);
-        tvRegister=getViewById(R.id.tvRegister);
+    private void initWeight() {
+        regsterID = getViewById(R.id.regsterID);
+        regsterPassword = getViewById(R.id.regsterPassword);
+        showPassword = getViewById(R.id.showPassword);
+        tvRegster = getViewById(R.id.tvRegster);
+
     }
+
+
+    private void getInfo() {
+
+        String rId, pass;
+
+
+        //邮箱
+
+        if (TextUtils.isEmpty(regsterID.getText().toString().trim()) || StringUtils.isEmail(regsterID.getText().toString().trim())) {
+            ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
+            return;
+        } else {
+            rId = regsterID.getText().toString().trim();
+        }
+
+
+        //密码
+
+        if (TextUtils.isEmpty(regsterPassword.getText().toString().trim())) {
+            ToasShow.showToastCenter(getActivity(), getString(R.string.hintpass));
+            return;
+        } else {
+
+            if (!StringUtils.isLetterDigit(regsterPassword.getText().toString().trim())) {
+                ToasShow.showToastCenter(getActivity(), getString(R.string.hintpass));
+                return;
+            } else {
+                pass = regsterPassword.getText().toString().trim();
+            }
+        }
+
+
+        commintInfo();
+
+    }
+
+
+
 
     @Override
     protected void setListener() {
-        tvRegister.setOnClickListener(new View.OnClickListener() {
+        //注册
+        tvRegster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getRegisterInfo();
+                getInfo();
+            }
+        });
+
+        //密码显示或不显示
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                //隐藏密码
+                if (temp == 0) {
+                    regsterPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    temp = 1;
+                } else {
+                    //显示密码
+                    regsterPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    temp = 0;
+                }
+
             }
         });
     }
 
-    private void getRegisterInfo() {
-        String userName = etUser.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
-        String passAgain= etPassAgain.getText().toString().trim();
-        if (TextUtils.isEmpty(userName) || TextUtils.isEmpty(password) || TextUtils.isEmpty(passAgain)) {
-            showToast(getActivity(), getResources().getString(R.string.login_usename));
-            return;
 
-        }else if (TextUtils.isDigitsOnly(userName)){
-            if (!isPhoneNumberValid(userName)){
+    private void commintInfo(){
+      //  showLoadingDialog();
 
-            }
-        }
+
+
+
+
+
     }
-
-    private boolean isPhoneNumberValid(String userName) {
-        Matcher m = null;
-        if(userName.length()>0){
-            Pattern p = Pattern.compile("^((13[0-9])|(15[0-3])|(15[7-9])|(18[0,5-9]))\\d{8}$");
-            m= p.matcher(userName);
-        } else{
-
-            return false;
-        }
-        return m.matches();
-    }
-
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
