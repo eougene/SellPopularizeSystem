@@ -213,9 +213,7 @@
             android:name=".activity.ReserveActivity"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait"/>
-        <activity
-            android:name=".activity.AskContractActivity"
-            android:screenOrientation="portrait"/>+
+        +
         <activity
             android:name=".activity.SaleReceiveNoticeActivity"
             android:screenOrientation="portrait"/>
