@@ -257,7 +257,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             adapter.addData(SourceDateList, lawyersData);
             listView.setAdapter(adapter);
         } else {
-            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addMore(SourceDateList);
         }
 

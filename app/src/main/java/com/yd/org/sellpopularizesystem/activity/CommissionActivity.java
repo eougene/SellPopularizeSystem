@@ -138,7 +138,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         commissionAdapter.addMore(datas);
 
 

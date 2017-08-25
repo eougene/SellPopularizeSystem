@@ -141,7 +141,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                     public void onSuccess(String json) {
 
                         closeDialog();
-                        prPaseJson(json, isRefresh);
+                        paseJSON(json, isRefresh);
                     }
                 });
 
@@ -149,8 +149,6 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void prPaseJson(String json, boolean isRefresh) {
-
-
         Gson gson = new Gson();
         PromotionRecord pb = gson.fromJson(json, PromotionRecord.class);
 
@@ -171,7 +169,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
         }
 
 
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+       // ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         promotionRecordAdapter_pr.addMore(prDatas);
 
     }
@@ -199,7 +197,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
         }
 
 
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+       // ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         pradapter.addMore(datas);
 
     }
@@ -229,7 +227,6 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
                     @Override
                     public void onSuccess(String json) {
-
                         closeDialog();
                         prPaseJson(json, isRefresh);
                     }

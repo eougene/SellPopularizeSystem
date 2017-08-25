@@ -279,7 +279,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
             }
 
         }
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         adapter.addMore(informationContents);
     }
 

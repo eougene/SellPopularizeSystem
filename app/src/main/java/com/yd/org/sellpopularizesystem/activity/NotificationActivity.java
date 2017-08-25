@@ -111,7 +111,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
             };
             listView.setAdapter(adapter);
         } else {
-            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             adapter.addMore(informationContents);
         }
 

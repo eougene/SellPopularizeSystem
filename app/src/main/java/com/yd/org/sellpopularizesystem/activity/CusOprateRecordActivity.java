@@ -659,7 +659,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                             listView.setAdapter(eoiAdapter);
                         } else {
-                            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                             eoiAdapter.addMore(eoiList);
                         }
                     }
@@ -822,7 +822,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
                         } else {
-                            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                             visitAdapter.addMore(vrrb);
                         }
 
