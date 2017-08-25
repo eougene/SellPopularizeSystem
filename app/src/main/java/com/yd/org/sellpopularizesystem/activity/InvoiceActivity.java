@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +12,6 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
 
 /**
  * 发票
@@ -96,7 +92,7 @@ public class InvoiceActivity extends BaseActivity {
             public void onClick(View v) {
                 firbSelectPopWindow.dismiss();
                 String reasonString = reasonEdit.getText().toString().trim();
-                summintInfo(reasonString);
+
 
             }
         });
@@ -112,59 +108,5 @@ public class InvoiceActivity extends BaseActivity {
 
     }
 
-    /**
-     * 获取发票信息
-     *
-     * @param reasonString
-     */
-    private void getInvoiceInfo(String reasonString) {
-        showDialog();
 
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("", "");
-        ajaxParams.put("", "");
-
-        finalHttp.get("", ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                Log.e("获取发票信息","s:"+s);
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("获取发票信息","errorNo:"+errorNo);
-            }
-        });
-
-    }
-
-    /**
-     * 提交拒绝信息
-     *
-     * @param reasonString
-     */
-    private void summintInfo(String reasonString) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("", "");
-        ajaxParams.put("", "");
-
-        finalHttp.post("", ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                Log.e("提交拒绝信息","s:"+s);
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("提交拒绝信息","s:"+errorNo);
-            }
-        });
-
-    }
 }

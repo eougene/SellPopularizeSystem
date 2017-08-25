@@ -27,10 +27,9 @@ import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.GetLawyerNameSort;
 import com.yd.org.sellpopularizesystem.utils.LawyerComparator;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -98,31 +97,34 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
      * 获取律师列表
      */
     private void getLawyerListData(String customeId, final boolean b) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("customer_id", "");
-        ajaxParams.put("law_firm", "");
-        ajaxParams.put("company_id","");
-        http.get(Contants.LAWYER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                Log.e("s***","s:"+s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, b);
-                }
+        EasyHttp.get(Contants.LAWYER_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("customer_id", "")
+                .params("law_firm", "")
+                .params("company_id", "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                    @Override
+                    public void onSuccess(String json) {
 
-            }
+                        closeDialog();
+                        jsonParse(json, b);
+                    }
+                });
 
-        });
+
     }
 
     private void jsonParse(String json, boolean isRefresh) {
@@ -152,7 +154,7 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
             for (int i = 0; i < lawyerGroupListData.size(); i++) {
                 for (int j = 0; j < lawyerGroupListData.get(i).getLawyer_list().size(); j++) {
                     Lawyer.ResultBean.LawyerListBean lawyer = lawyerGroupListData.get(i).getLawyer_list().get(j);
-                    if (lawyer.getLaw_firm().equals("")){
+                    if (lawyer.getLaw_firm().equals("")) {
                         lawyer.setLaw_firm("null");
                     }
                     lawyerListData.add(lawyer);

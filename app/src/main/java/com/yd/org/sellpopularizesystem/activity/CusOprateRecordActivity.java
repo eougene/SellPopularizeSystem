@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,16 +55,13 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -420,287 +418,254 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void updateVisit() {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("v_log_id", visitRecord.getV_log_id() + "");
-        ajaxParams.put("customer_id", customeId);
-        ajaxParams.put("title", etVistTitle.getText().toString());
-        ajaxParams.put("content", etVistContent.getText().toString());
-        fh.post(Contants.UPDATE_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                        handler.sendEmptyMessage(ExtraName.UPDATE);
-                        visitDilog.dismiss();
-                    } else {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                        visitDilog.dismiss();
+        EasyHttp.post(Contants.CHANGE_PASSWORD)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("v_log_id", visitRecord.getV_log_id() + "")
+                .params("customer_id", customeId)
+                .params("title", etVistTitle.getText().toString())
+                .params("content", etVistContent.getText().toString())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
-            }
+                    @Override
+                    public void onError(ApiException e) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+                        closeDialog();
+                        ToasShow.showToast(CusOprateRecordActivity.this, getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+
+                        Gson gs = new Gson();
+                        ErrorBean result = gs.fromJson(json, ErrorBean.class);
+                        if (result.getCode().equals("1")) {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, result.getMsg());
+                            handler.sendEmptyMessage(ExtraName.UPDATE);
+                            visitDilog.dismiss();
+
+                        } else {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, result.getMsg());
+                            visitDilog.dismiss();
+                        }
+
+                    }
+                });
+
+
     }
 
-    private void initOptionDialog() {
-        optionDialog = new Dialog(CusOprateRecordActivity.this, R.style.ActionSheetDialogStyle);
-        optionDialog.setContentView(R.layout.eoi_choose_oprate_dialog);
-        optionDialog.setCanceledOnTouchOutside(true);
-        btFromCamera = (Button) optionDialog.findViewById(R.id.btFromCamera);
-        btFromAlbum = (Button) optionDialog.findViewById(R.id.btFromAlbum);
-        btPhotoCancel = (Button) optionDialog.findViewById(R.id.btPhotoCancel);
-        llChooseSpace = (LinearLayout) optionDialog.findViewById(R.id.llChooseSpace);
-        btFromCamera.setOnClickListener(mOnClickListener);
-        btFromAlbum.setOnClickListener(mOnClickListener);
-        btPhotoCancel.setOnClickListener(mOnClickListener);
-        llChooseSpace.setOnClickListener(mOnClickListener);
-        //获取当前Activity所在的窗体
-        Window dialogWindow = optionDialog.getWindow();
-        //设置Dialog从窗体底部弹出
-        dialogWindow.setGravity(Gravity.BOTTOM);
-        //获得窗体的属性
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.y = 20;//设置Dialog距离底部的距离
-        // 将属性设置给窗体
-        dialogWindow.setAttributes(lp);
-        optionDialog.show();
-    }
-
-    private void initPayMethodDialog() {
-        methodDialog = new Dialog(CusOprateRecordActivity.this, R.style.ActionSheetDialogStyle);
-        //methodDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        methodDialog.setContentView(R.layout.doa_paymetod_pop);
-        btDoacash = (Button) methodDialog.findViewById(R.id.btDoaCash);
-        btDoaTransfer = (Button) methodDialog.findViewById(R.id.btDoaTransfer);
-        btDoaCancel = (Button) methodDialog.findViewById(R.id.btDoaCancel);
-        llSpace = (LinearLayout) methodDialog.findViewById(R.id.llSpace);
-        btDoacash.setOnClickListener(mOnClickListener);
-        btDoaTransfer.setOnClickListener(mOnClickListener);
-        btDoaCancel.setOnClickListener(mOnClickListener);
-        llSpace.setOnClickListener(mOnClickListener);
-        //获取当前Activity所在的窗体
-        Window dialogWindow = methodDialog.getWindow();
-        //设置Dialog从窗体底部弹出
-        dialogWindow.setGravity(Gravity.BOTTOM);
-        //获得窗体的属性
-        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.y = 20;//设置Dialog距离底部的距离
-        // 将属性设置给窗体
-        dialogWindow.setAttributes(lp);
-        methodDialog.show();
-    }
 
     private void submitEoi_01() {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("eoi_id", eoi_ID);
+        httpParams.put("pay_time", (System.currentTimeMillis() / 1000 + ""));
+        httpParams.put("payment_method", payMe);
 
-        try {
-            ajaxParams.put("eoi_id", eoi_ID);
-            ajaxParams.put("pay_time", (System.currentTimeMillis() / 1000 + ""));
-            ajaxParams.put("payment_method", payMe);
-            if (!picPath.equals("")) {
-                File picFile = new File(picPath);
-                ajaxParams.put("file", picFile);
-            }
-
-
-            fh.post(Contants.UPLOAD_EOI_MONEY, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    closeDialog();
-                    ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
-                    Log.e("重新付款**", "errorNo:" + errorNo);
-                }
-
-                @Override
-                public void onSuccess(String s) {
-                    Log.e("重新付款**", "s:" + s);
-                    closeDialog();
-                    JSONObject json = null;
-                    try {
-                        json = new JSONObject(s);
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if (!picPath.equals("")) {
+            File picFile = new File(picPath);
+            httpParams.put("file", picFile, null);
         }
+
+        EasyHttp.post(Contants.UPLOAD_EOI_MONEY)
+                .cacheMode(CacheMode.DEFAULT)
+                .params(httpParams)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+
+                        closeDialog();
+                        ToasShow.showToast(CusOprateRecordActivity.this, getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+
+                        Gson gs = new Gson();
+                        ErrorBean result = gs.fromJson(json, ErrorBean.class);
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, result.getMsg());
+
+                    }
+                });
+
+
     }
 
     private void submitEoi() {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        try {
-            ajaxParams.put("client", customeId);
-            ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("payment_method", payment_method);
-            ajaxParams.put("payment_amount", tvMoneyNum.getText().toString());
-            if (!picPath.equals("")) {
-                File picFile = new File(picPath);
-                ajaxParams.put("file", picFile);
-            }
-            ajaxParams.put("pay_time", "");
-            ajaxParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
-            //ajaxParams.put("purchaseReason", "");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+
+
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("client", customeId);
+        httpParams.put("sales_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("payment_method", payment_method);
+        httpParams.put("payment_amount", tvMoneyNum.getText().toString());
+        httpParams.put("pay_time", "");
+        httpParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
+
+
+        if (!picPath.equals("")) {
+            File picFile = new File(picPath);
+            httpParams.put("file", picFile, null);
         }
-        fh.post(Contants.EOI_RECHARGE, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                Log.e("eoi", "onSuccess: " + s);
-                closeDialog();
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
 
-                        eoiDialog.dismiss();
-                        handler.sendEmptyMessage(ExtraName.SUCCESS);
-
-                        if (payment_method.equals("6") || payment_method.equals("7")) {
-                            Bundle bundle = new Bundle();
-                            bundle.putString("payurlId", json.getString("trust_account_id"));
-                            bundle.putString("payment_method", payment_method);
-                            ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
-                        } else {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                        }
-                    } else {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+        EasyHttp.post(Contants.EOI_RECHARGE)
+                .cacheMode(CacheMode.DEFAULT)
+                .params(httpParams)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
 
-            }
+                    @Override
+                    public void onError(ApiException e) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
-                closeDialog();
-            }
-        });
+                        closeDialog();
+                        ToasShow.showToast(CusOprateRecordActivity.this, getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+                        Gson gs = new Gson();
+                        ErrorBean result = gs.fromJson(json, ErrorBean.class);
+                        if (result.getCode().equals("1")) {
+                            eoiDialog.dismiss();
+                            handler.sendEmptyMessage(ExtraName.SUCCESS);
+                            if (payment_method.equals("6") || payment_method.equals("7")) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("payurlId", result.getMsg());
+                                bundle.putString("payment_method", payment_method);
+                                ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
+                            }
+
+                        } else {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, result.getMsg());
+                        }
+                    }
+                });
+
 
     }
 
     private void getEoiData(int page, final boolean isRel) {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "20");
-        ajaxParams.put("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCompany_id() + "");
-        ajaxParams.put("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCustomer_id() + "");
-        ajaxParams.put("property_id", "");
-        ajaxParams.put("is_use", "");
-        ajaxParams.put("house", "");
-        fh.get(Contants.EOI_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                Log.e("EOI", "s:" + s);
-                closeDialog();
-                Gson gson = new Gson();
-                EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
-                eoiList = eoilistBean.getResult();
-
-
-                if (isRel) {
-
-                    if (eoiList.size() == 0) {
-                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                        listView.setVisibility(View.GONE);
-                    } else {
-                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                        listView.setVisibility(View.VISIBLE);
+        EasyHttp.get(Contants.EOI_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCompany_id() + "")
+                .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCustomer_id() + "")
+                .params("property_id", "")
+                .params("is_use", "")
+                .params("house", "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
 
-                    eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-                        @Override
-                        public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
-                            holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
+                    @Override
+                    public void onSuccess(String json) {
+                        closeDialog();
+                        Gson gson = new Gson();
+                        EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
+                        eoiList = eoilistBean.getResult();
 
 
-                            //尚未付款,未使用
-                            if (item.getEoi_money_status() == 1 && item.getIs_use() != 1) {
+                        if (isRel) {
 
-
-                                //凭证已上传
-                                if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
-                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
-                                    //未付款
-                                } else {
-                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
-                                }
-
-                                //已付款,是否使用
-                            } else if (item.getEoi_money_status() == 2 || item.getEoi_money_status() == 1) {
-
-                                //未使用
-                                if (item.getIs_use() == 0) {
-                                    holder.setLinear_Gone(R.id.promtionLinear);
-                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
-
-                                    //已使用
-                                } else {
-                                    holder.setLinear(R.id.promtionLinear);
-                                    holder.setText(R.id.tvProm01, "0");
-                                    holder.setText(R.id.tvProm02, "0");
-                                    holder.setText(R.id.tvProm03, "0");
-                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
-                                }
-
-                                //请重新上传凭证
-                            } else if (item.getEoi_money_status() == 3) {
-                                type = 1;
-                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.evidence));
-
+                            if (eoiList.size() == 0) {
+                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                                listView.setVisibility(View.GONE);
+                            } else {
+                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                                listView.setVisibility(View.VISIBLE);
                             }
 
+                            eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
+                                @Override
+                                public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
+                                    holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
+
+
+                                    //尚未付款,未使用
+                                    if (item.getEoi_money_status() == 1 && item.getIs_use() != 1) {
+
+
+                                        //凭证已上传
+                                        if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
+                                            //未付款
+                                        } else {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
+                                        }
+
+                                        //已付款,是否使用
+                                    } else if (item.getEoi_money_status() == 2 || item.getEoi_money_status() == 1) {
+
+                                        //未使用
+                                        if (item.getIs_use() == 0) {
+                                            holder.setLinear_Gone(R.id.promtionLinear);
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
+
+                                            //已使用
+                                        } else {
+                                            holder.setLinear(R.id.promtionLinear);
+                                            holder.setText(R.id.tvProm01, "0");
+                                            holder.setText(R.id.tvProm02, "0");
+                                            holder.setText(R.id.tvProm03, "0");
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
+                                        }
+
+                                        //请重新上传凭证
+                                    } else if (item.getEoi_money_status() == 3) {
+                                        type = 1;
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.evidence));
+
+                                    }
+
+
+                                }
+                            };
+
+                            listView.setAdapter(eoiAdapter);
+                        } else {
+                            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                            eoiAdapter.addMore(eoiList);
                         }
-                    };
-                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                    listView.setAdapter(eoiAdapter);
-                } else {
-                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-                    eoiAdapter.addMore(eoiList);
-                }
+                    }
+                });
 
 
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
     }
 
     @Override
@@ -805,58 +770,66 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void getVisitData(int page, final boolean isRel) {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id", customeId);
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "20");
-        fh.get(Contants.VISIT_RECORD_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                super.onSuccess(s);
-                Gson gson = new Gson();
-                VisitRecord visitRecord = gson.fromJson(s, VisitRecord.class);
-                vrrb = visitRecord.getResult();
 
-                if (isRel) {
-
-                    if (vrrb.size() == 0) {
-                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                        listView.setVisibility(View.GONE);
-                    } else {
-                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                        listView.setVisibility(View.VISIBLE);
+        EasyHttp.get(Contants.VISIT_RECORD_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("customer_id", customeId)
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
 
-                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                    visitAdapter = new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this, vrrb, R.layout.visit_listview_item_layout) {
-                        @Override
-                        public void convert(ViewHolder holder, VisitRecord.ResultBean item) {
-                            holder.setText(R.id.tvVisitTime, MyUtils.date2String("yyyy/MM/dd", Long.valueOf(item.getAdd_time() + "000")));
-                            holder.setText(R.id.tvVisitTitle, item.getTitle());
-                            holder.setText(R.id.tvVisitContent, item.getContent());
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        VisitRecord visitRecord = gson.fromJson(json, VisitRecord.class);
+                        vrrb = visitRecord.getResult();
+
+                        if (isRel) {
+
+                            if (vrrb.size() == 0) {
+                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                                listView.setVisibility(View.GONE);
+                            } else {
+                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                                listView.setVisibility(View.VISIBLE);
+                            }
+
+                            visitAdapter = new CommonAdapter<VisitRecord.ResultBean>(CusOprateRecordActivity.this, vrrb, R.layout.visit_listview_item_layout) {
+                                @Override
+                                public void convert(ViewHolder holder, VisitRecord.ResultBean item) {
+                                    holder.setText(R.id.tvVisitTime, MyUtils.date2String("yyyy/MM/dd", Long.valueOf(item.getAdd_time() + "000")));
+                                    holder.setText(R.id.tvVisitTitle, item.getTitle());
+                                    holder.setText(R.id.tvVisitContent, item.getContent());
+                                }
+                            };
+                            listView.setAdapter(visitAdapter);
+                            initMenuListView();
+
+
+                        } else {
+                            ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+                            visitAdapter.addMore(vrrb);
                         }
-                    };
-                    listView.setAdapter(visitAdapter);
-                    initMenuListView();
+
+                    }
+                });
 
 
-                } else {
-                    ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-                    visitAdapter.addMore(vrrb);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
     }
 
     private void initMenuListView() {
@@ -919,93 +892,112 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
     private void removeVistOrResRecord(int id) {
-        showDialog();
         String strUrl = "";
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
+        String key = null;
         if (flag.equals("custovisit")) {
-            ajaxParams.put("v_log_id", id + "");
+            key = "v_log_id";
+
             strUrl = Contants.REMOVE_VISIT_RECORD;
         } else if (flag.equals("custoreser")) {
-            ajaxParams.put("o_log_id", id + "");
+
+            key = "o_log_id";
             strUrl = Contants.REMOVE_RESERVER_RECORD;
         }
 
-        fh.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+        EasyHttp.post(strUrl)
+                .cacheMode(CacheMode.DEFAULT)
+                .params(key, id + "")
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                            if (errorBean.getCode().equals("1")) {
+                                ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
+                            }
+
+                        }
+
+
+                    }
+                });
+
+
     }
 
     private void getReservertData(int page, final boolean isRel) {
-        if (!isFinishing()) {
-            showDialog();
-        }
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id", customeId);
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "20");
-        fh.get(Contants.RESERVER_RECORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                Gson gson = new Gson();
-                SubscribeListBean slb = gson.fromJson(s, SubscribeListBean.class);
-                rbList = slb.getResult();
-
-                if (isRel) {
-                    if (rbList.size() == 0) {
-                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                        listView.setVisibility(View.GONE);
-                    } else {
-                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                        listView.setVisibility(View.VISIBLE);
+        EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("customer_id", customeId)
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
-                    subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
-                        @Override
-                        public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
-                            holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time() * 1000));
-                            holder.setText(R.id.tvSubscribeContent, item.getContent());
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        SubscribeListBean slb = gson.fromJson(json, SubscribeListBean.class);
+                        rbList = slb.getResult();
+
+                        if (isRel) {
+                            if (rbList.size() == 0) {
+                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                                listView.setVisibility(View.GONE);
+                            } else {
+                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                                listView.setVisibility(View.VISIBLE);
+                            }
+                            subscribeAdapter = new CommonAdapter<SubscribeListBean.ResultBean>(CusOprateRecordActivity.this, rbList, R.layout.reserver_listview_item_layout) {
+                                @Override
+                                public void convert(ViewHolder holder, SubscribeListBean.ResultBean item) {
+                                    holder.setText(R.id.tvSubscribeTime, MyUtils.date2String("MM/dd HH:mm", item.getOrder_time() * 1000));
+                                    holder.setText(R.id.tvSubscribeContent, item.getContent());
+                                }
+                            };
+
+                            listView.setAdapter(subscribeAdapter);
+                            initMenuListView();
+                        } else {
+                            subscribeAdapter.addMore(rbList);
                         }
-                    };
-
-                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                    listView.setAdapter(subscribeAdapter);
-                    initMenuListView();
-                } else {
-                    ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
-                    subscribeAdapter.addMore(rbList);
-                }
+                    }
+                });
 
 
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-
-            }
-        });
     }
 
 
@@ -1059,6 +1051,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
 
         if (flag.equals("custovisit")) {
@@ -1074,13 +1067,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        if (flag.equals("custovisit")) {
-            getVisitData(page, false);
-        } else if (flag.equals("custoreser")) {
-            getReservertData(page, false);
-        } else {
-            getEoiData(page, false);
-        }
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+//        if (flag.equals("custovisit")) {
+//            getVisitData(page, false);
+//        } else if (flag.equals("custoreser")) {
+//            getReservertData(page, false);
+//        } else {
+//            getEoiData(page, false);
+//        }
     }
 
     @Override
@@ -1189,36 +1183,41 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
      * @param eoi_id
      */
     private void cancel_eoi(String eoi_id) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("eoi_id", eoi_id);
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        finalHttp.post(Contants.CANCEL_EOI, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("退款**", "errorNo:" + errorNo);
-                closeDialog();
-                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
 
-            }
+        EasyHttp.post(Contants.CANCEL_EOI)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("eoi_id", eoi_id)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
 
-            @Override
-            public void onSuccess(String s) {
-                Log.e("退款**", "s:" + s);
-                closeDialog();
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-                JSONObject json = null;
-                try {
-                    json = new JSONObject(s);
-                    ToasShow.showToastCenter(CusOprateRecordActivity.this, json.getString("msg"));
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+                        closeDialog();
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
+                            ToasShow.showToastCenter(cusOprateRecordActivity, userBean.getMsg());
+                        }
 
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+                    }
+                });
+
 
     }
 
@@ -1227,35 +1226,44 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
      * 取消排队
      */
     private void quxioaEOI(String eoi) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("eoi_id", eoi);
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        finalHttp.post(Contants.CANCEL_EOI_SORT, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e("onSuccess**", "onSuccess:" + s);
 
-                Gson gson = new Gson();
-                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                if (errorBean.getCode().equals("1")) {
-                    ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
-                } else {
-                    ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
-                }
+        EasyHttp.post(Contants.CANCEL_EOI_SORT)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("eoi_id", eoi)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CusOprateRecordActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                        if (errorBean.getCode().equals("1")) {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
+                        } else {
+                            ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
+                        }
 
 
-            }
+                    }
+                });
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                Log.e("onSuccess**", "onSuccess:" + strMsg);
-                ToasShow.showToastCenter(CusOprateRecordActivity.this, strMsg);
-            }
-        });
+
     }
 
 }

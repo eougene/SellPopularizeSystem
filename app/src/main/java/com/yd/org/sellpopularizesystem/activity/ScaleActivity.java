@@ -27,10 +27,10 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -164,6 +164,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
      */
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         // 千万别忘了告诉控件刷新完毕了哦！
         page = 1;
         getProductListData(true, page, space, price, house, area);
@@ -174,41 +175,51 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         // 千万别忘了告诉控件刷新完毕了哦！
         page++;
-        getProductListData(false, page, space, price, house, area);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        // getProductListData(false, page, space, price, house, area);
 
     }
 
 
     private void getProductListData(final boolean boool, int page, String space, String price, String house, String area) {
-        showDialog();
-        final FinalHttp fh = new FinalHttp();
-        final AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "20");
-        ajaxParams.put("cate_id", area);
-        ajaxParams.put("search_key", strSearch);
-        ajaxParams.put("area", "");
-        ajaxParams.put("house", house);
-        ajaxParams.put("space", space);
-        ajaxParams.put("price", price);
-        fh.get(Contants.PRODUCT_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, boool);
-                }
+        HttpParams httpParams=new HttpParams();
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("page", String.valueOf(page));
+        httpParams.put("number", String.valueOf(Integer.MAX_VALUE));
+        httpParams.put("cate_id", area);
+        httpParams.put("search_key", "");
+        httpParams.put("area", "");
+        httpParams.put("house", house);
+        httpParams.put("space", space);
+        httpParams.put("price", price);
 
-            }
+        Log.e("参数***","params:"+httpParams.toString());
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+
+        EasyHttp.get(Contants.PRODUCT_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params(httpParams)
+
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        closeDialog();
+                        jsonParse(json, boool);
+                    }
+                });
 
 
     }
@@ -221,11 +232,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             adapter = new CustomeListAdapter(ScaleActivity.this);
             listView.setAdapter(adapter);
         }
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+
         adapter.addData(productData);
 
     }

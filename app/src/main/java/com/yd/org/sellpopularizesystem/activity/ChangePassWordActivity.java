@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -14,10 +15,11 @@ import com.yd.org.sellpopularizesystem.javaBean.ResultBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
 
 public class ChangePassWordActivity extends BaseActivity {
     private EditText oldPassWord, newPassWord, surePassWord;
@@ -93,40 +95,45 @@ public class ChangePassWordActivity extends BaseActivity {
     }
 
     private void commintInfo(String old_password, String new_password) {
-        showDialog();
-        final FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("old_password", old_password);
-        ajaxParams.put("new_password", new_password);
-        fh.post(Contants.CHANGE_PASSWORD, ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    Gson gs = new Gson();
-                    ResultBean result = gs.fromJson(s, ResultBean.class);
-                    if (result.getCode().equals("1")) {
-                        ToasShow.showToast(ChangePassWordActivity.this, result.getMsg());
-                        ActivitySkip.forward(ChangePassWordActivity.this, LoginActivity.class);
-                        finish();
-
-                    } else {
-                        ToasShow.showToast(ChangePassWordActivity.this, result.getMsg());
+        EasyHttp.post(Contants.CHANGE_PASSWORD)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("old_password", old_password)
+                .params("new_password", new_password)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
 
-                }
-            }
+                    @Override
+                    public void onError(ApiException e) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-                ToasShow.showToast(ChangePassWordActivity.this, getResources().getString(R.string.network_error));
-            }
-        });
+                        closeDialog();
+                        ToasShow.showToast(ChangePassWordActivity.this, getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+
+                        Gson gs = new Gson();
+                        ResultBean result = gs.fromJson(json, ResultBean.class);
+                        if (result.getCode().equals("1")) {
+                            ToasShow.showToast(ChangePassWordActivity.this, result.getMsg());
+                            ActivitySkip.forward(ChangePassWordActivity.this, LoginActivity.class);
+                            finish();
+
+                        } else {
+                            ToasShow.showToast(ChangePassWordActivity.this, result.getMsg());
+                        }
+
+                    }
+                });
+
 
     }
 

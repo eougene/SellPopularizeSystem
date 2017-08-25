@@ -19,10 +19,6 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
-import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxParams;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -175,12 +171,5 @@ public class InvestigationActivity extends BaseActivity {
         }
     };
 
-    private void setResult() {
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        // ajaxParams.put("product_id", );
-        ajaxParams.put("answer", "");
-        ajaxParams.put("add_ip", "");
-    }
+
 }

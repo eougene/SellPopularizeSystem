@@ -16,10 +16,9 @@ import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.PromotionRecord;
 import com.yd.org.sellpopularizesystem.javaBean.PromotionRecordBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,6 +88,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         if (flag.equals("custoexpand")) {
             getExpandReData(page, true);
@@ -103,44 +103,48 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
         page++;
-        if (flag.equals("custoexpand")) {
-            getExpandReData(page, false);
-
-            //购房记录
-        } else {
-            getHouseurchase(page, false);
-        }
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+//        if (flag.equals("custoexpand")) {
+//            getExpandReData(page, false);
+//
+//            //购房记录
+//        } else {
+//            getHouseurchase(page, false);
+//        }
 
 
     }
 
     private void getExpandReData(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("company_id", SharedPreferencesHelps.getCompanyId());
-        ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "20");
-        Log.e("参数", "ajaxParams:" + ajaxParams.toString());
-        finalHttp.get(Contants.SALE_LOG_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("s***", "s:" + s);
-                closeDialog();
-                if (null != s) {
-                    paseJSON(s, isRefresh);
-                }
-            }
+        EasyHttp.get(Contants.SALE_LOG_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("company_id", SharedPreferencesHelps.getCompanyId())
+                .params("customer_id", resultBean.getCustomer_id() + "")
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("s***", "s:" + errorNo);
-                closeDialog();
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        prPaseJson(json, isRefresh);
+                    }
+                });
+
 
     }
 
@@ -162,13 +166,12 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
             }
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
             promotionRecordAdapter_pr = new PromotionRecordAdapter_Pr(PromotionRecordActivity.this);
             listView.setAdapter(promotionRecordAdapter_pr);
         }
 
 
-        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         promotionRecordAdapter_pr.addMore(prDatas);
 
     }
@@ -190,50 +193,47 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
             }
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             pradapter = new PromotionRecordAdapter(PromotionRecordActivity.this);
             listView.setAdapter(pradapter);
         }
 
 
-        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         pradapter.addMore(datas);
 
     }
 
     private void getHouseurchase(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp fin = new FinalHttp();
-        AjaxParams a = new AjaxParams();
-        a.put("user_id", SharedPreferencesHelps.getUserID());
-        a.put("company_id", SharedPreferencesHelps.getCompanyId());
-        a.put("client", resultBean.getCustomer_id() + "");
-        a.put("status","11");
-        a.put("page", page + "");
-        a.put("number", "20");
+        EasyHttp.get(Contants.ORDER_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("company_id", SharedPreferencesHelps.getCompanyId())
+                .params("client", resultBean.getCustomer_id() + "")
+                .params("status", "11")
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        Log.e("参数**","a:"+a.toString());
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-        fin.get(Contants.ORDER_LIST, a, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e("购房记录", "s:" + s);
+                    @Override
+                    public void onSuccess(String json) {
 
-                if (null != s) {
-                    prPaseJson(s, isRefresh);
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                Log.e("购房记录", "errorNo:" + errorNo);
-
-            }
-        });
+                        closeDialog();
+                        prPaseJson(json, isRefresh);
+                    }
+                });
 
 
     }

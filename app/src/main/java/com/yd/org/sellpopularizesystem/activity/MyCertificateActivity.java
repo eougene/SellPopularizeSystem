@@ -32,10 +32,11 @@ import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -198,7 +199,7 @@ public class MyCertificateActivity extends BaseActivity {
                     Uri photoUri = BitmapUtil.imgUri;
 
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        if (photoUri!=null){
+                        if (photoUri != null) {
                             picPath = BitmapUtil.getImagePath(MyCertificateActivity.this, photoUri, null, null);
                             Bitmap bitmap = null;
                             try {
@@ -213,7 +214,7 @@ public class MyCertificateActivity extends BaseActivity {
 
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri!=null){
+                        if (imgUri != null) {
                             picPath = imgUri.getPath();
                             Log.e("招聘***2", "picPath:" + picPath);
                             srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
@@ -275,95 +276,97 @@ public class MyCertificateActivity extends BaseActivity {
     private void commintInfo() {
 
 
-        try {
-            String sTime = "", endTime = "", licence_number = "", licence_name = "";
+        String sTime = "", endTime = "", licence_number = "", licence_name = "";
 
 
-            if ((dataTextView_01.getText().toString()).equals(getString(R.string.commencement_date))) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_valid_date));
+        if ((dataTextView_01.getText().toString()).equals(getString(R.string.commencement_date))) {
+            ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_valid_date));
+            return;
+
+        } else {
+            sTime = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", dataTextView_01.getText().toString()));
+
+        }
+
+        if ((dataTextView_02.getText().toString()).equals(getString(R.string.maturity_date))) {
+            ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_due_date));
+            return;
+
+        } else {
+            endTime = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", dataTextView_02.getText().toString()));
+
+        }
+
+
+        if (TextUtils.isEmpty(zhEdTextView.getText().toString().trim())) {
+            ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.Fill_id_number));
+            return;
+        } else {
+            licence_number = zhEdTextView.getText().toString().trim();
+        }
+
+        if ((zhTypeTextView.getText().toString().trim()).equals(getString(R.string.certificate_type))) {
+            ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_certificate_type));
+            return;
+        } else {
+            licence_name = zhTypeTextView.getText().toString().trim();
+        }
+
+
+        HttpParams httpParams=new HttpParams();
+        httpParams.put("licence_type", licence_type);
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("licence_number", licence_number);
+        httpParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
+        httpParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
+        httpParams.put("licence_name", licence_name);
+        httpParams.put("abn", "");
+        httpParams.put("acn", "");
+        httpParams.put("is_gst", "");
+
+
+
+
+        if (!picPath.startsWith("https://")) {
+            isFile = true;
+            if (TextUtils.isEmpty(picPath) || picPath == "") {
+                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
                 return;
-
             } else {
-                sTime = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", dataTextView_01.getText().toString()));
-
+                file = new File(picPath);
+                httpParams.put("file", file, null);
             }
 
-            if ((dataTextView_02.getText().toString()).equals(getString(R.string.maturity_date))) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_due_date));
-                return;
-
-            } else {
-                endTime = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", dataTextView_02.getText().toString()));
-
-            }
+        } else {
+            isFile = false;
+        }
 
 
-            if (TextUtils.isEmpty(zhEdTextView.getText().toString().trim())) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.Fill_id_number));
-                return;
-            } else {
-                licence_number = zhEdTextView.getText().toString().trim();
-            }
+        EasyHttp.post(Contants.UPLOAD_LICENCE)
+                .cacheMode(CacheMode.DEFAULT)
+               .params(httpParams)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
 
-            if ((zhTypeTextView.getText().toString().trim()).equals(getString(R.string.certificate_type))) {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.select_certificate_type));
-                return;
-            } else {
-                licence_name = zhTypeTextView.getText().toString().trim();
-            }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(MyCertificateActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
 
-            if (!picPath.startsWith("https://")) {
-                isFile = true;
-                if (TextUtils.isEmpty(picPath) || picPath == "") {
-                    ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
-                    return;
-                } else {
-                    file = new File(picPath);
-                }
-
-            } else {
-                isFile = false;
-            }
-
-
-            showDialog();
-
-            FinalHttp finalHttp = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("licence_type", licence_type);
-            ajaxParams.put("licence_number", licence_number);
-            ajaxParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
-            ajaxParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
-            if (isFile) {
-                ajaxParams.put("file", file);
-            }
-
-            ajaxParams.put("licence_name", licence_name);
-            ajaxParams.put("abn", "");
-            ajaxParams.put("acn", "");
-            ajaxParams.put("is_gst", "");
-
-            Log.e("参数**", "ajaxParams:" + ajaxParams.toString());
-
-            finalHttp.post(Contants.UPLOAD_LICENCE, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    closeDialog();
-                    Log.e("errorNo***", "errorNo:" + errorNo);
-                    ToasShow.showToastCenter(MyCertificateActivity.this, strMsg);
-                }
-
-                @Override
-                public void onSuccess(String s) {
-                    closeDialog();
-                    Log.e("s***", "s:" + s);
-
-
-                    if (null != s) {
+                        closeDialog();
                         Gson gson = new Gson();
-                        ErrorBean e = gson.fromJson(s, ErrorBean.class);
+                        ErrorBean e = gson.fromJson(json, ErrorBean.class);
                         if (e.getCode().equals("1")) {
                             ToasShow.showToastCenter(MyCertificateActivity.this, e.getMsg() + ":" + e.getResult());
                             finish();
@@ -371,71 +374,69 @@ public class MyCertificateActivity extends BaseActivity {
                             ToasShow.showToastCenter(MyCertificateActivity.this, e.getMsg());
                         }
                     }
-                }
-
-
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            Log.e("e***", "e:" + e.getMessage());
-        }
-
+                });
 
     }
 
+
     private void getInfo() {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        finalHttp.get(Contants.LICENCE_INFO, ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-            }
-
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e("s***", "s:" + s);
-                if (null != s) {
-                    Gson gson = new Gson();
-                    LicenceBean lb = gson.fromJson(s, LicenceBean.class);
-
-                    if (lb.getCode() == 1) {
-
-                        if (lb.getResult().getStatus() == 0) {
-                            stateTextView.setText(R.string.state_approval);
-                        } else if (lb.getResult().getStatus() == 1) {
-                            stateTextView.setText(R.string.valid_state);
-                        } else if (lb.getResult().getStatus() == 2) {
-                            stateTextView.setText(R.string.state_refused);
-                        } else if (lb.getResult().getStatus() == 3) {
-                            stateTextView.setText(R.string.State_overdue);
-                        }
-
-
-                        picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
-                        dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date() + "000")));
-                        dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
-                        zhEdTextView.setText(lb.getResult().getLicence_number());
-
-                        if (lb.getResult().getLicence_type() == 1) {
-                            zhTypeTextView.setText("Certificate of Registration");
-                        } else {
-                            zhTypeTextView.setText("Corporation Licence");
-                        }
-
-
-                        BitmapUtil.loadImageView(MyCertificateActivity.this,Contants.DOMAIN + "/" + lb.getResult().getLicence_file(),srcImageView);
-
-
-
+        EasyHttp.get(Contants.LICENCE_INFO)
+                .cacheMode(CacheMode.DEFAULT)
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
-                }
-            }
-        });
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        LicenceBean lb = gson.fromJson(json, LicenceBean.class);
+
+                        if (lb.getCode() == 1) {
+
+                            if (lb.getResult().getStatus() == 0) {
+                                stateTextView.setText(R.string.state_approval);
+                            } else if (lb.getResult().getStatus() == 1) {
+                                stateTextView.setText(R.string.valid_state);
+                            } else if (lb.getResult().getStatus() == 2) {
+                                stateTextView.setText(R.string.state_refused);
+                            } else if (lb.getResult().getStatus() == 3) {
+                                stateTextView.setText(R.string.State_overdue);
+                            }
+
+
+                            picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
+                            dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date() + "000")));
+                            dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
+                            zhEdTextView.setText(lb.getResult().getLicence_number());
+
+                            if (lb.getResult().getLicence_type() == 1) {
+                                zhTypeTextView.setText("Certificate of Registration");
+                            } else {
+                                zhTypeTextView.setText("Corporation Licence");
+                            }
+
+
+                            BitmapUtil.loadImageView(MyCertificateActivity.this, Contants.DOMAIN + "/" + lb.getResult().getLicence_file(), srcImageView);
+
+
+                        }
+                    }
+                });
+
+
     }
 
 

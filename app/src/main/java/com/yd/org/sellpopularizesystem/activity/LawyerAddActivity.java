@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -8,10 +9,10 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -55,42 +56,54 @@ public class LawyerAddActivity extends BaseActivity {
             if (!TextUtils.isEmpty(strName) && !TextUtils.isEmpty(strAdress) && !TextUtils.isEmpty(strFirst)
                     && !TextUtils.isEmpty(strFirst) && !TextUtils.isEmpty(strLast) && !TextUtils.isEmpty(strTel) && !TextUtils.isEmpty(strEmail)) {
                 save();
-            }else {
-                ToasShow.showToastCenter(LawyerAddActivity.this,getString(R.string.complete_hint));
+            } else {
+                ToasShow.showToastCenter(LawyerAddActivity.this, getString(R.string.complete_hint));
             }
         }
     };
 
     private void save() {
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("law_firm", strName);
-        ajaxParams.put("street_address_1", strAdress);
-        ajaxParams.put("first_name", strFirst);
-        ajaxParams.put("surname", strLast);
-        ajaxParams.put("lawyer_tel", strTel);
-        ajaxParams.put("lawyer_email", strEmail);
-        finalHttp.post(Contants.NEW_LAWYER, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                try {
-                    JSONObject json = new JSONObject(s);
-                    if (json.getString("code").equals("1")) {
-                        ToasShow.showToastCenter(LawyerAddActivity.this, json.getString("msg"));
-                        LawyerActivity.lawyerActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
-                        finish();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+        EasyHttp.post(Contants.NEW_LAWYER)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("law_firm", strName)
+                .params("street_address_1", strAdress)
+                .params("first_name", strFirst)
+                .params("surname", strLast)
+                .params("lawyer_tel", strTel)
+                .params("lawyer_email", strEmail)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+
+
+                        try {
+                            JSONObject json = new JSONObject(s);
+                            if (json.getString("code").equals("1")) {
+                                ToasShow.showToastCenter(LawyerAddActivity.this, json.getString("msg"));
+                                LawyerActivity.lawyerActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
+
     }
 
     @Override

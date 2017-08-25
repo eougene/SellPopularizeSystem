@@ -21,10 +21,9 @@ import com.yd.org.sellpopularizesystem.javaBean.StudyInfoBean;
 import com.yd.org.sellpopularizesystem.viewpage.HackyViewPager;
 import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
 import com.yd.org.sellpopularizesystem.viewpage.ViewpagerAdapter;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,45 +146,51 @@ public class StudyDetailaActivity extends FragmentActivity {
 
     private void getInfo(String study_id) {
 
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("study_id", study_id);
-        finalHttp.get(Contants.STUDY_INFO, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
 
-            }
+        EasyHttp.get(Contants.STUDY_INFO)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("study_id", study_id)
 
-            @Override
-            public void onSuccess(String sting) {
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
 
-                Log.e("string", "string:" + sting);
-
-                if (null != sting) {
-                    Gson gson = new Gson();
-                    StudyInfoBean studyBean = gson.fromJson(sting, StudyInfoBean.class);
-
-                    if (studyBean.getCode().equals("1")) {
-                        picList = studyBean.getResult();
-                        //
-                        for (int i = 0; i < picList.size() + 1; i++) {
-                            if (i == picList.size()) {
-                                if (resultBean != null) {
-                                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
-                                } else if (prs != null) {
-                                    fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
-                                }
-                            } else {
-                                fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl(), studyBean.getResult().get(i).getDetail_title()));
-                            }
-                        }
-
-                        setViewPager(fragmentList);
                     }
-                }
 
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        Gson gson = new Gson();
+                        StudyInfoBean studyBean = gson.fromJson(json, StudyInfoBean.class);
+
+                        if (studyBean.getCode().equals("1")) {
+                            picList = studyBean.getResult();
+                            //
+                            for (int i = 0; i < picList.size() + 1; i++) {
+                                if (i == picList.size()) {
+                                    if (resultBean != null) {
+                                        fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
+                                    } else if (prs != null) {
+                                        fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
+                                    }
+                                } else {
+                                    fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl(), studyBean.getResult().get(i).getDetail_title()));
+                                }
+                            }
+
+                            setViewPager(fragmentList);
+                        }
+                    }
+                });
+
 
     }
 

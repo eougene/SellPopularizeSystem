@@ -39,7 +39,7 @@ public class LoginActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activty);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        mTitles = Arrays.asList(getResources().getString(R.string.login),getResources().getString(R.string.register));
+        mTitles = Arrays.asList(getResources().getString(R.string.login), getResources().getString(R.string.register));
         initView();
         initData();
         //动态设置tab

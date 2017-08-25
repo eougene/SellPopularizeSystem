@@ -15,13 +15,9 @@ import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.TeamBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,40 +66,33 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
      * 获取我的团队列表
      */
     private void getTeamListData(String s, final boolean b) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        http.get(Contants.TEAM_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    JSONObject json = null;
-                    try {
-                        json = new JSONObject(s);
-                        if (b && json.getString("msg").equals("暂无数据")) {
-                            getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                            listView.setVisibility(View.GONE);
-                        } else {
-                            getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                            listView.setVisibility(View.VISIBLE);
-                            jsonParse(s, b);
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+        EasyHttp.get(Contants.TEAM_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
 
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-                }
-            }
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+                        closeDialog();
+                        jsonParse(json, b);
+
+
+                    }
+                });
+
     }
 
 

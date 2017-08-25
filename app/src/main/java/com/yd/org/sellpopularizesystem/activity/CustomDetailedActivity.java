@@ -33,7 +33,6 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
@@ -62,10 +61,11 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +95,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private CircleImageView customeIcon;
     private CheckBox cbCom;
     private EditText edCustomeTrueName, etMiddleName, edcustmomeDetailedBie, edCustomeMobile,
-            edcustmomeDetailedWeChat, edcustmomeDetailedQQ, etCusMemo,edcustmomeDetailedCity,
+            edcustmomeDetailedWeChat, edcustmomeDetailedQQ, etCusMemo, edcustmomeDetailedCity,
             edcustmomeDetailedAddress, edcustmomeDetailedEmail, edcustmomeDetailedWeJob,
             edcustmomeDetailedSalary, edcustmomeDetailedCard, edcustmomeDetailedPassPort,
             edcustmomeDetailedNationality, edcustmomeDetailedKinsfolk, edcustmomeDetailedRelation,
@@ -300,8 +300,6 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
 
-
-
     private void Views() {
         etNation = getViewById(R.id.etNation);
         etLn = getViewById(R.id.etLn);
@@ -315,7 +313,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone = getViewById(R.id.ivPhone);
         edcustmomeDetailedWeChat = getViewById(R.id.edcustmomeDetailedWeChat);
         edcustmomeDetailedQQ = getViewById(R.id.edcustmomeDetailedQQ);
-        etCusMemo= getViewById(R.id.etCusMemo);
+        etCusMemo = getViewById(R.id.etCusMemo);
 
         llComContent = getViewById(R.id.llComContent);
         cbCom = getViewById(R.id.cbCom);
@@ -462,7 +460,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
         //生日
-        if (customeDetailedBean.getResult().getBirth_date()!=null ) {
+        if (customeDetailedBean.getResult().getBirth_date() != null) {
             if (TextUtils.isEmpty(customeDetailedBean.getResult().getBirth_date() + "")
                     || String.valueOf(customeDetailedBean.getResult().getBirth_date()).equals("")) {
                 edcustmomeDetailedBie.setText("");
@@ -1078,9 +1076,9 @@ public class CustomDetailedActivity extends BaseActivity {
             String e_mail, String job, String income, String card_id, String passport_id,
             String passport_country, String family_name, String family_first_name, String family_relationship, String family_mobile,
             String zip_code, String is_firb, String wechat_number, String qq_number,
-            String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
-            String company_street_address_line_2, String company_postcode, String unit_number, String street_number, String suburb, String state, String street_address_line_1, String street_address_line_2, String family_email) throws FileNotFoundException {
-            showDialog();
+            String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, final String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
+            String company_street_address_line_2, String company_postcode, String unit_number, String street_number, String suburb, String state, String street_address_line_1, String street_address_line_2, String family_email, String mome) throws FileNotFoundException {
+        showDialog();
 
 
         //更新
@@ -1091,9 +1089,8 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
 
-        FinalHttp http = new FinalHttp();
-        http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-        AjaxParams ajaxParams = new AjaxParams();
+        HttpParams ajaxParams = new HttpParams();
+
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
@@ -1106,7 +1103,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //**************************************
 
         if (!imagePath.equals("")) {
-            ajaxParams.put("file", new File(imagePath));//客户头像
+            ajaxParams.put("file", new File(imagePath), null);//客户头像
         }
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
@@ -1155,54 +1152,61 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("card_id", card_id);//身份证号码
         ajaxParams.put("passport_id", passport_id);//护照号码
         ajaxParams.put("passport_country", passport_country);//护照国别
-
-
         ajaxParams.put("family_first_name", family_first_name);//亲属姓氏
         ajaxParams.put("family_name", family_name);//亲属名字
         ajaxParams.put("family_relationship", family_relationship);//亲属关系
         ajaxParams.put("family_mobile", family_mobile);//亲属手机
         ajaxParams.put("family_email", family_email);//亲属邮箱
+        ajaxParams.put("memo", mome);//备注
 
 
-        Log.e("ajaxParams**", "ajaxParams:" + ajaxParams.toString());
-        http.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e(TAG, "onSuccess: " + s);
-                JSONObject json = null;
-                try {
-                    json = new JSONObject(s);
-                    if (updateOrAdd.equals(ADD)) {//新增
-                        ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
-                        if (!tag.equals("completeinfo") && json.getString("msg").equals(getString(R.string.addsuccess))) {
-                            CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
-                        }
-                    } else {//更新
-                        ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
-                        if (json.getString("msg").equals(getString(R.string.updatesuccess))) {
-                            if (tag.equals("completeinfo")) {
-                                //重新赋值
-                                setCustomerValue(((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome")));
-                                ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
-                            }
-                        }
+        EasyHttp.post(strUrl)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params(ajaxParams)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                finish();
 
-            }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CustomDetailedActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                ToasShow.showToastBottom(CustomDetailedActivity.this, getString(R.string.submitfail));
-            }
+                    @Override
+                    public void onSuccess(String s) {
+                        closeDialog();
+                        JSONObject json = null;
+                        try {
+                            json = new JSONObject(s);
+                            if (updateOrAdd.equals(ADD)) {//新增
+                                ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
+                                if (!tag.equals("completeinfo") && json.getString("msg").equals(getString(R.string.addsuccess))) {
+                                    CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
+                                }
+                            } else {//更新
+                                ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
+                                if (json.getString("msg").equals(getString(R.string.updatesuccess))) {
+                                    if (tag.equals("completeinfo")) {
+                                        //重新赋值
+                                        setCustomerValue(((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome")));
+                                        ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
+                                    }
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        finish();
 
-        });
+                    }
+                });
 
 
     }
@@ -1218,7 +1222,6 @@ public class CustomDetailedActivity extends BaseActivity {
         resultBean.setPostcode(etEma_01.getText().toString().trim());
 
 
-
         ObjectSaveUtil.saveObject(CustomDetailedActivity.this, "custome", resultBean);
     }
 
@@ -1226,7 +1229,7 @@ public class CustomDetailedActivity extends BaseActivity {
         String surname = "", mid_name = "", first_name = "", en_name = "", birth_date = "", mobile = "", country = "", city = "", area = "", e_mail = "", job = "", income = "", card_id = "", passport_id = "",
                 passport_country = "", family_name = "", family_first_name = "", family_relationship = "", family_mobile = "",
                 zip_code = "", is_firb = "", wechat_number = "", qq_number = "", company_name = "", abn = "", acn = "", company_mobile = "", company_e_mail = "", company_fax = "", client_id = "", client = "", select_self = "", company_country = "", company_unit_number = "", company_street_number = "", company_suburb = "", company_state = "", company_street_address_line_1 = "",
-                company_street_address_line_2 = "", company_postcode = "", unit_number = "", street_number = "", suburb = "", state = "", street_address_line_1 = "", street_address_line_2 = "", family_email = "";
+                company_street_address_line_2 = "", company_postcode = "", unit_number = "", street_number = "", suburb = "", state = "", street_address_line_1 = "", street_address_line_2 = "", family_email = "", momeString = "";
         //姓
         if (!TextUtils.isEmpty(edCustomeTrueName.getText().toString().trim())) {
             surname = edCustomeTrueName.getText().toString().trim();
@@ -1265,9 +1268,9 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //生日
         if (!TextUtils.isEmpty(edcustmomeDetailedBie.getText().toString().trim())) {
-            if (TextUtils.isDigitsOnly(edcustmomeDetailedBie.getText().toString().trim())){
-                birth_date="0";
-            }else {
+            if (TextUtils.isDigitsOnly(edcustmomeDetailedBie.getText().toString().trim())) {
+                birth_date = "0";
+            } else {
                 String bir = String.valueOf(MyUtils.getInstance().string2Date("yyyy/MM/dd", edcustmomeDetailedBie.getText().toString()));
                 birth_date = bir.substring(0, bir.length() - 3);
                 Log.e("birth_date**", "birth_date:" + birth_date);
@@ -1286,10 +1289,10 @@ public class CustomDetailedActivity extends BaseActivity {
             }
 
             if (!TextUtils.isEmpty(edcustmomeDetailedEmail.getText().toString().trim())) {
-                if (StringUtils.isEmail(edcustmomeDetailedEmail.getText().toString().trim())){
+                if (StringUtils.isEmail(edcustmomeDetailedEmail.getText().toString().trim())) {
                     e_mail = edcustmomeDetailedEmail.getText().toString().trim();
-                }else {
-                    ToasShow.showToastCenter(this,getString(R.string.email_hint));
+                } else {
+                    ToasShow.showToastCenter(this, getString(R.string.email_hint));
                     return;
                 }
 
@@ -1318,7 +1321,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //证件号
         if (!TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())) {
-            if (edcustmomeDetailedCard.getText().toString().trim().length()!=18){
+            if (edcustmomeDetailedCard.getText().toString().trim().length() != 18) {
 
             }
             card_id = edcustmomeDetailedCard.getText().toString().trim();
@@ -1446,15 +1449,16 @@ public class CustomDetailedActivity extends BaseActivity {
         state = etZhou_01.getText().toString().trim();//州
         street_address_line_1 = etStreet1_01.getText().toString().trim();//街道地址一
         street_address_line_2 = etStreet2_01.getText().toString().trim();//街道地址二
+        momeString = etCusMemo.getText().toString().trim();
 
 
         try {
             updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
                     birth_date, mobile, country, city, area,
-                     e_mail, job, income, card_id, passport_id,
+                    e_mail, job, income, card_id, passport_id,
                     passport_country, family_name, family_first_name, family_relationship, family_mobile,
                     zip_code, is_firb, wechat_number, qq_number, company_name, abn, acn, company_mobile, company_e_mail, company_fax, client_id, client, select_self, company_country, company_unit_number, company_street_number, company_suburb, company_state, company_street_address_line_1,
-                    company_street_address_line_2, company_postcode, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, family_email);
+                    company_street_address_line_2, company_postcode, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, family_email, momeString);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -1501,34 +1505,38 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
     private void getCustomInfo(CustomBean.ResultBean resultBean) {
-        showDialog();
-        final FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
-        fh.get(Contants.CUSTOME_DETAILED, ajaxParams, new AjaxCallBack<String>() {
 
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                Log.e("客户内容", "s:" + s);
-                if (null != s) {
-                    Gson gson = new Gson();
-                    CustomeDetailedBean customeDetailedBean = gson.fromJson(s, CustomeDetailedBean.class);
-                    if (customeDetailedBean.getCode().equals("1")) {
-                        setInfo(customeDetailedBean);
+        EasyHttp.get(Contants.CUSTOME_DETAILED)
+                .cacheMode(CacheMode.NO_CACHE)
+                .timeStamp(true)
+                .params("customer_id", resultBean.getCustomer_id() + "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-                Toast.makeText(CustomDetailedActivity.this, R.string.network_error, Toast.LENGTH_LONG).show();
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CustomDetailedActivity.this, getString(R.string.network_error));
 
-            }
-        });
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("获取客户信息","json:"+json);
+                        closeDialog();
+                        Gson gson = new Gson();
+                        CustomeDetailedBean customeDetailedBean = gson.fromJson(json, CustomeDetailedBean.class);
+                        if (customeDetailedBean.getCode().equals("1")) {
+                            setInfo(customeDetailedBean);
+                        }
+                    }
+                });
+
     }
 
     /**
@@ -1543,7 +1551,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        if (photoUri!=null){
+                        if (photoUri != null) {
                             imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
                             Bitmap bitmap = null;
                             try {
@@ -1556,7 +1564,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri!=null){
+                        if (imgUri != null) {
                             imagePath = imgUri.getPath();
                             customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
                         }

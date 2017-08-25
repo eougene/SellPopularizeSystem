@@ -18,7 +18,6 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
@@ -35,16 +34,18 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import static com.igexin.push.core.g.s;
 
 public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btLineup, btCancel;
@@ -243,43 +244,50 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     //获取子单元列表数据
     private void getListData() {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_id", product_id == null ? "" : product_id);
-        ajaxParams.put("page", page);
-        ajaxParams.put("number", 1000 + "");
-        ajaxParams.put("provice", "");
-        ajaxParams.put("city", "");
-        ajaxParams.put("town", "");
-        ajaxParams.put("address", "");
-        ajaxParams.put("bedroom", bedRoomNum == null ? "" : bedRoomNum);
-        ajaxParams.put("bathroom", bathRoomNum);
-        ajaxParams.put("car_space", carSpace);
-        ajaxParams.put("has_study", "");
-        ajaxParams.put("ensuite", "");
-        ajaxParams.put("level", "");
-        ajaxParams.put("price", "0~100000000");
-        ajaxParams.put("internal", "0~100000000");
-        ajaxParams.put("external", "0~100000000");
-        ajaxParams.put("building_area", "0~100000000");
-        ajaxParams.put("is_lock", "");
-        fh.get(Contants.PRODUCT_SUBUNIT_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                Log.e("s***", "s:" + s);
-                closeDialog();
-                parseJson(s);
-            }
+        EasyHttp.get(Contants.PRODUCT_SUBUNIT_LIST)
+                .cacheMode(CacheMode.DEFAULT)
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("product_id", product_id == null ? "" : product_id)
+                .params("provice", "")
+                .params("city", "")
+                .params("town", "")
+                .params("address", "")
+                .params("bedroom", bedRoomNum == null ? "" : bedRoomNum)
+                .params("bathroom", bathRoomNum)
+                .params("car_space", carSpace)
+                .params("has_study", "")
+                .params("ensuite", "")
+                .params("level", "")
+                .params("price", "0~100000000")
+                .params("internal", "0~100000000")
+                .params("external", "0~100000000")
+                .params("building_area", "0~100000000")
+                .params("is_lock", "")
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        parseJson(json);
+                    }
+                });
+
+
     }
 
     private void parseJson(String s) {
@@ -522,113 +530,133 @@ public class ProductSubunitListActivity extends BaseActivity {
      * 获取充值列表
      */
     private void getEoiData(final ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", "1");
-        ajaxParams.put("number", "1");
-        ajaxParams.put("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCompany_id() + "");
-        ajaxParams.put("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "");
-        ajaxParams.put("property_id", "");
-        ajaxParams.put("is_use", "0");//0未使用,1已使用
-        ajaxParams.put("house", "");
-        Log.e("参数**", "ajaxParams:" + ajaxParams.toString());
-        fh.get(Contants.EOI_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("获取充值列表**", "s:" + s);
-                closeDialog();
-                Gson gson = new Gson();
-
-                EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
-                if (eoilistBean.getCode() == 1) {
-                    eoiList = eoilistBean.getResult();
-                    if (eoilistBean.getMsg().equals("暂无数据")) {
-                        ToasShow.showToastCenter(ProductSubunitListActivity.this, "暂无可用EOI,请充值");
-                    } else {
-                        if (eoiList.size() > 0) {
-                            eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
-                        }
+        EasyHttp.get(Contants.EOI_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", "1")
+                .params("number", "1")
+                .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCompany_id() + "")
+                .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "")
+                .params("property_id", "")
+                .params("is_use", "0")
+                .params("house", "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
                     }
 
-                }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        Gson gson = new Gson();
+
+                        EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
+                        if (eoilistBean.getCode() == 1) {
+                            eoiList = eoilistBean.getResult();
+                            if (eoilistBean.getMsg().equals("暂无数据")) {
+                                ToasShow.showToastCenter(ProductSubunitListActivity.this, "暂无可用EOI,请充值");
+                            } else {
+                                if (eoiList.size() > 0) {
+                                    eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
+                                }
+                            }
+                        }
+                    }
+                });
 
 
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                Log.e("获取充值列表**", "errorNo:" + errorNo);
-                ToasShow.showToastCenter(ProductSubunitListActivity.this, strMsg);
-            }
-        });
     }
 
 
     //eoi排队请求
     private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean, String eoi) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("eoi_id", eoi);
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_id", propertyBean.getProduct_id() + "");
-        ajaxParams.put("product_child_id", propertyBean.getProduct_childs_id() + "");
-        Log.e("排队参数**", "ajaxParams:" + ajaxParams.toString());
-        http.post(Contants.EOI_USE, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e("排队成功**", "s:" + s);
+        EasyHttp.get(Contants.EOI_USE)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("eoi_id", eoi)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("product_id", propertyBean.getProduct_id() + "")
+                .params("product_child_id", propertyBean.getProduct_childs_id() + "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-                Gson gs = new Gson();
-                ErrorBean e = gs.fromJson(s, ErrorBean.class);
-                if (e.getCode().equals("1")) {
-                    ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
-                } else {
-                    ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
-                }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            }
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("排队失败**", "s:" + errorNo);
-                closeDialog();
-                ToasShow.showToastCenter(ProductSubunitListActivity.this, strMsg);
-            }
-        });
+                        closeDialog();
+                        Gson gson = new Gson();
+
+                        Gson gs = new Gson();
+                        ErrorBean e = gs.fromJson(s, ErrorBean.class);
+                        if (e.getCode().equals("1")) {
+                            ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
+                        } else {
+                            ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
+                        }
+                    }
+                });
+
+
     }
 
     private void getItemProductDetail() {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("product_id", product_id);
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                Gson gson = new Gson();
-                ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
-                if (pdb.getCode().equals("1")) {
-                    prs = pdb.getResult();
-                    BaseApplication.getInstance().setPrs(prs);
-                    controlColor();
-                }
-            }
+        EasyHttp.get(Contants.PRODUCT_DETAIL)
+                .cacheMode(CacheMode.NO_CACHE)//缓存key
+                .timeStamp(true)
+                .params("product_id", product_id)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess", "json:" +json);
+                        closeDialog();
+                        Gson gson = new Gson();
+                        ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
+//                        if (pdb.getCode().equals("1")) {
+//                            prs = pdb.getResult();
+//                            BaseApplication.getInstance().setPrs(prs);
+//                            controlColor();
+//
+//
+//                        }
+                    }
+                });
+
 
     }
+
 
     //控制控件颜色
     private void controlColor() {

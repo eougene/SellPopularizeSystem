@@ -11,10 +11,9 @@ import com.yd.org.sellpopularizesystem.adapter.GradeAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.text.DecimalFormat;
 
@@ -57,29 +56,31 @@ public class GradeActivity extends BaseActivity {
     }
 
     private void getData() {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("answer_id", resultBean.getAnswer_id() + "");
+        EasyHttp.get(Contants.GET_TEST_RESULT)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("answer_id", resultBean.getAnswer_id() + "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        Log.e("answer_id", "answer_id:" + resultBean.getAnswer_id());
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-        finalHttp.get(Contants.GET_TEST_RESULT, ajaxParams, new AjaxCallBack<String>() {
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onSuccess(String s) {
-                Log.e("数据", "s:" + s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s);
-                }
-            }
+                        closeDialog();
+                        jsonParse(json);
+                    }
+                });
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-            }
-        });
 
     }
 
@@ -88,7 +89,7 @@ public class GradeActivity extends BaseActivity {
         gradeBean = gson.fromJson(json, GradeBean.class);
         if (gradeBean.getCode().equals("1")) {
             tvCount.setText(gradeBean.getTotal_answer() + getString(R.string.topic));
-            tvSureCount.setText(gradeBean.getTotal_right_answer() +getString(R.string.topic));
+            tvSureCount.setText(gradeBean.getTotal_right_answer() + getString(R.string.topic));
             DecimalFormat df = new DecimalFormat("0.00");
             tvAccuracy.setText(df.format(((Float.valueOf(gradeBean.getTotal_right_answer()) / Float.valueOf(gradeBean.getTotal_answer())) * 100)) + " %");
             gradeAdapter = new GradeAdapter(this, gradeBean.getResult());

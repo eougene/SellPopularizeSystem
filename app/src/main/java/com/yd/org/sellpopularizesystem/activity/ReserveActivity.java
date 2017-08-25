@@ -46,17 +46,17 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.IllegalFormatCodePointException;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -127,7 +127,7 @@ public class ReserveActivity extends BaseActivity {
         tvReCusAdd = getViewById(R.id.tvReCusAdd);
         ivReLawyer = getViewById(R.id.ivReLawyer);
         rlRecus = getViewById(R.id.rlRecus);
-        etCopurchase= getViewById(R.id.etCopurchase);
+        etCopurchase = getViewById(R.id.etCopurchase);
         rlReLawyer = getViewById(R.id.rlReLawyer);
         tvReLawyer = getViewById(R.id.tvReLawyer);
         rlReGoal = getViewById(R.id.rlReGoal);
@@ -451,9 +451,9 @@ public class ReserveActivity extends BaseActivity {
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
-                    if (bean.getCate_id()==1){
+                    if (bean.getCate_id() == 1) {
                         tvMoneyNum.setText("$ 300.00");
-                    }else {
+                    } else {
                         tvMoneyNum.setText("$ 300.00");
                     }
                     tvPayMethod.setText(getString(R.string.recash));
@@ -464,9 +464,9 @@ public class ReserveActivity extends BaseActivity {
                     if (llCertificate.getVisibility() == View.GONE) {
                         llCertificate.setVisibility(View.VISIBLE);
                     }
-                    if (bean.getCate_id()==1){
+                    if (bean.getCate_id() == 1) {
                         tvMoneyNum.setText("$ 300.00");
-                    }else {
+                    } else {
                         tvMoneyNum.setText("$ 300.00");
                     }
                     tvPayMethod.setText(getString(R.string.transfer));
@@ -478,9 +478,9 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.GONE);
                     }
                     tvPayMethod.setText(R.string.alipay);
-                    if (bean.getCate_id()==1){
+                    if (bean.getCate_id() == 1) {
                         tvMoneyNum.setText("￥ 2000.00");
-                    }else {
+                    } else {
                         tvMoneyNum.setText("￥ 2000.00");
                     }
                     payment_method = "6";
@@ -491,9 +491,9 @@ public class ReserveActivity extends BaseActivity {
                         llCertificate.setVisibility(View.GONE);
                     }
                     tvPayMethod.setText(R.string.wechatpay);
-                    if (bean.getCate_id()==1){
+                    if (bean.getCate_id() == 1) {
                         tvMoneyNum.setText("￥ 2000.00");
-                    }else {
+                    } else {
                         tvMoneyNum.setText("￥ 2000.00");
                     }
                     payment_method = "7";
@@ -609,68 +609,72 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void commit(final String payment_method) {
+        HttpParams httpParams=new HttpParams();
 
-        try {
-            showDialog();
-            FinalHttp http = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            ajaxParams.put("order_type", "1");
-            ajaxParams.put("property_id", bean.getProduct_childs_id() + "");
-            ajaxParams.put("client", customeId);
-            ajaxParams.put("co_purchaser",etCopurchase.getText().toString());
-            ajaxParams.put("sales_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("lawyer_id", lawyer_id + "");
-            ajaxParams.put("payment_method", payment_method);
-            ajaxParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
-            if (null != picPath && !picPath.equals("")) {
-                File picFile = new File(picPath);
-                ajaxParams.put("file", picFile);
-            }
-            ajaxParams.put("pay_time", System.currentTimeMillis() + "");
-            ajaxParams.put("currency", bean.getCurrency());
-            ajaxParams.put("purchaseReason", (String) tvReGoal.getText());
-            ajaxParams.put("eoi_id", bean.getIs_eoi() + "");
+        httpParams.put("order_type", "1");
+        httpParams.put("property_id", bean.getProduct_childs_id() + "");
+        httpParams.put("client", customeId);
+        httpParams.put("co_purchaser", etCopurchase.getText().toString());
+        httpParams.put("sales_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("lawyer_id", lawyer_id + "");
+        httpParams.put("payment_method", payment_method);
+        httpParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
+        httpParams.put("pay_time", System.currentTimeMillis() + "");
+        httpParams.put("currency", bean.getCurrency());
+        httpParams.put("purchaseReason", (String) tvReGoal.getText());
+        httpParams.put("eoi_id", bean.getIs_eoi() + "");
 
-            Log.e("参数**", "ajaxParams:" + ajaxParams.toString());
-            http.post(Contants.CREAT_ORDER, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onSuccess(String s) {
-                    closeDialog();
-                    Log.e("TAG", "onSuccess: " + s);
 
-                    try {
-                        JSONObject json = new JSONObject(s);
-                        if (json.getString("code").equals("1")) {
-                            ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
-                            if (payment_method.equals("6") || payment_method.equals("7")) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString("payurlId", json.getString("trust_account_id"));
-                                bundle.putString("payment_method", payment_method);
-                                ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
-                            }
-                            finish();
-                        } else {
-                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+        if (null != picPath && !picPath.equals("")) {
+            File  picFile = new File(picPath);
+            httpParams.put("file", picFile, null);
+        }
 
-                        }
+        EasyHttp.post(Contants.CREAT_ORDER)
+                .cacheMode(CacheMode.DEFAULT)
 
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
 
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(ReserveActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-                }
+                    @Override
+                    public void onSuccess(String s) {
 
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    Log.e("TAG", "onFailure: " + errorNo);
-                    closeDialog();
-                    ToasShow.showToastCenter(ReserveActivity.this, "Failure:" + strMsg);
-                }
-            });
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+                        try {
+                            JSONObject json = new JSONObject(s);
+                            if (json.getString("code").equals("1")) {
+                                ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
+                                if (payment_method.equals("6") || payment_method.equals("7")) {
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("payurlId", json.getString("trust_account_id"));
+                                    bundle.putString("payment_method", payment_method);
+                                    ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
+                                }
+                                finish();
+                            } else {
+                                ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                });
 
 
     }
@@ -739,7 +743,7 @@ public class ReserveActivity extends BaseActivity {
 
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        if (photoUri!=null){
+                        if (photoUri != null) {
                             picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
                             Log.e("imgPath", "onActivityResult: " + picPath);
                             //picPath=BitmapUtil.imgPath;
@@ -756,7 +760,7 @@ public class ReserveActivity extends BaseActivity {
 
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri!=null){
+                        if (imgUri != null) {
                             picPath = imgUri.getPath();
                             ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
                         }
@@ -773,7 +777,6 @@ public class ReserveActivity extends BaseActivity {
                         CropImage(picPath);
                     } else {
                         Picasso.with(this).load(selectedPhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
-
 
 
                     }

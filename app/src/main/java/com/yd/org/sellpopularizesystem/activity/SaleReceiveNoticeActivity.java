@@ -8,9 +8,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.utils.FinalDownFile;
 
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+
 
 public class SaleReceiveNoticeActivity extends BaseActivity {
 
@@ -46,30 +44,5 @@ public class SaleReceiveNoticeActivity extends BaseActivity {
 
     }
 
-    /**
-     * 请求合同
-     */
-    private void getAskOntract() {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("order_id", "");
-        ajaxParams.put("remark", "");
-        ajaxParams.put("sales_advice_is_true", "");
 
-
-        finalHttp.post(Contants.APPLY_CONTRACT, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-
-            }
-        });
-    }
 }

@@ -21,10 +21,10 @@ import com.yd.org.sellpopularizesystem.javaBean.PagerDetailsBean;
 import com.yd.org.sellpopularizesystem.javaBean.QuestionBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -81,27 +81,32 @@ public class ExaminationActivity extends BaseActivity {
     }
 
     private void initData(String paperId) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("paper_id", paperId);
-        http.get(Contants.PAPER_DETAILS, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("试题数据", "s:" + s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s);
-                }
-            }
+        EasyHttp.get(Contants.PAPER_DETAILS)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("paper_id", paperId)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-                ToasShow.showToastCenter(ExaminationActivity.this, strMsg);
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        jsonParse(json);
+                    }
+                });
+
+
     }
 
     private void jsonParse(String json) {
@@ -294,42 +299,47 @@ public class ExaminationActivity extends BaseActivity {
     }
 
     private void commit() {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        finalHttp.addHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("paper_id", paper_id);
-        ajaxParams.put("answer", jsonArray.toString());
-        ajaxParams.put("add_ip", "");
-
-        finalHttp.post(Contants.SUBMIT_PAPER, ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                if (null != s) {
-                    Gson gson = new Gson();
-                    ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                    if (errorBean.getCode().equals("1")) {
-                        ExamineFragment.examineFragment.handler.sendEmptyMessage(1);
-                        ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
-                        finish();
-                    } else {
-                        ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
+        EasyHttp.post(Contants.SUBMIT_PAPER)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Content-Type", "application/x-www-form-urlencoded")
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("paper_id", paper_id)
+                .params("answer", jsonArray.toString())
+                .params("add_ip", "")
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
-                }
-                Log.e("提交成功", "s:" + s);
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("提交失败", "s:" + errorNo + "strMsg:" + strMsg);
-                closeDialog();
-                ToasShow.showToastBottom(ExaminationActivity.this, getString(R.string.submitfail));
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(ExaminationActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                        if (errorBean.getCode().equals("1")) {
+                            ExamineFragment.examineFragment.handler.sendEmptyMessage(1);
+                            ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
+                            finish();
+                        } else {
+                            ToasShow.showToastBottom(ExaminationActivity.this, errorBean.getMsg());
+                        }
+
+
+                    }
+                });
+
 
     }
 

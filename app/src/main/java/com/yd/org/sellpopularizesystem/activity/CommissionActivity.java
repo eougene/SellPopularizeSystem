@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -12,10 +13,10 @@ import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.CommissionBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public void initView() {
-        commissionActivity=this;
+        commissionActivity = this;
         hideRightImagview();
         setTitle(getString(R.string.commission));
         //下拉加载
@@ -71,6 +72,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getInfo(page, true);
 
@@ -80,35 +82,40 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
         page++;
-        getInfo(page, false);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        // getInfo(page, false);
 
     }
 
     private void getInfo(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id", "");
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "10");
+        EasyHttp.get(Contants.COMMOSSION_LIST)
+                .cacheMode(CacheMode.DEFAULT)
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("customer_id", "")
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        finalHttp.get(Contants.COMMOSSION_LIST, ajaxParams, new AjaxCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                        ToasShow.showToastCenter(CommissionActivity.this, e.getMessage());
+                    }
 
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                if (null != s) {
-                    paserJSON(s, isRefresh);
-                }
-            }
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                ToasShow.showToastCenter(CommissionActivity.this, strMsg);
-            }
-        });
+                        closeDialog();
+                        paserJSON(json, isRefresh);
+                    }
+                });
 
 
     }
@@ -120,7 +127,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
         datas = commission.getResult();
 
         if (isRefresh) {
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             if (datas.size() == 0) {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 listView.setVisibility(View.GONE);
@@ -131,7 +138,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }
-        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         commissionAdapter.addMore(datas);
 
 

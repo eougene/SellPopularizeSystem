@@ -28,10 +28,10 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.Locale;
 
@@ -290,21 +290,32 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
 
 
     private void addRecord() {
+        EasyHttp.post(Contants.ADD_SALE_LOG)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("data", SharedPreferencesHelps.getData())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
 
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("data", SharedPreferencesHelps.getData());
-        finalHttp.post(Contants.ADD_SALE_LOG, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("onSuccess", "s:" + s);
-            }
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("errorNo", "errorNo:" + errorNo);
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+
+
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+
+                    }
+                });
+
+
     }
 
     private void showLoginToas() {

@@ -44,10 +44,9 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,7 +57,7 @@ import java.lang.ref.WeakReference;
 
 public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
-            tvSaleDeadTime, tvStartDate,tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
+            tvSaleDeadTime, tvStartDate, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
             tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime;
     private RollPagerView rpv;
@@ -71,7 +70,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     private Bundle bun = new Bundle();
     private String product_id;
     protected ImageView backImageView, imageViewShare;
-    private CustomBean.ResultBean custome ;
+    private CustomBean.ResultBean custome;
 
 
     @Override
@@ -79,7 +78,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_item_des);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        custome= ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductItemDetailActivity.this, "custome"));
+        custome = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductItemDetailActivity.this, "custome"));
         initView();
     }
 
@@ -205,77 +204,86 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("product_id", resultBean.getProduct_id() + "");
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        fh.get(Contants.PRODUCT_DETAIL, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
+        EasyHttp.get(Contants.PRODUCT_DETAIL)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("product_id", resultBean.getProduct_id() + "")
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
 
-                Log.e("s***", "s:" + s);
-                Gson gson = new Gson();
-                ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
-                if (pdb.getCode().equals("1")) {
-                    prs = pdb.getResult();
-                    BaseApplication.getInstance().setPrs(prs);
-                    //轮播控件适配器
-                    rpv.setAdapter(new NormalAdapter(rpv));
+                    }
 
-                    tvId.setText(prs.getProduct_id() + "");
-                    tvProdes.setText(prs.getDescription());
-                    tvIsSalingNum.setText(prs.getSell_number() + "");
-                    tvHasSaledNum.setText(prs.getSign_number() + "");
-                    tvFirbNum.setText(prs.getFirb_number() + "");
+                    @Override
+                    public void onError(ApiException e) {
 
-                    if (prs.getEoi_open_time()==null || (double)prs.getEoi_open_time()==0 || String.valueOf(prs.getEoi_open_time()).equals("0")){
-                        tvEoiTime.setText("1970/01/01");
-                    }else {
-                        tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong( Double.valueOf((double)prs.getEoi_open_time()).longValue()+ "000")));
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
                     }
-                    if (prs.getStart_sales_time()==null || (double)prs.getStart_sales_time()==0 || String.valueOf(prs.getStart_sales_time()).equals("0")){
-                        tvSaleTime.setText("1970/01/01");
-                    }else {
-                        tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong( Double.valueOf((double)prs.getStart_sales_time()).longValue() + "000")));
-                    }
-                    if (prs.getStop_sales_time()==null || (double)prs.getStop_sales_time()==0 || String.valueOf(prs.getStop_sales_time()).equals("0")){
-                        tvSaleDeadTime.setText("1970/01/01");
-                    }else {
-                        tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong( Double.valueOf((double)prs.getStop_sales_time()).longValue() + "000")));
-                    }
-                    if (prs.getSunset_time()==null || (double)prs.getSunset_time()==0 || String.valueOf(prs.getSunset_time()).equals("0")){
-                        tvStartDate.setText("1970/01/01");
-                    }else {
-                        tvStartDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong( Double.valueOf((double)prs.getSunset_time()).longValue() + "000")));
-                    }
-                    if (prs.getSettlement_time()==null || (double)prs.getSettlement_time()==0 || String.valueOf(prs.getSettlement_time()).equals("0")){
-                        tvCloseDate.setText("1970/01/01");
-                    }else {
-                        tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong( Double.valueOf((double)prs.getSettlement_time()).longValue() + "000")));
-                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        Gson gson = new Gson();
+                        ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
+                        if (pdb.getCode().equals("1")) {
+                            prs = pdb.getResult();
+                            BaseApplication.getInstance().setPrs(prs);
+                            //轮播控件适配器
+                            rpv.setAdapter(new NormalAdapter(rpv));
+
+                            tvId.setText(prs.getProduct_id() + "");
+                            tvProdes.setText(prs.getDescription());
+                            tvIsSalingNum.setText(prs.getSell_number() + "");
+                            tvHasSaledNum.setText(prs.getSign_number() + "");
+                            tvFirbNum.setText(prs.getFirb_number() + "");
+
+                            if (prs.getEoi_open_time() == null || (double) prs.getEoi_open_time() == 0 || String.valueOf(prs.getEoi_open_time()).equals("0")) {
+                                tvEoiTime.setText("1970/01/01");
+                            } else {
+                                tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getEoi_open_time()).longValue() + "000")));
+                            }
+                            if (prs.getStart_sales_time() == null || (double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
+                                tvSaleTime.setText("1970/01/01");
+                            } else {
+                                tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStart_sales_time()).longValue() + "000")));
+                            }
+                            if (prs.getStop_sales_time() == null || (double) prs.getStop_sales_time() == 0 || String.valueOf(prs.getStop_sales_time()).equals("0")) {
+                                tvSaleDeadTime.setText("1970/01/01");
+                            } else {
+                                tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStop_sales_time()).longValue() + "000")));
+                            }
+                            if (prs.getSunset_time() == null || (double) prs.getSunset_time() == 0 || String.valueOf(prs.getSunset_time()).equals("0")) {
+                                tvStartDate.setText("1970/01/01");
+                            } else {
+                                tvStartDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSunset_time()).longValue() + "000")));
+                            }
+                            if (prs.getSettlement_time() == null || (double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
+                                tvCloseDate.setText("1970/01/01");
+                            } else {
+                                tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSettlement_time()).longValue() + "000")));
+                            }
 
                     /*tvSaleTime.setText(prs.getStart_sales_time()==null || (long)prs.getStart_sales_time()==0 || String.valueOf(prs.getStart_sales_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getStart_sales_time() + "000")));
                     tvSaleDeadTime.setText(prs.getStop_sales_time()==null || (long)prs.getStop_sales_time()==0 ||String.valueOf(prs.getStop_sales_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getStop_sales_time() + "000")));
                     tvStartDate.setText(prs.getSunset_time()==null || (long)prs.getSunset_time()==0 || String.valueOf(prs.getSunset_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getSunset_time() + "000")));
                     tvCloseDate.setText(prs.getSettlement_time()==null || (long)prs.getSettlement_time()==0 || String.valueOf(prs.getSettlement_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getSettlement_time() + "000")));*/
-                    tvMemo.setText(prs.getPreview_memo());
-                    tvProjectPro.setText(prs.getProduct_type());
-                    tvSupplier.setText(prs.getVendor());
-                    tvLawyer.setText(prs.getVendor_lawyer());
-                    tvBuilder.setText(prs.getBuilder());
-                    tvDespositHolder.setText(prs.getDesposit_holder());
-                    tvForeignMoney.setText(prs.getExchange_deposit()+"%");
-                    tvCashDesposit.setText(prs.getFirb_exchange_deposit()+"%");
-                    tvSubscription.setText(prs.getMin_reservation_fee());
-                    controlColor();
-                }
-            }
+                            tvMemo.setText(prs.getPreview_memo());
+                            tvProjectPro.setText(prs.getProduct_type());
+                            tvSupplier.setText(prs.getVendor());
+                            tvLawyer.setText(prs.getVendor_lawyer());
+                            tvBuilder.setText(prs.getBuilder());
+                            tvDespositHolder.setText(prs.getDesposit_holder());
+                            tvForeignMoney.setText(prs.getExchange_deposit() + "%");
+                            tvCashDesposit.setText(prs.getFirb_exchange_deposit() + "%");
+                            tvSubscription.setText(prs.getMin_reservation_fee());
+                            controlColor();
+                        }
+                    }
+                });
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                ToasShow.showToastCenter(ProductItemDetailActivity.this, strMsg);
-            }
-        });
+
     }
 
     private void controlColor() {
@@ -287,8 +295,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         }
         if (prs.getFile_content() != null && prs.getFile_content().size() > 0) {
 
-            for (int i=0;i< prs.getFile_content().size();i++){
-                if (prs.getFile_content().get(i).getFile_type()==1){
+            for (int i = 0; i < prs.getFile_content().size(); i++) {
+                if (prs.getFile_content().get(i).getFile_type() == 1) {
                     tvFloor.setAlpha(1.0f);
                 }
             }
@@ -449,7 +457,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             Log.e("hhh**", "Url:" + Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
             ImageView view = new ImageView(container.getContext());
-            BitmapUtil.loadImageView(ProductItemDetailActivity.this,Contants.DOMAIN + "/" + prs.getImg_content().get(position).getThumbURL(),view);
+            BitmapUtil.loadImageView(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + prs.getImg_content().get(position).getThumbURL(), view);
 
 
             view.setScaleType(ImageView.ScaleType.FIT_XY);

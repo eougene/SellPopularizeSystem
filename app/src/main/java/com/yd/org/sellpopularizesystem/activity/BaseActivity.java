@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
-import com.yd.org.sellpopularizesystem.utils.ACache;
 import com.yd.org.sellpopularizesystem.utils.ActivityCollector;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
@@ -37,7 +36,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected TextView tvTitle, rightRtitle;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
-    public ACache aCache;
     private View baseView;
     /**
      * 回调接口实例
@@ -47,7 +45,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        aCache = ACache.get(this);
         setContentView(R.layout.activity_base);
 
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
@@ -80,17 +77,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void hideBaseView() {
         baseView.setVisibility(View.GONE);
-    }
-
-
-    public void SetACache(String key, String objects) {
-        aCache.put(key, objects, ACache.TIME_HOUR);
-
-    }
-
-    public String getACache(String key) {
-        return aCache.getAsString(key);
-
     }
 
 

@@ -1,20 +1,19 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-
 import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean2;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 public class OrderDetailActivity extends BaseActivity {
     TextView tvOrderDes, tvOrderNum, tvtype, tvFirb, tvSale, tvCus, tvCusAdd, tvLawyer, tvGoal, tvPrice, tvComplete;
@@ -37,27 +36,45 @@ public class OrderDetailActivity extends BaseActivity {
     }
 
     private void getOrderDetail(int product_orders_id) {
-        showDialog();
-        FinalHttp ftth = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("order_id", product_orders_id + "");
-        ftth.get(Contants.ORDER_DETAIL, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                super.onSuccess(s);
-                Gson gson = new Gson();
-                OrderDetailBean2 orderDetailBean2 = gson.fromJson(s, OrderDetailBean2.class);
-                if (orderDetailBean2.getCode().equals("1") && orderDetailBean2.getMsg().equals(getString(R.string.order_success_info))) {
-                    initData(orderDetailBean2.getResult());
-                }
-            }
+        EasyHttp.get(Contants.ORDER_DETAIL)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("order_id", product_orders_id + "")
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        OrderDetailBean2 orderDetailBean2 = gson.fromJson(json, OrderDetailBean2.class);
+                        if (orderDetailBean2.getCode().equals("1") && orderDetailBean2.getMsg().equals(getString(R.string.order_success_info))) {
+                            initData(orderDetailBean2.getResult());
+                        }
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private void initData(OrderDetailBean2.ResultBean result) {

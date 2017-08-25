@@ -25,13 +25,13 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,29 +78,36 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
     private void getSaleData(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("company_id", SharedPreferencesHelps.getCompanyId());
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "50");
-        http.get(Contants.INQUIRE_ORDER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                Log.e("TAG", "onSuccess: " + s);
-                if (null != s) {
-                    parseJson(s, isRefresh);
-                }
+        EasyHttp.get(Contants.INQUIRE_ORDER_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("company_id", SharedPreferencesHelps.getCompanyId())
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", page + "")
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-            }
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess","onSuccess:"+json);
+
+                        closeDialog();
+                        parseJson(json, isRefresh);
+                    }
+                });
+
+
     }
 
 
@@ -128,12 +135,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 lvSaleRecord.setVisibility(View.VISIBLE);
             }
-            ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             saleAdapter = new SaleRecordAdapter(this);
             lvSaleRecord.setAdapter(saleAdapter);
         }
+       // ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         saleAdapter.addMore(sobRbData);
-        ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+
         locatedOrderIdPos();
     }
 
@@ -184,38 +192,43 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      *
      * @param orderId
      */
-    public void canceOrder( int orderId) {
+    public void canceOrder(int orderId) {
+
+        EasyHttp.post(Contants.ORDER_CANCEL)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("order_id", orderId + "")
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
+
+                        Gson gson = new Gson();
+                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                        if (errorBean.getCode().equals("1")) {
+                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                        } else {
+                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                        }
 
 
-        showDialog();
-        FinalHttp http = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("order_id", orderId + "");
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        Log.e("ajaxParams", "ajaxParams:" + ajaxParams.toString());
-        http.post(Contants.ORDER_CANCEL, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("取消订单", "s:" + s);
-                closeDialog();
-                Gson gson = new Gson();
-                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                if (errorBean.getCode().equals("1")) {
-                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                } else {
-                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                Log.e("取消订单", "errorNo:" + errorNo);
-                closeDialog();
-            }
-        });
-
+                    }
+                });
 
 
     }
@@ -240,14 +253,16 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrlSaleRecord.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getSaleData(page, true);
     }
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-        page++;
-        getSaleData(page, false);
+        page ++;
+        ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getSaleData(page, false);
     }
 
     @Override
@@ -296,62 +311,68 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      * @param picPath
      */
     private void setPicPath(String picPath, SaleOrderBean.ResultBean resultBean) {
-        Log.e("picPath", "picPath:" + picPath);
-        try {
-            showDialog();
-            FinalHttp finalHttp = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            String strUrl = "";
-            ajaxParams.put("order_id", resultBean.getProduct_orders_id() + "");
+        String strUrl = "";
+        File picFile = null;
 
-            //上次合同图片
-            if (flag.equals("1")) {
-                strUrl = Contants.UPLOAD_CONTRACT_PHOTO;
-                if (null != picPath && !picPath.equals("")) {
-                    File picFile = new File(picPath);
-                    ajaxParams.put("file", picFile);
-                }
-            } else {
-                //支付房款-上传凭证或在线支付
-                strUrl = Contants.UPLOAD_FIRST_COMMISSION;
-                ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-                ajaxParams.put("customer_id", resultBean.getClient() + "");
-                if (null != picPath && !picPath.equals("")) {
-                    File picFile = new File(picPath);
-                    ajaxParams.put("image[]", picFile);
+        HttpParams httpParams = new HttpParams();
 
-                }
-
+        if (flag.equals("1")) {
+            strUrl = Contants.UPLOAD_CONTRACT_PHOTO;
+            httpParams.put("order_id", resultBean.getProduct_orders_id() + "");
+            if (null != picPath && !picPath.equals("")) {
+                picFile = new File(picPath);
+                httpParams.put("file", picFile, null);
             }
 
-            finalHttp.post(strUrl, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onSuccess(String s) {
-                    Log.e("s**", "s:" + s);
-                    closeDialog();
-                    Gson gson = new Gson();
-                    ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                    if (errorBean.getCode().equals("1")) {
-                        ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
-                    } else {
-                        ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+
+        } else {
+            //支付房款-上传凭证或在线支付
+            strUrl = Contants.UPLOAD_FIRST_COMMISSION;
+            httpParams.put("order_id", resultBean.getProduct_orders_id() + "");
+            httpParams.put("customer_id", resultBean.getClient() + "");
+            if (null != picPath && !picPath.equals("")) {
+                picFile = new File(picPath);
+                httpParams.put("image[]", picFile, null);
+            }
+        }
+
+
+        EasyHttp.post(strUrl)
+                .cacheMode(CacheMode.DEFAULT)
+
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
 
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-                }
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        closeDialog();
 
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    Log.e("s**", "s:" + errorNo);
-                    ToasShow.showToastCenter(SaleRecordActivity.this, strMsg.toString());
-                    closeDialog();
 
-                }
-            });
+                        Gson gson = new Gson();
+                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                        if (errorBean.getCode().equals("1")) {
+                            ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
+                        } else {
+                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                        }
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
+                    }
+                });
+
 
     }
 

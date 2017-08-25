@@ -15,13 +15,14 @@ import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.igexin.push.extension.mod.SecurityUtils.b;
 
 public class NotificationActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private PullableListView listView;
@@ -49,29 +50,42 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
     }
 
     private void getData(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "10");
-        fh.get(Contants.SYSTEM_ANNOUNCEMENT,ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                Log.e("s**","s:"+s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, isRefresh);
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+        EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        closeDialog();
+                        jsonParse(json, b);
+                    }
+                });
+
+
+
+
+
+
+
+
+
     }
 
     private void jsonParse(String s, boolean isRefresh) {
@@ -83,7 +97,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
         }
 
         if (isRefresh) {
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             adapter = new CommonAdapter<AnnouncementBean.ResultBean>(this, informationContents, R.layout.notification_listview_item) {
                 @Override
                 public void convert(ViewHolder holder, AnnouncementBean.ResultBean item) {
@@ -120,7 +134,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
-
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getData(page, true);
     }
@@ -129,7 +143,8 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         // 千万别忘了告诉控件刷新完毕了哦！
         page++;
-        getData(page, false);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+       // getData(page, false);
 
     }
 }

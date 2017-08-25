@@ -15,10 +15,9 @@ import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.StudyBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,32 +72,47 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
     }
 
     private void getStudyListData(final boolean b, int page, String type_id) {
-        showDialog();
-        final FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "10");
-        ajaxParams.put("type_id", type_id);
+        EasyHttp.get(Contants.STUDY_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("type_id", type_id)
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        fh.get(Contants.STUDY_LIST, ajaxParams, new AjaxCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                Log.e("获取学习的内容", "s:" + s);
-                if (null != s) {
-                    jsonParse(s, b);
-                }
-            }
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+                        closeDialog();
+                        jsonParse(json, b);
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     private void jsonParse(String json, boolean isRefresh) {
@@ -120,11 +134,11 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
             }
 
 
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             adapter = new StyudyAdapter(StudySubitemActivity.this);
             listView.setAdapter(adapter);
         }
-        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+
         adapter.addData(productData);
 
     }
@@ -149,6 +163,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getStudyListData(true, page, type_id);
     }
@@ -156,6 +171,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
-        getStudyListData(false, page, type_id);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getStudyListData(false, page, type_id);
     }
 }

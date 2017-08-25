@@ -8,6 +8,7 @@ import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
@@ -30,10 +31,9 @@ import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,15 +91,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
 
-
-        //如果有缓存数据,则加载缓存数据
-        if (getACache("customer") != null && !TextUtils.isEmpty(getACache("customer"))) {
-            jsonParse(getACache("customer"), true);
-        } else {
-            //网络数据
-            getCustomeListData(true, page);
-        }
-
+        //网络数据
+        getCustomeListData(true, page);
 
     }
 
@@ -207,35 +200,34 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     }
 
     private void getCustomeListData(final boolean b, int page) {
-        showDialog();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("page", String.valueOf(page));
-        ajaxParams.put("number", "100");
-        final FinalHttp fh = new FinalHttp();
 
+        EasyHttp.get(Contants.CUSTOMER_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        // fh.addHeader("Last-Modified",System.currentTimeMillis()+"");
-        //fh.addHeader("If-Modified-Since", );
-        fh.get(Contants.CUSTOMER_LIST, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, b);
-                    //缓存数据
-                    SetACache("customer", s);
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-                }
-            }
+                    @Override
+                    public void onSuccess(String json) {
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+                        closeDialog();
+                        jsonParse(json, b);
+                    }
+                });
+
 
     }
 
@@ -367,43 +359,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         });
 
 
-//        //删除
-//        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {
-//                    SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-//                    CustomBean.ResultBean resultBean = viewHolder.resultBean;
-//                    deleteCustomer(resultBean);
-//
-//                }
-//
-//                return false;
-//            }
-//        });
-
-    }
-
-    private void deleteCustomer(CustomBean.ResultBean resultBean) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id", resultBean.getCustomer_id() + "");
-
-        finalHttp.post(Contants.USER_CUSTOMER_DEL, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-            }
-        });
     }
 
 
@@ -419,7 +374,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
 
         page++;
-        getCustomeListData(false, page);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getCustomeListData(false, page);
     }
 
 }

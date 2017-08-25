@@ -19,22 +19,21 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.bigkoo.pickerview.view.WheelOptions;
+import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
-
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -87,11 +86,12 @@ public class DialogOptionActivity extends AppCompatActivity {
             initReserverViews();
         }
         //初始化自定义选择器的数据
-        MyUtils.getInstance().getOptionData(DialogOptionActivity.this,weeks,hours,minutes);
+        MyUtils.getInstance().getOptionData(DialogOptionActivity.this, weeks, hours, minutes);
         //初始化自定义选择器
         initOptionPicker();
         setListener();
     }
+
     //初始化拜访界面控件
     private void initVisitViews() {
         View view = LayoutInflater.from(this).inflate(R.layout.visit_operate_view, null);
@@ -122,6 +122,7 @@ public class DialogOptionActivity extends AppCompatActivity {
         }
         flOperate.addView(view);
     }
+
     private Calendar cal;
 
     private void initOptionPicker() {
@@ -232,13 +233,13 @@ public class DialogOptionActivity extends AppCompatActivity {
                 String newStr = m.group();*/
         String[] nums = new String[2];
 
-        if (str1.equals(getString(R.string.today))|| str1==getString(R.string.today)) {
+        if (str1.equals(getString(R.string.today)) || str1 == getString(R.string.today)) {
             nums[0] = String.format("%02d", cal.get(Calendar.MONTH) + 1);
             nums[1] = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH));
             Log.e("date", "setText: " + str1 + nums[0] + nums[1]);
         } else {
             nums = str1.split("\\D+");
-            Log.e("date", "setText: " + str1 +str1.equals(R.string.today));
+            Log.e("date", "setText: " + str1 + str1.equals(R.string.today));
         }
         ca.set(ca.get(Calendar.YEAR), ca.get(Calendar.MONTH), ca.get(Calendar.DAY_OF_MONTH), ca.get(Calendar.HOUR_OF_DAY), ca.get(Calendar.MINUTE), 0);
         long currentTime = ca.getTimeInMillis();
@@ -328,16 +329,16 @@ public class DialogOptionActivity extends AppCompatActivity {
                             ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.setdatetime));
                         } else if (TextUtils.isEmpty(etRemindTime.getText().toString())) {
                             ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.setremindertime));
-                        }else {
-                            MyUtils.getInstance().submitToCalendar(DialogOptionActivity.this,reserverTime,reminderTime,etReserContent.getText().toString());
+                        } else {
+                            MyUtils.getInstance().submitToCalendar(DialogOptionActivity.this, reserverTime, reminderTime, etReserContent.getText().toString());
                             submitReserver();
                         }
                     } else if (slbRb != null) {
-                        if (etReserTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm",slbRb.getOrder_time()*1000))
-                                && etRemindTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm",slbRb.getCue_time()*1000))
-                                && etReserContent.getText().toString().equals(slbRb.getContent())){
-                            ToasShow.showToastCenter(DialogOptionActivity.this,getString(R.string.tips));
-                        }else {
+                        if (etReserTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm", slbRb.getOrder_time() * 1000))
+                                && etRemindTime.getText().toString().equals(MyUtils.date2String("MM/dd HH:mm", slbRb.getCue_time() * 1000))
+                                && etReserContent.getText().toString().equals(slbRb.getContent())) {
+                            ToasShow.showToastCenter(DialogOptionActivity.this, getString(R.string.tips));
+                        } else {
                             updateReseverInfo();
                         }
                     }
@@ -348,116 +349,159 @@ public class DialogOptionActivity extends AppCompatActivity {
     };
 
     private void submitReserver() {
-        Log.e("submitReserver", "submitReserver: " );
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id",SharedPreferencesHelps.getUserID());
-        ajaxParams.put("customer_id",((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "" );
-        ajaxParams.put("title","");
-        ajaxParams.put("content",etReserContent.getText().toString());
-        ajaxParams.put("is_tixing","");
-        ajaxParams.put("cue_time",MyUtils.getInstance().getTimeMillis(etRemindTime)+"");
-        ajaxParams.put("cue_every_time",3600+"");
-        ajaxParams.put("order_time",MyUtils.getInstance().getTimeMillis(etReserTime)+"");
-        fh.post(Contants.NEW_RESERVER_RECORDER,ajaxParams,new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                try {
-                    JSONObject json=new JSONObject(s);
-                    Log.e("tag", "onSuccess: "+json.getString("msg"));
-                    if (json.getString("code").equals("1")){
-                        ToasShow.showToastCenter(DialogOptionActivity.this,json.getString("msg"));
-                        CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
-                        Log.e("tag", "onSuccess: "+json.getString("msg"));
-                        finish();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    Log.e("", "onSuccess: "+e.getMessage());
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+
+        EasyHttp.post(Contants.NEW_RESERVER_RECORDER)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
+                .params("title", "")
+                .params("content", etReserContent.getText().toString())
+                .params("is_tixing", "")
+                .params("cue_time", MyUtils.getInstance().getTimeMillis(etRemindTime) + "")
+                .params("cue_every_time", 3600 + "")
+                .params("order_time", MyUtils.getInstance().getTimeMillis(etReserTime) + "")
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+
+
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
+                            if (userBean.getCode().equals("1")) {
+                                ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                                CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
+                            } else {
+                                ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                            }
+                        }
+
+
+                    }
+                });
+
+
     }
 
     private void updateReseverInfo() {
 
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("o_log_id",slbRb.getO_log_id()+"" );
-        ajaxParams.put("customer_id",((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "" );
-        ajaxParams.put("title",slbRb.getTitle());
-        ajaxParams.put("content",etReserContent.getText().toString());
-        ajaxParams.put("cue_time",MyUtils.getInstance().getTimeMillis(etReserTime)+"");
-        ajaxParams.put("cue_every_time",MyUtils.getInstance().getTimeMillis(etRemindTime)+"");
-        fh.post(Contants.UPDATE_RESERVER_RECORDER,ajaxParams,new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
+        EasyHttp.post(Contants.UPDATE_RESERVER_RECORDER)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("o_log_id", slbRb.getO_log_id() + "")
+                .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
+                .params("title", slbRb.getTitle())
+                .params("content", etReserContent.getText().toString())
+                .params("cue_time", MyUtils.getInstance().getTimeMillis(etReserTime) + "")
+                .params("cue_every_time", MyUtils.getInstance().getTimeMillis(etRemindTime) + "")
 
-                try {
-                    JSONObject json=new JSONObject(s);
-                    if (json.getString("code").equals("1")){
-                        ToasShow.showToastCenter(DialogOptionActivity.this,json.getString("msg"));
-                        CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
-                        finish();
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+
+
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+
+                        if (!TextUtils.isEmpty(json)) {
+                            Gson gson = new Gson();
+                            ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
+                            if (userBean.getCode().equals("1")) {
+                                ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                                CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
+                                finish();
+                            } else {
+                                ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                            }
+                        }
+
+
+                    }
+                });
+
+
     }
 
     private void submitVisit() {
         if (TextUtils.isEmpty(etVistTitle.getText().toString())) {
             ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.writetitle));
         } else {
-            FinalHttp fh = new FinalHttp();
-            AjaxParams ajaxParams = new AjaxParams();
-            ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-            ajaxParams.put("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this,"custome")).getCustomer_id() + "");
-            ajaxParams.put("title", etVistTitle.getText().toString());
-            ajaxParams.put("content", etVistContent.getText().toString());
-            ajaxParams.put("visit_time", tvVistTime.getText().toString());
-            fh.post(Contants.NEW_VISIT_RECORDER, ajaxParams, new AjaxCallBack<String>() {
-                @Override
-                public void onSuccess(String s) {
-                    super.onSuccess(s);
-                    Log.e("result", "onSuccess: "+s);
-                    try {
-                        JSONObject json = new JSONObject(s);
-                        if (json.getString("code").equals("1")) {
-                            ToasShow.showToastCenter(DialogOptionActivity.this, json.getString("msg"));
-                            CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
-                            finish();
-                            Log.e("tag1", "onSuccess: " + json.getString("msg"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.e("tag2", "onSuccess: " + e.getMessage());
-                    }
-                }
+            EasyHttp.post(Contants.NEW_VISIT_RECORDER)
+                    .cacheMode(CacheMode.DEFAULT)
+                    .params("user_id", SharedPreferencesHelps.getUserID())
+                    .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
+                    .params("title", etVistTitle.getText().toString())
+                    .params("content", etVistContent.getText().toString())
+                    .params("visit_time", tvVistTime.getText().toString())
+                    .timeStamp(true)
+                    .accessToken(true)
+                    .execute(new SimpleCallBack<String>() {
+                        @Override
+                        public void onStart() {
 
-                @Override
-                public void onFailure(Throwable t, int errorNo, String strMsg) {
-                    super.onFailure(t, errorNo, strMsg);
-                    Log.e("tag", "onSuccess: " + errorNo);
-                }
-            });
+                        }
+
+                        @Override
+                        public void onError(ApiException e) {
+
+
+                            Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                        }
+
+                        @Override
+                        public void onSuccess(String json) {
+                            Log.e("onSuccess***", "UserBean:" + json);
+
+
+                            if (!TextUtils.isEmpty(json)) {
+                                Gson gson = new Gson();
+                                ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
+                                if (userBean.getCode().equals("1")) {
+                                    ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                                    CusOprateRecordActivity.cusOprateRecordActivity.handler.sendEmptyMessage(ExtraName.UPDATE);
+                                    finish();
+                                    finish();
+                                } else {
+                                    ToasShow.showToastCenter(DialogOptionActivity.this, userBean.getMsg());
+                                }
+                            }
+
+
+                        }
+                    });
+
+
         }
 
     }
+
     private void setListener() {
         if (strFlag != null) {
             if (strFlag.equals("reserver")) {

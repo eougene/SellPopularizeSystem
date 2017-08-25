@@ -15,10 +15,9 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ScaleListBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,51 +60,47 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
     }
 
     private void getProductListData(final boolean boool, int page) {
-        showDialog();
-        final FinalHttp fh = new FinalHttp();
-        final AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("product_name", resultBean.getProduct_name());
-        ajaxParams.put("provice", resultBean.getProvice());
-        ajaxParams.put("city", resultBean.getCity());
-        ajaxParams.put("town", resultBean.getTown());
-        ajaxParams.put("address", resultBean.getAddress());
-        ajaxParams.put("bedroom", "");
-        ajaxParams.put("bathroom", "");
 
-        ajaxParams.put("price", "0-100000000");
-        ajaxParams.put("car_space", "");
-        ajaxParams.put("has_study", "");
-        ajaxParams.put("ensuite", "");
+        EasyHttp.get(Contants.SCALE_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("product_name", resultBean.getProduct_name())
+                .params("provice", resultBean.getProvice())
+                .params("city", resultBean.getCity())
+                .params("town", resultBean.getTown())
+                .params("address", resultBean.getAddress())
+                .params("bedroom", "")
+                .params("bathroom", "")
+                .params("price", "0-100000000")
+                .params("car_space", "")
+                .params("has_study", "")
+                .params("ensuite", "")
+                .params("internal", "0-100000000")
+                .params("external", "0-100000000")
+                .params("building_area", "0-100000000")
+                .params("page", String.valueOf(page))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        ajaxParams.put("internal", "0-100000000");
-        ajaxParams.put("external", "0-100000000");
-        ajaxParams.put("building_area", "0-100000000");
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-
-        ajaxParams.put("page", page + "");
-        ajaxParams.put("number", "20");
-
-        fh.get(Contants.SCALE_LIST, ajaxParams, new AjaxCallBack<String>() {
-
-            @Override
-            public void onSuccess(String s) {
-                Log.e("获取推广List数据", "s:" + s);
-                super.onSuccess(s);
-                closeDialog();
-                if (null != s) {
-                    jsonParse(s, boool);
-                }
-
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                Log.e("strMsg", "strMsg:" + strMsg);
-                closeDialog();
-            }
-        });
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess", "onSuccess:" + json );
+                        closeDialog();
+                        jsonParse(json, boool);
+                    }
+                });
 
 
     }
@@ -118,7 +113,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
             baseData = product.getResult();
         }
         if (isRefresh) {
-            ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
+
             scaleListItemAdapter = new ScaleListItemAdapter(ScalListActivity.this);
             listView.setAdapter(scaleListItemAdapter);
         }
@@ -146,7 +141,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
         // 千万别忘了告诉控件刷新完毕了哦！
-
+        ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getProductListData(true, page);
 
@@ -158,7 +153,8 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
         // 千万别忘了告诉控件刷新完毕了哦！
 
         page++;
-        getProductListData(false, page);
+        ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        //getProductListData(false, page);
 
     }
 

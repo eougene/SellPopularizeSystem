@@ -1,15 +1,15 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.util.Log;
+
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 
 /**
@@ -53,28 +53,31 @@ public class InvestigateListActivity extends BaseActivity implements PullToRefre
     }
 
     private void getInfo(int page, final boolean isRefresh) {
-        showDialog();
-        FinalHttp finalHttp = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("product_id", SharedPreferencesHelps.getUserID());
-        ajaxParams.put("number", "10");
+        EasyHttp.get(Contants.QUESTION_LIST)
+                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .timeStamp(true)
+                .params("product_id", SharedPreferencesHelps.getUserID())
+                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
 
-        finalHttp.get(Contants.QUESTION_LIST, ajaxParams, new AjaxCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
 
-            @Override
-            public void onSuccess(String s) {
-                closeDialog();
-                if (null != s) {
+                    @Override
+                    public void onSuccess(String json) {
 
-                }
-            }
+                        closeDialog();
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                closeDialog();
-                ToasShow.showToastCenter(InvestigateListActivity.this, strMsg);
-            }
-        });
+                    }
+                });
 
 
     }

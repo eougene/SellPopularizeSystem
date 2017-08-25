@@ -24,10 +24,10 @@ import com.yd.org.sellpopularizesystem.utils.MD5Util;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.PayResult;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
-
-import net.tsz.afinal.FinalHttp;
-import net.tsz.afinal.http.AjaxCallBack;
-import net.tsz.afinal.http.AjaxParams;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -127,36 +127,45 @@ public class PaymentQrActivity extends BaseActivity {
     }
 
     private void getQrcodeUrl(String strId) {
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("trust_account_id", strId);
-        fh.post(url, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                super.onSuccess(s);
-                closeDialog();
-                try {
-                    JSONObject json = new JSONObject(s);
-                    code=Integer.parseInt(json.getString("code"));
-                    des=json.getString("msg");
-                    if (json.getString("code").equals("1")) {
-                        qrcodeUrl = json.getString("qrcode");
-                        MyUtils.getInstance().showWebView(PaymentQrActivity.this, wvQr, qrcodeUrl);
-                    } else {
-                        ToasShow.showToastCenter(PaymentQrActivity.this, json.getString("msg"));
+        EasyHttp.post(url)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("trust_account_id", strId)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                super.onFailure(t, errorNo, strMsg);
-                closeDialog();
-            }
-        });
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+
+
+                        closeDialog();
+                        try {
+                            JSONObject json = new JSONObject(s);
+                            code = Integer.parseInt(json.getString("code"));
+                            des = json.getString("msg");
+                            if (json.getString("code").equals("1")) {
+                                qrcodeUrl = json.getString("qrcode");
+                                MyUtils.getInstance().showWebView(PaymentQrActivity.this, wvQr, qrcodeUrl);
+                            } else {
+                                ToasShow.showToastCenter(PaymentQrActivity.this, json.getString("msg"));
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+
     }
 
     @Override
@@ -165,7 +174,7 @@ public class PaymentQrActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
-                if (code==0){
+                if (code == 0) {
                     ToasShow.showToastCenter(PaymentQrActivity.this, des);
                     return;
                 }
@@ -302,46 +311,52 @@ public class PaymentQrActivity extends BaseActivity {
     }
 
     private void goPay(String strId) {
-
-        showDialog();
-        FinalHttp fh = new FinalHttp();
-        AjaxParams ajaxParams = new AjaxParams();
-        ajaxParams.put("trust_account_id", strId);
-        fh.post(playUrl, ajaxParams, new AjaxCallBack<String>() {
-            @Override
-            public void onSuccess(String s) {
-                Log.e("待支付**", "s:" + s);
-                closeDialog();
-
-                Gson gson = new Gson();
-                if (payment_method.equals("6")) {
-                    PayBean payBean = gson.fromJson(s, PayBean.class);
-                    if (payBean.getCode().equals("1")) {
-                        Payment(payBean.getResult());
+        EasyHttp.post(playUrl)
+                .cacheMode(CacheMode.DEFAULT)
+                .params("trust_account_id", strId)
+                .timeStamp(true)
+                .accessToken(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
                     }
 
-                } else if (payment_method.equals("7")) {
-                    WXpayBean wXpayBean = gson.fromJson(s, WXpayBean.class);
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+                    }
 
-                    if (wXpayBean.getCode().equals("1")) {
+                    @Override
+                    public void onSuccess(String s) {
 
-                        if (wXpayBean.getResult().getResult_code().equals("FAIL")) {
-                            ToasShow.showToastCenter(PaymentQrActivity.this, getString(R.string.pay_error));
-                        } else {
-                            WeiXinPlay(wXpayBean);
+
+                        closeDialog();
+                        Gson gson = new Gson();
+                        if (payment_method.equals("6")) {
+                            PayBean payBean = gson.fromJson(s, PayBean.class);
+                            if (payBean.getCode().equals("1")) {
+                                Payment(payBean.getResult());
+                            }
+
+                        } else if (payment_method.equals("7")) {
+                            WXpayBean wXpayBean = gson.fromJson(s, WXpayBean.class);
+
+                            if (wXpayBean.getCode().equals("1")) {
+
+                                if (wXpayBean.getResult().getResult_code().equals("FAIL")) {
+                                    ToasShow.showToastCenter(PaymentQrActivity.this, getString(R.string.pay_error));
+                                } else {
+                                    WeiXinPlay(wXpayBean);
+                                }
+
+                            }
                         }
 
                     }
-                }
+                });
 
 
-            }
-
-            @Override
-            public void onFailure(Throwable t, int errorNo, String strMsg) {
-                Log.e("待支付**", "errorNo:" + errorNo);
-                closeDialog();
-            }
-        });
     }
 }
