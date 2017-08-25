@@ -29,7 +29,8 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areaone"
+                android:text="@string/house_land"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -48,7 +49,8 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areatwo"
+                android:text="Land"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -67,7 +69,8 @@
                 android:paddingLeft="@dimen/padding_margin_6"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areathree"
+                android:text="APT"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -77,6 +80,7 @@
                 android:background="@color/shallow_gray" />
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/rbArea4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,15 +91,18 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/areafour"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/shallow_gray" />
 
             <RadioButton
+                android:visibility="gone"
                 android:id="@+id/rbArea5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,10 +113,12 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/areafive"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/shallow_gray" />
@@ -132,6 +141,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/roomone"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -151,6 +161,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/roomtwo"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -170,6 +181,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/roomthree"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -189,6 +201,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/roomfour"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -208,6 +221,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/fiveroom"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -227,6 +241,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/abovefiveroom"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="6"
                 android:textSize="@dimen/tv_size_12" />
         </LinearLayout>
@@ -247,6 +262,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/desone"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="1"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -266,6 +282,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/destwo"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="2"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -285,6 +302,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/desthree"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="3"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -304,6 +322,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/desfour"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="4"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -323,6 +342,7 @@
                 android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_10"
                 android:text="@string/desfive"
+                android:textColor="@drawable/cbtextcolor_select"
                 android:tag="5"
                 android:textSize="@dimen/tv_size_12" />
 
@@ -347,6 +367,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_50k_100k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="50000~100000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -366,6 +387,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_100k_150k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="100000~150000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -385,6 +407,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_150k_200k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="150000~200000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -404,6 +427,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_200k_250k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="200000~250000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -423,6 +447,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_250k_300k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="250000~300000"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -441,6 +466,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_300k_350k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="300000~350000"
                     android:textSize="@dimen/tv_size_12" />
                 <View
@@ -458,6 +484,7 @@
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
                     android:text="@string/_300k"
+                    android:textColor="@drawable/cbtextcolor_select"
                     android:tag="350000~999999999"
                     android:textSize="@dimen/tv_size_12" />
             </RadioGroup>

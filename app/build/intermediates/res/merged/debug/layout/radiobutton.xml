@@ -10,7 +10,6 @@
     android:paddingLeft="@dimen/padding_margin_20"
     android:paddingRight="@dimen/padding_margin_10"
     android:paddingTop="@dimen/padding_margin_6"
-    android:text="@string/question1option1"
     android:textColor="@color/gray">
 
 

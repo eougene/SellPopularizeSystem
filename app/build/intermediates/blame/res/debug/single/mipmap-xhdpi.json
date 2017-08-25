@@ -1,586 +1,710 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabmeselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabmeselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/unselected.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/unselected.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/edit_delete_pressed.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/edit_delete_pressed.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/more.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchsmall.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchsmall.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabmeselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabmeselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pullup_icon_big.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pullup_icon_big.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/circle.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/circle.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/login.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/login.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/location.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/location.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loading.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loading.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/settingbt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/settingbt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/before.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/before.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downarrow.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downarrow.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/location.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/location.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/othertool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/othertool.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/areablack.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/areablack.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refreshing.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refreshing.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/edit_delete_pressed.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/edit_delete_pressed.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/videotool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/videotool.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studymaterial.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studymaterial.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/app.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/app.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bac.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bac.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loading.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loading.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/add.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/add.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study_s.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study_s.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/order.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/order.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageunselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageunselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/up.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/greenhome3.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/greenhome3.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/email.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/email.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up_arrow.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/up_arrow.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/down.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homebac.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homebac.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/basicknoledge.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/basicknoledge.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dian_true.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dian_true.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/myteam.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/myteam.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_svstatus_success.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_svstatus_success.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bpay.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bpay.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up_arrow.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/up_arrow.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/weichatpay.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/weichatpay.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/uncb.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/uncb.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/mycommission.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/mycommission.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/previouspro.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/previouspro.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/backbt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/backbt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bedroom.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bedroom.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/greenhome.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/greenhome.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/previouspro.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/previouspro.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studygarden.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studygarden.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/sale.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/sale.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map_annotation.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map_annotation.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/contracttool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/contracttool.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/greenhome1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/greenhome1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/gobutton.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/gobutton.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/unchecked.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/unchecked.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wback.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wback.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild3.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild3.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/introtool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/introtool.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/message.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/message.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_facebook.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_facebook.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/playplat.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/playplat.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shower.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shower.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/roombt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/roombt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/add.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/add.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_svstatus_info.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_svstatus_info.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/acreagebt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/acreagebt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downo.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downo.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/more.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/clear_button.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/clear_button.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/alipay.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/alipay.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addmore.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addmore.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchgraybt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchgraybt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/edit_delete.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/edit_delete.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/seach_edit.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/seach_edit.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/lock1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/lock1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/down_arrow.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down_arrow.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild2.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild2.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studymaterial.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studymaterial.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/commission.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/commission.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pricebt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pricebt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_failed.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refresh_failed.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wback.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wback.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/phone.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/phone.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/selectedx.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/selectedx.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shopping.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shopping.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/maplist.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/maplist.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/email.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/email.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bedroom.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bedroom.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/usernameicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/usernameicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/changepassword.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/changepassword.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/isread_02.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/isread_02.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more2.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/more2.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/backbtcircle.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/backbtcircle.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/roombt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/roombt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_wxcircle.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_wxcircle.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/backbtcircle.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/backbtcircle.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/usernameicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/usernameicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/inputbackground.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/inputbackground.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study_s.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study_s.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/load_failed.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/load_failed.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/settingbt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/settingbt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homebackground.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homebackground.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/examine_f.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/examine_f.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messagegray.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messagegray.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletec.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletec.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletec.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletec.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salepromote.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salepromote.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/house.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/house.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shoppping.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shoppping.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downarrow.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downarrow.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/close.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/close.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/gobutton.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/gobutton.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/incorrecticonx.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/incorrecticonx.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dian_false.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dian_false.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/success.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/success.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/yelselected.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/yelselected.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/rightarrow.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/rightarrow.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/phone.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/phone.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/unchecked.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/unchecked.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/success.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/success.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild3.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild3.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bpay.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bpay.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/settingicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/settingicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/yellowhome.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/yellowhome.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studyicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studyicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/examine_f.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/examine_f.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pricebt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pricebt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_wechat.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_wechat.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/incorrecticonx.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/incorrecticonx.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/passwordicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/passwordicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageblue.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageblue.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dian_true.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dian_true.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/myteam.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/myteam.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabhomeunselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabhomeunselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_launcher.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_download.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_download.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchsmall.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchsmall.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/redhome.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/redhome.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loginwechat.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loginwechat.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/yellowhome.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/yellowhome.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeunselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeunselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/showpass.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/showpass.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/checked.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/checked.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/back_back.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/back_back.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/xinghao.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/xinghao.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/search.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/search.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downgray.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downgray.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more_top.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/more_top.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/floorstool.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/floorstool.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wback_1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wback_1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageblue.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageblue.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/cart.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/cart.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/examine_s.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/examine_s.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/play.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/play.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/eoi.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/eoi.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/load_succeed.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/load_succeed.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/close.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/close.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/areablack.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/areablack.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/client1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/client1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/client.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/client.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share_wechat.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/share_wechat.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/customicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/customicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/contracttool.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/contracttool.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/apartment.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/apartment.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/upgray.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/upgray.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/setting.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/setting.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/backbt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/backbt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/search.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/search.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downgrayo.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downgrayo.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_wechat.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_wechat.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild2.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild2.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/checked.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/checked.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/before.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/before.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salarecord.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salarecord.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wback_1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wback_1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/alipay.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/alipay.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salarecord.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salarecord.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/cb.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/cb.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saleicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saleicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/lock.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/lock.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/greenhome.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/greenhome.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/introtool.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/introtool.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/cart.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/cart.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saleicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saleicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_succeed.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refresh_succeed.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/sale.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/sale.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bindaccount.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bindaccount.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/videotool.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/videotool.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/client1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/client1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/cbunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/cbunselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/message.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/message.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/correcticonx.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/correcticonx.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/correcticonx.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/correcticonx.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchgraybt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchgraybt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/edit_delete.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/edit_delete.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/floorstool.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/floorstool.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study_f.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study_f.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pull_icon_big.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pull_icon_big.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/clear_button.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/clear_button.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/isread_01.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/isread_01.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/me.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/me.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/inputbackground.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/inputbackground.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downmore.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downmore.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/share.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/lock.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/lock.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dollar.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dollar.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/roomicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/roomicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/more2.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/more2.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/salepromote.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/salepromote.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/meqr.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/meqr.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/areabt.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/areabt.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/unselected.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/unselected.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeblue.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeblue.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/play.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/play.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/study_f.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/study_f.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map_annotation.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map_annotation.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/settingicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/settingicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/playplat.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/playplat.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/a_customloading_icon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/a_customloading_icon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refreshing.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refreshing.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/point.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/point.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pull_icon_big.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pull_icon_big.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/mycommission.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/mycommission.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/project.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/project.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wechat.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wechat.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downo.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downo.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pic_add.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pic_add.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downgrayo.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downgrayo.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/price.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/price.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/areabt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/areabt.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_wxcircle.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_wxcircle.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downgray.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downgray.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/maplist1.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/maplist1.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/searchicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/searchicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletui.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletui.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/down_arrow.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down_arrow.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/meselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/meselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/maplist1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/maplist1.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabmeunselect.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabmeunselect.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/othertool.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/othertool.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dollar.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dollar.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/meselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/meselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeblue.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeblue.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/up.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/up.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/dian_false.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/dian_false.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_succeed.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refresh_succeed.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loginwechat.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loginwechat.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/client.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/client.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addmore.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addmore.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_svstatus_loading.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_svstatus_loading.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/refresh_failed.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/refresh_failed.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/xinghao.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/xinghao.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/selectedx.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/selectedx.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/rightarrow.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/rightarrow.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studygarden.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studygarden.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messageunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messageunselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/share.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/passwordicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/passwordicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/maplist.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/maplist.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/downmore.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/downmore.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/a_customloading_icon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/a_customloading_icon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/roomicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/roomicon.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/studyicon.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/studyicon.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wallet.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wallet.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/car.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/car.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/homeunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/homeunselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/upgray.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/upgray.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/bindaccount.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/bindaccount.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/share_wechat.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/share_wechat.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/weichatpay.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/weichatpay.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/changepassword.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/changepassword.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/right_sm.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/right_sm.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/wallet.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/wallet.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabmeunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabmeunselect.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addim.png",
-        "source": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addim.png"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/app.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/app.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/sanjiao.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/sanjiao.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/examine_s.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/examine_s.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/load_failed.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/load_failed.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/loginbac.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/loginbac.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/messagegray.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/messagegray.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/pullup_icon_big.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/pullup_icon_big.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/load_succeed.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/load_succeed.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/map.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/map.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/redhome.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/redhome.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/addim.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/addim.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_svstatus_error.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_svstatus_error.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/acreagebt.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/acreagebt.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ban.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ban.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/redhome1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/redhome1.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/saletui.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/saletui.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/umeng_socialize_facebook.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/umeng_socialize_facebook.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/me.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/me.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/guild1.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/guild1.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/tabhomeunselect.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/tabhomeunselect.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/basicknoledge.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/basicknoledge.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shopping.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shopping.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/seach_edit.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/seach_edit.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/ic_download.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/ic_download.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/shoppping.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/shoppping.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/setting.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/setting.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/car.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/car.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/certificate.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/certificate.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/start.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/start.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/down.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/down.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/price.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/price.png"
+    },
+    {
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/mipmap-xhdpi/customicon.png",
+        "source": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/src/main/res/mipmap-xhdpi/customicon.png"
     }
 ]

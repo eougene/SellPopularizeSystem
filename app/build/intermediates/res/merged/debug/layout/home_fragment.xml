@@ -2,7 +2,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/search_edit_bac">
 
     <com.yd.org.sellpopularizesystem.myView.Gradient
         android:id="@+id/homeGradient"
@@ -12,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@mipmap/homebac"
         android:orientation="vertical">
 
         <View
@@ -24,6 +26,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/padding_margin_10"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -53,11 +56,13 @@
                             android:id="@+id/ivSale"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:drawableTop="@mipmap/saletui"
-                            android:drawablePadding="@dimen/padding_margin_10"
                             android:text="@string/sale_pro"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
+                            android:textSize="@dimen/tv_size_18"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -68,14 +73,6 @@
                             android:layout_toRightOf="@+id/ivSale"
                             android:orientation="vertical"
                             android:visibility="gone">
-
-                            <!--<TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/sale_pro"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvScaleSource"
@@ -99,6 +96,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+
                     android:id="@+id/studyLinearLayout"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
@@ -117,11 +115,11 @@
                             android:id="@+id/ivStudy"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:drawableTop="@mipmap/studygarden"
-                            android:drawablePadding="@dimen/padding_margin_10"
                             android:text="@string/home_study"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
+                            android:textSize="@dimen/tv_size_18"/>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -133,13 +131,6 @@
                             android:orientation="vertical"
                             android:visibility="gone">
 
-                            <!--<TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/home_study"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvStydyDatumCount"
@@ -187,11 +178,11 @@
                             android:id="@+id/customImageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:drawableTop="@mipmap/client"
-                            android:drawablePadding="@dimen/padding_margin_10"
                             android:text="@string/home_scale"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"
+                            android:textSize="@dimen/tv_size_18"
                             />
 
                         <LinearLayout
@@ -202,15 +193,6 @@
                             android:layout_toRightOf="@id/customImageView"
                             android:orientation="vertical"
                             android:visibility="gone">
-
-                            <!--<TextView
-                                android:id="@+id/textView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/home_scale"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>-->
 
                             <TextView
                                 android:id="@+id/tvCustomNumber"
@@ -253,48 +235,11 @@
                             android:id="@+id/ivSetting"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:drawablePadding="@dimen/padding_margin_8"
                             android:drawableTop="@mipmap/previouspro"
                             android:text="@string/oldproject"
                             android:textColor="@color/home_scale"
-                            android:textSize="@dimen/tv_size_15"/>
-
-                        <!--<LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/padding_margin_6"
-                            android:layout_marginTop="@dimen/padding_margin_4"
-                            android:layout_toRightOf="@+id/ivSetting"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/oldproject"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_15"/>
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/home_setting_en"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_08"
-                                android:visibility="gone"/>
-
-
-                            <TextView
-                                android:id="@+id/tvNoNewsCount"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/padding_margin_4"
-                                android:text="@string/zerounread"
-                                android:textColor="@color/home_scale"
-                                android:textSize="@dimen/tv_size_08"
-                                android:visibility="gone"/>
-
-                        </LinearLayout>-->
+                            android:textSize="@dimen/tv_size_18"/>
                     </RelativeLayout>
                 </LinearLayout>
 

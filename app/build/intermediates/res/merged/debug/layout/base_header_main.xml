@@ -59,7 +59,6 @@
                 style="@style/MatchMatch"
                 android:gravity="center"
                 android:text="title"
-                android:textColor="@color/gray"
                 android:textSize="@dimen/tv_size_15"
                 android:visibility="gone" />
 

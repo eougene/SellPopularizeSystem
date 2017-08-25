@@ -13,7 +13,7 @@
         android:id="@+id/baseView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/search_edit_bac" />
+        android:background="@color/shallow_gray" />
 
 
     <FrameLayout

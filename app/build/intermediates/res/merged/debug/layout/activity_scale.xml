@@ -17,6 +17,7 @@
             android:paddingTop="@dimen/padding_margin_6">
 
             <LinearLayout
+
                 android:id="@+id/searchLay"
                 style="@style/MatchWrap"
                 android:layout_above="@+id/scaletab_layout"
@@ -29,23 +30,27 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/padding_margin_6"
-                    android:layout_weight="1"
-                    android:background="@drawable/edittext_bac"
-                    android:hint="@string/scale_search"
+                    android:layout_weight="5"
+                    android:background="@drawable/button_back"
                     android:drawableLeft="@mipmap/searchsmall"
                     android:drawablePadding="@dimen/padding_margin_2"
+                    android:hint="@string/scale_search"
+                    android:imeOptions="actionSearch"
                     android:paddingLeft="@dimen/padding_margin_4"
+                    android:singleLine="true"
+                    android:textColorHint="@color/gray"
                     android:textSize="@dimen/tv_size_12"/>
 
                 <Button
                     android:id="@+id/btScaleSearch"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="@dimen/padding_margin_30"
                     android:layout_marginRight="@dimen/padding_margin_6"
-                    android:background="@drawable/button_bac"
+                    android:layout_weight="1"
+                    android:background="@null"
                     android:text="@string/select"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:textColor="@color/scale_tab5"
+                    android:textSize="@dimen/tv_size_15"/>
             </LinearLayout>
 
 
@@ -60,19 +65,26 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvProjectNum"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/llTwo"
-            android:drawableLeft="@mipmap/project1"
-            android:drawablePadding="@dimen/padding_margin_4"
-            android:paddingBottom="@dimen/padding_margin_6"
-            android:paddingLeft="@dimen/padding_margin_6"
-            android:paddingTop="@dimen/padding_margin_6"
-            android:text="@string/totalprojectnum"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12"/>
+            android:background="@color/search_edit_bac">
+
+            <TextView
+                android:id="@+id/tvProjectNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/project1"
+                android:drawablePadding="@dimen/padding_margin_6"
+                android:gravity="center_vertical"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/totalprojectnum"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/tv_size_12"/>
+
+
+        </RelativeLayout>
 
 
     </RelativeLayout>

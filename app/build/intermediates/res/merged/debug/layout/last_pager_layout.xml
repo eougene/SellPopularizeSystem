@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:textColor="#ffffff"
         android:text="@string/startinves"
+        android:visibility="gone"
          />
 
     <TextView
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/finishpromote"
+        android:layout_gravity="center"
         android:textColor="#ffffff"
         android:layout_marginLeft="20dp"/>
 </LinearLayout>

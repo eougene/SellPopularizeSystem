@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yd.org.sellpopularizesystem"
-    android:versionCode="20170532"
-    android:versionName="1.0.0" >
+    android:versionCode="20170820"
+    android:versionName="1.7.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -86,11 +86,11 @@
         android:glEsVersion="0x00020000"
         android:required="true" />
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <meta-data
         android:name="android.support.VERSION"
-        android:value="25.3.0" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+        android:value="25.3.1" />
 
     <application
         android:name="com.yd.org.sellpopularizesystem.application.BaseApplication"
@@ -99,15 +99,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/ActivtyTheme" >
-
-        <!--
-            <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="3XChLmpeetI7hA0vunMEozM4TTUDfBZZ" />
-        -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a7b0249d16ed843bfc62d915c4d9d421" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.yd.org.sellpopularizesystem.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <activity android:name="com.yd.org.sellpopularizesystem.activity.StartActivity" >
             <intent-filter>
@@ -128,6 +132,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.HomeActiviyt"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.GuideActivity"
@@ -212,10 +217,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.ReserveActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.yd.org.sellpopularizesystem.activity.AskContractActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        +
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.SaleReceiveNoticeActivity"
             android:screenOrientation="portrait" />
@@ -281,9 +285,6 @@
             android:name="com.yd.org.sellpopularizesystem.activity.InvestigateListActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.yd.org.sellpopularizesystem.activity.CommissionDetailsActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -295,7 +296,50 @@
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.PaymentQrActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind" >
+        </activity>
+
+        <!-- 微信支付 -->
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.wxapi.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="true"
+            android:screenOrientation="behind" >
+        </activity>
         <activity android:name="com.yd.org.sellpopularizesystem.activity.StudySubitemActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.IntroduceActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.OrderDetailActivity" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.DeclareActivity" >
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.MyCertificateActivity" >
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.InvoiceActivity" >
+        </activity>
+
+        <service android:name="com.yd.org.sellpopularizesystem.rxdownloadoffice.function.DownloadService" />
+
+        <receiver android:name="com.yd.org.sellpopularizesystem.activity.MyBroadCastReciver" >
+            <intent-filter>
+                <action android:name="com.kingsoft.writer.back.key.down" />
+                <action android:name="cn.wps.moffice.file.close" />
+                <action android:name="com.kingsoft.writer.back.key.down" />
+                <action android:name="com.kingsoft.writer.home.key.down" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Bugly升级SDK配置开始 -->
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -351,7 +395,36 @@
             android:name="com.igexin.download.DownloadProvider"
             android:authorities="downloads.com.yd.org.sellpopularizesystem"
             android:exported="true"
-            android:process=":pushservice" />
+            android:process=":pushservice" /> <!-- Custom FileProvider for 7.x -->
+        <provider
+            android:name="com.tencent.bugly.beta.utils.BuglyFileProvider"
+            android:authorities="com.yd.org.sellpopularizesystem.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider> <!-- 配置tinker合成结果service -->
+        <service
+            android:name="com.tencent.bugly.beta.tinker.TinkerResultService"
+            android:exported="false" />
+        <service
+            android:name="com.tencent.tinker.lib.service.TinkerPatchService"
+            android:exported="false"
+            android:process=":patch" />
+        <service
+            android:name="com.tencent.tinker.lib.service.TinkerPatchService$InnerService"
+            android:exported="false"
+            android:process=":patch" />
+        <service
+            android:name="com.tencent.tinker.lib.service.DefaultTinkerResultService"
+            android:exported="false" />
+
+        <activity
+            android:name="com.tbruyelle.rxpermissions.ShadowActivity"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <provider
             android:name="com.android.tools.fd.runtime.InstantRunContentProvider"
             android:authorities="com.yd.org.sellpopularizesystem.com.android.tools.fd.runtime.InstantRunContentProvider"

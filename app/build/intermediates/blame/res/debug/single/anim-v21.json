@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
-        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/e-dot/.android/build-cache/7d5b9c3a00bfcf21f0a1f128384767a18b98bac1/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/SellPopularizeSystem/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
-        "source": "/Users/e-dot/.android/build-cache/281bd8b2e26920d18bdb81e90a27ab99e3d1815e/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/e-dot/.android/build-cache/7d5b9c3a00bfcf21f0a1f128384767a18b98bac1/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
     }
 ]

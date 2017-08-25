@@ -587,5 +587,9 @@
     <string name="invitedes">Placeholders invite friends to receive bonus rewards and invite more!</string>
     <string name="recommendqr">Recommendation code</string>
     <string name="qrdes">Invite friends to scan two-dimensional code to download APP\n TA can obtain exclusive reward, you can get 5% of the amount paid by the order as a bonus reward</string>
+    <string name="error_">Are you sure you want to give up the order?This operation cannot be revoked!</string>
+    <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="regsterid">请输入邮箱账号</string>
+    <string name="invite_code">邀请二维码</string>
 </resources>
 

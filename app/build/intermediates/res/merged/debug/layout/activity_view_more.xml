@@ -8,10 +8,10 @@
 
     <LinearLayout
         style="@style/MatchWrap"
-        android:background="@color/black"
+        android:background="@color/gray"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/padding_margin_4"
-        android:paddingTop="@dimen/padding_margin_4">
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
             android:id="@+id/tvLocation"
@@ -19,14 +19,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:gravity="center"
-            android:text="@string/area"
+            android:text="ID"
             android:textColor="@color/white"/>
 
         <TextView
             android:id="@+id/tvHouseType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.2"
+            android:layout_weight="1.5"
             android:gravity="center"
             android:text="@string/housetype"
             android:textColor="@color/white"/>
@@ -35,9 +35,7 @@
             android:id="@+id/tvArea"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:paddingLeft="@dimen/padding_margin_4"
+            android:layout_weight="0.7"
             android:text="@string/scale_tab_prop"
             android:textColor="@color/white"/>
 
@@ -45,7 +43,7 @@
             android:id="@+id/tvPrice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:gravity="center"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="@string/price"
@@ -55,7 +53,7 @@
             android:id="@+id/tvHousePhoto"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:gravity="right"
             android:paddingRight="@dimen/padding_margin_8"
             android:text="@string/housetypeimage"
@@ -66,6 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+
 
         <ListView
             android:id="@+id/lvHouseDetail"
@@ -81,8 +80,8 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/nodata"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_15"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/tv_size_18"
             android:visibility="gone"/>
     </RelativeLayout>
 

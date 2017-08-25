@@ -1,12 +1,13 @@
 package com.yd.org.sellpopularizesystem.javaBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by ${bai} on 17/2/4.
  */
 
-public class CustomBean extends Domine {
+public class CustomBean implements Serializable {
 
 
     /**
@@ -54,7 +55,7 @@ public class CustomBean extends Domine {
     }
 
 
-    public static class ResultBean extends Domine {
+    public static class ResultBean  implements Serializable {
         /**
          * customer_id : 7784
          * company_id : 1
