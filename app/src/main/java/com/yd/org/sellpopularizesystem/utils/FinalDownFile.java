@@ -1,9 +1,10 @@
 package com.yd.org.sellpopularizesystem.utils;
 
-import android.Manifest;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebSettings;
@@ -12,22 +13,24 @@ import android.webkit.WebView;
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
-import com.tbruyelle.rxpermissions.RxPermissions;
 import com.yd.org.sellpopularizesystem.myView.WebViewClientBase;
-import com.yd.org.sellpopularizesystem.rxdownloadoffice.RxDownload;
-import com.yd.org.sellpopularizesystem.rxdownloadoffice.entity.DownloadStatus;
-import com.yd.org.sellpopularizesystem.rxdownloadoffice.function.Utils;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.converter.SerializableDiskConverter;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.DownloadProgressCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.io.File;
 
-import rx.Subscriber;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
+import okhttp3.Cache;
 
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
+import static com.yd.org.sellpopularizesystem.utils.MyUtils.getPackageName;
+import static com.yd.org.sellpopularizesystem.utils.WpsModel.CLEAR_FILE;
+import static com.yd.org.sellpopularizesystem.utils.WpsModel.OPEN_MODE;
+import static com.yd.org.sellpopularizesystem.utils.WpsModel.SEND_CLOSE_BROAD;
+import static com.yd.org.sellpopularizesystem.utils.WpsModel.THIRD_PACKAGE;
 
 /**
  * Created by e-dot on 2017/7/26.
@@ -36,169 +39,142 @@ import static android.os.Environment.getExternalStoragePublicDirectory;
 public class FinalDownFile {
 
     private String defaultPath = getExternalStoragePublicDirectory(DIRECTORY_DOWNLOADS).getPath();
-    private Subscription subscription;
-    private RxDownload mRxDownload;
     private String saveName;
     private Activity mActivity;
 
 
     public FinalDownFile(Activity activity, final String url, final WebView tencent_webview, final PDFView pdfView) {
         this.mActivity = activity;
+
+
         saveName = FileUtils.getSaveNameByUrl(url);
+        EasyHttp.downLoad(url)
+                .cacheMode(CacheMode.FIRSTCACHE)
+                .cacheKey(saveName)//缓存key
+               // .cacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
+                .okCache(new Cache(new File(defaultPath + File.separator + saveName),1024*1024*50))//okhttp缓存，模式为默认模式（CacheMode.DEFAULT）才生效
+                //.cacheDiskConverter(new GsonDiskConverter())//默认使用的是 new SerializableDiskConverter();
+                .cacheDiskConverter(new SerializableDiskConverter())//默认使用的是 new SerializableDiskConverter();
+                .timeStamp(true)
+                .savePath(defaultPath)
+                .saveName(saveName)
+                .execute(new DownloadProgressCallBack<String>() {
 
-        Log.e("KKKK", "kk:" + FileUtils.getSaveNameByUrl(url));
-
-        if (null != mRxDownload) {
-            Utils.unSubscribe(subscription);
-        }
-        mRxDownload = RxDownload.getInstance()
-                .maxThread(10)
-                .defaultSavePath(defaultPath) //设置默认的下载路径
-                .maxThread(3)                     //设置最大线程
-                .maxRetryCount(3)                 //设置下载失败重试次数
-                .maxDownloadNumber(5)
-                .context(activity);
-
-
-        SVProgressHUD.showWithProgress(activity, 0 + "KB", SVProgressHUD.SVProgressHUDMaskType.Black);
-
-        subscription = RxPermissions.getInstance(activity)
-                .request(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .doOnNext(new Action1<Boolean>() {
                     @Override
-                    public void call(Boolean granted) {
-                        if (!granted) {
-                            throw new RuntimeException("no permission");
-                        }
+                    public void update(long bytesRead, long contentLength, boolean done) {
+                        int progress = (int) (bytesRead * 100 / contentLength);
+                        SVProgressHUD.getProgressBar(mActivity).setMax(100);
+                        SVProgressHUD.getProgressBar(mActivity).setProgress(progress);
+                        SVProgressHUD.setText(mActivity, progress + " %");
+
+
                     }
-                })
-                .observeOn(Schedulers.io())
-                .compose(mRxDownload.transform(url, saveName, defaultPath))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<DownloadStatus>() {
+
                     @Override
                     public void onStart() {
-                        super.onStart();
-                        Log.e("onStart**", "onStart:" + url);
+                        SVProgressHUD.showWithProgress(mActivity, 0 + " %", SVProgressHUD.SVProgressHUDMaskType.Black);
 
-                        if (mRxDownload != null && mActivity.isFinishing()) {
-                            Utils.unSubscribe(subscription);
-                            Log.e("onStart**", "取消:" + url);
-                        }
                     }
 
                     @Override
-                    public void onCompleted() {
-                        if (SVProgressHUD.isShowing(mActivity)) {
-                            SVProgressHUD.dismiss(mActivity);
-                            Utils.unSubscribe(subscription);
-                        }
+                    public void onComplete(String path) {
+                        mActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (SVProgressHUD.isShowing(mActivity)) {
+                                    SVProgressHUD.dismiss(mActivity);
 
 
-                        String fileUrl = defaultPath + File.separator + saveName;
+                                    String fileUrl = defaultPath + File.separator + saveName;
 
-                        Log.e("onCompleted**", "fileUrl" + defaultPath + File.separator + saveName);
+                                    Log.e("onCompleted**", "fileUrl" + defaultPath + File.separator + saveName);
 
-                        //加载图片
-                        if (url.endsWith(".JPEG") || url.endsWith(".jpeg") || url.endsWith(".jpg") || url.endsWith(".JPG") || url.endsWith(".png") || url.endsWith(".PNG") || url.endsWith(".GIF") || url.endsWith(".gif")) {
-                            pdfView.setVisibility(View.GONE);
-                            tencent_webview.setVisibility(View.VISIBLE);
-                            loadImageview(tencent_webview, mActivity, fileUrl);
-                        } else {
+                                    //加载图片
+                                    if (url.endsWith(".JPEG") || url.endsWith(".jpeg") || url.endsWith(".jpg") || url.endsWith(".JPG") || url.endsWith(".png") || url.endsWith(".PNG") || url.endsWith(".GIF") || url.endsWith(".gif")) {
+                                        pdfView.setVisibility(View.GONE);
+                                        tencent_webview.setVisibility(View.VISIBLE);
+                                        loadImageview(tencent_webview, mActivity, fileUrl);
+                                    } else {
+                                        //加载pdf文档
+                                        if (url.endsWith(".pdf") || url.endsWith(".PDF")) {
+                                            pdfView.setVisibility(View.VISIBLE);
+                                            tencent_webview.setVisibility(View.GONE);
+                                            loadPDF(mActivity, pdfView, fileUrl);
 
+                                            //其它Office文档
+                                        } else {
 
-                            //加载pdf文档
-                            if (url.endsWith(".pdf") || url.endsWith(".PDF")) {
-                                pdfView.setVisibility(View.VISIBLE);
-                                tencent_webview.setVisibility(View.GONE);
-                                loadPDF(mActivity, pdfView, fileUrl);
+                                            Intent intent = new Intent();
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            //设置intent的Action属性
+                                            intent.setAction(Intent.ACTION_VIEW);
+                                            //获取文件file的MIME类型
+                                            String type = getMIMEType(new File(fileUrl));
+                                            //设置intent的data和Type属性。
+                                            intent.setDataAndType(/*uri*/Uri.fromFile(new File(fileUrl)), type);
+                                            //跳转
+                                            mActivity.startActivity(intent);
+                                            // mActivity.finish();
+                                        }
 
-                                //其它Office文档
-                            } else {
-
-                                Intent intent = new Intent();
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                //设置intent的Action属性
-                                intent.setAction(Intent.ACTION_VIEW);
-                                //获取文件file的MIME类型
-                                String type = getMIMEType(new File(fileUrl));
-                                //设置intent的data和Type属性。
-                                intent.setDataAndType(/*uri*/Uri.fromFile(new File(fileUrl)), type);
-                                //跳转
-                                mActivity.startActivity(intent);
-                                // mActivity.finish();
+                                    }
+                                }
                             }
-
-                        }
-
-
+                        });
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        if (SVProgressHUD.isShowing(mActivity)) {
-                            SVProgressHUD.dismiss(mActivity);
-                            Utils.unSubscribe(subscription);
+                    public void onError(ApiException e) {
 
-                        }
-
-                        Log.e("onError**", "onError:" + e.getMessage());
-
-                    }
-
-                    @Override
-                    public void onNext(final DownloadStatus status) {
-                        Log.e("status**", "status:");
-                        SVProgressHUD.getProgressBar(mActivity).setMax((int) status.getTotalSize() / (1024));
-                        SVProgressHUD.getProgressBar(mActivity).setProgress((int) status.getDownloadSize() / (1024));
-                        SVProgressHUD.setText(mActivity, (int) status.getDownloadSize() / (1024) + "KB");
-
-
-                        if (mRxDownload != null && mActivity.isFinishing()) {
-                            Utils.unSubscribe(subscription);
-                            Log.e("onNext**", "取消:" + url);
-                        }
-
+                        mActivity.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (SVProgressHUD.isShowing(mActivity)) {
+                                    SVProgressHUD.dismiss(mActivity);
+                                }
+                            }
+                        });
 
                     }
                 });
 
+
     }
 
-//    private boolean openFile(String path, Activity activity) {
-//
-//        try {
-//            Intent intent = new Intent();
-//            Bundle bundle = new Bundle();
-//            bundle.putString(OPEN_MODE, WpsModel.OpenMode.READ_MODE); // 打开模式
-//
-//            bundle.putBoolean(SEND_CLOSE_BROAD, true); // 关闭时是否发送广播
-//            bundle.putString(THIRD_PACKAGE, getPackageName()); // 第三方应用的包名，用于对改应用合法性的验证
-//            bundle.putBoolean(WpsModel.CLEAR_TRACE, true);// 清除打开记录
-//            bundle.putBoolean(CLEAR_FILE, true); //关闭后删除打开文件
-//            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            intent.setAction(android.content.Intent.ACTION_VIEW);
-//            intent.setClassName(WpsModel.PackageName.NORMAL, WpsModel.ClassName.NORMAL);
-//
-//            File file = new File(path);
-//            if (file == null || !file.exists()) {
-//                Log.e("异常0", "文件为空或者不存在");
-//                return false;
-//            }
-//
-//            Uri uri = Uri.fromFile(file);
-//            intent.setData(uri);
-//            intent.putExtras(bundle);
-//            activity.startActivity(intent);
-//
-//            return true;
-//        } catch (ActivityNotFoundException e) {
-//            Log.e("异常", "打开wps异常：" + e.toString());
-//            e.printStackTrace();
-//            return false;
-//        }
-//
-//    }
+    private boolean openFile(String path, Activity activity) {
+
+        try {
+            Intent intent = new Intent();
+            Bundle bundle = new Bundle();
+            bundle.putString(OPEN_MODE, WpsModel.OpenMode.READ_MODE); // 打开模式
+
+            bundle.putBoolean(SEND_CLOSE_BROAD, true); // 关闭时是否发送广播
+            bundle.putString(THIRD_PACKAGE, getPackageName()); // 第三方应用的包名，用于对改应用合法性的验证
+            bundle.putBoolean(WpsModel.CLEAR_TRACE, true);// 清除打开记录
+            bundle.putBoolean(CLEAR_FILE, true); //关闭后删除打开文件
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setAction(android.content.Intent.ACTION_VIEW);
+            intent.setClassName(WpsModel.PackageName.NORMAL, WpsModel.ClassName.NORMAL);
+
+            File file = new File(path);
+            if (file == null || !file.exists()) {
+                Log.e("异常0", "文件为空或者不存在");
+                return false;
+            }
+
+            Uri uri = Uri.fromFile(file);
+            intent.setData(uri);
+            intent.putExtras(bundle);
+            activity.startActivity(intent);
+
+            return true;
+        } catch (ActivityNotFoundException e) {
+            Log.e("异常", "打开wps异常：" + e.toString());
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
     private void loadImageview(WebView view, Activity activity, String path) {
         WebSettings webSettings = view.getSettings();
