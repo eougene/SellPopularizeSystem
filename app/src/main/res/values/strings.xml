@@ -584,37 +584,12 @@
     <string name="error_">您确定要放弃订单?此操作不可撤销!</string>
     <string name="hintpass">请输入6-12位数字或字母密码</string>
     <string name="regsterid">请输入邮箱账号</string>
-    <string name="invitedes">占位符邀请好友得分红奖励,多邀多得!</string>
+    <string name="invitedes">邀请好友得分红奖励,多邀多得!</string>
     <string name="recommendqr">推荐码</string>
     <string name="qrdes">邀请好扫描二维码下载APP,TA可获取专属奖励\n您可获订单实付金额的<font color='red'>5%</font>作为分红奖励</string>
     <string name="invite_code">邀请二维码</string>
-    <string name="telhint">请输入联系电话</string>
-    <string name="myaddress">我的地址</string>
-    <string name="bankacc">银行账户</string>
-    <string name="coaddress">公司地址</string>
-    <string name="openbank">开户行</string>
-    <string name="cardnum">卡号</string>
-    <string name="cardholder">持卡人</string>
-    <string name="bankhint">请填写本人的银行卡信息</string>
-    <string name="mymsg">我的信息</string>
-    <string name="inputconame">请输入公司名称</string>
-    <string name="fullname">姓名</string>
-    <string name="selectadd">选择地区</string>
-    <string name="detailadd">详细地址</string>
-    <string name="bankinfo">银行卡信息</string>
-    <string name="xingshi">姓&#160;&#160;&#160;&#160;氏</string>
-    <string name="mingzi">名&#160;&#160;&#160;&#160;字</string>
-    <string name="telephonenum">手机号</string>
-    <string name="mima">密&#160;&#160;&#160;&#160;码</string>
-    <string name="besale">成为销售</string>
-    <string name="hintremark">请您在此描述您的备注</string>
-    <string name="remarktitle">备注事项</string>
-    <string name="passerrorhint">密码必须为6到18数字或字母</string>
-    <string name="telnumerrorhint">手机号不能为空</string>
-    <string name="emailerrorhint">您输入的邮箱地址格式不对</string>
-    <string name="emailemptyerror">邮箱不能为空</string>
-    <string name="nameerror">名字不能为空</string>
-    <string name="surenameerror">姓氏不能为空</string>
-    <string name="codeerror">推荐码不能为空</string>
+    <string name="myinfo">我的信息</string>
+    <string name="remark_certificate">备注事项</string>
+
 
 </resources>

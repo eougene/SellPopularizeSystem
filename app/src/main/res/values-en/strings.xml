@@ -590,28 +590,8 @@
     <string name="error_">Are you sure you want to give up the order?This operation cannot be revoked!</string>
     <string name="hintpass">请输入6-12位数字或字母密码</string>
     <string name="regsterid">请输入邮箱账号</string>
-    <string name="invite_code">Invite QR code</string>
-    <string name="telhint">Please enter your contact number</string>
-    <string name="myaddress">My address</string>
-    <string name="bankacc">Bank account</string>
-    <string name="coaddress">Company address</string>
-    <string name="openbank">Open bank</string>
-    <string name="cardnum">Card number</string>
-    <string name="cardholder">Cardholder</string>
-    <string name="bankhint">Please fill out my bank card information</string>
-    <string name="mymsg">My information</string>
-    <string name="inputconame">Please enter your company name</string>
-    <string name="fullname">Full name</string>
-    <string name="selectadd">Selected areas</string>
-    <string name="detailadd">Detail Address</string>
-    <string name="bankinfo">Bank information</string>
-    <string name="xingshi">Surname</string>
-    <string name="mingzi">Name</string>
-    <string name="telephonenum">Cell-phone number</string>
-    <string name="mima">Password</string>
-    <string name="besale">Become sales</string>
-    <string name="hintremark">Please describe your remarks here</string>
-    <string name="remarktitle">Remarks</string>
-
+    <string name="invite_code">邀请二维码</string>
+    <string name="myinfo">我的信息</string>
+    <string name="remark_certificate">备注事项</string>
 </resources>
 
