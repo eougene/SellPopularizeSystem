@@ -18,6 +18,7 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
@@ -163,6 +164,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         btCancel = (Button) mView.findViewById(R.id.btCancel);
         initOptionData();
         initOptionsPickerView();
+
     }
 
     private void initOptionData() {
@@ -245,7 +247,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     //获取子单元列表数据
     private void getListData() {
         EasyHttp.get(Contants.PRODUCT_SUBUNIT_LIST)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("product_id", product_id == null ? "" : product_id)
@@ -531,7 +534,8 @@ public class ProductSubunitListActivity extends BaseActivity {
      */
     private void getEoiData(final ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
         EasyHttp.get(Contants.EOI_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", "1")
@@ -581,7 +585,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     //eoi排队请求
     private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean, String eoi) {
         EasyHttp.get(Contants.EOI_USE)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("eoi_id", eoi)
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -621,7 +626,8 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     private void getItemProductDetail() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheMode(CacheMode.NO_CACHE)//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", product_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -640,17 +646,17 @@ public class ProductSubunitListActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("onSuccess", "json:" +json);
+                        Log.e("onSuccess", "json:" + json);
                         closeDialog();
                         Gson gson = new Gson();
-                        ProductDetailBean pdb = gson.fromJson(s, ProductDetailBean.class);
-//                        if (pdb.getCode().equals("1")) {
-//                            prs = pdb.getResult();
-//                            BaseApplication.getInstance().setPrs(prs);
-//                            controlColor();
-//
-//
-//                        }
+                        ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
+                        if (pdb.getCode().equals("1")) {
+                            prs = pdb.getResult();
+                            BaseApplication.getInstance().setPrs(prs);
+                            controlColor();
+
+
+                        }
                     }
                 });
 
@@ -698,16 +704,41 @@ public class ProductSubunitListActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mCustomePopuWindow.showAtLocation(ProductSubunitListActivity.this.findViewById(R.id.llProdet), Gravity.BOTTOM, 0, 0);
                 pos = position;
-                if (data.get(pos).getIs_lock() == 1) {
-                    btRemain.setVisibility(View.GONE);
-                    btLineup.setVisibility(View.GONE);
-                } else if (data.get(pos).getIs_lock() == 0) {
+
+
+                //销售可预订
+                if (SharedPreferencesHelps.getType() == 1) {
                     btRemain.setVisibility(View.VISIBLE);
-                    btLineup.setVisibility(View.GONE);
-                }
-                if (data.get(pos).getIf_eoi() == 1) {
+
+
+                    if (data.get(pos).getIs_lock() == 1) {
+                        btRemain.setVisibility(View.GONE);
+                        btLineup.setVisibility(View.GONE);
+                    } else if (data.get(pos).getIs_lock() == 0) {
+                        btRemain.setVisibility(View.VISIBLE);
+                        btLineup.setVisibility(View.GONE);
+                    }
+                    if (data.get(pos).getIf_eoi() == 1) {
+                        btRemain.setVisibility(View.GONE);
+                        btLineup.setVisibility(View.VISIBLE);
+                    }
+
+                    //推荐人不可预订
+                } else if (SharedPreferencesHelps.getType() == 2) {
                     btRemain.setVisibility(View.GONE);
-                    btLineup.setVisibility(View.VISIBLE);
+
+
+                    if (data.get(pos).getIs_lock() == 1) {
+                        btRemain.setVisibility(View.GONE);
+                        btLineup.setVisibility(View.GONE);
+                    } else if (data.get(pos).getIs_lock() == 0) {
+                        btRemain.setVisibility(View.GONE);
+                        btLineup.setVisibility(View.GONE);
+                    }
+                    if (data.get(pos).getIf_eoi() == 1) {
+                        btRemain.setVisibility(View.GONE);
+                        btLineup.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });
@@ -724,4 +755,6 @@ public class ProductSubunitListActivity extends BaseActivity {
             return R.layout.prodet_lvitem_popwindow;
         }
     }
+
+
 }

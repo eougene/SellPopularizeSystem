@@ -148,7 +148,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("cate_id", cate_id + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -356,7 +357,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      */
     private void deleteNoticeLog(String notice_id) {
         EasyHttp.get(Contants.DELETE_NOTICE)
-                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("notice_logs_id", notice_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -449,7 +451,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     private void commitNotice(String str) {
         EasyHttp.get(Contants.SUBMIT_READED)
-                .cacheMode(CacheMode.DEFAULT)//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("notice_logs_id", str)
                 .params("user_id", SharedPreferencesHelps.getUserID())

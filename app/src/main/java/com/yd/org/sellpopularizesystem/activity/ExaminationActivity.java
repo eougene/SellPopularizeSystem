@@ -82,7 +82,8 @@ public class ExaminationActivity extends BaseActivity {
 
     private void initData(String paperId) {
         EasyHttp.get(Contants.PAPER_DETAILS)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("paper_id", paperId)
                 .execute(new SimpleCallBack<String>() {

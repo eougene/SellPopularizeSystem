@@ -22,6 +22,7 @@ import com.yd.org.sellpopularizesystem.viewpage.HackyViewPager;
 import com.yd.org.sellpopularizesystem.viewpage.PhotoViewFragment;
 import com.yd.org.sellpopularizesystem.viewpage.ViewpagerAdapter;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -148,7 +149,8 @@ public class StudyDetailaActivity extends FragmentActivity {
 
 
         EasyHttp.get(Contants.STUDY_INFO)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("study_id", study_id)
 

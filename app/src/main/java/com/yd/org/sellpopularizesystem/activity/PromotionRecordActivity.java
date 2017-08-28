@@ -17,6 +17,7 @@ import com.yd.org.sellpopularizesystem.javaBean.PromotionRecord;
 import com.yd.org.sellpopularizesystem.javaBean.PromotionRecordBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -39,6 +40,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
     private PromotionRecordAdapter pradapter;
     private PromotionRecordAdapter_Pr promotionRecordAdapter_pr;
     private LinearLayout saleRecprdRel;
+    private  String  cacheKey="";
 
     @Override
     protected int setContentView() {
@@ -64,13 +66,16 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
         //推广记录
         if (flag.equals("custoexpand")) {
+            cacheKey= this.getClass().getSimpleName()+"1";
             saleRecprdRel.setVisibility(View.VISIBLE);
             setTitle(getString(R.string.expandre));
             getExpandReData(page, true);
 
 
+
             //购房记录
         } else if (flag.equals("custopurchase")) {
+            cacheKey= this.getClass().getSimpleName()+"2";
             saleRecprdRel.setVisibility(View.GONE);
             setTitle(getString(R.string.housepurchase));
             getHouseurchase(page, true);
@@ -117,7 +122,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
     private void getExpandReData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.SALE_LOG_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
@@ -139,6 +145,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
                     @Override
                     public void onSuccess(String json) {
+                        Log.e("onSuccess**","onSuccess:"+json);
 
                         closeDialog();
                         paseJSON(json, isRefresh);
@@ -168,8 +175,6 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
             listView.setAdapter(promotionRecordAdapter_pr);
         }
 
-
-       // ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         promotionRecordAdapter_pr.addMore(prDatas);
 
     }
@@ -204,7 +209,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
     private void getHouseurchase(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.ORDER_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
@@ -227,6 +233,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
                     @Override
                     public void onSuccess(String json) {
+                        Log.e("onSuccess", "onSuccess:" + json);
                         closeDialog();
                         prPaseJson(json, isRefresh);
                     }

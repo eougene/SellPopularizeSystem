@@ -8,21 +8,40 @@ public class Contants {
     /**
      * 域名
      */
-   //public static final String DOMAIN = "http://crm.vxda.cn";
-  public static final String DOMAIN = "https://www.wingaid.com";
+    public static final String DOMAIN = "http://crm.vxda.cn";
+    //public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
-   // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
+    // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
     //public static final String PDF_TEST = "http://dcsapi.com?k=140387567&url=";
 
     //首页数据
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
     //登录
-    public static final String HOME_LOGIN =  DOMAIN+"/index.php/appv2/login/index";
+    public static final String HOME_LOGIN = DOMAIN + "/index.php/appv2/login/index";
     //微信登录
     // public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/app/login/third_login";
     public static final String WEIXIN_LOGIN = DOMAIN + "/index.php/appv2/login/third_login";
+
+
+    //注册推荐人
+    public static final String REGISTER_REFER = DOMAIN + "/index.php/appv2/Login/register_refer";
+    //我的信息
+    public static final String USER_INFO = DOMAIN + "/index.php/appv2/user/user_info";
+
+    //更新我的信息
+    public static final String UPDATE_USER= DOMAIN + "/index.php/appv2/user/update_user_info";
+
+
+    //我的要请吗
+    public static final String REFER= DOMAIN + "/index.php/appv2/user/refer";
+
+
+
+
+
+
     //修改密码
     public static final String CHANGE_PASSWORD = DOMAIN + "/index.php/appv2/user/user_setpassword";
     //获取推广筛选数据
@@ -30,6 +49,9 @@ public class Contants {
     //获取产品推广筛选数据
     public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list_v2";
     // public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list";
+
+    //分享内容
+    public static final String SHURE_URL = DOMAIN + "/index.php/appv2/product/get_share_url";
 
     //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
@@ -111,9 +133,9 @@ public class Contants {
     //上传合同图片
     public static final String UPLOAD_CONTRACT_PHOTO = DOMAIN + "/index.php/appv2/order/upload_contract";
     //上传首付款凭证
-   // public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
+    // public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money";
 
- public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money_new";
+    public static final String UPLOAD_FIRST_COMMISSION = DOMAIN + "/index.php/appv2/order/upload_buy_money_new";
 
 
     //查询订单列表
@@ -177,6 +199,9 @@ public class Contants {
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
     //上传证书
     public static final String UPLOAD_LICENCE = DOMAIN + "/index.php/appv2/user/upload_licence";
+
+    //升级成为销售
+    public static final String  Upgrade = DOMAIN + "/index.php/appv2/user/upgrade";
     //获取证书
     public static final String LICENCE_INFO = DOMAIN + "/index.php/appv2/user/licence_info";
     //微信相关

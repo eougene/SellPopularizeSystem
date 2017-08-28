@@ -12,6 +12,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.javaBean.GradeBean;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -57,7 +58,8 @@ public class GradeActivity extends BaseActivity {
 
     private void getData() {
         EasyHttp.get(Contants.GET_TEST_RESULT)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("answer_id", resultBean.getAnswer_id() + "")
                 .execute(new SimpleCallBack<String>() {

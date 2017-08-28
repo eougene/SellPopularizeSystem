@@ -328,7 +328,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     private void logOut() {
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.cleaAccount();
-        SharedPreferencesHelps.clearUserName();
         SharedPreferencesHelps.clearUserPassword();
         ActivitySkip.forward(HomeActiviyt.this, LoginActivity.class);
         finish();

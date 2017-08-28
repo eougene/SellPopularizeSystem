@@ -127,20 +127,20 @@ public class SharedPreferencesHelps {
     }
 
     /**
-     * 保存用户名`
+     * 保存头像
      *
      * @param name
      */
-    public synchronized static final void setUserName(String name) {
-        getPreferences().edit().putString(ExtraName.USER_NAME, name).commit();
+    public synchronized static final void setUserImage(String name) {
+        getPreferences().edit().putString(ExtraName.HEAD_IMAGE, name).commit();
     }
 
-    public synchronized static final void clearUserName() {
-        getPreferences().edit().remove(ExtraName.USER_NAME).commit();
+    public synchronized static final void clearUserImage() {
+        getPreferences().edit().remove(ExtraName.HEAD_IMAGE).commit();
     }
 
-    public synchronized static final String getUserName() {
-        return getPreferences().getString(ExtraName.USER_NAME, "null");
+    public synchronized static final String getUserImage() {
+        return getPreferences().getString(ExtraName.HEAD_IMAGE, "null");
     }
 
     public synchronized static final void setLanguage(String language) {
@@ -214,4 +214,60 @@ public class SharedPreferencesHelps {
     }
 
 
+    /**
+     * 保存销售type
+     *
+     * @param type
+     */
+    public synchronized static final void setType(int type) {
+        getPreferences().edit().putInt(ExtraName.USER_TYPE, type).commit();
+    }
+
+    public synchronized static final void clearType() {
+        getPreferences().edit().remove(ExtraName.USER_TYPE).commit();
+    }
+
+    public synchronized static final int getType() {
+        return getPreferences().getInt(ExtraName.USER_TYPE, 0);
+    }
+
+
+    /**
+     * 保存销售推荐人id
+     *
+     * @param referCode
+     */
+    public synchronized static final void setReferCode(String referCode) {
+        getPreferences().edit().putString("ReferCode", referCode).commit();
+    }
+
+    public synchronized static final void clearReferCode() {
+        getPreferences().edit().remove("ReferCode").commit();
+    }
+
+    public synchronized static final String getReferCode() {
+        return getPreferences().getString("ReferCode", "");
+    }
+
+
+    //保存我的地址是否完整
+
+    public synchronized static final void setUserAdress(int adress) {
+        getPreferences().edit().putInt("adress", adress).commit();
+    }
+
+    public synchronized static final int getUserAdress() {
+        return getPreferences().getInt("adress", 0);
+    }
+
+
+    //保存我的地址是否完整
+
+    public synchronized static final void setUserBank(int bank) {
+        getPreferences().edit().putInt("bank", bank).commit();
+    }
+
+    public synchronized static final int getUserBank() {
+        return getPreferences().getInt("bank", 0);
+    }
 }

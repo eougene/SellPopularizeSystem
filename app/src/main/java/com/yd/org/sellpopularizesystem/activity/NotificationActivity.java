@@ -16,6 +16,7 @@ import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -52,7 +53,8 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
     private void getData(int page, final boolean isRefresh) {
 
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))

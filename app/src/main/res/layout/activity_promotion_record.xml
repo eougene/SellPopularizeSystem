@@ -9,7 +9,7 @@
         android:id="@+id/saleRecprdRel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/shallow_gray"
+        android:background="@color/scale_tab5"
         android:orientation="horizontal"
         android:padding="@dimen/padding_margin_10">
 
@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:gravity="left"
             android:text="@string/time"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/project"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
 
@@ -39,7 +39,7 @@
             android:layout_weight="1"
             android:gravity="right"
             android:text="@string/time_long"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="@dimen/tv_size_12"/>
 
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yd.org.sellpopularizesystem.myView.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="match_parent"
-                                                         android:background="@color/search_edit_bac">
-
+<com.yd.org.sellpopularizesystem.myView.BounceScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/mainLinear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -20,20 +21,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="推荐码"/>
+                android:text="选择国家或地区"/>
 
-            <EditText
-                android:id="@+id/recommendIdEdit"
+            <TextView
+                android:id="@+id/userAdressTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入六位推荐码与销售人员进行绑定"
+                android:gravity="end"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
+                android:text="中国"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/setting_bac"
                 android:textSize="@dimen/tv_size_15"/>
@@ -47,75 +47,6 @@
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/xinghao"
-                android:padding="@dimen/padding_margin_10"
-                android:text="姓氏"/>
-
-            <EditText
-                android:id="@+id/familyNameEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入真实姓氏"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:padding="@dimen/padding_margin_20"
-                android:singleLine="true"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/setting_bac"
-                android:textSize="@dimen/tv_size_15"/>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/xinghao"
-                android:padding="@dimen/padding_margin_10"
-                android:text="名字"/>
-
-            <EditText
-                android:id="@+id/lastNameEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入真实名字"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:padding="@dimen/padding_margin_20"
-                android:singleLine="true"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/setting_bac"
-                android:textSize="@dimen/tv_size_15"/>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -126,52 +57,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="手机号"/>
+                android:text="单元号"/>
 
             <EditText
-                android:id="@+id/phoneEdit"
+                android:id="@+id/userUnitNumberEd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入手机号码"
+                android:gravity="end"
                 android:imeOptions="actionNext"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:padding="@dimen/padding_margin_20"
-                android:singleLine="true"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/setting_bac"
-                android:textSize="@dimen/tv_size_15"/>
-
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/xinghao"
-                android:padding="@dimen/padding_margin_10"
-                android:text="邮箱账号"/>
-
-            <EditText
-                android:id="@+id/regsterEmailEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="请输入有效邮箱账号"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailSubject"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
@@ -197,19 +91,73 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="密码"/>
+                android:text="街道号码"/>
 
             <EditText
-                android:id="@+id/passwordEdit"
+                android:id="@+id/userStreetNumberEd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="区"/>
+
+            <EditText
+                android:id="@+id/userSuburbNumberEd"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="@string/hintpass"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="州"/>
+
+            <EditText
+                android:id="@+id/userStateEd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
@@ -218,15 +166,108 @@
                 android:textSize="@dimen/tv_size_15"/>
 
 
-            <ImageView
-                android:id="@+id/showPassword"
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:scaleType="centerInside"
-                android:src="@mipmap/showpass"
-                />
+                android:padding="@dimen/padding_margin_10"
+                android:text="街道地址1"/>
+
+            <EditText
+                android:id="@+id/userDetailedAddressEd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="街道地址2"/>
+
+            <EditText
+                android:id="@+id/userDetailedAddressEd2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="邮编"/>
+
+            <EditText
+                android:id="@+id/userPostcodeEd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
         </LinearLayout>
 
         <View
@@ -236,23 +277,5 @@
             android:background="@color/search_edit_bac"/>
 
 
-        <TextView
-            android:id="@+id/regsterText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
-            android:background="#EE781F"
-            android:gravity="center"
-            android:padding="@dimen/padding_margin_10"
-            android:text="@string/register"
-            android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_15"/>
-
-
     </LinearLayout>
-
-
 </com.yd.org.sellpopularizesystem.myView.BounceScrollView>

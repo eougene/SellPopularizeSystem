@@ -8,6 +8,7 @@ import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -54,7 +55,8 @@ public class InvestigateListActivity extends BaseActivity implements PullToRefre
 
     private void getInfo(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.QUESTION_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", SharedPreferencesHelps.getUserID())
                 .params("number", String.valueOf(Integer.MAX_VALUE))

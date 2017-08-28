@@ -62,6 +62,7 @@ import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -1079,6 +1080,15 @@ public class CustomDetailedActivity extends BaseActivity {
             String company_name, String abn, String acn, String company_mobile, String company_e_mail, String company_fax, String client_id, final String client, String select_self, String company_country, String company_unit_number, String company_street_number, String company_suburb, String company_state, String company_street_address_line_1,
             String company_street_address_line_2, String company_postcode, String unit_number, String street_number, String suburb, String state, String street_address_line_1, String street_address_line_2, String family_email, String mome) throws FileNotFoundException {
         showDialog();
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+
+
+
+            }
+        };
 
 
         //更新
@@ -1103,7 +1113,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //**************************************
 
         if (!imagePath.equals("")) {
-            ajaxParams.put("file", new File(imagePath), null);//客户头像
+            ajaxParams.put("file", new File(imagePath), mUIProgressResponseCallBack);//客户头像
         }
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
@@ -1507,7 +1517,8 @@ public class CustomDetailedActivity extends BaseActivity {
     private void getCustomInfo(CustomBean.ResultBean resultBean) {
 
         EasyHttp.get(Contants.CUSTOME_DETAILED)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("customer_id", resultBean.getCustomer_id() + "")
                 .execute(new SimpleCallBack<String>() {

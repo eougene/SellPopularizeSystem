@@ -69,9 +69,6 @@
         android:name="getui.permission.GetuiService.com.yd.org.sellpopularizesystem"
         android:protectionLevel="normal"/>
 
-
-
-
     <supports-screens
         android:anyDensity="true"
         android:largeScreens="true"
@@ -92,7 +89,6 @@
         android:supportsRtl="true"
         android:theme="@style/ActivtyTheme"
         tools:replace="android:icon">
-
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="a7b0249d16ed843bfc62d915c4d9d421"/>
@@ -123,7 +119,8 @@
             android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".activity.LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         <activity
             android:name=".activity.HomeActiviyt"
             android:launchMode="singleTask"
@@ -211,8 +208,8 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.ReserveActivity"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
         +
         <activity
             android:name=".activity.SaleReceiveNoticeActivity"
@@ -290,7 +287,6 @@
         <activity
             android:name=".activity.PaymentQrActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
@@ -314,21 +310,18 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.DeclareActivity">
         </activity>
-        <activity android:name=".activity.MyCertificateActivity">
+        <activity android:name=".activity.MyCertificateActivity"
+                  android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity android:name=".activity.InvoiceActivity">
         </activity>
-        <service
-            android:name=".rxdownloadoffice.function.DownloadService"/>
-
 
         <receiver android:name=".activity.MyBroadCastReciver">
             <intent-filter>
-                <action android:name="com.kingsoft.writer.back.key.down" />
-                <action android:name="cn.wps.moffice.file.close" />
-                <action android:name="com.kingsoft.writer.back.key.down" />
-                <action android:name="com.kingsoft.writer.home.key.down" />
-
+                <action android:name="com.kingsoft.writer.back.key.down"/>
+                <action android:name="cn.wps.moffice.file.close"/>
+                <action android:name="com.kingsoft.writer.back.key.down"/>
+                <action android:name="com.kingsoft.writer.home.key.down"/>
             </intent-filter>
         </receiver>
 
@@ -337,6 +330,19 @@
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent"/>
+        <activity
+            android:name=".activity.MyInfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name=".activity.UserAdressActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity
+            android:name=".activity.BankActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
+        </activity>
+        <activity android:name=".activity.InviteQRActivity"/>
     </application>
 
 </manifest>

@@ -5,12 +5,10 @@ package com.yd.org.sellpopularizesystem.javaBean;
  */
 
 public class LicenceBean extends Domine {
-
-
     /**
      * code : 1
      * msg : 获取成功
-     * result : {"licence_id":117,"company_id":"1","user_id":"504","licence_name":"Certificate of Registration","abn":"","acn":"","is_gst":0,"request_notes":"","effective_date":"1502726400","expiry_date":"1507996800","licence_type":1,"licence_number":"ax123456","licence_file":"public/uploads/licence/170715/201707152132432283.jpg","reject_reason":"","add_time":"1500125563","add_ip":"101.86.29.178","add_admin":"","status":0}
+     * result : {"licence_id":126,"company_id":"1","user_id":"501","type":1,"licence_name":"Certificate of Registration","abn":"","acn":"","is_gst":0,"request_notes":"","effective_date":"1503808624.583951","expiry_date":"1503808624.70746","licence_type":1,"licence_number":"1111","licence_file":"public/uploads/licence/170827/201708271238282011.jpg","reject_reason":"","add_time":"1503808708","add_ip":"116.237.192.15","add_admin":"","status":0}
      */
 
     private int code;
@@ -41,25 +39,25 @@ public class LicenceBean extends Domine {
         this.result = result;
     }
 
-
-    public static class ResultBean extends Domine {
+    public static class ResultBean extends Domine{
         /**
-         * licence_id : 117
+         * licence_id : 126
          * company_id : 1
-         * user_id : 504
+         * user_id : 501
+         * type : 1
          * licence_name : Certificate of Registration
          * abn :
          * acn :
          * is_gst : 0
          * request_notes :
-         * effective_date : 1502726400
-         * expiry_date : 1507996800
+         * effective_date : 1503808624.583951
+         * expiry_date : 1503808624.70746
          * licence_type : 1
-         * licence_number : ax123456
-         * licence_file : public/uploads/licence/170715/201707152132432283.jpg
+         * licence_number : 1111
+         * licence_file : public/uploads/licence/170827/201708271238282011.jpg
          * reject_reason :
-         * add_time : 1500125563
-         * add_ip : 101.86.29.178
+         * add_time : 1503808708
+         * add_ip : 116.237.192.15
          * add_admin :
          * status : 0
          */
@@ -67,6 +65,7 @@ public class LicenceBean extends Domine {
         private int licence_id;
         private String company_id;
         private String user_id;
+        private int type;
         private String licence_name;
         private String abn;
         private String acn;
@@ -105,6 +104,14 @@ public class LicenceBean extends Domine {
 
         public void setUser_id(String user_id) {
             this.user_id = user_id;
+        }
+
+        public int getType() {
+            return type;
+        }
+
+        public void setType(int type) {
+            this.type = type;
         }
 
         public String getLicence_name() {

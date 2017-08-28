@@ -28,6 +28,7 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.GetLawyerNameSort;
 import com.yd.org.sellpopularizesystem.utils.LawyerComparator;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -98,7 +99,8 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
      */
     private void getLawyerListData(String customeId, final boolean b) {
         EasyHttp.get(Contants.LAWYER_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("customer_id", "")
                 .params("law_firm", "")

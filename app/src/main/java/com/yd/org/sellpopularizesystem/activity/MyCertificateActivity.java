@@ -33,6 +33,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -45,14 +46,13 @@ import java.util.List;
 
 public class MyCertificateActivity extends BaseActivity {
     private TextView stateTextView, dataTextView_01, dataTextView_02, zhTypeTextView, subButton;
-    private EditText zhEdTextView;
+    private EditText zhEdTextView, remarkEdit;
     private ImageView srcImageView, pointImageView;
     private String picPath = "", licence_type = "1";
     private String type = "0";
     private PopupWindow firbSelectPopWindow;
     private View firbPwView;
     private Button btUnknown, btSure, btFalse;
-    private boolean isFile = true;
     private File file = null;
 
     /**
@@ -93,7 +93,29 @@ public class MyCertificateActivity extends BaseActivity {
                     break;
                 //提交
                 case R.id.subButton:
-                    commintInfo();
+
+
+                    //推荐人
+                    if (SharedPreferencesHelps.getType() == 2) {
+                        //判断我的地址信息是否完整,,,==0不完整,
+                        if (SharedPreferencesHelps.getUserAdress() == 0) {
+                            ToasShow.showToastBottom(MyCertificateActivity.this, "请完善我的地址");
+                            return;
+
+                            //判断银行卡信息是否完整,,,==0不完整,
+                        } else if (SharedPreferencesHelps.getUserBank() == 0) {
+                            ToasShow.showToastBottom(MyCertificateActivity.this, "请完善银行卡信息");
+                            return;
+                        } else {
+
+                        }
+
+                        //销售
+                    } else if (SharedPreferencesHelps.getType() == 1) {
+                        commintInfo();
+                    }
+
+
                     break;
             }
         }
@@ -117,6 +139,7 @@ public class MyCertificateActivity extends BaseActivity {
         srcImageView = getViewById(R.id.srcImageView);
         pointImageView = getViewById(R.id.pointImageView);
         subButton = getViewById(R.id.subButton);
+        remarkEdit = getViewById(R.id.remarkEdit);
 
 
         setTimePicker();
@@ -208,7 +231,6 @@ public class MyCertificateActivity extends BaseActivity {
                                 e.printStackTrace();
                             }
 
-                            Log.e("招聘***1", "picPath:" + picPath);
                             srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
 
@@ -216,7 +238,6 @@ public class MyCertificateActivity extends BaseActivity {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
                         if (imgUri != null) {
                             picPath = imgUri.getPath();
-                            Log.e("招聘***2", "picPath:" + picPath);
                             srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
                         }
 
@@ -274,9 +295,19 @@ public class MyCertificateActivity extends BaseActivity {
     }
 
     private void commintInfo() {
+        String url = null;
+
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
 
 
-        String sTime = "", endTime = "", licence_number = "", licence_name = "";
+            }
+        };
+
+
+        String sTime = "", endTime = "", licence_number = "", licence_name = "", remarkString;
 
 
         if ((dataTextView_01.getText().toString()).equals(getString(R.string.commencement_date))) {
@@ -312,39 +343,50 @@ public class MyCertificateActivity extends BaseActivity {
             licence_name = zhTypeTextView.getText().toString().trim();
         }
 
+        remarkString = remarkEdit.getText().toString().trim();
 
-        HttpParams httpParams=new HttpParams();
+
+        HttpParams httpParams = new HttpParams();
+
+
+        //销售
+        if (SharedPreferencesHelps.getType() == 1) {
+            httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+            url = Contants.UPLOAD_LICENCE;
+
+            //推荐人
+        } else if (SharedPreferencesHelps.getType() == 2) {
+            httpParams.put("refer_id", SharedPreferencesHelps.getReferCode());
+            url = Contants.Upgrade;
+        }
+
         httpParams.put("licence_type", licence_type);
-        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("licence_number", licence_number);
         httpParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
         httpParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
         httpParams.put("licence_name", licence_name);
+        httpParams.put("request_notes", remarkString);
         httpParams.put("abn", "");
         httpParams.put("acn", "");
         httpParams.put("is_gst", "");
 
 
+        if (TextUtils.isEmpty(picPath) || picPath == "") {
+            ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
+            return;
+        } else {
 
-
-        if (!picPath.startsWith("https://")) {
-            isFile = true;
-            if (TextUtils.isEmpty(picPath) || picPath == "") {
-                ToasShow.showToastCenter(MyCertificateActivity.this, getString(R.string.upload_certificate));
-                return;
-            } else {
+            if (!picPath.contains(Contants.DOMAIN)) {
                 file = new File(picPath);
-                httpParams.put("file", file, null);
+                httpParams.put("file", file, mUIProgressResponseCallBack);
             }
 
-        } else {
-            isFile = false;
         }
 
 
-        EasyHttp.post(Contants.UPLOAD_LICENCE)
-                .cacheMode(CacheMode.DEFAULT)
-               .params(httpParams)
+        EasyHttp.post(url)
+                .cacheMode(CacheMode.NO_CACHE)
+                .params(httpParams)
                 .timeStamp(true)
                 .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
@@ -381,7 +423,8 @@ public class MyCertificateActivity extends BaseActivity {
 
     private void getInfo() {
         EasyHttp.get(Contants.LICENCE_INFO)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .execute(new SimpleCallBack<String>() {
@@ -427,6 +470,8 @@ public class MyCertificateActivity extends BaseActivity {
                             } else {
                                 zhTypeTextView.setText("Corporation Licence");
                             }
+
+                            remarkEdit.setText(lb.getResult().getRequest_notes());
 
 
                             BitmapUtil.loadImageView(MyCertificateActivity.this, Contants.DOMAIN + "/" + lb.getResult().getLicence_file(), srcImageView);

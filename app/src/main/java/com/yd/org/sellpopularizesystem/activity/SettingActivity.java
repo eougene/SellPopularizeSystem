@@ -78,7 +78,6 @@ public class SettingActivity extends BaseActivity {
     private void logOut() {
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.cleaAccount();
-        SharedPreferencesHelps.clearUserName();
         SharedPreferencesHelps.clearUserPassword();
         ActivitySkip.forward(SettingActivity.this, LoginActivity.class);
         finish();
