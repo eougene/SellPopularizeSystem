@@ -1171,7 +1171,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
         EasyHttp.post(strUrl)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params(ajaxParams)
                 .timeStamp(true)

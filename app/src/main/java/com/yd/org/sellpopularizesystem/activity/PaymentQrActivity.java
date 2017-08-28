@@ -128,7 +128,7 @@ public class PaymentQrActivity extends BaseActivity {
 
     private void getQrcodeUrl(String strId) {
         EasyHttp.post(url)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("trust_account_id", strId)
                 .timeStamp(true)
                 .accessToken(true)
@@ -312,7 +312,7 @@ public class PaymentQrActivity extends BaseActivity {
 
     private void goPay(String strId) {
         EasyHttp.post(playUrl)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("trust_account_id", strId)
                 .timeStamp(true)
                 .accessToken(true)

@@ -33,6 +33,7 @@ import com.umeng.socialize.media.UMWeb;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
@@ -44,11 +45,11 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.yd.org.sellpopularizesystem.utils.ZXingUtils;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
-import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -107,45 +108,10 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     private void openShareDialog() {
-        //获取分享内容
-
-        HttpParams httpParams=new HttpParams();
-        httpParams.put("product_id",resultBean.getProduct_id()+"");
-        httpParams.put("user_id",SharedPreferencesHelps.getUserID());
-        httpParams.put("refer_id",SharedPreferencesHelps.getReferCode());
-
-        EasyHttp.get(Contants.SHURE_URL)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
-                .cacheKey(this.getClass().getSimpleName())
-                .params(httpParams)
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.e("onSuccess**","onSuccess:"+s);
-                    }
-
-                    @Override
-                    public void onError(ApiException e) {
-                        Log.e("e**","e:"+e.getMessage());
-                    }
-                });
 
 
-
-
-
-
-
-
-
-
-
+        final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=" + SharedPreferencesHelps.getReferCode();
+        Bitmap bitmap = ZXingUtils.createQRImage(shareUrl, 200, 200);
 
         if (Build.VERSION.SDK_INT >= 23) {
             String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION,
@@ -159,21 +125,21 @@ public class ProductItemDetailActivity extends AppCompatActivity {
             public void onShare(int id) {
                 switch (id) {
                     case 1://微信
-                        shareToMedia(SHARE_MEDIA.WEIXIN);
+                        shareToMedia(SHARE_MEDIA.WEIXIN, shareUrl);
                         break;
                     case 2://微信朋友圈
-                        shareToMedia(SHARE_MEDIA.WEIXIN_CIRCLE);
+                        shareToMedia(SHARE_MEDIA.WEIXIN_CIRCLE, shareUrl);
                         break;
                     case 3://facebook
-                        shareToMedia(SHARE_MEDIA.FACEBOOK);
+                        shareToMedia(SHARE_MEDIA.FACEBOOK, shareUrl);
                         break;
                 }
             }
-        }).show();
+        }, bitmap).show();
     }
 
-    private void shareToMedia(SHARE_MEDIA share_MEDIA) {
-        final UMWeb web = new UMWeb("http://www.maclandgroup.com/");
+    private void shareToMedia(SHARE_MEDIA share_MEDIA, String shareUrl) {
+        final UMWeb web = new UMWeb(shareUrl);
         web.setTitle(string);
         web.setDescription(resultBean.getProduct_name());
         if (resultBean.getThumb() != null && !resultBean.getThumb().equals("")) {
@@ -360,7 +326,22 @@ public class ProductItemDetailActivity extends AppCompatActivity {
             switch (v.getId()) {
                 //分享
                 case R.id.imageViewShare:
-                    openShareDialog();
+
+                    //销售
+                    if (SharedPreferencesHelps.getType() == 1) {
+                        openShareDialog();
+                    } else if (SharedPreferencesHelps.getType() == 2) {
+                        Bundle bundle=new Bundle();
+                        bundle.putString(ExtraName.SCALETOCUSTOME, ExtraName.PRODUCTDETAIL);
+                        Intent intent=new Intent(ProductItemDetailActivity.this, CustomeActivity.class);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent,0X001);
+                        overridePendingTransition(R.anim.downtoup_in_anim, 0);
+
+
+                    }
+
+
                     break;
                 //介绍
                 case R.id.tvIntroduce:
@@ -518,6 +499,11 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+        Bundle b=data.getExtras(); //data为B中回传的Intent
+        CustomBean.ResultBean resultBean = (CustomBean.ResultBean) b.getSerializable("custome");
+         Log.e("on***","onActivity:"+resultBean.getCustomer_id());
+         openShareDialog();
+
     }
 
     @Override
@@ -564,5 +550,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
 
     }
+
+
 
 }

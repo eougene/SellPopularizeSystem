@@ -91,6 +91,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Bundle bundle = intent.getExtras();
         //从homeActivity传过来的值用以判断跳转不同界面
         str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
+        Log.e("str1***", "str1:" + str1);
 
         //网络数据
         getCustomeListData(true, page);
@@ -208,8 +209,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "300")
-               // .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", String.valueOf(Integer.MAX_VALUE))
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -337,7 +337,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-
                 SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                 CustomBean.ResultBean resultBean = viewHolder.resultBean;
                 ObjectSaveUtil.saveObject(CustomeActivity.this, "custome", resultBean);
@@ -347,6 +346,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
                     ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
+                    finish();
+
+                    //分享
+                } else if (str1.equals(ExtraName.PRODUCTDETAIL)) {
+                    Intent i = new Intent();
+                    i.putExtra("custome", resultBean);
+                    setResult(Activity.RESULT_OK, i);
                     finish();
                 } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
                     Intent i = new Intent();

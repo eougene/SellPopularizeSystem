@@ -301,7 +301,7 @@ public class ExaminationActivity extends BaseActivity {
 
     private void commit() {
         EasyHttp.post(Contants.SUBMIT_PAPER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("paper_id", paper_id)

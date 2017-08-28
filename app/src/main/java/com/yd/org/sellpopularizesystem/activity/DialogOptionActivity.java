@@ -352,7 +352,7 @@ public class DialogOptionActivity extends AppCompatActivity {
 
 
         EasyHttp.post(Contants.NEW_RESERVER_RECORDER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
                 .params("title", "")
@@ -402,7 +402,7 @@ public class DialogOptionActivity extends AppCompatActivity {
     private void updateReseverInfo() {
 
         EasyHttp.post(Contants.UPDATE_RESERVER_RECORDER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("o_log_id", slbRb.getO_log_id() + "")
                 .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
                 .params("title", slbRb.getTitle())
@@ -454,7 +454,7 @@ public class DialogOptionActivity extends AppCompatActivity {
             ToasShow.showToastBottom(DialogOptionActivity.this, getString(R.string.writetitle));
         } else {
             EasyHttp.post(Contants.NEW_VISIT_RECORDER)
-                    .cacheMode(CacheMode.DEFAULT)
+                    .cacheMode(CacheMode.NO_CACHE)
                     .params("user_id", SharedPreferencesHelps.getUserID())
                     .params("customer_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(DialogOptionActivity.this, "custome")).getCustomer_id() + "")
                     .params("title", etVistTitle.getText().toString())

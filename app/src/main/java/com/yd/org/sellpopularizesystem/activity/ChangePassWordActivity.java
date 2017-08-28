@@ -96,7 +96,7 @@ public class ChangePassWordActivity extends BaseActivity {
 
     private void commintInfo(String old_password, String new_password) {
         EasyHttp.post(Contants.CHANGE_PASSWORD)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("old_password", old_password)
                 .params("new_password", new_password)

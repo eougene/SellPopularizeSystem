@@ -197,7 +197,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void canceOrder(int orderId) {
 
         EasyHttp.post(Contants.ORDER_CANCEL)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("order_id", orderId + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
@@ -350,7 +350,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         EasyHttp.post(strUrl)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
 
                 .timeStamp(true)
                 .accessToken(true)

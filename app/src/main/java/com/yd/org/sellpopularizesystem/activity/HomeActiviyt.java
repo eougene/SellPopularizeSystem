@@ -291,7 +291,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
 
     private void addRecord() {
         EasyHttp.post(Contants.ADD_SALE_LOG)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("data", SharedPreferencesHelps.getData())
                 .timeStamp(true)
                 .accessToken(true)

@@ -931,7 +931,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
         EasyHttp.post(strUrl)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params(key, id + "")
                 .timeStamp(true)
                 .accessToken(true)
@@ -1211,7 +1211,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void cancel_eoi(String eoi_id) {
 
         EasyHttp.post(Contants.CANCEL_EOI)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("eoi_id", eoi_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
@@ -1254,7 +1254,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void quxioaEOI(String eoi) {
 
         EasyHttp.post(Contants.CANCEL_EOI_SORT)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("eoi_id", eoi)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)

@@ -643,7 +643,7 @@ public class ReserveActivity extends BaseActivity {
         }
 
         EasyHttp.post(Contants.CREAT_ORDER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
 
 
                 .timeStamp(true)

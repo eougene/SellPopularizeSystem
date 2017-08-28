@@ -64,7 +64,7 @@ public class LawyerAddActivity extends BaseActivity {
 
     private void save() {
         EasyHttp.post(Contants.NEW_LAWYER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("law_firm", strName)
                 .params("street_address_1", strAdress)
                 .params("first_name", strFirst)

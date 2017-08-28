@@ -109,8 +109,9 @@ public class UserAdressActivity extends BaseActivity {
         userPostcodeEd = getViewById(R.id.userPostcodeEd);
 
 
+        //我的地址
 
-        if (type.equals("1")){
+        if (type.equals("1")) {
 
             //国家
             userAdressTv.setText((null == myUserInfo.getResult().getCountry() || TextUtils.isEmpty(myUserInfo.getResult().getCountry())) ? "" : myUserInfo.getResult().getCountry());
@@ -129,7 +130,9 @@ public class UserAdressActivity extends BaseActivity {
             //邮编
             userPostcodeEd.setText((null == myUserInfo.getResult().getPostcode() || TextUtils.isEmpty(myUserInfo.getResult().getPostcode())) ? "" : myUserInfo.getResult().getPostcode());
 
-        }else {
+
+            //公司地址
+        } else {
             //国家
             userAdressTv.setText((null == myUserInfo.getResult().getCompany_country() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_country())) ? "" : myUserInfo.getResult().getCompany_country());
             //单元号
@@ -155,62 +158,84 @@ public class UserAdressActivity extends BaseActivity {
 
         String country, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, postcode;
 
-        //国际
-        if (TextUtils.isEmpty(userAdressTv.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "选择国家或地区");
-            return;
-        } else {
-            country = userAdressTv.getText().toString().trim();
-        }
 
-        //单元号
-        if (TextUtils.isEmpty(userUnitNumberEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请填写单元号");
-            return;
-        } else {
+        //我的地址
+        if (type.equals("1")) {
+
+            //国际
+            if (TextUtils.isEmpty(userAdressTv.getText().toString().trim())) {
+                ToasShow.showToastCenter(UserAdressActivity.this, "选择国家或地区");
+                return;
+            } else {
+                country = userAdressTv.getText().toString().trim();
+            }
+
+
+            //单元号
             unit_number = userUnitNumberEd.getText().toString().trim();
-        }
-        //街道号
-        if (TextUtils.isEmpty(userStreetNumberEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请填写街道号");
-            return;
-        } else {
+
+
+            //街道号
             street_number = userStreetNumberEd.getText().toString().trim();
-        }
-        //区
-        if (TextUtils.isEmpty(userSuburbNumberEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请填写区");
-            return;
-        } else {
+
+
+            //区
             suburb = userSuburbNumberEd.getText().toString().trim();
-        }
-        //州
-        if (TextUtils.isEmpty(userStateEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请填写州");
-            return;
-        } else {
+
+
+            //州
             state = userStateEd.getText().toString().trim();
-        }
-        //街道1
-        if (TextUtils.isEmpty(userDetailedAddressEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
-            return;
-        } else {
-            street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
-        }
-        //街道2
-        if (TextUtils.isEmpty(userDetailedAddressEd2.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
-            return;
-        } else {
+
+
+            //街道1
+            if (TextUtils.isEmpty(userDetailedAddressEd.getText().toString().trim())) {
+                ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
+                return;
+            } else {
+                street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
+            }
+            //街道2
             street_address_line_2 = userDetailedAddressEd2.getText().toString().trim();
-        }
-        //邮编
-        if (TextUtils.isEmpty(userPostcodeEd.getText().toString().trim())) {
-            ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
-            return;
+            //邮编
+            if (TextUtils.isEmpty(userPostcodeEd.getText().toString().trim())) {
+                ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
+                return;
+            } else {
+                postcode = userPostcodeEd.getText().toString().trim();
+            }
+
+
+            //必填项
+            if (!TextUtils.isEmpty(country) && !TextUtils.isEmpty(street_address_line_1) && !TextUtils.isEmpty(postcode)) {
+                SharedPreferencesHelps.setUserAdress(1);
+            } else {
+                SharedPreferencesHelps.setUserAdress(0);
+            }
         } else {
+
+            //国际
+            country = userAdressTv.getText().toString().trim();
+
+            //单元号
+            unit_number = userUnitNumberEd.getText().toString().trim();
+
+
+            //街道号
+            street_number = userStreetNumberEd.getText().toString().trim();
+
+            //区
+            suburb = userSuburbNumberEd.getText().toString().trim();
+
+            //州
+            state = userStateEd.getText().toString().trim();
+            //街道1
+            street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
+            //街道2
+            street_address_line_2 = userDetailedAddressEd2.getText().toString().trim();
+            //邮编
             postcode = userPostcodeEd.getText().toString().trim();
+
+
         }
 
 
@@ -270,9 +295,6 @@ public class UserAdressActivity extends BaseActivity {
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         ToasShow.showToastCenter(UserAdressActivity.this, errorBean.getMsg());
                         if (errorBean.getCode().equals("1")) {
-
-                            //保存地址信息记录
-                            SharedPreferencesHelps.setUserAdress(1);
                             finish();
                         }
 
