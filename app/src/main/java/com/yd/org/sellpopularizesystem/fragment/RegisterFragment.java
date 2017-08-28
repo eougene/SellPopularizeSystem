@@ -16,7 +16,6 @@ import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
-import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -110,13 +109,7 @@ public class RegisterFragment extends BaseFragmentView {
             ToasShow.showToastCenter(getActivity(), getString(R.string.hintpass));
             return;
         } else {
-
-            if (!StringUtils.isLetterDigit(passwordEdit.getText().toString().trim())) {
-                ToasShow.showToastCenter(getActivity(), getString(R.string.hintpass));
-                return;
-            } else {
-                passwordString = passwordEdit.getText().toString().trim();
-            }
+            passwordString = passwordEdit.getText().toString().trim();
         }
 
 
