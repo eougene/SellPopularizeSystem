@@ -47,7 +47,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
         tvNoMessage = getViewById(R.id.noInfomation);
         type_id = getIntent().getExtras().getString("type_id");
 
-        Log.e("type_id***","type_id:"+type_id);
+        Log.e("type_id***", "type_id:" + type_id);
         if (type_id.equals("6")) {
             //玩转平台
             setTitle(R.string.playplatform);
@@ -65,7 +65,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
             //销售秘籍
             setTitle(R.string.sales_techniques);
             getStudyListData(true, page, type_id);
-        } else if (type_id.equals("1")){
+        } else if (type_id.equals("1")) {
             //项目
             setTitle(R.string.project);
             getStudyListData(true, page, type_id);
@@ -103,18 +103,6 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
                 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     private void jsonParse(String json, boolean isRefresh) {
@@ -134,7 +122,6 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
                 tvNoMessage.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
             }
-
 
 
             adapter = new StyudyAdapter(StudySubitemActivity.this);

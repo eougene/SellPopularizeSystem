@@ -421,7 +421,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void updateVisit() {
         EasyHttp.post(Contants.CHANGE_PASSWORD)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params("v_log_id", visitRecord.getV_log_id() + "")
                 .params("customer_id", customeId)
                 .params("title", etVistTitle.getText().toString())
@@ -488,7 +488,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         }
 
         EasyHttp.post(Contants.UPLOAD_EOI_MONEY)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
                 .accessToken(true)
@@ -548,7 +548,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         }
 
         EasyHttp.post(Contants.EOI_RECHARGE)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
                 .accessToken(true)
@@ -593,7 +593,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
                 .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheKey(this.getClass().getSimpleName()+"1")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
@@ -797,7 +797,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
         EasyHttp.get(Contants.VISIT_RECORD_LIST)
                 .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheKey(this.getClass().getSimpleName()+"2")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -972,7 +972,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getReservertData(int page, final boolean isRel) {
         EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
                 .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheKey(this.getClass().getSimpleName()+"3")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
