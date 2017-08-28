@@ -74,7 +74,6 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
 
                     @Override
                     public void onSuccess(String json) {
-
                         closeDialog();
                         jsonParse(json, b);
                     }
