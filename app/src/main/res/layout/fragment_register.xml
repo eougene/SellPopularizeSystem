@@ -29,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入六位推荐码与销售人员进行绑定"
+                android:hint="请输入六位推荐码"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"

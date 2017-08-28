@@ -131,7 +131,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/padding_margin_10"
                         android:layout_toRightOf="@+id/myCertificate"
-                        android:text="@string/mymsg"
+                        android:text="@string/myinfo"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/tv_size_15"/>
 
