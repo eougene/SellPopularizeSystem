@@ -357,7 +357,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      */
     private void deleteNoticeLog(String notice_id) {
         EasyHttp.get(Contants.DELETE_NOTICE)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("notice_logs_id", notice_id)
@@ -451,7 +451,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     private void commitNotice(String str) {
         EasyHttp.get(Contants.SUBMIT_READED)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("notice_logs_id", str)
