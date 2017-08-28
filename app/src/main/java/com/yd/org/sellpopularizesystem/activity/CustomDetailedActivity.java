@@ -157,6 +157,8 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (view.getId()) {
                 //日期选择
                 case R.id.edcustmomeDetailedBie:
+                    //隐藏键盘
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     pvTime.show();
                     break;
                 //拍照
