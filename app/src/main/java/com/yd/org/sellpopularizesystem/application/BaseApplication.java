@@ -98,10 +98,7 @@ public class BaseApplication extends Application {
         super.onCreate();
         mContext = getApplicationContext();
         initView();
-
-        if (Contants.DOMAIN.contains("https://www.wingaid.com")) {
-            bugly();
-        }
+        bugly();
 
         //通过配置方案来初始化ImageLoader
         ImageLoader.getInstance().init(getSimpleConfig());
@@ -124,7 +121,7 @@ public class BaseApplication extends Application {
                 .setBaseUrl(Contants.DOMAIN)
                 .setCacheDiskConverter(new SerializableDiskConverter())//默认缓存使用序列化转化
                 .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为100M
-               .setCacheVersion(1)//缓存版本为1
+                .setCacheVersion(1)//缓存版本为1
                 .setCacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
                 .setCacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
                 .setHostnameVerifier(new UnSafeHostnameVerifier(Contants.DOMAIN))//全局访问规则
