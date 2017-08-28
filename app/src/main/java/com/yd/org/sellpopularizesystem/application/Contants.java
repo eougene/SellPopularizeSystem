@@ -51,7 +51,7 @@ public class Contants {
     // public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv2/product/product_list";
 
     //分享内容
-    public static final String SHURE_URL = DOMAIN + "/index.php/appv2/product/get_share_url";
+    public static final String SHURE_URL = DOMAIN + "/index.php/appv2/product/product_share_content";
 
     //public static final String PRODUCT_LIST = DOMAIN + "/index.php/appv/product/product_list_v";
     //获取产品详情
