@@ -295,7 +295,9 @@ public class MeFragment extends BaseFragmentView {
 
         if (!SharedPreferencesHelps.getUserImage().equals("null")) {
             Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + SharedPreferencesHelps.getUserImage()).
-                    config(Bitmap.Config.RGB_565).into(ivCustomePhoto);
+                    config(Bitmap.Config.RGB_565).error(R.mipmap.settingbt).into(ivCustomePhoto);
+        } else {
+            ivCustomePhoto.setImageDrawable(getResources().getDrawable(R.mipmap.settingbt));
         }
 
 
@@ -338,7 +340,9 @@ public class MeFragment extends BaseFragmentView {
 
         if (!SharedPreferencesHelps.getUserImage().equals("null")) {
             Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + SharedPreferencesHelps.getUserImage()).
-                    config(Bitmap.Config.RGB_565).into(ivCustomePhoto);
+                    config(Bitmap.Config.RGB_565).error(R.mipmap.settingbt).into(ivCustomePhoto);
+        } else {
+            ivCustomePhoto.setImageDrawable(getResources().getDrawable(R.mipmap.settingbt));
         }
 
     }

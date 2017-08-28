@@ -96,7 +96,7 @@ public class RegisterFragment extends BaseFragmentView {
 
         //邮箱
 
-        if (TextUtils.isEmpty(regsterEmailEdit.getText().toString().trim()) || StringUtils.isEmail(regsterEmailEdit.getText().toString().trim())) {
+        if (TextUtils.isEmpty(regsterEmailEdit.getText().toString().trim())) {
             ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
             return;
         } else {
