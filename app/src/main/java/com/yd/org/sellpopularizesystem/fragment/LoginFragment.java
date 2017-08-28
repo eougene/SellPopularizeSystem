@@ -136,7 +136,7 @@ public class LoginFragment extends BaseFragmentView {
 
 
         EasyHttp.post(Contants.HOME_LOGIN)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params("account", name)
                 .params("password", password)
@@ -230,7 +230,7 @@ public class LoginFragment extends BaseFragmentView {
     private void third_login(String openid) {
 
         EasyHttp.post(Contants.WEIXIN_LOGIN)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params("type", "wechat")
                 .params("openid", openid)
@@ -258,15 +258,25 @@ public class LoginFragment extends BaseFragmentView {
                             Gson gson = new Gson();
                             UserBean userBean = gson.fromJson(json, UserBean.class);
                             if (userBean.getCode().equals("1")) {
+
+
+                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+
                                 //先取消上次的授权
                                 UMShareAPI.get(getActivity()).deleteOauth(getActivity(), SHARE_MEDIA.WEIXIN, null);
-                                ToasShow.showToastCenter(getActivity(), userBean.getMsg());
+                                //id
                                 SharedPreferencesHelps.setUserID(userBean.getResult().getUser_id() + "");
+                                //公司
                                 SharedPreferencesHelps.setCompanyId(userBean.getResult().getCompany_id() + "");
+                                //
+                                SharedPreferencesHelps.setType(userBean.getResult().getType());
                                 SharedPreferencesHelps.setAccount(userBean.getResult().getAccount());
+                                SharedPreferencesHelps.setUserImage(userBean.getResult().getHead_img());
                                 SharedPreferencesHelps.setFirstName(userBean.getResult().getFirst_name());
                                 SharedPreferencesHelps.setSurName(userBean.getResult().getSurname());
                                 SharedPreferencesHelps.setUserPassword(userBean.getResult().getPassword());
+                                //推荐人id
+                                SharedPreferencesHelps.setReferCode(userBean.getResult().getRefer_code());
                                 ActivitySkip.forward(getActivity(), HomeActiviyt.class);
                                 getActivity().finish();
                             } else {

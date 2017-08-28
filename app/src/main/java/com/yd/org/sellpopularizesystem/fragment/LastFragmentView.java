@@ -88,7 +88,7 @@ public class LastFragmentView extends BaseFragmentView {
     private void submit() {
 
         EasyHttp.post(Contants.STUDY_COMPLETE)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params("study_id", studyId.equals("") ? "" : studyId)
                 .params("user_id", SharedPreferencesHelps.getUserID())

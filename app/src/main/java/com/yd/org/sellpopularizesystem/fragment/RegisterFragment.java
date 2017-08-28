@@ -130,7 +130,7 @@ public class RegisterFragment extends BaseFragmentView {
         httpParams.put("password", passwordString);
 
         EasyHttp.post(Contants.REGISTER_REFER)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {

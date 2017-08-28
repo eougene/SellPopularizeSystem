@@ -222,7 +222,7 @@ public class MeFragment extends BaseFragmentView {
 
     private void sendBindAccount(String openId, String unionid) {
         EasyHttp.post(Contants.BINDING_THIRD)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("type", "wechat")
