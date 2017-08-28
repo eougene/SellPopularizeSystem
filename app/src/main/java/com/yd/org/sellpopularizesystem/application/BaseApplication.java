@@ -118,22 +118,18 @@ public class BaseApplication extends Application {
                 .setReadTimeOut(60 * 1000)
                 .setWriteTimeOut(60 * 1000)
                 .setConnectTimeout(60 * 1000)
-                .setRetryCount(0)//默认网络不好自动重试3次
+                .setRetryCount(1)//默认网络不好自动重试1次
                 .setRetryDelay(500)//每次延时500ms重试
                 .setRetryIncreaseDelay(500)//每次延时叠加500ms
                 .setBaseUrl(Contants.DOMAIN)
                 .setCacheDiskConverter(new SerializableDiskConverter())//默认缓存使用序列化转化
                 .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为100M
                .setCacheVersion(1)//缓存版本为1
-                .setCacheMode(CacheMode.FIRSTCACHE)
+                .setCacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
                 .setCacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
                 .setHostnameVerifier(new UnSafeHostnameVerifier(Contants.DOMAIN))//全局访问规则
                 .setCertificates();//信任所有证书
-        //.addConverterFactory(GsonConverterFactory.create(gson))//本框架没有采用Retrofit的Gson转化，所以不用配置
-        // .addCommonHeaders(headers)//设置全局公共头
-        //.addCommonParams(params)//设置全局公共参数
-        //.addInterceptor(new CustomSignInterceptor());//添加参数签名拦截器
-        //.addInterceptor(new HeTInterceptor());//处理自己业务的拦截器
+
 
     }
 

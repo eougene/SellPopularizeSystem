@@ -3,22 +3,26 @@ package com.yd.org.sellpopularizesystem.fragment;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.umeng.socialize.UMAuthListener;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
+import com.yd.org.sellpopularizesystem.activity.InviteQRActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
-import com.yd.org.sellpopularizesystem.activity.MyCertificateActivity;
+import com.yd.org.sellpopularizesystem.activity.MyInfoActivity;
 import com.yd.org.sellpopularizesystem.activity.MyTeamActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
 import com.yd.org.sellpopularizesystem.activity.SettingActivity;
@@ -49,6 +53,7 @@ public class MeFragment extends BaseFragmentView {
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private RelativeLayout rlCommission;
+    private ImageView ivQr;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -78,9 +83,19 @@ public class MeFragment extends BaseFragmentView {
                     ActivitySkip.forward(getActivity(), SettingActivity.class);
                     break;
 
-                //我的证书
+                //我的信息
                 case R.id.relCertificate:
-                    ActivitySkip.forward(getActivity(), MyCertificateActivity.class);
+                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                    break;
+
+                //推荐码
+                case R.id.ivQr:
+                    ActivitySkip.forward(getActivity(), InviteQRActivity.class);
+                    break;
+
+                //我的信息
+                case R.id.ivCustomePhoto:
+                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
                     break;
             }
         }
@@ -122,7 +137,6 @@ public class MeFragment extends BaseFragmentView {
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.getCompanyId();
         SharedPreferencesHelps.cleaAccount();
-        SharedPreferencesHelps.clearUserName();
         SharedPreferencesHelps.clearUserPassword();
         ActivitySkip.forward(getActivity(), LoginActivity.class);
         getActivity().finish();
@@ -171,8 +185,9 @@ public class MeFragment extends BaseFragmentView {
      */
     public void getWeiXinInfo(String access_token, final String opendid) {
         EasyHttp.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid)
-                .cacheMode(CacheMode.DEFAULT)//缓存key
                 .timeStamp(true)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -251,6 +266,7 @@ public class MeFragment extends BaseFragmentView {
 
     }
 
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_me);
@@ -259,11 +275,13 @@ public class MeFragment extends BaseFragmentView {
     }
 
     private void initWidget() {
+        ivQr = getViewById(R.id.ivQr);
         relCertificate = getViewById(R.id.relCertificate);
-        saleRecord = getViewById(R.id.saleRecord);
+
         rlCommission = getViewById(R.id.rlCommission);
         rlCommission.setOnClickListener(mOnClickListener);
         rlTeam = getViewById(R.id.rlTeam);
+        saleRecord = getViewById(R.id.saleRecord);
         rlTeam.setOnClickListener(mOnClickListener);
         ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
         rlSetting = getViewById(R.id.rlSetting);
@@ -273,13 +291,55 @@ public class MeFragment extends BaseFragmentView {
         tvUserName = getViewById(R.id.tvCustomeName);
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         acountPopupWindow = new BindAcountPopupWindow(getActivity(), mItemClick);
+
+
+        if (!SharedPreferencesHelps.getUserImage().equals("null")) {
+            Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + SharedPreferencesHelps.getUserImage()).
+                    config(Bitmap.Config.RGB_565).into(ivCustomePhoto);
+        }
+
+
+        //销售
+        if (SharedPreferencesHelps.getType() == 1) {
+            saleRecord.setVisibility(View.VISIBLE);
+            rlTeam.setVisibility(View.VISIBLE);
+
+            //推荐人
+        } else if (SharedPreferencesHelps.getType() == 2) {
+            saleRecord.setVisibility(View.GONE);
+            rlTeam.setVisibility(View.GONE);
+
+        }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
         tvUserName = getViewById(R.id.tvCustomeName);
+        ivCustomePhoto = getViewById(R.id.ivCustomePhoto);
+        rlTeam = getViewById(R.id.rlTeam);
+        saleRecord = getViewById(R.id.saleRecord);
+
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
+
+
+        //销售
+        if (SharedPreferencesHelps.getType() == 1) {
+            saleRecord.setVisibility(View.VISIBLE);
+            rlTeam.setVisibility(View.VISIBLE);
+
+            //推荐人
+        } else if (SharedPreferencesHelps.getType() == 2) {
+            saleRecord.setVisibility(View.GONE);
+            rlTeam.setVisibility(View.GONE);
+
+        }
+
+        if (!SharedPreferencesHelps.getUserImage().equals("null")) {
+            Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + SharedPreferencesHelps.getUserImage()).
+                    config(Bitmap.Config.RGB_565).into(ivCustomePhoto);
+        }
 
     }
 
@@ -289,6 +349,8 @@ public class MeFragment extends BaseFragmentView {
         bindAccountRel.setOnClickListener(mOnClickListener);
         saleRecord.setOnClickListener(mOnClickListener);
         relCertificate.setOnClickListener(mOnClickListener);
+        ivQr.setOnClickListener(mOnClickListener);
+        ivCustomePhoto.setOnClickListener(mOnClickListener);
     }
 
     @Override

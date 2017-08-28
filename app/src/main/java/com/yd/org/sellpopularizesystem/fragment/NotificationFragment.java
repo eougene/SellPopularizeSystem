@@ -7,14 +7,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.FragAdapter;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by hejin on 2017/4/10.
@@ -37,6 +40,7 @@ public class NotificationFragment extends BaseFragmentView {
     //对应数据的Id,4表示订单消息
     private int cate_id = 4;
     private OrderNotificFragment notificFragment, notificFragment1, notificFragment2, notificFragment3;
+    private RelativeLayout orderRelat, brifeRelat;
     /**
      * 接收消息,显示当前消息数量
      */
@@ -425,8 +429,24 @@ public class NotificationFragment extends BaseFragmentView {
         StatusBarUtil.setColor(getActivity(), getResources().getColor(R.color.white), 20);
         initWedget();
         initViewPage();
-    }
 
+
+        orderRelat = getViewById(R.id.orderRelat);
+        brifeRelat = getViewById(R.id.brifeRelat);
+
+        //销售
+        if (SharedPreferencesHelps.getType() == 1) {
+            orderRelat.setVisibility(View.VISIBLE);
+            brifeRelat.setVisibility(View.VISIBLE);
+            rbOrder.setChecked(true);
+
+            //推荐人
+        } else if (SharedPreferencesHelps.getType() == 2) {
+            orderRelat.setVisibility(View.GONE);
+            brifeRelat.setVisibility(View.GONE);
+            rbCompany.setChecked(true);
+        }
+    }
 
 
     private void initWedget() {
@@ -580,5 +600,26 @@ public class NotificationFragment extends BaseFragmentView {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+
+        orderRelat = getViewById(R.id.orderRelat);
+        brifeRelat = getViewById(R.id.brifeRelat);
+
+        //销售
+        if (SharedPreferencesHelps.getType() == 1) {
+
+            orderRelat.setVisibility(View.VISIBLE);
+            brifeRelat.setVisibility(View.VISIBLE);
+            rbOrder.setChecked(true);
+
+            //推荐人
+        } else if (SharedPreferencesHelps.getType() == 2) {
+            orderRelat.setVisibility(View.GONE);
+            brifeRelat.setVisibility(View.GONE);
+            rbCompany.setChecked(true);
+        }
+    }
 }

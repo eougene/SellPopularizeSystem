@@ -43,11 +43,15 @@
     <string name="askdate">appointment to apply</string>
     <string name="au_0_00_to_au_0_00">AU$0.00 to AU$0.00</string>
     <string name="available_for_firb">Available For FIRB</string>
+    <string name="bankacc">Bank account</string>
+    <string name="bankhint">Please fill out my bank card information</string>
+    <string name="bankinfo">Bank information</string>
     <string name="basic_konwledge">Basic konwledge</string>
     <string name="batchnum">Lot Number</string>
     <string name="bathroom">Bathroom</string>
     <string name="bathroomnum">Ensuite</string>
     <string name="bedroom">Bedroom</string>
+    <string name="besale">Become sales</string>
     <string name="bianhao">Serial Number</string>
     <string name="binding_f">Binding failure</string>
     <string name="bindthreeaccount">Connected Account</string>
@@ -62,6 +66,8 @@
     <string name="cancel">Cancel</string>
     <string name="cancel_oder">Cancel Order</string>
     <string name="cancel_order">Cancel order</string>
+    <string name="cardholder">Cardholder</string>
+    <string name="cardnum">Card number</string>
     <string name="carport">Car Park</string>
     <string name="certificate">My certificate</string>
     <string name="certificate_number">Id number</string>
@@ -84,6 +90,7 @@
     <string name="closedate">Settlement Date:</string>
     <string name="cncel_line">Cancel line</string>
     <string name="co_people">Co-purchase</string>
+    <string name="coaddress">Company address</string>
     <string name="com_noe">Company name cannot empty</string>
     <string name="commencement_date">Effective date</string>
     <string name="commission">My Commission</string>
@@ -144,6 +151,7 @@
     <string name="desposit">Direct Deposit</string>
     <string name="desthree">Describe 3</string>
     <string name="destwo">Describe 2</string>
+    <string name="detailadd">Detail Address</string>
     <string name="details">Details</string>
     <string name="dingjin">Please read declaration</string>
     <string name="direction">Toward</string>
@@ -195,6 +203,7 @@
     <string name="fore">Exchange Deposit:</string>
     <string name="foreignInves">Foreign Investment</string>
     <string name="forget_password">Forgot password?</string>
+    <string name="fullname">Full name</string>
     <string name="gettui">CRM Sales System</string>
     <string name="hadsaled">Sold</string>
     <string name="hashsalenum">Sold Properties</string>
@@ -202,6 +211,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">Prompt</string>
     <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="hintremark">Please describe your remarks here</string>
     <string name="historyclear">History has been cleared</string>
     <string name="home_01">Promotional material</string>
     <string name="home_02"/>
@@ -227,12 +237,13 @@
     <string name="if_company_cus">  Is it for company clients?</string>
     <string name="individuaproject">个Project</string>
     <string name="input_new_password">Please enter a new password</string>
+    <string name="inputconame">Please enter your company name</string>
     <string name="inputoldpassword">Please enter the original password</string>
     <string name="introduce">The Introduction</string>
     <string name="inverstigation">Select Client</string>
     <string name="investigate_list">Survey</string>
     <string name="investment">Investment</string>
-    <string name="invite_code">邀请二维码</string>
+    <string name="invite_code">Invite QR code</string>
     <string name="invitedes">Placeholders invite friends to receive bonus rewards and invite more!</string>
     <string name="invoice">Tax Invoice</string>
     <string name="isno">No</string>
@@ -267,6 +278,8 @@
     <string name="memo">Preview Memo:</string>
     <string name="message">News</string>
     <string name="middlename">Middle name</string>
+    <string name="mima">Password</string>
+    <string name="mingzi">Name</string>
     <string name="mobileormail">Mobile or Email</string>
     <string name="mobilephone">Mobile</string>
     <string name="modifiedorder">To apply for change orders</string>
@@ -276,7 +289,9 @@
     <string name="more">View more</string>
     <string name="multiple_choice">(Multiple Choice)</string>
     <string name="mutilatequestion">(Multiple Choice)</string>
+    <string name="myaddress">My address</string>
     <string name="mycommission">My Commission</string>
+    <string name="mymsg">My information</string>
     <string name="myteam">My Team</string>
     <string name="name">Name</string>
     <string name="nation">Nationality</string>
@@ -312,6 +327,7 @@
     <string name="old_password_ch">ld Password no empty</string>
     <string name="old_pr">Past Project</string>
     <string name="oldproject">Past Project</string>
+    <string name="openbank">Open bank</string>
     <string name="orde_num">Order number</string>
     <string name="order">Order</string>
     <string name="order_detail">Order details</string>
@@ -386,6 +402,7 @@
     <string name="release_to_refresh">Release the refresh immediately</string>
     <string name="remain">Reservation</string>
     <string name="remark">Remarks</string>
+    <string name="remarktitle">Remarks</string>
     <string name="reminder">Please specify time remind</string>
     <string name="rephotograph">Remake</string>
     <string name="replyright">Correct answer:</string>
@@ -464,6 +481,7 @@
     <string name="select_due_date">Please select due date</string>
     <string name="select_not">Please select the relevant news</string>
     <string name="select_valid_date">Please select valid date</string>
+    <string name="selectadd">Selected areas</string>
     <string name="selectall">Future generations</string>
     <string name="selectcus">Select Client</string>
     <string name="selectdatetime">Schedule an Appointment</string>
@@ -545,6 +563,8 @@
     <string name="team">Team</string>
     <string name="teleonenonull">Mobile phone, email at least one can not be empty</string>
     <string name="telephone">Mobile</string>
+    <string name="telephonenum">Cell-phone number</string>
+    <string name="telhint">Please enter your contact number</string>
     <string name="test">Test</string>
     <string name="theme">萨达</string>
     <string name="this_month_newly">New additions this month</string>
@@ -596,6 +616,7 @@
     <string name="weixinfriends">Friends</string>
     <string name="without_full_amount">10% of the house fund without full payment</string>
     <string name="writetitle">Please Enter Title</string>
+    <string name="xingshi">Surname</string>
     <string name="yes">Yes</string>
     <string name="yesorno">Right and wrong</string>
     <string name="yesornoquestion">(True or False)</string>

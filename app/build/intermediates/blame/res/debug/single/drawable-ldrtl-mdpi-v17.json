@@ -1,14 +1,38 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/drawable-ldrtl-mdpi-v17/abc_spinner_mtrl_am_alpha.9.png"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_copy_mtrl_am_alpha.png"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/drawable-ldrtl-mdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable-ldrtl-mdpi-v17\\abc_ic_menu_copy_mtrl_am_alpha.png"
     }
 ]

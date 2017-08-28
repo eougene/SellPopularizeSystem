@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
+        "outputFile": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,55 @@
                     "endOffset": 117
                 },
                 "from": {
-                    "file": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/values-h720dp-v13/values-h720dp-v13.xml",
+                    "file": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 66,
+                        "endOffset": 117
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 66,
+                    "endOffset": 117
+                },
+                "from": {
+                    "file": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 66,
+                        "endOffset": 117
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 66,
+                    "endOffset": 117
+                },
+                "from": {
+                    "file": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

@@ -102,11 +102,11 @@ public class StyudyAdapter extends BaseAdapter {
 
         holder.studyTextView.setText(list.get(position).getStudy_title());
         holder.descriptionTextView.setText(list.get(position).getDescription());
-//        if (list.get(position).getCan_study() == 1) {
+        if (list.get(position).getCan_study() == 1) {
            holder.lockImageView.setVisibility(View.GONE);
-//        } else {
-//            holder.lockImageView.setVisibility(View.VISIBLE);
-//        }
+       } else {
+           holder.lockImageView.setVisibility(View.VISIBLE);
+       }
 
 
         return convertView;

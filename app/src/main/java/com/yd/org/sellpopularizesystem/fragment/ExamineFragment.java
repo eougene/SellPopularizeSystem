@@ -16,6 +16,7 @@ import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ExamlineBean;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -67,7 +68,8 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
 
     private void getStudyListData(final boolean b, int page) {
         EasyHttp.get(Contants.CHECK_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))

@@ -25,7 +25,7 @@ android {
         release {
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storeFile file('./keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }

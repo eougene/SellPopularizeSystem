@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/search_edit_bac"
-              android:orientation="vertical">
+<com.yd.org.sellpopularizesystem.myView.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                                                         android:layout_width="match_parent"
+                                                         android:layout_height="match_parent"
+                                                         android:background="@color/search_edit_bac">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -11,17 +11,35 @@
         android:background="@color/white"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/useName"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:maxLines="1"
-            android:padding="@dimen/padding_margin_20"
-            android:text="填写信息"
-            android:textColor="@color/setting_bac"
-            android:textSize="@dimen/tv_size_15"/>
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="推荐码"/>
+
+            <EditText
+                android:id="@+id/recommendIdEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入六位推荐码与销售人员进行绑定"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -29,28 +47,130 @@
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:background="@color/search_edit_bac"/>
 
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:orientation="vertical">
-
-
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="姓氏"/>
 
             <EditText
-                android:id="@+id/regsterID"
+                android:id="@+id/familyNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="@string/regsterid"
-                android:imeOptions="actionDone"
+                android:hint="请输入真实姓氏"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="名字"/>
+
+            <EditText
+                android:id="@+id/lastNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入真实名字"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="手机号"/>
+
+            <EditText
+                android:id="@+id/phoneEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入手机号码"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/search_edit_bac"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="邮箱账号"/>
+
+            <EditText
+                android:id="@+id/regsterEmailEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="请输入有效邮箱账号"
+                android:imeOptions="actionNext"
                 android:inputType="textEmailSubject"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -60,7 +180,7 @@
                 android:textSize="@dimen/tv_size_15"/>
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -69,15 +189,23 @@
             android:background="@color/search_edit_bac"/>
 
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="密码"/>
 
             <EditText
-
-                android:id="@+id/regsterPassword"
-                android:layout_width="match_parent"
+                android:id="@+id/passwordEdit"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@null"
                 android:hint="@string/hintpass"
                 android:imeOptions="actionDone"
@@ -94,13 +222,12 @@
                 android:id="@+id/showPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
                 android:paddingRight="@dimen/padding_margin_10"
                 android:scaleType="centerInside"
                 android:src="@mipmap/showpass"
                 />
-        </RelativeLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
@@ -110,13 +237,13 @@
 
 
         <TextView
-            android:id="@+id/tvRegster"
+            android:id="@+id/regsterText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="@dimen/padding_margin_10"
             android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_30"
+            android:layout_marginTop="@dimen/padding_margin_10"
             android:background="#EE781F"
             android:gravity="center"
             android:padding="@dimen/padding_margin_10"
@@ -128,4 +255,4 @@
     </LinearLayout>
 
 
-</LinearLayout>
+</com.yd.org.sellpopularizesystem.myView.BounceScrollView>

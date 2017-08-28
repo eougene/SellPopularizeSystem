@@ -11,7 +11,8 @@ public class ExtraName {
     public static final String USER_ID = "user_id";
     public static final String COMPANY_ID = "company_id";
     public static final String COMPANY_NAME = "company_name";
-    public static final String USER_NAME = "user_name";
+    public static final String HEAD_IMAGE = "user_image";
+    public static final String USER_TYPE= "user_type";
     public static final String FIRST_NAME = "first_name";
     public static final String SUR_NAME = "sur_name";
     public static final String HISTORY_NAME="history";

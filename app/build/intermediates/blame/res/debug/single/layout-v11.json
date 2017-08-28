@@ -1,26 +1,74 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_template_big_media_custom.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_template_big_media.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_template_big_media_narrow.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_template_big_media.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_media_cancel_action.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/layout-v11/notification_media_action.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_custom.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout-v11\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_narrow_custom.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media_narrow.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_action.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_media_action.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_template_big_media.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_template_big_media.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout-v11\\notification_media_cancel_action.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout-v11\\notification_media_cancel_action.xml"
     }
 ]

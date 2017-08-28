@@ -22,8 +22,6 @@ import com.zhouyou.http.exception.ApiException;
 
 import java.io.File;
 
-import okhttp3.Cache;
-
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static android.os.Environment.getExternalStoragePublicDirectory;
 import static com.yd.org.sellpopularizesystem.utils.MyUtils.getPackageName;
@@ -49,11 +47,7 @@ public class FinalDownFile {
 
         saveName = FileUtils.getSaveNameByUrl(url);
         EasyHttp.downLoad(url)
-                .cacheMode(CacheMode.FIRSTCACHE)
-                .cacheKey(saveName)//缓存key
-               // .cacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
-                .okCache(new Cache(new File(defaultPath + File.separator + saveName),1024*1024*50))//okhttp缓存，模式为默认模式（CacheMode.DEFAULT）才生效
-                //.cacheDiskConverter(new GsonDiskConverter())//默认使用的是 new SerializableDiskConverter();
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheDiskConverter(new SerializableDiskConverter())//默认使用的是 new SerializableDiskConverter();
                 .timeStamp(true)
                 .savePath(defaultPath)

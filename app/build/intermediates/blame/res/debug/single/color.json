@@ -1,106 +1,314 @@
 [
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_primary_text_disable_only_material_light.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/common_plus_signin_btn_text_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/401f19d659848004020942f5a281788f57ab59e5/output/res/color/common_plus_signin_btn_text_dark.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_primary_text_material_light.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_switch_thumb.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/design_error.xml",
-        "source": "/Users/e-dot/.android/build-cache/7d5b9c3a00bfcf21f0a1f128384767a18b98bac1/output/res/color/design_error.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_btn_checkable.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_btn_checkable.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_hint_foreground_material_dark.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\color\\design_tint_password_toggle.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_switch_track.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_switch_track.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_btn_colored_text_material.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_switch_thumb.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_switch_thumb.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\switch_thumb_material_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/401f19d659848004020942f5a281788f57ab59e5/output/res/color/common_google_signin_btn_text_dark.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/common_plus_signin_btn_text_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/401f19d659848004020942f5a281788f57ab59e5/output/res/color/common_plus_signin_btn_text_light.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\401f19d659848004020942f5a281788f57ab59e5\\output\\res\\color\\common_google_signin_btn_text_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_secondary_text_material_light.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_primary_text_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_seek_thumb.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_seek_thumb.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_search_url_text.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_search_url_text.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_plus_signin_btn_text_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_primary_text_disable_only_material_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_primary_text_disable_only_material_dark.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_edittext.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_secondary_text_material_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_secondary_text_material_dark.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_search_url_text.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_default.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_default.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_seek_thumb.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/switch_thumb_material_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/switch_thumb_material_dark.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_switch_track.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/design_tint_password_toggle.xml",
-        "source": "/Users/e-dot/.android/build-cache/7d5b9c3a00bfcf21f0a1f128384767a18b98bac1/output/res/color/design_tint_password_toggle.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/switch_thumb_material_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/switch_thumb_material_light.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_btn_colored_text_material.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_btn_colored_text_material.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\color\\design_error.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_btn_colored_borderless_text_material.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_btn_colored_borderless_text_material.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\switch_thumb_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_edittext.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_edittext.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_hint_foreground_material_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_hint_foreground_material_light.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_primary_text_material_dark.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_primary_text_material_dark.xml"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\401f19d659848004020942f5a281788f57ab59e5\\output\\res\\color\\common_plus_signin_btn_text_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/common_google_signin_btn_text_light.xml",
-        "source": "/Users/e-dot/.android/build-cache/401f19d659848004020942f5a281788f57ab59e5/output/res/color/common_google_signin_btn_text_light.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_material_dark.xml"
     },
     {
-        "merged": "/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/build/intermediates/res/merged/debug/color/abc_tint_spinner.xml",
-        "source": "/Users/e-dot/.android/build-cache/5d23ab59896abd93ff152a4d84a013e3d401eab4/output/res/color/abc_tint_spinner.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_plus_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_plus_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_default.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_google_signin_btn_text_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\401f19d659848004020942f5a281788f57ab59e5\\output\\res\\color\\common_google_signin_btn_text_dark.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_spinner.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\color\\common_plus_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_edittext.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\common_plus_signin_btn_text_light.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\401f19d659848004020942f5a281788f57ab59e5\\output\\res\\color\\common_plus_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_search_url_text.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     }
 ]
