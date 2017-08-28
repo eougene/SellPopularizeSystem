@@ -16,6 +16,7 @@ import com.yd.org.sellpopularizesystem.javaBean.StudyBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -73,7 +74,8 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
 
     private void getStudyListData(final boolean b, int page, String type_id) {
         EasyHttp.get(Contants.STUDY_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("type_id", type_id)

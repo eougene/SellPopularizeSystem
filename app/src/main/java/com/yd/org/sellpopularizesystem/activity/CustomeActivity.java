@@ -32,6 +32,7 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
@@ -202,11 +203,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void getCustomeListData(final boolean b, int page) {
 
         EasyHttp.get(Contants.CUSTOMER_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "300")
+               // .params("number", String.valueOf(Integer.MAX_VALUE))
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -222,7 +225,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
                     @Override
                     public void onSuccess(String json) {
-
+                        Log.e("onSuccess", "onSuccess:" + json);
                         closeDialog();
                         jsonParse(json, b);
                     }
@@ -364,6 +367,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+        EasyHttp.removeCache(this.getClass().getSimpleName());
         ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         page = 1;
         getCustomeListData(true, page);

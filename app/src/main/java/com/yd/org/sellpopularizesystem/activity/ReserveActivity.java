@@ -47,6 +47,7 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -609,6 +610,17 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void commit(final String payment_method) {
+
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+
+
+
+            }
+        };
+
         HttpParams httpParams=new HttpParams();
 
         httpParams.put("order_type", "1");
@@ -627,7 +639,7 @@ public class ReserveActivity extends BaseActivity {
 
         if (null != picPath && !picPath.equals("")) {
             File  picFile = new File(picPath);
-            httpParams.put("file", picFile, null);
+            httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
         EasyHttp.post(Contants.CREAT_ORDER)

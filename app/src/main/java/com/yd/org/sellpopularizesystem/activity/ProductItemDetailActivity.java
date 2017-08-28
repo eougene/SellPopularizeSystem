@@ -45,8 +45,10 @@ import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,6 +107,46 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     private void openShareDialog() {
+        //获取分享内容
+
+        HttpParams httpParams=new HttpParams();
+        httpParams.put("product_id",resultBean.getProduct_id()+"");
+        httpParams.put("user_id",SharedPreferencesHelps.getUserID());
+        httpParams.put("refer_id",SharedPreferencesHelps.getReferCode());
+
+        EasyHttp.get(Contants.SHURE_URL)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
+                .params(httpParams)
+                .timeStamp(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+                        Log.e("onSuccess**","onSuccess:"+s);
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        Log.e("e**","e:"+e.getMessage());
+                    }
+                });
+
+
+
+
+
+
+
+
+
+
+
+
         if (Build.VERSION.SDK_INT >= 23) {
             String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION,
                     Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE,
@@ -205,7 +247,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
     private void initData() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", resultBean.getProduct_id() + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())

@@ -26,6 +26,7 @@ import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -79,7 +80,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     private void getSaleData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.INQUIRE_ORDER_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -311,6 +313,16 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      * @param picPath
      */
     private void setPicPath(String picPath, SaleOrderBean.ResultBean resultBean) {
+
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+
+
+
+            }
+        };
         String strUrl = "";
         File picFile = null;
 
@@ -321,7 +333,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             httpParams.put("order_id", resultBean.getProduct_orders_id() + "");
             if (null != picPath && !picPath.equals("")) {
                 picFile = new File(picPath);
-                httpParams.put("file", picFile, null);
+                httpParams.put("file", picFile, mUIProgressResponseCallBack);
             }
 
 
@@ -332,7 +344,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             httpParams.put("customer_id", resultBean.getClient() + "");
             if (null != picPath && !picPath.equals("")) {
                 picFile = new File(picPath);
-                httpParams.put("image[]", picFile, null);
+                httpParams.put("image[]", picFile, mUIProgressResponseCallBack);
             }
         }
 

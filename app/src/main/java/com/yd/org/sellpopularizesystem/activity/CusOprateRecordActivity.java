@@ -56,6 +56,7 @@ import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
@@ -100,6 +101,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private Button btUnknown, btSure, btFalse;
     private String eoi_ID = "", payMe = "";
     private int type = 0;
+
 
 
     @Override
@@ -464,6 +466,17 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
     private void submitEoi_01() {
+
+
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+
+
+
+            }
+        };
         HttpParams httpParams = new HttpParams();
         httpParams.put("eoi_id", eoi_ID);
         httpParams.put("pay_time", (System.currentTimeMillis() / 1000 + ""));
@@ -471,7 +484,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
         if (!picPath.equals("")) {
             File picFile = new File(picPath);
-            httpParams.put("file", picFile, null);
+            httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
         EasyHttp.post(Contants.UPLOAD_EOI_MONEY)
@@ -510,6 +523,16 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void submitEoi() {
 
 
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+                int progress = (int) (bytesRead * 100 / contentLength);
+
+
+
+            }
+        };
+
         HttpParams httpParams = new HttpParams();
         httpParams.put("client", customeId);
         httpParams.put("sales_id", SharedPreferencesHelps.getUserID());
@@ -521,7 +544,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
         if (!picPath.equals("")) {
             File picFile = new File(picPath);
-            httpParams.put("file", picFile, null);
+            httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
         EasyHttp.post(Contants.EOI_RECHARGE)
@@ -569,7 +592,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
@@ -772,7 +796,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getVisitData(int page, final boolean isRel) {
 
         EasyHttp.get(Contants.VISIT_RECORD_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -946,7 +971,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void getReservertData(int page, final boolean isRel) {
         EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
-                .cacheKey(this.getClass().getSimpleName())//缓存key
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
