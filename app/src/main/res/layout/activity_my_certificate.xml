@@ -187,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/padding_margin_10"
                 android:padding="@dimen/padding_margin_10"
-                android:text="@string/remark_certificate"/>
+                android:text="@string/remarktitle"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"

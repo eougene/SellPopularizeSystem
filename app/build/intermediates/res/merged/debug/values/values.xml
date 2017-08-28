@@ -1317,11 +1317,15 @@
     <string name="auth_google_play_services_client_facebook_display_name">Facebook</string>
     <string name="auth_google_play_services_client_google_display_name">Google</string>
     <string name="available_for_firb">Available For FIRB</string>
+    <string name="bankacc">银行账户</string>
+    <string name="bankhint">请填写本人的银行卡信息</string>
+    <string name="bankinfo">银行卡信息</string>
     <string name="basic_konwledge">基础知识</string>
     <string name="batchnum">批号</string>
     <string name="bathroom">浴室</string>
     <string name="bathroomnum">浴室套间数</string>
     <string name="bedroom">卧室</string>
+    <string name="besale">成为销售</string>
     <string name="bianhao">编号</string>
     <string name="binding_f">绑定失败</string>
     <string name="bindthreeaccount">绑定第三方账号</string>
@@ -1337,6 +1341,8 @@
     <string name="cancel">取消</string>
     <string name="cancel_oder">放弃订单</string>
     <string name="cancel_order">Cancel Order</string>
+    <string name="cardholder">持卡人</string>
+    <string name="cardnum">卡号</string>
     <string name="carport">车库</string>
     <string name="certificate">我的证书</string>
     <string name="certificate_number">证件编号</string>
@@ -1360,6 +1366,8 @@
     <string name="closedate">结算日期:</string>
     <string name="cncel_line">取消排队</string>
     <string name="co_people">联合购买人</string>
+    <string name="coaddress">公司地址</string>
+    <string name="codeerror">推荐码不能为空</string>
     <string name="com_noe">公司名不能为空</string>
     <string name="commencement_date">生效日期</string>
     <string name="commission">我的佣金</string>
@@ -1449,6 +1457,7 @@
     <string name="desposit">直接存款</string>
     <string name="desthree">描述三</string>
     <string name="destwo">描述二</string>
+    <string name="detailadd">详细地址</string>
     <string name="details">详情</string>
     <string name="dingjin">请阅读定金支付申明</string>
     <string name="direction">朝向</string>
@@ -1460,6 +1469,8 @@
     <string name="email">邮箱</string>
     <string name="email_hint">请输入正确的邮箱地址</string>
     <string name="emailcontent">这是邮件的正文部分</string>
+    <string name="emailemptyerror">邮箱不能为空</string>
+    <string name="emailerrorhint">您输入的邮箱地址格式不对</string>
     <string name="emailtopic">这是邮件的主题部分</string>
     <string name="englishname">英文名</string>
     <string name="englishnamenonull">英文名不能为空</string>
@@ -1500,6 +1511,7 @@
     <string name="fore">外汇保证金:</string>
     <string name="foreignInves">海外投资</string>
     <string name="forget_password">忘记密码?</string>
+    <string name="fullname">姓名</string>
     <string name="gettui">新消息</string>
     <string name="hadsaled">已售</string>
     <string name="hashsalenum">已售数量</string>
@@ -1507,6 +1519,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">提示</string>
     <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="hintremark">请您在此描述您的备注</string>
     <string name="historyclear">历史记录已经清除</string>
     <string name="home_01">个推广素材</string>
     <string name="home_02">个</string>
@@ -1532,6 +1545,7 @@
     <string name="if_company_cus">  是否为公司客户</string>
     <string name="individuaproject">个项目</string>
     <string name="input_new_password">请输入新密码</string>
+    <string name="inputconame">请输入公司名称</string>
     <string name="inputoldpassword">请输入原密码</string>
     <string name="introduce">这里是简介</string>
     <string name="inverstigation">选择客户</string>
@@ -1572,6 +1586,8 @@
     <string name="memo">预览备忘录:</string>
     <string name="message">消息</string>
     <string name="middlename">中间名</string>
+    <string name="mima">密    码</string>
+    <string name="mingzi">名    字</string>
     <string name="mobileormail">手机或邮箱二选一</string>
     <string name="mobilephone">手机</string>
     <string name="modifiedorder">申请修改订单</string>
@@ -1581,9 +1597,12 @@
     <string name="more">查看更多</string>
     <string name="multiple_choice">(多选题)</string>
     <string name="mutilatequestion">(多选题)</string>
+    <string name="myaddress">我的地址</string>
     <string name="mycommission">我的佣金</string>
+    <string name="mymsg">我的信息</string>
     <string name="myteam">我的团队</string>
     <string name="name">名字</string>
+    <string name="nameerror">名字不能为空</string>
     <string name="nation">国籍</string>
     <string name="nation_and_area">国籍或地区不能为空</string>
     <string name="nationorarea">国籍或地区</string>
@@ -1618,6 +1637,7 @@
     <string name="old_password_ch">原密码不能为空</string>
     <string name="old_pr">往期项目</string>
     <string name="oldproject">往期项目</string>
+    <string name="openbank">开户行</string>
     <string name="orde_num">订单号</string>
     <string name="order">订单</string>
     <string name="order_detail">订单详情</string>
@@ -1631,6 +1651,7 @@
     <string name="other">其他</string>
     <string name="outsidearea">套外面积</string>
     <string name="owned_by_all">共有</string>
+    <string name="passerrorhint">密码必须为6到18数字或字母</string>
     <string name="passport">护照</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
@@ -1697,6 +1718,7 @@
     <string name="release_to_refresh">释放立即刷新</string>
     <string name="remain">预定</string>
     <string name="remark">备注</string>
+    <string name="remarktitle">备注事项</string>
     <string name="reminder">请指定时间提醒</string>
     <string name="rephotograph">重拍</string>
     <string name="replyright">回答正确:</string>
@@ -1775,6 +1797,7 @@
     <string name="select_due_date">请选择到期日期</string>
     <string name="select_not">请选择相关消息</string>
     <string name="select_valid_date">请选择生效日期</string>
+    <string name="selectadd">选择地区</string>
     <string name="selectall">全选</string>
     <string name="selectcus">选择客户</string>
     <string name="selectdatetime">请选择预约时间</string>
@@ -1853,10 +1876,14 @@
     <string name="sure_change">两次密码不一致</string>
     <string name="sure_password">确认密码</string>
     <string name="sure_password_en">请输入确认密码</string>
+    <string name="surenameerror">姓氏不能为空</string>
     <string name="system">系统</string>
     <string name="team">小组</string>
     <string name="teleonenonull">手机,邮箱至少一项不能为空</string>
     <string name="telephone">电话</string>
+    <string name="telephonenum">手机号</string>
+    <string name="telhint">请输入联系电话</string>
+    <string name="telnumerrorhint">手机号不能为空</string>
     <string name="test">测试</string>
     <string name="theme">萨达</string>
     <string name="this_month_newly">本月新增</string>
@@ -1911,6 +1938,7 @@
     <string name="weixinfriends">微信好友</string>
     <string name="without_full_amount">10%房款未全部付款</string>
     <string name="writetitle">请输入标题</string>
+    <string name="xingshi">姓    氏</string>
     <string name="yes">是</string>
     <string name="yesorno">对错</string>
     <string name="yesornoquestion">(是非题)</string>

@@ -129,7 +129,8 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.HomeActiviyt"
             android:launchMode="singleTask"
@@ -319,12 +320,12 @@
             android:screenOrientation="portrait" />
         <activity android:name="com.yd.org.sellpopularizesystem.activity.DeclareActivity" >
         </activity>
-        <activity android:name="com.yd.org.sellpopularizesystem.activity.MyCertificateActivity" >
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.MyCertificateActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
         <activity android:name="com.yd.org.sellpopularizesystem.activity.InvoiceActivity" >
         </activity>
-
-        <service android:name="com.yd.org.sellpopularizesystem.rxdownloadoffice.function.DownloadService" />
 
         <receiver android:name="com.yd.org.sellpopularizesystem.activity.MyBroadCastReciver" >
             <intent-filter>
@@ -340,6 +341,19 @@
             android:name="com.tencent.bugly.beta.ui.BetaActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|locale"
             android:theme="@android:style/Theme.Translucent" />
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.MyInfoActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.UserAdressActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.BankActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" >
+        </activity>
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.InviteQRActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
