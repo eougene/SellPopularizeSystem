@@ -107,7 +107,7 @@ public class MyCertificateActivity extends BaseActivity {
                             ToasShow.showToastBottom(MyCertificateActivity.this, "请完善银行卡信息");
                             return;
                         } else {
-
+                            commintInfo();
                         }
 
                         //销售
@@ -423,7 +423,7 @@ public class MyCertificateActivity extends BaseActivity {
 
     private void getInfo() {
         EasyHttp.get(Contants.LICENCE_INFO)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
