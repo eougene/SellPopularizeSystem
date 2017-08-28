@@ -3,12 +3,14 @@ package com.yd.org.sellpopularizesystem.myView;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StyleRes;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.yd.org.sellpopularizesystem.R;
 
@@ -20,13 +22,13 @@ public class ShareDialog extends Dialog {
     private onClickback callback;
     private Dialog mDialog;
 
-    public ShareDialog(Context context, onClickback callback) {
-        this(context, R.layout.share_dialog, R.style.shareDialog, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+    public ShareDialog(Context context, onClickback callback, Bitmap bitmap) {
+        this(context, R.layout.share_dialog, R.style.shareDialog, WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT, bitmap);
         this.callback = callback;
     }
 
     public ShareDialog(final Context context, int layout, int style, int width,
-                       int height) {
+                       int height, Bitmap bitmap) {
         super(context, style);
         setContentView(layout);
         setCanceledOnTouchOutside(true);
@@ -40,10 +42,15 @@ public class ShareDialog extends Dialog {
         getWindow().getDecorView().setPadding(0, 0, 0, 0);
         // 设置显示位置为底部
         getWindow().setGravity(Gravity.BOTTOM);
-        setListener();
+        setListener(bitmap);
     }
 
-    private void setListener() {
+    private void setListener(Bitmap bitmap) {
+
+        ImageView imageView = (ImageView) findViewById(R.id.ivQr);
+        imageView.setImageBitmap(bitmap);
+
+
         findViewById(R.id.ivWexin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
