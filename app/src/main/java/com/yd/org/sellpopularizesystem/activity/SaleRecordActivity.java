@@ -352,6 +352,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         EasyHttp.post(strUrl)
                 .params(httpParams)
                 .cacheMode(CacheMode.NO_CACHE)
+                .params(httpParams)
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
