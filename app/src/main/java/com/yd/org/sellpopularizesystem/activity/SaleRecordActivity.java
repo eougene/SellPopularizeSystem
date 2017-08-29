@@ -201,7 +201,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                 .params("order_id", orderId + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -351,9 +350,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
         EasyHttp.post(strUrl)
                 .cacheMode(CacheMode.NO_CACHE)
-
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

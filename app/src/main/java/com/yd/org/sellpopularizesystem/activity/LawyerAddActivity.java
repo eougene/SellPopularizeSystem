@@ -72,7 +72,6 @@ public class LawyerAddActivity extends BaseActivity {
                 .params("lawyer_tel", strTel)
                 .params("lawyer_email", strEmail)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

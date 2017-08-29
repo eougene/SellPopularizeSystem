@@ -388,7 +388,6 @@ public class MyCertificateActivity extends BaseActivity {
                 .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

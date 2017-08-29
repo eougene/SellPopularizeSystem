@@ -131,7 +131,6 @@ public class PaymentQrActivity extends BaseActivity {
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("trust_account_id", strId)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -315,7 +314,6 @@ public class PaymentQrActivity extends BaseActivity {
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("trust_account_id", strId)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

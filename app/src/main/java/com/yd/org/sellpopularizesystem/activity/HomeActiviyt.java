@@ -294,7 +294,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("data", SharedPreferencesHelps.getData())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

@@ -427,7 +427,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .params("title", etVistTitle.getText().toString())
                 .params("content", etVistContent.getText().toString())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -491,7 +490,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -551,7 +549,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -934,7 +931,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .cacheMode(CacheMode.NO_CACHE)
                 .params(key, id + "")
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -1215,7 +1211,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .params("eoi_id", eoi_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -1258,7 +1253,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .params("eoi_id", eoi)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

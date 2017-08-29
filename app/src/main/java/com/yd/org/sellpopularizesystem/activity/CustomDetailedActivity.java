@@ -1177,7 +1177,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params(ajaxParams)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

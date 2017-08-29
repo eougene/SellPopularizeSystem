@@ -362,7 +362,6 @@ public class DialogOptionActivity extends AppCompatActivity {
                 .params("cue_every_time", 3600 + "")
                 .params("order_time", MyUtils.getInstance().getTimeMillis(etReserTime) + "")
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -411,7 +410,6 @@ public class DialogOptionActivity extends AppCompatActivity {
                 .params("cue_every_time", MyUtils.getInstance().getTimeMillis(etRemindTime) + "")
 
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -461,7 +459,6 @@ public class DialogOptionActivity extends AppCompatActivity {
                     .params("content", etVistContent.getText().toString())
                     .params("visit_time", tvVistTime.getText().toString())
                     .timeStamp(true)
-                    .accessToken(true)
                     .execute(new SimpleCallBack<String>() {
                         @Override
                         public void onStart() {

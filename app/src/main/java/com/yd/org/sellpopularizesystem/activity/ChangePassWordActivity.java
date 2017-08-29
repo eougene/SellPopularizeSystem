@@ -101,7 +101,6 @@ public class ChangePassWordActivity extends BaseActivity {
                 .params("old_password", old_password)
                 .params("new_password", new_password)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

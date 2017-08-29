@@ -621,8 +621,9 @@ public class ReserveActivity extends BaseActivity {
             }
         };
 
-        HttpParams httpParams=new HttpParams();
 
+
+        HttpParams httpParams=new HttpParams();
         httpParams.put("order_type", "1");
         httpParams.put("property_id", bean.getProduct_childs_id() + "");
         httpParams.put("client", customeId);
@@ -631,9 +632,9 @@ public class ReserveActivity extends BaseActivity {
         httpParams.put("lawyer_id", lawyer_id + "");
         httpParams.put("payment_method", payment_method);
         httpParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
-        httpParams.put("pay_time", System.currentTimeMillis() + "");
+        httpParams.put("pay_time", "");
         httpParams.put("currency", bean.getCurrency());
-        httpParams.put("purchaseReason", (String) tvReGoal.getText());
+        httpParams.put("purchaseReason",tvReGoal.getText().toString().trim());
         httpParams.put("eoi_id", bean.getIs_eoi() + "");
 
 
@@ -642,12 +643,15 @@ public class ReserveActivity extends BaseActivity {
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
+        Log.e("httpParams**","httpParams:"+httpParams.toString());
+
+
+
+
         EasyHttp.post(Contants.CREAT_ORDER)
                 .cacheMode(CacheMode.NO_CACHE)
-
-
                 .timeStamp(true)
-                .accessToken(true)
+                .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -663,6 +667,9 @@ public class ReserveActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String s) {
+                        closeDialog();
+
+                        Log.e("onSuccess***", "onSuccess:" + s);
 
                         try {
                             JSONObject json = new JSONObject(s);

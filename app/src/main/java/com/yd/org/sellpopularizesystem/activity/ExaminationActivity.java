@@ -308,7 +308,6 @@ public class ExaminationActivity extends BaseActivity {
                 .params("answer", jsonArray.toString())
                 .params("add_ip", "")
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,8 +21,6 @@ import com.jude.rollviewpager.OnItemClickListener;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.hintview.ColorPointHintView;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -142,27 +139,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         final UMWeb web = new UMWeb(shareUrl);
         web.setTitle(string);
         web.setDescription(resultBean.getProduct_name());
-        if (resultBean.getThumb() != null && !resultBean.getThumb().equals("")) {
-            Picasso.with(ProductItemDetailActivity.this).load(resultBean.getThumb()).into(new Target() {
-                @Override
-                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                    ProductItemDetailActivity.bitmap = bitmap;
-                }
-
-                @Override
-                public void onBitmapFailed(Drawable errorDrawable) {
-
-                }
-
-                @Override
-                public void onPrepareLoad(Drawable placeHolderDrawable) {
-
-                }
-            });
-        }
-
         web.setThumb(new UMImage(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + resultBean.getThumb()));
-        Log.e("TAG", "shareToMedia: " + Contants.DOMAIN + resultBean.getThumb());
         mShareAction.setPlatform(share_MEDIA).setCallback(mUmShareListener).withMedia(web).share();
     }
 
@@ -213,7 +190,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
     private void initData() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", resultBean.getProduct_id() + "")
@@ -233,6 +210,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(String json) {
+                        Log.e("json***","json:"+json);
 
                         Gson gson = new Gson();
                         ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
