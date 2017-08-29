@@ -310,8 +310,9 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.DeclareActivity">
         </activity>
-        <activity android:name=".activity.MyCertificateActivity"
-                  android:windowSoftInputMode="stateHidden|adjustPan">
+        <activity
+            android:name=".activity.MyCertificateActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity android:name=".activity.InvoiceActivity">
         </activity>
@@ -343,6 +344,8 @@
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity android:name=".activity.InviteQRActivity"/>
+        <activity android:name=".activity.MySalesActivity">
+        </activity>
     </application>
 
 </manifest>
