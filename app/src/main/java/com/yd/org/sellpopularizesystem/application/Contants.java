@@ -66,6 +66,9 @@ public class Contants {
     public static final String QUESTION_LIST = DOMAIN + "/index.php/appv2/product/question_list";
     //获取客户列表
     public static final String CUSTOMER_LIST = DOMAIN + "/index.php/appv2/customer/customer_list";
+
+    //推荐人关联的销售
+    public static final String REFER_USER_LIST = DOMAIN + "/index.php/appv2/user/refer_user_list";
     //删除销售关联的客户
     public static final String USER_CUSTOMER_DEL = DOMAIN + "/index.php/appv2/user/user_customer_del";
     //获取律师列表
