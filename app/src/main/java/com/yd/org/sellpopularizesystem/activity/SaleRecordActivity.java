@@ -340,6 +340,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             //支付房款-上传凭证或在线支付
             strUrl = Contants.UPLOAD_FIRST_COMMISSION;
             httpParams.put("order_id", resultBean.getProduct_orders_id() + "");
+            httpParams.put("user_id", SharedPreferencesHelps.getUserID());
             httpParams.put("customer_id", resultBean.getClient() + "");
             if (null != picPath && !picPath.equals("")) {
                 picFile = new File(picPath);
@@ -349,6 +350,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         EasyHttp.post(strUrl)
+                .params(httpParams)
                 .cacheMode(CacheMode.NO_CACHE)
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {

@@ -3,8 +3,6 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,18 +15,15 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.adapter.SortGroupMemberAdapter;
+import com.yd.org.sellpopularizesystem.adapter.MySalesAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.custom.CharacterParser;
-import com.yd.org.sellpopularizesystem.custom.PinyinComparator;
+import com.yd.org.sellpopularizesystem.custom.PinyinComparatorSalers;
 import com.yd.org.sellpopularizesystem.custom.SideBar;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.ReferUserBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
-import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -39,17 +34,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * 客户管理
- */
-public class CustomeActivity extends BaseActivity implements SectionIndexer, PullToRefreshLayout.OnRefreshListener {
-    public static CustomeActivity customeActivity;
+public class MySalesActivity extends BaseActivity implements SectionIndexer, PullToRefreshLayout.OnRefreshListener {
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     private int page = 1;
     private SideBar sideBar;
     private TextView dialog;
-    private SortGroupMemberAdapter adapter;
+    private MySalesAdapter adapter;
     private LinearLayout titleLayout;
     private TextView tvNofriends;
     private SearchEditText searchEditText;
@@ -57,23 +48,16 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      * 汉字转换成拼音的类
      */
     private CharacterParser characterParser;
-    private List<CustomBean.ResultBean> SourceDateList = new ArrayList<>();
+    private List<ReferUserBean.ResultBean> SourceDateList = new ArrayList<>();
 
     /**
      * 根据拼音来排列ListView里面的数据类
      */
-    private PinyinComparator pinyinComparator;
+    private PinyinComparatorSalers pinyinComparator;
     //用以判断跳转不同界面
-    String str1 = "default";
+
     private List filterDateList;
-    public Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                getCustomeListData(true, 1);
-            }
-        }
-    };
+
 
     @Override
     protected int setContentView() {
@@ -82,19 +66,17 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void initView() {
-        customeActivity = this;
-        setTitle(getResources().getString(R.string.inverstigation));
+        hideRightImagview();
+        setTitle("选择销售");
+
         initViews();
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        //从homeActivity传过来的值用以判断跳转不同界面
-        str1 = bundle.getString(ExtraName.SCALETOCUSTOME);
-        Log.e("str1***", "str1:" + str1);
 
         //网络数据
         getCustomeListData(true, page);
 
+
     }
+
 
     private void initViews() {
 
@@ -104,7 +86,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
 
-        pinyinComparator = new PinyinComparator();
+        pinyinComparator = new PinyinComparatorSalers();
 
         sideBar = getViewById(R.id.sidrbar);
         dialog = getViewById(R.id.dialog);
@@ -125,9 +107,9 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private List filledData(List date) {
         List list = new ArrayList();
-        List<CustomBean.ResultBean> mSortList = new ArrayList<>();
+        List<ReferUserBean.ResultBean> mSortList = new ArrayList<>();
         for (int i = 0; i < date.size(); i++) {
-            CustomBean.ResultBean sortModel = (CustomBean.ResultBean) date.get(i);
+            ReferUserBean.ResultBean sortModel = (ReferUserBean.ResultBean) date.get(i);
             // 汉字转换成拼音
             if (!TextUtils.isEmpty(sortModel.getSurname())) {
                 String pinyin = characterParser.getSelling(sortModel.getSurname());
@@ -158,7 +140,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             adapter.updateListView(SourceDateList);
         } else {
             filterDateList = new ArrayList<>();
-            for (CustomBean.ResultBean sortModel : SourceDateList) {
+            for (ReferUserBean.ResultBean sortModel : SourceDateList) {
                 String name = sortModel.getSurname();
                 if (name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr) || characterParser.getSelling(name).startsWith(filterStr.toUpperCase())) {
                     filterDateList.add(sortModel);
@@ -166,8 +148,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
         }
 
-        // 根据a-z进行排序
-       // Collections.sort(filterDateList, pinyinComparator);
         adapter.updateListView(filterDateList);
     }
 
@@ -201,13 +181,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     private void getCustomeListData(final boolean b, int page) {
 
-        EasyHttp.get(Contants.CUSTOMER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
+        EasyHttp.get(Contants.REFER_USER_LIST)
+                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("refer_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "100")
+                .params("number", String.valueOf(Integer.MAX_VALUE))
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -235,7 +215,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void jsonParse(String json, boolean isRefresh) {
         Gson gson = new Gson();
         //客户信息
-        CustomBean product = gson.fromJson(json, CustomBean.class);
+        ReferUserBean product = gson.fromJson(json, ReferUserBean.class);
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
@@ -254,7 +234,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             // 根据a-z进行排序源数据
             Collections.sort(SourceDateList, pinyinComparator);
-            adapter = new SortGroupMemberAdapter(this);
+            adapter = new MySalesAdapter(this);
             adapter.addData(SourceDateList);
             listView.setAdapter(adapter);
         } else {
@@ -267,26 +247,14 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void setListener() {
-        if (str1.equals(ExtraName.SCALETOCUSTOME)) {
-            changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                    overridePendingTransition(0, R.anim.out_anim);
-                }
-            });
-        } else {
-            clickRightImageView(R.mipmap.addim, new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString("add", "add");
-                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
-
-                }
-            });
-        }
+        changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, R.anim.out_anim);
+            }
+        });
 
 
         // 设置右侧触摸监听
@@ -335,28 +303,13 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
-                CustomBean.ResultBean resultBean = viewHolder.resultBean;
-                ObjectSaveUtil.saveObject(CustomeActivity.this, "custome", resultBean);
-
+                MySalesAdapter.ViewHolder viewHolder = (MySalesAdapter.ViewHolder) view.getTag();
+                ReferUserBean.ResultBean resultBean = viewHolder.resultBean;
                 Bundle bundle = new Bundle();
-                //产品选择客户
-                if (str1.equals(ExtraName.SCALETOCUSTOME)) {
-                    bundle.putString("add", "list");
-                    ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
-                    finish();
-
-
-                } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
-                    Intent i = new Intent();
-                    i.putExtra("custome", resultBean);
-                    setResult(Activity.RESULT_OK, i);
-                    finish();
-                } else {//正常选择客户
-                    bundle.putSerializable("custome", resultBean);
-                    bundle.putString("add", "list");
-                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
-                }
+                Intent i = new Intent();
+                i.putExtra("custome", resultBean);
+                setResult(Activity.RESULT_OK, i);
+                finish();
             }
         });
 
@@ -377,7 +330,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        getCustomeListData(false, page);
+       // getCustomeListData(false, page);
     }
-
 }

@@ -30,10 +30,10 @@ import com.umeng.socialize.media.UMWeb;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.javaBean.ReferUserBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
@@ -104,10 +104,9 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
     }
 
-    private void openShareDialog() {
+    private void openShareDialog(final String shareUrl) {
 
 
-        final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=" + SharedPreferencesHelps.getReferCode();
         Bitmap bitmap = ZXingUtils.createQRImage(shareUrl, 200, 200);
 
         if (Build.VERSION.SDK_INT >= 23) {
@@ -115,7 +114,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                     Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW,
                     Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
-            // ActivityCompat.requestPermissions(this,mPermissionList,123);
         }
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
@@ -210,7 +208,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("json***","json:"+json);
+                        Log.e("json***", "json:" + json);
 
                         Gson gson = new Gson();
                         ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
@@ -307,13 +305,11 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                     //销售
                     if (SharedPreferencesHelps.getType() == 1) {
-                        openShareDialog();
+                        final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=";
+                        openShareDialog(shareUrl);
                     } else if (SharedPreferencesHelps.getType() == 2) {
-                        Bundle bundle=new Bundle();
-                        bundle.putString(ExtraName.SCALETOCUSTOME, ExtraName.PRODUCTDETAIL);
-                        Intent intent=new Intent(ProductItemDetailActivity.this, CustomeActivity.class);
-                        intent.putExtras(bundle);
-                        startActivityForResult(intent,0X001);
+                        Intent intent = new Intent(ProductItemDetailActivity.this, MySalesActivity.class);
+                        startActivityForResult(intent, 0X001);
                         overridePendingTransition(R.anim.downtoup_in_anim, 0);
 
 
@@ -477,10 +473,12 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-        Bundle b=data.getExtras(); //data为B中回传的Intent
-        CustomBean.ResultBean resultBean = (CustomBean.ResultBean) b.getSerializable("custome");
-         Log.e("on***","onActivity:"+resultBean.getCustomer_id());
-         openShareDialog();
+        Bundle b = data.getExtras(); //data为B中回传的Intent
+        ReferUserBean.ResultBean resultBean = (ReferUserBean.ResultBean) b.getSerializable("custome");
+
+        final String shareUrl = Contants.SHURE_URL + "?product_id=" + product_id + "&user_id=" + resultBean.getUser_id() + "&refer_id=" + SharedPreferencesHelps.getUserID();
+
+        openShareDialog(shareUrl);
 
     }
 
@@ -528,7 +526,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
 
     }
-
 
 
 }
