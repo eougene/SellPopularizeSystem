@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -39,7 +40,7 @@ public class NotificationFragment extends BaseFragmentView {
     private Boolean isShow = false;
     //对应数据的Id,4表示订单消息
     private int cate_id = 4;
-    private OrderNotificFragment notificFragment, notificFragment1, notificFragment2, notificFragment3;
+    private OrderNotificFragment orderFragment, teamFragment, companyFragment, systemFragment;
     private RelativeLayout orderRelat, brifeRelat;
     /**
      * 接收消息,显示当前消息数量
@@ -107,7 +108,7 @@ public class NotificationFragment extends BaseFragmentView {
                     message.obj = isShow;
                     message.what = 1;
 
-                    notificFragment.mHandle.sendMessage(message);
+                    orderFragment.mHandle.sendMessage(message);
 
 
                     Message message1 = new Message();
@@ -115,7 +116,7 @@ public class NotificationFragment extends BaseFragmentView {
                     message1.obj = isShow;
                     message1.what = 1;
 
-                    notificFragment1.mHandle.sendMessage(message1);
+                    teamFragment.mHandle.sendMessage(message1);
 
 
                     Message message2 = new Message();
@@ -123,7 +124,7 @@ public class NotificationFragment extends BaseFragmentView {
                     message2.obj = isShow;
                     message2.what = 1;
 
-                    notificFragment2.mHandle.sendMessage(message2);
+                    companyFragment.mHandle.sendMessage(message2);
 
 
                     Message message3 = new Message();
@@ -131,7 +132,7 @@ public class NotificationFragment extends BaseFragmentView {
                     message3.obj = isShow;
                     message3.what = 1;
 
-                    notificFragment3.mHandle.sendMessage(message3);
+                    systemFragment.mHandle.sendMessage(message3);
 
 
                     break;
@@ -165,7 +166,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message.obj = isShow;
                         message.what = 1;
 
-                        notificFragment.mHandle.sendMessage(message);
+                        orderFragment.mHandle.sendMessage(message);
 
 
                         Message message1 = new Message();
@@ -173,7 +174,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message1.obj = isShow;
                         message1.what = 1;
 
-                        notificFragment1.mHandle.sendMessage(message1);
+                        teamFragment.mHandle.sendMessage(message1);
 
 
                         Message message2 = new Message();
@@ -181,7 +182,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message2.obj = isShow;
                         message2.what = 1;
 
-                        notificFragment2.mHandle.sendMessage(message2);
+                        companyFragment.mHandle.sendMessage(message2);
 
 
                         Message message3 = new Message();
@@ -189,7 +190,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message3.obj = isShow;
                         message3.what = 1;
 
-                        notificFragment3.mHandle.sendMessage(message3);
+                        systemFragment.mHandle.sendMessage(message3);
 
 
                     } else {
@@ -204,7 +205,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message.obj = isShow;
                         message.what = 1;
 
-                        notificFragment.mHandle.sendMessage(message);
+                        orderFragment.mHandle.sendMessage(message);
 
 
                         Message message1 = new Message();
@@ -212,7 +213,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message1.obj = isShow;
                         message1.what = 1;
 
-                        notificFragment1.mHandle.sendMessage(message1);
+                        teamFragment.mHandle.sendMessage(message1);
 
 
                         Message message2 = new Message();
@@ -220,7 +221,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message2.obj = isShow;
                         message2.what = 1;
 
-                        notificFragment2.mHandle.sendMessage(message2);
+                        companyFragment.mHandle.sendMessage(message2);
 
 
                         Message message3 = new Message();
@@ -228,7 +229,7 @@ public class NotificationFragment extends BaseFragmentView {
                         message3.obj = isShow;
                         message3.what = 1;
 
-                        notificFragment3.mHandle.sendMessage(message3);
+                        systemFragment.mHandle.sendMessage(message3);
 
 
                     }
@@ -243,26 +244,26 @@ public class NotificationFragment extends BaseFragmentView {
                         Message messages = new Message();
                         messages.what = 2;
                         messages.arg2 = type;
-                        notificFragment.mHandle.sendMessage(messages);
+                        orderFragment.mHandle.sendMessage(messages);
 
                     } else if (cate_id == 3) {
                         Message messages2 = new Message();
                         messages2.what = 2;
                         messages2.arg2 = type;
-                        notificFragment1.mHandle.sendMessage(messages2);
+                        teamFragment.mHandle.sendMessage(messages2);
 
 
                     } else if (cate_id == 2) {
                         Message messages3 = new Message();
                         messages3.what = 2;
                         messages3.arg2 = type;
-                        notificFragment2.mHandle.sendMessage(messages3);
+                        companyFragment.mHandle.sendMessage(messages3);
 
                     } else if (cate_id == 1) {
                         Message messages4 = new Message();
                         messages4.what = 2;
                         messages4.arg2 = type;
-                        notificFragment3.mHandle.sendMessage(messages4);
+                        systemFragment.mHandle.sendMessage(messages4);
 
                     }
 
@@ -281,20 +282,20 @@ public class NotificationFragment extends BaseFragmentView {
                             Message message = new Message();
                             message.what = 0;
                             message.arg1 = array;
-                            notificFragment.mHandle.sendMessage(message);
+                            orderFragment.mHandle.sendMessage(message);
 
                         } else if (cate_id == 3) {
                             Message message1 = new Message();
                             message1.what = 0;
                             message1.arg1 = array;
-                            notificFragment1.mHandle.sendMessage(message1);
+                            teamFragment.mHandle.sendMessage(message1);
 
                         } else if (cate_id == 2) {
                             //
                             Message message2 = new Message();
                             message2.what = 0;
                             message2.arg1 = array;
-                            notificFragment2.mHandle.sendMessage(message2);
+                            companyFragment.mHandle.sendMessage(message2);
 
                         } else if (cate_id == 1) {
 
@@ -302,7 +303,7 @@ public class NotificationFragment extends BaseFragmentView {
                             Message message3 = new Message();
                             message3.what = 0;
                             message3.arg1 = array;
-                            notificFragment3.mHandle.sendMessage(message3);
+                            systemFragment.mHandle.sendMessage(message3);
 
 
                         }
@@ -318,25 +319,25 @@ public class NotificationFragment extends BaseFragmentView {
                             Message message = new Message();
                             message.what = 0;
                             message.arg1 = array;
-                            notificFragment.mHandle.sendMessage(message);
+                            orderFragment.mHandle.sendMessage(message);
                         } else if (cate_id == 3) {
                             //
                             Message message1 = new Message();
                             message1.what = 0;
                             message1.arg1 = array;
-                            notificFragment1.mHandle.sendMessage(message1);
+                            teamFragment.mHandle.sendMessage(message1);
                         } else if (cate_id == 2) {
                             //
                             Message message2 = new Message();
                             message2.what = 0;
                             message2.arg1 = array;
-                            notificFragment2.mHandle.sendMessage(message2);
+                            companyFragment.mHandle.sendMessage(message2);
                         } else if (cate_id == 1) {
                             //
                             Message message3 = new Message();
                             message3.what = 0;
                             message3.arg1 = array;
-                            notificFragment3.mHandle.sendMessage(message3);
+                            systemFragment.mHandle.sendMessage(message3);
                         }
 
 
@@ -360,7 +361,7 @@ public class NotificationFragment extends BaseFragmentView {
                     Message message = new Message();
                     message.what = 0;
                     message.arg1 = 1;
-                    notificFragment.mHandle.sendMessage(message);
+                    orderFragment.mHandle.sendMessage(message);
                     array = 0;
 
 
@@ -379,7 +380,7 @@ public class NotificationFragment extends BaseFragmentView {
                     Message message1 = new Message();
                     message1.what = 0;
                     message1.arg1 = 1;
-                    notificFragment1.mHandle.sendMessage(message1);
+                    teamFragment.mHandle.sendMessage(message1);
                     array = 0;
 
                     break;
@@ -395,7 +396,7 @@ public class NotificationFragment extends BaseFragmentView {
                     Message message2 = new Message();
                     message2.what = 0;
                     message2.arg1 = 1;
-                    notificFragment2.mHandle.sendMessage(message2);
+                    companyFragment.mHandle.sendMessage(message2);
                     array = 0;
 
                     break;
@@ -412,7 +413,7 @@ public class NotificationFragment extends BaseFragmentView {
                     Message message3 = new Message();
                     message3.what = 0;
                     message3.arg1 = 1;
-                    notificFragment3.mHandle.sendMessage(message3);
+                    systemFragment.mHandle.sendMessage(message3);
                     array = 0;
                     break;
             }
@@ -438,7 +439,7 @@ public class NotificationFragment extends BaseFragmentView {
         if (SharedPreferencesHelps.getType() == 1) {
             orderRelat.setVisibility(View.VISIBLE);
             brifeRelat.setVisibility(View.VISIBLE);
-            rbOrder.setChecked(true);
+            //rbOrder.setChecked(true);
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {
@@ -485,15 +486,15 @@ public class NotificationFragment extends BaseFragmentView {
     }
 
     private void initViewPage() {
-        notificFragment = OrderNotificFragment.getInstnce(4);
-        notificFragment1 = OrderNotificFragment.getInstnce(3);
-        notificFragment2 = OrderNotificFragment.getInstnce(2);
-        notificFragment3 = OrderNotificFragment.getInstnce(1);
+        orderFragment = OrderNotificFragment.getInstnce(4);
+        teamFragment = OrderNotificFragment.getInstnce(3);
+        companyFragment = OrderNotificFragment.getInstnce(2);
+        systemFragment = OrderNotificFragment.getInstnce(1);
 
-        fragments.add(notificFragment);
-        fragments.add(notificFragment1);
-        fragments.add(notificFragment2);
-        fragments.add(notificFragment3);
+        fragments.add(orderFragment);
+        fragments.add(teamFragment);
+        fragments.add(companyFragment);
+        fragments.add(systemFragment);
 
         adapter = new FragAdapter(getActivity().getSupportFragmentManager(), fragments);
         studyViewPager.setAdapter(adapter);
@@ -534,7 +535,7 @@ public class NotificationFragment extends BaseFragmentView {
                 Message message = new Message();
                 message.what = 0;
                 message.arg1 = 1;
-                notificFragment.mHandle.sendMessage(message);
+                orderFragment.mHandle.sendMessage(message);
                 array = 0;
                 break;
             case 1:
@@ -548,7 +549,7 @@ public class NotificationFragment extends BaseFragmentView {
                 Message message1 = new Message();
                 message1.what = 0;
                 message1.arg1 = 1;
-                notificFragment1.mHandle.sendMessage(message1);
+                teamFragment.mHandle.sendMessage(message1);
                 array = 0;
                 break;
             case 2:
@@ -561,7 +562,7 @@ public class NotificationFragment extends BaseFragmentView {
                 Message message2 = new Message();
                 message2.what = 0;
                 message2.arg1 = 1;
-                notificFragment2.mHandle.sendMessage(message2);
+                companyFragment.mHandle.sendMessage(message2);
                 array = 0;
                 break;
             case 3:
@@ -575,7 +576,7 @@ public class NotificationFragment extends BaseFragmentView {
                 Message message3 = new Message();
                 message3.what = 0;
                 message3.arg1 = 1;
-                notificFragment3.mHandle.sendMessage(message3);
+                systemFragment.mHandle.sendMessage(message3);
                 array = 0;
                 break;
 
@@ -613,7 +614,7 @@ public class NotificationFragment extends BaseFragmentView {
 
             orderRelat.setVisibility(View.VISIBLE);
             brifeRelat.setVisibility(View.VISIBLE);
-            rbOrder.setChecked(true);
+           // rbOrder.setChecked(true);
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {

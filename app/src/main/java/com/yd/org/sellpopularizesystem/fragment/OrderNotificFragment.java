@@ -122,6 +122,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      */
     public static OrderNotificFragment getInstnce(int cate_id) {
         OrderNotificFragment notificFragmen = new OrderNotificFragment();
+       // Log.e(TAG, "initView: "+cate_id+":"+informationContents.size());
         Bundle bundle = new Bundle();
         bundle.putInt("cate_id", cate_id);
         notificFragmen.setArguments(bundle);
@@ -135,6 +136,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         setContentView(R.layout.fragment_notific);
         initViews();
         //获取数据
+        Log.e(TAG, "initView: "+cate_id+":"+informationContents.size());
         getData(1, true, cate_id);
     }
 
@@ -147,6 +149,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     }
 
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
+        Log.e("cate_id", "cate_id: "+ cate_id);
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
                 .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
                 .cacheKey(this.getClass().getSimpleName())
@@ -170,9 +173,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                     @Override
                     public void onSuccess(String json) {
-
                         dismissLoadingDialog();
                         jsonParse(json, isRefresh, cate_id);
+                    }
+
+                    @Override
+                    public void onCompleted() {
+                        super.onCompleted();
+                        dismissLoadingDialog();
                     }
                 });
 
@@ -184,7 +192,12 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         Gson gson = new Gson();
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
-            informationContents = bean.getResult();
+            Log.e("jsonParse", "jsonParse: "+cate_id+":"+informationContents.size());
+            if (informationContents.size()>0){
+                informationContents.clear();
+                sumnData.clear();
+            }
+            informationContents.addAll(bean.getResult());
             sumnData.addAll(informationContents);
         }
         //通知首页加载消息数量
@@ -196,14 +209,13 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     is_read += 1;
                 }
             }
-
+            Log.e("jsonParse", "is_read: "+is_read);
             Message message = null;
             if (cate_id == 4) {
                 message = new Message();
                 message.what = 0;
                 message.arg1 = is_read;
-
-
+                Log.e("is_read", "orderNum: "+ is_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
@@ -211,18 +223,21 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 message = new Message();
                 message.what = 1;
                 message.arg1 = is_read;
+                Log.e("is_read", "teamNum: "+ is_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(1);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             } else if (cate_id == 2) {
                 message = new Message();
                 message.what = 2;
                 message.arg1 = is_read;
+                Log.e("is_read", "comNum: "+ is_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(2);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             } else if (cate_id == 1) {
                 message = new Message();
                 message.what = 3;
                 message.arg1 = is_read;
+                Log.e("is_read", "systemNum: "+ is_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(3);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             }
@@ -432,6 +447,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         if (sumnData != null) {
             sumnData.clear();
         }
+        Log.e("onRefresh", "onRefresh: "+cate_id+"sumnData:"+sumnData.size());
         getData(page, true, cate_id);
     }
 
