@@ -2,6 +2,7 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.annotation.IdRes;
 import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -31,6 +33,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -145,6 +149,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
 
     private int flag;
+    private String push_to = "1";
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -158,7 +163,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 //日期选择
                 case R.id.edcustmomeDetailedBie:
                     //隐藏键盘
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     pvTime.show();
                     break;
                 //拍照
@@ -1042,7 +1047,27 @@ public class CustomDetailedActivity extends BaseActivity {
             setRightTitle(R.string.customdetaild_add, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    getEditTextData(ADD);
+
+
+                    Log.e("销售个数", "::::" + SharedPreferencesHelps.getSalers());
+
+                    //销售
+                    if (SharedPreferencesHelps.getType() == 1) {
+                        getEditTextData(ADD);
+
+
+                        //推荐人
+                    } else if (SharedPreferencesHelps.getType() == 2) {
+
+                        if (SharedPreferencesHelps.getSalers() > 5) {
+                            setIsSalers();
+                        } else {
+                            getEditTextData(ADD);
+                        }
+
+
+                    }
+
 
                 }
             });
@@ -1052,7 +1077,24 @@ public class CustomDetailedActivity extends BaseActivity {
             setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getEditTextData(UPDATE);
+
+
+                    //销售
+                    if (SharedPreferencesHelps.getType() == 1) {
+                        getEditTextData(UPDATE);
+
+
+                        //推荐人
+                    } else if (SharedPreferencesHelps.getType() == 2) {
+
+                        if (SharedPreferencesHelps.getSalers() > 5) {
+                            setIsSalers();
+                        } else {
+                            getEditTextData(UPDATE);
+                        }
+
+
+                    }
 
                 }
             });
@@ -1086,7 +1128,6 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
                 int progress = (int) (bytesRead * 100 / contentLength);
-
 
 
             }
@@ -1170,6 +1211,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("family_mobile", family_mobile);//亲属手机
         ajaxParams.put("family_email", family_email);//亲属邮箱
         ajaxParams.put("memo", mome);//备注
+        ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
 
 
         EasyHttp.post(strUrl)
@@ -1218,6 +1260,86 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     }
                 });
+
+
+    }
+
+    private void setIsSalers() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.create();
+        View view = View.inflate(this, R.layout.dialog_normal_layout, null);
+        // dialog.setView(view);// 将自定义的布局文件设置给dialog
+        dialog.setView(view, 0, 0, 0, 0);// 设置边距为0,保证在2.x的版本上运行没问题
+
+
+        //公司
+        final RadioButton radio_01 = (RadioButton) view.findViewById(R.id.radio_01);
+        //线上
+        final RadioButton radio_02 = (RadioButton) view.findViewById(R.id.radio_02);
+
+        //取消
+        Button positiveButton = (Button) view.findViewById(R.id.positiveButton);
+        //提交
+        Button negativeButton = (Button) view.findViewById(R.id.negativeButton);
+
+
+        RadioGroup radioId = (RadioGroup) view.findViewById(R.id.radioId);
+
+
+        radioId.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+
+                switch (checkedId) {
+                    case R.id.radio_01:
+                        radio_01.setChecked(true);
+                        radio_02.setChecked(false);
+                        break;
+
+                    case R.id.radio_02:
+                        radio_01.setChecked(false);
+                        radio_02.setChecked(true);
+                        break;
+
+                }
+            }
+        });
+
+
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+
+        negativeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (radio_01.isChecked()) {
+                    push_to = "2";
+
+                } else if (radio_02.isChecked()) {
+                    push_to = "1";
+
+                }
+
+                Log.e("push_to**", "push_to:" + push_to);
+
+
+                if (tag.equals("add")) {
+                    getEditTextData(ADD);
+                } else {
+                    getEditTextData(UPDATE);
+                }
+
+            }
+        });
+
+        dialog.show();
 
 
     }
@@ -1464,6 +1586,8 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
         try {
+          
+
             updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
                     birth_date, mobile, country, city, area,
                     e_mail, job, income, card_id, passport_id,
@@ -1539,7 +1663,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("获取客户信息","json:"+json);
+                        Log.e("获取客户信息", "json:" + json);
                         closeDialog();
                         Gson gson = new Gson();
                         CustomeDetailedBean customeDetailedBean = gson.fromJson(json, CustomeDetailedBean.class);
