@@ -1,23 +1,18 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.ThemedSpinnerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 
 /**
  * Created by hejin on 2017/4/26.
@@ -141,31 +136,10 @@ public class LawyerAdapter extends BaseAdapter implements SectionIndexer{
         return sectionIndices.length - 1;
     }
 
-   /* @Override
-    public View getHeaderView(int position, View convertView, ViewGroup parent) {
-        HeaderViewHolder hvh;
-        if(convertView == null){
-            hvh = new HeaderViewHolder();
-            convertView = layoutInflater.inflate(R.layout.lawyer_listview_header, null);
-            hvh.tvHeader = (TextView) convertView.findViewById(R.id.law_firm);
-            convertView.setTag(hvh);
-        }else{
-            hvh = (HeaderViewHolder)convertView.getTag();
-        }
-        hvh.tvHeader.setText(tasks.get(position).getLaw_firm());
-        return convertView;
-    }
-
-    @Override
-    public long getHeaderId(int position) {
-        return 0;
-    }*/
     class ViewHolder {
         TextView tvLawFirm;
         TextView tvName;
     }
 
-    class HeaderViewHolder{
-        TextView tvHeader;
-    }
+
 }

@@ -1,8 +1,6 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,21 +10,22 @@ import android.widget.SectionIndexer;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
-import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
-import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
+import com.yd.org.sellpopularizesystem.javaBean.ReferUserBean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexer {
-    private List<CustomBean.ResultBean> list = new ArrayList<>();
+/**
+ * Created by e-dot on 2017/8/29.
+ */
+
+public class MySalesAdapter extends BaseAdapter implements SectionIndexer {
+    private List<ReferUserBean.ResultBean> list = new ArrayList<>();
     private Context mContext;
 
-    public SortGroupMemberAdapter(Context mContext) {
-        this.mContext = mContext;
 
+    public MySalesAdapter(Context mContext) {
+        this.mContext = mContext;
 
     }
 
@@ -36,18 +35,18 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
      *
      * @param list
      */
-    public void updateListView(List<CustomBean.ResultBean> list) {
+    public void updateListView(List<ReferUserBean.ResultBean> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
-    public void addData(List<CustomBean.ResultBean> list) {
+    public void addData(List<ReferUserBean.ResultBean> list) {
         this.list.addAll(list);
 
         notifyDataSetChanged();
     }
 
-    public void addMore(List<CustomBean.ResultBean> datas) {
+    public void addMore(List<ReferUserBean.ResultBean> datas) {
         this.list.addAll(datas);
         notifyDataSetChanged();
     }
@@ -59,6 +58,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
     }
 
     public Object getItem(int position) {
+
         return list.get(position);
 
     }
@@ -85,7 +85,6 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
         }
 
-
         viewHolder.resultBean = list.get(position);
         // 根据position获取分类的首字母的Char ascii值
         int section = getSectionForPosition(position);
@@ -99,23 +98,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             viewHolder.tvLetter.setVisibility(View.GONE);
         }
 
-        viewHolder.tvNickName.setText(list.get(position).getEn_name().equals("") ? "" : list.get(position).getEn_name());
-
-        if (TextUtils.isEmpty(list.get(position).getMid_name()) || list.get(position).getMid_name() == null) {
-            viewHolder.tvTitle.setText(list.get(position).getSurname() + mContext.getString(R.string.single_blank_space) + list.get(position).getFirst_name());
-
-        } else {
-            viewHolder.tvTitle.setText(list.get(position).getSurname() + mContext.getString(R.string.single_blank_space) + list.get(position).getMid_name() + mContext.getString(R.string.single_blank_space) + list.get(position).getFirst_name());
-
-        }
-
-        if (!TextUtils.isEmpty(list.get(position).getHead_img()) && list.get(position).getHead_img() != null && list.get(position).getHead_img() != "") {
-            BitmapUtil.loadImageView(mContext, Contants.DOMAIN + "/" + list.get(position).getHead_img(), viewHolder.imageView);
-            Log.e("imageview", "tt:" + Contants.DOMAIN + "/" + list.get(position).getHead_img());
-
-        } else {
-            viewHolder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.settingbt));
-        }
+        viewHolder.tvTitle.setText(list.get(position).getSurname()+" "+list.get(position).getFirst_name());
 
         return view;
 
@@ -125,8 +108,8 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         TextView tvLetter;
         TextView tvTitle, tvNickName;
         ImageView imageView;
-        public CustomBean.ResultBean resultBean;
-        public LawyerBean.ResultBean m;
+        public ReferUserBean.ResultBean resultBean;
+
 
     }
 
@@ -147,6 +130,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         String sortStr;
         for (int i = 0; i < getCount(); i++) {
             sortStr = list.get(i).getSortLetters();
+
             char firstChar = sortStr.toUpperCase().charAt(0);
             if (firstChar == section) {
                 return i;
