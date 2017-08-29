@@ -621,8 +621,6 @@ public class ReserveActivity extends BaseActivity {
             }
         };
 
-
-
         HttpParams httpParams=new HttpParams();
         httpParams.put("order_type", "1");
         httpParams.put("property_id", bean.getProduct_childs_id() + "");
@@ -642,11 +640,6 @@ public class ReserveActivity extends BaseActivity {
             File  picFile = new File(picPath);
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
-
-        Log.e("httpParams**","httpParams:"+httpParams.toString());
-
-
-
 
         EasyHttp.post(Contants.CREAT_ORDER)
                 .cacheMode(CacheMode.NO_CACHE)
