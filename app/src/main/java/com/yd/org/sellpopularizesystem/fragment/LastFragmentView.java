@@ -93,7 +93,6 @@ public class LastFragmentView extends BaseFragmentView {
                 .params("study_id", studyId.equals("") ? "" : studyId)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

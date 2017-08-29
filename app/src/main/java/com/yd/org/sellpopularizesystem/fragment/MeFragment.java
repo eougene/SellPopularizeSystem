@@ -229,7 +229,6 @@ public class MeFragment extends BaseFragmentView {
                 .params("openid", openId)
                 .params("unionid", unionid)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

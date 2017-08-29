@@ -143,7 +143,6 @@ public class LoginFragment extends BaseFragmentView {
                 //个推识别码
                 .params("client_id", client_id)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -235,7 +234,6 @@ public class LoginFragment extends BaseFragmentView {
                 .params("type", "wechat")
                 .params("openid", openid)
                 .timeStamp(true)
-                .accessToken(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
