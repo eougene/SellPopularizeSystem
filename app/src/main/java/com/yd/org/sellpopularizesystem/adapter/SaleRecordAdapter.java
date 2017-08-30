@@ -238,7 +238,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             } else {
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv2.setVisibility(View.GONE);
+                viewHolder.saleRecorTv2.setVisibility(View.GONE)  ;
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
