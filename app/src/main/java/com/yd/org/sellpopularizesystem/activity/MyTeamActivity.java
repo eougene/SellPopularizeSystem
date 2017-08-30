@@ -20,6 +20,9 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,12 +103,22 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
 
     private void jsonParse(String json, boolean isRefresh) {
         Gson gson = new Gson();
-        TeamBean tb = gson.fromJson(json, TeamBean.class);
-        if (tb.getCode().equals("1")) {
-            if (tb.getResult().getSub() != null) {
-                teamGroupListData = tb.getResult().getSub();
-            }
+        try {
+            JSONObject jsonObject=new JSONObject(json);
+            if (jsonObject.getJSONArray("result").length()>0){
+                TeamBean tb = gson.fromJson(json, TeamBean.class);
+                if (tb.getCode().equals("1")) {
+                    if (tb.getResult()!= null ) {
+                        if (tb.getResult().getSub().size()>0){
+                            teamGroupListData = tb.getResult().getSub();
+                        }
 
+                    }
+
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
         if (isRefresh) {
