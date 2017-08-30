@@ -80,13 +80,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     private void getSaleData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.INQUIRE_ORDER_LIST)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", page + "")
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -263,7 +263,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page ++;
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        //getSaleData(page, false);
+        getSaleData(page, false);
     }
 
     @Override
