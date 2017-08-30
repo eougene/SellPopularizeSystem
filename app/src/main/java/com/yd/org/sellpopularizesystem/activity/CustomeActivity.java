@@ -167,7 +167,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         }
 
         // 根据a-z进行排序
-       // Collections.sort(filterDateList, pinyinComparator);
+        // Collections.sort(filterDateList, pinyinComparator);
         adapter.updateListView(filterDateList);
     }
 
@@ -241,7 +241,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
 
             //如果是推荐人,保存记录
-            if (SharedPreferencesHelps.getType()==2){
+            if (SharedPreferencesHelps.getType() == 2) {
                 SharedPreferencesHelps.setSalers(SourceDateList.size());
             }
         }
@@ -279,6 +279,16 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 public void onClick(View v) {
                     finish();
                     overridePendingTransition(0, R.anim.out_anim);
+                }
+            });
+            clickRightImageView(R.mipmap.addim, new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("add", "add");
+                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
+
                 }
             });
         } else {

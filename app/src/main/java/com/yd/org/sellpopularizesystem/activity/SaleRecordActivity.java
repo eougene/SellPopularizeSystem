@@ -285,7 +285,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                     }
                     break;
 
-
             }
 
         }

@@ -24,6 +24,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -149,7 +150,6 @@ public class CustomDetailedActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
 
     private int flag;
-    private String push_to = "1";
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -162,8 +162,28 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (view.getId()) {
                 //日期选择
                 case R.id.edcustmomeDetailedBie:
+                   InputMethodManager imm = (InputMethodManager)
+                            getSystemService(CustomDetailedActivity.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(edcustmomeDetailedBie.getWindowToken(), 0);
+                    /* if (getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) {
+                        //隐藏软键盘
+                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+                    }
+                    // 隐藏键盘
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(CustomDetailedActivity.INPUT_METHOD_SERVICE);
+                    // 得到InputMethodManager的实例
+                    if (imm.isActive()) {
+                        // 如果开启
+                        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
+                                InputMethodManager.HIDE_NOT_ALWAYS);
+                        // 关闭软键盘，开启方法相同，这个方法是切换开启与关闭状态的
+                    }
+                    edcustmomeDetailedBie.setFocusable(true);
+                    edcustmomeDetailedBie.setFocusableInTouchMode(true);
+                    edcustmomeDetailedBie.requestFocus();*/
                     //隐藏键盘
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     pvTime.show();
                     break;
                 //拍照
@@ -194,6 +214,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //城市选择
                 case R.id.edcustmomeDetailedCity:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     if (isDataLoaded) {
                         Log.e(TAG, "onClick: " + edcustmomeDetailedNationality.getText());
                         if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))) {
@@ -210,22 +231,26 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //国家或地区选择
                 case R.id.edcustmomeDetailedNationality:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     flag = 1;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国家选择2
                 case R.id.tvCountry:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     flag = 2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
 
                 //国家
                 case R.id.tvCountry_01:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     flag = 4;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国籍选择
                 case R.id.etNation:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
                     flag = 3;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
@@ -262,6 +287,7 @@ public class CustomDetailedActivity extends BaseActivity {
             }
         }
     };
+    private String push_to="1";
 
     @Override
     protected int setContentView() {
@@ -1586,7 +1612,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
 
         try {
-          
+
 
             updateOrAddUserInfo(updateOrAdd, mid_name, surname, first_name, en_name,
                     birth_date, mobile, country, city, area,
