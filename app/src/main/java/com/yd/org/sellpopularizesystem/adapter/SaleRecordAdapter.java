@@ -238,7 +238,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             } else {
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
-                viewHolder.saleRecorTv2.setVisibility(View.GONE)  ;
+                viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
@@ -260,13 +260,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
     public class OnClick implements View.OnClickListener {
         private SaleOrderBean.ResultBean resultBean;
-        private TextView textView;
 
-        public OnClick(SaleOrderBean.ResultBean resultBean,TextView textView) {
-            this.resultBean = resultBean;
-            this.textView=textView;
-
-        }
 
         public OnClick(SaleOrderBean.ResultBean resultBean) {
             this.resultBean = resultBean;
@@ -295,7 +289,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                     break;
                 //上传合同首页
                 case R.id.saleRecorTv3:
-                    //textView.setVisibility(View.GONE);
                     SaleRecordActivity.saleRecordActivity.askntractO(resultBean, "1");
                     break;
                 //上传首付款凭证
