@@ -87,6 +87,13 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         getInfo();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getInfo();
+    }
+
     @Override
     public void setListener() {
         myHeadIm.setOnClickListener(this);
