@@ -1073,10 +1073,6 @@ public class CustomDetailedActivity extends BaseActivity {
             setRightTitle(R.string.customdetaild_add, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-                    Log.e("销售个数", "::::" + SharedPreferencesHelps.getSalers());
-
                     //销售
                     if (SharedPreferencesHelps.getType() == 1) {
                         getEditTextData(ADD);
