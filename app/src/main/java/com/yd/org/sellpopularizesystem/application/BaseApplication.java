@@ -48,6 +48,8 @@ public class BaseApplication extends Application {
     private static Context mContext;
     //腾讯更新
     public static final String APP_ID = "c59ee68679";
+
+    public static final String APP_ID_Test = "2dfe5cbc5e";
     //个推识别码
     public String cid = "";
 
@@ -169,7 +171,6 @@ public class BaseApplication extends Application {
                 .tasksProcessingOrder(QueueProcessingType.LIFO) //工作队列
                 .diskCacheFileCount(200) //缓存的文件数量
                 .diskCache(new UnlimitedDiskCache(cacheDir)) //自定义缓存路径
-                //.writeDebugLogs() // Remove for release app
                 .build();
         return config;
     }
@@ -263,8 +264,18 @@ public class BaseApplication extends Application {
          * 参数1： applicationContext
          * 参数2：appId
          * 参数3：是否开启debug
+         *
+         *
          */
-        Bugly.init(getApplicationContext(), APP_ID, true);
+
+
+        //测试版
+        if (Contants.DOMAIN.contains("http://crm.vxda.cn")){
+            Bugly.init(getApplicationContext(), APP_ID_Test, true);
+        }else {
+            Bugly.init(getApplicationContext(), APP_ID, true);
+        }
+
 
 
     }

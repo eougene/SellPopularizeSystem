@@ -238,12 +238,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         CustomBean product = gson.fromJson(json, CustomBean.class);
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
-
-
-            //如果是推荐人,保存记录
-            if (SharedPreferencesHelps.getType() == 2) {
-                SharedPreferencesHelps.setSalers(SourceDateList.size());
-            }
         }
 
 

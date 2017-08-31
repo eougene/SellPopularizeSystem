@@ -24,7 +24,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -52,6 +51,7 @@ import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.CustomeDetailedBean;
 import com.yd.org.sellpopularizesystem.javaBean.DistrictInfoModel;
+import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.javaBean.ProvinceInfoModel;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.myView.MyPopupwindow;
@@ -150,6 +150,8 @@ public class CustomDetailedActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
 
     private int flag;
+    //推荐人关联的客户
+    private int refer_number = 0;
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -162,28 +164,8 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (view.getId()) {
                 //日期选择
                 case R.id.edcustmomeDetailedBie:
-                   InputMethodManager imm = (InputMethodManager)
-                            getSystemService(CustomDetailedActivity.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(edcustmomeDetailedBie.getWindowToken(), 0);
-                    /* if (getWindow().getAttributes().softInputMode == WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED) {
-                        //隐藏软键盘
-                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-                    }
-                    // 隐藏键盘
-
-                    InputMethodManager imm = (InputMethodManager) getSystemService(CustomDetailedActivity.INPUT_METHOD_SERVICE);
-                    // 得到InputMethodManager的实例
-                    if (imm.isActive()) {
-                        // 如果开启
-                        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,
-                                InputMethodManager.HIDE_NOT_ALWAYS);
-                        // 关闭软键盘，开启方法相同，这个方法是切换开启与关闭状态的
-                    }
-                    edcustmomeDetailedBie.setFocusable(true);
-                    edcustmomeDetailedBie.setFocusableInTouchMode(true);
-                    edcustmomeDetailedBie.requestFocus();*/
                     //隐藏键盘
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     pvTime.show();
                     break;
                 //拍照
@@ -214,7 +196,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //城市选择
                 case R.id.edcustmomeDetailedCity:
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     if (isDataLoaded) {
                         Log.e(TAG, "onClick: " + edcustmomeDetailedNationality.getText());
                         if (edcustmomeDetailedNationality.getText().toString().equals(getString(R.string.china))) {
@@ -231,26 +213,26 @@ public class CustomDetailedActivity extends BaseActivity {
                     break;
                 //国家或地区选择
                 case R.id.edcustmomeDetailedNationality:
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 1;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国家选择2
                 case R.id.tvCountry:
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 2;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
 
                 //国家
                 case R.id.tvCountry_01:
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 4;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国籍选择
                 case R.id.etNation:
-                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this,edcustmomeDetailedBie);
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 3;
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
@@ -287,7 +269,7 @@ public class CustomDetailedActivity extends BaseActivity {
             }
         }
     };
-    private String push_to="1";
+    private String push_to = "1";
 
     @Override
     protected int setContentView() {
@@ -304,6 +286,12 @@ public class CustomDetailedActivity extends BaseActivity {
             if (tag.equals("add")) {
                 setTitle(R.string.custome_add);
                 llOperate.setVisibility(View.GONE);
+
+                if (SharedPreferencesHelps.getType() == 2) {
+                    getInfo();
+                }
+
+
                 //完善用户信息
             } else if (tag.equals("completeinfo")) {
                 setTitle(R.string.complete_user);
@@ -316,17 +304,23 @@ public class CustomDetailedActivity extends BaseActivity {
                 getViewById(R.id.llOperate).setVisibility(View.GONE);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("cun");
                 getCustomInfo(resultBean);
+
+                Log.e("getCustomInfo", "getCustomInfo***1");
             } else {//更新客户
                 setTitle(R.string.customdetaild_title);
                 resultBean = (CustomBean.ResultBean) bundle.getSerializable("custome");
+                Log.e("getCustomInfo", "getCustomInfo***2");
                 getCustomInfo(resultBean);
             }
         }
         if (bundle.getString(ExtraName.SCALETOCUSTOME) != null) {
             setTitle(R.string.customdetaild_title);
             resultBean = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome"));
+            Log.e("getCustomInfo", "getCustomInfo***3");
             getCustomInfo(resultBean);
         }
+
+
         initProviceSelectView();
         setTimePicker();
 
@@ -1073,10 +1067,6 @@ public class CustomDetailedActivity extends BaseActivity {
             setRightTitle(R.string.customdetaild_add, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-
-                    Log.e("销售个数", "::::" + SharedPreferencesHelps.getSalers());
-
                     //销售
                     if (SharedPreferencesHelps.getType() == 1) {
                         getEditTextData(ADD);
@@ -1085,7 +1075,7 @@ public class CustomDetailedActivity extends BaseActivity {
                         //推荐人
                     } else if (SharedPreferencesHelps.getType() == 2) {
 
-                        if (SharedPreferencesHelps.getSalers() > 5) {
+                        if (refer_number > 5) {
                             setIsSalers();
                         } else {
                             getEditTextData(ADD);
@@ -1113,7 +1103,7 @@ public class CustomDetailedActivity extends BaseActivity {
                         //推荐人
                     } else if (SharedPreferencesHelps.getType() == 2) {
 
-                        if (SharedPreferencesHelps.getSalers() > 5) {
+                        if (refer_number > 5) {
                             setIsSalers();
                         } else {
                             getEditTextData(UPDATE);
@@ -1141,6 +1131,49 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
+    //获取销售人员信息
+    private void getInfo() {
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+
+        EasyHttp.get(Contants.USER_INFO)
+                .cacheMode(CacheMode.NO_CACHE)
+                .cacheKey(this.getClass().getSimpleName())
+                .params(httpParams)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        ToasShow.showToastCenter(CustomDetailedActivity.this, e.getMessage());
+                        Log.e("onError***", "onError:" + e.getMessage());
+
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+                        Log.e("onSuccess***", "onSuccess:" + s);
+                        closeDialog();
+                        Gson gson = new Gson();
+                        MyUserInfo myUserInfo = gson.fromJson(s, MyUserInfo.class);
+                        if (myUserInfo.getCode().equals("1")) {
+                            refer_number = myUserInfo.getResult().getRefer_number();
+                            Log.e("refer_number**", "refer_number:" + refer_number);
+                        } else {
+                            ToasShow.showToastCenter(CustomDetailedActivity.this, myUserInfo.getMsg());
+                        }
+
+
+                    }
+                });
+    }
+
+
     private void updateOrAddUserInfo(
             final String updateOrAdd, String mid_name, String surname, String first_name, String en_name,
             String birth_date, String mobile, String country, String city, String area,
@@ -1153,7 +1186,6 @@ public class CustomDetailedActivity extends BaseActivity {
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-                int progress = (int) (bytesRead * 100 / contentLength);
 
 
             }
@@ -1689,7 +1721,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("获取客户信息", "json:" + json);
+                        Log.e("CustomDetailedActivity", "json:" + json);
                         closeDialog();
                         Gson gson = new Gson();
                         CustomeDetailedBean customeDetailedBean = gson.fromJson(json, CustomeDetailedBean.class);

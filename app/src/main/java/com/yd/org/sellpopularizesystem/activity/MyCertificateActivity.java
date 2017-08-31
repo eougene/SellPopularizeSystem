@@ -471,9 +471,8 @@ public class MyCertificateActivity extends BaseActivity {
                             }
 
                             remarkEdit.setText(lb.getResult().getRequest_notes());
+                            BitmapUtil.loadImageView(MyCertificateActivity.this, picPath, srcImageView);
 
-
-                            BitmapUtil.loadImageView(MyCertificateActivity.this, Contants.DOMAIN + "/" + lb.getResult().getLicence_file(), srcImageView);
 
 
                         }
