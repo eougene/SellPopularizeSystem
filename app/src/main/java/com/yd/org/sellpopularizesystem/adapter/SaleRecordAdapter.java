@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +30,7 @@ public class SaleRecordAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater layoutInflater;
     private List<SaleOrderBean.ResultBean> sobRbData = new ArrayList<>();
-
+    private int pos;
     public SaleRecordAdapter(Context mContext) {
 
         this.mContext = mContext;
@@ -61,7 +62,7 @@ public class SaleRecordAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder viewHolder = null;
-
+        this.pos=position;
         if (convertView == null) {
             viewHolder = new ViewHolder();
             convertView = layoutInflater.inflate(R.layout.saleorder_listview_item, null);
@@ -250,8 +251,8 @@ public class SaleRecordAdapter extends BaseAdapter {
 
         viewHolder.saleRecorTv1.setOnClickListener(new OnClick(viewHolder.resultBean));
         viewHolder.saleRecorTv2.setOnClickListener(new OnClick(viewHolder.resultBean));
-        viewHolder.saleRecorTv3.setOnClickListener(new OnClick(viewHolder.resultBean));
-        viewHolder.saleRecorTv4.setOnClickListener(new OnClick(viewHolder.resultBean));
+        viewHolder.saleRecorTv3.setOnClickListener(new OnClick(viewHolder.resultBean,viewHolder.saleRecorTv3));
+        viewHolder.saleRecorTv4.setOnClickListener(new OnClick(viewHolder.resultBean,viewHolder.saleRecorTv4));
 
         return convertView;
 
@@ -277,7 +278,6 @@ public class SaleRecordAdapter extends BaseAdapter {
 
             switch (v.getId()) {
 
-
                 //取消订单
                 case R.id.saleRecorTv1:
                     new AlertDialog.Builder(mContext).setMessage(mContext.getResources().getString(R.string.error_)).setPositiveButton(mContext.getResources().getString(R.string.home_sure), new DialogInterface.OnClickListener() {
@@ -296,10 +296,15 @@ public class SaleRecordAdapter extends BaseAdapter {
                 //上传合同首页
                 case R.id.saleRecorTv3:
                     //textView.setVisibility(View.GONE);
+                    mHideViewListener.hideView(textView);
+                    Log.e("view", "textView: "+textView.getId());
                     SaleRecordActivity.saleRecordActivity.askntractO(resultBean, "1");
+
                     break;
                 //上传首付款凭证
                 case R.id.saleRecorTv4:
+                    mHideViewListener.hideView(textView);
+                    Log.e("view", "textView: "+textView.getId());
                     SaleRecordActivity.saleRecordActivity.startPhotos(resultBean, "2");
                     break;
 
@@ -309,9 +314,29 @@ public class SaleRecordAdapter extends BaseAdapter {
         }
     }
 
+
     public class ViewHolder {
         public SaleOrderBean.ResultBean resultBean;
         private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4;
 
+    }
+
+
+
+
+
+    private HideViewListener mHideViewListener;
+
+    public void setHideViewListener(HideViewListener listener){
+
+        this.mHideViewListener = listener;
+    }
+
+    public interface HideViewListener{
+        /**
+         * 传递点击的view
+         * @param view
+         */
+        void hideView(View view);
     }
 }
