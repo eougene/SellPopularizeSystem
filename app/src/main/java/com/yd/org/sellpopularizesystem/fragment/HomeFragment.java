@@ -155,7 +155,7 @@ public class HomeFragment extends BaseFragmentView {
     private void getHomeData() {
 
         EasyHttp.get(Contants.HOME_DAA)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())

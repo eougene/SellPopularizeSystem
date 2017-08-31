@@ -68,7 +68,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
 
     private void getStudyListData(final boolean b, int page) {
         EasyHttp.get(Contants.CHECK_LIST)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
