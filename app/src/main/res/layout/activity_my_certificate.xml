@@ -170,13 +170,13 @@
 
 
                 <ImageView
+                    android:scaleType="fitXY"
                     android:id="@+id/srcImageView"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:background="@drawable/stroke"
-                    android:scaleType="fitXY"
                     android:src="@mipmap/pic_add"/>
 
 
