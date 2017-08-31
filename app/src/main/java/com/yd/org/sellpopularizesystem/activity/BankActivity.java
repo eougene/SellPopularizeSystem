@@ -19,7 +19,7 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import butterknife.ButterKnife;
+
 
 public class BankActivity extends BaseActivity {
     EditText accountNameEd;
@@ -31,7 +31,7 @@ public class BankActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
+
     }
 
     @Override

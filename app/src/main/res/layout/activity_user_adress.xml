@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="选择国家或地区"/>
+                android:text="@string/selectadd"/>
 
             <TextView
                 android:id="@+id/userAdressTv"
@@ -33,7 +33,7 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
-                android:text="中国"
+                android:text="@string/china"
                 android:textColor="@color/gray"
                 android:textColorHint="@color/setting_bac"
                 android:textSize="@dimen/tv_size_15"/>
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="单元号"/>
+                android:text="@string/unitnum"/>
 
             <EditText
                 android:id="@+id/userUnitNumberEd"
@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="街道号码"/>
+                android:text="@string/streetNum"/>
 
             <EditText
                 android:id="@+id/userStreetNumberEd"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="区"/>
+                android:text="@string/qu"/>
 
             <EditText
                 android:id="@+id/userSuburbNumberEd"
@@ -148,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="州"/>
+                android:text="@string/zhou"/>
 
             <EditText
                 android:id="@+id/userStateEd"
@@ -183,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="街道地址1"/>
+                android:text="@string/street1"/>
 
             <EditText
                 android:id="@+id/userDetailedAddressEd"
@@ -217,7 +217,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="街道地址2"/>
+                android:text="@string/street2"/>
 
             <EditText
                 android:id="@+id/userDetailedAddressEd2"
@@ -251,7 +251,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="邮编"/>
+                android:text="@string/postcode"/>
 
             <EditText
                 android:id="@+id/userPostcodeEd"

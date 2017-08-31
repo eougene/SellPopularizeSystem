@@ -590,6 +590,39 @@
     <string name="invite_code">邀请二维码</string>
     <string name="myinfo">我的信息</string>
     <string name="remark_certificate">备注事项</string>
-
+    <string name="codeerror">推荐码不能为空</string>
+    <string name="surenameerror">请填写真实的姓氏</string>
+    <string name="nameerror">请填写真实的名字</string>
+    <string name="password">密码</string>
+    <string name="emailemptyerror">邮箱不能为空</string>
+    <string name="registeremail_hint">请输入有效邮箱账号</string>
+    <string name="tel_hint">请输入手机号码</string>
+    <string name="realname_hint">请输入真实名字</string>
+    <string name="real_urname_hint">请输入真实姓氏</string>
+    <string name="recode_hint">推荐码</string>
+    <string name="input_recode">请输入六位推荐码</string>
+    <string name="xingshi">姓氏</string>
+    <string name="mingzi">名字</string>
+    <string name="telnum">手机号</string>
+    <string name="emailacc">邮箱账号</string>
+    <string name="selectadd">选择国家或地区</string>
+    <string name="streetNum">街道号码</string>
+    <string name="openbank">开户行</string>
+    <string name="cardnum">卡号</string>
+    <string name="cardholder">持卡人</string>
+    <string name="bankhint">请填写本人的银行卡信息</string>
+    <string name="mycertificate">我的证书</string>
+    <string name="besale">成为销售</string>
+    <string name="completel_add">请完善我的地址</string>
+    <string name="complete_bank">请完善银行卡信息</string>
+    <string name="xingshi_empty">姓氏不能为空</string>
+    <string name="name_empty">名字不能为空</string>
+    <string name="companyname_empty">公司名称不能为空</string>
+    <string name="telhint">请输入联系电话</string>
+    <string name="myaddress">我的地址</string>
+    <string name="bankacc">银行账户</string>
+    <string name="inputconame">请输入公司名称</string>
+    <string name="xingming">姓名</string>
+    <string name="company_add">公司地址</string>
 
 </resources>

@@ -41,6 +41,7 @@ import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -377,6 +378,7 @@ public class MyCertificateActivity extends BaseActivity {
         } else {
 
             if (!picPath.contains(Contants.DOMAIN)) {
+                Log.e("picPath", "picPath: "+picPath);
                 file = new File(picPath);
                 httpParams.put("file", file, mUIProgressResponseCallBack);
             }
@@ -460,8 +462,8 @@ public class MyCertificateActivity extends BaseActivity {
 
 
                             picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
-                            dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date() + "000")));
-                            dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date() + "000")));
+                            dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date().split("\\.")[0] + "000")));
+                            dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date().split("\\.")[0] + "000")));
                             zhEdTextView.setText(lb.getResult().getLicence_number());
 
                             if (lb.getResult().getLicence_type() == 1) {
