@@ -1269,7 +1269,13 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("family_mobile", family_mobile);//亲属手机
         ajaxParams.put("family_email", family_email);//亲属邮箱
         ajaxParams.put("memo", mome);//备注
-        ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
+
+
+        //推荐人
+       if (SharedPreferencesHelps.getType() == 2) {
+            ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
+
+        }
 
 
         EasyHttp.post(strUrl)
