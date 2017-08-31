@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@color/search_edit_bac"
             android:padding="@dimen/padding_margin_10"
-            android:text="请填写本人的银行卡信息"
+            android:text="@string/bankhint"
             android:textColor="@color/gray"
             android:textSize="@dimen/tv_size_15"/>
 
@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="持卡人"/>
+                android:text="@string/cardholder"/>
 
             <EditText
                 android:id="@+id/accountNameEd"
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="卡号"/>
+                android:text="@string/cardnum"/>
 
             <EditText
                 android:id="@+id/accountNumberEd"
@@ -100,7 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="开户行"/>
+                android:text="@string/openbank"/>
 
             <EditText
                 android:id="@+id/bankNameEd"

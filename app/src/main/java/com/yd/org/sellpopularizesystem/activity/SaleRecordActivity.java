@@ -11,7 +11,9 @@ import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
+import com.google.android.gms.playlog.internal.LogEvent;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
@@ -75,6 +77,10 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         ptrlSaleRecord.setOnRefreshListener(this);
         //加载数据
         getSaleData(page, true);
+
+
+
+
     }
 
 
@@ -140,6 +146,13 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
             saleAdapter = new SaleRecordAdapter(this);
             lvSaleRecord.setAdapter(saleAdapter);
+
+
+
+
+
+
+
         }
        // ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         saleAdapter.addMore(sobRbData);
@@ -375,6 +388,21 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
+                            /*runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    saleAdapter.setHideViewListener(new SaleRecordAdapter.HideViewListener() {
+                                        @Override
+                                        public void hideView(View view) {
+                                            Log.e("view", "hideView: "+view.getId());
+                                            TextView textView= (TextView) view;
+                                            textView.setVisibility(View.GONE);
+                                            // saleAdapter.notifyDataSetChanged();
+                                        }
+                                    });
+                                }
+                            });*/
+
                             ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
                         } else {
                             ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());

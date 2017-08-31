@@ -79,9 +79,9 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
 
         if (SharedPreferencesHelps.getType() == 1) {
-            myCertificate.setText("我的证书");
+            myCertificate.setText(R.string.mycertificate);
         } else if (SharedPreferencesHelps.getType() == 2) {
-            myCertificate.setText("成为销售");
+            myCertificate.setText(R.string.besale);
 
         }
         getInfo();
@@ -109,12 +109,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
                 //判断我的地址信息是否完整,,,==0不完整,
                 if (SharedPreferencesHelps.getUserAdress() == 0) {
-                    ToasShow.showToastBottom(MyInfoActivity.this, "请完善我的地址");
+                    ToasShow.showToastBottom(MyInfoActivity.this, getString(R.string.completel_add));
                     return;
 
                     //判断银行卡信息是否完整,,,==0不完整,
                 } else if (SharedPreferencesHelps.getUserBank() == 0) {
-                    ToasShow.showToastBottom(MyInfoActivity.this, "请完善银行卡信息");
+                    ToasShow.showToastBottom(MyInfoActivity.this, getString(R.string.complete_bank));
                     return;
                 } else {
                     updateUserInfo();
@@ -177,7 +177,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         //姓
         myFirstNameEdit.setText(myUserInfo.getResult().getSurname());
         //名
-        myLastNameEdit.setText(myUserInfo.getResult().getFirst_name());
+       myLastNameEdit.setText(myUserInfo.getResult().getFirst_name());
         //手机号
         myPhoneEdit.setText(myUserInfo.getResult().getMobile());
         //邮箱
@@ -203,7 +203,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //姓
         if (TextUtils.isEmpty(myFirstNameEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(MyInfoActivity.this, "姓不能为空");
+            ToasShow.showToastCenter(MyInfoActivity.this, getString(R.string.xingshi_empty));
             return;
         } else {
             surname = myFirstNameEdit.getText().toString().trim();
@@ -211,7 +211,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //名
         if (TextUtils.isEmpty(myLastNameEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(MyInfoActivity.this, "名不能为空");
+            ToasShow.showToastCenter(MyInfoActivity.this, getString(R.string.name_empty));
             return;
         } else {
             first_name = myLastNameEdit.getText().toString().trim();
@@ -233,7 +233,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //名
         if (TextUtils.isEmpty(myCompanyEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(MyInfoActivity.this, "公司名称不能为空");
+            ToasShow.showToastCenter(MyInfoActivity.this, getString(R.string.companyname_empty));
             return;
         } else {
             business_name = myCompanyEdit.getText().toString().trim();

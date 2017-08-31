@@ -22,14 +22,14 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="推荐码"/>
+                android:text="@string/recode_hint"/>
 
             <EditText
                 android:id="@+id/recommendIdEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入六位推荐码"
+                android:hint="@string/input_recode"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -57,14 +57,14 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="姓氏"/>
+                android:text="@string/xingshi"/>
 
             <EditText
                 android:id="@+id/familyNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入真实姓氏"
+                android:hint="@string/real_urname_hint"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -92,14 +92,14 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="名字"/>
+                android:text="@string/mingzi"/>
 
             <EditText
                 android:id="@+id/lastNameEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入真实名字"
+                android:hint="@string/realname_hint"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -126,14 +126,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="手机号"/>
+                android:text="@string/telnum"/>
 
             <EditText
                 android:id="@+id/phoneEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入手机号码"
+                android:hint="@string/tel_hint"
                 android:imeOptions="actionNext"
                 android:inputType="phone"
                 android:maxLines="1"
@@ -162,14 +162,14 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="邮箱账号"/>
+                android:text="@string/emailacc"/>
 
             <EditText
                 android:id="@+id/regsterEmailEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:hint="请输入有效邮箱账号"
+                android:hint="@string/registeremail_hint"
                 android:imeOptions="actionNext"
                 android:inputType="textEmailSubject"
                 android:maxLines="1"
@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="密码"/>
+                android:text="@string/password"/>
 
             <EditText
                 android:id="@+id/passwordEdit"

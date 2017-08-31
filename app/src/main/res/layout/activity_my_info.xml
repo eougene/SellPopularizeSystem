@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="姓"/>
+                android:text="@string/xingshi"/>
 
             <EditText
                 android:id="@+id/myFirstNameEdit"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="end"
-                android:hint="姓"
+                android:hint="@string/xingming"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="名"/>
+                android:text="@string/mingzi"/>
 
             <EditText
                 android:id="@+id/myLastNameEdit"
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="end"
-                android:hint="名"
+                android:hint="@string/mingzi"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -125,7 +125,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="手机"/>
+                android:text="@string/mobilephone"/>
 
             <EditText
                 android:id="@+id/myPhoneEdit"
@@ -133,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="end"
-                android:hint="手机号码"
+                android:hint="@string/telhint"
                 android:imeOptions="actionNext"
                 android:inputType="phone"
                 android:maxLines="1"
@@ -161,7 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="邮箱"/>
+                android:text="@string/email"/>
 
             <EditText
                 android:id="@+id/myEmailEdit"
@@ -170,7 +170,7 @@
                 android:background="@null"
                 android:focusable="false"
                 android:gravity="end"
-                android:hint="邮箱"
+                android:hint="@string/email"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -198,7 +198,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="我的地址"/>
+                android:text="@string/myaddress"/>
 
             <TextView
                 android:id="@+id/myAdressTv"
@@ -241,7 +241,7 @@
                 android:layout_height="wrap_content"
                 android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
-                android:text="银行账号"/>
+                android:text="@string/bankacc"/>
 
             <TextView
                 android:id="@+id/myBankTV"
@@ -282,7 +282,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="公司名称"/>
+                android:text="@string/comname"/>
 
             <EditText
                 android:id="@+id/myCompanyEdit"
@@ -290,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="end"
-                android:hint="公司名称"
+                android:hint="@string/inputconame"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
@@ -317,7 +317,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="公司地址"/>
+                android:text="@string/company_add"/>
 
             <TextView
                 android:id="@+id/myCompanyAdressTV"
@@ -360,7 +360,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="我的证书"/>
+                android:text="@string/mycertificate"/>
 
             <TextView
                 android:id="@+id/myCertificateTV"

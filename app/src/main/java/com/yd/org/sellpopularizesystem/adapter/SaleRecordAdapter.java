@@ -260,7 +260,13 @@ public class SaleRecordAdapter extends BaseAdapter {
 
     public class OnClick implements View.OnClickListener {
         private SaleOrderBean.ResultBean resultBean;
+        private TextView textView;
 
+        public OnClick(SaleOrderBean.ResultBean resultBean,TextView textView) {
+            this.resultBean = resultBean;
+            this.textView=textView;
+
+        }
 
         public OnClick(SaleOrderBean.ResultBean resultBean) {
             this.resultBean = resultBean;
@@ -289,6 +295,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                     break;
                 //上传合同首页
                 case R.id.saleRecorTv3:
+                    //textView.setVisibility(View.GONE);
                     SaleRecordActivity.saleRecordActivity.askntractO(resultBean, "1");
                     break;
                 //上传首付款凭证
