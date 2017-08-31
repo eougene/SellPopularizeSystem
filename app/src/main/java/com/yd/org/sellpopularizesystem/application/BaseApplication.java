@@ -171,7 +171,6 @@ public class BaseApplication extends Application {
                 .tasksProcessingOrder(QueueProcessingType.LIFO) //工作队列
                 .diskCacheFileCount(200) //缓存的文件数量
                 .diskCache(new UnlimitedDiskCache(cacheDir)) //自定义缓存路径
-                //.writeDebugLogs() // Remove for release app
                 .build();
         return config;
     }
