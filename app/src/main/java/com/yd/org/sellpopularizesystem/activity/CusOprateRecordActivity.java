@@ -594,7 +594,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCompany_id() + "")
                 .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCustomer_id() + "")
                 .params("property_id", "")
@@ -680,7 +680,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                             listView.setAdapter(eoiAdapter);
                         } else {
-                            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
                             eoiAdapter.addMore(eoiList);
                         }
                     }
@@ -799,7 +798,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -973,7 +972,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -1090,13 +1089,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-//        if (flag.equals("custovisit")) {
-//            getVisitData(page, false);
-//        } else if (flag.equals("custoreser")) {
-//            getReservertData(page, false);
-//        } else {
-//            getEoiData(page, false);
-//        }
+        if (flag.equals("custovisit")) {
+            getVisitData(page, false);
+        } else if (flag.equals("custoreser")) {
+            getReservertData(page, false);
+        } else {
+            getEoiData(page, false);
+        }
     }
 
     @Override

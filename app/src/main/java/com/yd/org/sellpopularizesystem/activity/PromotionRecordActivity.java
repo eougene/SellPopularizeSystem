@@ -109,13 +109,13 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-//        if (flag.equals("custoexpand")) {
-//            getExpandReData(page, false);
-//
-//            //购房记录
-//        } else {
-//            getHouseurchase(page, false);
-//        }
+        if (flag.equals("custoexpand")) {
+            getExpandReData(page, false);
+
+            //购房记录
+        } else {
+            getHouseurchase(page, false);
+        }
 
 
     }
@@ -129,7 +129,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
                 .params("customer_id", resultBean.getCustomer_id() + "")
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -217,7 +217,7 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 .params("client", resultBean.getCustomer_id() + "")
                 .params("status", "11")
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

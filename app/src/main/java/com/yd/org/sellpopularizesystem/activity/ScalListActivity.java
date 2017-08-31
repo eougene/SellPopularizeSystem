@@ -82,7 +82,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
                 .params("external", "0-100000000")
                 .params("building_area", "0-100000000")
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -156,7 +156,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
 
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        //getProductListData(false, page);
+        getProductListData(false, page);
 
     }
 
