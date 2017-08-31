@@ -1137,7 +1137,7 @@ public class CustomDetailedActivity extends BaseActivity {
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
@@ -1700,7 +1700,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private void getCustomInfo(CustomBean.ResultBean resultBean) {
 
         EasyHttp.get(Contants.CUSTOME_DETAILED)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("customer_id", resultBean.getCustomer_id() + "")

@@ -58,7 +58,7 @@ public class GradeActivity extends BaseActivity {
 
     private void getData() {
         EasyHttp.get(Contants.GET_TEST_RESULT)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("answer_id", resultBean.getAnswer_id() + "")

@@ -38,7 +38,7 @@ public class OrderDetailActivity extends BaseActivity {
 
     private void getOrderDetail(int product_orders_id) {
         EasyHttp.get(Contants.ORDER_DETAIL)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("order_id", product_orders_id + "")
