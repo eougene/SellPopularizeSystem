@@ -207,7 +207,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "200")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
