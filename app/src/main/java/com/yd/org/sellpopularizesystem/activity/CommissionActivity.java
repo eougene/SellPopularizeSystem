@@ -89,7 +89,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
     private void getInfo(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.COMMOSSION_LIST)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())

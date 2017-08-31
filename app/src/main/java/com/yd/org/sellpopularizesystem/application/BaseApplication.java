@@ -162,7 +162,7 @@ public class BaseApplication extends Application {
         ImageLoaderConfiguration config = new ImageLoaderConfiguration
                 .Builder(getApplicationContext())
                 .memoryCacheExtraOptions(480, 800) //即保存的每个缓存文件的最大长宽
-                .threadPriority(Thread.NORM_PRIORITY - 2) //线程池中线程的个数
+                .threadPriority(Thread.NORM_PRIORITY) //线程池中线程的个数
                 .denyCacheImageMultipleSizesInMemory() //禁止缓存多张图片
                 .memoryCache(new LRULimitedMemoryCache(50 * 1024 * 1024)) //缓存策略
                 .memoryCacheSize(50 * 1024 * 1024) //设置内存缓存的大小

@@ -87,6 +87,13 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         getInfo();
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getInfo();
+    }
+
     @Override
     public void setListener() {
         myHeadIm.setOnClickListener(this);
@@ -123,7 +130,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {

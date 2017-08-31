@@ -151,7 +151,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
         Log.e("cate_id", "cate_id: "+ cate_id);
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("cate_id", cate_id + "")

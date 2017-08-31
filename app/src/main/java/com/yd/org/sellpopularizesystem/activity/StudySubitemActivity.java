@@ -74,7 +74,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
 
     private void getStudyListData(final boolean b, int page, String type_id) {
         EasyHttp.get(Contants.STUDY_LIST)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())

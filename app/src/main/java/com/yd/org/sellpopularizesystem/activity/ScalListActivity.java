@@ -63,7 +63,7 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
     private void getProductListData(final boolean boool, int page) {
 
         EasyHttp.get(Contants.SCALE_LIST)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())

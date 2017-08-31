@@ -357,7 +357,7 @@ public class MyCertificateActivity extends BaseActivity {
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {
-            httpParams.put("refer_id", SharedPreferencesHelps.getReferCode());
+            httpParams.put("refer_id", SharedPreferencesHelps.getUserID());
             url = Contants.Upgrade;
         }
 

@@ -186,7 +186,7 @@ public class MeFragment extends BaseFragmentView {
     public void getWeiXinInfo(String access_token, final String opendid) {
         EasyHttp.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid)
                 .timeStamp(true)
-                .cacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
+                .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<String>() {
                     @Override

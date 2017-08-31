@@ -5,11 +5,10 @@ package com.yd.org.sellpopularizesystem.javaBean;
  */
 
 public class MyUserInfo extends Domine{
-
     /**
      * code : 1
-     * msg : 登录成功！
-     * result : {"user_id":501,"company_id":1,"user_nick":null,"account":"test11","password":"e10adc3949ba59abbe56e057f20f883e","type":1,"sales_id":0,"refer_number":0,"team_id":1,"leader_level":0,"tjruserid":"194","true_name":"","first_name":"lost","surname":"qqqq","en_name":"leonxu","sex":1,"position":"","commossion":"1.50","mcr":"0.00","line_manager":"","partner":"","mentor":"","team_leader_1":"","team_leader_2":"","director":"194","mobile":"130111222","e_mail":"11@qq1234.com","personal_email":"leon.xu@e-dot.com","home_phone":"","office_phone":"","business_title":"","join_date":"","tax_number":"","residence_status":"AUS","birth_date":"","unit_number":"unite","street_number":"stree1","street_address_line_1":"strieet1","street_address_line_2":"","suburb":"stric1","state":"state1","postcode":"222","country":"阿鲁巴","wechat":"oOGJXwbGoSdYu4RJbya188oJ65IA","facebook":"","twitter":"","sales_type":1,"business_name":"llll company","company_country":"阿尔及利亚","company_unit_number":"cu1","company_street_number":"","company_suburb":"","company_state":"ffff","company_street_address_line_1":"","company_street_address_line_2":"","company_postcode":"","is_gst":1,"abn":"","acn":"","sales_logo":"public/uploads/user/170825/201708251503593143.jpg","request_notes":"","admin_notes":"","default_language":"cn","refer_code":"000501","client_id":"a51c4c3a293d3b1218f1893b4c94c53e","bank_name":"deposit","bsb":"aaacc","account_number":"111","account_name":"name","last_login_time":1503723467,"last_login_ip":null,"add_time":1503390906,"add_ip":"114.91.119.78","add_admin":"1","update_time":1503644741,"is_del":0,"is_firb":0,"is_licence":0,"is_grant":1,"grant_time":"1500289064","is_login":1,"is_active":0,"active_time":0,"status":0}
+     * msg : 获取成功！
+     * result : {"user_id":548,"company_id":1,"user_nick":null,"account":"peng.bai@e-dot.net","password":"e10adc3949ba59abbe56e057f20f883e","type":2,"sales_id":501,"refer_number":1,"team_id":0,"leader_level":0,"tjruserid":"","true_name":"","first_name":"1","surname":"2","en_name":"","sex":1,"position":"","commossion":"0.00","mcr":"0.00","line_manager":"","partner":"","mentor":"","team_leader_1":"","team_leader_2":"","director":"","mobile":"456789","e_mail":"peng.bai@e-dot.net","personal_email":"0","home_phone":"","office_phone":"","business_title":"","join_date":"","tax_number":"","residence_status":"","birth_date":"","unit_number":"","street_number":"","street_address_line_1":"街道1","street_address_line_2":"街道20","suburb":"","state":"","postcode":"1234567","country":"阿富汗","wechat":"","facebook":"","twitter":"","sales_type":0,"business_name":"ibm","company_country":"","company_unit_number":"","company_street_number":"","company_suburb":"","company_state":"","company_street_address_line_1":"","company_street_address_line_2":"","company_postcode":"","is_gst":0,"abn":"","acn":"","sales_logo":"public/uploads/user/170828/201708281606598755.jpg","request_notes":"","admin_notes":"","default_language":"cn","refer_code":"000548","client_id":"1","bank_name":"浦发","bsb":"BSB","account_number":"123456789","account_name":"Android","last_login_time":1504000071,"last_login_ip":null,"add_time":null,"add_ip":"116.237.192.15,","add_admin":null,"update_time":1503991046,"is_del":0,"is_firb":0,"is_licence":0,"is_grant":0,"grant_time":"","is_login":1,"is_active":1,"active_time":1503771855,"status":0}
      */
 
     private String code;
@@ -42,89 +41,89 @@ public class MyUserInfo extends Domine{
 
     public static class ResultBean extends Domine{
         /**
-         * user_id : 501
+         * user_id : 548
          * company_id : 1
          * user_nick : null
-         * account : test11
+         * account : peng.bai@e-dot.net
          * password : e10adc3949ba59abbe56e057f20f883e
-         * type : 1
-         * sales_id : 0
-         * refer_number : 0
-         * team_id : 1
+         * type : 2
+         * sales_id : 501
+         * refer_number : 1
+         * team_id : 0
          * leader_level : 0
-         * tjruserid : 194
+         * tjruserid :
          * true_name :
-         * first_name : lost
-         * surname : qqqq
-         * en_name : leonxu
+         * first_name : 1
+         * surname : 2
+         * en_name :
          * sex : 1
          * position :
-         * commossion : 1.50
+         * commossion : 0.00
          * mcr : 0.00
          * line_manager :
          * partner :
          * mentor :
          * team_leader_1 :
          * team_leader_2 :
-         * director : 194
-         * mobile : 130111222
-         * e_mail : 11@qq1234.com
-         * personal_email : leon.xu@e-dot.com
+         * director :
+         * mobile : 456789
+         * e_mail : peng.bai@e-dot.net
+         * personal_email : 0
          * home_phone :
          * office_phone :
          * business_title :
          * join_date :
          * tax_number :
-         * residence_status : AUS
+         * residence_status :
          * birth_date :
-         * unit_number : unite
-         * street_number : stree1
-         * street_address_line_1 : strieet1
-         * street_address_line_2 :
-         * suburb : stric1
-         * state : state1
-         * postcode : 222
-         * country : 阿鲁巴
-         * wechat : oOGJXwbGoSdYu4RJbya188oJ65IA
+         * unit_number :
+         * street_number :
+         * street_address_line_1 : 街道1
+         * street_address_line_2 : 街道20
+         * suburb :
+         * state :
+         * postcode : 1234567
+         * country : 阿富汗
+         * wechat :
          * facebook :
          * twitter :
-         * sales_type : 1
-         * business_name : llll company
-         * company_country : 阿尔及利亚
-         * company_unit_number : cu1
+         * sales_type : 0
+         * business_name : ibm
+         * company_country :
+         * company_unit_number :
          * company_street_number :
          * company_suburb :
-         * company_state : ffff
+         * company_state :
          * company_street_address_line_1 :
          * company_street_address_line_2 :
          * company_postcode :
-         * is_gst : 1
+         * is_gst : 0
          * abn :
          * acn :
-         * sales_logo : public/uploads/user/170825/201708251503593143.jpg
+         * sales_logo : public/uploads/user/170828/201708281606598755.jpg
          * request_notes :
          * admin_notes :
          * default_language : cn
-         * refer_code : 000501
-         * client_id : a51c4c3a293d3b1218f1893b4c94c53e
-         * bank_name : deposit
-         * bsb : aaacc
-         * account_number : 111
-         * account_name : name
-         * last_login_time : 1503723467
+         * refer_code : 000548
+         * client_id : 1
+         * bank_name : 浦发
+         * bsb : BSB
+         * account_number : 123456789
+         * account_name : Android
+         * last_login_time : 1504000071
          * last_login_ip : null
-         * add_time : 1503390906
-         * add_ip : 114.91.119.78
-         * add_admin : 1
-         * update_time : 1503644741
+         * add_time : null
+         * add_ip : 116.237.192.15,
+         * add_admin : null
+         * update_time : 1503991046
          * is_del : 0
          * is_firb : 0
          * is_licence : 0
-         * is_grant : 1
-         * grant_time : 1500289064
+         * is_grant : 0
+         * grant_time :
          * is_login : 1
-         * is_active : 0
-         * active_time : 0
+         * is_active : 1
+         * active_time : 1503771855
          * status : 0
          */
 
@@ -199,9 +198,9 @@ public class MyUserInfo extends Domine{
         private String account_name;
         private int last_login_time;
         private Object last_login_ip;
-        private int add_time;
+        private Object add_time;
         private String add_ip;
-        private String add_admin;
+        private Object add_admin;
         private int update_time;
         private int is_del;
         private int is_firb;
@@ -781,11 +780,11 @@ public class MyUserInfo extends Domine{
             this.last_login_ip = last_login_ip;
         }
 
-        public int getAdd_time() {
+        public Object getAdd_time() {
             return add_time;
         }
 
-        public void setAdd_time(int add_time) {
+        public void setAdd_time(Object add_time) {
             this.add_time = add_time;
         }
 
@@ -797,11 +796,11 @@ public class MyUserInfo extends Domine{
             this.add_ip = add_ip;
         }
 
-        public String getAdd_admin() {
+        public Object getAdd_admin() {
             return add_admin;
         }
 
-        public void setAdd_admin(String add_admin) {
+        public void setAdd_admin(Object add_admin) {
             this.add_admin = add_admin;
         }
 
