@@ -5,7 +5,7 @@
     <item android:drawable="@drawable/rectange_shape" android:state_checked="true"/><!-- 点击后的颜色 -->
 
     <!--非选中-->
-    <item android:drawable="@color/white" android:state_checked="false"/><!-- 未点击时的颜色 -->
+    <item android:drawable="@color/transparent" android:state_checked="false"/><!-- 未点击时的颜色 -->
     <!--android:state_checked="true"
     android:state_focused="true" android:state_selected="true" android:state_pressed="true"-->
     
