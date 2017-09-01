@@ -203,42 +203,42 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         }
         //通知首页加载消息数量
         HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
-        int is_read = 0;
+        int un_read = 0;
         if (bean.getTotal_number() > 0) {
             for (int i = 0; i < sumnData.size(); i++) {
                 if (sumnData.get(i).getIs_read() != 1) {
-                    is_read += 1;
+                    un_read += 1;
                 }
             }
-            Log.e("jsonParse", "is_read: "+is_read);
+            Log.e("jsonParse", "un_read: "+un_read);
             Message message = null;
             if (cate_id == 4) {
                 message = new Message();
                 message.what = 0;
-                message.arg1 = is_read;
-                Log.e("is_read", "orderNum: "+ is_read);
+                message.arg1 = un_read;
+                Log.e("un_read", "orderNum: "+ un_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(0);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
 
             } else if (cate_id == 3) {
                 message = new Message();
                 message.what = 1;
-                message.arg1 = is_read;
-                Log.e("is_read", "teamNum: "+ is_read);
+                message.arg1 = un_read;
+                Log.e("un_read", "teamNum: "+ un_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(1);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             } else if (cate_id == 2) {
                 message = new Message();
                 message.what = 2;
-                message.arg1 = is_read;
-                Log.e("is_read", "comNum: "+ is_read);
+                message.arg1 = un_read;
+                Log.e("un_read", "comNum: "+ un_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(2);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             } else if (cate_id == 1) {
                 message = new Message();
                 message.what = 3;
-                message.arg1 = is_read;
-                Log.e("is_read", "systemNum: "+ is_read);
+                message.arg1 = un_read;
+                Log.e("un_read", "systemNum: "+ un_read);
                 NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(3);
                 NotificationFragment.notificationFragment.mhandler.sendMessage(message);
             }
