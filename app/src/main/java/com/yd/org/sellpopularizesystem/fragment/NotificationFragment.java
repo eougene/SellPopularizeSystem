@@ -458,6 +458,7 @@ public class NotificationFragment extends BaseFragmentView {
             orderRelat.setVisibility(View.GONE);
             brifeRelat.setVisibility(View.GONE);
             rbCompany.setChecked(true);
+            rbSystem.setChecked(false);
             rbCompany.setBackground( ContextCompat.getDrawable(getContext(), R.drawable.sdudycheck_radiobutton_selector));
         }
     }
@@ -676,6 +677,8 @@ public class NotificationFragment extends BaseFragmentView {
             orderRelat.setVisibility(View.GONE);
             brifeRelat.setVisibility(View.GONE);
             rbCompany.setChecked(true);
+            rbSystem.setChecked(false);
+            studyViewPager.setCurrentItem(0);
         }
     }
 }
