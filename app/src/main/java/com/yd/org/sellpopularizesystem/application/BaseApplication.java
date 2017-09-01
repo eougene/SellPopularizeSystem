@@ -46,7 +46,6 @@ public class BaseApplication extends Application {
     private static Context mContext;
     //腾讯更新
     public static final String APP_ID = "c59ee68679";
-
     public static final String APP_ID_Test = "2dfe5cbc5e";
     //个推识别码
     public String cid = "";
@@ -125,8 +124,6 @@ public class BaseApplication extends Application {
                 .setCacheVersion(1)//缓存版本为1
                 .setHostnameVerifier(new UnSafeHostnameVerifier(Contants.DOMAIN))//全局访问规则
                 .setCertificates();//信任所有证书;
-
-
 
 
     }
