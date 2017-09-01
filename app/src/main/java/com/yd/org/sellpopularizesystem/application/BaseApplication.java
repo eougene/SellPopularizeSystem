@@ -27,8 +27,6 @@ import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
-import com.zhouyou.http.cache.model.CacheMode;
-import com.zhouyou.http.utils.HttpLog;
 
 import java.io.File;
 
@@ -112,22 +110,23 @@ public class BaseApplication extends Application {
     }
 
     private void initEasyHttp() {
+
         EasyHttp.getInstance()
                 .debug("RxEasyHttp", true)
                 .setReadTimeOut(60 * 1000)
                 .setWriteTimeOut(60 * 1000)
                 .setConnectTimeout(60 * 1000)
-                .setRetryCount(1)//默认网络不好自动重试1次
+                .setRetryCount(3)//默认网络不好自动重试3次
                 .setRetryDelay(500)//每次延时500ms重试
                 .setRetryIncreaseDelay(500)//每次延时叠加500ms
                 .setBaseUrl(Contants.DOMAIN)
                 .setCacheDiskConverter(new SerializableDiskConverter())//默认缓存使用序列化转化
-                .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为100M
+                .setCacheMaxSize(100 * 1024 * 1024)//设置缓存大小为50M
                 .setCacheVersion(1)//缓存版本为1
-                .setCacheMode(CacheMode.CACHEANDREMOTEDISTINCT)
-                .setCacheTime(3600 * 24)//缓存时间300s，默认-1永久缓存  okhttp和自定义缓存都起作用
                 .setHostnameVerifier(new UnSafeHostnameVerifier(Contants.DOMAIN))//全局访问规则
-                .setCertificates();//信任所有证书
+                .setCertificates();//信任所有证书;
+
+
 
 
     }
@@ -137,12 +136,10 @@ public class BaseApplication extends Application {
 
         public UnSafeHostnameVerifier(String host) {
             this.host = host;
-            HttpLog.i("###############　UnSafeHostnameVerifier " + host);
         }
 
         @Override
         public boolean verify(String hostname, SSLSession session) {
-            HttpLog.i("############### verify " + hostname + " " + this.host);
             if (this.host == null || "".equals(this.host) || !this.host.contains(hostname))
                 return false;
             return true;
@@ -165,9 +162,9 @@ public class BaseApplication extends Application {
                 .threadPriority(Thread.NORM_PRIORITY) //线程池中线程的个数
                 .denyCacheImageMultipleSizesInMemory() //禁止缓存多张图片
                 .memoryCache(new LRULimitedMemoryCache(50 * 1024 * 1024)) //缓存策略
-                .memoryCacheSize(50 * 1024 * 1024) //设置内存缓存的大小
+                .memoryCacheSize(10 * 1024 * 1024) //设置内存缓存的大小
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator()) //缓存文件名的保存方式
-                .diskCacheSize(200 * 1024 * 1024) //磁盘缓存大小
+                .diskCacheSize(10 * 1024 * 1024) //磁盘缓存大小
                 .tasksProcessingOrder(QueueProcessingType.LIFO) //工作队列
                 .diskCacheFileCount(200) //缓存的文件数量
                 .diskCache(new UnlimitedDiskCache(cacheDir)) //自定义缓存路径
