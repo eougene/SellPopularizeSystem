@@ -68,12 +68,12 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
 
     private void getStudyListData(final boolean b, int page) {
         EasyHttp.get(Contants.CHECK_LIST)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -139,7 +139,7 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        //getStudyListData(false, page);
+        getStudyListData(false, page);
 
     }
 }

@@ -43,8 +43,6 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-import retrofit2.http.GET;
-
 /**
  * Created by hejin on 2017/4/10.
  */
@@ -142,7 +140,6 @@ public class MeFragment extends BaseFragmentView {
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserPassword();
         ActivitySkip.forward(getActivity(), LoginActivity.class,Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-       // getActivity().finish();
     }
 
     UMAuthListener authListener = new UMAuthListener() {
@@ -189,7 +186,7 @@ public class MeFragment extends BaseFragmentView {
     public void getWeiXinInfo(String access_token, final String opendid) {
         EasyHttp.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid)
                 .timeStamp(true)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .execute(new SimpleCallBack<String>() {
                     @Override
