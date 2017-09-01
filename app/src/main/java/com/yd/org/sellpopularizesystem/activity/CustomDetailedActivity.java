@@ -1137,7 +1137,7 @@ public class CustomDetailedActivity extends BaseActivity {
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
@@ -1273,7 +1273,10 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //推荐人
        if (SharedPreferencesHelps.getType() == 2) {
-            ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
+           if (updateOrAdd.equals(ADD)){
+               ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
+
+           }
 
         }
 
@@ -1706,7 +1709,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private void getCustomInfo(CustomBean.ResultBean resultBean) {
 
         EasyHttp.get(Contants.CUSTOME_DETAILED)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("customer_id", resultBean.getCustomer_id() + "")

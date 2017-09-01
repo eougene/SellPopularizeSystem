@@ -71,7 +71,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
      */
     private void getTeamListData(String s, final boolean b) {
         EasyHttp.get(Contants.TEAM_LIST)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
