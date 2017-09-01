@@ -53,6 +53,17 @@ public class ActivitySkip {
         activity.startActivity(intent);
     }
 
+    public static void forward(Activity activity, Class<?> cls,  int flags) {
+        if (cls == null) {
+            return;
+        }
+        Intent intent = new Intent(activity, cls);
+        if (flags > 0) {
+            intent.addFlags(flags);
+        }
+        activity.startActivity(intent);
+    }
+
     /**
      * 带参和Intent.FLAG跳转至某activity
      *
