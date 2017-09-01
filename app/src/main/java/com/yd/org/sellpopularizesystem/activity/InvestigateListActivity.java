@@ -59,7 +59,8 @@ public class InvestigateListActivity extends BaseActivity implements PullToRefre
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", SharedPreferencesHelps.getUserID())
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
+                .params("page", page + "")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

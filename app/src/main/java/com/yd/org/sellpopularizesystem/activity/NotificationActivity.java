@@ -58,7 +58,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -145,7 +145,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
         // 千万别忘了告诉控件刷新完毕了哦！
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-       // getData(page, false);
+       getData(page, false);
 
     }
 }

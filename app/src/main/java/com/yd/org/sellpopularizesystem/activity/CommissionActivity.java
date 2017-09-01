@@ -83,7 +83,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        // getInfo(page, false);
+        getInfo(page, false);
 
     }
 
@@ -94,8 +94,8 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", "")
-                .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("page", page+"")
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -139,7 +139,6 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }
-        //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         commissionAdapter.addMore(datas);
 
 

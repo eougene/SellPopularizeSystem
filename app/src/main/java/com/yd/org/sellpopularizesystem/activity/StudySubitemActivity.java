@@ -80,7 +80,7 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("type_id", type_id)
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -161,6 +161,6 @@ public class StudySubitemActivity extends BaseActivity implements PullToRefreshL
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        //getStudyListData(false, page, type_id);
+        getStudyListData(false, page, type_id);
     }
 }

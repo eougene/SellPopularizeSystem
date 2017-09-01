@@ -187,7 +187,7 @@ public class MySalesActivity extends BaseActivity implements SectionIndexer, Pul
                 .timeStamp(true)
                 .params("refer_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -330,6 +330,6 @@ public class MySalesActivity extends BaseActivity implements SectionIndexer, Pul
 
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-       // getCustomeListData(false, page);
+       getCustomeListData(false, page);
     }
 }

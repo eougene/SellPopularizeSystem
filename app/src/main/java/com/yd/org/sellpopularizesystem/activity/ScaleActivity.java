@@ -177,7 +177,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         // 千万别忘了告诉控件刷新完毕了哦！
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        // getProductListData(false, page, space, price, house, area);
+        getProductListData(false, page, space, price, house, area);
 
     }
 
@@ -186,7 +186,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         HttpParams httpParams=new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(page));
-        httpParams.put("number", String.valueOf(Integer.MAX_VALUE));
+        httpParams.put("number", "100");
         httpParams.put("cate_id", area);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
