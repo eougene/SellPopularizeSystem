@@ -1075,9 +1075,12 @@ public class CustomDetailedActivity extends BaseActivity {
                         //推荐人
                     } else if (SharedPreferencesHelps.getType() == 2) {
 
-                        if (refer_number > 5) {
+                        //从第六个开始
+                        if (refer_number == 5) {
+                            //显示选择框
                             setIsSalers();
                         } else {
+                            //正常添加
                             getEditTextData(ADD);
                         }
 
@@ -1103,8 +1106,13 @@ public class CustomDetailedActivity extends BaseActivity {
                         //推荐人
                     } else if (SharedPreferencesHelps.getType() == 2) {
 
-                        if (refer_number > 5) {
+
+                        //从第六个开始
+                        if (refer_number == 5) {
+                            //显示选择框
                             setIsSalers();
+
+                            //正常更新
                         } else {
                             getEditTextData(UPDATE);
                         }
