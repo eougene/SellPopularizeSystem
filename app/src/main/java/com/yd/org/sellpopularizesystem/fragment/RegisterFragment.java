@@ -23,10 +23,6 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by hejin on 2017/6/12.
@@ -34,29 +30,28 @@ import butterknife.Unbinder;
  */
 
 public class RegisterFragment extends BaseFragmentView {
-    @BindView(R.id.recommendIdEdit)
-    EditText recommendIdEdit;
-    @BindView(R.id.familyNameEdit)
-    EditText familyNameEdit;
-    @BindView(R.id.lastNameEdit)
-    EditText lastNameEdit;
-    @BindView(R.id.phoneEdit)
-    EditText phoneEdit;
-    @BindView(R.id.regsterEmailEdit)
-    EditText regsterEmailEdit;
-    @BindView(R.id.passwordEdit)
-    EditText passwordEdit;
-    @BindView(R.id.showPassword)
-    ImageView showPassword;
-    @BindView(R.id.regsterText)
-    TextView regsterText;
-    Unbinder unbinder;
-    private int temp = 0;
 
+    private  EditText recommendIdEdit,familyNameEdit,lastNameEdit,phoneEdit,regsterEmailEdit,
+    passwordEdit;
+    private TextView regsterText;
+    private int temp = 0;
+    private ImageView showPassword;
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_register);
+        initViews();
+    }
+
+    private void initViews() {
+        recommendIdEdit=getViewById(R.id.recommendIdEdit);
+        familyNameEdit=getViewById(R.id.familyNameEdit);
+        lastNameEdit=getViewById(R.id.lastNameEdit);
+        phoneEdit=getViewById(R.id.phoneEdit);
+        regsterEmailEdit=getViewById(R.id.regsterEmailEdit);
+        passwordEdit=getViewById(R.id.passwordEdit);
+        showPassword=getViewById(R.id.showPassword);
+        regsterText=getViewById(R.id.regsterText);
     }
 
 
@@ -67,7 +62,7 @@ public class RegisterFragment extends BaseFragmentView {
         //推荐码
 
         if (TextUtils.isEmpty(recommendIdEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(getActivity(), "推荐码不能为空");
+            ToasShow.showToastCenter(getActivity(), getString(R.string.codeerror));
             return;
         } else {
             recommendIdString = recommendIdEdit.getText().toString().trim();
@@ -75,14 +70,14 @@ public class RegisterFragment extends BaseFragmentView {
 
         //姓氏
         if (TextUtils.isEmpty(familyNameEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(getActivity(), "请填写真实的姓氏");
+            ToasShow.showToastCenter(getActivity(), getString(R.string.surenameerror));
             return;
         } else {
             familyNameString = familyNameEdit.getText().toString().trim();
         }
         //名字
         if (TextUtils.isEmpty(lastNameEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(getActivity(), "请填写真实的名字");
+            ToasShow.showToastCenter(getActivity(), getString(R.string.nameerror));
             return;
         } else {
             lastNameString = lastNameEdit.getText().toString().trim();
@@ -160,7 +155,8 @@ public class RegisterFragment extends BaseFragmentView {
 
     @Override
     protected void setListener() {
-
+        showPassword.setOnClickListener(mOnClickListener);
+        regsterText.setOnClickListener(mOnClickListener);
 
     }
 
@@ -173,39 +169,40 @@ public class RegisterFragment extends BaseFragmentView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
 
-    @OnClick({R.id.showPassword, R.id.regsterText})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            //是否显示密码
-            case R.id.showPassword:
+    private  View.OnClickListener mOnClickListener=new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                //是否显示密码
+                case R.id.showPassword:
+                    //隐藏密码
+                    if (temp == 0) {
+                        passwordEdit.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        temp = 1;
+                    } else {
+                        //显示密码
+                        passwordEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        temp = 0;
+                    }
+                    break;
 
-                //隐藏密码
-                if (temp == 0) {
-                    passwordEdit.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    temp = 1;
-                } else {
-                    //显示密码
-                    passwordEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    temp = 0;
-                }
-                break;
-
-            //注册
-            case R.id.regsterText:
-                getInfo();
-                break;
+                //注册
+                case R.id.regsterText:
+                    getInfo();
+                    break;
+            }
         }
-    }
+    };
+
 
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+
     }
 }

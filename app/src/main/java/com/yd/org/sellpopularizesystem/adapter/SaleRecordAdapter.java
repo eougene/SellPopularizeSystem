@@ -17,6 +17,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import static com.yd.org.sellpopularizesystem.R.id.tvStatus;
 
@@ -296,10 +297,12 @@ public class SaleRecordAdapter extends BaseAdapter {
                 //上传合同首页
                 case R.id.saleRecorTv3:
                     //textView.setVisibility(View.GONE);
+                    //mHideViewListener.hideView(textView);
                     SaleRecordActivity.saleRecordActivity.askntractO(resultBean, "1");
                     break;
                 //上传首付款凭证
                 case R.id.saleRecorTv4:
+                    //mHideViewListener.hideView(textView);
                     SaleRecordActivity.saleRecordActivity.startPhotos(resultBean, "2");
                     break;
 
@@ -307,6 +310,20 @@ public class SaleRecordAdapter extends BaseAdapter {
             }
 
         }
+    }
+
+    private HideViewListener mHideViewListener;
+
+    public HideViewListener getmHideViewListener() {
+        return mHideViewListener;
+    }
+
+    public void setmHideViewListener(HideViewListener mHideViewListener) {
+        this.mHideViewListener = mHideViewListener;
+    }
+
+    public interface HideViewListener{
+        void hideView(View view);
     }
 
     public class ViewHolder {

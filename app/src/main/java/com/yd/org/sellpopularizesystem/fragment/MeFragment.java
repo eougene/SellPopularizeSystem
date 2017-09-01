@@ -43,6 +43,8 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
+import retrofit2.http.GET;
+
 /**
  * Created by hejin on 2017/4/10.
  */
@@ -81,6 +83,7 @@ public class MeFragment extends BaseFragmentView {
                 //设置
                 case R.id.rlSetting:
                     ActivitySkip.forward(getActivity(), SettingActivity.class);
+                    //getActivity().finish();
                     break;
 
                 //我的信息
@@ -138,8 +141,8 @@ public class MeFragment extends BaseFragmentView {
         SharedPreferencesHelps.getCompanyId();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserPassword();
-        ActivitySkip.forward(getActivity(), LoginActivity.class);
-        getActivity().finish();
+        ActivitySkip.forward(getActivity(), LoginActivity.class,Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+       // getActivity().finish();
     }
 
     UMAuthListener authListener = new UMAuthListener() {

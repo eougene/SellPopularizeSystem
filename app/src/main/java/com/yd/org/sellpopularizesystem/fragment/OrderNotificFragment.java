@@ -151,7 +151,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
         Log.e("cate_id", "cate_id: "+ cate_id);
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("cate_id", cate_id + "")
@@ -192,10 +192,11 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         Gson gson = new Gson();
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
+            Log.e("json", "jsonParse: "+s);
             Log.e("jsonParse", "jsonParse: "+cate_id+":"+informationContents.size());
             if (informationContents.size()>0){
                 informationContents.clear();
-                sumnData.clear();
+               // sumnData.clear();
             }
             informationContents.addAll(bean.getResult());
             sumnData.addAll(informationContents);
@@ -325,6 +326,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                     Message message = new Message();
                     message.what = 3;
                     message.obj = String.valueOf(resultBean.getId());
+                    Log.e("notice_log_id", "onItemClick: " +resultBean.getId());
                     mHandle.sendMessage(message);
 
                     if (cate_id == 4) {
@@ -340,7 +342,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                         bundle.putString("title", resultBean.getTitle());
                         bundle.putString("notice_id", resultBean.getId() + "");
                         bundle.putString("data", resultBean.getContent());
-
 
                         ActivitySkip.forward(getActivity(), InformationContentActivity.class, bundle);
                     }
@@ -466,6 +467,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
 
     private void commitNotice(String str) {
+        Log.e("notice_log_id", "commitNotice: "+str);
         EasyHttp.get(Contants.SUBMIT_READED)
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
@@ -489,7 +491,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                     @Override
                     public void onSuccess(String json) {
-
+                        Log.e("onSuccess", "onSuccess: ");
                         dismissLoadingDialog();
                         HomeFragment.homeFragment.mHandler.sendEmptyMessage(1);
                         if (sumnData != null) {

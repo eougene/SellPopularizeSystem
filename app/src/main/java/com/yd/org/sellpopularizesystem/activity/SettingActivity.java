@@ -79,8 +79,8 @@ public class SettingActivity extends BaseActivity {
         SharedPreferencesHelps.clearUserID();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserPassword();
-        ActivitySkip.forward(SettingActivity.this, LoginActivity.class);
-        finish();
+        ActivitySkip.forward(SettingActivity.this, LoginActivity.class,Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        //finish();
     }
 
 

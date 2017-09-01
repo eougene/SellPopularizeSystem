@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -391,7 +392,13 @@ public class NotificationFragment extends BaseFragmentView {
                     rbBrief.setChecked(false);
                     rbCompany.setChecked(true);
                     rbSystem.setChecked(false);
-                    studyViewPager.setCurrentItem(2);
+                    if (SharedPreferencesHelps.getType() == 1){
+                        studyViewPager.setCurrentItem(2);
+                    }else {
+                        //rbCompany.setBackground( getResources().getDrawable(R.drawable.sdudycheck_radiobutton_selector));
+                        rbCompany.setBackground( ContextCompat.getDrawable(getContext(), R.drawable.sdudycheck_radiobutton_selector));
+                        studyViewPager.setCurrentItem(0);
+                    }
 
                     Message message2 = new Message();
                     message2.what = 0;
@@ -407,8 +414,11 @@ public class NotificationFragment extends BaseFragmentView {
                     rbBrief.setChecked(false);
                     rbCompany.setChecked(false);
                     rbSystem.setChecked(true);
-                    studyViewPager.setCurrentItem(3);
-
+                    if (SharedPreferencesHelps.getType() == 1){
+                        studyViewPager.setCurrentItem(3);
+                    }else {
+                        studyViewPager.setCurrentItem(1);
+                    }
 
                     Message message3 = new Message();
                     message3.what = 0;
@@ -443,9 +453,12 @@ public class NotificationFragment extends BaseFragmentView {
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {
+            getViewById(R.id.line).setVisibility(View.GONE);
+            getViewById(R.id.line1).setVisibility(View.GONE);
             orderRelat.setVisibility(View.GONE);
             brifeRelat.setVisibility(View.GONE);
             rbCompany.setChecked(true);
+            rbCompany.setBackground( ContextCompat.getDrawable(getContext(), R.drawable.sdudycheck_radiobutton_selector));
         }
     }
 
@@ -491,19 +504,21 @@ public class NotificationFragment extends BaseFragmentView {
         companyFragment = OrderNotificFragment.getInstnce(2);
         systemFragment = OrderNotificFragment.getInstnce(1);
 
-        fragments.add(orderFragment);
-        fragments.add(teamFragment);
+        if (SharedPreferencesHelps.getType() == 1){
+            fragments.add(orderFragment);
+            fragments.add(teamFragment);
+        }
         fragments.add(companyFragment);
         fragments.add(systemFragment);
 
         adapter = new FragAdapter(getActivity().getSupportFragmentManager(), fragments);
         studyViewPager.setAdapter(adapter);
-        if (SharedPreferencesHelps.getType() == 1){
+        /*if (SharedPreferencesHelps.getType() == 1){
             studyViewPager.setCurrentItem(0);
         }else {
             studyViewPager.setCurrentItem(2);
-        }
-
+        }*/
+        studyViewPager.setCurrentItem(0);
         studyViewPager.setOffscreenPageLimit(4);
         studyViewPager.setOnPageChangeListener(new MyVPageChangeListener());
 
@@ -529,63 +544,98 @@ public class NotificationFragment extends BaseFragmentView {
     }
 
     private void changeTextColor(int location) {
-        switch (location) {
-            case 0:
-                cate_id = 4;
-                rbOrder.setChecked(true);
-                rbBrief.setChecked(false);
-                rbCompany.setChecked(false);
-                rbSystem.setChecked(false);
 
-                Message message = new Message();
-                message.what = 0;
-                message.arg1 = 1;
-                orderFragment.mHandle.sendMessage(message);
-                array = 0;
-                break;
-            case 1:
-                cate_id = 3;
-                rbOrder.setChecked(false);
-                rbBrief.setChecked(true);
-                rbCompany.setChecked(false);
-                rbSystem.setChecked(false);
+            switch (location) {
 
-                //
-                Message message1 = new Message();
-                message1.what = 0;
-                message1.arg1 = 1;
-                teamFragment.mHandle.sendMessage(message1);
-                array = 0;
-                break;
-            case 2:
-                cate_id = 2;
-                rbOrder.setChecked(false);
-                rbBrief.setChecked(false);
-                rbCompany.setChecked(true);
-                rbSystem.setChecked(false);
+                case 0:
+                    if (SharedPreferencesHelps.getType()==1){
+                        cate_id = 4;
+                        rbOrder.setChecked(true);
+                        rbBrief.setChecked(false);
+                        rbCompany.setChecked(false);
+                        rbSystem.setChecked(false);
 
-                Message message2 = new Message();
-                message2.what = 0;
-                message2.arg1 = 1;
-                companyFragment.mHandle.sendMessage(message2);
-                array = 0;
-                break;
-            case 3:
-                cate_id = 1;
-                rbOrder.setChecked(false);
-                rbBrief.setChecked(false);
-                rbCompany.setChecked(false);
-                rbSystem.setChecked(true);
+                        Message message = new Message();
+                        message.what = 0;
+                        message.arg1 = 1;
+                        orderFragment.mHandle.sendMessage(message);
+                        array = 0;
+                    }else {
+                        cate_id = 2;
+                        rbOrder.setChecked(false);
+                        rbBrief.setChecked(false);
+                        rbCompany.setChecked(true);
+                        rbSystem.setChecked(false);
+
+                        Message message2 = new Message();
+                        message2.what = 0;
+                        message2.arg1 = 1;
+                        companyFragment.mHandle.sendMessage(message2);
+                        array = 0;
+                    }
+
+                    break;
+                case 1:
+                    if (SharedPreferencesHelps.getType()==1){
+                        cate_id = 3;
+                        rbOrder.setChecked(false);
+                        rbBrief.setChecked(true);
+                        rbCompany.setChecked(false);
+                        rbSystem.setChecked(false);
+
+                        //
+                        Message message1 = new Message();
+                        message1.what = 0;
+                        message1.arg1 = 1;
+                        teamFragment.mHandle.sendMessage(message1);
+                        array = 0;
+                    }else {
+                        cate_id = 1;
+                        rbOrder.setChecked(false);
+                        rbBrief.setChecked(false);
+                        rbCompany.setChecked(false);
+                        rbSystem.setChecked(true);
 
 
-                Message message3 = new Message();
-                message3.what = 0;
-                message3.arg1 = 1;
-                systemFragment.mHandle.sendMessage(message3);
-                array = 0;
-                break;
+                        Message message3 = new Message();
+                        message3.what = 0;
+                        message3.arg1 = 1;
+                        systemFragment.mHandle.sendMessage(message3);
+                        array = 0;
+                    }
 
-        }
+                    break;
+                case 2:
+                    cate_id = 2;
+                    rbOrder.setChecked(false);
+                    rbBrief.setChecked(false);
+                    rbCompany.setChecked(true);
+                    rbSystem.setChecked(false);
+
+                    Message message2 = new Message();
+                    message2.what = 0;
+                    message2.arg1 = 1;
+                    companyFragment.mHandle.sendMessage(message2);
+                    array = 0;
+                    break;
+                case 3:
+                    cate_id = 1;
+                    rbOrder.setChecked(false);
+                    rbBrief.setChecked(false);
+                    rbCompany.setChecked(false);
+                    rbSystem.setChecked(true);
+
+
+                    Message message3 = new Message();
+                    message3.what = 0;
+                    message3.arg1 = 1;
+                    systemFragment.mHandle.sendMessage(message3);
+                    array = 0;
+                    break;
+
+            }
+
+
     }
 
 
