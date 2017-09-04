@@ -1076,7 +1076,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     } else if (SharedPreferencesHelps.getType() == 2) {
 
                         //从第六个开始
-                        if (refer_number == 5) {
+                        if (refer_number >= 5) {
                             //显示选择框
                             setIsSalers();
                         } else {
@@ -1234,8 +1234,6 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("wechat_number", wechat_number);//添加微信
         ajaxParams.put("qq_number", qq_number);//添加QQ
         ajaxParams.put("customer_type", customer_type);//是否为公司客户     1：个人客户   2：公司客户
-
-
         ajaxParams.put("company_name", company_name);//公司名称
         ajaxParams.put("abn", abn);//ABN
         ajaxParams.put("acn", acn);//ACN
@@ -1247,8 +1245,6 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("select_self", select_self);//选择自己   1：选自己  0： 选其他人
         ajaxParams.put("company_country", company_country);//公司国家
         ajaxParams.put("company_unit_number", company_unit_number);//公司单元号
-
-
         ajaxParams.put("company_street_number", company_street_number);//公司街道号码
         ajaxParams.put("company_suburb", company_suburb);//公司区
         ajaxParams.put("company_state", company_state);//公司州
@@ -1259,8 +1255,6 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("unit_number", unit_number);//单元号
         ajaxParams.put("street_number", street_number);//街道号码
         ajaxParams.put("suburb", suburb);//区
-
-
         ajaxParams.put("state", state);//州
         ajaxParams.put("street_address_line_1", street_address_line_1);//街道地址一
         ajaxParams.put("street_address_line_2", street_address_line_2);//街道地址二
@@ -1281,17 +1275,22 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //推荐人
        if (SharedPreferencesHelps.getType() == 2) {
+
+           ajaxParams.put("type_id", "2");//推荐人
+
            if (updateOrAdd.equals(ADD)){
                ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
 
            }
 
-        }
+        }else {
+           ajaxParams.put("type_id", "1");//销售
+       }
 
 
         EasyHttp.post(strUrl)
                 .cacheMode(CacheMode.NO_CACHE)
-                .headers("Content-Type", "application/x-www-form-urlencoded")
+               .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params(ajaxParams)
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
@@ -1309,6 +1308,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String s) {
+                        Log.e("onSuccess**","onSuccess:"+s);
                         closeDialog();
                         JSONObject json = null;
                         try {
@@ -1529,9 +1529,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
         //证件号
         if (!TextUtils.isEmpty(edcustmomeDetailedCard.getText().toString().trim())) {
-            if (edcustmomeDetailedCard.getText().toString().trim().length() != 18) {
-
-            }
             card_id = edcustmomeDetailedCard.getText().toString().trim();
         }
 
