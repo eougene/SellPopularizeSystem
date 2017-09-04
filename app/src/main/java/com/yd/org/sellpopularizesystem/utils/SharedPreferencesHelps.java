@@ -271,15 +271,4 @@ public class SharedPreferencesHelps {
         return getPreferences().getInt("bank", 0);
     }
 
-
-
-    //保存推荐人关联的销售数
-
-    public synchronized static final void setSalers(int Salers) {
-        getPreferences().edit().putInt("Salers", Salers).commit();
-    }
-
-    public synchronized static final int getSalers() {
-        return getPreferences().getInt("Salers", 0);
-    }
 }

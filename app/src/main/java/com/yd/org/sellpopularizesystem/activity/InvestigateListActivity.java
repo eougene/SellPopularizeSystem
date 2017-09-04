@@ -55,7 +55,7 @@ public class InvestigateListActivity extends BaseActivity implements PullToRefre
 
     private void getInfo(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.QUESTION_LIST)
-                .cacheMode(CacheMode.DEFAULT)
+                .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("product_id", SharedPreferencesHelps.getUserID())

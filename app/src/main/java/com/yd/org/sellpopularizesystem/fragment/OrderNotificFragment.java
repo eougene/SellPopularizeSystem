@@ -157,7 +157,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 .params("cate_id", cate_id + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(pages))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -457,7 +457,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         page++;
         flag = 0;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-        //getData(page, false, cate_id);
+        getData(page, false, cate_id);
     }
 
     @Override

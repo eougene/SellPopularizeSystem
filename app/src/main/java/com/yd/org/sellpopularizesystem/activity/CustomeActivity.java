@@ -202,8 +202,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void getCustomeListData(final boolean b, int page) {
 
         EasyHttp.get(Contants.CUSTOMER_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.NO_CACHE)
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
