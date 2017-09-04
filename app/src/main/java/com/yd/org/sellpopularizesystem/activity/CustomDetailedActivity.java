@@ -1096,29 +1096,7 @@ public class CustomDetailedActivity extends BaseActivity {
             setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-
-                    //销售
-                    if (SharedPreferencesHelps.getType() == 1) {
-                        getEditTextData(UPDATE);
-
-
-                        //推荐人
-                    } else if (SharedPreferencesHelps.getType() == 2) {
-
-
-                        //从第六个开始
-                        if (refer_number == 5) {
-                            //显示选择框
-                            setIsSalers();
-
-                            //正常更新
-                        } else {
-                            getEditTextData(UPDATE);
-                        }
-
-
-                    }
+                    getEditTextData(UPDATE);
 
                 }
             });
