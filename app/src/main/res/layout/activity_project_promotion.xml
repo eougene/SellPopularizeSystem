@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yd.org.sellpopularizesystem.activity.ProjectPromotionActivity">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@mipmap/buildingphoto">
+
+            <!--<android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+            </android.support.design.widget.CollapsingToolbarLayout>-->
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@mipmap/backbt">
+
+            </android.support.v7.widget.Toolbar>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/wenzi" />
+
+        </android.support.design.widget.AppBarLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_margin_20">
+
+        <LinearLayout
+            android:id="@+id/llAll"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@mipmap/building" />
+
+            <TextView
+                android:id="@+id/tvBuildingNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="@dimen/padding_margin_30"
+                android:layout_marginTop="@dimen/padding_margin_6"
+                android:background="@mipmap/digitalbac" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/padding_margin_10"
+                android:text="@string/all_building"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_15" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvHotSale"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/padding_margin_30"
+            android:drawableTop="@mipmap/hotsale"
+            android:gravity="center"
+            android:text="@string/hot_sale"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_15" />
+
+        <TextView
+            android:id="@+id/tvLookHouse"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/padding_margin_30"
+            android:drawableTop="@mipmap/postion"
+            android:gravity="center"
+            android:text="@string/map_house"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_15" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_margin_10"
+        android:layout_marginRight="@dimen/padding_margin_10"
+        android:layout_marginTop="@dimen/padding_margin_20">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/house_suggest"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_18"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/padding_margin_8"
+            android:drawableRight="@mipmap/viewmore"
+            android:text="@string/view_more"
+            android:textSize="@dimen/tv_size_18" />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/gvHouse"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/padding_margin_10"
+        android:layout_marginRight="@dimen/padding_margin_10"
+        android:layout_marginTop="@dimen/padding_margin_10"
+        android:layout_weight="1"
+        android:numColumns="2"
+        android:verticalSpacing="@dimen/padding_margin_4"
+        android:horizontalSpacing="@dimen/padding_margin_4"
+        android:stretchMode="columnWidth">
+
+    </GridView>
+
+</LinearLayout>
