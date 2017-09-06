@@ -57,7 +57,7 @@ public class LoginActivity extends FragmentActivity {
 
     private void initData() {
         fragments.add(new LoginFragment());
-        fragments.add(new RegisterFragment());
+       fragments.add(new RegisterFragment());
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
