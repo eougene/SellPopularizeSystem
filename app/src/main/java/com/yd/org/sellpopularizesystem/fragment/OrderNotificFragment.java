@@ -26,6 +26,9 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -157,7 +160,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 .params("cate_id", cate_id + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(pages))
-                .params("number", "100")
+                .params("number", "1000")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -398,21 +401,27 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
                         dismissLoadingDialog();
                         Gson g = new Gson();
-                        ErrorBean e = g.fromJson(s, ErrorBean.class);
-                        ToasShow.showToastCenter(getActivity(), e.getMsg());
-                        if (e.getCode().equals("1")) {
-                            //如果删除成功,此时的状态是可以点击查看详情的
-                            type = 0;
-                            //发送删除成功消息
-                            NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
+                        //ErrorBean e = g.fromJson(s, ErrorBean.class);
+                        try {
+                            JSONObject jsonObject=new JSONObject(json);
+                            if (jsonObject.getString("code").equals("1")) {
+                                //如果删除成功,此时的状态是可以点击查看详情的
+                                type = 0;
+                                //发送删除成功消息
+                                NotificationFragment.notificationFragment.mhandler.sendEmptyMessage(4);
 
-                            if (sumnData != null) {
-                                sumnData.clear();
+                                if (sumnData != null) {
+                                    sumnData.clear();
+                                }
+                                getData(1, true, cate_id);
+
                             }
-                            getData(1, true, cate_id);
-
-
+                            ToasShow.showToastCenter(getActivity(), jsonObject.getString("msg"));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
+
                     }
                 });
 
