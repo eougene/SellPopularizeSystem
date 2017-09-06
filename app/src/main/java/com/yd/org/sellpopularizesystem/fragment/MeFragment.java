@@ -81,22 +81,21 @@ public class MeFragment extends BaseFragmentView {
                 //设置
                 case R.id.rlSetting:
                     ActivitySkip.forward(getActivity(), SettingActivity.class);
-                    //getActivity().finish();
                     break;
 
                 //我的信息
                 case R.id.relCertificate:
-                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                   ActivitySkip.forward(getActivity(), MyInfoActivity.class);
                     break;
 
                 //推荐码
                 case R.id.ivQr:
-                    ActivitySkip.forward(getActivity(), InviteQRActivity.class);
+                   ActivitySkip.forward(getActivity(), InviteQRActivity.class);
                     break;
 
                 //我的信息
                 case R.id.ivCustomePhoto:
-                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                   ActivitySkip.forward(getActivity(), MyInfoActivity.class);
                     break;
             }
         }
