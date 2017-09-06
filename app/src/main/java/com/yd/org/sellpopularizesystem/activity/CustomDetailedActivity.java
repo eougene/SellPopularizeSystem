@@ -1188,9 +1188,9 @@ public class CustomDetailedActivity extends BaseActivity {
 
         HttpParams ajaxParams = new HttpParams();
 
+
         //如果只添加用户,需要userID
         if (updateOrAdd.equals(ADD)) {
-            ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         } else {
             ajaxParams.put("customer_id", String.valueOf(resultBean.getCustomer_id()));
@@ -1202,6 +1202,10 @@ public class CustomDetailedActivity extends BaseActivity {
         if (!imagePath.equals("")) {
             ajaxParams.put("file", new File(imagePath), mUIProgressResponseCallBack);//客户头像
         }
+
+
+        ajaxParams.put("type_id", SharedPreferencesHelps.getType()+"");//1:销售  2推荐人
+        ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
         ajaxParams.put("mid_name", mid_name);//中间名
@@ -1251,19 +1255,10 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("memo", mome);//备注
 
 
-        //推荐人
-       if (SharedPreferencesHelps.getType() == 2) {
+        if (updateOrAdd.equals(ADD)){
+            ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
 
-           ajaxParams.put("type_id", "2");//推荐人
-
-           if (updateOrAdd.equals(ADD)){
-               ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
-
-           }
-
-        }else {
-           ajaxParams.put("type_id", "1");//销售
-       }
+        }
 
 
         EasyHttp.post(strUrl)
