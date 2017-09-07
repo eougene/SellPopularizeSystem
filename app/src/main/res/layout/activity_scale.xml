@@ -14,7 +14,8 @@
             android:background="@color/transparent"
             android:orientation="vertical"
             android:paddingBottom="@dimen/padding_margin_4"
-            android:paddingTop="@dimen/padding_margin_6">
+            android:paddingTop="@dimen/padding_margin_6"
+            android:visibility="gone">
 
             <LinearLayout
 

@@ -25,7 +25,6 @@
                 android:scaleType="centerInside"
                 android:src="@mipmap/backbt" />
 
-
         </RelativeLayout>
 
         <TextView
@@ -38,7 +37,36 @@
             android:maxLines="1"
             android:text="title"
             android:textColor="@color/black"
-            android:textSize="@dimen/title_tv_size" />
+            android:textSize="@dimen/title_tv_size"/>
+
+        <!--<EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/title_tv_size"
+            />-->
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/padding_margin_6"
+            android:layout_weight="5"
+            android:background="@drawable/button_back"
+            android:drawableLeft="@mipmap/searchsmall"
+            android:drawablePadding="@dimen/padding_margin_2"
+            android:hint="@string/scale_search"
+            android:imeOptions="actionSearch"
+            android:paddingLeft="@dimen/padding_margin_4"
+            android:singleLine="true"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/tv_size_12"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:layout_width="0dp"
