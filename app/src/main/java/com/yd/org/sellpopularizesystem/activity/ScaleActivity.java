@@ -4,6 +4,7 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -63,7 +64,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private List datas = new ArrayList();
     private CustomeListAdapter adapter;
     private int page = 1;
-    private String space = "", price = "", house = "", area = "", cate_id = "";
+    private String space = "", search_key="",price = "", house = "", area = "", cate_id = "";
     public String strSelect = "",hotsale="",promote="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
@@ -137,7 +138,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void initView() {
-        setTitle(R.string.home_scale);
+        //setTitle(R.string.home_scale);
+        setLayout();
         backLinearLayou = getViewById(R.id.backLinearLayout);
         backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
@@ -153,7 +155,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         tvPrice=getViewById(R.id.tvPrice);
         tvType=getViewById(R.id.tvType);
         tvHouseType=getViewById(R.id.tvHouseType);
-        setTitle(getResources().getString(R.string.home_scale));
         Bundle bundle=getIntent().getExtras();
         String type=bundle.getString("type");
        // productData.addAll((List<ProductListBean.ResultBean>)getIntent().getSerializableExtra("data"));
@@ -169,6 +170,19 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     }
 
+    private void setLayout() {
+        setCenterInput();
+        setRightTitle(R.string.select, R.color.scale_tab5, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!TextUtils.isEmpty(etSearch.getText().toString())){
+                    search_key=etSearch.getText().toString();
+                    getProductListData(true, 1, space, price, house, area);
+                }
+            }
+        });
+    }
+
 
     @Override
     public void setListener() {
@@ -179,14 +193,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         llType.setOnClickListener(mOnClickListener);
         llHouseType.setOnClickListener(mOnClickListener);
         //地图
-        clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
+        /*clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("data", (Serializable) productData);
                 ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
             }
-        });
+        });*/
 
 
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
