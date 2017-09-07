@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -47,7 +48,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private String strSearch;
     protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
-    public LinearLayout parent_container;
+    public LinearLayout parent_container,llPrice,llType,llHouseType;
     private TextView tvProjectNum;
     private EditText etSearch;
     private Button btScaleSearch;
@@ -77,6 +78,25 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 //返回按钮
                 case R.id.backLinearLayout:
                     showAlertDialog();
+                    break;
+
+                case R.id.llPrice:
+                    Bundle bundle=new Bundle();
+                    bundle.putString("fatosca","price");
+                    bundle.putString("ss","ss");
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle);
+                    break;
+                case R.id.llType:
+                    Bundle bundle1=new Bundle();
+                    bundle1.putString("fatosca","type");
+                    bundle1.putString("ss","ss");
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle1);
+                    break;
+                case R.id.llHouseType:
+                    Bundle bundle2=new Bundle();
+                    bundle2.putString("fatosca","housetype");
+                    bundle2.putString("ss","ss");
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle2);
                     break;
             }
         }
@@ -121,6 +141,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
+        llHouseType=getViewById(R.id.llHouseType);
+        llType=getViewById(R.id.llType);
         setTitle(getResources().getString(R.string.home_scale));
         Bundle bundle=getIntent().getExtras();
         String type=bundle.getString("type");
