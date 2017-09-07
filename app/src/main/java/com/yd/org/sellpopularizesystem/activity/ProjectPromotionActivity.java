@@ -1,25 +1,22 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.graphics.Color;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.text.AllCapsTransformationMethod;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
-import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
@@ -50,6 +47,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private float percentageOfShowTitle = DEFAULT_PERCENTAGE;
     private String space = "", price = "", house = "", area = "";
     private AppBarLayout mAppBarLayout;
+    private ImageView backImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +57,16 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mToolbar = (Toolbar) findViewById(R.id.tb);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mAppBarLayout.addOnOffsetChangedListener(this);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);// 给左上角图标的左边加上一个返回的图标
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+
         initView();
     }
 
     private void initView() {
-        tvTilte= (TextView) findViewById(R.id.tvTilte);
+        backImageView = (ImageView) findViewById(R.id.backImageView);
+        tvTilte = (TextView) findViewById(R.id.tvTilte);
         llAll = (LinearLayout) findViewById(R.id.llAll);
-        tvBuildingNum=(TextView) findViewById(R.id.tvBuildingNum);
+        tvBuildingNum = (TextView) findViewById(R.id.tvBuildingNum);
         tvHotSale = (TextView) findViewById(R.id.tvHotSale);
         tvLookHouse = (TextView) findViewById(R.id.tvLookHouse);
         tvMore = (TextView) findViewById(R.id.tvMore);
@@ -83,7 +81,8 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         tvHotSale.setOnClickListener(mOnClickListener);
         tvLookHouse.setOnClickListener(mOnClickListener);
         tvMore.setOnClickListener(mOnClickListener);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+
+        backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -92,11 +91,11 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         gvHouse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductListBean.ResultBean item=productData.get(position);
+                ProductListBean.ResultBean item = productData.get(position);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("bean", item);
                 bundle.putString("productName", item.getProduct_name());
-                bundle.putString("productId", item.getProduct_id()+"");
+                bundle.putString("productId", item.getProduct_id() + "");
                 ActivitySkip.forward(ProjectPromotionActivity.this, ProductItemDetailActivity.class, bundle);
             }
         });
@@ -152,7 +151,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         ProductListBean product = gson.fromJson(json, ProductListBean.class);
         if (product.getCode().equals("1")) {
             productData = product.getResult();
-            tvBuildingNum.setText(product.getTotal_number()+"" );
+            tvBuildingNum.setText(product.getTotal_number() + "");
             if (productData.size() > 0) {
                 for (int i = 0; i < productData.size(); i++) {
                     if (productData.get(i).getIs_promote() == 1) {
@@ -166,11 +165,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
             }
 
         }
-        /*if (isRefresh) {
-        adapter = new CustomeListAdapter(ScaleActivity.this);
-        listView.setAdapter(adapter);
-        }
-        adapter.addData(productData);*/
     }
 
     private void setAdapter() {
@@ -180,9 +174,9 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
-                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$"+
-                MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000).split("\\.")[0])+"k"+
-                getString(R.string.perset));
+                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$" +
+                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000).split("\\.")[0]) + "k" +
+                        getString(R.string.perset));
             }
 
         };
@@ -200,13 +194,13 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                     Bundle bundle = new Bundle();
                     bundle.putString("type", "all");
                     bundle.putSerializable("data", (Serializable) productData);
-                    ActivitySkip.forward(ProjectPromotionActivity.this,ScaleActivity.class,bundle);
+                    ActivitySkip.forward(ProjectPromotionActivity.this, ScaleActivity.class, bundle);
                     break;
                 case R.id.tvHotSale:
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("type", "hot");
                     bundle1.putSerializable("data", (Serializable) productData);
-                    ActivitySkip.forward(ProjectPromotionActivity.this,ScaleActivity.class,bundle1);
+                    ActivitySkip.forward(ProjectPromotionActivity.this, ScaleActivity.class, bundle1);
                     break;
                 case R.id.tvLookHouse:
                     Bundle bundle2 = new Bundle();
@@ -217,7 +211,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                     Bundle bundle3 = new Bundle();
                     bundle3.putString("type", "promote");
                     bundle3.putSerializable("data", (Serializable) productData);
-                    ActivitySkip.forward(ProjectPromotionActivity.this,ScaleActivity.class,bundle3);
+                    ActivitySkip.forward(ProjectPromotionActivity.this, ScaleActivity.class, bundle3);
                     break;
             }
         }
@@ -228,7 +222,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
         int maxScroll = appBarLayout.getTotalScrollRange();
         mTitlePercentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
-        mToolbar.setBackgroundColor(Color.argb((int) (255 * mTitlePercentage), 238, 120, 31));
         if (!(mTitlePercentage < percentageOfShowTitle)) {
             tvTilte.setVisibility(View.VISIBLE);
         } else {

@@ -97,9 +97,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 area = psu.getArea();
                 house = psu.getHouse();
                 price = psu.getPrice();
-                Log.e("area:::", "area::" + area);
-                Log.e("house:::", "house::" + house);
-                Log.e("price:::", "price::" + price);
                 getProductListData(true, page, space, price, house, area);
 
             }
