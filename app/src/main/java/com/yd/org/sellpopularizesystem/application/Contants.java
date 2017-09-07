@@ -9,7 +9,7 @@ public class Contants {
      * 域名
      */
     public static final String DOMAIN = "http://crm.vxda.cn";
-   // public static final String DOMAIN = "https://www.wingaid.com";
+   //public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
     // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
@@ -27,6 +27,9 @@ public class Contants {
 
     //注册推荐人
     public static final String REGISTER_REFER = DOMAIN + "/index.php/appv2/Login/register_refer";
+
+    //注册销售
+    public static final String REGISTER_USER= DOMAIN + "/index.php/appv2/login/register_user";
     //我的信息
     public static final String USER_INFO = DOMAIN + "/index.php/appv2/user/user_info";
 
