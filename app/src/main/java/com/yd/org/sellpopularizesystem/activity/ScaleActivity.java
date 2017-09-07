@@ -1,8 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,9 +12,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -49,12 +44,9 @@ import java.util.List;
  */
 public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
     private String strSearch,selectStrTag;
-    protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
     public LinearLayout parent_container,llPrice,llType,llHouseType;
     private TextView tvProjectNum,tvPrice,tvType,tvHouseType;
-    private EditText etSearch;
-    private Button btScaleSearch;
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     //代表筛选的范围,0x001表示区域,0x002表示房型,0x003表示面积,0x004表示价格
@@ -72,16 +64,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         public void onClick(View view) {
 
             switch (view.getId()) {
-                //搜索
-                case R.id.btScaleSearch:
-                    ActivitySkip.forward(ScaleActivity.this, FilterActivity.class);
-                    overridePendingTransition(R.anim.downtoup_in_anim, 0);
-                    break;
-
-                //返回按钮
-                case R.id.backLinearLayout:
-                    showAlertDialog();
-                    break;
                 //价格
                 case R.id.llPrice:
                     Bundle bundle=new Bundle();
@@ -136,13 +118,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void initView() {
-        //setTitle(R.string.home_scale);
         setLayout();
-        backLinearLayou = getViewById(R.id.backLinearLayout);
-        backLinearLayou.setOnClickListener(mOnClickListener);
         etSearch = getViewById(R.id.etSearch);
         parent_container = getViewById(R.id.parent_container);
-        btScaleSearch = getViewById(R.id.btScaleSearch);
         tvProjectNum = getViewById(R.id.tvProjectNum);
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
@@ -155,7 +133,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         tvHouseType=getViewById(R.id.tvHouseType);
         Bundle bundle=getIntent().getExtras();
         String type=bundle.getString("type");
-       // productData.addAll((List<ProductListBean.ResultBean>)getIntent().getSerializableExtra("data"));
 
                 if (type.equals("hot")){
                     hotsale="1";
@@ -170,7 +147,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     private void setLayout() {
         setCenterInput();
-        setRightTitle(R.string.select, R.color.scale_tab5, new View.OnClickListener() {
+        hideBaseView();
+        setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!TextUtils.isEmpty(etSearch.getText().toString())){
@@ -184,22 +162,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void setListener() {
-
-        //搜索事件
-        btScaleSearch.setOnClickListener(mOnClickListener);
         llPrice.setOnClickListener(mOnClickListener);
         llType.setOnClickListener(mOnClickListener);
         llHouseType.setOnClickListener(mOnClickListener);
         //地图
-        /*clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("data", (Serializable) productData);
-                ActivitySkip.forward(ScaleActivity.this, MapActivity.class, bundle);
-            }
-        });*/
-
 
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -307,21 +273,16 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
-            /*adapter = new CustomeListAdapter(ScaleActivity.this);
-            listView.setAdapter(adapter);*/
             setAdapter(productData);
             listView.setAdapter(mCommonAdapter);
         } else {
             mCommonAdapter.addMore(productData);
         }
 
-        //adapter.addData(productData);
-        //setAdapter();
-
     }
 
     private void setAdapter(List<ProductListBean.ResultBean> list) {
-        Log.e("TAG", "setAdapter: "+list.size());
+
         mCommonAdapter=new CommonAdapter<ProductListBean.ResultBean>(ScaleActivity.this,list,R.layout.lv_item_project_promotion) {
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
@@ -360,31 +321,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ActivitySkip.forward(ScaleActivity.this, cls, bundle);
     }
 
-    private void showAlertDialog() {
-        new AlertDialog.Builder(ScaleActivity.this)
-                .setMessage(R.string.exit_scale)
-                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        //删除推广记录数据
-                        SharedPreferencesHelps.clearTime();
-                        SharedPreferencesHelps.clearData();
-
-                        finish();
-                    }
-                }).setNegativeButton(R.string.cancel, null).create().show();
-    }
 
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            showAlertDialog();
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
 
-    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

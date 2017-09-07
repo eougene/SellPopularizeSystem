@@ -1,10 +1,13 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -84,7 +87,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         backImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                showAlertDialog();
             }
         });
         gvHouse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -217,5 +220,30 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         } else {
             tvTilte.setVisibility(View.GONE);
         }
+    }
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(ProjectPromotionActivity.this)
+                .setMessage(R.string.exit_scale)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //删除推广记录数据
+                        SharedPreferencesHelps.clearTime();
+                        SharedPreferencesHelps.clearData();
+
+                        finish();
+                    }
+                }).setNegativeButton(R.string.cancel, null).create().show();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            showAlertDialog();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+
     }
 }
