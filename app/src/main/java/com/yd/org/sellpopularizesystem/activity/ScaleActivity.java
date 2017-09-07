@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
-import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
@@ -51,8 +50,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private PullToRefreshLayout ptrl;
     //代表筛选的范围,0x001表示区域,0x002表示房型,0x003表示面积,0x004表示价格
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
-    private List datas = new ArrayList();
-    private CustomeListAdapter adapter;
     private int page = 1;
     private String space = "", search_key="",price = "", house = "", area = "", cate_id = "";
     public String strSelect = "",hotsale="",promote="";
@@ -293,13 +290,27 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                  }else {
                      holder.setText(R.id.tvBuildType,getString(R.string.villa));
                  }
-                if (item.getAttr_1()==1){
-                    holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
-                }else if (item.getAttr_2()==1){
+
+                 if (item.getAttr_1()==1){
+                     holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
+                 }else {
+                     holder.getView(R.id.tvHot).setVisibility(View.GONE);
+                 }
+
+
+                if (item.getAttr_2()==1){
                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
-                }else if (item.getAttr_3()==1){
-                    holder.getView(R.id.tvDiscount).setVisibility(View.VISIBLE);
+                }else {
+                    holder.getView(R.id.tvCollection).setVisibility(View.GONE);
                 }
+
+
+                if (item.getAttr_3()==1){
+                    holder.getView(R.id.tvDiscount).setVisibility(View.VISIBLE);
+                }else {
+                    holder.getView(R.id.tvDiscount).setVisibility(View.INVISIBLE);
+                }
+
 
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
