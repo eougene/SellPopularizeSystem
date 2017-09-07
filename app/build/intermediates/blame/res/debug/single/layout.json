@@ -1,183 +1,111 @@
 [
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\map_maker_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\map_maker_view.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scale_deltaile.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale_deltaile.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\invoce_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\invoce_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_search.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\refresh_head.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\refresh_head.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigate_list.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigate_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_file.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_file.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_layout_tab_text.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_declare.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_declare.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\prodet_lvitem_popwindow.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\prodet_lvitem_popwindow.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_select_dialog_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_commission.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_commission.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_base.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_more.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_view_more.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobuttonittem.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobuttonittem.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_receive_notice.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_receive_notice.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\grade_display_listview_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\grade_display_listview_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_media.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_search_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\getui_notification.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\b0a02a900ef5b8fc5114e87bbb6954496897298e\\output\\res\\layout\\getui_notification.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_action_tombstone.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigate_list.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigate_list.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popuwindow.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\popuwindow.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigation.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigation.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item2.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item2.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\927ea1ca6ec1ad6530bcebdc51313262a762305d\\output\\res\\layout\\pickerview_time.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_layout.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ask_contract.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_ask_contract.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\promotionrecord_list.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\promotionrecord_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_lines_media.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\305a579897769cab97b3e616dbe22fac2ee5da97\\output\\res\\layout\\pickerui.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_header.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_header.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_building_plan.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_building_plan.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_start.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_start.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pdf.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_pdf.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_subitem.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_subitem.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invite.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invite.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\promotionrecord_list.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\promotionrecord_list.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\details_imageshow_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\details_imageshow_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_my_certificate.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_my_certificate.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_subitem.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_subitem.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sliding_listview_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\sliding_listview_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_header_main.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_header_main.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
@@ -188,36 +116,32 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_notific.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_sub_item_detail.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_sub_item_detail.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item_sublay.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item_sublay.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_my_certificate.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_my_certificate.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\coogame_country_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_options.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\pickerview_options.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\firb_popuwindow.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\firb_popuwindow.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_city_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_city_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login_activty.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\login_activty.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_image_show.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_image_show.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_operate_view.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_operate_view.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_myteam.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_myteam.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
@@ -232,1300 +156,24 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_search_history.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\item_search_history.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_window.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\custom_info_window.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\map_maker_view.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\map_maker_view.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\prodet_lvitem_popwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\prodet_lvitem_popwindow.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_operate_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_operate_view.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home_activiyt.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_home_activiyt.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invoice.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invoice.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_choose_oprate_dialog.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_choose_oprate_dialog.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_study.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_study.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_condition.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_select_condition.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_brightness.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_brightness.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notificationhead.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notificationhead.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_header.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_header.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleorder_listview_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleorder_listview_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_myteam.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_myteam.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_custom_time.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\pickerview_custom_time.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_record.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_record.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ask_contract.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_ask_contract.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_listview_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_file.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_file.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wxpay_entry.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_wxpay_entry.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_item_subheader.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_svprogressdefault.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\view_svprogressdefault.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_sub_item_detail.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_sub_item_detail.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\share_dialog.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\share_dialog.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_tab_text.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\map_maker_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\map_maker_view.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\home_fragment.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\home_fragment.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_contents.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\custom_info_contents.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_setting.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_layout_snackbar.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_action.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productdetaill_activity_listview_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productdetaill_activity_listview_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_building_plan.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_building_plan.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_filter.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_filter.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\list_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notification.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_notification.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\pickerview_time.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_cus_oprate_record.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_cus_oprate_record.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_guide.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_guide.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigation.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigation.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floor_listview_iten_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\floor_listview_iten_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_more.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_view_more.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_header_main.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_header_main.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_action.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_listview_item_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_old_project.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_old_project.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_progress.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_progress.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_basepickerview.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\layout_basepickerview.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\commission_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\commission_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_volume.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_volume.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_promotion.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_project_promotion.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_operate_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_operate_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_city_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_city_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_guide.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_guide.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobuttonittem.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobuttonittem.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\examine_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\examine_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_contents.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\custom_info_contents.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\invoce_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\invoce_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_subitem.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_subitem.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_detail.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_order_detail.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\addr_picker.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\addr_picker.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_menu.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_alipay_qr.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_alipay_qr.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nation_picker.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nation_picker.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scal_list.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scal_list.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_menu_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_svprogressdefault.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\view_svprogressdefault.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item_separator.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_text_input_password_icon.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_grade.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_grade.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_item_des.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_item_des.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invoice.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invoice.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_pass_word.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_change_pass_word.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_part_chronometer.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_city_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_city_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_svprogresshud.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\layout_svprogresshud.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_header.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_header.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_svprogressdefault.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\view_svprogressdefault.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobutton.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobutton.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pdf.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_pdf.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_view_more.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_view_more.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_operate_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_operate_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_goal_popwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_goal_popwindow.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scale.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_me.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_me.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_tablayout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nav_tablayout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reserve.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_reserve.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_photo_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_photo_view.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_operate_view.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_operate_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_grade.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_grade.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_filter.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_filter.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\grade_display_listview_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\grade_display_listview_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_study.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_study.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scal_list.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scal_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\upgrade_dialog.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\upgrade_dialog.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_register.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_register.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobuttonittem.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobuttonittem.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scaletab_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scaletab_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_listview_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notification_listview_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nation_picker.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nation_picker.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_register.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_register.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notific.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_notific.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item_separator.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_tablayout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nav_tablayout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_listview_item_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learning_garden.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_learning_garden.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\home_fragment.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\home_fragment.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_volume.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_volume.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productdetaill_activity_listview_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productdetaill_activity_listview_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\305a579897769cab97b3e616dbe22fac2ee5da97\\output\\res\\layout\\pickerui.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\expandview_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\expandview_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_photo_view.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_photo_view.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\share_dialog.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\share_dialog.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_information_content.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_information_content.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_record.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_record.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_old_project.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_old_project.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\doa_paymetod_pop.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\doa_paymetod_pop.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_action.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_setting.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popuwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\popuwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_search.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\getui_notification.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\741f599499a35b2408ad3099a8e09de9db586cbd\\output\\res\\layout\\getui_notification.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_declare.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_declare.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_goal_popwindow.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_goal_popwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_detaila.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_detaila.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_cus_oprate_record.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_cus_oprate_record.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_video.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_video.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_search_history.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\item_search_history.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\305a579897769cab97b3e616dbe22fac2ee5da97\\output\\res\\layout\\pickerui_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_item_des.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_item_des.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\answer_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\answer_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_sublay.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_sublay.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_custom_time.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\pickerview_custom_time.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_detaila.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_detaila.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_menu_item_action_area.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_setting.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\customprogressdialog.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\customprogressdialog.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_listview_item_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productde_bottom.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productde_bottom.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_photo_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_photo_view.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_listview.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_listview.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\study_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\study_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_condition.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_select_condition.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_information_content.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_information_content.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_detail.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_order_detail.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_listview_item_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_mode_bar.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\update_order_popview.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\update_order_popview.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floor_listview_iten_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\floor_listview_iten_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_oprate_popwin_view.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\add_oprate_popwin_view.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_progress.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\layout\\jc_dialog_progress.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_commission.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_commission.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_listview_item_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_group_member_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_group_member_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleoperate_popuwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleoperate_popuwindow.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_basepickerview.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\layout_basepickerview.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_cusselect_pop.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_cusselect_pop.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_base.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_layout_base.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_image_show.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_image_show.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custome.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custome.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item_sublay.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item_sublay.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_search_history.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\item_search_history.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_bank.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_bank.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_group_member_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_group_member_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_base.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_listview_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\include_pickerview_topbar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\include_pickerview_topbar.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_start.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_start.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learning_garden.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_learning_garden.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_snackbar.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_login.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_login.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_detailed.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custom_detailed.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_cusselect_pop.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_cusselect_pop.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_cusselect_pop.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_cusselect_pop.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_item_des.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_item_des.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_map.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_map.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\addr_picker.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\addr_picker.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\firb_popuwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\firb_popuwindow.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_examination.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_examination.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login_activty.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\login_activty.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\last_pager_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\last_pager_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notific.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_notific.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_commission.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_commission.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login_activty.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\login_activty.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\quesition_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\quesition_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scale.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_receive_notice.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_receive_notice.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\update_order_popview.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\update_order_popview.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_alipay_qr.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_alipay_qr.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_window.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\custom_info_window.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_detail.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_order_detail.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_paytype_popwindow.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_paytype_popwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_basepickerview.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\927ea1ca6ec1ad6530bcebdc51313262a762305d\\output\\res\\layout\\layout_basepickerview.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_map.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_map.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\customprogressdialog.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\customprogressdialog.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reserve.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_reserve.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\upgrade_dialog.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\upgrade_dialog.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\study_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\study_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_header_main.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_header_main.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\doa_paymetod_pop.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\doa_paymetod_pop.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_search_view.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_lines_media.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_search.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_custom_time.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\pickerview_custom_time.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_oprate_popwin_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\add_oprate_popwin_view.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_declare.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_declare.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_screen_content_include.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_alipay_qr.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_alipay_qr.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_video.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_video.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_standard.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_layout_standard.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_myteam.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_myteam.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\clip_main.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\clip_main.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_base.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_popup_dialog.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_popup_dialog.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_menu.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobuttonittem.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobuttonittem.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\quesition_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\quesition_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigate_list.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigate_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_examination.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_examination.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigation.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigation.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invite.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invite.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_pass_word.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_change_pass_word.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_file.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_file.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\invoce_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\invoce_layout.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_navigation_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\pickerview_time.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_svprogresshud.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\layout_svprogresshud.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_content_include.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\prodet_lvitem_popwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\prodet_lvitem_popwindow.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_operate_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_operate_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_operate_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_operate_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_image_show.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_image_show.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_login.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_login.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\promotionrecord_list.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\promotionrecord_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_tab_icon.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\details_imageshow_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\details_imageshow_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_notification.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_notification.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_menu_item_action_area.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_subitem.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_subitem.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_header_main.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_header_main.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item_sublay.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item_sublay.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_screen_toolbar.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\coogame_country_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleoperate_popuwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleoperate_popuwindow.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\addr_picker.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\addr_picker.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\firb_popuwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\firb_popuwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_me.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_me.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_base.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\firb_popuwindow.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\firb_popuwindow.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_city_item.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_city_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_base.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\layout\\jc_layout_base.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wxpay_entry.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_wxpay_entry.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_my_certificate.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_my_certificate.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_image_show.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_image_show.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\refresh_head.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\refresh_head.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\load_more.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\load_more.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\refresh_head.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\refresh_head.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_brightness.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\layout\\jc_dialog_brightness.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_normal_layout.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\dialog_normal_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home_activiyt.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_home_activiyt.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_listview_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_listview_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invoice.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invoice.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\file_item.xml",
@@ -1540,68 +188,68 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productdetaill_activity_listview_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custome.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custome.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_condition.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_select_condition.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_video.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_video.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_brightness.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_brightness.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_filter.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_filter.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleorder_listview_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleorder_listview_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_menu.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_myteam.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_myteam.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_activity_chooser_view.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_custom_time.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\pickerview_custom_time.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_bar_title_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_file.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_file.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\commission_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\commission_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wxpay_entry.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_wxpay_entry.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\doa_paymetod_pop.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\doa_paymetod_pop.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\view_svprogressdefault.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\view_svprogressdefault.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_standard.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\layout\\jc_layout_standard.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_login.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_login.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\upgrade_dialog.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\upgrade_dialog.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_sub_item_detail.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_sub_item_detail.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item2.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item2.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\upgrade_dialog.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\upgrade_dialog.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_operate_view.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_operate_view.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_screen_simple.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\home_fragment.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\home_fragment.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui_item.xml",
@@ -1616,16 +264,8 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_tab_text.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scale_deltaile.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale_deltaile.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\visit_listview_item_layout.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\visit_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_sub_item_detail.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_sub_item_detail.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_info_contents.xml",
@@ -1636,10 +276,6 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_list_menu_item_layout.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_pdf.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_pdf.xml"
     },
@@ -1648,16 +284,8 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_list_menu_item_radio.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_popup_dialog.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_popup_dialog.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_detaila.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_detaila.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\pickerview_time.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notificationhead.xml",
@@ -1672,80 +300,68 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scaletab_layout.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productde_bottom.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productde_bottom.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home_activiyt.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_home_activiyt.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_select_dialog_material.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_listview_item_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_listview_item_layout.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invite.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invite.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_progress.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_progress.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_item.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lv_item_project_promotion.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lv_item_project_promotion.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_options.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\pickerview_options.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_record.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_record.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\commission_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\commission_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_promotion.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_project_promotion.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\load_more.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\load_more.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\examine_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\examine_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\include_pickerview_topbar.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\include_pickerview_topbar.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\expandview_layout.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\expandview_layout.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleorder_listview_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleorder_listview_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_progress.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_progress.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\promotionrecord_list.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\promotionrecord_list.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_text_input_password_icon.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\invoce_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\invoce_layout.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
@@ -1756,16 +372,16 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scale_deltaile.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\file_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\file_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\details_imageshow_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\details_imageshow_item.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scale_popup_dialog.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scale_popup_dialog.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\addr_picker.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\addr_picker.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_menu.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bind_acount_popuwindow.xml",
@@ -1776,100 +392,72 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\company_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_select_condition.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_select_condition.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_alipay_qr.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_alipay_qr.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nation_picker.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nation_picker.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_snackbar_include.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\examine_item.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\examine_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_cus_oprate_record.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_cus_oprate_record.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_product_item_des.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_product_item_des.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_layout_tab_icon.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_pass_word.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_change_pass_word.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reserve.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_reserve.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigate_list.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigate_list.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\saleorder_listview_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleorder_listview_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_svprogresshud.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\layout_svprogresshud.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\47d0e66494717d4841df31f41d8234240c142772\\output\\res\\layout\\pickerui_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_action_tombstone.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_old_project.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_old_project.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item_header.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_paytype_popwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_paytype_popwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_header.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_header.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_guide.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_guide.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\study_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\study_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_declare.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_declare.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_sublay.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_sublay.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item2.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item2.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer_add.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer_add.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\expandview_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\expandview_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobutton.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobutton.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
@@ -1884,20 +472,24 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\custom_info_window.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_operate_view.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_operate_view.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_building_plan.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_building_plan.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_change_pass_word.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_change_pass_word.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_filter.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_filter.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_study.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_study.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_tablayout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nav_tablayout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scal_list.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scal_list.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
@@ -1912,48 +504,44 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\saleoperate_popuwindow.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_listview_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notification_listview_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_listview_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notification_listview_item.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_standard.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_layout_standard.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_icon.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\scaletab_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\scaletab_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nav_tablayout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nav_tablayout.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learning_garden.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_learning_garden.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_user_adress.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_user_adress.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_volume.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_volume.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\nation_picker.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\nation_picker.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\305a579897769cab97b3e616dbe22fac2ee5da97\\output\\res\\layout\\pickerui.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_listview.xml",
@@ -1972,120 +560,76 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_group_member_item.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bind_acount_popuwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\bind_acount_popuwindow.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_photo_view.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_photo_view.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\details_imageshow_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\details_imageshow_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_information_content.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_information_content.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\commission_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\commission_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_record.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_record.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ask_contract.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_ask_contract.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_goal_popwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_goal_popwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\clip_main.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\clip_main.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\last_pager_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\last_pager_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_old_project.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_old_project.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_layout_base.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_layout_base.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_paytype_popwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_paytype_popwindow.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\doa_paymetod_pop.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\doa_paymetod_pop.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_action.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\share_dialog.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\share_dialog.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobutton.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobutton.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_multichoice_material.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer_add.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer_add.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\sliding_listview_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\sliding_listview_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_choose_oprate_dialog.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_choose_oprate_dialog.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\load_more.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\load_more.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_investigation.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigation.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_goal_popwindow.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_goal_popwindow.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\getui_notification.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\b0a02a900ef5b8fc5114e87bbb6954496897298e\\output\\res\\layout\\getui_notification.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_menu_item_action_area.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_cus_oprate_record.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_cus_oprate_record.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_video.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_video.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\include_pickerview_topbar.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\927ea1ca6ec1ad6530bcebdc51313262a762305d\\output\\res\\layout\\include_pickerview_topbar.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\quesition_layout.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\quesition_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floor_listview_iten_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\floor_listview_iten_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_sublay.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_sublay.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_listview_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notification_listview_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custome.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custome.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_activity_chooser_view.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_lines_media.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_study_detaila.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_study_detaila.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_me.xml",
@@ -2096,96 +640,28 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_my_info.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notificationhead.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\notificationhead.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_brightness.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_brightness.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\list_item_layout.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\customprogressdialog.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\customprogressdialog.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_layout.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\list_item_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_setting.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_setting.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item_sublay.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item_sublay.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productde_bottom.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productde_bottom.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\radiobutton.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\radiobutton.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\floor_listview_iten_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\floor_listview_iten_layout.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_menu_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_title_item.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_study.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_study.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_learning_garden.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_learning_garden.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\last_pager_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\last_pager_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_search.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_search.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_scal_list.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_scal_list.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerui.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\47d0e66494717d4841df31f41d8234240c142772\\output\\res\\layout\\pickerui.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_lawyer_add.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_lawyer_add.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\productde_bottom.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\productde_bottom.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\file_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\file_item.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_alert_dialog_material.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\list_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_item_header.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_oprate_popwin_view.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\add_oprate_popwin_view.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\answer_layout.xml",
@@ -2200,140 +676,104 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custom_detailed.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\update_order_popview.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\update_order_popview.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\coogame_country_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_listview_item_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_listview_item_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_examination.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_examination.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_basepickerview.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\layout_basepickerview.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_information_content.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_information_content.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\jc_dialog_volume.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\layout\\jc_dialog_volume.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custome.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custome.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\clip_main.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\clip_main.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_custom_detailed.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_custom_detailed.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\company_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\company_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\item_search_history.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\item_search_history.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_register.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_register.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_up_container.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\answer_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\answer_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_bank.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_bank.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\layout\\design_navigation_item_separator.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\include_pickerview_topbar.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\layout\\include_pickerview_topbar.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_operate_view.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_operate_view.xml"
-    },
-    {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_choose_oprate_dialog.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_choose_oprate_dialog.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_cusselect_pop.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_cusselect_pop.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_map.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_map.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\coogame_country_item.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\eoi_choose_oprate_dialog.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\eoi_choose_oprate_dialog.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\gv_item_house_suggest.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\gv_item_house_suggest.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bind_acount_popuwindow.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\bind_acount_popuwindow.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_examination.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_examination.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\company_layout.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\company_layout.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\last_pager_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\last_pager_layout.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_layout.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\popuwindow.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\popuwindow.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\layout_svprogresshud.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\layout_svprogresshud.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_commission.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_commission.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_grade.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_grade.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_invoice.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_invoice.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\login_activty.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\login_activty.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_sale_receive_notice.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_sale_receive_notice.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\select_dialog_item_material.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\base_listview.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\base_listview.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_wxpay_entry.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_wxpay_entry.xml"
-    },
-    {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_options.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\927ea1ca6ec1ad6530bcebdc51313262a762305d\\output\\res\\layout\\pickerview_options.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
@@ -2344,27 +784,23 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_navigation_item_subheader.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserver_paytype_popwindow.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserver_paytype_popwindow.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\home_fragment.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\home_fragment.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_order_detail.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_order_detail.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_part_time.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_reserve.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_reserve.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_sublay.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\team_listview_item_sublay.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\study_item.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\study_item.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\add_oprate_popwin_view.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\add_oprate_popwin_view.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     }
 ]

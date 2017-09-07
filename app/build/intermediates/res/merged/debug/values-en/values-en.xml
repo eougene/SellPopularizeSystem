@@ -171,6 +171,7 @@
     <string name="emailcontent">This part is the body of the email</string>
     <string name="emailemptyerror">Email cannot be empty</string>
     <string name="emailtopic">This is the subject of the email</string>
+    <string name="en_hint">请输入真实的英文名</string>
     <string name="englishname">English Name</string>
     <string name="englishnamenonull">English name cannot be empty</string>
     <string name="ensure_sd">Please make sure the insert SD card already</string>
@@ -633,7 +634,7 @@
     <string name="video">Video</string>
     <string name="view_more">查看更多</string>
     <string name="viewdetail">Details</string>
-    <string name="villa">别墅</string>
+    <string name="villa">Villa</string>
     <string name="visit">Visit History</string>
     <string name="vp">Introduction</string>
     <string name="wechat_load">WeChat login</string>
