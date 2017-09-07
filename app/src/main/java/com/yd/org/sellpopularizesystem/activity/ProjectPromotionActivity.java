@@ -40,7 +40,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private Toolbar mToolbar;
     private CommonAdapter mCommonAdapter;
     private CustomProgressDialog loading_Dialog;
-    private List datas = new ArrayList();
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
     protected float mTitlePercentage;
     private static final float DEFAULT_PERCENTAGE = 0.95f;
@@ -105,7 +104,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(1));
-        httpParams.put("number", "6");
+        httpParams.put("number", "4");
         httpParams.put("cate_id", area);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
@@ -152,23 +151,14 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         if (product.getCode().equals("1")) {
             productData = product.getResult();
             tvBuildingNum.setText(product.getTotal_number() + "");
-            if (productData.size() > 0) {
-                for (int i = 0; i < productData.size(); i++) {
-                    if (productData.get(i).getIs_promote() == 1) {
-                        datas.add(productData.get(i));
-                    }
-                    if (datas.size() == 6) {
-                        break;
-                    }
-                }
-                setAdapter();
-            }
+            setAdapter();
+
 
         }
     }
 
     private void setAdapter() {
-        mCommonAdapter = new CommonAdapter<ProductListBean.ResultBean>(ProjectPromotionActivity.this, datas, R.layout.gv_item_house_suggest) {
+        mCommonAdapter = new CommonAdapter<ProductListBean.ResultBean>(ProjectPromotionActivity.this, productData, R.layout.gv_item_house_suggest) {
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
