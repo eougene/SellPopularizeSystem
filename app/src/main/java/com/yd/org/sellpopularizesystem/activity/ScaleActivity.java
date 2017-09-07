@@ -3,11 +3,13 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -23,6 +25,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
@@ -45,11 +48,11 @@ import java.util.List;
  * 销售推广
  */
 public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
-    private String strSearch;
+    private String strSearch,selectStrTag;
     protected ImageView backLinearLayou;
     public static ScaleActivity scaleActivity;
     public LinearLayout parent_container,llPrice,llType,llHouseType;
-    private TextView tvProjectNum;
+    private TextView tvProjectNum,tvPrice,tvType,tvHouseType;
     private EditText etSearch;
     private Button btScaleSearch;
     private PullableListView listView;
@@ -60,7 +63,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private CustomeListAdapter adapter;
     private int page = 1;
     private String space = "", price = "", house = "", area = "", cate_id = "";
-    public String strSelect = "";
+    public String strSelect = "",hotsale="",promote="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
 
@@ -79,24 +82,26 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 case R.id.backLinearLayout:
                     showAlertDialog();
                     break;
-
+                //价格
                 case R.id.llPrice:
                     Bundle bundle=new Bundle();
                     bundle.putString("fatosca","price");
                     bundle.putString("ss","ss");
-                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle);
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.PRICE,bundle);
                     break;
+                //类型
                 case R.id.llType:
                     Bundle bundle1=new Bundle();
                     bundle1.putString("fatosca","type");
                     bundle1.putString("ss","ss");
-                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle1);
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.TYPE,bundle1);
                     break;
+                //房型
                 case R.id.llHouseType:
                     Bundle bundle2=new Bundle();
                     bundle2.putString("fatosca","housetype");
                     bundle2.putString("ss","ss");
-                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,bundle2);
+                    ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.HOURSE,bundle2);
                     break;
             }
         }
@@ -141,30 +146,25 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
+        llPrice=getViewById(R.id.llPrice);
         llHouseType=getViewById(R.id.llHouseType);
         llType=getViewById(R.id.llType);
+        tvPrice=getViewById(R.id.tvPrice);
+        tvType=getViewById(R.id.tvType);
+        tvHouseType=getViewById(R.id.tvHouseType);
         setTitle(getResources().getString(R.string.home_scale));
         Bundle bundle=getIntent().getExtras();
         String type=bundle.getString("type");
-        productData.addAll((List<ProductListBean.ResultBean>)getIntent().getSerializableExtra("data"));
-        if (!type.equals("all")){
-            for (int i = 0; i <productData.size() ; i++) {
-                if (type.equals("hot")){
-                    if (productData.get(i).getIs_hot_sale()==1){
-                        datas.add(productData.get(i));
-                    }
-                }else if (type.equals("promote")){
-                    if (productData.get(i).getIs_promote()==1){
-                        datas.add(productData.get(i));
-                    }
-                }
-            }
-            setAdapter(datas);
-        }else {
-            setAdapter(productData);
-        }
+       // productData.addAll((List<ProductListBean.ResultBean>)getIntent().getSerializableExtra("data"));
 
-        //getProductListData(true, page, space, price, house, area);
+                if (type.equals("hot")){
+                    hotsale="1";
+                    promote="0";
+                }else if (type.equals("promote")){
+                    hotsale="0";
+                    promote="1";
+                }
+        getProductListData(true, 1, space, price, house, area);
 
     }
 
@@ -174,7 +174,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
         //搜索事件
         btScaleSearch.setOnClickListener(mOnClickListener);
-
+        llPrice.setOnClickListener(mOnClickListener);
+        llType.setOnClickListener(mOnClickListener);
+        llHouseType.setOnClickListener(mOnClickListener);
         //地图
         clickRightImageView(R.mipmap.map1, new View.OnClickListener() {
             @Override
@@ -229,12 +231,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(page));
         httpParams.put("number", "100");
-        httpParams.put("cate_id", area);
+        httpParams.put("cate_id", cate_id);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
         httpParams.put("house", house);
         httpParams.put("space", space);
         httpParams.put("price", price);
+        httpParams.put("hot_sale", hotsale);
+        httpParams.put("promote", promote);
 
         Log.e("参数***","params:"+httpParams.toString());
 
@@ -289,6 +293,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
     private void setAdapter(List<ProductListBean.ResultBean> list) {
+        Log.e("TAG", "setAdapter: "+list.size());
         mCommonAdapter=new CommonAdapter<ProductListBean.ResultBean>(ScaleActivity.this,list,R.layout.lv_item_project_promotion) {
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
@@ -316,6 +321,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
             }
         };
+        listView.setAdapter(mCommonAdapter);
     }
 
     public void goTo(Object bean, Class<?> cls, String str1, String str2) {
@@ -352,5 +358,48 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode==RESULT_OK){
+            switch (requestCode){
+                //类型
+                case ExtraName.TYPE:
+                    if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
+                        Log.e("TAG", "onActivityResult: "+data.getStringExtra("selectextra"));
+                        tvType.setText(data.getStringExtra("selectextra")==null?"":data.getStringExtra("selectextra"));
+                        if (data.getStringExtra("selectextra").equals("land")){
+                            cate_id="1";
+                        }else if(data.getStringExtra("selectextra").equals("house&land")){
+                            cate_id="2";
+                        }else {
+                            cate_id="3";
+                        }
+                    }
+                    selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
+                    break;
+                //房型
+                case ExtraName.HOURSE:
+                    if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
+                        if (data.getStringExtra("selectextra").length()>2){
+                            tvHouseType.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
+                        }
+                        area=data.getStringExtra("selectextra");
+                        tvHouseType.setText(data.getStringExtra("selectextra"));
+                    }
+                    selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
+                    break;
+                //价格
+                case ExtraName.PRICE:
+                    if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
+                        tvPrice.setText(data.getStringExtra("selectextra"));
+                        price=data.getStringExtra("selectextra");
+                    }
+                    selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
+                    break;
+            }
+            getProductListData(true, page, space, price, house, area);
+        }
+    }
 
 }

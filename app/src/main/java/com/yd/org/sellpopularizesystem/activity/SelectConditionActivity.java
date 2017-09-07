@@ -41,17 +41,17 @@ public class SelectConditionActivity extends BaseActivity {
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("housetype")){
             setTitle(R.string.housetype);
-            rgArea.setVisibility(View.GONE);
+            //rgArea.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("type")){
             setTitle(R.string.type);
-            rgArea.setVisibility(View.GONE);
+            //rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
         }else if (str.equals("price")){
             setTitle(R.string.price);
-            rgArea.setVisibility(View.GONE);
+           // rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
         }
@@ -81,16 +81,19 @@ public class SelectConditionActivity extends BaseActivity {
         setRightTitleBackground(new ColorDrawable(Color.WHITE), Color.RED);
         if (getIntent().getExtras().getString("ss")==null){
             setRightTitle(R.string.ok, mOnClickListener);
+        }else {
+            getViewById(R.id.tvSelect).setVisibility(View.VISIBLE);
         }
         ivSearch=getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
     }
 
     private void initViews() {
-        rgArea=getViewById(R.id.rgArea);
+        //rgArea=getViewById(R.id.rgArea);
         llHouseType=getViewById(R.id.llHouseType);
         rgType=getViewById(R.id.rgType);
         rgPrice=getViewById(R.id.rgPrice);
+        tvSelect=getViewById(R.id.tvSelect);
     }
 
     View.OnClickListener mOnClickListener=new View.OnClickListener() {
@@ -102,6 +105,9 @@ public class SelectConditionActivity extends BaseActivity {
                     setData(intent);
                     break;
                 case R.id.rightTitle:
+                    setData(intent);
+                    break;
+                case R.id.tvSelect:
                     setData(intent);
                     break;
             }
@@ -132,14 +138,14 @@ public class SelectConditionActivity extends BaseActivity {
         @Override
         public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
             switch (group.getId()){
-                //房屋类型
-                case R.id.rgArea:
+                //区域
+                /*case R.id.rgArea:
                     RadioButton rbArea= (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbArea.getTag();
                     selectStr=rbArea.getText().toString();
 
                     Log.e("选择***","selectStr:"+selectStr);
-                    break;
+                    break;*/
                 //类型
                 case R.id.rgType:
                     RadioButton rbType = (RadioButton) findViewById(group.getCheckedRadioButtonId());
@@ -160,8 +166,9 @@ public class SelectConditionActivity extends BaseActivity {
     public void setListener() {
         //tvSelect.setOnClickListener(mOnClickListener);
         backLinearLayou.setOnClickListener(mOnClickListener);
-        rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        //rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
         rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);
         rgPrice.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        tvSelect.setOnClickListener(mOnClickListener);
     }
 }
