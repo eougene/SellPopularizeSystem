@@ -640,6 +640,7 @@
     <string name="loc_des">上海-松江</string>
     <string name="totalprice">总价</string>
     <string name="perset">/套起</string>
+    <string name="en_hint">请输入真实的英文名</string>
 
 </resources>
 
