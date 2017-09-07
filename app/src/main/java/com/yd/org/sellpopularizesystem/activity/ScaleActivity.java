@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -66,7 +67,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     public String strSelect = "",hotsale="",promote="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
-
+    private  Bundle bundle=new Bundle();
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -197,6 +198,17 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     getProductListData(true, 1, space, price, house, area);
                 }
                 return false;
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ProductListBean.ResultBean item= (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
+                bundle.putSerializable("bean", item);
+                bundle.putString("productName", item.getProduct_name());
+                bundle.putString("productId", item.getProduct_id()+"");
+                ActivitySkip.forward(ScaleActivity.this, ProductItemDetailActivity.class, bundle);
             }
         });
     }
