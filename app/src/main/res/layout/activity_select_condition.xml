@@ -16,7 +16,7 @@
             android:orientation="vertical">
 
             <RadioGroup
-                android:id="@+id/rgArea"
+                android:id="@+id/rgType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -248,9 +248,10 @@
             </LinearLayout>
 
             <RadioGroup
-                android:id="@+id/rgType"
+                android:id="@+id/rgDes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone">
 
                 <RadioButton
                     android:id="@+id/rbType1"
@@ -500,7 +501,7 @@
                 android:background="@color/shallow_gray" />
 
             <TextView
-                android:id="@+id/tvSearch"
+                android:id="@+id/tvSelect"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"

@@ -49,7 +49,7 @@
             android:background="@color/search_edit_bac"/>
 
         <RelativeLayout
-            android:id="@+id/rlArea"
+            android:id="@+id/rlType"
             style="@style/MatchWrap"
             android:padding="@dimen/padding_margin_14">
 
@@ -62,7 +62,7 @@
                 android:textSize="@dimen/tv_size_12"/>
 
             <TextView
-                android:id="@+id/tvAreaDes"
+                android:id="@+id/tvSelectType"
                 style="@style/WrapWrap"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/padding_margin_6"

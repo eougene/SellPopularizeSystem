@@ -16,13 +16,13 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
 public class FilterActivity extends BaseActivity {
-    private TextView tvSelect,tvAreaDes,tvHouseType,tvSelectPrice,tvProductSearch;
+    private TextView tvSelect,tvSelectType,tvHouseType,tvSelectPrice,tvProductSearch;
     private ImageView ivSearch;
     //获取到筛选条件内容对应代号如1,2,3等
     private String selectStrTag;
     //获取到筛选条件内容
     private String selectContent;
-    private RelativeLayout rlArea,rlHouseType,rlPrice;
+    private RelativeLayout rlType,rlHouseType,rlPrice;
     @Override
     protected int setContentView() {
         return R.layout.activity_filter;
@@ -35,8 +35,8 @@ public class FilterActivity extends BaseActivity {
     }
 
     private void initViews() {
-        rlArea=getViewById(R.id.rlArea);
-        tvAreaDes=getViewById(R.id.tvAreaDes);
+        rlType=getViewById(R.id.rlType);
+        tvSelectType=getViewById(R.id.tvSelectType);
         rlHouseType=getViewById(R.id.rlHouseType);
         tvHouseType=getViewById(R.id.tvHouseType);
         /*rlType=getViewById(R.id.rlType);
@@ -72,7 +72,7 @@ public class FilterActivity extends BaseActivity {
     @Override
     public void setListener() {
         //tvSelect.setOnClickListener(mOnClickListener);
-        rlArea.setOnClickListener(mOnClickListener);
+        rlType.setOnClickListener(mOnClickListener);
        rlHouseType.setOnClickListener(mOnClickListener);
         //rlType.setOnClickListener(mOnClickListener);
         rlPrice.setOnClickListener(mOnClickListener);
@@ -86,10 +86,12 @@ public class FilterActivity extends BaseActivity {
                 /*case R.id.tvSelect:
                     resetText();
                     break;*/
-                case R.id.rlArea:
-                    bun.putString("fatosca","area");
-                    ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class, ExtraName.AREA,bun);
+                //类型
+                case R.id.rlType:
+                    bun.putString("fatosca","type");
+                    ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class, ExtraName.TYPE,bun);
                     break;
+                //房型
                 case R.id.rlHouseType:
                     bun.putString("fatosca","housetype");
                     ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class,ExtraName.HOURSE,bun);
@@ -98,6 +100,7 @@ public class FilterActivity extends BaseActivity {
                     bun.putString("fatosca","type");
                     ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class,ExtraName.SPACE,bun);
                     break;*/
+                //价格
                 case R.id.rlPrice:
                     bun.putString("fatosca","price");
                     ActivitySkip.forward(FilterActivity.this,SelectConditionActivity.class,ExtraName.PRICE,bun);
@@ -106,7 +109,7 @@ public class FilterActivity extends BaseActivity {
                 case R.id.tvProductSearch:
                     Message message=ScaleActivity.scaleActivity.handler.obtainMessage();
 
-                    ScaleActivity.scaleActivity.psu.setArea(tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
+                    ScaleActivity.scaleActivity.psu.setArea(tvSelectType.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
                     ScaleActivity.scaleActivity.psu.setHouse(tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":selectStrTag);
 
                     //ScaleActivity.scaleActivity.psu.setSpace(tvSelectType.getText().toString().equals("不限")?"":selectStrTag);
@@ -116,7 +119,7 @@ public class FilterActivity extends BaseActivity {
                     message.obj=ScaleActivity.scaleActivity.psu;
                     ScaleActivity.scaleActivity.handler.handleMessage(message);
 
-                    String strArea=tvAreaDes.getText().toString().equals(getString(R.string.unlimited_))?"":tvAreaDes.getText().toString();
+                    String strArea=tvSelectType.getText().toString().equals(getString(R.string.unlimited_))?"":tvSelectType.getText().toString();
                     String strHt=tvHouseType.getText().toString().equals(getString(R.string.unlimited_))?"":tvHouseType.getText().toString();
                     String strPrice=tvSelectPrice.getText().toString().equals(getString(R.string.unlimited_))?"":tvSelectPrice.getText().toString();
 
@@ -129,8 +132,8 @@ public class FilterActivity extends BaseActivity {
     };
 
     private void resetText() {
-        if (!tvAreaDes.getText().equals(getString(R.string.unlimited_))){
-            tvAreaDes.setText(getString(R.string.unlimited_));
+        if (!tvSelectType.getText().equals(getString(R.string.unlimited_))){
+            tvSelectType.setText(getString(R.string.unlimited_));
         }
         if (!tvHouseType.getText().equals(getString(R.string.unlimited_))){
             tvHouseType.setText(getString(R.string.unlimited_));
@@ -148,8 +151,8 @@ public class FilterActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==RESULT_OK){
             switch (requestCode){
-                case ExtraName.AREA:
-                    tvAreaDes.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?getString(R.string.unlimited_):data.getStringExtra("selectextra"));
+                case ExtraName.TYPE:
+                    tvSelectType.setText(TextUtils.isEmpty(data.getStringExtra("selectextra"))?getString(R.string.unlimited_):data.getStringExtra("selectextra"));
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     break;
                 case ExtraName.HOURSE:
