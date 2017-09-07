@@ -8,349 +8,352 @@
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <RadioGroup
-            android:id="@+id/rgArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/rbArea1"
+            <RadioGroup
+                android:id="@+id/rgType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbArea1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="1"
+                    android:text="@string/house_land"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <RadioButton
+                    android:id="@+id/rbArea2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="2"
+                    android:text="Land"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <RadioButton
+                    android:id="@+id/rbArea3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="3"
+                    android:text="APT"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+
+                <RadioButton
+                    android:id="@+id/rbArea4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="4"
+                    android:text="@string/areafour"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray"
+                    android:visibility="gone" />
+
+                <RadioButton
+                    android:id="@+id/rbArea5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="5"
+                    android:text="@string/areafive"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray"
+                    android:visibility="gone" />
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/llHouseType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/house_land"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="1"
-                android:textSize="@dimen/tv_size_12" />
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <CheckBox
+                    android:id="@+id/cbHouseType1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="1"
+                    android:text="@string/roomone"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <RadioButton
-                android:id="@+id/rbArea2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="Land"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="2"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <CheckBox
+                    android:id="@+id/cbHouseType2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="2"
+                    android:text="@string/roomtwo"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <RadioButton
-                android:id="@+id/rbArea3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="APT"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="3"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <CheckBox
+                    android:id="@+id/cbHouseType3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="3"
+                    android:text="@string/roomthree"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <RadioButton
-                android:visibility="gone"
-                android:id="@+id/rbArea4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areafour"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="4"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <CheckBox
+                    android:id="@+id/cbHouseType4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="4"
+                    android:text="@string/roomfour"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <RadioButton
-                android:visibility="gone"
-                android:id="@+id/rbArea5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/areafive"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="5"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-        </RadioGroup>
+                <CheckBox
+                    android:id="@+id/cbHouseType5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="5"
+                    android:text="@string/fiveroom"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-        <LinearLayout
-            android:id="@+id/llHouseType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <CheckBox
-                android:id="@+id/cbHouseType1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/roomone"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="1"
-                android:textSize="@dimen/tv_size_12" />
+                <CheckBox
+                    android:id="@+id/cbHouseType6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="6"
+                    android:text="@string/abovefiveroom"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
+            </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-
-            <CheckBox
-                android:id="@+id/cbHouseType2"
+            <RadioGroup
+                android:id="@+id/rgDes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/roomtwo"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="2"
-                android:textSize="@dimen/tv_size_12" />
+                android:visibility="gone">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <RadioButton
+                    android:id="@+id/rbType1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="1"
+                    android:text="@string/desone"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <CheckBox
-                android:id="@+id/cbHouseType3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/roomthree"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="3"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <RadioButton
+                    android:id="@+id/rbType2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="2"
+                    android:text="@string/destwo"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <CheckBox
-                android:id="@+id/cbHouseType4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/roomfour"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="4"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <RadioButton
+                    android:id="@+id/rbType3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="3"
+                    android:text="@string/desthree"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <CheckBox
-                android:id="@+id/cbHouseType5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/fiveroom"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="5"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                <RadioButton
+                    android:id="@+id/rbType4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="4"
+                    android:text="@string/desfour"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <CheckBox
-                android:id="@+id/cbHouseType6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/abovefiveroom"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="6"
-                android:textSize="@dimen/tv_size_12" />
-        </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
 
-        <RadioGroup
-            android:id="@+id/rgType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <RadioButton
+                    android:id="@+id/rbType5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableRight="@drawable/checkbox_selector"
+                    android:paddingBottom="@dimen/padding_margin_10"
+                    android:paddingLeft="@dimen/padding_margin_6"
+                    android:paddingRight="@dimen/padding_margin_10"
+                    android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="5"
+                    android:text="@string/desfive"
+                    android:textColor="@drawable/cbtextcolor_select"
+                    android:textSize="@dimen/tv_size_12" />
 
-            <RadioButton
-                android:id="@+id/rbType1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/desone"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="1"
-                android:textSize="@dimen/tv_size_12" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/shallow_gray" />
+            </RadioGroup>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-
-            <RadioButton
-                android:id="@+id/rbType2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/destwo"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="2"
-                android:textSize="@dimen/tv_size_12" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-
-            <RadioButton
-                android:id="@+id/rbType3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/desthree"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="3"
-                android:textSize="@dimen/tv_size_12" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-
-            <RadioButton
-                android:id="@+id/rbType4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/desfour"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="4"
-                android:textSize="@dimen/tv_size_12" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-
-            <RadioButton
-                android:id="@+id/rbType5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:button="@null"
-                android:drawableRight="@drawable/checkbox_selector"
-                android:paddingBottom="@dimen/padding_margin_10"
-                android:paddingLeft="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_10"
-                android:text="@string/desfive"
-                android:textColor="@drawable/cbtextcolor_select"
-                android:tag="5"
-                android:textSize="@dimen/tv_size_12" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
-        </RadioGroup>
             <RadioGroup
                 android:id="@+id/rgPrice"
                 android:layout_width="match_parent"
@@ -366,9 +369,9 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="50000~100000"
                     android:text="@string/_50k_100k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="50000~100000"
                     android:textSize="@dimen/tv_size_12" />
 
                 <View
@@ -386,9 +389,9 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="100000~150000"
                     android:text="@string/_100k_150k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="100000~150000"
                     android:textSize="@dimen/tv_size_12" />
 
                 <View
@@ -406,9 +409,9 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="150000~200000"
                     android:text="@string/_150k_200k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="150000~200000"
                     android:textSize="@dimen/tv_size_12" />
 
                 <View
@@ -426,9 +429,9 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="200000~250000"
                     android:text="@string/_200k_250k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="200000~250000"
                     android:textSize="@dimen/tv_size_12" />
 
                 <View
@@ -446,15 +449,16 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="250000~300000"
                     android:text="@string/_250k_300k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="250000~300000"
                     android:textSize="@dimen/tv_size_12" />
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
+
                 <RadioButton
                     android:id="@+id/rbPrice6"
                     android:layout_width="match_parent"
@@ -465,14 +469,16 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="300000~350000"
                     android:text="@string/_300k_350k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="300000~350000"
                     android:textSize="@dimen/tv_size_12" />
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
+
                 <RadioButton
                     android:id="@+id/rbPrice7"
                     android:layout_width="match_parent"
@@ -483,11 +489,31 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
+                    android:tag="350000~999999999"
                     android:text="@string/_300k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:tag="350000~999999999"
                     android:textSize="@dimen/tv_size_12" />
             </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/shallow_gray" />
+
+            <TextView
+                android:id="@+id/tvSelect"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:background="@color/scale_tab5"
+                android:gravity="center"
+                android:paddingBottom="@dimen/padding_margin_10"
+                android:paddingTop="@dimen/padding_margin_10"
+                android:text="@string/home_sure"
+                android:textColor="@color/white"
+                android:textSize="@dimen/tv_size_12"
+                android:visibility="gone"/>
         </LinearLayout>
     </com.yd.org.sellpopularizesystem.myView.BounceScrollView>
 </LinearLayout>
