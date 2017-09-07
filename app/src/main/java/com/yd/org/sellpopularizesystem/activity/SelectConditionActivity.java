@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.IdRes;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -14,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 public class SelectConditionActivity extends BaseActivity {
     private RadioGroup rgArea,rgType,rgPrice;
@@ -102,7 +104,8 @@ public class SelectConditionActivity extends BaseActivity {
             Intent intent = new Intent();
             switch (v.getId()){
                 case R.id.backLinearLayout:
-                    setData(intent);
+                    //setData(intent);
+                    finish();
                     break;
                 case R.id.rightTitle:
                     setData(intent);
@@ -116,22 +119,33 @@ public class SelectConditionActivity extends BaseActivity {
 
     private void setData(Intent intent) {
         if (!str.equals("housetype")){
-            intent.putExtra("selectextra",selectStr);
-            intent.putExtra("selecttagextra",selectStrTag);
-            setResult(RESULT_OK, intent);
+            if (!TextUtils.isEmpty(selectStr)){
+                intent.putExtra("selectextra",selectStr);
+                intent.putExtra("selecttagextra",selectStrTag);
+                setResult(RESULT_OK, intent);
+                finish();
+            }else {
+                ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
+            }
+
         }else{
             getHouseTypeData();
-            if (selectStr.endsWith(",")){
-                selectStr=selectStr.substring(0,selectStr.length()-1);
+            if (!TextUtils.isEmpty(selectStr)){
+                if (selectStr.endsWith(",")){
+                    selectStr=selectStr.substring(0,selectStr.length()-1);
+                }
+                if (selectStrTag.endsWith(",")){
+                    selectStrTag=selectStrTag.substring(0,selectStrTag.length()-1);
+                }
+                intent.putExtra("selectextra",selectStr);
+                intent.putExtra("selecttagextra",selectStrTag);
+                setResult(RESULT_OK, intent);
+                finish();
+            }else {
+                ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
             }
-            if (selectStrTag.endsWith(",")){
-                selectStrTag=selectStrTag.substring(0,selectStrTag.length()-1);
-            }
-            intent.putExtra("selectextra",selectStr);
-            intent.putExtra("selecttagextra",selectStrTag);
-            setResult(RESULT_OK, intent);
         }
-        finish();
+
     }
 
     RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener=new RadioGroup.OnCheckedChangeListener() {

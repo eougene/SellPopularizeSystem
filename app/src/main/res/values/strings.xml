@@ -638,6 +638,7 @@
     <string name="totalprice">总价</string>
     <string name="perset">/套起</string>
     <string name="en_hint">请输入真实的英文名</string>
+    <string name="select_ele">请选择筛选条件</string>
 
 
 </resources>
