@@ -136,12 +136,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\studyicon.png"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\success.png",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\success.png"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\homeblue.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\homeblue.png"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\success.png",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\success.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\project.png",
@@ -152,16 +152,24 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\contracttool.png"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\sale.png",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\sale.png"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\building.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\building.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\pull_icon_big.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\pull_icon_big.png"
     },
     {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\sale.png",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\sale.png"
+    },
+    {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\ic_svstatus_success.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\ic_svstatus_success.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\wenzi.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\wenzi.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\client1.png",
@@ -200,12 +208,12 @@
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\message.png"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\tabmeunselect.png",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\tabmeunselect.png"
-    },
-    {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\maplist1.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\maplist1.png"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\tabmeunselect.png",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\tabmeunselect.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\guild3.png",
@@ -252,6 +260,10 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\map1.png"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\flat.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\flat.png"
+    },
+    {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\checked.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\checked.png"
     },
@@ -274,6 +286,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\messagegray.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\messagegray.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\trangle.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\trangle.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\redhome.png",
@@ -308,16 +324,16 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\homeunselect.png"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\correcticonx.png",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\correcticonx.png"
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\selectedx.png",
+        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\selectedx.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\bpay.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\bpay.png"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\selectedx.png",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\selectedx.png"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\correcticonx.png",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\correcticonx.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\edit_delete_pressed.png",
@@ -384,12 +400,12 @@
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\pullup_icon_big.png"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\umeng_socialize_facebook.png",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\umeng_socialize_facebook.png"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\downarrow.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\downarrow.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\umeng_socialize_facebook.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\umeng_socialize_facebook.png"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\sanjiao.png",
@@ -416,12 +432,12 @@
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\commission.png"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\cbunselect.png",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\cbunselect.png"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\redhome.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\redhome.png"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\cbunselect.png",
+        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\cbunselect.png"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\lock1.png",
@@ -450,6 +466,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\basicknoledge.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\basicknoledge.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\buildingphoto1.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\buildingphoto1.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\studymaterial.png",
@@ -490,6 +510,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\location.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\location.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\viewmore.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\viewmore.png"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\tabmeselect.png",
@@ -886,6 +910,10 @@
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\examine_s.png",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\examine_s.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\hotsale.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\hotsale.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\commission.png",
@@ -1424,6 +1452,10 @@
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\greenhome3.png"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\trangle2.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\trangle2.png"
+    },
+    {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\bedroom.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\bedroom.png"
     },
@@ -1514,6 +1546,10 @@
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\guild2.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\guild2.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\digitalbac.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\digitalbac.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\study_s.png",
@@ -1714,6 +1750,10 @@
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\messageblue.png",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\messageblue.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\position.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\position.png"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\salarecord.png",
@@ -2016,6 +2056,10 @@
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\wback_1.png"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\buildingphoto.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\buildingphoto.png"
+    },
+    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\down_arrow.png",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\down_arrow.png"
     },
@@ -2066,6 +2110,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\more.png",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\more.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\yingjia.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\yingjia.png"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\umeng_socialize_wechat.png",

@@ -1,11 +1,11 @@
 [
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\edittext_bac.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\edittext_bac.xml"
-    },
-    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_bottom_navigation_item_background.xml",
         "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\edittext_bac.xml",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\edittext_bac.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_shape_customdialog.xml",
@@ -20,12 +20,12 @@
         "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\drawable\\jc_click_error_selector.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_bottom_progress.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\drawable\\jc_bottom_progress.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_gcoding.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\icon_gcoding.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_bottom_progress.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\drawable\\jc_bottom_progress.xml"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\rb_selector.xml",
@@ -36,12 +36,12 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\circle_shape.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\circle_shape.xml"
-    },
-    {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notific.xml",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\notific.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\circle_shape.xml",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\circle_shape.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_overlay_gradient.xml",
@@ -96,12 +96,12 @@
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\cbtextcolor_select.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button.xml",
-        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\nav_tabset_selector.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\nav_tabset_selector.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button.xml",
+        "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_click_back_tiny_selector.xml",
@@ -152,12 +152,12 @@
         "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\drawable\\jc_dialog_progress.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\drawable\\navigation_empty_icon.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_text_light.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\4309f540e4d811a0bc607caf450551afa0691049\\output\\res\\drawable\\common_google_signin_btn_text_light.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\drawable\\navigation_empty_icon.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\tab_select.xml",
@@ -196,12 +196,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\study_view.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\isread.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\isread.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_snackbar_background.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\drawable\\design_snackbar_background.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\isread.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\isread.xml"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\edittext_yuyue_bac.xml",
@@ -220,20 +220,20 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\radiotextcolor_select.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\edittext_yuyue_bac.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\edittext_yuyue_bac.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg_low.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\homegray.png",
@@ -324,24 +324,24 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_bac4.xml",
-        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button_bac4.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\radiobutton_select.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\radiobutton_select.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_bac4.xml",
+        "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button_bac4.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button_back.xml",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button_back.xml"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_click_back_selector.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\drawable\\jc_click_back_selector.xml"
-    },
-    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\bg_shape_customdialog.xml",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\bg_shape_customdialog.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_click_back_selector.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\drawable\\jc_click_back_selector.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_bottom_seek_thumb.xml",
@@ -384,12 +384,12 @@
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\sdudycheck_radiobutton_selector.xml"
     },
     {
-        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_pickerview_btn.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\drawable\\selector_pickerview_btn.xml"
-    },
-    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\jc_click_play_selector.xml",
         "source": "E:\\Users\\e-dot\\.android\\build-cache\\6ce9105be8366e0b1f3ccd24d390959ec952f1d5\\output\\res\\drawable\\jc_click_play_selector.xml"
+    },
+    {
+        "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\selector_pickerview_btn.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\9611a47314394b23c635bd9aa9559987c0cbfb41\\output\\res\\drawable\\selector_pickerview_btn.xml"
     },
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_default_mtrl_shape.xml",
@@ -444,12 +444,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\actionbar_back_indicator.png"
     },
     {
-        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
-        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\drawable\\design_fab_background.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\dash_line.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\dash_line.xml"
+    },
+    {
+        "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
+        "source": "E:\\Users\\e-dot\\.android\\build-cache\\7d5b9c3a00bfcf21f0a1f128384767a18b98bac1\\output\\res\\drawable\\design_fab_background.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\container_dropshadow.xml",
@@ -1882,6 +1882,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_track_material.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\button7.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\drawable\\button7.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",

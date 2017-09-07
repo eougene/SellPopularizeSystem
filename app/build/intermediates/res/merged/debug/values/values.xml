@@ -1297,6 +1297,7 @@
     <string name="addressnopoint">联系地址</string>
     <string name="addsuccess">添加成功</string>
     <string name="alipay">支付宝</string>
+    <string name="all_building">全部楼盘</string>
     <string name="app_exit">再按一次退出程序</string>
     <string name="app_name">赢家</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -1319,7 +1320,6 @@
     <string name="available_for_firb">Available For FIRB</string>
     <string name="bankacc">银行账户</string>
     <string name="bankhint">请填写本人的银行卡信息</string>
-    <string name="bankinfo">银行卡信息</string>
     <string name="basic_konwledge">基础知识</string>
     <string name="batchnum">批号</string>
     <string name="bathroom">浴室</string>
@@ -1366,8 +1366,8 @@
     <string name="closedate">结算日期:</string>
     <string name="cncel_line">取消排队</string>
     <string name="co_people">联合购买人</string>
-    <string name="coaddress">公司地址</string>
     <string name="codeerror">推荐码不能为空</string>
+    <string name="collection">珍藏</string>
     <string name="com_noe">公司名不能为空</string>
     <string name="commencement_date">生效日期</string>
     <string name="commission">我的佣金</string>
@@ -1406,15 +1406,19 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="comname">公司名称</string>
     <string name="company">公司</string>
+    <string name="company_add">公司地址</string>
     <string name="company_email">公司邮箱</string>
     <string name="company_fax">公司传真</string>
     <string name="company_register_account">ACN</string>
     <string name="company_tel">公司电话</string>
+    <string name="companyname_empty">公司名称不能为空</string>
     <string name="complete">完成</string>
+    <string name="complete_bank">请完善银行卡信息</string>
     <string name="complete_cusinfo">客户信息不完整,请完善客户信息</string>
     <string name="complete_hint">请填写完整内容</string>
     <string name="complete_learning">完成学习</string>
     <string name="complete_user">完善客户信息</string>
+    <string name="completel_add">请完善我的地址</string>
     <string name="comres">负责人不能为空</string>
     <string name="confirm_content">请确认通知单内容</string>
     <string name="confirm_new_password">请确认新密码</string>
@@ -1457,10 +1461,10 @@
     <string name="desposit">直接存款</string>
     <string name="desthree">描述三</string>
     <string name="destwo">描述二</string>
-    <string name="detailadd">详细地址</string>
     <string name="details">详情</string>
     <string name="dingjin">请阅读定金支付申明</string>
     <string name="direction">朝向</string>
+    <string name="discount">折扣</string>
     <string name="done">完成</string>
     <string name="doneinpecifi">请在指定时间完成</string>
     <string name="doublezero">0.00</string>
@@ -1468,9 +1472,9 @@
     <string name="effective_date">有效日期</string>
     <string name="email">邮箱</string>
     <string name="email_hint">请输入正确的邮箱地址</string>
+    <string name="emailacc">邮箱账号</string>
     <string name="emailcontent">这是邮件的正文部分</string>
     <string name="emailemptyerror">邮箱不能为空</string>
-    <string name="emailerrorhint">您输入的邮箱地址格式不对</string>
     <string name="emailtopic">这是邮件的主题部分</string>
     <string name="englishname">英文名</string>
     <string name="englishnamenonull">英文名不能为空</string>
@@ -1511,7 +1515,6 @@
     <string name="fore">外汇保证金:</string>
     <string name="foreignInves">海外投资</string>
     <string name="forget_password">忘记密码?</string>
-    <string name="fullname">姓名</string>
     <string name="gettui">新消息</string>
     <string name="hadsaled">已售</string>
     <string name="hashsalenum">已售数量</string>
@@ -1519,7 +1522,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">提示</string>
     <string name="hintpass">请输入6-12位数字或字母密码</string>
-    <string name="hintremark">请您在此描述您的备注</string>
     <string name="historyclear">历史记录已经清除</string>
     <string name="home_01">个推广素材</string>
     <string name="home_02">个</string>
@@ -1537,7 +1539,10 @@
     <string name="home_study_en">Learning  garden</string>
     <string name="home_sure">确定</string>
     <string name="homepage">首页</string>
+    <string name="hot">火爆</string>
+    <string name="hot_sale">近期热销</string>
     <string name="house_land">House&amp;Land</string>
+    <string name="house_suggest">好房推荐</string>
     <string name="housepurchase">购房记录</string>
     <string name="housetype">房型</string>
     <string name="housetypeimage">房型图</string>
@@ -1545,6 +1550,7 @@
     <string name="if_company_cus">  是否为公司客户</string>
     <string name="individuaproject">个项目</string>
     <string name="input_new_password">请输入新密码</string>
+    <string name="input_recode">请输入六位推荐码</string>
     <string name="inputconame">请输入公司名称</string>
     <string name="inputoldpassword">请输入原密码</string>
     <string name="introduce">这里是简介</string>
@@ -1552,7 +1558,7 @@
     <string name="investigate_list">调研</string>
     <string name="investment">投资</string>
     <string name="invite_code">邀请二维码</string>
-    <string name="invitedes">占位符邀请好友得分红奖励,多邀多得!</string>
+    <string name="invitedes">邀请好友得分红奖励,多邀多得!</string>
     <string name="invoice">发票信息</string>
     <string name="isno">否</string>
     <string name="issaling">在售</string>
@@ -1575,6 +1581,7 @@
     <string name="load_fail">加载失败</string>
     <string name="load_succeed">加载成功</string>
     <string name="loading">正在加载...</string>
+    <string name="loc_des">上海-松江</string>
     <string name="localarea">所在区域</string>
     <string name="localmonth">本月新增0位</string>
     <string name="login">登录</string>
@@ -1582,12 +1589,12 @@
     <string name="login_activity_userName">用户名</string>
     <string name="login_toas">您的账号在另外一台设备登录</string>
     <string name="login_usename">用户名或密码不能为空</string>
+    <string name="map_house">地图找房</string>
     <string name="maturity_date">到期日期</string>
     <string name="memo">预览备忘录:</string>
     <string name="message">消息</string>
     <string name="middlename">中间名</string>
-    <string name="mima">密    码</string>
-    <string name="mingzi">名    字</string>
+    <string name="mingzi">名字</string>
     <string name="mobileormail">手机或邮箱二选一</string>
     <string name="mobilephone">手机</string>
     <string name="modifiedorder">申请修改订单</string>
@@ -1598,11 +1605,13 @@
     <string name="multiple_choice">(多选题)</string>
     <string name="mutilatequestion">(多选题)</string>
     <string name="myaddress">我的地址</string>
+    <string name="mycertificate">我的证书</string>
     <string name="mycommission">我的佣金</string>
-    <string name="mymsg">我的信息</string>
+    <string name="myinfo">我的信息</string>
     <string name="myteam">我的团队</string>
     <string name="name">名字</string>
-    <string name="nameerror">名字不能为空</string>
+    <string name="name_empty">名字不能为空</string>
+    <string name="nameerror">请填写真实的名字</string>
     <string name="nation">国籍</string>
     <string name="nation_and_area">国籍或地区不能为空</string>
     <string name="nationorarea">国籍或地区</string>
@@ -1651,8 +1660,8 @@
     <string name="other">其他</string>
     <string name="outsidearea">套外面积</string>
     <string name="owned_by_all">共有</string>
-    <string name="passerrorhint">密码必须为6到18数字或字母</string>
     <string name="passport">护照</string>
+    <string name="password">密码</string>
     <string name="password_toggle_content_description">Toggle password visibility</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
@@ -1667,6 +1676,7 @@
     <string name="paytype">请选择支付方式</string>
     <string name="pcd">省市区</string>
     <string name="percent">0.00%</string>
+    <string name="perset">/套起</string>
     <string name="person_in_charge">负责人(客户)</string>
     <string name="photo">拍照</string>
     <string name="photofromalbum">从相册中选择</string>
@@ -1682,6 +1692,7 @@
     <string name="playplatform">玩转平台</string>
     <string name="postcode">邮编</string>
     <string name="price">价格</string>
+    <string name="price_des">总价1324万/套起</string>
     <string name="pro_city_area">省市区不能为空</string>
     <string name="procidis">省份 城市 地区</string>
     <string name="productdes">好房不等人,快来抢房了</string>
@@ -1698,10 +1709,13 @@
     <string name="qu">区</string>
     <string name="questionnum">6题</string>
     <string name="rangeprice">价格区间</string>
+    <string name="real_urname_hint">请输入真实姓氏</string>
+    <string name="realname_hint">请输入真实名字</string>
     <string name="recash">现金</string>
     <string name="recharge">充值</string>
     <string name="rechargesuccess">充值成功</string>
     <string name="recheck">支票</string>
+    <string name="recode_hint">推荐码</string>
     <string name="recommendqr">推荐码</string>
     <string name="refresh_fail">刷新失败</string>
     <string name="refresh_succeed">刷新成功</string>
@@ -1709,6 +1723,7 @@
     <string name="refund">退款申请正在审核</string>
     <string name="register">注册</string>
     <string name="register_hint">用户名|手机号码|邮箱</string>
+    <string name="registeremail_hint">请输入有效邮箱账号</string>
     <string name="regsterid">请输入邮箱账号</string>
     <string name="relation">关系</string>
     <string name="relationlastname">亲属名</string>
@@ -1718,7 +1733,7 @@
     <string name="release_to_refresh">释放立即刷新</string>
     <string name="remain">预定</string>
     <string name="remark">备注</string>
-    <string name="remarktitle">备注事项</string>
+    <string name="remark_certificate">备注事项</string>
     <string name="reminder">请指定时间提醒</string>
     <string name="rephotograph">重拍</string>
     <string name="replyright">回答正确:</string>
@@ -1797,7 +1812,7 @@
     <string name="select_due_date">请选择到期日期</string>
     <string name="select_not">请选择相关消息</string>
     <string name="select_valid_date">请选择生效日期</string>
-    <string name="selectadd">选择地区</string>
+    <string name="selectadd">选择国家或地区</string>
     <string name="selectall">全选</string>
     <string name="selectcus">选择客户</string>
     <string name="selectdatetime">请选择预约时间</string>
@@ -1860,6 +1875,7 @@
     <string name="strUpgradeDialogVersionLabel">版本</string>
     <string name="street1">街道地址1</string>
     <string name="street2">街道地址2</string>
+    <string name="streetNum">街道号码</string>
     <string name="street_num">街道号码</string>
     <string name="study">学习</string>
     <string name="studydes1">共有</string>
@@ -1876,14 +1892,14 @@
     <string name="sure_change">两次密码不一致</string>
     <string name="sure_password">确认密码</string>
     <string name="sure_password_en">请输入确认密码</string>
-    <string name="surenameerror">姓氏不能为空</string>
+    <string name="surenameerror">请填写真实的姓氏</string>
     <string name="system">系统</string>
     <string name="team">小组</string>
+    <string name="tel_hint">请输入手机号码</string>
     <string name="teleonenonull">手机,邮箱至少一项不能为空</string>
     <string name="telephone">电话</string>
-    <string name="telephonenum">手机号</string>
     <string name="telhint">请输入联系电话</string>
-    <string name="telnumerrorhint">手机号不能为空</string>
+    <string name="telnum">手机号</string>
     <string name="test">测试</string>
     <string name="theme">萨达</string>
     <string name="this_month_newly">本月新增</string>
@@ -1905,6 +1921,7 @@
     <string name="totaldes">共:</string>
     <string name="totalmoney">总金额</string>
     <string name="totalnum">合计:0.00/0.00/0.00</string>
+    <string name="totalprice">总价</string>
     <string name="totalprojectnum">共0个项目</string>
     <string name="transfer">银行转账</string>
     <string name="type">类型</string>
@@ -1929,7 +1946,9 @@
     <string name="ver_1_0_0">Ver:1.0.0</string>
     <string name="version_info">版本信息</string>
     <string name="video">视频</string>
+    <string name="view_more">查看更多</string>
     <string name="viewdetail">查看详情</string>
+    <string name="villa">别墅</string>
     <string name="visit">拜访记录</string>
     <string name="vp">视频介绍</string>
     <string name="wechat_load">微信登录</string>
@@ -1938,7 +1957,9 @@
     <string name="weixinfriends">微信好友</string>
     <string name="without_full_amount">10%房款未全部付款</string>
     <string name="writetitle">请输入标题</string>
-    <string name="xingshi">姓    氏</string>
+    <string name="xingming">姓名</string>
+    <string name="xingshi">姓氏</string>
+    <string name="xingshi_empty">姓氏不能为空</string>
     <string name="yes">是</string>
     <string name="yesorno">对错</string>
     <string name="yesornoquestion">(是非题)</string>
@@ -1960,20 +1981,20 @@
         <item name="android:windowExitAnimation">@anim/out_anim</item>
     </style>
     <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
-        <!-- 背景透明 -->
+        
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
-        <!-- 浮于Activity之上 -->
+        
         <item name="android:windowIsFloating">true</item>
-        <!-- 边框 -->
+        
         <item name="android:windowFrame">@null</item>
-        <!-- Dialog以外的区域模糊效果 -->
+        
         <item name="android:backgroundDimEnabled">true</item>
-        <!-- 无标题 -->
+        
         <item name="android:windowNoTitle">true</item>
-        <!-- 半透明 -->
+        
         <item name="android:windowIsTranslucent">true</item>
-        <!-- Dialog进入及退出动画 -->
+        
         <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
     </style>
     <style name="ActivtyTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -1985,8 +2006,8 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowAnimationStyle">@style/default_animation</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowIsTranslucent">true</item>-->
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        
+        
 
     </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -2002,7 +2023,7 @@
         <item name="android:windowExitAnimation">@anim/design_bottom_sheet_slide_out</item>
     </style>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -2240,7 +2261,7 @@
         <item name="actionBarWidgetTheme">@null</item>
         <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
 
-        <!-- Panel attributes -->
+        
         <item name="listChoiceBackgroundIndicator">@drawable/abc_list_selector_holo_dark</item>
 
         <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
@@ -2291,7 +2312,7 @@
         <item name="colorButtonNormal">@color/button_material_dark</item>
         <item name="colorSwitchThumbNormal">@color/switch_thumb_material_dark</item>
 
-        <!-- Used by MediaRouter -->
+        
         <item name="isLightTheme">false</item>
     </style>
     <style name="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -2328,7 +2349,7 @@
         <item name="colorButtonNormal">@color/button_material_light</item>
         <item name="colorSwitchThumbNormal">@color/switch_thumb_material_light</item>
 
-        <!-- Used by MediaRouter -->
+        
         <item name="isLightTheme">true</item>
     </style>
     <style name="Base.V7.Theme.AppCompat" parent="Platform.AppCompat">
@@ -2340,7 +2361,7 @@
 
         <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
 
-        <!-- Used by MediaRouter -->
+        
         <item name="isLightTheme">false</item>
 
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_dark</item>
@@ -2351,7 +2372,7 @@
         <item name="dividerVertical">@drawable/abc_list_divider_mtrl_alpha</item>
         <item name="dividerHorizontal">@drawable/abc_list_divider_mtrl_alpha</item>
 
-        <!-- Action Bar Styles -->
+        
         <item name="actionBarTabStyle">@style/Widget.AppCompat.ActionBar.TabView</item>
         <item name="actionBarTabBarStyle">@style/Widget.AppCompat.ActionBar.TabBar</item>
         <item name="actionBarTabTextStyle">@style/Widget.AppCompat.ActionBar.TabText</item>
@@ -2368,10 +2389,10 @@
         <item name="actionMenuTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Menu</item>
         <item name="actionMenuTextColor">?android:attr/textColorPrimaryDisableOnly</item>
 
-        <!-- Dropdown Spinner Attributes -->
+        
         <item name="actionDropDownStyle">@style/Widget.AppCompat.Spinner.DropDown.ActionBar</item>
 
-        <!-- Action Mode -->
+        
         <item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
         <item name="actionModeBackground">@drawable/abc_cab_background_top_material</item>
         <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>
@@ -2384,14 +2405,14 @@
         <item name="actionModeSelectAllDrawable">@drawable/abc_ic_menu_selectall_mtrl_alpha</item>
         <item name="actionModeShareDrawable">@drawable/abc_ic_menu_share_mtrl_alpha</item>
 
-        <!-- Panel attributes -->
+        
         <item name="panelMenuListWidth">@dimen/abc_panel_menu_list_width</item>
         <item name="panelMenuListTheme">@style/Theme.AppCompat.CompactMenu</item>
         <item name="panelBackground">@drawable/abc_menu_hardkey_panel_mtrl_mult</item>
         <item name="android:panelBackground">@android:color/transparent</item>
         <item name="listChoiceBackgroundIndicator">@drawable/abc_list_selector_holo_dark</item>
 
-        <!-- List attributes -->
+        
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="textAppearanceListItemSmall">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="listPreferredItemHeight">64dp</item>
@@ -2400,16 +2421,16 @@
         <item name="listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
 
-        <!-- Spinner styles -->
+        
         <item name="spinnerStyle">@style/Widget.AppCompat.Spinner</item>
         <item name="android:spinnerItemStyle">@style/Widget.AppCompat.TextView.SpinnerItem</item>
         <item name="android:dropDownListViewStyle">@style/Widget.AppCompat.ListView.DropDown</item>
 
-        <!-- Required for use of support_simple_spinner_dropdown_item.xml -->
+        
         <item name="spinnerDropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
         <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
 
-        <!-- Popup Menu styles -->
+        
         <item name="popupMenuStyle">@style/Widget.AppCompat.PopupMenu</item>
         <item name="textAppearanceLargePopupMenu">@style/TextAppearance.AppCompat.Widget.PopupMenu.Large</item>
         <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.AppCompat.Widget.PopupMenu.Small</item>
@@ -2418,17 +2439,17 @@
         <item name="dropDownListViewStyle">?android:attr/dropDownListViewStyle</item>
         <item name="listMenuViewStyle">@style/Widget.AppCompat.ListMenuView</item>
 
-        <!-- SearchView attributes -->
+        
         <item name="searchViewStyle">@style/Widget.AppCompat.SearchView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
         <item name="textColorSearchUrl">@color/abc_search_url_text</item>
         <item name="textAppearanceSearchResultTitle">@style/TextAppearance.AppCompat.SearchResult.Title</item>
         <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.AppCompat.SearchResult.Subtitle</item>
 
-        <!-- ShareActionProvider attributes -->
+        
         <item name="activityChooserViewStyle">@style/Widget.AppCompat.ActivityChooserView</item>
 
-        <!-- Toolbar styles -->
+        
         <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Widget.AppCompat.Toolbar.Button.Navigation</item>
 
@@ -2437,7 +2458,7 @@
         <item name="editTextColor">?android:attr/textColorPrimary</item>
         <item name="autoCompleteTextViewStyle">@style/Widget.AppCompat.AutoCompleteTextView</item>
 
-        <!-- Color palette -->
+        
         <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
         <item name="colorPrimary">@color/primary_material_dark</item>
         <item name="colorAccent">@color/accent_material_dark</item>
@@ -2460,7 +2481,7 @@
         <item name="ratingBarStyleSmall">@style/Widget.AppCompat.RatingBar.Small</item>
         <item name="seekBarStyle">@style/Widget.AppCompat.SeekBar</item>
 
-        <!-- Button styles -->
+        
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="buttonStyleSmall">@style/Widget.AppCompat.Button.Small</item>
         <item name="android:textAppearanceButton">@style/TextAppearance.AppCompat.Widget.Button</item>
@@ -2473,7 +2494,7 @@
         <item name="buttonBarNegativeButtonStyle">?attr/buttonBarButtonStyle</item>
         <item name="buttonBarNeutralButtonStyle">?attr/buttonBarButtonStyle</item>
 
-        <!-- Dialog attributes -->
+        
         <item name="dialogTheme">@style/ThemeOverlay.AppCompat.Dialog</item>
         <item name="dialogPreferredPadding">@dimen/abc_dialog_padding_material</item>
 
@@ -2483,8 +2504,7 @@
         <item name="textColorAlertDialogListItem">@color/abc_primary_text_material_dark</item>
         <item name="listDividerAlertDialog">@null</item>
 
-        <!-- Define these here; ContextThemeWrappers around themes that define them should
-             always clear these values. -->
+        
         <item name="windowFixedWidthMajor">@null</item>
         <item name="windowFixedWidthMinor">@null</item>
         <item name="windowFixedHeightMajor">@null</item>
@@ -2521,7 +2541,7 @@
 
         <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
 
-        <!-- Used by MediaRouter -->
+        
         <item name="isLightTheme">true</item>
 
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
@@ -2532,7 +2552,7 @@
         <item name="dividerVertical">@drawable/abc_list_divider_mtrl_alpha</item>
         <item name="dividerHorizontal">@drawable/abc_list_divider_mtrl_alpha</item>
 
-        <!-- Action Bar Styles -->
+        
         <item name="actionBarTabStyle">@style/Widget.AppCompat.Light.ActionBar.TabView</item>
         <item name="actionBarTabBarStyle">@style/Widget.AppCompat.Light.ActionBar.TabBar</item>
         <item name="actionBarTabTextStyle">@style/Widget.AppCompat.Light.ActionBar.TabText</item>
@@ -2549,7 +2569,7 @@
         <item name="actionMenuTextAppearance">@style/TextAppearance.AppCompat.Widget.ActionBar.Menu</item>
         <item name="actionMenuTextColor">?android:attr/textColorPrimaryDisableOnly</item>
 
-        <!-- Action Mode -->
+        
         <item name="actionModeStyle">@style/Widget.AppCompat.ActionMode</item>
         <item name="actionModeBackground">@drawable/abc_cab_background_top_material</item>
         <item name="actionModeSplitBackground">?attr/colorPrimaryDark</item>
@@ -2562,17 +2582,17 @@
         <item name="actionModeSelectAllDrawable">@drawable/abc_ic_menu_selectall_mtrl_alpha</item>
         <item name="actionModeShareDrawable">@drawable/abc_ic_menu_share_mtrl_alpha</item>
 
-        <!-- Dropdown Spinner Attributes -->
+        
         <item name="actionDropDownStyle">@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar</item>
 
-        <!-- Panel attributes -->
+        
         <item name="panelMenuListWidth">@dimen/abc_panel_menu_list_width</item>
         <item name="panelMenuListTheme">@style/Theme.AppCompat.CompactMenu</item>
         <item name="panelBackground">@drawable/abc_menu_hardkey_panel_mtrl_mult</item>
         <item name="android:panelBackground">@android:color/transparent</item>
         <item name="listChoiceBackgroundIndicator">@drawable/abc_list_selector_holo_light</item>
 
-        <!-- List attributes -->
+        
         <item name="textAppearanceListItem">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="textAppearanceListItemSmall">@style/TextAppearance.AppCompat.Subhead</item>
         <item name="listPreferredItemHeight">64dp</item>
@@ -2581,16 +2601,16 @@
         <item name="listPreferredItemPaddingLeft">@dimen/abc_list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/abc_list_item_padding_horizontal_material</item>
 
-        <!-- Spinner styles -->
+        
         <item name="spinnerStyle">@style/Widget.AppCompat.Spinner</item>
         <item name="android:spinnerItemStyle">@style/Widget.AppCompat.TextView.SpinnerItem</item>
         <item name="android:dropDownListViewStyle">@style/Widget.AppCompat.ListView.DropDown</item>
 
-        <!-- Required for use of support_simple_spinner_dropdown_item.xml -->
+        
         <item name="spinnerDropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
         <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
 
-        <!-- Popup Menu styles -->
+        
         <item name="popupMenuStyle">@style/Widget.AppCompat.Light.PopupMenu</item>
         <item name="textAppearanceLargePopupMenu">@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large</item>
         <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small</item>
@@ -2599,17 +2619,17 @@
         <item name="dropDownListViewStyle">?android:attr/dropDownListViewStyle</item>
         <item name="listMenuViewStyle">@style/Widget.AppCompat.ListMenuView</item>
 
-        <!-- SearchView attributes -->
+        
         <item name="searchViewStyle">@style/Widget.AppCompat.Light.SearchView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
         <item name="textColorSearchUrl">@color/abc_search_url_text</item>
         <item name="textAppearanceSearchResultTitle">@style/TextAppearance.AppCompat.SearchResult.Title</item>
         <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.AppCompat.SearchResult.Subtitle</item>
 
-        <!-- ShareActionProvider attributes -->
+        
         <item name="activityChooserViewStyle">@style/Widget.AppCompat.ActivityChooserView</item>
 
-        <!-- Toolbar styles -->
+        
         <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
         <item name="toolbarNavigationButtonStyle">@style/Widget.AppCompat.Toolbar.Button.Navigation</item>
 
@@ -2618,7 +2638,7 @@
         <item name="editTextColor">?android:attr/textColorPrimary</item>
         <item name="autoCompleteTextViewStyle">@style/Widget.AppCompat.AutoCompleteTextView</item>
 
-        <!-- Color palette -->
+        
         <item name="colorPrimaryDark">@color/primary_dark_material_light</item>
         <item name="colorPrimary">@color/primary_material_light</item>
         <item name="colorAccent">@color/accent_material_light</item>
@@ -2641,7 +2661,7 @@
         <item name="ratingBarStyleSmall">@style/Widget.AppCompat.RatingBar.Small</item>
         <item name="seekBarStyle">@style/Widget.AppCompat.SeekBar</item>
 
-        <!-- Button styles -->
+        
         <item name="buttonStyle">@style/Widget.AppCompat.Button</item>
         <item name="buttonStyleSmall">@style/Widget.AppCompat.Button.Small</item>
         <item name="android:textAppearanceButton">@style/TextAppearance.AppCompat.Widget.Button</item>
@@ -2654,7 +2674,7 @@
         <item name="buttonBarNegativeButtonStyle">?attr/buttonBarButtonStyle</item>
         <item name="buttonBarNeutralButtonStyle">?attr/buttonBarButtonStyle</item>
 
-        <!-- Dialog attributes -->
+        
         <item name="dialogTheme">@style/ThemeOverlay.AppCompat.Dialog</item>
         <item name="dialogPreferredPadding">@dimen/abc_dialog_padding_material</item>
 
@@ -2664,8 +2684,7 @@
         <item name="textColorAlertDialogListItem">@color/abc_primary_text_material_light</item>
         <item name="listDividerAlertDialog">@null</item>
 
-        <!-- Define these here; ContextThemeWrappers around themes that define them should
-             always clear these values. -->
+        
         <item name="windowFixedWidthMajor">@null</item>
         <item name="windowFixedWidthMinor">@null</item>
         <item name="windowFixedHeightMajor">@null</item>
@@ -3052,6 +3071,12 @@
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
+    <style name="Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">#00000000</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
     <style name="DialogStyle" parent="Theme.AppCompat.Dialog">
         <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">true</item>
@@ -3128,7 +3153,7 @@
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>
 
-        <!-- Window colors -->
+        
         <item name="android:colorForeground">@color/foreground_material_dark</item>
         <item name="android:colorForegroundInverse">@color/foreground_material_light</item>
         <item name="android:colorBackground">@color/background_material_dark</item>
@@ -3137,7 +3162,7 @@
         <item name="android:backgroundDimAmount">0.6</item>
         <item name="android:windowBackground">@color/background_material_dark</item>
 
-        <!-- Text colors -->
+        
         <item name="android:textColorPrimary">@color/abc_primary_text_material_dark</item>
         <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_light</item>
         <item name="android:textColorPrimaryDisableOnly">@color/abc_primary_text_disable_only_material_dark</item>
@@ -3150,7 +3175,7 @@
         <item name="android:textColorHighlight">@color/highlighted_text_material_dark</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
 
-        <!-- Text styles -->
+        
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
         <item name="android:textAppearanceInverse">@style/TextAppearance.AppCompat.Inverse</item>
         <item name="android:textAppearanceLarge">@style/TextAppearance.AppCompat.Large</item>
@@ -3170,7 +3195,7 @@
     <style name="Platform.AppCompat.Light" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
 
-        <!-- Window colors -->
+        
         <item name="android:colorForeground">@color/foreground_material_light</item>
         <item name="android:colorForegroundInverse">@color/foreground_material_dark</item>
         <item name="android:colorBackground">@color/background_material_light</item>
@@ -3179,7 +3204,7 @@
         <item name="android:backgroundDimAmount">0.6</item>
         <item name="android:windowBackground">@color/background_material_light</item>
 
-        <!-- Text colors -->
+        
         <item name="android:textColorPrimary">@color/abc_primary_text_material_light</item>
         <item name="android:textColorPrimaryInverse">@color/abc_primary_text_material_dark</item>
         <item name="android:textColorSecondary">@color/abc_secondary_text_material_light</item>
@@ -3193,7 +3218,7 @@
         <item name="android:textColorHighlight">@color/highlighted_text_material_light</item>
         <item name="android:textColorLink">?attr/colorAccent</item>
 
-        <!-- Text styles -->
+        
         <item name="android:textAppearance">@style/TextAppearance.AppCompat</item>
         <item name="android:textAppearanceInverse">@style/TextAppearance.AppCompat.Inverse</item>
         <item name="android:textAppearanceLarge">@style/TextAppearance.AppCompat.Large</item>
@@ -3212,12 +3237,12 @@
     </style>
     <style name="Platform.ThemeOverlay.AppCompat" parent=""/>
     <style name="Platform.ThemeOverlay.AppCompat.Dark">
-        <!-- Action Bar styles -->
+        
         <item name="actionBarItemBackground">@drawable/abc_item_background_holo_dark</item>
         <item name="actionDropDownStyle">@style/Widget.AppCompat.Spinner.DropDown.ActionBar</item>
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_dark</item>
 
-        <!-- SearchView styles -->
+        
         <item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.AutoCompleteTextView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
@@ -3226,7 +3251,7 @@
         <item name="actionDropDownStyle">@style/Widget.AppCompat.Light.Spinner.DropDown.ActionBar</item>
         <item name="selectableItemBackground">@drawable/abc_item_background_holo_light</item>
 
-        <!-- SearchView attributes -->
+        
         <item name="android:autoCompleteTextViewStyle">@style/Widget.AppCompat.Light.AutoCompleteTextView</item>
         <item name="android:dropDownItemStyle">@style/Widget.AppCompat.DropDownItem.Spinner</item>
     </style>
@@ -3637,31 +3662,31 @@
     <style name="customLoadDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
-        <!-- 是否浮现在activity之上 -->
+        
         <item name="android:windowIsTranslucent">false</item>
-        <!-- 半透明 -->
+        
         <item name="android:windowNoTitle">true</item>
-        <!-- 无标题 -->
+        
         <item name="android:windowBackground">@color/transparent</item>
-        <!-- 背景透明   去掉背景色边框也就去掉了 -->
+        
         <item name="android:backgroundDimAmount">1</item>
         <item name="android:backgroundDimEnabled">false</item>
 
     </style>
     <style name="custom_dialog2" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
-        <!-- Dialog的windowFrame框为无 -->
+        
         <item name="android:windowIsFloating">true</item>
-        <!-- 是否漂现在activity上 -->
+        
         <item name="android:windowIsTranslucent">true</item>
-        <!-- 是否半透明 -->
+        
         <item name="android:windowNoTitle">true</item>
         <item name="android:background">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
-        <!-- 去除黑色边框的关键设置项 -->
+        
         <item name="android:backgroundDimEnabled">true</item>
-        <!-- 屏幕背景是否变暗 -->
+        
         <item name="android:backgroundDimAmount">0.3</item>
     </style>
     <style name="default_animation" parent="@android:style/Animation.Activity">

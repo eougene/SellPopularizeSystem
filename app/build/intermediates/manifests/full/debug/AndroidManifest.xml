@@ -289,6 +289,9 @@
             android:name="com.yd.org.sellpopularizesystem.activity.PromotionRecordActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.yd.org.sellpopularizesystem.activity.ProjectPromotionActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.yd.org.sellpopularizesystem.activity.FileActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -354,6 +357,8 @@
             android:windowSoftInputMode="stateHidden|adjustPan" >
         </activity>
         <activity android:name="com.yd.org.sellpopularizesystem.activity.InviteQRActivity" />
+        <activity android:name="com.yd.org.sellpopularizesystem.activity.MySalesActivity" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.gms.version"

@@ -484,6 +484,10 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\\output\\res\\layout\\jc_dialog_volume.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_project_promotion.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_project_promotion.xml"
+    },
+    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
         "source": "E:\\Users\\e-dot\\.android\\build-cache\\5d23ab59896abd93ff152a4d84a013e3d401eab4\\output\\res\\layout\\notification_action_tombstone.xml"
     },
@@ -1508,6 +1512,10 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_normal_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\dialog_normal_layout.xml"
+    },
+    {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
         "source": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
     },
@@ -1690,6 +1698,10 @@
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview_item.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lv_item_project_promotion.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lv_item_project_promotion.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_options.xml",
@@ -2266,6 +2278,10 @@
     {
         "merged": "E:\\crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
         "source": "E:\\crm\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\coogame_country_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\gv_item_house_suggest.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\gv_item_house_suggest.xml"
     },
     {
         "merged": "E:\\Users\\e-dot\\Documents\\e-dot\\Crm\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\bind_acount_popuwindow.xml",

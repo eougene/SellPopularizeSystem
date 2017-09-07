@@ -278,6 +278,11 @@
         <activity
             android:name=".activity.PromotionRecordActivity"
             android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".activity.ProjectPromotionActivity"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".activity.FileActivity"
             android:screenOrientation="portrait"/>

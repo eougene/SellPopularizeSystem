@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              style="@style/MatchMatch.Vertical"
-              android:background="@color/white">
+    style="@style/MatchMatch.Vertical"
+    android:background="@color/white">
 
     <RelativeLayout
         android:id="@+id/rlBackgroundPhoto"
@@ -39,7 +39,7 @@
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:singleLine="true"
                     android:textColorHint="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:textSize="@dimen/tv_size_12" />
 
                 <Button
                     android:id="@+id/btScaleSearch"
@@ -50,7 +50,7 @@
                     android:background="@null"
                     android:text="@string/select"
                     android:textColor="@color/scale_tab5"
-                    android:textSize="@dimen/tv_size_15"/>
+                    android:textSize="@dimen/tv_size_15" />
             </LinearLayout>
 
 
@@ -61,14 +61,145 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llTwo"
                 android:layout_marginTop="1dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llClass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llTwo"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_margin_6"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingRight="@dimen/padding_margin_2"
+                    android:gravity="center|right"
+                    android:text="@string/price"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/trangle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_margin_6"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingRight="@dimen/padding_margin_6"
+                    android:gravity="center|right"
+                    android:text="@string/type"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/trangle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_margin_6"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingRight="@dimen/padding_margin_6"
+                    android:gravity="center|right"
+                    android:text="@string/housetype"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivHouseType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/trangle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_margin_6"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingRight="@dimen/padding_margin_6"
+                    android:gravity="center|right"
+                    android:text="@string/area"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/ivArea"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
+                    android:src="@mipmap/trangle" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/llTwo"
+            android:layout_below="@+id/llClass"
             android:background="@color/search_edit_bac">
 
             <TextView
@@ -81,7 +212,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/totalprojectnum"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12" />
 
 
         </RelativeLayout>
@@ -95,7 +226,7 @@
         android:layout_weight="1"
         android:background="@color/white">
 
-        <include layout="@layout/base_listview"/>
+        <include layout="@layout/base_listview" />
 
 
     </FrameLayout>
