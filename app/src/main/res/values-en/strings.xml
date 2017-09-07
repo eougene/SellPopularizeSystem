@@ -627,20 +627,21 @@
     <string name="xingming">Name</string>
     <string name="company_add">The company address</string>
     <string name="nameerror">Please fill in real name</string>
-    <string name="map_house">地图找房</string>
-    <string name="all_building">全部楼盘</string>
-    <string name="hot_sale">近期热销</string>
-    <string name="house_suggest">好房推荐</string>
-    <string name="view_more">查看更多</string>
-    <string name="villa">别墅</string>
-    <string name="hot">火爆</string>
-    <string name="collection">珍藏</string>
-    <string name="discount">折扣</string>
-    <string name="price_des">总价1324万/套起</string>
-    <string name="loc_des">上海-松江</string>
-    <string name="totalprice">总价</string>
-    <string name="perset">/套起</string>
-    <string name="en_hint">请输入真实的英文名</string>
+    <string name="map_house">Looking for a house by map</string>
+    <string name="all_building">All projects</string>
+    <string name="hot_sale">Recent hot selling</string>
+    <string name="house_suggest">Good house recommendation</string>
+    <string name="view_more">View more</string>
+    <string name="villa">villa</string>
+    <string name="hot">hot</string>
+    <string name="collection">collection</string>
+    <string name="discount">discount</string>
+    <string name="price_des">total price</string>
+    <string name="loc_des">location</string>
+    <string name="totalprice">total price</string>
+    <string name="perset">/per set</string>
+    <string name="en_hint">Please enter the actual English name</string>
+    <string name="select_ele">Please select filter criteria</string>
 
 </resources>
 
