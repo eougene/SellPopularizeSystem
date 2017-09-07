@@ -1,21 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.yd.org.sellpopularizesystem.myView.BounceScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-                                                         android:layout_width="match_parent"
-                                                         android:layout_height="match_parent"
-                                                         android:background="@color/search_edit_bac">
+<com.yd.org.sellpopularizesystem.myView.BounceScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:background="@color/search_edit_bac"
         android:orientation="vertical">
-
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_margin_10">
+
+            <RadioGroup
+                android:id="@+id/radioId"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/radio_01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:drawableLeft="@drawable/isread"
+                    android:text="Referral人员"
+                    android:textColor="@color/gray"
+                    android:textStyle="bold"/>
+
+                <RadioButton
+                    android:id="@+id/radio_02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:checked="true"
+                    android:drawableLeft="@drawable/isread"
+                    android:text="销售人员"
+                    android:textColor="@color/gray"
+                    android:textStyle="bold"/>
+
+
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/userLinear"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/recode_hint"/>
+
+            <EditText
+                android:id="@+id/userIdEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/input_recode"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/userView"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/shallow_gray"
+            android:visibility="gone"/>
+
+
+        <LinearLayout
+            android:id="@+id/referralLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -41,15 +129,17 @@
 
         </LinearLayout>
 
+
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
 
             <TextView
@@ -78,13 +168,14 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
 
             <TextView
@@ -113,18 +204,59 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
+
 
         <LinearLayout
+            android:id="@+id/userEnLinaer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/englishname"/>
+
+            <EditText
+                android:id="@+id/enNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/en_hint"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/userEnView"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginLeft="@dimen/padding_margin_10"
+            android:background="@color/shallow_gray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/telnum"/>
 
@@ -148,13 +280,14 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
 
             <TextView
@@ -184,14 +317,15 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/padding_margin_20"
             android:orientation="horizontal">
 
             <TextView
@@ -231,9 +365,9 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:layout_marginLeft="@dimen/padding_margin_10"
-            android:background="@color/search_edit_bac"/>
+            android:background="@color/shallow_gray"/>
 
 
         <TextView
@@ -251,6 +385,10 @@
             android:textColor="@color/white"
             android:textSize="@dimen/tv_size_15"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            />
 
     </LinearLayout>
 
