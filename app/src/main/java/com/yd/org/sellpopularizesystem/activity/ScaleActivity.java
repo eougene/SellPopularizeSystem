@@ -14,7 +14,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -68,7 +67,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     public String strSelect = "",hotsale="",promote="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
-    private  Bundle bundle=new Bundle();
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -215,14 +214,17 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             }
         });
 
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductListBean.ResultBean item= (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
+                ProductListBean.ResultBean item = (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
+                Bundle bundle = new Bundle();
                 bundle.putSerializable("bean", item);
                 bundle.putString("productName", item.getProduct_name());
-                bundle.putString("productId", item.getProduct_id()+"");
+                bundle.putString("productId", item.getProduct_id() + "");
                 ActivitySkip.forward(ScaleActivity.this, ProductItemDetailActivity.class, bundle);
+
             }
         });
     }
@@ -309,7 +311,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             /*adapter = new CustomeListAdapter(ScaleActivity.this);
             listView.setAdapter(adapter);*/
             setAdapter(productData);
-        }else {
+            listView.setAdapter(mCommonAdapter);
+        } else {
             mCommonAdapter.addMore(productData);
         }
 
@@ -414,16 +417,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         tvHouseType.setText(data.getStringExtra("selectextra"));
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
-                    area=selectStrTag;
                     break;
                 //价格
                 case ExtraName.PRICE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
                         tvPrice.setText(data.getStringExtra("selectextra"));
-                        //price=data.getStringExtra("selectextra");
+                        price=data.getStringExtra("selectextra");
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
-                    price=selectStrTag;
                     break;
             }
             getProductListData(true, page, space, price, house, area);
