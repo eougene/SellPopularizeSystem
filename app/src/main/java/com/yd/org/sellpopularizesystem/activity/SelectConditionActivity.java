@@ -18,7 +18,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 public class SelectConditionActivity extends BaseActivity {
-    private RadioGroup rgArea,rgType,rgPrice;
+    private RadioGroup rgType,rgPrice;
     private LinearLayout llHouseType;
     private TextView tvSelect;
     private ImageView ivSearch;
