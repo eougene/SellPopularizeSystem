@@ -19,13 +19,16 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.adapter.CustomeListAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -52,11 +55,13 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private PullToRefreshLayout ptrl;
     //代表筛选的范围,0x001表示区域,0x002表示房型,0x003表示面积,0x004表示价格
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
+    private List datas = new ArrayList();
     private CustomeListAdapter adapter;
     private int page = 1;
     private String space = "", price = "", house = "", area = "", cate_id = "";
     public String strSelect = "";
     public ProductSearchUrl psu = new ProductSearchUrl();
+    private CommonAdapter mCommonAdapter;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -120,9 +125,27 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl.setOnRefreshListener(this);
         listView = getViewById(R.id.content_view);
         setTitle(getResources().getString(R.string.home_scale));
+        Bundle bundle=getIntent().getExtras();
+        String type=bundle.getString("type");
+        productData.addAll((List<ProductListBean.ResultBean>)getIntent().getSerializableExtra("data"));
+        if (!type.equals("all")){
+            for (int i = 0; i <productData.size() ; i++) {
+                if (type.equals("hot")){
+                    if (productData.get(i).getIs_hot_sale()==1){
+                        datas.add(productData.get(i));
+                    }
+                }else if (type.equals("promote")){
+                    if (productData.get(i).getIs_promote()==1){
+                        datas.add(productData.get(i));
+                    }
+                }
+            }
+            setAdapter(datas);
+        }else {
+            setAdapter(productData);
+        }
 
-
-        getProductListData(true, page, space, price, house, area);
+        //getProductListData(true, page, space, price, house, area);
 
     }
 
@@ -234,12 +257,46 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
         }
         if (isRefresh) {
-            adapter = new CustomeListAdapter(ScaleActivity.this);
-            listView.setAdapter(adapter);
+            /*adapter = new CustomeListAdapter(ScaleActivity.this);
+            listView.setAdapter(adapter);*/
+            setAdapter(productData);
+        }else {
+            mCommonAdapter.addMore(productData);
         }
 
-        adapter.addData(productData);
+        //adapter.addData(productData);
+        //setAdapter();
 
+    }
+
+    private void setAdapter(List<ProductListBean.ResultBean> list) {
+        mCommonAdapter=new CommonAdapter<ProductListBean.ResultBean>(ScaleActivity.this,list,R.layout.lv_item_project_promotion) {
+            @Override
+            public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
+                 if(item.getCate_id()==1){
+                     holder.setText(R.id.tvBuildType,"house");
+                 }else if (item.getCate_id()==2){
+                     holder.setText(R.id.tvBuildType,"house&land");
+                 }else {
+                     holder.setText(R.id.tvBuildType,getString(R.string.villa));
+                 }
+                if (item.getAttr_1()==1){
+                    holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
+                }else if (item.getAttr_2()==1){
+                    holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
+                }else if (item.getAttr_3()==1){
+                    holder.getView(R.id.tvDiscount).setVisibility(View.VISIBLE);
+                }
+
+                holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
+                holder.setText(R.id.tvName, item.getProduct_name());
+                holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
+                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$"+
+                MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
+                        .split("\\.")[0])+"k"+getString(R.string.perset));
+
+            }
+        };
     }
 
     public void goTo(Object bean, Class<?> cls, String str1, String str2) {

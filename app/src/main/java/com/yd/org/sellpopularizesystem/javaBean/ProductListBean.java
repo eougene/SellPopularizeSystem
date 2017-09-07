@@ -158,6 +158,7 @@ public class ProductListBean extends Domine {
         private int already_firb_number;
         private String sales_method;
         private int is_promote;
+        private int is_hot_sale;
         private int eoi_open_time;
         private int constr_start_time;
         private int constr_end_time;
@@ -165,6 +166,10 @@ public class ProductListBean extends Domine {
         private int stop_sales_time;
         private int sunset_time;
         private int settlement_time;
+        private int attr_1;
+        private int attr_2;
+        private int attr_3;
+        private int attr_4;
         private String preview_memo;
         private String agent_notes;
         private String product_type;
@@ -363,6 +368,14 @@ public class ProductListBean extends Domine {
             this.is_promote = is_promote;
         }
 
+        public int getIs_hot_sale() {
+            return is_hot_sale;
+        }
+
+        public void setIs_hot_sale(int is_hot_sale) {
+            this.is_hot_sale = is_hot_sale;
+        }
+
         public int getEoi_open_time() {
             return eoi_open_time;
         }
@@ -417,6 +430,38 @@ public class ProductListBean extends Domine {
 
         public void setSettlement_time(int settlement_time) {
             this.settlement_time = settlement_time;
+        }
+
+        public int getAttr_1() {
+            return attr_1;
+        }
+
+        public void setAttr_1(int attr_1) {
+            this.attr_1 = attr_1;
+        }
+
+        public int getAttr_2() {
+            return attr_2;
+        }
+
+        public void setAttr_2(int attr_2) {
+            this.attr_2 = attr_2;
+        }
+
+        public int getAttr_3() {
+            return attr_3;
+        }
+
+        public void setAttr_3(int attr_3) {
+            this.attr_3 = attr_3;
+        }
+
+        public int getAttr_4() {
+            return attr_4;
+        }
+
+        public void setAttr_4(int attr_4) {
+            this.attr_4 = attr_4;
         }
 
         public String getPreview_memo() {

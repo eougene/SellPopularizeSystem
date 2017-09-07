@@ -635,6 +635,8 @@
     <string name="discount">折扣</string>
     <string name="price_des">总价1324万/套起</string>
     <string name="loc_des">上海-松江</string>
+    <string name="totalprice">总价</string>
+    <string name="perset">/套起</string>
 
 
 </resources>

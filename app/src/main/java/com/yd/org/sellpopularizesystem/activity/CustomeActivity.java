@@ -352,7 +352,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
-                    ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
+                    ActivitySkip.forward(CustomeActivity.this, ProjectPromotionActivity.class, bundle);
                     finish();
 
 

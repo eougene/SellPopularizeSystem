@@ -41,4 +41,5 @@ public class ChildListView extends ListView {
         super.onMeasure(widthMeasureSpec, expandSpec);
 
     }
+
 }
