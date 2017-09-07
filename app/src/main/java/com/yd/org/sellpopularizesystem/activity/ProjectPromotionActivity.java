@@ -105,7 +105,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(1));
-        httpParams.put("number", "500");
+        httpParams.put("number", "6");
         httpParams.put("cate_id", area);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
@@ -113,7 +113,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("space", space);
         httpParams.put("price", price);
         httpParams.put("hot_sale", "");
-        httpParams.put("promote", "");
+        httpParams.put("promote", "1");
 
         Log.e("参数***", "params:" + httpParams.toString());
 

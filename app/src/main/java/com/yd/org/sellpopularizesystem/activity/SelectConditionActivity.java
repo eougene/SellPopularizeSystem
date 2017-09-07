@@ -79,7 +79,9 @@ public class SelectConditionActivity extends BaseActivity {
         tvSelect.setText(getString(R.string.home_sure));
         tvSelect.setVisibility(View.VISIBLE);*/
         setRightTitleBackground(new ColorDrawable(Color.WHITE), Color.RED);
-        setRightTitle(R.string.ok, mOnClickListener);
+        if (getIntent().getExtras().getString("ss")==null){
+            setRightTitle(R.string.ok, mOnClickListener);
+        }
         ivSearch=getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
     }
