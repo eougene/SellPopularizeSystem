@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +35,7 @@ import java.util.List;
 public abstract class BaseActivity extends AppCompatActivity {
     protected ImageView backLinearLayou, rightSearchLinearLayout, ivShare;
     protected TextView tvTitle, rightRtitle;
+    protected EditText etSearch;
     private LinearLayout llBaseLayout;
     private CustomProgressDialog loading_Dialog;
     private View baseView;
@@ -53,6 +55,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
+        etSearch= getViewById(R.id.etSearch);
         llBaseLayout = getViewById(R.id.titleViewParent_ll);
         rightRtitle = getViewById(R.id.rightTitle);
         //左边图片
@@ -158,6 +161,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         rightRtitle.setVisibility(View.VISIBLE);
         rightRtitle.setText(resId);
         rightRtitle.setOnClickListener(onClickListener);
+    }
+    //设置右上角标题
+    public void setRightTitle(int resId, int colorId,View.OnClickListener onClickListener) {
+        rightSearchLinearLayout.setVisibility(View.GONE);
+        rightRtitle.setVisibility(View.VISIBLE);
+        rightRtitle.setText(resId);
+        rightRtitle.setTextColor(colorId);
+        rightRtitle.setOnClickListener(onClickListener);
+    }
+
+    public void setCenterInput() {
+        tvTitle.setVisibility(View.GONE);
+        etSearch.setVisibility(View.VISIBLE);
     }
 
     //设置右上角标题背景色
