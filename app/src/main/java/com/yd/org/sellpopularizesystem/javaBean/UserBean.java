@@ -61,7 +61,7 @@ public class UserBean extends Domine {
         private int user_id;
         private String account;
         private String password;
-        private int type;
+        private int type=1;
         private String first_name;
         private String surname;
         private String mobile;

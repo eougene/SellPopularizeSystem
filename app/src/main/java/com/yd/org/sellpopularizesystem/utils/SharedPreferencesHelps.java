@@ -228,7 +228,7 @@ public class SharedPreferencesHelps {
     }
 
     public synchronized static final int getType() {
-        return getPreferences().getInt(ExtraName.USER_TYPE, 0);
+        return getPreferences().getInt(ExtraName.USER_TYPE, 1);
     }
 
 

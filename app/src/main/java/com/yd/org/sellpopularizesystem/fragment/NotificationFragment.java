@@ -6,7 +6,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -395,7 +394,6 @@ public class NotificationFragment extends BaseFragmentView {
                     if (SharedPreferencesHelps.getType() == 1){
                         studyViewPager.setCurrentItem(2);
                     }else {
-                        //rbCompany.setBackground( getResources().getDrawable(R.drawable.sdudycheck_radiobutton_selector));
                         rbCompany.setBackground( ContextCompat.getDrawable(getContext(), R.drawable.sdudycheck_radiobutton_selector));
                         studyViewPager.setCurrentItem(0);
                     }
@@ -449,7 +447,6 @@ public class NotificationFragment extends BaseFragmentView {
         if (SharedPreferencesHelps.getType() == 1) {
             orderRelat.setVisibility(View.VISIBLE);
             brifeRelat.setVisibility(View.VISIBLE);
-            //rbOrder.setChecked(true);
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {
@@ -505,7 +502,7 @@ public class NotificationFragment extends BaseFragmentView {
         companyFragment = OrderNotificFragment.getInstnce(2);
         systemFragment = OrderNotificFragment.getInstnce(1);
 
-        if (SharedPreferencesHelps.getType() == 1){
+       if (SharedPreferencesHelps.getType() == 1){
             fragments.add(orderFragment);
             fragments.add(teamFragment);
         }
@@ -514,13 +511,8 @@ public class NotificationFragment extends BaseFragmentView {
 
         adapter = new FragAdapter(getActivity().getSupportFragmentManager(), fragments);
         studyViewPager.setAdapter(adapter);
-        /*if (SharedPreferencesHelps.getType() == 1){
-            studyViewPager.setCurrentItem(0);
-        }else {
-            studyViewPager.setCurrentItem(2);
-        }*/
         studyViewPager.setCurrentItem(0);
-        studyViewPager.setOffscreenPageLimit(4);
+        studyViewPager.setOffscreenPageLimit(1);
         studyViewPager.setOnPageChangeListener(new MyVPageChangeListener());
 
     }
@@ -546,67 +538,22 @@ public class NotificationFragment extends BaseFragmentView {
 
     private void changeTextColor(int location) {
 
-            switch (location) {
+        switch (location) {
 
-                case 0:
-                    if (SharedPreferencesHelps.getType()==1){
-                        cate_id = 4;
-                        rbOrder.setChecked(true);
-                        rbBrief.setChecked(false);
-                        rbCompany.setChecked(false);
-                        rbSystem.setChecked(false);
+            case 0:
+                if (SharedPreferencesHelps.getType()==1){
+                    cate_id = 4;
+                    rbOrder.setChecked(true);
+                    rbBrief.setChecked(false);
+                    rbCompany.setChecked(false);
+                    rbSystem.setChecked(false);
 
-                        Message message = new Message();
-                        message.what = 0;
-                        message.arg1 = 1;
-                        orderFragment.mHandle.sendMessage(message);
-                        array = 0;
-                    }else {
-                        cate_id = 2;
-                        rbOrder.setChecked(false);
-                        rbBrief.setChecked(false);
-                        rbCompany.setChecked(true);
-                        rbSystem.setChecked(false);
-
-                        Message message2 = new Message();
-                        message2.what = 0;
-                        message2.arg1 = 1;
-                        companyFragment.mHandle.sendMessage(message2);
-                        array = 0;
-                    }
-
-                    break;
-                case 1:
-                    if (SharedPreferencesHelps.getType()==1){
-                        cate_id = 3;
-                        rbOrder.setChecked(false);
-                        rbBrief.setChecked(true);
-                        rbCompany.setChecked(false);
-                        rbSystem.setChecked(false);
-
-                        //
-                        Message message1 = new Message();
-                        message1.what = 0;
-                        message1.arg1 = 1;
-                        teamFragment.mHandle.sendMessage(message1);
-                        array = 0;
-                    }else {
-                        cate_id = 1;
-                        rbOrder.setChecked(false);
-                        rbBrief.setChecked(false);
-                        rbCompany.setChecked(false);
-                        rbSystem.setChecked(true);
-
-
-                        Message message3 = new Message();
-                        message3.what = 0;
-                        message3.arg1 = 1;
-                        systemFragment.mHandle.sendMessage(message3);
-                        array = 0;
-                    }
-
-                    break;
-                case 2:
+                    Message message = new Message();
+                    message.what = 0;
+                    message.arg1 = 1;
+                    orderFragment.mHandle.sendMessage(message);
+                    array = 0;
+                }else {
                     cate_id = 2;
                     rbOrder.setChecked(false);
                     rbBrief.setChecked(false);
@@ -618,8 +565,24 @@ public class NotificationFragment extends BaseFragmentView {
                     message2.arg1 = 1;
                     companyFragment.mHandle.sendMessage(message2);
                     array = 0;
-                    break;
-                case 3:
+                }
+
+                break;
+            case 1:
+                if (SharedPreferencesHelps.getType()==1){
+                    cate_id = 3;
+                    rbOrder.setChecked(false);
+                    rbBrief.setChecked(true);
+                    rbCompany.setChecked(false);
+                    rbSystem.setChecked(false);
+
+                    //
+                    Message message1 = new Message();
+                    message1.what = 0;
+                    message1.arg1 = 1;
+                    teamFragment.mHandle.sendMessage(message1);
+                    array = 0;
+                }else {
                     cate_id = 1;
                     rbOrder.setChecked(false);
                     rbBrief.setChecked(false);
@@ -632,9 +595,38 @@ public class NotificationFragment extends BaseFragmentView {
                     message3.arg1 = 1;
                     systemFragment.mHandle.sendMessage(message3);
                     array = 0;
-                    break;
+                }
 
-            }
+                break;
+            case 2:
+                cate_id = 2;
+                rbOrder.setChecked(false);
+                rbBrief.setChecked(false);
+                rbCompany.setChecked(true);
+                rbSystem.setChecked(false);
+
+                Message message2 = new Message();
+                message2.what = 0;
+                message2.arg1 = 1;
+                companyFragment.mHandle.sendMessage(message2);
+                array = 0;
+                break;
+            case 3:
+                cate_id = 1;
+                rbOrder.setChecked(false);
+                rbBrief.setChecked(false);
+                rbCompany.setChecked(false);
+                rbSystem.setChecked(true);
+
+
+                Message message3 = new Message();
+                message3.what = 0;
+                message3.arg1 = 1;
+                systemFragment.mHandle.sendMessage(message3);
+                array = 0;
+                break;
+
+        }
 
 
     }
@@ -670,7 +662,7 @@ public class NotificationFragment extends BaseFragmentView {
 
             orderRelat.setVisibility(View.VISIBLE);
             brifeRelat.setVisibility(View.VISIBLE);
-           // rbOrder.setChecked(true);
+            // rbOrder.setChecked(true);
 
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {

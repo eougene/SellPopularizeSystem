@@ -17,7 +17,6 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.AnnouncementBean;
-import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -32,7 +31,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.igexin.push.core.g.s;
 import static com.yd.org.sellpopularizesystem.adapter.NotificationAdapter.getIsSelected;
 
 
@@ -125,7 +123,6 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      */
     public static OrderNotificFragment getInstnce(int cate_id) {
         OrderNotificFragment notificFragmen = new OrderNotificFragment();
-       // Log.e(TAG, "initView: "+cate_id+":"+informationContents.size());
         Bundle bundle = new Bundle();
         bundle.putInt("cate_id", cate_id);
         notificFragmen.setArguments(bundle);
@@ -195,11 +192,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
         Gson gson = new Gson();
         AnnouncementBean bean = gson.fromJson(s, AnnouncementBean.class);
         if (bean.getCode().equals("1")) {
-            Log.e("json", "jsonParse: "+s);
-            Log.e("jsonParse", "jsonParse: "+cate_id+":"+informationContents.size());
             if (informationContents.size()>0){
                 informationContents.clear();
-               // sumnData.clear();
             }
             informationContents.addAll(bean.getResult());
             sumnData.addAll(informationContents);

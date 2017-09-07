@@ -445,7 +445,10 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.btReSubmit:
                     getInfo();
                     break;
-
+                //1现金
+                //4银行转账
+                //6支付宝
+                //7微信
 
                 //现金
                 case R.id.ivCash:
@@ -617,11 +620,10 @@ public class ReserveActivity extends BaseActivity {
                 int progress = (int) (bytesRead * 100 / contentLength);
 
 
-
             }
         };
 
-        HttpParams httpParams=new HttpParams();
+        HttpParams httpParams = new HttpParams();
         httpParams.put("order_type", "1");
         httpParams.put("property_id", bean.getProduct_childs_id() + "");
         httpParams.put("client", customeId);
@@ -632,12 +634,12 @@ public class ReserveActivity extends BaseActivity {
         httpParams.put("payment_amount", getDigitalFromString(tvRePay.getText().toString()));
         httpParams.put("pay_time", "");
         httpParams.put("currency", bean.getCurrency());
-        httpParams.put("purchaseReason",tvReGoal.getText().toString().trim());
+        httpParams.put("purchaseReason", tvReGoal.getText().toString().trim());
         httpParams.put("eoi_id", bean.getIs_eoi() + "");
 
 
         if (null != picPath && !picPath.equals("")) {
-            File  picFile = new File(picPath);
+            File picFile = new File(picPath);
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
