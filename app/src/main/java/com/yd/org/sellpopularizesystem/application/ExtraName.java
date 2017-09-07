@@ -20,7 +20,7 @@ public class ExtraName {
     //代表筛选的范围,0x001表示区域,0x002表示房型,0x003表示面积,0x004表示价格
     public static  final int AREA = 0x001;
     public static  final int HOURSE = 0x002;
-    public static  final int SPACE = 0x003;
+    public static  final int TYPE = 0x003;
     public static  final int PRICE = 0x004;
     public static  final int TAKE_PICTURE = 0x005;
     public static  final int ALBUM_PICTURE = 0x006;
