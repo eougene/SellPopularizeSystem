@@ -104,7 +104,8 @@ public class SelectConditionActivity extends BaseActivity {
             Intent intent = new Intent();
             switch (v.getId()){
                 case R.id.backLinearLayout:
-                    setData(intent);
+                    //setData(intent);
+                    finish();
                     break;
                 case R.id.rightTitle:
                     setData(intent);
