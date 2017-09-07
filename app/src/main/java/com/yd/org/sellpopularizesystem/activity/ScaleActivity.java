@@ -352,18 +352,20 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         if (data.getStringExtra("selectextra").length()>2){
                             tvHouseType.setGravity(Gravity.CENTER_VERTICAL|Gravity.START);
                         }
-                        area=data.getStringExtra("selectextra");
+                        //area=data.getStringExtra("selectextra");
                         tvHouseType.setText(data.getStringExtra("selectextra"));
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
+                    area=selectStrTag;
                     break;
                 //价格
                 case ExtraName.PRICE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
                         tvPrice.setText(data.getStringExtra("selectextra"));
-                        price=data.getStringExtra("selectextra");
+                        //price=data.getStringExtra("selectextra");
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
+                    price=selectStrTag;
                     break;
             }
             getProductListData(true, page, space, price, house, area);
