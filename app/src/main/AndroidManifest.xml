@@ -278,11 +278,9 @@
         <activity
             android:name=".activity.PromotionRecordActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".activity.ProjectPromotionActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".activity.FileActivity"
             android:screenOrientation="portrait"/>
@@ -350,6 +348,10 @@
         </activity>
         <activity android:name=".activity.InviteQRActivity"/>
         <activity android:name=".activity.MySalesActivity">
+        </activity>
+        <activity
+            android:name=".activity.ComPanyActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
     </application>
 
