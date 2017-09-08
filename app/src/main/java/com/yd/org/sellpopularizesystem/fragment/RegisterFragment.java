@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.activity.LoginActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -74,6 +75,8 @@ public class RegisterFragment extends BaseFragmentView {
         userEnLinaer = getViewById(R.id.userEnLinaer);
         userView = getViewById(R.id.userView);
         userEnView = getViewById(R.id.userEnView);
+
+        clearInfo();
 
 
     }
@@ -174,6 +177,7 @@ public class RegisterFragment extends BaseFragmentView {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
+                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
                         } else {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
@@ -286,6 +290,7 @@ public class RegisterFragment extends BaseFragmentView {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
+                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
                         } else {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
