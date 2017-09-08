@@ -284,9 +284,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
                  if(item.getCate_id()==1){
-                     holder.setText(R.id.tvBuildType,"house");
-                 }else if (item.getCate_id()==2){
                      holder.setText(R.id.tvBuildType,"house&land");
+                 }else if (item.getCate_id()==2){
+                     holder.setText(R.id.tvBuildType,"land");
                  }else {
                      holder.setText(R.id.tvBuildType,getString(R.string.villa));
                  }
