@@ -588,7 +588,7 @@
     <string name="recommendqr">Recommendation code</string>
     <string name="qrdes">Invite friends to scan two-dimensional code to download APP\n TA can obtain exclusive reward, you can get 5% of the amount paid by the order as a bonus reward</string>
     <string name="error_">Are you sure you want to give up the order?This operation cannot be revoked!</string>
-    <string name="hintpass">Enter the password for 6 to 12 digits or letters</string>
+    <string name="hintpass">Enter the password for 6 to 18 digits or letters</string>
     <string name="regsterid">Please enter the email accounts</string>
     <string name="invite_code">Invite qr code</string>
     <string name="myinfo">My information</string>
@@ -642,6 +642,8 @@
     <string name="perset">/per set</string>
     <string name="en_hint">Please enter the actual English name</string>
     <string name="select_ele">Please select filter criteria</string>
+    <string name="referral">推荐人</string>
+    <string name="mycomp">个人公司</string>
 
 </resources>
 
