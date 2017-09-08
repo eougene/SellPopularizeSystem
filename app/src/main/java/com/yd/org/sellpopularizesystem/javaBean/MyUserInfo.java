@@ -5,10 +5,12 @@ package com.yd.org.sellpopularizesystem.javaBean;
  */
 
 public class MyUserInfo extends Domine{
+
+
     /**
      * code : 1
      * msg : 获取成功！
-     * result : {"user_id":548,"company_id":1,"user_nick":null,"account":"peng.bai@e-dot.net","password":"e10adc3949ba59abbe56e057f20f883e","type":2,"sales_id":501,"refer_number":1,"team_id":0,"leader_level":0,"tjruserid":"","true_name":"","first_name":"1","surname":"2","en_name":"","sex":1,"position":"","commossion":"0.00","mcr":"0.00","line_manager":"","partner":"","mentor":"","team_leader_1":"","team_leader_2":"","director":"","mobile":"456789","e_mail":"peng.bai@e-dot.net","personal_email":"0","home_phone":"","office_phone":"","business_title":"","join_date":"","tax_number":"","residence_status":"","birth_date":"","unit_number":"","street_number":"","street_address_line_1":"街道1","street_address_line_2":"街道20","suburb":"","state":"","postcode":"1234567","country":"阿富汗","wechat":"","facebook":"","twitter":"","sales_type":0,"business_name":"ibm","company_country":"","company_unit_number":"","company_street_number":"","company_suburb":"","company_state":"","company_street_address_line_1":"","company_street_address_line_2":"","company_postcode":"","is_gst":0,"abn":"","acn":"","sales_logo":"public/uploads/user/170828/201708281606598755.jpg","request_notes":"","admin_notes":"","default_language":"cn","refer_code":"000548","client_id":"1","bank_name":"浦发","bsb":"BSB","account_number":"123456789","account_name":"Android","last_login_time":1504000071,"last_login_ip":null,"add_time":null,"add_ip":"116.237.192.15,","add_admin":null,"update_time":1503991046,"is_del":0,"is_firb":0,"is_licence":0,"is_grant":0,"grant_time":"","is_login":1,"is_active":1,"active_time":1503771855,"status":0}
+     * result : {"user_id":501,"company_id":1,"user_nick":null,"account":"test11","head_img":"public/uploads/user_head_img/20170908/64b07b0471776bc8eecd494735bf9bb3.jpg","password":"e10adc3949ba59abbe56e057f20f883e","type":1,"sales_id":0,"refer_number":0,"team_id":1,"leader_level":0,"tjruserid":"194","true_name":"","first_name":"iO","surname":"An","en_name":"leonxu","sex":1,"position":"","commossion":"1.50","mcr":"0.00","line_manager":"","partner":"","mentor":"","team_leader_1":"","team_leader_2":"","director":"194","mobile":"18217608367","e_mail":"11@QQ.com","personal_email":"leon.xu@e-dot.com","home_phone":"","office_phone":"","business_title":"","join_date":"","tax_number":"","residence_status":"AUS","birth_date":"","unit_number":"123","street_number":"987","street_address_line_1":"街道1","street_address_line_2":"街道2","suburb":"区","state":"州","postcode":"00098876","country":"阿尔巴尼亚","wechat":"oOGJXwbGoSdYu4RJbya188oJ65IA","wechat_qrcode":"public/uploads/user_wechat_qrcode/20170907/5d73233804ae67f66004fc5e6133ad78.jpg","facebook":"","twitter":"","sales_type":1,"business_name":"ibm","company_country":"埃塞俄比亚","company_unit_number":"123","company_street_number":"12345","company_suburb":"区","company_state":"周","company_street_address_line_1":"sta1a","company_street_address_line_2":"街道2","company_postcode":"2000","is_gst":1,"abn":"abn","acn":"acn","sales_logo":"public/uploads/user_logo/20170908/dd892efa7091901904c710fdab7bce68.jpg","request_notes":"","admin_notes":"","default_language":"cn","refer_code":"000501","client_id":"f40e94ddfba0de4fd74fc8f7816551f0","bank_name":"浦发银行","bsb":"BSB","account_number":"98766444","account_name":"Android","last_login_time":1504836980,"last_login_ip":null,"add_time":1503390906,"add_ip":"114.91.119.78","add_admin":"1","update_time":1504847201,"is_del":0,"is_firb":0,"is_licence":1,"is_grant":1,"grant_time":"1500289064","is_login":1,"is_active":0,"active_time":0,"is_check":0,"status":0}
      */
 
     private String code;
@@ -41,89 +43,92 @@ public class MyUserInfo extends Domine{
 
     public static class ResultBean extends Domine{
         /**
-         * user_id : 548
+         * user_id : 501
          * company_id : 1
          * user_nick : null
-         * account : peng.bai@e-dot.net
+         * account : test11
+         * head_img : public/uploads/user_head_img/20170908/64b07b0471776bc8eecd494735bf9bb3.jpg
          * password : e10adc3949ba59abbe56e057f20f883e
-         * type : 2
-         * sales_id : 501
-         * refer_number : 1
-         * team_id : 0
+         * type : 1
+         * sales_id : 0
+         * refer_number : 0
+         * team_id : 1
          * leader_level : 0
-         * tjruserid :
+         * tjruserid : 194
          * true_name :
-         * first_name : 1
-         * surname : 2
-         * en_name :
+         * first_name : iO
+         * surname : An
+         * en_name : leonxu
          * sex : 1
          * position :
-         * commossion : 0.00
+         * commossion : 1.50
          * mcr : 0.00
          * line_manager :
          * partner :
          * mentor :
          * team_leader_1 :
          * team_leader_2 :
-         * director :
-         * mobile : 456789
-         * e_mail : peng.bai@e-dot.net
-         * personal_email : 0
+         * director : 194
+         * mobile : 18217608367
+         * e_mail : 11@QQ.com
+         * personal_email : leon.xu@e-dot.com
          * home_phone :
          * office_phone :
          * business_title :
          * join_date :
          * tax_number :
-         * residence_status :
+         * residence_status : AUS
          * birth_date :
-         * unit_number :
-         * street_number :
+         * unit_number : 123
+         * street_number : 987
          * street_address_line_1 : 街道1
-         * street_address_line_2 : 街道20
-         * suburb :
-         * state :
-         * postcode : 1234567
-         * country : 阿富汗
-         * wechat :
+         * street_address_line_2 : 街道2
+         * suburb : 区
+         * state : 州
+         * postcode : 00098876
+         * country : 阿尔巴尼亚
+         * wechat : oOGJXwbGoSdYu4RJbya188oJ65IA
+         * wechat_qrcode : public/uploads/user_wechat_qrcode/20170907/5d73233804ae67f66004fc5e6133ad78.jpg
          * facebook :
          * twitter :
-         * sales_type : 0
+         * sales_type : 1
          * business_name : ibm
-         * company_country :
-         * company_unit_number :
-         * company_street_number :
-         * company_suburb :
-         * company_state :
-         * company_street_address_line_1 :
-         * company_street_address_line_2 :
-         * company_postcode :
-         * is_gst : 0
-         * abn :
-         * acn :
-         * sales_logo : public/uploads/user/170828/201708281606598755.jpg
+         * company_country : 埃塞俄比亚
+         * company_unit_number : 123
+         * company_street_number : 12345
+         * company_suburb : 区
+         * company_state : 周
+         * company_street_address_line_1 : sta1a
+         * company_street_address_line_2 : 街道2
+         * company_postcode : 2000
+         * is_gst : 1
+         * abn : abn
+         * acn : acn
+         * sales_logo : public/uploads/user_logo/20170908/dd892efa7091901904c710fdab7bce68.jpg
          * request_notes :
          * admin_notes :
          * default_language : cn
-         * refer_code : 000548
-         * client_id : 1
-         * bank_name : 浦发
+         * refer_code : 000501
+         * client_id : f40e94ddfba0de4fd74fc8f7816551f0
+         * bank_name : 浦发银行
          * bsb : BSB
-         * account_number : 123456789
+         * account_number : 98766444
          * account_name : Android
-         * last_login_time : 1504000071
+         * last_login_time : 1504836980
          * last_login_ip : null
-         * add_time : null
-         * add_ip : 116.237.192.15,
-         * add_admin : null
-         * update_time : 1503991046
+         * add_time : 1503390906
+         * add_ip : 114.91.119.78
+         * add_admin : 1
+         * update_time : 1504847201
          * is_del : 0
          * is_firb : 0
-         * is_licence : 0
-         * is_grant : 0
-         * grant_time :
+         * is_licence : 1
+         * is_grant : 1
+         * grant_time : 1500289064
          * is_login : 1
-         * is_active : 1
-         * active_time : 1503771855
+         * is_active : 0
+         * active_time : 0
+         * is_check : 0
          * status : 0
          */
 
@@ -131,6 +136,7 @@ public class MyUserInfo extends Domine{
         private int company_id;
         private Object user_nick;
         private String account;
+        private String head_img;
         private String password;
         private int type;
         private int sales_id;
@@ -171,6 +177,7 @@ public class MyUserInfo extends Domine{
         private String postcode;
         private String country;
         private String wechat;
+        private String wechat_qrcode;
         private String facebook;
         private String twitter;
         private int sales_type;
@@ -198,9 +205,9 @@ public class MyUserInfo extends Domine{
         private String account_name;
         private int last_login_time;
         private Object last_login_ip;
-        private Object add_time;
+        private int add_time;
         private String add_ip;
-        private Object add_admin;
+        private String add_admin;
         private int update_time;
         private int is_del;
         private int is_firb;
@@ -210,6 +217,7 @@ public class MyUserInfo extends Domine{
         private int is_login;
         private int is_active;
         private int active_time;
+        private int is_check;
         private int status;
 
         public int getUser_id() {
@@ -242,6 +250,14 @@ public class MyUserInfo extends Domine{
 
         public void setAccount(String account) {
             this.account = account;
+        }
+
+        public String getHead_img() {
+            return head_img;
+        }
+
+        public void setHead_img(String head_img) {
+            this.head_img = head_img;
         }
 
         public String getPassword() {
@@ -564,6 +580,14 @@ public class MyUserInfo extends Domine{
             this.wechat = wechat;
         }
 
+        public String getWechat_qrcode() {
+            return wechat_qrcode;
+        }
+
+        public void setWechat_qrcode(String wechat_qrcode) {
+            this.wechat_qrcode = wechat_qrcode;
+        }
+
         public String getFacebook() {
             return facebook;
         }
@@ -780,11 +804,11 @@ public class MyUserInfo extends Domine{
             this.last_login_ip = last_login_ip;
         }
 
-        public Object getAdd_time() {
+        public int getAdd_time() {
             return add_time;
         }
 
-        public void setAdd_time(Object add_time) {
+        public void setAdd_time(int add_time) {
             this.add_time = add_time;
         }
 
@@ -796,11 +820,11 @@ public class MyUserInfo extends Domine{
             this.add_ip = add_ip;
         }
 
-        public Object getAdd_admin() {
+        public String getAdd_admin() {
             return add_admin;
         }
 
-        public void setAdd_admin(Object add_admin) {
+        public void setAdd_admin(String add_admin) {
             this.add_admin = add_admin;
         }
 
@@ -874,6 +898,14 @@ public class MyUserInfo extends Domine{
 
         public void setActive_time(int active_time) {
             this.active_time = active_time;
+        }
+
+        public int getIs_check() {
+            return is_check;
+        }
+
+        public void setIs_check(int is_check) {
+            this.is_check = is_check;
         }
 
         public int getStatus() {
