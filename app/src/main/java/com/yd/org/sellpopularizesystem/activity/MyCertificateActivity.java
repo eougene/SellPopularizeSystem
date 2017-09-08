@@ -41,7 +41,6 @@ import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -98,18 +97,7 @@ public class MyCertificateActivity extends BaseActivity {
 
                     //推荐人
                     if (SharedPreferencesHelps.getType() == 2) {
-                        //判断我的地址信息是否完整,,,==0不完整,
-                        if (SharedPreferencesHelps.getUserAdress() == 0) {
-                            ToasShow.showToastBottom(MyCertificateActivity.this, "请完善我的地址");
-                            return;
-
-                            //判断银行卡信息是否完整,,,==0不完整,
-                        } else if (SharedPreferencesHelps.getUserBank() == 0) {
-                            ToasShow.showToastBottom(MyCertificateActivity.this, "请完善银行卡信息");
-                            return;
-                        } else {
-                            commintInfo();
-                        }
+                        commintInfo();
 
                         //销售
                     } else if (SharedPreferencesHelps.getType() == 1) {

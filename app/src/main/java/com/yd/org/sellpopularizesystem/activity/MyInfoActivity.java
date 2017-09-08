@@ -12,11 +12,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
@@ -37,6 +40,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.List;
 
+
+/**
+ * 我的信息
+ */
 public class MyInfoActivity extends BaseActivity implements View.OnClickListener {
     CircleImageView myHeadIm;
     EditText myFirstNameEdit;
@@ -45,14 +52,16 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     EditText myEmailEdit;
     TextView myAdressTv;
     TextView myBankTV;
-    EditText myCompanyEdit;
     TextView myCompanyAdressTV;
     TextView myCertificate;
     TextView myCertificateTV;
+    RelativeLayout wechatRelative;
+    ImageView wechatImageView;
 
 
-    private String imagePath = "";
+    private String imagePath = "", wechat_qrcode = "";
     private MyUserInfo myUserInfo;
+    private int type = 0;//0销售头像,1微信二维码
 
 
     @Override
@@ -72,10 +81,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         myEmailEdit = getViewById(R.id.myEmailEdit);
         myAdressTv = getViewById(R.id.myAdressTv);
         myBankTV = getViewById(R.id.myBankTV);
-        myCompanyEdit = getViewById(R.id.myCompanyEdit);
         myCompanyAdressTV = getViewById(R.id.myCompanyAdressTV);
         myCertificate = getViewById(R.id.myCertificate);
         myCertificateTV = getViewById(R.id.myCertificateTV);
+
+        wechatRelative = getViewById(R.id.wechatRelative);
+        wechatImageView = getViewById(R.id.wechatImageView);
 
 
         if (SharedPreferencesHelps.getType() == 1) {
@@ -89,36 +100,20 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        getInfo();
-    }
-
-    @Override
     public void setListener() {
         myHeadIm.setOnClickListener(this);
         myAdressTv.setOnClickListener(this);
         myBankTV.setOnClickListener(this);
         myCompanyAdressTV.setOnClickListener(this);
         myCertificateTV.setOnClickListener(this);
+        wechatRelative.setOnClickListener(this);
 
 
         setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                //判断我的地址信息是否完整,,,==0不完整,
-                if (SharedPreferencesHelps.getUserAdress() == 0) {
-                    ToasShow.showToastBottom(MyInfoActivity.this, getString(R.string.completel_add));
-                    return;
-
-                    //判断银行卡信息是否完整,,,==0不完整,
-                } else if (SharedPreferencesHelps.getUserBank() == 0) {
-                    ToasShow.showToastBottom(MyInfoActivity.this, getString(R.string.complete_bank));
-                    return;
-                } else {
-                    updateUserInfo();
-                }
+                updateUserInfo();
 
 
             }
@@ -167,23 +162,29 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
     //设置信息
     private void setUseInfo(MyUserInfo myUserInfo) {
+        BaseApplication.getInstance().myUserInfo = myUserInfo;
 
         //设置头像
-        if (!TextUtils.isEmpty(myUserInfo.getResult().getSales_logo())) {
-            Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getSales_logo()).
+        if (!TextUtils.isEmpty(myUserInfo.getResult().getHead_img())) {
+            Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getHead_img()).
                     config(Bitmap.Config.RGB_565).into(myHeadIm);
+        }
+
+        //设置微信二维码
+        if (!TextUtils.isEmpty(myUserInfo.getResult().getWechat_qrcode())) {
+            Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getWechat_qrcode()).
+                    config(Bitmap.Config.RGB_565).into(wechatImageView);
         }
 
         //姓
         myFirstNameEdit.setText(myUserInfo.getResult().getSurname());
         //名
-       myLastNameEdit.setText(myUserInfo.getResult().getFirst_name());
+        myLastNameEdit.setText(myUserInfo.getResult().getFirst_name());
         //手机号
         myPhoneEdit.setText(myUserInfo.getResult().getMobile());
         //邮箱
         myEmailEdit.setText(myUserInfo.getResult().getE_mail());
-        //公司名称
-        myCompanyEdit.setText(myUserInfo.getResult().getBusiness_name());
+
     }
 
 
@@ -231,28 +232,64 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         }
 
 
-        //名
-        if (TextUtils.isEmpty(myCompanyEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(MyInfoActivity.this, getString(R.string.companyname_empty));
-            return;
-        } else {
-            business_name = myCompanyEdit.getText().toString().trim();
-        }
-
-
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("first_name", first_name);
         httpParams.put("surname", surname);
         httpParams.put("mobile", mobile);
         httpParams.put("e_mail", e_mail);
-        httpParams.put("business_name", business_name);
 
 
+        //头像
         if (!TextUtils.isEmpty(imagePath)) {
             httpParams.put("file", new File(imagePath), mUIProgressResponseCallBack);
         }
 
+
+        //微信二维码
+        if (!TextUtils.isEmpty(imagePath)) {
+            httpParams.put("wechat_qrcode", new File(wechat_qrcode), mUIProgressResponseCallBack);
+        }
+
+        //公司logi
+        if (!TextUtils.isEmpty(BaseApplication.getInstance().myUserInfo.getResult().getSales_logo())) {
+            if (!BaseApplication.getInstance().myUserInfo.getResult().getSales_logo().contains("public/uploads/user_logo/")){
+                httpParams.put("logo", new File(BaseApplication.getInstance().myUserInfo.getResult().getSales_logo()), mUIProgressResponseCallBack);
+            }
+        }
+
+
+        //----------------------我的地址----------------------
+        httpParams.put("country", BaseApplication.getInstance().myUserInfo.getResult().getCountry());
+        httpParams.put("unit_number", BaseApplication.getInstance().myUserInfo.getResult().getUnit_number());
+        httpParams.put("street_number", BaseApplication.getInstance().myUserInfo.getResult().getStreet_number());
+        httpParams.put("suburb", BaseApplication.getInstance().myUserInfo.getResult().getSuburb());
+        httpParams.put("state", BaseApplication.getInstance().myUserInfo.getResult().getState());
+        httpParams.put("street_address_line_1", BaseApplication.getInstance().myUserInfo.getResult().getStreet_address_line_1());
+        httpParams.put("street_address_line_2", BaseApplication.getInstance().myUserInfo.getResult().getStreet_address_line_2());
+        httpParams.put("postcode", BaseApplication.getInstance().myUserInfo.getResult().getPostcode());
+
+        //--------------------公司地址------------
+        httpParams.put("company_country", BaseApplication.getInstance().myUserInfo.getResult().getCompany_country());
+        httpParams.put("company_unit_number", BaseApplication.getInstance().myUserInfo.getResult().getCompany_unit_number());
+        httpParams.put("company_street_number", BaseApplication.getInstance().myUserInfo.getResult().getCompany_street_number());
+        httpParams.put("company_suburb", BaseApplication.getInstance().myUserInfo.getResult().getCompany_suburb());
+        httpParams.put("company_state", BaseApplication.getInstance().myUserInfo.getResult().getCompany_state());
+        httpParams.put("company_street_address_line_1", BaseApplication.getInstance().myUserInfo.getResult().getCompany_street_address_line_1());
+        httpParams.put("company_street_address_line_2", BaseApplication.getInstance().myUserInfo.getResult().getCompany_street_address_line_2());
+        httpParams.put("company_postcode", BaseApplication.getInstance().myUserInfo.getResult().getCompany_postcode());
+
+        //---------------公司信息
+        httpParams.put("business_name", BaseApplication.getInstance().myUserInfo.getResult().getBusiness_name());
+        httpParams.put("abn", BaseApplication.getInstance().myUserInfo.getResult().getAbn());
+        httpParams.put("acn", BaseApplication.getInstance().myUserInfo.getResult().getAcn());
+
+
+        //-------------------银行信息--------
+        httpParams.put("account_name", BaseApplication.getInstance().myUserInfo.getResult().getAccount_name());
+        httpParams.put("account_number", BaseApplication.getInstance().myUserInfo.getResult().getAccount_number());
+        httpParams.put("bank_name", BaseApplication.getInstance().myUserInfo.getResult().getBank_name());
+        httpParams.put("bsb", BaseApplication.getInstance().myUserInfo.getResult().getBsb());
 
         EasyHttp.post(Contants.UPDATE_USER)
                 .params(httpParams)
@@ -302,22 +339,41 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
                 case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+
+
                         if (photoUri != null) {
-                            imagePath = BitmapUtil.getImagePath(MyInfoActivity.this, photoUri, null, null);
+                            if (type == 0) {
+                                imagePath = BitmapUtil.getImagePath(MyInfoActivity.this, photoUri, null, null);
+                            } else {
+                                wechat_qrcode = BitmapUtil.getImagePath(MyInfoActivity.this, photoUri, null, null);
+                            }
+
                             Bitmap bitmap = null;
                             try {
                                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
-                            myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
+                            if (type == 0) {
+                                myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
+
+                            } else {
+                                wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
+
+                            }
                         }
 
                     } else {
                         Uri imgUri = Uri.parse(BitmapUtil.imgPath);
                         if (imgUri != null) {
-                            imagePath = imgUri.getPath();
-                            myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
+                            if (type == 0) {
+                                imagePath = imgUri.getPath();
+                                myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
+                            } else {
+                                wechat_qrcode = imgUri.getPath();
+                                wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(wechat_qrcode)));
+                            }
+
                         }
 
                     }
@@ -335,27 +391,8 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             //我的头像
             case R.id.myHeadIm:
-                if (Build.VERSION.SDK_INT < 23) {
-                    BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
-                } else {
-                    requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE,
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            new PermissionListener() {
-                                @Override
-                                public void onGranted() {// 全部授权成功回调
-                                    // 执行具体业务
-                                    BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
-                                }
-
-                                @Override
-                                public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                    for (String permission : deniedPermissionList) {
-                                        ToasShow.showToastCenter(MyInfoActivity.this, permission.toString());
-                                    }
-                                }
-                            });
-                }
+                type = 0;
+                getImagePath();
                 break;
             //我的地址
             case R.id.myAdressTv:
@@ -377,13 +414,44 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
                 Bundle bundle1 = new Bundle();
                 bundle1.putString("type", "2");
                 bundle1.putSerializable("userkey", myUserInfo);
-                ActivitySkip.forward(MyInfoActivity.this, UserAdressActivity.class, bundle1);
+                ActivitySkip.forward(MyInfoActivity.this, ComPanyActivity.class, bundle1);
 
                 break;
             //我的证书
             case R.id.myCertificateTV:
                 ActivitySkip.forward(MyInfoActivity.this, MyCertificateActivity.class);
                 break;
+
+
+            //上传微信二维码
+            case R.id.wechatRelative:
+                type = 1;
+                getImagePath();
+                break;
+        }
+    }
+
+    private void getImagePath() {
+        if (Build.VERSION.SDK_INT < 23) {
+            BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
+        } else {
+            requestPermissions(new String[]{Manifest.permission.CAMERA,
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    new PermissionListener() {
+                        @Override
+                        public void onGranted() {// 全部授权成功回调
+                            // 执行具体业务
+                            BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
+                        }
+
+                        @Override
+                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
+                            for (String permission : deniedPermissionList) {
+                                ToasShow.showToastCenter(MyInfoActivity.this, permission.toString());
+                            }
+                        }
+                    });
         }
     }
 }

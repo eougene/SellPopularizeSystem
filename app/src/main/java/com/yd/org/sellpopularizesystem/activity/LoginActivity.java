@@ -1,6 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -26,6 +28,7 @@ import java.util.List;
  */
 
 public class LoginActivity extends FragmentActivity {
+    public  static  LoginActivity loginActivity;
     private Class userPushService = PushService.class;
     private ViewPagerIndicator vpi;
     private ViewPager mViewPager;
@@ -33,10 +36,23 @@ public class LoginActivity extends FragmentActivity {
     private List<String> mTitles;
     private List<Fragment> fragments = new ArrayList<>();
 
+    //注册成功默认显示登录也
+    public Handler mHandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            if (msg.what==0){
+                vpi.setViewPager(mViewPager, 0);
+            }
+        }
+    };
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loginActivity=this;
         setContentView(R.layout.login_activty);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
         mTitles = Arrays.asList(getResources().getString(R.string.login), getResources().getString(R.string.register));
@@ -57,7 +73,7 @@ public class LoginActivity extends FragmentActivity {
 
     private void initData() {
         fragments.add(new LoginFragment());
-       fragments.add(new RegisterFragment());
+        fragments.add(new RegisterFragment());
         mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {

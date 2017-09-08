@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,24 +16,15 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
-import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
-import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.utils.CharacterParserUtil;
 import com.yd.org.sellpopularizesystem.utils.CountryComparator;
 import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
-import com.zhouyou.http.EasyHttp;
-import com.zhouyou.http.cache.model.CacheMode;
-import com.zhouyou.http.callback.SimpleCallBack;
-import com.zhouyou.http.exception.ApiException;
-import com.zhouyou.http.model.HttpParams;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -80,7 +70,7 @@ public class UserAdressActivity extends BaseActivity {
     @Override
     public void initView() {
 
-
+        hideRightImagview();
         myUserInfo = (MyUserInfo) getIntent().getSerializableExtra("userkey");
         type = getIntent().getStringExtra("type");
 
@@ -96,6 +86,12 @@ public class UserAdressActivity extends BaseActivity {
 
         setUserAdress(myUserInfo);
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        saveAdress();
     }
 
     private void setUserAdress(MyUserInfo myUserInfo) {
@@ -156,162 +152,96 @@ public class UserAdressActivity extends BaseActivity {
 
     private void saveAdress() {
 
-        String country, unit_number, street_number, suburb, state, street_address_line_1, street_address_line_2, postcode;
+
+        String country = "", unit_number = "", street_number = "", suburb = "", state = "", street_address_line_1 = "", street_address_line_2 = "", postcode = "";
 
 
         //我的地址
         if (type.equals("1")) {
 
-            //国际
-            if (TextUtils.isEmpty(userAdressTv.getText().toString().trim())) {
-                ToasShow.showToastCenter(UserAdressActivity.this, "选择国家或地区");
-                return;
-            } else {
-                country = userAdressTv.getText().toString().trim();
-            }
 
+            country = userAdressTv.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCountry(country);
 
             //单元号
             unit_number = userUnitNumberEd.getText().toString().trim();
 
-
+            BaseApplication.getInstance().myUserInfo.getResult().setUnit_number(unit_number);
             //街道号
             street_number = userStreetNumberEd.getText().toString().trim();
-
+            BaseApplication.getInstance().myUserInfo.getResult().setStreet_number(street_number);
 
             //区
             suburb = userSuburbNumberEd.getText().toString().trim();
-
+            BaseApplication.getInstance().myUserInfo.getResult().setSuburb(suburb);
 
             //州
             state = userStateEd.getText().toString().trim();
-
+            BaseApplication.getInstance().myUserInfo.getResult().setState(state);
 
             //街道1
-            if (TextUtils.isEmpty(userDetailedAddressEd.getText().toString().trim())) {
-                ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
-                return;
-            } else {
-                street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
-            }
+            street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setStreet_address_line_1(street_address_line_1);
             //街道2
             street_address_line_2 = userDetailedAddressEd2.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setStreet_address_line_2(street_address_line_2);
             //邮编
-            if (TextUtils.isEmpty(userPostcodeEd.getText().toString().trim())) {
-                ToasShow.showToastCenter(UserAdressActivity.this, "请选择地区");
-                return;
-            } else {
-                postcode = userPostcodeEd.getText().toString().trim();
-            }
+            postcode = userPostcodeEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setPostcode(postcode);
 
 
-            //必填项
-            if (!TextUtils.isEmpty(country) && !TextUtils.isEmpty(street_address_line_1) && !TextUtils.isEmpty(postcode)) {
-                SharedPreferencesHelps.setUserAdress(1);
-            } else {
-                SharedPreferencesHelps.setUserAdress(0);
-            }
         } else {
+
+
+
+
 
             //国际
             country = userAdressTv.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_country(country);
+
 
             //单元号
             unit_number = userUnitNumberEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_unit_number(unit_number);
 
 
             //街道号
             street_number = userStreetNumberEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_street_number(street_number);
 
             //区
             suburb = userSuburbNumberEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_suburb(suburb);
 
             //州
             state = userStateEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_state(state);
+
+
             //街道1
             street_address_line_1 = userDetailedAddressEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_street_address_line_1(street_address_line_1);
+
             //街道2
             street_address_line_2 = userDetailedAddressEd2.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_street_address_line_2(street_address_line_2);
+
+
             //邮编
             postcode = userPostcodeEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setCompany_postcode(postcode);
 
 
-        }
-
-
-        HttpParams httpParams = new HttpParams();
-        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
-
-
-        //我的地址
-        if (type.equals("1")) {
-            httpParams.put("country", country);
-            httpParams.put("unit_number", unit_number);
-            httpParams.put("street_number", street_number);
-            httpParams.put("suburb", suburb);
-            httpParams.put("state", state);
-            httpParams.put("street_address_line_1", street_address_line_1);
-            httpParams.put("street_address_line_2", street_address_line_2);
-            httpParams.put("postcode", postcode);
-
-            //公司地址
-        } else {
-            httpParams.put("company_country", country);
-            httpParams.put("company_unit_number", unit_number);
-            httpParams.put("company_street_number", street_number);
-            httpParams.put("company_suburb", suburb);
-            httpParams.put("company_state", state);
-            httpParams.put("company_street_address_line_1", street_address_line_1);
-            httpParams.put("company_street_address_line_2", street_address_line_2);
-            httpParams.put("company_postcode", postcode);
 
         }
 
-
-        EasyHttp.post(Contants.UPDATE_USER)
-                .params(httpParams)
-                .timeStamp(true)
-                .cacheMode(CacheMode.NO_CACHE)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
-
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(UserAdressActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        closeDialog();
-                        Log.e("onSuccess***", "onSuccess:" + s);
-
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                        ToasShow.showToastCenter(UserAdressActivity.this, errorBean.getMsg());
-                        if (errorBean.getCode().equals("1")) {
-                            finish();
-                        }
-
-                    }
-                });
 
     }
 
     @Override
     public void setListener() {
 
-        setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveAdress();
-            }
-        });
 
         userAdressTv.setOnClickListener(new View.OnClickListener() {
             @Override
