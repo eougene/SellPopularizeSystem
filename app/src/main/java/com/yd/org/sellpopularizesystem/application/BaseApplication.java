@@ -24,6 +24,7 @@ import com.umeng.socialize.UMShareAPI;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
+import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
@@ -44,6 +45,7 @@ public class BaseApplication extends Application {
     private static MainHandler handler;
     private int is_firb, firb_number;
     private static Context mContext;
+    public MyUserInfo myUserInfo = new MyUserInfo();
     //腾讯更新
     public static final String APP_ID = "c59ee68679";
     public static final String APP_ID_Test = "2dfe5cbc5e";
@@ -53,6 +55,7 @@ public class BaseApplication extends Application {
     public static BaseApplication getInstance() {
         return mApp;
     }
+
 
     public class MainHandler extends Handler {
 
@@ -264,12 +267,11 @@ public class BaseApplication extends Application {
 
 
         //测试版
-        if (Contants.DOMAIN.contains("http://crm.vxda.cn")){
+        if (Contants.DOMAIN.contains("http://crm.vxda.cn")) {
             Bugly.init(getApplicationContext(), APP_ID_Test, true);
-        }else {
+        } else {
             Bugly.init(getApplicationContext(), APP_ID, true);
         }
-
 
 
     }
