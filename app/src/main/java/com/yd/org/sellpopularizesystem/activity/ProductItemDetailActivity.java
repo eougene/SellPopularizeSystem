@@ -308,9 +308,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                         final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=";
                         openShareDialog(shareUrl);
                     } else if (SharedPreferencesHelps.getType() == 2) {
-                        Intent intent = new Intent(ProductItemDetailActivity.this, MySalesActivity.class);
-                        startActivityForResult(intent, 0X001);
-                        overridePendingTransition(R.anim.downtoup_in_anim, 0);
+                        final String shareUrl = Contants.SHURE_URL + "?product_id=" + product_id + "&user_id=" + "&refer_id=" + SharedPreferencesHelps.getUserID();
+                        openShareDialog(shareUrl);
 
 
                     }
@@ -475,10 +474,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
         Bundle b = data.getExtras(); //data为B中回传的Intent
         ReferUserBean.ResultBean resultBean = (ReferUserBean.ResultBean) b.getSerializable("custome");
-
-        final String shareUrl = Contants.SHURE_URL + "?product_id=" + product_id + "&user_id=" + resultBean.getUser_id() + "&refer_id=" + SharedPreferencesHelps.getUserID();
-
-        openShareDialog(shareUrl);
 
     }
 

@@ -109,7 +109,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         wechatRelative.setOnClickListener(this);
 
 
-        setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
+        setRightTitle(R.string.customdetaild_save,getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

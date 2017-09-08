@@ -30,6 +30,7 @@ public class BankActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        hideRightImagview();
         setTitle("银行卡信息");
 
         myUserInfo = (MyUserInfo) getIntent().getSerializableExtra("userkey");

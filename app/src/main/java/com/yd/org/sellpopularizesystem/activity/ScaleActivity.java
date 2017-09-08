@@ -67,6 +67,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     bundle.putString("fatosca","price");
                     bundle.putString("ss","ss");
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.PRICE,bundle);
+                    overridePendingTransition(R.anim.downtoup_in_anim, 0);
+
                     break;
                 //类型
                 case R.id.llType:
@@ -74,6 +76,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     bundle1.putString("fatosca","type");
                     bundle1.putString("ss","ss");
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.TYPE,bundle1);
+                    overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;
                 //房型
                 case R.id.llHouseType:
@@ -81,6 +84,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     bundle2.putString("fatosca","housetype");
                     bundle2.putString("ss","ss");
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.HOURSE,bundle2);
+                    overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;
             }
         }

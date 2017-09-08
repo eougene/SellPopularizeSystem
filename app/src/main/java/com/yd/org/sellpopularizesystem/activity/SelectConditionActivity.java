@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.IdRes;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -104,8 +103,8 @@ public class SelectConditionActivity extends BaseActivity {
             Intent intent = new Intent();
             switch (v.getId()){
                 case R.id.backLinearLayout:
-                    //setData(intent);
                     finish();
+                    overridePendingTransition(0, R.anim.out_anim);
                     break;
                 case R.id.rightTitle:
                     setData(intent);
@@ -124,6 +123,7 @@ public class SelectConditionActivity extends BaseActivity {
                 intent.putExtra("selecttagextra",selectStrTag);
                 setResult(RESULT_OK, intent);
                 finish();
+                overridePendingTransition(0, R.anim.out_anim);
             }else {
                 ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
             }
@@ -141,6 +141,7 @@ public class SelectConditionActivity extends BaseActivity {
                 intent.putExtra("selecttagextra",selectStrTag);
                 setResult(RESULT_OK, intent);
                 finish();
+                overridePendingTransition(0, R.anim.out_anim);
             }else {
                 ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
             }
@@ -178,6 +179,14 @@ public class SelectConditionActivity extends BaseActivity {
 
     @Override
     public void setListener() {
+        changeLeftImageView(R.mipmap.close, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(0, R.anim.out_anim);
+            }
+        });
+
         //tvSelect.setOnClickListener(mOnClickListener);
         backLinearLayou.setOnClickListener(mOnClickListener);
         //rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
