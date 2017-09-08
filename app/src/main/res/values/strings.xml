@@ -582,7 +582,7 @@
     <string name="Australian">澳大利亚</string>
     <string name="without_full_amount">10%房款未全部付款</string>
     <string name="error_">您确定要放弃订单?此操作不可撤销!</string>
-    <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="hintpass">请输入6-18位数字或字母密码</string>
     <string name="regsterid">请输入邮箱账号</string>
     <string name="invitedes">邀请好友得分红奖励,多邀多得!</string>
     <string name="recommendqr">推荐码</string>
@@ -601,11 +601,11 @@
     <string name="real_urname_hint">请输入真实姓氏</string>
     <string name="recode_hint">推荐码</string>
     <string name="input_recode">请输入六位推荐码</string>
-    <string name="xingshi">姓氏</string>
-    <string name="mingzi">名字</string>
+    <string name="xingshi">姓</string>
+    <string name="mingzi">名</string>
     <string name="telnum">手机号</string>
     <string name="emailacc">邮箱账号</string>
-    <string name="selectadd">选择国家或地区</string>
+    <string name="selectadd">国家或地区</string>
     <string name="streetNum">街道号码</string>
     <string name="openbank">开户行</string>
     <string name="cardnum">卡号</string>
@@ -639,6 +639,8 @@
     <string name="perset">/套起</string>
     <string name="en_hint">请输入真实的英文名</string>
     <string name="select_ele">请选择筛选条件</string>
+    <string name="referral">推荐人</string>
+    <string name="mycomp">个人公司</string>
 
 
 </resources>
