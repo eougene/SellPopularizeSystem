@@ -3,10 +3,7 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
@@ -30,7 +27,6 @@ import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
-import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.LicenceBean;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
@@ -44,9 +40,10 @@ import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,7 +59,7 @@ public class MyCertificateActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
     private File file = null;
     private static final int REQUEST_CAMERA_CODE = 10;
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
     /**
      * 与日期选择相关
      */
@@ -258,25 +255,26 @@ public class MyCertificateActivity extends BaseActivity {
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
+        picPath = imagePaths.get(0);
         Glide.with(MyCertificateActivity.this)
-                .load(paths.get(0))
+                .load(picPath)
                 .placeholder(R.mipmap.default_error)
                 .error(R.mipmap.default_error)
                 .centerCrop()
                 .crossFade()
                 .into(srcImageView);
-        try{
+        try {
             JSONArray obj = new JSONArray(imagePaths);
             Log.e("--", obj.toString());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -409,9 +407,9 @@ public class MyCertificateActivity extends BaseActivity {
         } else {
 
             if (!picPath.contains(Contants.DOMAIN)) {
-                Log.e("picPath", "picPath: "+picPath);
                 file = new File(picPath);
                 httpParams.put("file", file, mUIProgressResponseCallBack);
+
             }
 
         }
@@ -439,14 +437,23 @@ public class MyCertificateActivity extends BaseActivity {
                         Log.e("onSuccess***", "UserBean:" + json);
 
                         closeDialog();
-                        Gson gson = new Gson();
-                        ErrorBean e = gson.fromJson(json, ErrorBean.class);
-                        if (e.getCode().equals("1")) {
-                            ToasShow.showToastCenter(MyCertificateActivity.this, e.getMsg() + ":" + e.getResult());
-                            finish();
-                        } else {
-                            ToasShow.showToastCenter(MyCertificateActivity.this, e.getMsg());
+
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(json);
+                            if (jsonObject.getString("code").equals("1")) {
+                                ToasShow.showToastCenter(MyCertificateActivity.this, jsonObject.getString("msg"));
+                                finish();
+                            } else {
+                                ToasShow.showToastCenter(MyCertificateActivity.this, jsonObject.getString("msg"));
+                            }
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
+
                     }
                 });
 
@@ -491,8 +498,6 @@ public class MyCertificateActivity extends BaseActivity {
                                 stateTextView.setText(R.string.State_overdue);
                             }
 
-
-                            picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
                             dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date().split("\\.")[0] + "000")));
                             dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date().split("\\.")[0] + "000")));
                             zhEdTextView.setText(lb.getResult().getLicence_number());
@@ -504,7 +509,7 @@ public class MyCertificateActivity extends BaseActivity {
                             }
 
                             remarkEdit.setText(lb.getResult().getRequest_notes());
-                            BitmapUtil.loadImageView(MyCertificateActivity.this, picPath, srcImageView);
+                            BitmapUtil.loadImageView(MyCertificateActivity.this, Contants.DOMAIN + "/" + lb.getResult().getLicence_file(), srcImageView);
 
 
                         }

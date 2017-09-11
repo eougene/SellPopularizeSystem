@@ -1,12 +1,8 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,13 +24,10 @@ import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
-import com.yd.org.sellpopularizesystem.myView.HeadZoomScrollView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -47,9 +40,7 @@ import com.zhouyou.http.model.HttpParams;
 import org.json.JSONArray;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -282,7 +273,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
 
         //微信二维码
-        if (!TextUtils.isEmpty(imagePath)) {
+        if (!TextUtils.isEmpty(wechat_qrcode)) {
             httpParams.put("wechat_qrcode", new File(wechat_qrcode), mUIProgressResponseCallBack);
         }
 
@@ -434,10 +425,15 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        imagePath=imagePaths.get(0);
+        if (type==0){
+            imagePath=imagePaths.get(0);
+        }else if (type==1){
+            wechat_qrcode=imagePaths.get(0);
+        }
+
         Log.e("TAG", "loadAdpater: "+ imagePath);
         if (type == 0) {
-            //myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
+           // myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
             Glide.with(MyInfoActivity.this)
                     .load(imagePath)
                     .placeholder(R.mipmap.default_error)
@@ -454,7 +450,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         } else {
             //wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
             Glide.with(MyInfoActivity.this)
-                    .load(imagePath)
+                    .load(wechat_qrcode)
                     .placeholder(R.mipmap.default_error)
                     .error(R.mipmap.default_error)
                     .centerCrop()
