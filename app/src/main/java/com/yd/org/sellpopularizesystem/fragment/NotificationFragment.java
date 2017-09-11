@@ -512,7 +512,7 @@ public class NotificationFragment extends BaseFragmentView {
         adapter = new FragAdapter(getActivity().getSupportFragmentManager(), fragments);
         studyViewPager.setAdapter(adapter);
         studyViewPager.setCurrentItem(0);
-        studyViewPager.setOffscreenPageLimit(1);
+        studyViewPager.setOffscreenPageLimit(4);
         studyViewPager.setOnPageChangeListener(new MyVPageChangeListener());
 
     }
