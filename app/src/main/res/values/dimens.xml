@@ -62,7 +62,7 @@
     <dimen name="actionbar_height">45dip</dimen>
     <dimen name="actionbar_item_height">45dip</dimen>
     <dimen name="actionbar_item_width">45dip</dimen>
-
+    <dimen name="action_text_size" >16sp</dimen>
 
     <!-- 弹框所需 -->
     <!-- 窗口最小宽度 -->

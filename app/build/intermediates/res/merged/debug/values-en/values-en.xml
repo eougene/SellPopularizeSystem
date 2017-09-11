@@ -26,7 +26,7 @@
     <string name="addressnopoint">Address</string>
     <string name="addsuccess">Add success</string>
     <string name="alipay">Alipay</string>
-    <string name="all_building">全部楼盘</string>
+    <string name="all_building">All projects</string>
     <string name="app_exit">Again according to exit the program</string>
     <string name="app_name">Wingaid</string>
     <string name="apply_contract">Apply Contract</string>
@@ -91,7 +91,7 @@
     <string name="cncel_line">Cancel line</string>
     <string name="co_people">Co-purchase</string>
     <string name="codeerror">Recommended code cannot be empty</string>
-    <string name="collection">珍藏</string>
+    <string name="collection">Favorite</string>
     <string name="com_noe">Company name cannot empty</string>
     <string name="commencement_date">Effective date</string>
     <string name="commission">My Commission</string>
@@ -159,7 +159,7 @@
     <string name="details">Details</string>
     <string name="dingjin">Please read declaration</string>
     <string name="direction">Toward</string>
-    <string name="discount">折扣</string>
+    <string name="discount">Discount</string>
     <string name="done">Completed</string>
     <string name="doneinpecifi">Please within a specified time to complete</string>
     <string name="doublezero">0.00</string>
@@ -171,7 +171,7 @@
     <string name="emailcontent">This part is the body of the email</string>
     <string name="emailemptyerror">Email cannot be empty</string>
     <string name="emailtopic">This is the subject of the email</string>
-    <string name="en_hint">请输入真实的英文名</string>
+    <string name="en_hint">Please enter the actual English name</string>
     <string name="englishname">English Name</string>
     <string name="englishnamenonull">English name cannot be empty</string>
     <string name="ensure_sd">Please make sure the insert SD card already</string>
@@ -217,7 +217,7 @@
     <string name="headerphoto">Photo</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">Prompt</string>
-    <string name="hintpass">Enter the password for 6 to 12 digits or letters</string>
+    <string name="hintpass">Enter the password for 6 to 18 digits or letters</string>
     <string name="historyclear">History has been cleared</string>
     <string name="home_01">Promotional material</string>
     <string name="home_02"/>
@@ -235,10 +235,10 @@
     <string name="home_study_en">Learning  garden</string>
     <string name="home_sure">Confirm</string>
     <string name="homepage">Main Page</string>
-    <string name="hot">火爆</string>
-    <string name="hot_sale">近期热销</string>
+    <string name="hot">Hot</string>
+    <string name="hot_sale">Recent hot selling</string>
     <string name="house_land">House&amp;Land</string>
-    <string name="house_suggest">好房推荐</string>
+    <string name="house_suggest">Good house recommendation</string>
     <string name="housepurchase">Purchase history</string>
     <string name="housetype">Type</string>
     <string name="housetypeimage">Floorplan</string>
@@ -277,7 +277,7 @@
     <string name="load_fail">Load failed</string>
     <string name="load_succeed">Load the success</string>
     <string name="loading">loaded...</string>
-    <string name="loc_des">上海-松江</string>
+    <string name="loc_des">Location</string>
     <string name="localarea">area</string>
     <string name="localmonth">This month the new zero bits</string>
     <string name="login">Login</string>
@@ -285,7 +285,7 @@
     <string name="login_activity_userName">User Name</string>
     <string name="login_toas">Your account is logged on to another device</string>
     <string name="login_usename">User Name Or Password no empty</string>
-    <string name="map_house">地图找房</string>
+    <string name="map_house">Looking for a house by map</string>
     <string name="maturity_date">Due date</string>
     <string name="memo">Preview Memo:</string>
     <string name="message">News</string>
@@ -303,6 +303,7 @@
     <string name="myaddress">My address</string>
     <string name="mycertificate">My Certificate</string>
     <string name="mycommission">My Commission</string>
+    <string name="mycomp">个人公司</string>
     <string name="myinfo">My information</string>
     <string name="myteam">My Team</string>
     <string name="name">Name</string>
@@ -366,7 +367,7 @@
     <string name="paytype">Please Select a Payment Method </string>
     <string name="pcd">Province City Area</string>
     <string name="percent">0.00%</string>
-    <string name="perset">/套起</string>
+    <string name="perset">/per set</string>
     <string name="person_in_charge">Person in charge (customer)</string>
     <string name="photo">Photo</string>
     <string name="photofromalbum">Select from Album</string>
@@ -382,7 +383,7 @@
     <string name="playplatform">Play the platform</string>
     <string name="postcode">Postcode</string>
     <string name="price">Price</string>
-    <string name="price_des">总价1324万/套起</string>
+    <string name="price_des">Total price</string>
     <string name="pro_city_area"> Province, urban and areas can not be empty</string>
     <string name="procidis">Province City Area</string>
     <string name="productdes">Good room and tide wait for no man, come and grab the room</string>
@@ -407,6 +408,7 @@
     <string name="recheck">Cheque</string>
     <string name="recode_hint">Recommended Code</string>
     <string name="recommendqr">Recommendation code</string>
+    <string name="referral">推荐人</string>
     <string name="refresh_fail">Refresh the failure</string>
     <string name="refresh_succeed">Refresh the success</string>
     <string name="refreshing">Refresh...</string>
@@ -500,6 +502,7 @@
     <string name="select_birth">The selection time must not exceed the current time</string>
     <string name="select_certificate_type">Select certificate type</string>
     <string name="select_due_date">Please select due date</string>
+    <string name="select_ele">Please select filter criteria</string>
     <string name="select_not">Please select the relevant news</string>
     <string name="select_valid_date">Please select valid date</string>
     <string name="selectadd">Select the country or region</string>
@@ -607,7 +610,7 @@
     <string name="totaldes">Total:</string>
     <string name="totalmoney">Total Amount</string>
     <string name="totalnum">ombined:0.00/0.00/0.00</string>
-    <string name="totalprice">总价</string>
+    <string name="totalprice">Total price</string>
     <string name="totalprojectnum">Total0个Project</string>
     <string name="transfer">Bank Transfer</string>
     <string name="type">Type</string>
@@ -632,7 +635,7 @@
     <string name="ver_1_0_0">Ver:1.0.0</string>
     <string name="version_info">Version information</string>
     <string name="video">Video</string>
-    <string name="view_more">查看更多</string>
+    <string name="view_more">View more</string>
     <string name="viewdetail">Details</string>
     <string name="villa">Villa</string>
     <string name="visit">Visit History</string>

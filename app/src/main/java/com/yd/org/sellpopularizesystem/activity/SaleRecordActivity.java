@@ -13,8 +13,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.playlog.internal.LogEvent;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -34,6 +38,8 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +58,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     //上传合同首页还是首付款标志
     private String flag, picPath;
     private SaleOrderBean.ResultBean rBean;
-
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private ArrayList<String> imagePaths=new ArrayList<>();
 
     public Handler handler = new Handler() {
         @Override
@@ -176,7 +183,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
         rBean = resultBeans;
         flag = type;
-        if (Build.VERSION.SDK_INT < 23) {
+        /*if (Build.VERSION.SDK_INT < 23) {
             //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
             BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
         } else {
@@ -198,7 +205,14 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                             }
                         }
                     });
-        }
+        }*/
+
+        PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
+        intent.setSelectModel(SelectModel.SINGLE);
+        intent.setShowCarema(true); // 是否显示拍照
+        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+        startActivityForResult(intent, REQUEST_CAMERA_CODE);
 
     }
 
@@ -286,7 +300,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 //拍照
-                case ExtraName.TAKE_PICTURE:
+                /*case ExtraName.TAKE_PICTURE:
                     if (resultCode == RESULT_OK) {
                         Uri photoUri = BitmapUtil.imgUri;
                         if (photoUri != null) {
@@ -295,13 +309,37 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                             setPicPath(picPath, rBean);
                         }
 
-                    }
+                    }*/
+                case REQUEST_CAMERA_CODE:
+                ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                Log.d("TAG", "list: " + "list = [" + list.size());
+                loadAdpater(list);
                     break;
 
             }
 
         }
 
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        String picPath=imagePaths.get(0);
+        setPicPath(picPath, rBean);
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

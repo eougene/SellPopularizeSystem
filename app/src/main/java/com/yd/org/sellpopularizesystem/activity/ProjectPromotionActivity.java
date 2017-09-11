@@ -22,6 +22,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
+import com.yd.org.sellpopularizesystem.myView.MyNestScrollView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -59,7 +60,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mToolbar = (Toolbar) findViewById(R.id.tb);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mAppBarLayout.addOnOffsetChangedListener(this);
-
 
         initView();
     }
@@ -217,9 +217,14 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mTitlePercentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
         if (!(mTitlePercentage < percentageOfShowTitle)) {
             tvTilte.setVisibility(View.VISIBLE);
+           /*findViewById(R.id.scv).setVisibility(View.VISIBLE);
+           findViewById(R.id.scvl).setVisibility(View.INVISIBLE);*/
         } else {
             tvTilte.setVisibility(View.GONE);
+            /*findViewById(R.id.scv).setVisibility(View.GONE);
+            findViewById(R.id.scvl).setVisibility(View.VISIBLE);*/
         }
+
     }
 
     private void showAlertDialog() {
@@ -246,4 +251,5 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         return super.onKeyDown(keyCode, event);
 
     }
+
 }

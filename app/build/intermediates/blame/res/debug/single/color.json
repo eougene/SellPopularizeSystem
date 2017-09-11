@@ -96,6 +96,10 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\color\\design_tint_password_toggle.xml"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\action_text_color.xml",
+        "source": "E:\\SellPopularizeSystem\\photopicker\\build\\intermediates\\bundles\\default\\res\\color\\action_text_color.xml"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
     },

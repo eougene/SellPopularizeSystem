@@ -39,7 +39,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
@@ -73,6 +77,7 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -124,6 +129,7 @@ public class CustomDetailedActivity extends BaseActivity {
     protected ArrayList<String> mProvinceDatas;
     protected Map<String, ArrayList<String>> mCitisDatasMap = new HashMap<>();
     protected Map<String, ArrayList<String>> mDistrictDatasMap = new HashMap<>();
+    private ArrayList<String> imagePaths=new ArrayList<>();
     protected String mCurrentProviceName;
     protected String mCurrentCityName;
     protected String mCurrentDistrictName;
@@ -142,6 +148,7 @@ public class CustomDetailedActivity extends BaseActivity {
     protected boolean isDataLoaded = false;
     public static final String UPDATE = "update_custome";
     public static final String ADD = "add_custome";
+    private static final int REQUEST_CAMERA_CODE = 10;
     /**
      * 与日期选择相关
      */
@@ -1652,7 +1659,7 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (v.getId()) {
                 case R.id.photoButton:
                     myPopupwindow.dismiss();
-                    if (Build.VERSION.SDK_INT < 23) {
+                    /*if (Build.VERSION.SDK_INT < 23) {
                         BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
                         requestPermissions(new String[]{Manifest.permission.CAMERA,
@@ -1672,7 +1679,13 @@ public class CustomDetailedActivity extends BaseActivity {
                                         }
                                     }
                                 });
-                    }
+                    }*/
+                    PhotoPickerIntent intent = new PhotoPickerIntent(CustomDetailedActivity.this);
+                    intent.setSelectModel(SelectModel.SINGLE);
+                    intent.setShowCarema(true); // 是否显示拍照
+                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
                     break;
 
                 case R.id.cancelButton:
@@ -1729,7 +1742,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 //拍照
-                case ExtraName.TAKE_PICTURE:
+                /*case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                         if (photoUri != null) {
@@ -1750,14 +1763,44 @@ public class CustomDetailedActivity extends BaseActivity {
                             customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
                         }
 
-                    }
+                    }*/
 
+                // 选择照片
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("TAG", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
                     break;
 
             }
 
         }
 
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        Glide.with(CustomDetailedActivity.this)
+                .load(paths.get(0))
+                .placeholder(R.mipmap.default_error)
+                .error(R.mipmap.default_error)
+                .centerCrop()
+                .crossFade()
+                .into(customeIcon);
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 

@@ -16,7 +16,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -25,6 +32,7 @@ import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.myView.CircleImageView;
+import com.yd.org.sellpopularizesystem.myView.HeadZoomScrollView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -36,8 +44,11 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -336,7 +347,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 //拍照
-                case ExtraName.TAKE_PICTURE:
+                /*case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
 
@@ -376,14 +387,62 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
                         }
 
-                    }
-
+                    }*/
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("TAG", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
                     break;
 
             }
 
         }
 
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        String picPath=imagePaths.get(0);
+        Log.e("TAG", "loadAdpater: "+ picPath);
+        if (type == 0) {
+            //myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
+            Glide.with(MyInfoActivity.this)
+                    .load(picPath)
+                    .placeholder(R.mipmap.default_error)
+                    .error(R.mipmap.default_error)
+                    .centerCrop()
+                    .crossFade()
+                    .into(new SimpleTarget<GlideDrawable>() {
+                        @Override
+                        public void onResourceReady(GlideDrawable resource,
+                                                    GlideAnimation<? super GlideDrawable> glideAnimation) {
+                            myHeadIm.setImageDrawable(resource);
+                        }
+                    });
+        } else {
+            //wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
+            Glide.with(MyInfoActivity.this)
+                    .load(picPath)
+                    .placeholder(R.mipmap.default_error)
+                    .error(R.mipmap.default_error)
+                    .centerCrop()
+                    .crossFade()
+                    .into(wechatImageView);
+        }
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -431,8 +490,10 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         }
     }
 
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private ArrayList<String> imagePaths=new ArrayList<>();
     private void getImagePath() {
-        if (Build.VERSION.SDK_INT < 23) {
+       /* if (Build.VERSION.SDK_INT < 23) {
             BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
         } else {
             requestPermissions(new String[]{Manifest.permission.CAMERA,
@@ -452,6 +513,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
                             }
                         }
                     });
-        }
+        }*/
+        PhotoPickerIntent intent = new PhotoPickerIntent(MyInfoActivity.this);
+        intent.setSelectModel(SelectModel.SINGLE);
+        intent.setShowCarema(true); // 是否显示拍照
+        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+        startActivityForResult(intent, REQUEST_CAMERA_CODE);
     }
 }

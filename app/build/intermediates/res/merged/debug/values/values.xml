@@ -495,6 +495,9 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
+    <color name="action_text_color_enabled">#818585</color>
+    <color name="action_text_color_normal">#cfcfcf</color>
+    <color name="action_text_color_pressed">#353535</color>
     <color name="actionbar_background_end">#27408B</color>
     <color name="actionbar_background_item_pressed_end">#EE7600</color>
     <color name="actionbar_background_item_pressed_start">#FF7F00</color>
@@ -592,6 +595,7 @@
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="notification_material_background_media_default_color">#ff424242</color>
+    <color name="photopicker_background">#181819</color>
     <color name="pickerview_bgColor_default">#FFFFFFFF</color>
     <color name="pickerview_bgColor_overlay">#60000000</color>
     <color name="pickerview_bg_topbar">#f5f5f5</color>
@@ -637,7 +641,7 @@
     <color name="text_center_pickerui">#ff000000</color>
     <color name="text_no_center_pickerui">#aaa</color>
     <color name="transparent">#00000000</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#ffffffff</color>
     <color name="yellowish">#e99323</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode">
             
@@ -1061,6 +1065,7 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
+    <dimen name="action_text_size">16sp</dimen>
     <dimen name="actionbar_height">45dip</dimen>
     <dimen name="actionbar_item_height">45dip</dimen>
     <dimen name="actionbar_item_width">45dip</dimen>
@@ -1109,6 +1114,8 @@
     <dimen name="design_tab_text_size_2line">12sp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <dimen name="folder_cover_size">72dp</dimen>
+    <dimen name="folder_padding">10dp</dimen>
     <dimen name="height_hidden_panel_pickerui">200dp</dimen>
     <dimen name="height_lines_center_pickerui">1dp</dimen>
     <dimen name="height_normal_item_pickerui">40dp</dimen>
@@ -1119,6 +1126,7 @@
     <item format="float" name="hint_alpha_material_light" type="dimen">0.38</item>
     <item format="float" name="hint_pressed_alpha_material_dark" type="dimen">0.70</item>
     <item format="float" name="hint_pressed_alpha_material_light" type="dimen">0.54</item>
+    <dimen name="image_size">120dp</dimen>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
@@ -1180,6 +1188,7 @@
     <dimen name="size_image_bigloading">80dp</dimen>
     <dimen name="size_image_smallloading">60dp</dimen>
     <dimen name="size_minwidth_svprogresshuddefault">120dp</dimen>
+    <dimen name="space_size">2dp</dimen>
     <dimen name="speaker_image_padding">8dp</dimen>
     <dimen name="speaker_image_size">36dp</dimen>
     <dimen name="textSize_svprogresshuddefault_msg">15sp</dimen>
@@ -1298,6 +1307,7 @@
     <string name="addsuccess">添加成功</string>
     <string name="alipay">支付宝</string>
     <string name="all_building">全部楼盘</string>
+    <string name="all_image">所有图片</string>
     <string name="app_exit">再按一次退出程序</string>
     <string name="app_name">赢家</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -1367,7 +1377,7 @@
     <string name="cncel_line">取消排队</string>
     <string name="co_people">联合购买人</string>
     <string name="codeerror">推荐码不能为空</string>
-    <string name="collection">珍藏</string>
+    <string name="collection">Favorite</string>
     <string name="com_noe">公司名不能为空</string>
     <string name="commencement_date">生效日期</string>
     <string name="commission">我的佣金</string>
@@ -1423,6 +1433,7 @@
     <string name="confirm_content">请确认通知单内容</string>
     <string name="confirm_new_password">请确认新密码</string>
     <string name="confirm_pay_information">我已确认在通知单内的支付信息</string>
+    <string name="confirm_to_delete">确认删除？</string>
     <string name="consent">我已阅读并同意</string>
     <string name="contact">联系方式</string>
     <string name="contact_address">联系地址不能为空</string>
@@ -1454,6 +1465,7 @@
     <string name="declaretitle">用户定金支付申明</string>
     <string name="declaretitle_01">定金申明</string>
     <string name="delete">删除</string>
+    <string name="deleted_a_photo">删除了一张图片</string>
     <string name="des">描述</string>
     <string name="desfive">描述五</string>
     <string name="desfour">描述四</string>
@@ -1464,8 +1476,9 @@
     <string name="details">详情</string>
     <string name="dingjin">请阅读定金支付申明</string>
     <string name="direction">朝向</string>
-    <string name="discount">折扣</string>
+    <string name="discount">Discount</string>
     <string name="done">完成</string>
+    <string name="done_with_count">完成(%1$d/%2$d)</string>
     <string name="doneinpecifi">请在指定时间完成</string>
     <string name="doublezero">0.00</string>
     <string name="editcusinfo">编辑客户信息</string>
@@ -1522,7 +1535,7 @@
     <string name="headerphoto">头像</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">提示</string>
-    <string name="hintpass">请输入6-12位数字或字母密码</string>
+    <string name="hintpass">请输入6-18位数字或字母密码</string>
     <string name="historyclear">历史记录已经清除</string>
     <string name="home_01">个推广素材</string>
     <string name="home_02">个</string>
@@ -1540,7 +1553,7 @@
     <string name="home_study_en">Learning  garden</string>
     <string name="home_sure">确定</string>
     <string name="homepage">首页</string>
-    <string name="hot">火爆</string>
+    <string name="hot">Hot</string>
     <string name="hot_sale">近期热销</string>
     <string name="house_land">House&amp;Land</string>
     <string name="house_suggest">好房推荐</string>
@@ -1549,6 +1562,8 @@
     <string name="housetypeimage">房型图</string>
     <string name="idcard">身份证</string>
     <string name="if_company_cus">  是否为公司客户</string>
+    <string name="image">图片</string>
+    <string name="image_index">%1$d/%2$d</string>
     <string name="individuaproject">个项目</string>
     <string name="input_new_password">请输入新密码</string>
     <string name="input_recode">请输入六位推荐码</string>
@@ -1595,7 +1610,7 @@
     <string name="memo">预览备忘录:</string>
     <string name="message">消息</string>
     <string name="middlename">中间名</string>
-    <string name="mingzi">名字</string>
+    <string name="mingzi">名</string>
     <string name="mobileormail">手机或邮箱二选一</string>
     <string name="mobilephone">手机</string>
     <string name="modifiedorder">申请修改订单</string>
@@ -1603,11 +1618,14 @@
     <string name="money">金额</string>
     <string name="moneypoint">金额:</string>
     <string name="more">查看更多</string>
+    <string name="msg_amount_limit">已经达到最高选择数量</string>
+    <string name="msg_no_camera">无法启用系统相机</string>
     <string name="multiple_choice">(多选题)</string>
     <string name="mutilatequestion">(多选题)</string>
     <string name="myaddress">我的地址</string>
     <string name="mycertificate">我的证书</string>
     <string name="mycommission">我的佣金</string>
+    <string name="mycomp">个人公司</string>
     <string name="myinfo">我的信息</string>
     <string name="myteam">我的团队</string>
     <string name="name">名字</string>
@@ -1692,6 +1710,7 @@
     <string name="picpath">请上传支付凭证</string>
     <string name="playplatform">玩转平台</string>
     <string name="postcode">邮编</string>
+    <string name="preview">预览</string>
     <string name="price">价格</string>
     <string name="price_des">总价1324万/套起</string>
     <string name="pro_city_area">省市区不能为空</string>
@@ -1718,6 +1737,7 @@
     <string name="recheck">支票</string>
     <string name="recode_hint">推荐码</string>
     <string name="recommendqr">推荐码</string>
+    <string name="referral">推荐人</string>
     <string name="refresh_fail">刷新失败</string>
     <string name="refresh_succeed">刷新成功</string>
     <string name="refreshing">正在刷新...</string>
@@ -1811,9 +1831,10 @@
     <string name="select_birth">选择时间不得大于当前时间</string>
     <string name="select_certificate_type">选择证件类型</string>
     <string name="select_due_date">请选择到期日期</string>
+    <string name="select_ele">请选择筛选条件</string>
     <string name="select_not">请选择相关消息</string>
     <string name="select_valid_date">请选择生效日期</string>
-    <string name="selectadd">选择国家或地区</string>
+    <string name="selectadd">国家或地区</string>
     <string name="selectall">全选</string>
     <string name="selectcus">选择客户</string>
     <string name="selectdatetime">请选择预约时间</string>
@@ -1926,6 +1947,7 @@
     <string name="totalprojectnum">共0个项目</string>
     <string name="transfer">银行转账</string>
     <string name="type">类型</string>
+    <string name="undo">撤消</string>
     <string name="unitnum">单元号</string>
     <string name="unknow">未知</string>
     <string name="unknown">未知</string>
@@ -1949,7 +1971,7 @@
     <string name="video">视频</string>
     <string name="view_more">查看更多</string>
     <string name="viewdetail">查看详情</string>
-    <string name="villa">别墅</string>
+    <string name="villa">APT</string>
     <string name="visit">拜访记录</string>
     <string name="vp">视频介绍</string>
     <string name="wechat_load">微信登录</string>
@@ -1959,7 +1981,7 @@
     <string name="without_full_amount">10%房款未全部付款</string>
     <string name="writetitle">请输入标题</string>
     <string name="xingming">姓名</string>
-    <string name="xingshi">姓氏</string>
+    <string name="xingshi">姓</string>
     <string name="xingshi_empty">姓氏不能为空</string>
     <string name="yes">是</string>
     <string name="yesorno">对错</string>
@@ -1977,6 +1999,10 @@
     <string name="zerounread">您还有0条未读信息</string>
     <string name="zhifu">支付</string>
     <string name="zhou">州</string>
+    <style name="ActionMenuTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Menu">
+        <item name="android:textSize">@dimen/action_text_size</item>
+        <item name="android:textStyle">normal</item>
+    </style>
     <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
         <item name="android:windowEnterAnimation">@anim/enter_anim</item>
         <item name="android:windowExitAnimation">@anim/out_anim</item>
@@ -2007,8 +2033,8 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowAnimationStyle">@style/default_animation</item>
         <item name="windowNoTitle">true</item>
-        <!--<item name="android:windowIsTranslucent">true</item>-->
-        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+
 
     </style>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
@@ -3126,6 +3152,14 @@
     <style name="OneMatch">
         <item name="android:layout_width">1dp</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+    <style name="PhotoPickerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/photopicker_background</item>
+        <item name="actionMenuTextAppearance">@style/ActionMenuTextStyle</item>
+        <!--<item name="actionBarTheme">@style/actionBarTheme</item>-->
+        <!--<item name="actionBarPopupTheme">@style/actionBarPopupTheme</item>-->
     </style>
     <style name="PickerUI.Center.Item" parent="@android:style/Widget.TextView">
         <item name="android:textColor">@color/text_center_pickerui</item>

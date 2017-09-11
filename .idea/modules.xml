@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SellPopularizeSystem.iml" filepath="$PROJECT_DIR$/SellPopularizeSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photopicker/photopicker.iml" filepath="$PROJECT_DIR$/photopicker/photopicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/rxeasyhttp/rxeasyhttp.iml" filepath="$PROJECT_DIR$/rxeasyhttp/rxeasyhttp.iml" />
     </modules>
   </component>

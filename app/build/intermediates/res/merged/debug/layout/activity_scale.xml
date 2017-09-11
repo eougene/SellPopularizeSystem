@@ -1,203 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchMatch.Vertical"
-    android:background="@color/white">
+              style="@style/MatchMatch.Vertical"
+              android:background="@color/white">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/shallow_gray" />
 
     <RelativeLayout
         android:id="@+id/rlBackgroundPhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/llTwo"
-            style="@style/MatchWrap"
-            android:background="@color/transparent"
-            android:orientation="vertical"
-            android:paddingBottom="@dimen/padding_margin_4"
-            android:paddingTop="@dimen/padding_margin_6">
-
-            <LinearLayout
-
-                android:id="@+id/searchLay"
-                style="@style/MatchWrap"
-                android:layout_above="@+id/scaletab_layout"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginLeft="@dimen/padding_margin_6"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/etSearch"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="@dimen/padding_margin_6"
-                    android:layout_weight="5"
-                    android:background="@drawable/button_back"
-                    android:drawableLeft="@mipmap/searchsmall"
-                    android:drawablePadding="@dimen/padding_margin_2"
-                    android:hint="@string/scale_search"
-                    android:imeOptions="actionSearch"
-                    android:paddingLeft="@dimen/padding_margin_4"
-                    android:singleLine="true"
-                    android:textColorHint="@color/gray"
-                    android:textSize="@dimen/tv_size_12" />
-
-                <Button
-                    android:id="@+id/btScaleSearch"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/padding_margin_30"
-                    android:layout_marginRight="@dimen/padding_margin_6"
-                    android:layout_weight="1"
-                    android:background="@null"
-                    android:text="@string/select"
-                    android:textColor="@color/scale_tab5"
-                    android:textSize="@dimen/tv_size_15" />
-            </LinearLayout>
-
-
-            <include
-                android:id="@+id/scale_popup_dialog"
-                layout="@layout/scale_popup_dialog"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/llTwo"
-                android:layout_marginTop="1dp"
-                android:visibility="gone" />
-
-        </LinearLayout>
-
 
         <LinearLayout
             android:id="@+id/llClass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/llTwo"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/padding_margin_6"
+            android:paddingTop="@dimen/padding_margin_6">
 
             <LinearLayout
                 android:id="@+id/llPrice"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:paddingBottom="@dimen/padding_margin_6"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:paddingTop="@dimen/padding_margin_6">
 
                 <TextView
                     android:id="@+id/tvPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:paddingRight="@dimen/padding_margin_6"
                     android:gravity="center|right"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="@string/price"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
                     android:id="@+id/ivPrice"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/trangle" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/trangle"/>
             </LinearLayout>
 
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray"/>
+                android:background="@color/shallow_gray"/>
 
             <LinearLayout
                 android:id="@+id/llType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:paddingBottom="@dimen/padding_margin_6"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:paddingTop="@dimen/padding_margin_6">
 
                 <TextView
                     android:id="@+id/tvType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:paddingRight="@dimen/padding_margin_6"
                     android:gravity="center|right"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="@string/type"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
                     android:id="@+id/ivType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/trangle" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/trangle"/>
             </LinearLayout>
 
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray"/>
+                android:background="@color/shallow_gray"/>
 
             <LinearLayout
                 android:id="@+id/llHouseType"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:paddingBottom="@dimen/padding_margin_6"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:paddingTop="@dimen/padding_margin_6">
 
                 <TextView
                     android:id="@+id/tvHouseType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:paddingRight="@dimen/padding_margin_6"
                     android:gravity="center|right"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="@string/housetype"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
 
                 <ImageView
                     android:id="@+id/ivHouseType"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/trangle" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/trangle"/>
             </LinearLayout>
 
             <View
                 android:layout_width="0.5dp"
                 android:layout_height="match_parent"
-                android:background="@color/gray"
+                android:background="@color/search_edit"
                 android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:paddingBottom="@dimen/padding_margin_6"
                 android:layout_weight="1"
                 android:orientation="horizontal"
+                android:paddingBottom="@dimen/padding_margin_6"
+                android:paddingTop="@dimen/padding_margin_6"
                 android:visibility="gone">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:paddingRight="@dimen/padding_margin_6"
                     android:gravity="center|right"
+                    android:paddingRight="@dimen/padding_margin_6"
                     android:text="@string/area"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"/>
 
                 <ImageView
                     android:id="@+id/ivArea"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:src="@mipmap/trangle" />
+                    android:layout_weight="1"
+                    android:src="@mipmap/trangle"/>
             </LinearLayout>
 
 
@@ -220,7 +171,7 @@
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/totalprojectnum"
                 android:textColor="@color/gray"
-                android:textSize="@dimen/tv_size_12" />
+                android:textSize="@dimen/tv_size_12"/>
 
 
         </RelativeLayout>
@@ -234,7 +185,7 @@
         android:layout_weight="1"
         android:background="@color/white">
 
-        <include layout="@layout/base_listview" />
+        <include layout="@layout/base_listview"/>
 
 
     </FrameLayout>

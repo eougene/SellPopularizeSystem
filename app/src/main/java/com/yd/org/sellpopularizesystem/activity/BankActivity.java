@@ -55,12 +55,12 @@ public class BankActivity extends BaseActivity {
 
     @Override
     public void setListener() {
-        setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
+        /*setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 saveAdress();
             }
-        });
+        });*/
     }
 
 

@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_action_discard.png",
+        "source": "E:\\SellPopularizeSystem\\photopicker\\build\\intermediates\\bundles\\default\\res\\mipmap-hdpi-v4\\ic_action_discard.png"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\social_introduce.jpg",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-hdpi\\social_introduce.jpg"
     }

@@ -39,8 +39,10 @@
                 android:background="@color/search_edit_bac"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:drawablePadding="@dimen/padding_margin_2"
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/effective_date"
                 android:textColor="@color/gray"
@@ -93,8 +95,10 @@
 
             <EditText
                 android:id="@+id/zhEdTextView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:drawablePadding="@dimen/padding_margin_2"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:background="@color/search_edit_bac"
@@ -153,8 +157,10 @@
                 android:background="@color/search_edit_bac"/>
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableRight="@mipmap/xinghao"
+                android:drawablePadding="@dimen/padding_margin_2"
                 android:padding="@dimen/padding_margin_10"
                 android:text="@string/upload_certificate"
                 android:textColor="@color/gray"

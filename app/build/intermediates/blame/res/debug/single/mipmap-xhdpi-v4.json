@@ -12,8 +12,20 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\home.jpg"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\ic_action_discard.png",
+        "source": "E:\\SellPopularizeSystem\\photopicker\\build\\intermediates\\bundles\\default\\res\\mipmap-xhdpi-v4\\ic_action_discard.png"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\text_indicator_pressed.png",
+        "source": "E:\\SellPopularizeSystem\\photopicker\\build\\intermediates\\bundles\\default\\res\\mipmap-xhdpi-v4\\text_indicator_pressed.png"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\loginbackground.jpg",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\loginbackground.jpg"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\text_indicator_normal.png",
+        "source": "E:\\SellPopularizeSystem\\photopicker\\build\\intermediates\\bundles\\default\\res\\mipmap-xhdpi-v4\\text_indicator_normal.png"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi-v4\\homebg.jpg",

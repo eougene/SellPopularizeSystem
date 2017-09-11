@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.myView;
 
 import android.content.Context;
+import android.support.v4.view.NestedScrollingChild;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.GridView;
@@ -42,4 +43,5 @@ public class MyGridView extends GridView {
         super.onMeasure(widthMeasureSpec, expandSpec);
 
     }
+
 }

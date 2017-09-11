@@ -353,6 +353,13 @@
             android:name=".activity.ComPanyActivity"
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
+
+        <activity
+            android:name="com.lidong.photopicker.PhotoPickerActivity"
+            android:theme="@style/PhotoPickerTheme"
+            android:configChanges="orientation|screenSize"/>
+        <activity android:name="com.lidong.photopicker.PhotoPreviewActivity"
+            android:theme="@style/PhotoPickerTheme"/>
     </application>
 
 </manifest>

@@ -66,6 +66,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     Bundle bundle=new Bundle();
                     bundle.putString("fatosca","price");
                     bundle.putString("ss","ss");
+                    bundle.putString("selectstatus",tvPrice.getText().toString());
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.PRICE,bundle);
                     overridePendingTransition(R.anim.downtoup_in_anim, 0);
 
@@ -75,6 +76,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     Bundle bundle1=new Bundle();
                     bundle1.putString("fatosca","type");
                     bundle1.putString("ss","ss");
+                    bundle1.putString("selectstatus",tvType.getText().toString());
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.TYPE,bundle1);
                     overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;
@@ -83,6 +85,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     Bundle bundle2=new Bundle();
                     bundle2.putString("fatosca","housetype");
                     bundle2.putString("ss","ss");
+                    bundle2.putString("selectstatus",tvHouseType.getText().toString());
                     ActivitySkip.forward(ScaleActivity.this,SelectConditionActivity.class,ExtraName.HOURSE,bundle2);
                     overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;

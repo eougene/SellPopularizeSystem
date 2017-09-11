@@ -9,12 +9,17 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.bumptech.glide.Glide;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -25,7 +30,10 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
+import org.json.JSONArray;
+
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComPanyActivity extends BaseActivity {
@@ -36,6 +44,8 @@ public class ComPanyActivity extends BaseActivity {
     private ImageView logoImageView;
     private MyUserInfo myUserInfo;
     private String imagePath = "";
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private ArrayList<String> imagePaths=new ArrayList<>();
 
     private View.OnClickListener mOnClick = new View.OnClickListener() {
         @Override
@@ -53,7 +63,7 @@ public class ComPanyActivity extends BaseActivity {
 
                 //公司logo
                 case R.id.compaanyRelative:
-                    if (Build.VERSION.SDK_INT < 23) {
+                    /*if (Build.VERSION.SDK_INT < 23) {
                         BitmapUtil.startImageCapture(ComPanyActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
                         requestPermissions(new String[]{Manifest.permission.CAMERA,
@@ -73,7 +83,13 @@ public class ComPanyActivity extends BaseActivity {
                                         }
                                     }
                                 });
-                    }
+                    }*/
+                    PhotoPickerIntent intent = new PhotoPickerIntent(ComPanyActivity.this);
+                    intent.setSelectModel(SelectModel.SINGLE);
+                    intent.setShowCarema(true); // 是否显示拍照
+                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
                     break;
 
             }
@@ -159,7 +175,7 @@ public class ComPanyActivity extends BaseActivity {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 //拍照
-                case ExtraName.TAKE_PICTURE:
+               /* case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                         if (photoUri != null) {
@@ -180,13 +196,41 @@ public class ComPanyActivity extends BaseActivity {
                             logoImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
                         }
 
-                    }
-
+                    }*/
+                case REQUEST_CAMERA_CODE:
+                ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                Log.d("TAG", "list: " + "list = [" + list.size());
+                loadAdpater(list);
                     break;
 
             }
 
         }
 
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        Glide.with(ComPanyActivity.this)
+                .load(paths.get(0))
+                .placeholder(R.mipmap.default_error)
+                .error(R.mipmap.default_error)
+                .centerCrop()
+                .crossFade()
+                .into(logoImageView);
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

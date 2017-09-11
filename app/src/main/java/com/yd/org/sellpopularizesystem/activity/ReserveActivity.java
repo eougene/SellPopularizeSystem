@@ -29,6 +29,10 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -53,11 +57,13 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,6 +83,8 @@ public class ReserveActivity extends BaseActivity {
     private ProSubunitListBean.ResultBean.PropertyBean bean;
     private LawyerBean.ResultBean lawBean;
     private int lawyer_id = -1;
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private ArrayList<String> imagePaths=new ArrayList<>();
     private View mView, mPayTypeView, msetPhotoView, mCusSelectView;
     private Button btReUnknow, btReinv, btReSelf, btRefoin, btReCancel, btCash, btCredit, btDesposit, btTransfer,
             btCheck, btReTypeCancel, btReSubmit, btFromCamera, btFromAlbum, btPhotoCancel, btSelecCus, btEditCusInfo, btCusCancel;
@@ -504,7 +512,7 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //开启相机
                 case R.id.ivCertificate:
-                    if (Build.VERSION.SDK_INT < 23) {
+                    /*if (Build.VERSION.SDK_INT < 23) {
                         BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
                     } else {
                         requestPermissions(new String[]{Manifest.permission.CAMERA,
@@ -524,8 +532,13 @@ public class ReserveActivity extends BaseActivity {
                                         }
                                     }
                                 });
-
-                    }
+                    }*/
+                    PhotoPickerIntent intent = new PhotoPickerIntent(ReserveActivity.this);
+                    intent.setSelectModel(SelectModel.SINGLE);
+                    intent.setShowCarema(true); // 是否显示拍照
+                   // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
                     break;
 
                 //提交支付
@@ -752,6 +765,14 @@ public class ReserveActivity extends BaseActivity {
                     }
                     break;
 
+                // 选择照片
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("TAG", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
+                    break;
+
                 //拍照上传
                 case ExtraName.TAKE_PICTURE:
 
@@ -804,6 +825,30 @@ public class ReserveActivity extends BaseActivity {
 
                     }
             }
+        }
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        Glide.with(ReserveActivity.this)
+                .load(paths.get(0))
+                .placeholder(R.mipmap.default_error)
+                .error(R.mipmap.default_error)
+                .centerCrop()
+                .crossFade()
+                .into(ivCertificate);
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

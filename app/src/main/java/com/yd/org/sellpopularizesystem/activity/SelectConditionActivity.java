@@ -21,7 +21,7 @@ public class SelectConditionActivity extends BaseActivity {
     private LinearLayout llHouseType;
     private TextView tvSelect;
     private ImageView ivSearch;
-    private String str;
+    private String str,strFlag;
     private String selectStr;
     private String selectStrTag;
 
@@ -45,18 +45,56 @@ public class SelectConditionActivity extends BaseActivity {
             //rgArea.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
+            String string=getIntent().getExtras().getString("selectstatus");
+            setHouseTypeStatus(string,llHouseType);
         }else if (str.equals("type")){
             setTitle(R.string.type);
             //rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgPrice.setVisibility(View.GONE);
+            String string=getIntent().getExtras().getString("selectstatus");
+            setStatus(string,rgType);
         }else if (str.equals("price")){
             setTitle(R.string.price);
            // rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
             rgType.setVisibility(View.GONE);
+            String string=getIntent().getExtras().getString("selectstatus");
+            setStatus(string,rgPrice);
         }
     }
+
+    private void setHouseTypeStatus(String string, LinearLayout llHouseType) {
+        for (int i = 0; i < llHouseType.getChildCount(); i++) {
+           // CheckBox checkBox= (CheckBox) llHouseType.getChildAt(i);
+            View view=llHouseType.getChildAt(i);
+            if (view instanceof CheckBox){
+                if (string.contains(((CheckBox)view).getText().toString())){
+                    ((CheckBox)view).setChecked(true);
+                    strFlag=string;
+                }
+            }
+
+        }
+    }
+
+    private void setStatus(String string, RadioGroup radioGroup) {
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            View view= radioGroup.getChildAt(i);
+            //RadioButton radioButton= (RadioButton) radioGroup.getChildAt(i);
+            if (view instanceof RadioButton){
+                if (string.equals(((RadioButton) view).getText().toString())){
+                    ((RadioButton) view).setChecked(true);
+                    strFlag=string;
+                    break;
+                }
+            }
+
+        }
+    }
+
+    //回显
+
 
     private void getHouseTypeData() {
         int count=llHouseType.getChildCount();
@@ -125,7 +163,13 @@ public class SelectConditionActivity extends BaseActivity {
                 finish();
                 overridePendingTransition(0, R.anim.out_anim);
             }else {
-                ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
+                if (TextUtils.isEmpty(strFlag)){
+                    ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
+                }else {
+                    finish();
+                    overridePendingTransition(0, R.anim.out_anim);
+                }
+
             }
 
         }else{
@@ -143,7 +187,13 @@ public class SelectConditionActivity extends BaseActivity {
                 finish();
                 overridePendingTransition(0, R.anim.out_anim);
             }else {
-                ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
+                if (TextUtils.isEmpty(strFlag)){
+                    ToasShow.showToastCenter(SelectConditionActivity.this,getString(R.string.select_ele));
+                }else {
+                    finish();
+                    overridePendingTransition(0, R.anim.out_anim);
+                }
+
             }
         }
 

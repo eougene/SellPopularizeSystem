@@ -22,7 +22,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
@@ -39,8 +43,11 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONArray;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -54,7 +61,8 @@ public class MyCertificateActivity extends BaseActivity {
     private View firbPwView;
     private Button btUnknown, btSure, btFalse;
     private File file = null;
-
+    private static final int REQUEST_CAMERA_CODE = 10;
+    private ArrayList<String> imagePaths=new ArrayList<>();
     /**
      * 与日期选择相关
      */
@@ -89,7 +97,13 @@ public class MyCertificateActivity extends BaseActivity {
 
                 //选择
                 case R.id.srcImageView:
-                    startPhoto();
+                    //startPhoto();
+                    PhotoPickerIntent intent = new PhotoPickerIntent(MyCertificateActivity.this);
+                    intent.setSelectModel(SelectModel.SINGLE);
+                    intent.setShowCarema(true); // 是否显示拍照
+                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
                     break;
                 //提交
                 case R.id.subButton:
@@ -207,7 +221,7 @@ public class MyCertificateActivity extends BaseActivity {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 //拍照
-                case ExtraName.TAKE_PICTURE:
+                /*case ExtraName.TAKE_PICTURE:
                     Uri photoUri = BitmapUtil.imgUri;
 
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
@@ -230,11 +244,40 @@ public class MyCertificateActivity extends BaseActivity {
                             srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
                         }
 
-                    }
-
+                    }*/
+                // 选择照片
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("TAG", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
                     break;
 
             }
+        }
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths!=null&& imagePaths.size()>0){
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")){
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        Glide.with(MyCertificateActivity.this)
+                .load(paths.get(0))
+                .placeholder(R.mipmap.default_error)
+                .error(R.mipmap.default_error)
+                .centerCrop()
+                .crossFade()
+                .into(srcImageView);
+        try{
+            JSONArray obj = new JSONArray(imagePaths);
+            Log.e("--", obj.toString());
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

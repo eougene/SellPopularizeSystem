@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:2:1-356:12
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:2:1-365:12
 	package
 		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:4:11-52
 		INJECTED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml
@@ -208,19 +208,19 @@ ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:80:5-82:34
 	android:required
 		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:82:9-32
 application
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:84:5-354:19
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:84:5-363:19
 MERGED from [SellPopularizeSystem:rxeasyhttp:unspecified] E:\SellPopularizeSystem\rxeasyhttp\build\intermediates\bundles\default\AndroidManifest.xml:16:5-20:19
-MERGED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:26:5-20
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] C:\Users\hejin\.android\build-cache\c7749738c92aa444ebd120343ea913d2fe9b341d\output\AndroidManifest.xml:19:5-20
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\hejin\.android\build-cache\535ed1f04b51d997460df80e658449c1ffeeab0e\output\AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\hejin\.android\build-cache\c9d59dfd45ff03f2ac164c4a741e82d5a4102816\output\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:26:5-20
 MERGED from [com.getui:sdk:2.10.2.0] C:\Users\hejin\.android\build-cache\b0a02a900ef5b8fc5114e87bbb6954496897298e\output\AndroidManifest.xml:32:5-98:19
 MERGED from [com.tencent.bugly:crashreport_upgrade:1.3.1] C:\Users\hejin\.android\build-cache\4dd70e213d57c432aeabd15b36620657ccd917ac\output\AndroidManifest.xml:19:5-54:19
 MERGED from [com.tbruyelle.rxpermissions:rxpermissions:0.8.2] C:\Users\hejin\.android\build-cache\3aa2086d27d11cf3e56a9c5e3c21d7ce26b4b290\output\AndroidManifest.xml:10:5-15:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:26:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\hejin\.android\build-cache\e1f33b654162e4cb1e4ed14bf92b703c3890a4ac\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\hejin\.android\build-cache\5311aad7c06b7b41fc7b60a31b48bd3eb6d36f2e\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\hejin\.android\build-cache\214817c5717dc47ad4fc1e958c33a76eac3524d5\output\AndroidManifest.xml:29:5-20
@@ -596,145 +596,162 @@ ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:278:9-280:51
 	android:name
 		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:279:13-61
 activity#com.yd.org.sellpopularizesystem.activity.ProjectPromotionActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:282:9-284:51
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:281:9-283:51
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:284:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:283:13-49
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:283:13-62
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:282:13-62
 activity#com.yd.org.sellpopularizesystem.activity.FileActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:286:9-288:51
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:284:9-286:51
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:288:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:286:13-49
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:287:13-50
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:285:13-50
 activity#com.yd.org.sellpopularizesystem.activity.PDFActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:289:9-291:51
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:287:9-289:51
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:291:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:289:13-49
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:290:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:288:13-49
 activity#com.yd.org.sellpopularizesystem.activity.PaymentQrActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:292:9-294:51
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:290:9-292:51
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:294:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:292:13-49
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:293:13-55
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:291:13-55
 activity#com.alipay.sdk.app.H5PayActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:295:9-300:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:293:9-298:20
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:299:13-47
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:297:13-47
 	android:exported
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:298:13-37
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:296:13-37
 	android:configChanges
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:297:13-74
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:295:13-74
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:296:13-60
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:294:13-60
 activity#com.yd.org.sellpopularizesystem.wxapi.WXPayEntryActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:303:9-308:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:301:9-306:20
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:307:13-47
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:305:13-47
 	android:exported
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:306:13-36
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:304:13-36
 	android:configChanges
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:305:13-74
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:303:13-74
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:304:13-53
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:302:13-53
 activity#com.yd.org.sellpopularizesystem.activity.StudySubitemActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:309:9-66
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:307:9-66
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:309:19-64
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:307:19-64
 activity#com.yd.org.sellpopularizesystem.activity.IntroduceActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:310:9-63
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:308:9-63
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:310:19-61
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:308:19-61
 activity#com.yd.org.sellpopularizesystem.activity.OrderDetailActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:311:9-65
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:309:9-65
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:311:19-63
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:309:19-63
 activity#com.yd.org.sellpopularizesystem.activity.VideoActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:312:9-315:51
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:310:9-313:51
 	android:screenOrientation
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:315:13-49
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:313:13-49
 	android:configChanges
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:314:13-74
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:312:13-74
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:313:13-51
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:311:13-51
 activity#com.yd.org.sellpopularizesystem.activity.DeclareActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:316:9-317:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:314:9-315:20
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:316:19-59
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:314:19-59
 activity#com.yd.org.sellpopularizesystem.activity.MyCertificateActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:318:9-321:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:316:9-319:20
 	android:windowSoftInputMode
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:320:13-64
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:318:13-64
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:319:13-59
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:317:13-59
 activity#com.yd.org.sellpopularizesystem.activity.InvoiceActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:322:9-323:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:320:9-321:20
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:322:19-59
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:320:19-59
 receiver#com.yd.org.sellpopularizesystem.activity.MyBroadCastReciver
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:325:9-332:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:323:9-330:20
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:325:19-62
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:323:19-62
 intent-filter#cn.wps.moffice.file.close+com.kingsoft.writer.back.key.down+com.kingsoft.writer.back.key.down+com.kingsoft.writer.home.key.down
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:326:13-331:29
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:324:13-329:29
 action#com.kingsoft.writer.back.key.down
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:327:17-75
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:325:17-75
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:327:25-73
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:325:25-73
 action#cn.wps.moffice.file.close
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:328:17-67
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:326:17-67
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:328:25-65
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:326:25-65
 action#com.kingsoft.writer.home.key.down
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:330:17-75
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:328:17-75
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:330:25-73
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:328:25-73
 activity#com.tencent.bugly.beta.ui.BetaActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:335:9-338:63
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:333:9-336:63
 MERGED from [com.tencent.bugly:crashreport_upgrade:1.3.1] C:\Users\hejin\.android\build-cache\4dd70e213d57c432aeabd15b36620657ccd917ac\output\AndroidManifest.xml:22:9-26:56
 	android:configChanges
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:337:13-81
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:335:13-81
 	android:theme
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:338:13-61
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:336:13-61
 	tools:replace
 		ADDED from [com.tencent.bugly:crashreport_upgrade:1.3.1] C:\Users\hejin\.android\build-cache\4dd70e213d57c432aeabd15b36620657ccd917ac\output\AndroidManifest.xml:26:13-53
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:336:13-66
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:334:13-66
 activity#com.yd.org.sellpopularizesystem.activity.MyInfoActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:339:9-342:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:337:9-340:20
 	android:windowSoftInputMode
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:341:13-64
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:339:13-64
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:340:13-52
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:338:13-52
 activity#com.yd.org.sellpopularizesystem.activity.UserAdressActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:343:9-346:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:341:9-344:20
 	android:windowSoftInputMode
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:345:13-64
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:343:13-64
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:344:13-56
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:342:13-56
 activity#com.yd.org.sellpopularizesystem.activity.BankActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:347:9-350:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:345:9-348:20
 	android:windowSoftInputMode
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:349:13-64
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:347:13-64
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:348:13-50
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:346:13-50
 activity#com.yd.org.sellpopularizesystem.activity.InviteQRActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:351:9-62
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:349:9-62
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:351:19-60
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:349:19-60
 activity#com.yd.org.sellpopularizesystem.activity.MySalesActivity
-ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:352:9-353:20
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:350:9-351:20
 	android:name
-		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:352:19-59
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:350:19-59
+activity#com.yd.org.sellpopularizesystem.activity.ComPanyActivity
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:352:9-355:20
+	android:windowSoftInputMode
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:354:13-64
+	android:name
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:353:13-53
+activity#com.lidong.photopicker.PhotoPickerActivity
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:357:9-360:61
+	android:configChanges
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:360:13-59
+	android:theme
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:359:13-52
+	android:name
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:358:13-70
+activity#com.lidong.photopicker.PhotoPreviewActivity
+ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:361:9-362:54
+	android:theme
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:362:13-52
+	android:name
+		ADDED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:361:19-77
 uses-sdk
 INJECTED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [SellPopularizeSystem:rxeasyhttp:unspecified] E:\SellPopularizeSystem\rxeasyhttp\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] C:\Users\hejin\.android\build-cache\4bd076b84e0eca98ff37191dea95b2f5d170a262\output\AndroidManifest.xml:19:5-43
-MERGED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\hejin\.android\build-cache\fd33c98ee25850ea98aadc66d081ccae63ede5ad\output\AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:20:5-44
 MERGED from [com.contrarywind:Android-PickerView:3.2.4] C:\Users\hejin\.android\build-cache\9611a47314394b23c635bd9aa9559987c0cbfb41\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] C:\Users\hejin\.android\build-cache\c7749738c92aa444ebd120343ea913d2fe9b341d\output\AndroidManifest.xml:18:5-42
 MERGED from [com.google.android.gms:play-services-base:8.4.0] C:\Users\hejin\.android\build-cache\4309f540e4d811a0bc607caf450551afa0691049\output\AndroidManifest.xml:18:5-42
@@ -744,15 +761,20 @@ MERGED from [com.github.davidpizarro:pickerui:1.0.1] C:\Users\hejin\.android\bui
 MERGED from [se.emilsjolander:stickylistheaders:2.7.0] C:\Users\hejin\.android\build-cache\98c45de9daa2914914bdd2775289f6c9712ba456\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.jude:rollviewpager:1.4.6] C:\Users\hejin\.android\build-cache\8c3efe0008103edbd23e677d137c89f338527f58\output\AndroidManifest.xml:7:5-9:41
 MERGED from [fm.jiecao:jiecaovideoplayer:5.5.4] C:\Users\hejin\.android\build-cache\374b9cb0bdf2de3fccc7ad5dc8e43fed40c835fc\output\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:20:5-43
 MERGED from [com.getui:sdk:2.10.2.0] C:\Users\hejin\.android\build-cache\b0a02a900ef5b8fc5114e87bbb6954496897298e\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.tencent.bugly:crashreport_upgrade:1.3.1] C:\Users\hejin\.android\build-cache\4dd70e213d57c432aeabd15b36620657ccd917ac\output\AndroidManifest.xml:6:5-8:41
 MERGED from [com.tbruyelle.rxpermissions:rxpermissions:0.8.2] C:\Users\hejin\.android\build-cache\3aa2086d27d11cf3e56a9c5e3c21d7ce26b4b290\output\AndroidManifest.xml:6:5-8:41
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\hejin\.android\build-cache\4b3dd628a7397b3e7750859a2342263e45ffa11d\output\AndroidManifest.xml:18:5-42
 MERGED from [com.github.barteksc:android-pdf-viewer:2.7.0-beta.1] C:\Users\hejin\.android\build-cache\62046b77056fbb9ef8d545dfecab315695c65275\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.barteksc:pdfium-android:1.7.0] C:\Users\hejin\.android\build-cache\007e71f1db2d8673327a9c95b216d401e587ea02\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.foamtrace:photopicker:1.0] E:\SellPopularizeSystem\photopicker\build\intermediates\bundles\default\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\hejin\.android\build-cache\fd33c98ee25850ea98aadc66d081ccae63ede5ad\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:20:5-44
+MERGED from [com.github.chrisbanes.photoview:library:1.2.4] C:\Users\hejin\.android\build-cache\71bab573518226ccc052dbad3064402fb07a49c2\output\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\hejin\.android\build-cache\e1f33b654162e4cb1e4ed14bf92b703c3890a4ac\output\AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\hejin\.android\build-cache\5311aad7c06b7b41fc7b60a31b48bd3eb6d36f2e\output\AndroidManifest.xml:21:5-23:60
 MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\hejin\.android\build-cache\214817c5717dc47ad4fc1e958c33a76eac3524d5\output\AndroidManifest.xml:21:5-23:63
@@ -768,24 +790,7 @@ MERGED from [com.android.support:support-compat:25.3.1] C:\Users\hejin\.android\
 		INJECTED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml
 		INJECTED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:2:1-356:12 reason: com.zhouyou.http requested WRITE_EXTERNAL_STORAGE
-meta-data#android.support.VERSION
-ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\hejin\.android\build-cache\fd33c98ee25850ea98aadc66d081ccae63ede5ad\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-v4:25.3.1] C:\Users\hejin\.android\build-cache\e1f33b654162e4cb1e4ed14bf92b703c3890a4ac\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\hejin\.android\build-cache\5311aad7c06b7b41fc7b60a31b48bd3eb6d36f2e\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\hejin\.android\build-cache\214817c5717dc47ad4fc1e958c33a76eac3524d5\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\hejin\.android\build-cache\66d1dc03ed3dbadf8ec150e9ecefd896a8897b6c\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\hejin\.android\build-cache\a9a0e4316e604606731181aae0ba70cd709ce9b7\output\AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-compat:25.3.1] C:\Users\hejin\.android\build-cache\a91e6c50679cb3ae733aeb2792072ed9eb5bd665\output\AndroidManifest.xml:25:5-27:34
-	android:value
-		ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:27:9-31
-	android:name
-		ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:26:9-47
+IMPLIED from E:\SellPopularizeSystem\app\src\main\AndroidManifest.xml:2:1-365:12 reason: com.zhouyou.http requested WRITE_EXTERNAL_STORAGE
 meta-data#com.google.android.gms.version
 ADDED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\hejin\.android\build-cache\535ed1f04b51d997460df80e658449c1ffeeab0e\output\AndroidManifest.xml:21:9-23:69
 	android:value
@@ -940,3 +945,20 @@ ADDED from [com.tbruyelle.rxpermissions:rxpermissions:0.8.2] C:\Users\hejin\.and
 		ADDED from [com.tbruyelle.rxpermissions:rxpermissions:0.8.2] C:\Users\hejin\.android\build-cache\3aa2086d27d11cf3e56a9c5e3c21d7ce26b4b290\output\AndroidManifest.xml:14:13-72
 	android:name
 		ADDED from [com.tbruyelle.rxpermissions:rxpermissions:0.8.2] C:\Users\hejin\.android\build-cache\3aa2086d27d11cf3e56a9c5e3c21d7ce26b4b290\output\AndroidManifest.xml:12:13-70
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\hejin\.android\build-cache\2e7bbcd806d91a4f950480fbba4549702142d6d0\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\6b482b04461ee24859e4ac7cd83db07290adc444\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\hejin\.android\build-cache\693db4a0c99270bd82c95eb4dc40a71a827ec8f0\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\hejin\.android\build-cache\fd33c98ee25850ea98aadc66d081ccae63ede5ad\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\hejin\.android\build-cache\c5b18f803ca3baa6da5cdc8920fb41b7531c9fdf\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\hejin\.android\build-cache\e1f33b654162e4cb1e4ed14bf92b703c3890a4ac\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\hejin\.android\build-cache\5311aad7c06b7b41fc7b60a31b48bd3eb6d36f2e\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\hejin\.android\build-cache\214817c5717dc47ad4fc1e958c33a76eac3524d5\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\hejin\.android\build-cache\66d1dc03ed3dbadf8ec150e9ecefd896a8897b6c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\hejin\.android\build-cache\a9a0e4316e604606731181aae0ba70cd709ce9b7\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\hejin\.android\build-cache\a91e6c50679cb3ae733aeb2792072ed9eb5bd665\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\hejin\.android\build-cache\5917a6776cb6208282ac9b68d880c6b83e86d741\output\AndroidManifest.xml:26:9-47

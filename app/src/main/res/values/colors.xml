@@ -56,6 +56,6 @@
     <color name="textColor_svprogresshuddefault_msg">#000000</color>
     <color name="bgColor_overlay">#60000000</color>
     <color name="bgColor_overlay_black">#95000000</color>
-
+    <color name="photopicker_background">#181819</color>
 
 </resources>
