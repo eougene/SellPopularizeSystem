@@ -2,7 +2,6 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.EditText;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -54,13 +53,13 @@ public class BankActivity extends BaseActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        saveAdress();
+    }
+
+    @Override
     public void setListener() {
-        /*setRightTitle(R.string.customdetaild_save, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveAdress();
-            }
-        });*/
     }
 
 

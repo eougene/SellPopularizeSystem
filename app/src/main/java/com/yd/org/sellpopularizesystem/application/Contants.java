@@ -36,7 +36,6 @@ public class Contants {
     //更新我的信息
     public static final String UPDATE_USER= DOMAIN + "/index.php/appv2/user/update_user_info";
 
-
     //我的要请吗
     public static final String REFER= DOMAIN + "/index.php/appv2/user/refer";
 

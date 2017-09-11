@@ -156,9 +156,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:background="@null"
+                    android:focusable="false"
                     android:gravity="end"
                     android:imeOptions="actionNext"
-                    android:focusable="false"
                     android:maxLines="1"
                     android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
@@ -1119,6 +1119,7 @@
                     android:maxLines="1"
                     android:padding="@dimen/padding_margin_14"
                     android:singleLine="true"
+                    android:text="@string/no"
                     android:textColor="@color/light_blue"
                     android:textColorHint="@color/light_blue"
                     android:textSize="@dimen/tv_size_12"/>

@@ -1211,7 +1211,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
 
-        ajaxParams.put("type_id", SharedPreferencesHelps.getType()+"");//1:销售  2推荐人
+       // ajaxParams.put("type_id", SharedPreferencesHelps.getType()+"");//1:销售  2推荐人
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
