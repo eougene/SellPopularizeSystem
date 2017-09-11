@@ -21,7 +21,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/padding_margin_50"
+                android:layout_marginTop="@dimen/padding_margin_40"
                 android:src="@mipmap/settingbt"/>
 
             <TextView
@@ -30,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:text="@string/customename"
                 android:textColor="@color/white"/>
 
             <ImageView
@@ -39,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginTop="@dimen/padding_margin_4"
+                android:layout_marginTop="@dimen/padding_margin_6"
                 android:src="@mipmap/meqr"/>
         </LinearLayout>
 
