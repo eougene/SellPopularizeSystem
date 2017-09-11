@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
@@ -448,8 +449,6 @@ public class MyCertificateActivity extends BaseActivity {
                                 stateTextView.setText(R.string.State_overdue);
                             }
 
-
-                            picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
                             dataTextView_01.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getEffective_date().split("\\.")[0] + "000")));
                             dataTextView_02.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(lb.getResult().getExpiry_date().split("\\.")[0] + "000")));
                             zhEdTextView.setText(lb.getResult().getLicence_number());
@@ -461,10 +460,10 @@ public class MyCertificateActivity extends BaseActivity {
                             }
 
                             remarkEdit.setText(lb.getResult().getRequest_notes());
-                            BitmapUtil.loadImageView(MyCertificateActivity.this, picPath, srcImageView);
 
 
 
+                            ImageLoader.getInstance().displayImage(Contants.DOMAIN + "/" + lb.getResult().getLicence_file(),srcImageView);
                         }
                     }
                 });

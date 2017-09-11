@@ -109,7 +109,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         wechatRelative.setOnClickListener(this);
 
 
-        setRightTitle(R.string.customdetaild_save,getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
+        setRightTitle(R.string.customdetaild_save, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -150,7 +150,10 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
                         Gson gson = new Gson();
                         myUserInfo = gson.fromJson(s, MyUserInfo.class);
                         if (myUserInfo.getCode().equals("1")) {
-                            setUseInfo(myUserInfo);
+                            if (myUserInfo.getResult() != null) {
+                                setUseInfo(myUserInfo);
+                            }
+
                         } else {
                             ToasShow.showToastCenter(MyInfoActivity.this, myUserInfo.getMsg());
                         }
@@ -164,8 +167,29 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     private void setUseInfo(MyUserInfo myUserInfo) {
         BaseApplication.getInstance().myUserInfo = myUserInfo;
 
+
+
+        //更新头像
+        if (!TextUtils.isEmpty(myUserInfo.getResult().getHead_img())) {
+            SharedPreferencesHelps.setUserImage(myUserInfo.getResult().getHead_img());
+
+        }
+
+        //姓名
+        if (!TextUtils.isEmpty(myUserInfo.getResult().getFirst_name())) {
+            SharedPreferencesHelps.setFirstName(myUserInfo.getResult().getFirst_name());
+
+        }
+        //姓名
+        if (!TextUtils.isEmpty(myUserInfo.getResult().getSurname())) {
+            SharedPreferencesHelps.setSurName(myUserInfo.getResult().getSurname());
+
+        }
+
+
         //设置头像
         if (!TextUtils.isEmpty(myUserInfo.getResult().getHead_img())) {
+
             Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getHead_img()).
                     config(Bitmap.Config.RGB_565).into(myHeadIm);
         }
@@ -199,7 +223,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         };
 
 
-        String first_name, surname, mobile, e_mail, business_name;
+        String first_name, surname, mobile, e_mail;
 
 
         //姓
@@ -242,7 +266,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //头像
         if (!TextUtils.isEmpty(imagePath)) {
-            httpParams.put("file", new File(imagePath), mUIProgressResponseCallBack);
+            httpParams.put("head_img", new File(imagePath), mUIProgressResponseCallBack);
         }
 
 
@@ -253,7 +277,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //公司logi
         if (!TextUtils.isEmpty(BaseApplication.getInstance().myUserInfo.getResult().getSales_logo())) {
-            if (!BaseApplication.getInstance().myUserInfo.getResult().getSales_logo().contains("public/uploads/user_logo/")){
+            if (!BaseApplication.getInstance().myUserInfo.getResult().getSales_logo().contains("public/uploads/user_logo/")) {
                 httpParams.put("logo", new File(BaseApplication.getInstance().myUserInfo.getResult().getSales_logo()), mUIProgressResponseCallBack);
             }
         }
