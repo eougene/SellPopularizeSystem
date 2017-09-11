@@ -40,6 +40,9 @@ import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
@@ -1788,13 +1791,19 @@ public class CustomDetailedActivity extends BaseActivity {
         }
         paths.add("000000");
         imagePaths.addAll(paths);
+        imagePath=imagePaths.get(0);
         Glide.with(CustomDetailedActivity.this)
                 .load(paths.get(0))
                 .placeholder(R.mipmap.default_error)
                 .error(R.mipmap.default_error)
                 .centerCrop()
                 .crossFade()
-                .into(customeIcon);
+                .into(new SimpleTarget<GlideDrawable>() {
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
+                        customeIcon.setImageDrawable(resource);
+                    }
+                });
         try{
             JSONArray obj = new JSONArray(imagePaths);
             Log.e("--", obj.toString());

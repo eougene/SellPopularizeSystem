@@ -837,6 +837,7 @@ public class ReserveActivity extends BaseActivity {
         }
         paths.add("000000");
         imagePaths.addAll(paths);
+        picPath=imagePaths.get(0);
         Glide.with(ReserveActivity.this)
                 .load(paths.get(0))
                 .placeholder(R.mipmap.default_error)

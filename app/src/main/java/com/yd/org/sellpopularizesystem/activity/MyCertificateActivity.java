@@ -507,11 +507,9 @@ public class MyCertificateActivity extends BaseActivity {
                             BitmapUtil.loadImageView(MyCertificateActivity.this, picPath, srcImageView);
 
 
-
                         }
                     }
                 });
-
 
     }
 

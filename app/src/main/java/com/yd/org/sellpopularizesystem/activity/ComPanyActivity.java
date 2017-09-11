@@ -219,8 +219,9 @@ public class ComPanyActivity extends BaseActivity {
         }
         paths.add("000000");
         imagePaths.addAll(paths);
+        imagePath=imagePaths.get(0);
         Glide.with(ComPanyActivity.this)
-                .load(paths.get(0))
+                .load(imagePath)
                 .placeholder(R.mipmap.default_error)
                 .error(R.mipmap.default_error)
                 .centerCrop()

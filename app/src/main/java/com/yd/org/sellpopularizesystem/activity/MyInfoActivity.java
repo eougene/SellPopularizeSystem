@@ -434,12 +434,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        String picPath=imagePaths.get(0);
-        Log.e("TAG", "loadAdpater: "+ picPath);
+        imagePath=imagePaths.get(0);
+        Log.e("TAG", "loadAdpater: "+ imagePath);
         if (type == 0) {
             //myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
             Glide.with(MyInfoActivity.this)
-                    .load(picPath)
+                    .load(imagePath)
                     .placeholder(R.mipmap.default_error)
                     .error(R.mipmap.default_error)
                     .centerCrop()
@@ -454,7 +454,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         } else {
             //wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
             Glide.with(MyInfoActivity.this)
-                    .load(picPath)
+                    .load(imagePath)
                     .placeholder(R.mipmap.default_error)
                     .error(R.mipmap.default_error)
                     .centerCrop()
