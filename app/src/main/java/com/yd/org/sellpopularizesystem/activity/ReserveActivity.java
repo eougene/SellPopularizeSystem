@@ -744,7 +744,7 @@ public class ReserveActivity extends BaseActivity {
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
                     CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
-                    tvReCus.setText(cun.getEn_name());
+                    tvReCus.setText(cun.getSurname() + getString(R.string.single_blank_space) + cun.getFirst_name());
                     if (cun.getAddress() != null && cun.getZip_code() != null) {
                         tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
                                 + cun.getProvince() + getString(R.string.single_blank_space)
@@ -839,7 +839,7 @@ public class ReserveActivity extends BaseActivity {
         imagePaths.addAll(paths);
         picPath=imagePaths.get(0);
         Glide.with(ReserveActivity.this)
-                .load(paths.get(0))
+                .load(picPath)
                 .placeholder(R.mipmap.default_error)
                 .error(R.mipmap.default_error)
                 .centerCrop()
