@@ -170,7 +170,7 @@ public class SelectConditionActivity extends BaseActivity {
                             for (int j = 0; j < linearLayout.getChildCount(); j++) {
                                 if (buttonView.getId() == linearLayout.getChildAt(j).getId()) {
                                     selectStr=buttonView.getText().toString();
-                                   selectStrTag= (String) buttonView.getTag();
+                                    selectStrTag= (String) buttonView.getTag();
 
                                     Log.e("TAG", "onCheckedChanged**: " + buttonView.getId() + "isChecked==" + linearLayout.getChildAt(j));
                                 } else {
