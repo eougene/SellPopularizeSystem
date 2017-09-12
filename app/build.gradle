@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170911
-        versionName "1.8.9.1"
+        versionCode 20170912
+        versionName "1.8.9.2"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -93,7 +93,7 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.contrarywind:Android-PickerView:3.2.4'
     compile 'com.google.android.gms:play-services-appindexing:8.4.0'
