@@ -7,10 +7,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -64,7 +62,6 @@ import com.yd.org.sellpopularizesystem.myView.CircleImageView;
 import com.yd.org.sellpopularizesystem.myView.MyPopupwindow;
 import com.yd.org.sellpopularizesystem.myView.WheelView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.CharacterParserUtil;
 import com.yd.org.sellpopularizesystem.utils.CountryComparator;
 import com.yd.org.sellpopularizesystem.utils.GetCountryNameSort;
@@ -98,6 +95,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import static com.yd.org.sellpopularizesystem.R.id.city;
+
 
 
 /**
