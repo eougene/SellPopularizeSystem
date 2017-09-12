@@ -379,6 +379,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }else {
                             cate_id="3";
                         }
+                    }else {
+                        tvType.setText(getString(R.string.nolimit));
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     break;
@@ -390,6 +392,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                         //area=data.getStringExtra("selectextra");
                         tvHouseType.setText(data.getStringExtra("selectextra"));
+                    }else {
+                        tvHouseType.setText(getString(R.string.nolimit));
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     area=selectStrTag;
@@ -399,6 +403,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))){
                         tvPrice.setText(data.getStringExtra("selectextra"));
                         //price=data.getStringExtra("selectextra");
+                    }else {
+                        tvPrice.setText(getString(R.string.nolimit));
                     }
                     selectStrTag=TextUtils.isEmpty(data.getStringExtra("selecttagextra"))?"":data.getStringExtra("selecttagextra");
                     price=selectStrTag;
