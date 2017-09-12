@@ -209,7 +209,7 @@ public class MyCertificateActivity extends BaseActivity {
         paths.add("000000");
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
-        Picasso.with(MyCertificateActivity.this).load("file://"+picPath).into(srcImageView);
+        Picasso.with(MyCertificateActivity.this).load("file://"+picPath).fit().into(srcImageView);
 
     }
 

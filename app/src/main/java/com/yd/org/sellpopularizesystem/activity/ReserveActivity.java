@@ -808,7 +808,7 @@ public class ReserveActivity extends BaseActivity {
         paths.add("000000");
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
-        Picasso.with(ReserveActivity.this).load("file://" + picPath).into(ivCertificate);
+        Picasso.with(ReserveActivity.this).load("file://" + picPath).fit().into(ivCertificate);
 
     }
 

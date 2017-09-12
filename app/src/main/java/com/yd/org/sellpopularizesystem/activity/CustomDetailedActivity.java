@@ -456,7 +456,7 @@ public class CustomDetailedActivity extends BaseActivity {
         //设置头像
         if (!TextUtils.isEmpty(customeDetailedBean.getResult().getHead_img())) {
             Picasso.with(this).load(Contants.DOMAIN + "/" + customeDetailedBean.getResult().getHead_img()).
-                    config(Bitmap.Config.RGB_565).into(customeIcon);
+                    config(Bitmap.Config.RGB_565).fit().into(customeIcon);
         }
 
 
@@ -1740,7 +1740,7 @@ public class CustomDetailedActivity extends BaseActivity {
         imagePaths.addAll(paths);
         imagePath = imagePaths.get(0);
 
-        Picasso.with(CustomDetailedActivity.this).load("file://" + imagePath).into(customeIcon);
+        Picasso.with(CustomDetailedActivity.this).load("file://" + imagePath).fit().into(customeIcon);
     }
 
     /**

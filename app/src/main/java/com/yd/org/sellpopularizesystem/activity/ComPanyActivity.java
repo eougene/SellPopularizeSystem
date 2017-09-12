@@ -97,7 +97,7 @@ public class ComPanyActivity extends BaseActivity {
         //公司logo
         if (!TextUtils.isEmpty(myUserInfo.getResult().getSales_logo())) {
             Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getSales_logo()).
-                    config(Bitmap.Config.RGB_565).into(logoImageView);
+                    config(Bitmap.Config.RGB_565).fit().into(logoImageView);
         }
 
     }
@@ -165,7 +165,7 @@ public class ComPanyActivity extends BaseActivity {
         imagePaths.addAll(paths);
         imagePath=imagePaths.get(0);
 
-        Picasso.with(ComPanyActivity.this).load("file://"+imagePath).into(logoImageView);
+        Picasso.with(ComPanyActivity.this).load("file://"+imagePath).fit().into(logoImageView);
 
     }
 }

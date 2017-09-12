@@ -193,7 +193,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         //设置微信二维码
         if (!TextUtils.isEmpty(myUserInfo.getResult().getWechat_qrcode())) {
             Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getWechat_qrcode()).
-                    config(Bitmap.Config.RGB_565).into(wechatImageView);
+                    config(Bitmap.Config.RGB_565).fit().into(wechatImageView);
         }
 
         //姓
@@ -421,10 +421,10 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         imagePaths.addAll(paths);
         if (type==0){
             imagePath=imagePaths.get(0);
-            Picasso.with(MyInfoActivity.this).load("file://" + imagePath).into(myHeadIm);
+            Picasso.with(MyInfoActivity.this).load("file://" + imagePath).fit().into(myHeadIm);
         }else if (type==1){
             wechat_qrcode=imagePaths.get(0);
-            Picasso.with(MyInfoActivity.this).load("file://" + wechat_qrcode).into(wechatImageView);
+            Picasso.with(MyInfoActivity.this).load("file://" + wechat_qrcode).fit().into(wechatImageView);
         }
 
     }
