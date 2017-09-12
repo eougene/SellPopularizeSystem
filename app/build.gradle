@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20170820
-        versionName "1.7.0"
+        versionCode 20170911
+        versionName "1.8.9.1"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -46,14 +46,18 @@ android {
         }
     }
 
+    lintOptions {
+        //即使有lint报错也不停止打包
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
 }
 
 dependencies {
+    compile project(':photopicker')
     compile project(':rxeasyhttp')
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
     //拼音排序
     compile files('libs/pinyin4j-2.5.0.jar')
     //图片缩放
@@ -72,34 +76,37 @@ dependencies {
     compile files('libs/umeng_social_shareview.jar')
     compile files('libs/umeng_social_tool.jar')
     //图片加载
-    compile 'com.squareup.picasso:picasso:2.3.2'
     //Gosn
-    compile 'com.google.code.gson:gson:2.7'
     //滚动控件
-    compile 'com.contrarywind:Android-PickerView:3.2.4'
     //google
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
     //google
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     //选择器
-    compile 'com.github.davidpizarro:pickerui:1.0.1'
     //粘列表标题,我的团队页面效果
-    compile 'se.emilsjolander:stickylistheaders:2.7.0'
     //图片轮播效果
-    compile 'com.jude:rollviewpager:1.4.6'
     //视频播放
-    compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
     //图片加载
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     //个推
-    compile 'com.getui:sdk:2.10.2.0'
     //腾讯更新
-    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     //获取运行时权限
-    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.2@aar'
     //65536
-    compile 'com.android.support:multidex:1.0.0'
     //PDF
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.squareup.picasso:picasso:2.3.2'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.contrarywind:Android-PickerView:3.2.4'
+    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.davidpizarro:pickerui:1.0.1'
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    compile 'com.jude:rollviewpager:1.4.6'
+    compile 'fm.jiecao:jiecaovideoplayer:5.5.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
+    compile 'com.getui:sdk:2.10.2.0'
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.2@aar'
+    compile 'com.android.support:multidex:1.0.0'
     compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
-    compile project(':photopicker')
+
 }
