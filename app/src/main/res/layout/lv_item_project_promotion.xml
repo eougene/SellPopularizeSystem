@@ -133,7 +133,6 @@
         android:background="@color/reansoarent_oneoftwo"
         android:src="@mipmap/lock"
         android:scaleType="centerInside"
-        android:visibility="gone"
-         />
+        android:visibility="gone"/>
 
 </RelativeLayout>
