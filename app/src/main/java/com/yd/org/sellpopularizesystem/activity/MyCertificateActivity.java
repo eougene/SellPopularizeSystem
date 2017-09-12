@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.text.TextUtils;
@@ -24,6 +25,7 @@ import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
@@ -509,9 +511,8 @@ public class MyCertificateActivity extends BaseActivity {
                             }
 
                             remarkEdit.setText(lb.getResult().getRequest_notes());
-                            BitmapUtil.loadImageView(MyCertificateActivity.this, Contants.DOMAIN + "/" + lb.getResult().getLicence_file(), srcImageView);
-
-
+                            Picasso.with(MyCertificateActivity.this).load(Contants.DOMAIN + "/" + lb.getResult().getLicence_file()).skipMemoryCache().config(Bitmap.Config.RGB_565).fit().into(srcImageView);
+                            picPath = Contants.DOMAIN + "/" + lb.getResult().getLicence_file();
                         }
                     }
                 });
