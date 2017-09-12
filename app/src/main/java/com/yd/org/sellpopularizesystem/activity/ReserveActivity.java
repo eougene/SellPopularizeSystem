@@ -745,14 +745,16 @@ public class ReserveActivity extends BaseActivity {
                 case ExtraName.RESERVE_TO_CUSTOME:
                     CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
                     tvReCus.setText(cun.getSurname() + getString(R.string.single_blank_space) + cun.getFirst_name());
-                    if (cun.getAddress() != null && cun.getZip_code() != null) {
-                        tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
-                                + cun.getProvince() + getString(R.string.single_blank_space)
-                                + cun.getAddress() + getString(R.string.single_blank_space) + cun.getZip_code());
+                    /*if (cun.getAddress() != null && cun.getZip_code() != null) {
+
                     } else {
                         tvReCusAdd.setText("");
-                    }
+                    }*/
+                    tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
+                            + cun.getProvince() + getString(R.string.single_blank_space)
+                            + cun.getAddress() + getString(R.string.single_blank_space) + cun.getZip_code());
                     customeId = cun.getCustomer_id() + "";
+
                     //判断用户信息是否完整
                     if (!judgeCusInfo(cun)) {
                         tvReCus.setTextColor(Color.RED);
