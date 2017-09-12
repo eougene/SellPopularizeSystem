@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.IdRes;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -14,16 +17,19 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.myView.ElasticHorizontalScrollView;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 public class SelectConditionActivity extends BaseActivity {
-    private RadioGroup rgType, rgPrice;
-    private LinearLayout llHouseType;
+    //private RadioGroup rgType, rgPrice;
+    private LinearLayout llHouseType, llType, llPrice;
     private TextView tvSelect;
     private ImageView ivSearch;
     private String str, strFlag;
     private String selectStr;
     private String selectStrTag;
+    private StringBuilder sb = new StringBuilder();
+    int position = 0;
 
     @Override
     protected int setContentView() {
@@ -38,29 +44,37 @@ public class SelectConditionActivity extends BaseActivity {
         if (str.equals("area")) {
             setTitle(R.string.type);
             llHouseType.setVisibility(View.GONE);
-            rgType.setVisibility(View.GONE);
-            rgPrice.setVisibility(View.GONE);
+            /*rgType.setVisibility(View.GONE);
+            rgPrice.setVisibility(View.GONE);*/
+            llType.setVisibility(View.GONE);
+            llPrice.setVisibility(View.GONE);
         } else if (str.equals("housetype")) {
             setTitle(R.string.housetype);
             //rgArea.setVisibility(View.GONE);
-            rgType.setVisibility(View.GONE);
-            rgPrice.setVisibility(View.GONE);
+            /*rgType.setVisibility(View.GONE);
+            rgPrice.setVisibility(View.GONE);*/
+            llType.setVisibility(View.GONE);
+            llPrice.setVisibility(View.GONE);
             String string = getIntent().getExtras().getString("selectstatus");
             setHouseTypeStatus(string, llHouseType);
         } else if (str.equals("type")) {
             setTitle(R.string.type);
             //rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
-            rgPrice.setVisibility(View.GONE);
+            //rgPrice.setVisibility(View.GONE);
+            llPrice.setVisibility(View.GONE);
             String string = getIntent().getExtras().getString("selectstatus");
-            setStatus(string, rgType);
+            setStatus(string, llType);
+            setListener(llType);
         } else if (str.equals("price")) {
             setTitle(R.string.price);
             // rgArea.setVisibility(View.GONE);
             llHouseType.setVisibility(View.GONE);
-            rgType.setVisibility(View.GONE);
+            //rgType.setVisibility(View.GONE);
+            llType.setVisibility(View.GONE);
             String string = getIntent().getExtras().getString("selectstatus");
-            setStatus(string, rgPrice);
+            setStatus(string, llPrice);
+            setListener(llPrice);
         }
     }
 
@@ -78,22 +92,13 @@ public class SelectConditionActivity extends BaseActivity {
         }
     }
 
-    private void setStatus(String string, RadioGroup radioGroup) {
-        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-            final View view = radioGroup.getChildAt(i);
+    private void setStatus(String string, final LinearLayout linearLayout) {
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            final View view = linearLayout.getChildAt(i);
             //RadioButton radioButton= (RadioButton) radioGroup.getChildAt(i);
-            if (view instanceof RadioButton) {
-                if (string.equals(((RadioButton) view).getText().toString())) {
-                    ((RadioButton) view).setChecked(true);
-                    view.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (((RadioButton) view).isChecked()) {
-                                ((RadioButton) view).setChecked(false);
-                            }
-
-                        }
-                    });
+            if (view instanceof CheckBox) {
+                if (string.equals(((CheckBox) view).getText().toString())) {
+                    ((CheckBox) view).setChecked(true);
                     strFlag = string;
                     break;
                 }
@@ -139,10 +144,55 @@ public class SelectConditionActivity extends BaseActivity {
     private void initViews() {
         //rgArea=getViewById(R.id.rgArea);
         llHouseType = getViewById(R.id.llHouseType);
-        rgType = getViewById(R.id.rgType);
-        rgPrice = getViewById(R.id.rgPrice);
+        /*rgType = getViewById(R.id.rgType);
+        rgPrice = getViewById(R.id.rgPrice);*/
+        llType = getViewById(R.id.llType);
+        llPrice = getViewById(R.id.llPrice);
         tvSelect = getViewById(R.id.tvSelect);
+
     }
+
+    private void setListener(final LinearLayout linearLayout) {
+        // final View[] view = new View[linearLayout.getChildCount()];
+        for (int i = 0; i < linearLayout.getChildCount(); i++) {
+            position = i;
+            // view[i]=linearLayout.getChildAt(i);
+            //RadioButton radioButton= (RadioButton) radioGroup.getChildAt(i);
+            if (linearLayout.getChildAt(i) instanceof CheckBox) {
+                Log.e("TAG", "onCheckedChanged**: " + position);
+
+                CheckBox c = (CheckBox) linearLayout.getChildAt(i);
+                c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                        if (isChecked) {
+                            for (int j = 0; j < linearLayout.getChildCount(); j++) {
+                                if (buttonView.getId() == linearLayout.getChildAt(j).getId()) {
+                                    selectStr=buttonView.getText().toString();
+                                   selectStrTag= (String) buttonView.getTag();
+
+                                    Log.e("TAG", "onCheckedChanged**: " + buttonView.getId() + "isChecked==" + linearLayout.getChildAt(j));
+                                } else {
+                                    Log.e("TAG", "onCheckedChanged****: " + buttonView.getId() + "isChecked==" + linearLayout.getChildAt(j));
+                                    if (linearLayout.getChildAt(j) instanceof CheckBox) {
+                                        ((CheckBox) linearLayout.getChildAt(j)).setChecked(false);
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+                });
+
+
+            }
+
+        }
+
+    }
+
 
     View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -188,28 +238,29 @@ public class SelectConditionActivity extends BaseActivity {
                 finish();
                 overridePendingTransition(0, R.anim.out_anim);
             } else {
-                    intent.putExtra("selectextra", selectStr);
-                    intent.putExtra("selecttagextra", selectStrTag);
-                    setResult(RESULT_OK, intent);
-                    finish();
-                    overridePendingTransition(0, R.anim.out_anim);
+                intent.putExtra("selectextra", selectStr);
+                intent.putExtra("selecttagextra", selectStrTag);
+                setResult(RESULT_OK, intent);
+                finish();
+                overridePendingTransition(0, R.anim.out_anim);
             }
         }
 
     }
 
-    RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
+
+    /*RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
             switch (group.getId()) {
                 //区域
-                /*case R.id.rgArea:
+                *//*case R.id.rgArea:
                     RadioButton rbArea= (RadioButton) findViewById(group.getCheckedRadioButtonId());
                     selectStrTag = (String) rbArea.getTag();
                     selectStr=rbArea.getText().toString();
 
                     Log.e("选择***","selectStr:"+selectStr);
-                    break;*/
+                    break;*//*
                 //类型
                 case R.id.rgType:
                     RadioButton rbType = (RadioButton) findViewById(group.getCheckedRadioButtonId());
@@ -225,7 +276,7 @@ public class SelectConditionActivity extends BaseActivity {
                     break;
             }
         }
-    };
+    };*/
 
     @Override
     public void setListener() {
@@ -240,8 +291,8 @@ public class SelectConditionActivity extends BaseActivity {
         //tvSelect.setOnClickListener(mOnClickListener);
         backLinearLayou.setOnClickListener(mOnClickListener);
         //rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        rgPrice.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        /*rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);
+        rgPrice.setOnCheckedChangeListener(mOnCheckedChangeListener);*/
         tvSelect.setOnClickListener(mOnClickListener);
 
     }
