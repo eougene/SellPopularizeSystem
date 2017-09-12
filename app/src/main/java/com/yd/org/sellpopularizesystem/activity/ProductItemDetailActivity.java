@@ -135,7 +135,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
     private void shareToMedia(SHARE_MEDIA share_MEDIA, String shareUrl) {
         final UMWeb web = new UMWeb(shareUrl);
-        web.setTitle(string);
+        web.setTitle(getResources().getString(R.string.app_name));
         web.setDescription(resultBean.getProduct_name());
         web.setThumb(new UMImage(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + resultBean.getThumb()));
         mShareAction.setPlatform(share_MEDIA).setCallback(mUmShareListener).withMedia(web).share();

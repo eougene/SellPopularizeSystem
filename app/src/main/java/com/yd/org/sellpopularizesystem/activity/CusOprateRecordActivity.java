@@ -371,15 +371,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         submitEoi();
                     }
                     break;
-
-               /* case R.id.btFromCamera:
-                    optionDialog.dismiss();
-                    BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    break;*/
-                /*case R.id.btFromAlbum:
-                    optionDialog.dismiss();
-                    BitmapUtil.gotoSysPic(CusOprateRecordActivity.this, ExtraName.ALBUM_PICTURE);
-                    break;*/
                 case R.id.btPhotoCancel:
                     optionDialog.dismiss();
                     break;

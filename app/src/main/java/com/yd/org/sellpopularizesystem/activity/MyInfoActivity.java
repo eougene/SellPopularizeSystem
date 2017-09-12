@@ -12,10 +12,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
@@ -36,8 +32,6 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
-
-import org.json.JSONArray;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -427,42 +421,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         imagePaths.addAll(paths);
         if (type==0){
             imagePath=imagePaths.get(0);
+            Picasso.with(MyInfoActivity.this).load("file://" + imagePath).into(myHeadIm);
         }else if (type==1){
             wechat_qrcode=imagePaths.get(0);
+            Picasso.with(MyInfoActivity.this).load("file://" + wechat_qrcode).into(wechatImageView);
         }
 
-        Log.e("TAG", "loadAdpater: "+ imagePath);
-        if (type == 0) {
-           // myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
-            Glide.with(MyInfoActivity.this)
-                    .load(imagePath)
-                    .placeholder(R.mipmap.default_error)
-                    .error(R.mipmap.default_error)
-                    .centerCrop()
-                    .crossFade()
-                    .into(new SimpleTarget<GlideDrawable>() {
-                        @Override
-                        public void onResourceReady(GlideDrawable resource,
-                                                    GlideAnimation<? super GlideDrawable> glideAnimation) {
-                            myHeadIm.setImageDrawable(resource);
-                        }
-                    });
-        } else {
-            //wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
-            Glide.with(MyInfoActivity.this)
-                    .load(wechat_qrcode)
-                    .placeholder(R.mipmap.default_error)
-                    .error(R.mipmap.default_error)
-                    .centerCrop()
-                    .crossFade()
-                    .into(wechatImageView);
-        }
-        try{
-            JSONArray obj = new JSONArray(imagePaths);
-            Log.e("--", obj.toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -513,27 +477,6 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     private static final int REQUEST_CAMERA_CODE = 10;
     private ArrayList<String> imagePaths=new ArrayList<>();
     private void getImagePath() {
-       /* if (Build.VERSION.SDK_INT < 23) {
-            BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
-        } else {
-            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    new PermissionListener() {
-                        @Override
-                        public void onGranted() {// 全部授权成功回调
-                            // 执行具体业务
-                            BitmapUtil.startImageCapture(MyInfoActivity.this, ExtraName.TAKE_PICTURE);
-                        }
-
-                        @Override
-                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                            for (String permission : deniedPermissionList) {
-                                ToasShow.showToastCenter(MyInfoActivity.this, permission.toString());
-                            }
-                        }
-                    });
-        }*/
         PhotoPickerIntent intent = new PhotoPickerIntent(MyInfoActivity.this);
         intent.setSelectModel(SelectModel.SINGLE);
         intent.setShowCarema(true); // 是否显示拍照

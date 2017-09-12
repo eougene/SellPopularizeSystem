@@ -1,11 +1,9 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -20,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
-import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
@@ -28,9 +25,7 @@ import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.LicenceBean;
-import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -41,14 +36,12 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class MyCertificateActivity extends BaseActivity {
     private TextView stateTextView, dataTextView_01, dataTextView_02, zhTypeTextView, subButton;
@@ -190,65 +183,15 @@ public class MyCertificateActivity extends BaseActivity {
 
     }
 
-    private void startPhoto() {
-        if (Build.VERSION.SDK_INT < 23) {
-            BitmapUtil.startImageCapture(MyCertificateActivity.this, ExtraName.TAKE_PICTURE);
-        } else {
-            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    new PermissionListener() {
-                        @Override
-                        public void onGranted() {// 全部授权成功回调
-                            // 执行具体业务
-                            BitmapUtil.startImageCapture(MyCertificateActivity.this, ExtraName.TAKE_PICTURE);
-                        }
-
-                        @Override
-                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                            for (String permission : deniedPermissionList) {
-                                ToasShow.showToastCenter(MyCertificateActivity.this, permission.toString());
-                            }
-                        }
-                    });
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                //拍照
-                /*case ExtraName.TAKE_PICTURE:
-                    Uri photoUri = BitmapUtil.imgUri;
-
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        if (photoUri != null) {
-                            picPath = BitmapUtil.getImagePath(MyCertificateActivity.this, photoUri, null, null);
-                            Bitmap bitmap = null;
-                            try {
-                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-
-                            srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
-                        }
-
-                    } else {
-                        Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri != null) {
-                            picPath = imgUri.getPath();
-                            srcImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(picPath)));
-                        }
-
-                    }*/
                 // 选择照片
                 case REQUEST_CAMERA_CODE:
                     ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
-                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
-                    Log.d("TAG", "list: " + "list = [" + list.size());
                     loadAdpater(list);
                     break;
 
@@ -266,19 +209,8 @@ public class MyCertificateActivity extends BaseActivity {
         paths.add("000000");
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
-        Glide.with(MyCertificateActivity.this)
-                .load(picPath)
-                .placeholder(R.mipmap.default_error)
-                .error(R.mipmap.default_error)
-                .centerCrop()
-                .crossFade()
-                .into(srcImageView);
-        try {
-            JSONArray obj = new JSONArray(imagePaths);
-            Log.e("--", obj.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Picasso.with(MyCertificateActivity.this).load("file://"+picPath).into(srcImageView);
+
     }
 
     private void showZh() {

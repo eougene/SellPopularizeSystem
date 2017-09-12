@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -29,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
@@ -57,14 +55,12 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -84,7 +80,7 @@ public class ReserveActivity extends BaseActivity {
     private LawyerBean.ResultBean lawBean;
     private int lawyer_id = -1;
     private static final int REQUEST_CAMERA_CODE = 10;
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
     private View mView, mPayTypeView, msetPhotoView, mCusSelectView;
     private Button btReUnknow, btReinv, btReSelf, btRefoin, btReCancel, btCash, btCredit, btDesposit, btTransfer,
             btCheck, btReTypeCancel, btReSubmit, btFromCamera, btFromAlbum, btPhotoCancel, btSelecCus, btEditCusInfo, btCusCancel;
@@ -512,31 +508,10 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //开启相机
                 case R.id.ivCertificate:
-                    /*if (Build.VERSION.SDK_INT < 23) {
-                        BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
-                    } else {
-                        requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                new PermissionListener() {
-                                    @Override
-                                    public void onGranted() {// 全部授权成功回调
-                                        // 执行具体业务
-                                        BitmapUtil.startImageCapture(ReserveActivity.this, ExtraName.TAKE_PICTURE);
-                                    }
-
-                                    @Override
-                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                        for (String permission : deniedPermissionList) {
-                                            ToasShow.showToastCenter(ReserveActivity.this, permission.toString());
-                                        }
-                                    }
-                                });
-                    }*/
                     PhotoPickerIntent intent = new PhotoPickerIntent(ReserveActivity.this);
                     intent.setSelectModel(SelectModel.SINGLE);
                     intent.setShowCarema(true); // 是否显示拍照
-                   // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
                     intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                     startActivityForResult(intent, REQUEST_CAMERA_CODE);
                     break;
@@ -745,11 +720,6 @@ public class ReserveActivity extends BaseActivity {
                 case ExtraName.RESERVE_TO_CUSTOME:
                     CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
                     tvReCus.setText(cun.getSurname() + getString(R.string.single_blank_space) + cun.getFirst_name());
-                    /*if (cun.getAddress() != null && cun.getZip_code() != null) {
-
-                    } else {
-                        tvReCusAdd.setText("");
-                    }*/
                     tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
                             + cun.getProvince() + getString(R.string.single_blank_space)
                             + cun.getAddress() + getString(R.string.single_blank_space) + cun.getZip_code());
@@ -770,8 +740,6 @@ public class ReserveActivity extends BaseActivity {
                 // 选择照片
                 case REQUEST_CAMERA_CODE:
                     ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
-                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
-                    Log.d("TAG", "list: " + "list = [" + list.size());
                     loadAdpater(list);
                     break;
 
@@ -831,28 +799,17 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        picPath=imagePaths.get(0);
-        Glide.with(ReserveActivity.this)
-                .load(picPath)
-                .placeholder(R.mipmap.default_error)
-                .error(R.mipmap.default_error)
-                .centerCrop()
-                .crossFade()
-                .into(ivCertificate);
-        try{
-            JSONArray obj = new JSONArray(imagePaths);
-            Log.e("--", obj.toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        picPath = imagePaths.get(0);
+        Picasso.with(ReserveActivity.this).load("file://" + picPath).into(ivCertificate);
+
     }
 
     private boolean judgeCusInfo(CustomBean.ResultBean cun) {

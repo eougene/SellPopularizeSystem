@@ -37,10 +37,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
@@ -77,7 +73,6 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -95,7 +90,6 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import static com.yd.org.sellpopularizesystem.R.id.city;
-
 
 
 /**
@@ -130,7 +124,7 @@ public class CustomDetailedActivity extends BaseActivity {
     protected ArrayList<String> mProvinceDatas;
     protected Map<String, ArrayList<String>> mCitisDatasMap = new HashMap<>();
     protected Map<String, ArrayList<String>> mDistrictDatasMap = new HashMap<>();
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
     protected String mCurrentProviceName;
     protected String mCurrentCityName;
     protected String mCurrentDistrictName;
@@ -1212,7 +1206,7 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
 
-       // ajaxParams.put("type_id", SharedPreferencesHelps.getType()+"");//1:销售  2推荐人
+        // ajaxParams.put("type_id", SharedPreferencesHelps.getType()+"");//1:销售  2推荐人
         ajaxParams.put("user_id", SharedPreferencesHelps.getUserID());
         ajaxParams.put("first_name", first_name);//姓氏
         ajaxParams.put("surname", surname);//名字
@@ -1263,7 +1257,7 @@ public class CustomDetailedActivity extends BaseActivity {
         ajaxParams.put("memo", mome);//备注
 
 
-        if (updateOrAdd.equals(ADD)){
+        if (updateOrAdd.equals(ADD)) {
             ajaxParams.put("push_to", push_to);//1：将客户推荐给上线销售   2：将客户推荐到后台，让管理员分配
 
         }
@@ -1271,7 +1265,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
         EasyHttp.post(strUrl)
                 .cacheMode(CacheMode.NO_CACHE)
-               .headers("Content-Type", "application/x-www-form-urlencoded")
+                .headers("Content-Type", "application/x-www-form-urlencoded")
                 .params(ajaxParams)
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
@@ -1289,7 +1283,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String s) {
-                        Log.e("onSuccess**","onSuccess:"+s);
+                        Log.e("onSuccess**", "onSuccess:" + s);
                         closeDialog();
                         JSONObject json = null;
                         try {
@@ -1660,27 +1654,6 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (v.getId()) {
                 case R.id.photoButton:
                     myPopupwindow.dismiss();
-                    /*if (Build.VERSION.SDK_INT < 23) {
-                        BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
-                    } else {
-                        requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                new PermissionListener() {
-                                    @Override
-                                    public void onGranted() {// 全部授权成功回调
-                                        // 执行具体业务
-                                        BitmapUtil.startImageCapture(CustomDetailedActivity.this, ExtraName.TAKE_PICTURE);
-                                    }
-
-                                    @Override
-                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                        for (String permission : deniedPermissionList) {
-                                            ToasShow.showToastCenter(CustomDetailedActivity.this, permission.toString());
-                                        }
-                                    }
-                                });
-                    }*/
                     PhotoPickerIntent intent = new PhotoPickerIntent(CustomDetailedActivity.this);
                     intent.setSelectModel(SelectModel.SINGLE);
                     intent.setShowCarema(true); // 是否显示拍照
@@ -1742,30 +1715,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                //拍照
-                /*case ExtraName.TAKE_PICTURE:
-                    Uri photoUri = BitmapUtil.imgUri;
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-                        if (photoUri != null) {
-                            imagePath = BitmapUtil.getImagePath(CustomDetailedActivity.this, photoUri, null, null);
-                            Bitmap bitmap = null;
-                            try {
-                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                            customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
-                        }
-
-                    } else {
-                        Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri != null) {
-                            imagePath = imgUri.getPath();
-                            customeIcon.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
-                        }
-
-                    }*/
-
                 // 选择照片
                 case REQUEST_CAMERA_CODE:
                     ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
@@ -1781,35 +1730,18 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        imagePath=imagePaths.get(0);
-        Glide.with(CustomDetailedActivity.this)
-                .load(paths.get(0))
-                .placeholder(R.mipmap.default_error)
-                .error(R.mipmap.default_error)
-                .centerCrop()
-                .crossFade()
-                .into(new SimpleTarget<GlideDrawable>() {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                        customeIcon.setImageDrawable(resource);
-                    }
-                });
-        try{
-            JSONArray obj = new JSONArray(imagePaths);
-            Log.e("--", obj.toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
+        imagePath = imagePaths.get(0);
 
+        Picasso.with(CustomDetailedActivity.this).load("file://" + imagePath).into(customeIcon);
+    }
 
     /**
      * 读取地址数据，请使用线程进行调用

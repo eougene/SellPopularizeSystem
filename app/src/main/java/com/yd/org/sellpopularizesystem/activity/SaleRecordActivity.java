@@ -1,20 +1,14 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.playlog.internal.LogEvent;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
@@ -22,13 +16,11 @@ import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -37,8 +29,6 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
-
-import org.json.JSONArray;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -183,30 +173,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
         rBean = resultBeans;
         flag = type;
-        /*if (Build.VERSION.SDK_INT < 23) {
-            //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-            BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-        } else {
-            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                    new PermissionListener() {
-                        @Override
-                        public void onGranted() {// 全部授权成功回调
-                            // 执行具体业务
-                            //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                            BitmapUtil.startImageCapture(SaleRecordActivity.this, ExtraName.TAKE_PICTURE);
-                        }
-
-                        @Override
-                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                            for (String permission : deniedPermissionList) {
-                                ToasShow.showToastCenter(SaleRecordActivity.this, permission.toString());
-                            }
-                        }
-                    });
-        }*/
-
         PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
         intent.setSelectModel(SelectModel.SINGLE);
         intent.setShowCarema(true); // 是否显示拍照
@@ -299,21 +265,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                //拍照
-                /*case ExtraName.TAKE_PICTURE:
-                    if (resultCode == RESULT_OK) {
-                        Uri photoUri = BitmapUtil.imgUri;
-                        if (photoUri != null) {
-                            Log.e("TAG", "onActivityResult: " + photoUri.toString());
-                            picPath = BitmapUtil.getImagePath(SaleRecordActivity.this, photoUri, null, null);
-                            setPicPath(picPath, rBean);
-                        }
-
-                    }*/
                 case REQUEST_CAMERA_CODE:
                 ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
-                //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
-                Log.d("TAG", "list: " + "list = [" + list.size());
                 loadAdpater(list);
                     break;
 
@@ -334,12 +287,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         imagePaths.addAll(paths);
         String picPath=imagePaths.get(0);
         setPicPath(picPath, rBean);
-        try{
-            JSONArray obj = new JSONArray(imagePaths);
-            Log.e("--", obj.toString());
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
     }
 
 
@@ -426,21 +374,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
-                            /*runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    saleAdapter.setHideViewListener(new SaleRecordAdapter.HideViewListener() {
-                                        @Override
-                                        public void hideView(View view) {
-                                            Log.e("view", "hideView: "+view.getId());
-                                            TextView textView= (TextView) view;
-                                            textView.setVisibility(View.GONE);
-                                            // saleAdapter.notifyDataSetChanged();
-                                        }
-                                    });
-                                }
-                            });*/
-
                             ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
                         } else {
                             ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
