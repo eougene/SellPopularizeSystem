@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,7 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductSearchUrl;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -187,13 +189,25 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductListBean.ResultBean item = (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("bean", item);
-                bundle.putString("productName", item.getProduct_name());
-                bundle.putString("productId", item.getProduct_id() + "");
-                ActivitySkip.forward(ScaleActivity.this, ProductItemDetailActivity.class, bundle);
 
+                ProductListBean.ResultBean item = (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
+
+
+                if ((item.getIs_can_sale().equals("1") && (item.getIs_study() == 0 || item.getIs_study() == 1))) {
+
+                    //对应的学习项目
+                    ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.sale_toas) + item.getProduct_name());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type_id", String.valueOf(item.getStudy_type_id()));
+                    ActivitySkip.forward(ScaleActivity.this, StudySubitemActivity.class, bundle);
+
+                }else {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("bean", item);
+                    bundle.putString("productName", item.getProduct_name());
+                    bundle.putString("productId", item.getProduct_id() + "");
+                    ActivitySkip.forward(ScaleActivity.this, ProductItemDetailActivity.class, bundle);
+                }
             }
         });
     }
@@ -304,6 +318,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                      holder.getView(R.id.tvHot).setVisibility(View.GONE);
                  }
 
+                if ((item.getIs_can_sale().equals("1") && (item.getIs_study() == 0 || item.getIs_study() == 1))) {
+                    holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
+                }else {
+                    holder.getView(R.id.ivIslock).setVisibility(View.GONE);
+                }
 
                 if (item.getAttr_2()==1){
                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
@@ -317,7 +336,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 }else {
                     holder.getView(R.id.tvDiscount).setVisibility(View.INVISIBLE);
                 }
-
 
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
