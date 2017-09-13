@@ -17,6 +17,7 @@
         android:textStyle="bold"/>
 
     <TextView
+        android:lineSpacingExtra="4dp"
         android:id="@+id/tvInformContent"
         style="@style/MatchWrap"
         android:paddingLeft="@dimen/padding_margin_20"
