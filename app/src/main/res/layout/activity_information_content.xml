@@ -3,12 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/search_edit_bac"
+    android:background="@color/white"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvInfoTitle"
+        style="@style/MatchWrap"
+        android:paddingLeft="@dimen/padding_margin_20"
+        android:paddingRight="@dimen/padding_margin_20"
+        android:paddingTop="@dimen/padding_margin_10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_size_15"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvInformContent"
         style="@style/MatchWrap"
-        android:layout_marginLeft="@dimen/padding_margin_20"
-        android:layout_marginTop="@dimen/padding_margin_20"/>
+        android:paddingLeft="@dimen/padding_margin_20"
+        android:paddingRight="@dimen/padding_margin_20"
+        android:paddingTop="@dimen/padding_margin_10"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_size_15"/>
 </LinearLayout>
