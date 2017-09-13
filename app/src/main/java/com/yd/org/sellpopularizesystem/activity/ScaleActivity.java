@@ -194,7 +194,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 // is_study  是否关联学习  0：未关联   1：已关联
                 //is_can _sale  是否可推广  0：可推广  1：不可推广
 
-                if (item.getIs_study() == 1) {
+                if (item.getIs_can_sale().equals("1")) {
 
                     //对应的学习项目
                     ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.sale_toas) + item.getProduct_name());
@@ -319,7 +319,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     holder.getView(R.id.tvHot).setVisibility(View.GONE);
                 }
 
-                if ((item.getIs_can_sale().equals("1") && (item.getIs_study() == 0 || item.getIs_study() == 1))) {
+                if (item.getIs_can_sale().equals("1")) {
                     holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.ivIslock).setVisibility(View.GONE);
