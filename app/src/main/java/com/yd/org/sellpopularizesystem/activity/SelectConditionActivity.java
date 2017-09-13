@@ -1,10 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.annotation.IdRes;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -12,13 +8,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.myView.ElasticHorizontalScrollView;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 public class SelectConditionActivity extends BaseActivity {
     //private RadioGroup rgType, rgPrice;
@@ -29,7 +21,6 @@ public class SelectConditionActivity extends BaseActivity {
     private String selectStr;
     private String selectStrTag;
     private StringBuilder sb = new StringBuilder();
-    int position = 0;
     public static int temp = -1;
 
     @Override
@@ -154,19 +145,12 @@ public class SelectConditionActivity extends BaseActivity {
     }
 
     private void setListener(final LinearLayout linearLayout) {
-        // final View[] view = new View[linearLayout.getChildCount()];
         for (int i = 0; i < linearLayout.getChildCount(); i++) {
-            position = i;
-            // view[i]=linearLayout.getChildAt(i);
-            //RadioButton radioButton= (RadioButton) radioGroup.getChildAt(i);
             if (linearLayout.getChildAt(i) instanceof CheckBox) {
-
-
                 CheckBox c = (CheckBox) linearLayout.getChildAt(i);
                 c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        Log.e("TAG", "buttonView**: " + buttonView.getId());
                         if (isChecked) {
                             if (temp != -1) {
                                 CheckBox tempButton = (CheckBox) findViewById(temp);
