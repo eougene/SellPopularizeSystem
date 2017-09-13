@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 
 public class InformationContentActivity extends BaseActivity {
-    private TextView tvInformContent;
+    private TextView tvInformContent,tvInfoTitle;
 
     @Override
     protected int setContentView() {
@@ -16,15 +16,21 @@ public class InformationContentActivity extends BaseActivity {
 
     @Override
     public void initView() {
+        setTitle(getString(R.string.notic_info));
+        hideRightImagview();
+
+
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         String str = bundle.getString("data", getString(R.string.novalue));
         String title = bundle.getString("title");
         String notice_id = bundle.getString("notice_id", "null");
-        tvInformContent = (TextView) findViewById(R.id.tvInformContent);
-        tvInformContent.setText(title + "\n" + str);
-        setTitle(getString(R.string.notic_info));
-        hideRightImagview();
+        tvInfoTitle=getViewById(R.id.tvInfoTitle);
+        tvInformContent = getViewById(R.id.tvInformContent);
+
+        tvInfoTitle.setText(title);
+        tvInformContent.setText(str);
+
 
     }
 

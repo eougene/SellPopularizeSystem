@@ -80,13 +80,6 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
                 });
 
 
-
-
-
-
-
-
-
     }
 
     private void jsonParse(String s, boolean isRefresh) {
@@ -103,9 +96,9 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
                 @Override
                 public void convert(ViewHolder holder, AnnouncementBean.ResultBean item) {
                     holder.setText(R.id.tvMessageTitle, item.getTitle());
-                    if (item.getIs_read()==1){
-                            holder.getView(R.id.tvPoint).setVisibility(View.INVISIBLE);
-                    }else{
+                    if (item.getIs_read() == 1) {
+                        holder.getView(R.id.tvPoint).setVisibility(View.INVISIBLE);
+                    } else {
                         holder.getView(R.id.tvPoint).setVisibility(View.VISIBLE);
                     }
                 }
@@ -123,11 +116,14 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Bundle bundle=new Bundle() ;
-                bundle.putString("data",informationContents.get(position).getContent());
-                bundle.putString("title",informationContents.get(position).getTitle());
-                bundle.putString("notice_id",informationContents.get(position).getId()+"");
-                ActivitySkip.forward(NotificationActivity.this, InformationContentActivity.class,bundle);
+
+                AnnouncementBean.ResultBean resultBean = (AnnouncementBean.ResultBean) adapter.getItem(position);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("data", resultBean.getContent());
+                bundle.putString("title", resultBean.getTitle());
+                bundle.putString("notice_id", resultBean.getId() + "");
+                ActivitySkip.forward(NotificationActivity.this, InformationContentActivity.class, bundle);
             }
         });
     }
@@ -144,7 +140,7 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
         // 千万别忘了告诉控件刷新完毕了哦！
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-       getData(page, false);
+        getData(page, false);
 
     }
 }
