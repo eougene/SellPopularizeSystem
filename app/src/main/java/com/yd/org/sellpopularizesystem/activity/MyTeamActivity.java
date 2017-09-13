@@ -36,6 +36,7 @@ public class MyTeamActivity extends BaseActivity implements PullToRefreshLayout.
     /**
      * 分组的布局
      */
+
     private LinearLayout titleLayout;
 
     /**
