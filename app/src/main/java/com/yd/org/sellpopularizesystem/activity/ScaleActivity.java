@@ -321,17 +321,22 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     holder.setText(R.id.tvBuildType, getString(R.string.villa));
                 }
 
+
+
                 if (item.getAttr_1() == 1) {
                     holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.tvHot).setVisibility(View.GONE);
                 }
 
-                if (item.getIs_can_sale().equals("1")) {
+
+                if (null!=item.getIs_can_sale()&&item.getIs_can_sale().equals("1")) {
                     holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.ivIslock).setVisibility(View.GONE);
                 }
+
+
 
                 if (item.getAttr_2() == 1) {
                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
@@ -340,11 +345,15 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 }
 
 
+
+
                 if (item.getAttr_3() == 1) {
                     holder.getView(R.id.tvDiscount).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.tvDiscount).setVisibility(View.INVISIBLE);
                 }
+
+
 
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
