@@ -30,6 +30,7 @@ public class SelectConditionActivity extends BaseActivity {
     private String selectStrTag;
     private StringBuilder sb = new StringBuilder();
     int position = 0;
+    public static int temp = -1;
 
     @Override
     protected int setContentView() {
@@ -159,32 +160,30 @@ public class SelectConditionActivity extends BaseActivity {
             // view[i]=linearLayout.getChildAt(i);
             //RadioButton radioButton= (RadioButton) radioGroup.getChildAt(i);
             if (linearLayout.getChildAt(i) instanceof CheckBox) {
-                Log.e("TAG", "onCheckedChanged**: " + position);
+
 
                 CheckBox c = (CheckBox) linearLayout.getChildAt(i);
                 c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-                        if (isChecked) {//点击选中
-                            for (int j = 0; j < linearLayout.getChildCount(); j++) {
-                                if (buttonView.getId() == linearLayout.getChildAt(j).getId()) {
-                                    selectStr = buttonView.getText().toString();
-                                    selectStrTag = (String) buttonView.getTag();
-                                    Log.e("TAG", "selectStr: "+selectStr );
-                                    Log.e("TAG", "onCheckedChanged**: " + buttonView.getId() + "isChecked==" + linearLayout.getChildAt(j));
-                                } else {
-                                    Log.e("TAG", "onCheckedChanged****: " + buttonView.getId() + "isChecked==" + linearLayout.getChildAt(j));
-                                    if (linearLayout.getChildAt(j) instanceof CheckBox) {
-                                        ((CheckBox) linearLayout.getChildAt(j)).setChecked(false);
-                                    }
-
+                        Log.e("TAG", "buttonView**: " + buttonView.getId());
+                        if (isChecked) {
+                            if (temp != -1) {
+                                CheckBox tempButton = (CheckBox) findViewById(temp);
+                                if (tempButton != null) {
+                                    tempButton.setChecked(false);
                                 }
-
                             }
-                        }else {//实现选中之后的点击
-                            selectStr="";selectStrTag="";
+                            //得到当前的position
+                            temp = buttonView.getId();
+                            selectStr = buttonView.getText().toString();
+                            selectStrTag = (String) buttonView.getTag();
+                        } else {
+                            temp = -1;
+                            selectStr = "";
+                            selectStrTag="";
                         }
+
                     }
                 });
 
@@ -216,7 +215,7 @@ public class SelectConditionActivity extends BaseActivity {
 
     private void setData(Intent intent) {
         if (!str.equals("housetype")) {
-            Log.e("TAG", "setData: "+ selectStr);
+            Log.e("TAG", "setData: " + selectStr);
             intent.putExtra("selectextra", selectStr);
             intent.putExtra("selecttagextra", selectStrTag);
             setResult(RESULT_OK, intent);

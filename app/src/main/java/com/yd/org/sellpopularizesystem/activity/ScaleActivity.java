@@ -159,6 +159,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 if (!TextUtils.isEmpty(etSearch.getText().toString())) {
                     search_key = etSearch.getText().toString();
                     getProductListData(true, 1, space, price, house, area);
+                }else {
+                    if (TextUtils.equals(getString(R.string.price),tvPrice.getText().toString()) &&
+                            TextUtils.equals(getString(R.string.type),tvType.getText().toString()) &&
+                            TextUtils.equals(getString(R.string.housetype),tvHouseType.getText().toString())){
+                        ToasShow.showToastCenter(ScaleActivity.this,getString(R.string.select_ele));
+                    }else {
+                        getProductListData(true, page, space, price, house, area);
+                    }
                 }
             }
         });
@@ -363,6 +371,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
+            strSelect="";
+            strSelect=data.getStringExtra("selectextra")== null ? "" : data.getStringExtra("selectextra");
             switch (requestCode) {
                 //类型
                 case ExtraName.TYPE:
@@ -378,6 +388,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                     } else {
                         tvType.setText(getString(R.string.nolimit));
+                        cate_id="";
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
                     break;
@@ -407,7 +418,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     price = selectStrTag;
                     break;
             }
-            getProductListData(true, page, space, price, house, area);
+            //getProductListData(true, page, space, price, house, area);
         }
     }
 
