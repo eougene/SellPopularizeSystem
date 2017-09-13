@@ -45,6 +45,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private CommonAdapter mCommonAdapter;
     private CustomProgressDialog loading_Dialog;
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
+    private List<ProductListBean.ResultBean> promoteDatas=new ArrayList<>();
     protected float mTitlePercentage;
     private static final float DEFAULT_PERCENTAGE = 0.95f;
     private float percentageOfShowTitle = DEFAULT_PERCENTAGE;
@@ -107,7 +108,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(1));
-        httpParams.put("number", "4");
+        httpParams.put("number", "100");
         httpParams.put("cate_id", area);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
@@ -115,7 +116,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("space", space);
         httpParams.put("price", price);
         httpParams.put("hot_sale", "");
-        httpParams.put("promote", "1");
+        httpParams.put("promote", "");
 
         Log.e("参数***", "params:" + httpParams.toString());
 
@@ -154,14 +155,21 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         if (product.getCode().equals("1")) {
             productData = product.getResult();
             tvBuildingNum.setText(product.getTotal_number() + "");
+            for (int i = 0; i <productData.size() ; i++) {
+                if (productData.get(i).getIs_promote()==1){
+                    promoteDatas.add(productData.get(i));
+                }
+                if (promoteDatas.size()==4){
+                    break;
+                }
+            }
             setAdapter();
-
 
         }
     }
 
     private void setAdapter() {
-        mCommonAdapter = new CommonAdapter<ProductListBean.ResultBean>(ProjectPromotionActivity.this, productData, R.layout.gv_item_house_suggest) {
+        mCommonAdapter = new CommonAdapter<ProductListBean.ResultBean>(ProjectPromotionActivity.this, promoteDatas, R.layout.gv_item_house_suggest) {
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
