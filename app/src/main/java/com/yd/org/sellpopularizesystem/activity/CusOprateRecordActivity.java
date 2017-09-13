@@ -371,6 +371,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         submitEoi();
                     }
                     break;
+
+
                 case R.id.btPhotoCancel:
                     optionDialog.dismiss();
                     break;

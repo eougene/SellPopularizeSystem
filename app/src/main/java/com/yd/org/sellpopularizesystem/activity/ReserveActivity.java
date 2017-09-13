@@ -66,6 +66,7 @@ import java.util.regex.Pattern;
 
 import static com.yd.org.sellpopularizesystem.application.ExtraName.CROP_IMAGE;
 
+
 /**
  * 创建订单
  */
@@ -786,7 +787,7 @@ public class ReserveActivity extends BaseActivity {
 
                     }
                     // 裁剪图片
-                case ExtraName.CROP_IMAGE:
+                case CROP_IMAGE:
                     if (resultCode == RESULT_OK && null != data) {
                         imagePath = data.getStringExtra("bitmap");
                         Picasso.with(this).load("file://" + imagePath).into(ivCertificate);
