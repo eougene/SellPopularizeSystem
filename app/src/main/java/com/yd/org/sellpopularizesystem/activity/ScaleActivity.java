@@ -174,9 +174,16 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     if (TextUtils.equals(getString(R.string.price),tvPrice.getText().toString()) &&
                             TextUtils.equals(getString(R.string.type),tvType.getText().toString()) &&
                             TextUtils.equals(getString(R.string.housetype),tvHouseType.getText().toString())){
-                        ToasShow.showToastCenter(ScaleActivity.this,getString(R.string.select_ele));
+                        if (TextUtils.isEmpty(search_key)){
+                            ToasShow.showToastCenter(ScaleActivity.this,getString(R.string.select_ele));
+                        }else {
+                            search_key="";
+                            getProductListData(true, 1, space, price, house, area);
+                        }
+
                     }else {
                         Log.e("TAG", "onClick: "+cate_id);
+                        search_key="";
                         getProductListData(true, 1, space, price, house, area);
                     }
                 }
@@ -245,6 +252,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         // 千万别忘了告诉控件刷新完毕了哦！
         page = 1;
+        search_key="";
+        if (!TextUtils.isEmpty(etSearch.getText().toString())){
+            etSearch.setText("");
+        }
         getProductListData(true, page, space, price, house, area);
 
     }
@@ -265,7 +276,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         httpParams.put("page", String.valueOf(page));
         httpParams.put("number", "100");
         httpParams.put("cate_id", cate_id);
-        httpParams.put("search_key", "");
+        httpParams.put("search_key", search_key);
         httpParams.put("area", "");
         httpParams.put("house", house);
         httpParams.put("space", space);
