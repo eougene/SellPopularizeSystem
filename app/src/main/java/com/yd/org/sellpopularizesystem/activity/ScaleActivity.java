@@ -117,6 +117,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             }
         }
     };
+    private String type;
 
     @Override
     protected int setContentView() {
@@ -126,6 +127,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     @Override
     public void initView() {
+        Bundle bundle = getIntent().getExtras();
+        type = bundle.getString("type");
         setLayout();
         etSearch = getViewById(R.id.etSearch);
         parent_container = getViewById(R.id.parent_container);
@@ -139,15 +142,15 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         tvPrice = getViewById(R.id.tvPrice);
         tvType = getViewById(R.id.tvType);
         tvHouseType = getViewById(R.id.tvHouseType);
-        Bundle bundle = getIntent().getExtras();
-        String type = bundle.getString("type");
 
         if (type.equals("hot")) {
             hotsale = "1";
             promote = "0";
+            setTitle(getString(R.string.hot_sale));
         } else if (type.equals("promote")) {
             hotsale = "0";
             promote = "1";
+            setTitle(getString(R.string.good_house));
         }else {
             hotsale = "";
             promote = "";
@@ -157,7 +160,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
     private void setLayout() {
-        setCenterInput();
+        if (type.equals("all")){
+            setCenterInput();
+        }
         hideBaseView();
         setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
@@ -324,9 +329,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
                 if (item.getCate_id() == 1) {
-                    holder.setText(R.id.tvBuildType, "house&land");
+                    holder.setText(R.id.tvBuildType, HOUSE_LAND);
                 } else if (item.getCate_id() == 2) {
-                    holder.setText(R.id.tvBuildType, "land");
+                    holder.setText(R.id.tvBuildType, LAND);
                 } else if (item.getCate_id() == 3){
                     holder.setText(R.id.tvBuildType, getString(R.string.villa));
                 }
@@ -399,10 +404,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         tvType.setText(data.getStringExtra("selectextra") == null ? "" : data.getStringExtra("selectextra"));
                         if (data.getStringExtra("selectextra").equals(LAND)) {
                             Log.e("TAG", "land: "+ data.getStringExtra("selectextra"));
-                            cate_id = "1";
+                            cate_id = "2";
                         } else if (data.getStringExtra("selectextra").equals(HOUSE_LAND)) {
                             Log.e("TAG", "house&land: "+ data.getStringExtra("selectextra"));
-                            cate_id = "2";
+                            cate_id = "1";
                         } else if (data.getStringExtra("selectextra").equals(APT)){
                             Log.e("TAG", "APT: "+ data.getStringExtra("selectextra"));
                             cate_id = "3";

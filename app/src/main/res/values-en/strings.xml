@@ -275,6 +275,7 @@
     <string name="_250k_300k">250k-300k</string>
     <string name="_300k_350k">300k-350k</string>
     <string name="_300k">300k-Unlimitation</string>
+    <string name="_1100k">1100k-Unlimitation</string>
     <string name="mycommission">My Commission</string>
     <string name="myteam">My Team</string>
     <string name="ver_1_0_0">Ver:1.0.0</string>
@@ -654,6 +655,7 @@
     <string name="deleted_a_photo">Delete the picture</string>
     <string name="confirm_to_delete">Confirm the deletion？</string>
     <string name="undo">Undo</string>
+    <string name="good_house">好房</string>
 
 </resources>
 

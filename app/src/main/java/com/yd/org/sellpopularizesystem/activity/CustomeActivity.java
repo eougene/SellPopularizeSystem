@@ -25,9 +25,11 @@ import com.yd.org.sellpopularizesystem.custom.PinyinComparator;
 import com.yd.org.sellpopularizesystem.custom.SideBar;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
+import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.GetCustomerNameSort;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.zhouyou.http.EasyHttp;
@@ -58,7 +60,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
      */
     private CharacterParser characterParser;
     private List<CustomBean.ResultBean> SourceDateList = new ArrayList<>();
-
+    private GetCustomerNameSort nameChangeUtil;
     /**
      * 根据拼音来排列ListView里面的数据类
      */
@@ -103,7 +105,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         tvNofriends = getViewById(R.id.noInfomation);
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
-
+        nameChangeUtil=new GetCustomerNameSort();
         pinyinComparator = new PinyinComparator();
 
         sideBar = getViewById(R.id.sidrbar);
@@ -160,7 +162,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             filterDateList = new ArrayList<>();
             for (CustomBean.ResultBean sortModel : SourceDateList) {
                 String name = sortModel.getSurname();
-                if (name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr) || characterParser.getSelling(name).startsWith(filterStr.toUpperCase())) {
+                if (name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr)
+                        || characterParser.getSelling(name).startsWith(filterStr.toUpperCase())) {
                     filterDateList.add(sortModel);
                 }
             }
@@ -321,7 +324,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 // 这个时候不需要挤压效果 就把他隐藏掉
                 titleLayout.setVisibility(View.GONE);
                 // 当输入框里面的值为空，更新为原来的列表，否则为过滤数据列表
-                filterData(s.toString());
+               // filterData(s.toString());
             }
 
             @Override
@@ -332,9 +335,15 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (searchEditText.getText().toString().length() == 0) {
+                String searchContent = searchEditText.getText().toString();
+                if (searchContent.length() > 0) {
+                    ArrayList<CustomBean.ResultBean> fileterList= (ArrayList<CustomBean.ResultBean>)
+                            nameChangeUtil.search(searchContent,SourceDateList);
+                    adapter.updateListView(fileterList);
+                }else {
                     adapter.updateListView(SourceDateList);
                 }
+                listView.setSelection(0);
             }
         });
 

@@ -277,6 +277,7 @@
     <string name="_250k_300k">250k-300k</string>
     <string name="_300k_350k">300k-350k</string>
     <string name="_300k">300k-不限</string>
+    <string name="_1100k">1100k-不限</string>
     <string name="mycommission">我的佣金</string>
     <string name="myteam">我的团队</string>
     <string name="ver_1_0_0">Ver:1.0.0</string>
@@ -641,6 +642,7 @@
     <string name="select_ele">请选择筛选条件</string>
     <string name="referral">推荐人</string>
     <string name="mycomp">个人公司</string>
+    <string name="good_house">好房</string>
 
 
 </resources>

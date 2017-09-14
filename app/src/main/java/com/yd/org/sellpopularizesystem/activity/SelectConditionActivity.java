@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -10,11 +11,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+import com.yd.org.sellpopularizesystem.javaBean.SelectConditionBean;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SelectConditionActivity extends BaseActivity {
     //private RadioGroup rgType, rgPrice;
-    private LinearLayout llHouseType, llType, llPrice;
+    private LinearLayout llHouseType, llType, llPrice,llBase;
     private TextView tvSelect;
     private ImageView ivSearch;
     private String str, strFlag;
@@ -22,6 +38,8 @@ public class SelectConditionActivity extends BaseActivity {
     private String selectStrTag;
     private StringBuilder sb = new StringBuilder();
     public static int temp = -1;
+    private ArrayList<Object> productData;
+
 
     @Override
     protected int setContentView() {
@@ -68,6 +86,119 @@ public class SelectConditionActivity extends BaseActivity {
             setStatus(string, llPrice);
             setListener(llPrice);
         }
+        //getSelectConditionData();
+    }
+
+    private void getSelectConditionData() {
+        HttpParams httpParams = new HttpParams();
+        EasyHttp.get(Contants.PRODUCT_LIST)
+                .cacheMode(CacheMode.DEFAULT)
+                .cacheKey(this.getClass().getSimpleName())
+                .timeStamp(true)
+                .params(httpParams)
+
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        closeDialog();
+                        jsonParse(json);
+                    }
+                });
+    }
+
+    private void jsonParse(String json) {
+        productData = new ArrayList<>();
+        Gson gson = new Gson();
+        SelectConditionBean scb = gson.fromJson(json, SelectConditionBean.class);
+        if (scb.getCode().equals("1")) {
+            if (str.equals("price")){
+                SelectConditionBean.ResultBean.ProductPriceBean priceBean=scb.getResult().getProduct_price();
+               // Field[] field = priceBean.getClass().getDeclaredFields();
+
+               // int[] priceId=new int[]{R.id.rbPrice1,R.id.rbPrice2,R.id.rbPrice3,R.id.rbPrice4,R.id.rbPrice5,R.id.rbPrice6};
+                //String[] priceTags=new String[]{"0~650000","650000~800000","800000~950000","950000~1100000","1100000~300000"};
+                String[] priceTexts=new String[]{priceBean.getValue1(),priceBean.getValue2(),priceBean.getValue3()
+                ,priceBean.getValue4(),priceBean.getValue5()};
+
+                int j=0;
+                for (int i = 0; i <llPrice.getChildCount() ; i++) {
+                       /*View view= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
+                        view.setId(priceId[i]);
+                        view.setTag(priceTags[i]);*/
+                       View view=llPrice.getChildAt(i);
+                    if (view instanceof CheckBox){
+                        ((CheckBox) view).setText(priceTexts[j]);
+                        j++;
+                    }
+
+                      /*  llBase.addView(view);
+                       String firstLetter = field[i].getName().substring(0, 1).toUpperCase();
+                        String getMethodName = "get" + firstLetter + field[i].getName().substring(1);
+                        Method getMethod = null;
+                    try {
+                        getMethod = priceBean.getClass().getMethod(getMethodName, new Class[] {});
+                        try {
+                            String str= (String) getMethod.invoke(priceBean,new Object[]{});
+                            ((CheckBox)view).setText(priceBean.get_$_065000021());
+                            llBase.addView(view);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    }*/
+
+                }
+
+            }else if (str.equals("type")){
+
+                SelectConditionBean.ResultBean.ProductCateBean cateBean=scb.getResult().getProduct_cate();
+               // String[] typeTags=new String[]{"1","2","3"};
+                String[] typeTexts=new String[]{cateBean.getValue1(),cateBean.getValue2(),cateBean.getValue3()};
+
+                int j=0;
+                for (int i = 0; i <llType.getChildCount() ; i++) {
+                    View view=llType.getChildAt(i);
+                    if (view instanceof CheckBox){
+                        ((CheckBox) view).setText(typeTexts[j]);
+                        j++;
+                    }
+                }
+
+            }else {
+
+                SelectConditionBean.ResultBean.ProductHouseBean houseBean=scb.getResult().getProduct_house();
+
+                String[] houseTags=new String[]{"1","2","3","4","5","6"};
+                String[] houseTexts=new String[]{houseBean.getValue1(),houseBean.getValue2(),houseBean.getValue3(),
+                        houseBean.getValue4(),houseBean.getValue5(),houseBean.getValue6()};
+                int j=0;
+                for (int i = 0; i <llHouseType.getChildCount() ; i++) {
+                    View view=llHouseType.getChildAt(i);
+                    if (view instanceof CheckBox){
+                        ((CheckBox) view).setText(houseTexts[j]);
+                        j++;
+                    }
+                }
+            }
+
+        }
+
+
     }
 
     private void setHouseTypeStatus(String string, LinearLayout llHouseType) {
@@ -141,7 +272,7 @@ public class SelectConditionActivity extends BaseActivity {
         llType = getViewById(R.id.llType);
         llPrice = getViewById(R.id.llPrice);
         tvSelect = getViewById(R.id.tvSelect);
-
+        llBase= getViewById(R.id.llBase);
     }
 
     private void setListener(final LinearLayout linearLayout) {
