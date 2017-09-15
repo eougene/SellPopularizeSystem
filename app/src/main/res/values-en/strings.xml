@@ -655,7 +655,8 @@
     <string name="deleted_a_photo">Delete the picture</string>
     <string name="confirm_to_delete">Confirm the deletion？</string>
     <string name="undo">Undo</string>
-    <string name="good_house">好房</string>
+    <string name="good_house">Good room</string>
+    <string name="con_in">Company Information</string>
 
 </resources>
 
