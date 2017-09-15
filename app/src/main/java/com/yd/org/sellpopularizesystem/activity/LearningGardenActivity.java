@@ -59,7 +59,7 @@ public class LearningGardenActivity extends FragmentActivity {
         }
     };
     private String studyNum;
-
+    private String unchecknum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class LearningGardenActivity extends FragmentActivity {
 
     private void initView() {
         studyNum = getIntent().getExtras().getString("studynum");
+        unchecknum= getIntent().getExtras().getString("unchecknum");
         //返回
         backLinearLayout = (ImageView) findViewById(R.id.backLinearLayout);
         backLinearLayout.setOnClickListener(mOnClickListener);
@@ -85,7 +86,8 @@ public class LearningGardenActivity extends FragmentActivity {
         tvTitle = (TextView) findViewById(R.id.tvTitle);
         tvStudyNum= (TextView) findViewById(R.id.tvStudyNum);
         tvTitle.setText(getString(R.string.home_study));
-        tvStudyNum.setText(studyNum);
+        tvStudyNum.setText(getString(R.string.studydes1)+studyNum+getString(R.string.studymaterialdes)+
+                getString(R.string.checkdes1)+unchecknum+getString(R.string.checkdes));
         //园地切换
         /*studyLineaLayout = (LinearLayout) findViewById(R.id.studyLineaLayout);
         checkLineaLayout = (LinearLayout) findViewById(R.id.checkLineaLayout);

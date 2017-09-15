@@ -116,7 +116,7 @@ public class InviteQRActivity extends BaseActivity {
                         Gson gson = new Gson();
                         ReferBean referBean = gson.fromJson(s, ReferBean.class);
                         if (referBean.getCode().equals("1")) {
-                            referId.setText("推荐码:" + referBean.getResult().getRefer_code());
+                            referId.setText(getResources().getString(R.string.recommendqr)+":" + referBean.getResult().getRefer_code());
 
                             //生成二维码
 

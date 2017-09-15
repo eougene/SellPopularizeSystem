@@ -70,6 +70,6 @@
         android:background="@color/scale_tab5"
         android:gravity="center"
         android:padding="@dimen/padding_margin_10"
-        android:text="保存"
+        android:text="@string/customdetaild_save"
         android:textColor="@color/white"/>
 </RelativeLayout>

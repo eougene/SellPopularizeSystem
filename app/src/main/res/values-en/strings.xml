@@ -174,7 +174,7 @@
     <string name="skip">Ignore</string>
     <string name="area">Area</string>
     <string name="nolimit">Unlimitation</string>
-    <string name="housetype">Type</string>
+    <string name="housetype">HouseType</string>
     <string name="price">Price</string>
     <string name="totaldes">Total:</string>
     <string name="questionnum">Question 6</string>
@@ -246,7 +246,7 @@
     <string name="uploadeevidence">Upload Deposit Receipt</string>
     <string name="uploadeevidencepoint">Upload Deposit Receipt:</string>
     <string name="seprate">-</string>
-    <string name="totalprojectnum">Total0个Project</string>
+    <string name="totalprojectnum">Total 0 Project</string>
     <string name="searchprojectname">Search by Project Name</string>
     <string name="searchhistory">Search History</string>
     <string name="clearrecord">Clear</string>
@@ -417,8 +417,8 @@
     <string name="saler_18">The interest paid</string>
     <string name="saler_19">Front Page Approved Down Payment Approving</string>
     <string name="saler_20">Ready to exchange contract</string>
-    <string name="sum">Total</string>
-    <string name="individuaproject">个Project</string>
+    <string name="sum">Total&#160;</string>
+    <string name="individuaproject">&#160;Project</string>
     <string name="vp">Introduction</string>
     <string name="deadline">Deadline:</string>
     <string name="examination_">Passed</string>
@@ -443,10 +443,10 @@
     <string name="exit_scale">Are you sure you want to end the promotion?</string>
     <string name="playplatform">Play the platform</string>
     <string name="successlaw">Success principle</string>
-    <string name="checkdes">assessment is not completed</string>
-    <string name="checkdes1">you have </string>
-    <string name="studymaterialdes">learning materials,</string>
-    <string name="studydes1">A total of</string>
+    <string name="checkdes">&#160;assessment is not completed</string>
+    <string name="checkdes1">you have&#160;</string>
+    <string name="studymaterialdes">&#160;learning materials,</string>
+    <string name="studydes1">A total of&#160;</string>
     <string name="courseclassfy">Course classification</string>
     <string name="orderapproved">The order has been passed</string>
     <string name="orderthrough">Order through</string>
@@ -657,6 +657,8 @@
     <string name="undo">Undo</string>
     <string name="good_house">Good room</string>
     <string name="con_in">Company Information</string>
+    <string name="upload_wechat">Upload WeChat QR code</string>
+    <string name="cer_type">Certificate type</string>
 
 </resources>
 
