@@ -250,25 +250,5 @@ public class SharedPreferencesHelps {
     }
 
 
-    //保存我的地址是否完整
-
-    public synchronized static final void setUserAdress(int adress) {
-        getPreferences().edit().putInt("adress", adress).commit();
-    }
-
-    public synchronized static final int getUserAdress() {
-        return getPreferences().getInt("adress", 0);
-    }
-
-
-    //保存我的地址是否完整
-
-    public synchronized static final void setUserBank(int bank) {
-        getPreferences().edit().putInt("bank", bank).commit();
-    }
-
-    public synchronized static final int getUserBank() {
-        return getPreferences().getInt("bank", 0);
-    }
 
 }
