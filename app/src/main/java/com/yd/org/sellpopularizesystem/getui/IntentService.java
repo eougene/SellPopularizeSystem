@@ -121,6 +121,5 @@ public class IntentService extends GTIntentService {
         Notification notification = builder.build();
         //发送通知
         notificationManager.notify(messageNotificationID, notification);
-        //  messageNotificationID++;
     }
 }
