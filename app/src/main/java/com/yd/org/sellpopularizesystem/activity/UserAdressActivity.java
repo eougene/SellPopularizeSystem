@@ -75,9 +75,9 @@ public class UserAdressActivity extends BaseActivity {
         type = getIntent().getStringExtra("type");
 
         if (type.equals("1")) {
-            setTitle("我的地址");
+            setTitle(getResources().getString(R.string.myaddress));
         } else {
-            setTitle("公司地址");
+            setTitle(getResources().getString(R.string.company_add));
         }
 
 
@@ -110,7 +110,7 @@ public class UserAdressActivity extends BaseActivity {
         if (type.equals("1")) {
 
             //国家
-            userAdressTv.setText((null == myUserInfo.getResult().getCountry() || TextUtils.isEmpty(myUserInfo.getResult().getCountry())) ? "" : myUserInfo.getResult().getCountry());
+            userAdressTv.setText((null == myUserInfo.getResult().getCountry() || TextUtils.isEmpty(myUserInfo.getResult().getCountry())) ? getResources().getString(R.string.Australian) : myUserInfo.getResult().getCountry());
             //单元号
             userUnitNumberEd.setText((null == myUserInfo.getResult().getUnit_number() || TextUtils.isEmpty(myUserInfo.getResult().getUnit_number())) ? "" : myUserInfo.getResult().getUnit_number());
             //街道号码
@@ -130,7 +130,7 @@ public class UserAdressActivity extends BaseActivity {
             //公司地址
         } else {
             //国家
-            userAdressTv.setText((null == myUserInfo.getResult().getCompany_country() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_country())) ? "" : myUserInfo.getResult().getCompany_country());
+            userAdressTv.setText((null == myUserInfo.getResult().getCompany_country() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_country())) ? getResources().getString(R.string.Australian)  : myUserInfo.getResult().getCompany_country());
             //单元号
             userUnitNumberEd.setText((null == myUserInfo.getResult().getCompany_unit_number() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_unit_number())) ? "" : myUserInfo.getResult().getCompany_unit_number());
             //街道号码
