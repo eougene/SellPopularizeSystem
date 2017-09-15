@@ -33,8 +33,8 @@ public class PhotoViewFragment extends BaseFragmentView {
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_photo_view);
         photoIm = getViewById(R.id.photoIm);
-        pdfView = getViewById(R.id.pdfView);
-        pView = getViewById(R.id.pView);
+        pdfView = getViewById(R.id.pdfView);//webview
+        pView = getViewById(R.id.pView);//pdf
         url = getArguments().getString("url");
 
         Log.e("url***", "url:" + url);
@@ -49,8 +49,10 @@ public class PhotoViewFragment extends BaseFragmentView {
 
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
+            Log.e("TAG", "png**jpg: ");
             photoIm.setVisibility(View.VISIBLE);
             pdfView.setVisibility(View.GONE);
+            pView.setVisibility(View.GONE);
             init();
         }
 
@@ -71,7 +73,6 @@ public class PhotoViewFragment extends BaseFragmentView {
     private void init() {
         Log.e("图片地址**", "url:" + url);
         BitmapUtil.loadImageView(getActivity(), url, photoIm);
-
 
     }
 
