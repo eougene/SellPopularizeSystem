@@ -325,7 +325,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:padding="@dimen/padding_margin_10"
-                android:text="上传微信二维码"/>
+                android:text="@string/upload_wechat"/>
 
 
             <ImageView

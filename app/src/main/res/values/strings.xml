@@ -644,6 +644,8 @@
     <string name="mycomp">个人公司</string>
     <string name="good_house">好房</string>
     <string name="con_in">公司信息</string>
+    <string name="upload_wechat">上传微信二维码</string>
+    <string name="cer_type">证件类型</string>
 
 
 </resources>
