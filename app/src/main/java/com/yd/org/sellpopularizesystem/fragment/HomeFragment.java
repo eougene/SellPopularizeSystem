@@ -67,6 +67,7 @@ public class HomeFragment extends BaseFragmentView {
                     Bundle bundle3 = new Bundle();
                     if (homeDataBean != null) {
                         bundle3.putString("studynum", homeDataBean.getResult().getTotal_study() + "");
+                        bundle3.putString("unchecknum",homeDataBean.getResult().getUncheck()+"");
                     } else {
                         bundle3.putString("studynum", 0 + "");
                     }
