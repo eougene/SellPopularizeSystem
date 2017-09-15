@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -63,6 +64,7 @@ public class ScaleDeltaileActivity extends FragmentActivity {
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
         for (int i = 0; i < prs.getImg_content().size(); i++) {
             picList.add(Contants.DOMAIN + "/" + prs.getImg_content().get(i).getThumbURL());
+            Log.e("TAG", "onCreate: "+ Contants.DOMAIN + "/" + prs.getImg_content().get(i).getThumbURL());
 
         }
         initData();
