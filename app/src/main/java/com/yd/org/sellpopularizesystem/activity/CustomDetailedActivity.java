@@ -419,6 +419,7 @@ public class CustomDetailedActivity extends BaseActivity {
     }
 
     private void getCountryList() {
+
         String[] countryList = getResources().getStringArray(R.array.country_code_list_ch);
 
         for (int i = 0, length = countryList.length; i < length; i++) {
