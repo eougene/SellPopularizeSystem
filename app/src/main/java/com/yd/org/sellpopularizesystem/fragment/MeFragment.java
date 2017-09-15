@@ -49,11 +49,10 @@ import java.util.Map;
 
 public class MeFragment extends BaseFragmentView {
     private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting, relCertificate;
-    private TextView tvUserName;
+    private TextView tvUserName,tvQr;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private RelativeLayout rlCommission;
-    private ImageView ivQr;
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -89,7 +88,7 @@ public class MeFragment extends BaseFragmentView {
                     break;
 
                 //推荐码
-                case R.id.ivQr:
+                case R.id.tvQr:
                    ActivitySkip.forward(getActivity(), InviteQRActivity.class);
                     break;
 
@@ -273,7 +272,7 @@ public class MeFragment extends BaseFragmentView {
     }
 
     private void initWidget() {
-        ivQr = getViewById(R.id.ivQr);
+        tvQr = getViewById(R.id.tvQr);
         relCertificate = getViewById(R.id.relCertificate);
 
         rlCommission = getViewById(R.id.rlCommission);
@@ -351,7 +350,7 @@ public class MeFragment extends BaseFragmentView {
         bindAccountRel.setOnClickListener(mOnClickListener);
         saleRecord.setOnClickListener(mOnClickListener);
         relCertificate.setOnClickListener(mOnClickListener);
-        ivQr.setOnClickListener(mOnClickListener);
+        tvQr.setOnClickListener(mOnClickListener);
         ivCustomePhoto.setOnClickListener(mOnClickListener);
     }
 
