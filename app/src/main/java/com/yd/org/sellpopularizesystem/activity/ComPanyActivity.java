@@ -72,7 +72,7 @@ public class ComPanyActivity extends BaseActivity {
     @Override
     public void initView() {
         hideRightImagview();
-        setTitle("公司信息");
+        setTitle(getResources().getString(R.string.con_in));
 
         myUserInfo = (MyUserInfo) getIntent().getSerializableExtra("userkey");
 

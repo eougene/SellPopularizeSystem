@@ -17,7 +17,6 @@
         <item name="windowActionBar">false</item>
         <item name="android:windowAnimationStyle">@style/default_animation</item>
         <item name="windowNoTitle">true</item>
-
         <!--<item name="android:windowIsTranslucent">true</item>-->
 
 

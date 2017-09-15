@@ -35,7 +35,6 @@
                 android:gravity="center"
                 android:paddingLeft="@dimen/padding_margin_4"
                 android:paddingRight="@dimen/padding_margin_4"
-                android:text="100"
                 android:textColor="@color/white"
                 android:textSize="@dimen/tv_size_08" />
 
