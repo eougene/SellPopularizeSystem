@@ -646,6 +646,7 @@
     <string name="con_in">公司信息</string>
     <string name="upload_wechat">上传微信二维码</string>
     <string name="cer_type">证件类型</string>
+    <string name="my_invite_code">我的邀请码</string>
 
 
 </resources>

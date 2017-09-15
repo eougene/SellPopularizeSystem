@@ -307,7 +307,7 @@
     <string name="homepage">Main Page</string>
     <string name="_99">99</string>
     <string name="settingcenter">My</string>
-    <string name="selectall">Future generations</string>
+    <string name="selectall">Select all</string>
     <string name="order">Order</string>
     <string name="team">Team</string>
     <string name="company">Company</string>
@@ -659,6 +659,7 @@
     <string name="con_in">Company Information</string>
     <string name="upload_wechat">Upload WeChat QR code</string>
     <string name="cer_type">Certificate type</string>
+    <string name="my_invite_code">My invite QR code</string>
 
 </resources>
 
