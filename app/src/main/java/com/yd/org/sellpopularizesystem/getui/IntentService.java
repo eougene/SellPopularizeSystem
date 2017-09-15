@@ -28,10 +28,7 @@ import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
  * onReceiveCommandResult 各种事件处理回执 <br>
  */
 public class IntentService extends GTIntentService {
-    private int messageNotificationID = 1000;
-
     private static final String TAG = "GetuiSdkDemo";
-
     public IntentService() {
 
     }
@@ -97,7 +94,6 @@ public class IntentService extends GTIntentService {
     }
 
     private void setNotificationManager(String title, String message) {
-
         //实例化通知管理器
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         //实例化通知
@@ -107,6 +103,8 @@ public class IntentService extends GTIntentService {
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);//设置通知的方式，震动、LED灯、音乐等
         builder.setAutoCancel(true);//点击通知后，状态栏自动删除通知
         builder.setSmallIcon(R.mipmap.notification);//设置小图标
+        builder.setWhen(System.currentTimeMillis());//shijain
+
 
 
         //未登录
@@ -120,6 +118,7 @@ public class IntentService extends GTIntentService {
 
         Notification notification = builder.build();
         //发送通知
-        notificationManager.notify(messageNotificationID, notification);
+        notificationManager.notify((int)(Math.random()*1000000), notification);
+
     }
 }
