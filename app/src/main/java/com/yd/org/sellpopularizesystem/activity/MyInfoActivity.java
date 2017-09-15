@@ -187,7 +187,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         if (!TextUtils.isEmpty(myUserInfo.getResult().getHead_img())) {
 
             Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getHead_img()).
-                    config(Bitmap.Config.RGB_565).into(myHeadIm);
+                    config(Bitmap.Config.RGB_565).placeholder(R.mipmap.settingbt).into(myHeadIm);
         }
 
         //设置微信二维码

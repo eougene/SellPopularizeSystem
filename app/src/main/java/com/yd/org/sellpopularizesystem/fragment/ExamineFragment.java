@@ -106,7 +106,6 @@ public class ExamineFragment extends BaseFragmentView implements PullToRefreshLa
             }
         }
         if (isRefresh) {
-
             adapter = new ExamineAdapter(getActivity());
             listView.setAdapter(adapter);
         }

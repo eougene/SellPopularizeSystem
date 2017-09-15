@@ -6,13 +6,12 @@ import java.util.List;
  * Created by hejin on 2017/3/13.
  */
 
-public class AnnouncementBean {
-
+public class AnnouncementBean extends Domine{
     /**
      * code : 1
      * msg : 成功获取公告列表
-     * total_number : 1
-     * result : [{"id":61,"cate_id":4,"notice_info_id":0,"user_id":"100014","client_id":"6a983a60fdc032a8167c506c485417bda88a58c6af55e35b9cc7f9a304e493a5","title":"订单创建成功，订单号为：172","content":"","status":1,"is_xunhuan":0,"xunhuan_time":0,"add_time":1493344283,"fasong_time":0,"read_time":1493361005,"about_id":172,"about_table":"product_orders","is_read":1,"is_del":0}]
+     * total_number : 12
+     * result : [{"id":19581,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"支付定金 成功预定后 {{审核定金成功发给推荐人}}","content":"祝贺您的客户 － android.android 001，  成功预订了 APT-Rousehill Stage 2 - Building ABC的  47/C308 ！  负责这个销售合同的销售人员是  liao . liao 在此友情提醒您：您的客户需要在14 个自然日里完成合同签署， 并且支付10% 定金， 否则开发商将取消他的合同，他所预定的物业也会被返回市场出售。  我们希望您和销售人员有很好的合作， 助客户在规定的时间内完成合同交换的事宜。\u2014\u2014赢家系统 ","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":0,"fasong_time":0,"read_time":1505292725,"about_id":0,"about_table":"customer","is_read":1,"is_del":0},{"id":19577,"cate_id":4,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"订单：2787定金已审核，请进行下一步操作","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505291912,"fasong_time":0,"read_time":0,"about_id":2787,"about_table":"product_orders","is_read":0,"is_del":0},{"id":19560,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"a51c4c3a293d3b1218f1893b4c94c53e","title":"订房通知","content":"恭喜销售liao . liao于2017-09-13成功预定项目APT - Parramatta Imperial Tower A单元73，总价910000.00","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505290266,"fasong_time":0,"read_time":1505291818,"about_id":0,"about_table":"product_orders","is_read":1,"is_del":0},{"id":19503,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"订房通知 销售版","content":"恭喜销售liao . liao于2017-09-13成功预定项目APT-Rousehill Stage 2 - Building ABC单元47，总价705000.00","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505287631,"fasong_time":0,"read_time":1505291808,"about_id":0,"about_table":"product_orders","is_read":1,"is_del":0},{"id":19458,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户android 008android 008","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286896,"fasong_time":0,"read_time":1505289101,"about_id":0,"about_table":"customer","is_read":1,"is_del":0},{"id":19456,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户androidandroid 007","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286817,"fasong_time":0,"read_time":1505289112,"about_id":0,"about_table":"customer","is_read":1,"is_del":0},{"id":19454,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户androidandroid 006","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286754,"fasong_time":0,"read_time":0,"about_id":0,"about_table":"customer","is_read":0,"is_del":0},{"id":19452,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户androidandroid 005","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286613,"fasong_time":0,"read_time":0,"about_id":0,"about_table":"customer","is_read":0,"is_del":0},{"id":19450,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户androidandroid 004","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286494,"fasong_time":0,"read_time":0,"about_id":0,"about_table":"customer","is_read":0,"is_del":0},{"id":19448,"cate_id":2,"notice_info_id":0,"user_id":"623","client_id":"ba9742f7136bcf8354b2a544bd64cbed","title":"推荐人新注册客户androidandroid 003","content":"","status":0,"is_xunhuan":0,"xunhuan_time":0,"add_time":1505286427,"fasong_time":0,"read_time":0,"about_id":0,"about_table":"customer","is_read":0,"is_del":0}]
      */
 
     private String code;
@@ -52,23 +51,23 @@ public class AnnouncementBean {
         this.result = result;
     }
 
-    public static class ResultBean extends Domine {
+    public static class ResultBean extends Domine{
         /**
-         * id : 61
-         * cate_id : 4
+         * id : 19581
+         * cate_id : 2
          * notice_info_id : 0
-         * user_id : 100014
-         * client_id : 6a983a60fdc032a8167c506c485417bda88a58c6af55e35b9cc7f9a304e493a5
-         * title : 订单创建成功，订单号为：172
-         * content :
-         * status : 1
+         * user_id : 623
+         * client_id : ba9742f7136bcf8354b2a544bd64cbed
+         * title : 支付定金 成功预定后 {{审核定金成功发给推荐人}}
+         * content : 祝贺您的客户 － android.android 001，  成功预订了 APT-Rousehill Stage 2 - Building ABC的  47/C308 ！  负责这个销售合同的销售人员是  liao . liao 在此友情提醒您：您的客户需要在14 个自然日里完成合同签署， 并且支付10% 定金， 否则开发商将取消他的合同，他所预定的物业也会被返回市场出售。  我们希望您和销售人员有很好的合作， 助客户在规定的时间内完成合同交换的事宜。——赢家系统
+         * status : 0
          * is_xunhuan : 0
          * xunhuan_time : 0
-         * add_time : 1493344283
+         * add_time : 0
          * fasong_time : 0
-         * read_time : 1493361005
-         * about_id : 172
-         * about_table : product_orders
+         * read_time : 1505292725
+         * about_id : 0
+         * about_table : customer
          * is_read : 1
          * is_del : 0
          */

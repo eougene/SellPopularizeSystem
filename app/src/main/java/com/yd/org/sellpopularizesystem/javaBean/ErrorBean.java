@@ -11,6 +11,7 @@ public class ErrorBean extends Domine {
     private String trust_account_id;
     private String result;
 
+
     public String getResult() {
         return result;
     }
@@ -28,7 +29,6 @@ public class ErrorBean extends Domine {
     }
 
 
-
     public String getCode() {
         return code;
     }
@@ -36,7 +36,6 @@ public class ErrorBean extends Domine {
     public void setCode(String code) {
         this.code = code;
     }
-
 
 
     public String getMsg() {

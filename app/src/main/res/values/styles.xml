@@ -99,7 +99,7 @@
         <item name="android:padding">@dimen/padding_margin_8</item>
         <item name="android:singleLine">true</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:hint">搜索</item>
+        <item name="android:hint">@string/search</item>
     </style>
     <!-- 自定义加载框 -->
     <style name="customLoadDialog" parent="@android:style/Theme.Dialog">

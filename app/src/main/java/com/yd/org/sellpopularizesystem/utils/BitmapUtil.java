@@ -591,7 +591,7 @@ public class BitmapUtil {
     }
 
     public static void loadImageView(Context activity, String url, ImageView view) {
-        Log.e("证书**","ll:"+ url);
+
         Picasso.with(activity).load(url).skipMemoryCache().config(Bitmap.Config.RGB_565).fit()
                 .error(R.mipmap.yingjia).placeholder(R.mipmap.yingjia).into(view);
 
