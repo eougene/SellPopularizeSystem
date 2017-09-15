@@ -34,9 +34,8 @@
                 android:maxLines="1"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
-                android:text="@string/china"
+                android:text="@string/Australian"
                 android:textColor="@color/gray"
-                android:textColorHint="@color/setting_bac"
                 android:textSize="@dimen/tv_size_15"/>
 
 
