@@ -2,12 +2,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.provider.MediaStore;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
-import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +23,7 @@ import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
 public class InviteQRActivity extends BaseActivity {
-    private TextView tvDes, saveImage, referId;
+    private TextView  saveImage, referId;
     private ImageView ivQr;
 
     @Override
@@ -43,22 +39,12 @@ public class InviteQRActivity extends BaseActivity {
         hideRightImagview();
         ivQr = getViewById(R.id.ivQr);
         referId = getViewById(R.id.referId);
-        tvDes = getViewById(R.id.tvDes);
         saveImage = getViewById(R.id.saveImage);
-        setTextColor(getString(R.string.qrdes));
 
         getInfo();
     }
 
-    private void setTextColor(String msg) {
-        if (msg.contains("5%")) {
-            int a = msg.indexOf("5");
-            int b = msg.indexOf("%") + 1;
-            SpannableStringBuilder builder = new SpannableStringBuilder(msg);
-            builder.setSpan(new ForegroundColorSpan(Color.RED), a, b, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            tvDes.setText(builder);
-        }
-    }
+
 
     @Override
     public void setListener() {
