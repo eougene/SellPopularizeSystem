@@ -148,17 +148,21 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             setRightTitle(R.string.recharge, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    eoiDialog = new Dialog(CusOprateRecordActivity.this);
-                    eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    eoiDialog.setContentView(R.layout.eoi_operate_view);
-                    Window dialogWindow = eoiDialog.getWindow();
-                    WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                    lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
-                    dialogWindow.setAttributes(lp);
-                    dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                    dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
-                    eoiDialog.show();
-                    initDialogViews(eoiDialog);
+                    if (eoiDialog==null){
+                        eoiDialog = new Dialog(CusOprateRecordActivity.this);
+                        eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        eoiDialog.setContentView(R.layout.eoi_operate_view);
+                        Window dialogWindow = eoiDialog.getWindow();
+                        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+                        lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
+                        dialogWindow.setAttributes(lp);
+                        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+                        initDialogViews(eoiDialog);
+                        eoiDialog.show();
+                    }else {
+                        eoiDialog.show();
+                    }
                 }
             });
 
@@ -1068,7 +1072,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
         if (type==0){
-            Picasso.with(CusOprateRecordActivity.this).load("file://" + picPath).fit().into(ivCertificate);
+            Picasso.with(CusOprateRecordActivity.this).load("file://" + picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight())
+                    .centerInside().into(ivCertificate);
         }
 
     }
