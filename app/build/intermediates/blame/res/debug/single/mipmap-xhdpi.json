@@ -284,6 +284,10 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\up_arrow.png"
     },
     {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\meqr2.png",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\meqr2.png"
+    },
+    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi\\tabhomeunselect.png",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\mipmap-xhdpi\\tabhomeunselect.png"
     },

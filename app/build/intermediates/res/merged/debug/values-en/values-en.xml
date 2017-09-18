@@ -1,5 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="country_code_list_ch" translatable="false">
+        <item>Albania                        </item>
+        <item>Algeria                        </item>
+        <item>Afghanistan                    </item>
+        <item>Argentina                      </item>
+        <item>The United Arab Emirates       </item>
+        <item>Syria                          </item>
+        <item>Aruba                          </item>
+        <item>Oman                           </item>
+        <item>Azerbaijan                     </item>
+        <item>Egypt                          </item>
+        <item>Ethiopia                       </item>
+        <item>Ireland                        </item>
+        <item>Estonia                        </item>
+        <item>Andorra                        </item>
+        <item>Angola                         </item>
+        <item>Anguilla                       </item>
+        <item>Ntigua and Barbuda             </item>
+        <item>Austria                        </item>
+        <item>Australia                      </item>
+        <item>Barbados                       </item>
+        <item>Bahamas                        </item>
+        <item>Pakistan                       </item>
+        <item>Paraguay                       </item>
+        <item>Bahrain                        </item>
+        <item>Panama                         </item>
+        <item>Brazil                         </item>
+        <item>White Russia                   </item>
+        <item>Bermuda                        </item>
+        <item>Bulgaria                       </item>
+        <item>Benin                          </item>
+        <item>Belgium                        </item>
+        <item>Iceland                        </item>
+        <item>Puerto Rico                    </item>
+        <item>Bosnia Hercegovina             </item>
+        <item>Poland                         </item>
+        <item>Bolivia                        </item>
+        <item>Belize                         </item>
+        <item>Botswana                       </item>
+        <item>Bhutan                         </item>
+        <item>Burkina Faso                   </item>
+        <item>Burundi                        </item>
+        <item>Equatorial Guinea              </item>
+        <item>Denmark                        </item>
+        <item>Germany                        </item>
+        <item>East Timor                     </item>
+        <item>Togo                           </item>
+        <item>Dominica                       </item>
+        <item>Russia                         </item>
+        <item>Ecuador                        </item>
+        <item>Eritrea                        </item>
+        <item>France                         </item>
+        <item>Faroe Islands                  </item>
+        <item>French Polynesia               </item>
+        <item>French Guiana                  </item>
+        <item>Philippines                    </item>
+        <item>Figi                           </item>
+        <item>Finland                        </item>
+        <item>Cape Verde                     </item>
+        <item>Republic of                    </item>
+        <item>Falkland Islands               </item>
+        <item>Gambia                         </item>
+        <item>Colombia                       </item>
+        <item>Costa rica                     </item>
+        <item>Grenada                        </item>
+        <item>Greenland                      </item>
+        <item>Georgia                        </item>
+        <item>Cuba                           </item>
+        <item>Guadeloupe                     </item>
+        <item>Guam                           </item>
+        <item>Guyana                         </item>
+        <item>Kazakstan                      </item>
+        <item>Haiti                          </item>
+        <item>Korea                          </item>
+        <item>Netherlands                    </item>
+        <item>Netherlands Antilles           </item>
+        <item>Montenegro                     </item>
+        <item>Honduras                       </item>
+        <item>Djibouti                       </item>
+        <item>Kyegyzstan                     </item>
+        <item>Kirghizia                      </item>
+        <item>Guinea                         </item>
+        <item>Guinea-Bissau                  </item>
+        <item>Canada                         </item>
+        <item>Ghana                          </item>
+        <item>Kampuchea                      </item>
+        <item>Czech Republic                 </item>
+        <item>Zimbabwe                       </item>
+        <item>Cameroon                       </item>
+        <item>Qatar                          </item>
+        <item>Cayman Islands                 </item>
+        <item>Comoros                        </item>
+        <item>Cote divoire                   </item>
+        <item>Kuwait                         </item>
+        <item>Croatia                        </item>
+        <item>Kenya                          </item>
+        <item>Cook Island                    </item>
+        <item>Latvia                         </item>
+        <item>Lesotho                        </item>
+        <item>Laos                           </item>
+        <item>Lebanon                        </item>
+        <item>Lithuania                      </item>
+        <item>Liberia                        </item>
+        <item>Libya                          </item>
+        <item>Liechtenstein                  </item>
+        <item>Reunion                        </item>
+        <item>Luxembourg                     </item>
+        <item>Rwanda                         </item>
+        <item>Romania                        </item>
+        <item>Malagasy                       </item>
+        <item>Maldives                       </item>
+        <item>Malawi                         </item>
+        <item>Malaysia                       </item>
+        <item>Mali                           </item>
+        <item>Mauritius                      </item>
+        <item>Mauritania                     </item>
+        <item>Mauritius                      </item>
+        <item>Mauritania                     </item>
+        <item>America                        </item>
+        <item>Mongolia                       </item>
+        <item>Montserrat                     </item>
+        <item>Bangladesh                     </item>
+        <item>Peru                           </item>
+        <item>Burma                          </item>
+        <item>Moldavia                       </item>
+        <item>Morocco                        </item>
+        <item>Monaco                         </item>
+        <item>Mozambique                     </item>
+        <item>Mexico                         </item>
+        <item>Namibia                        </item>
+        <item>South Africa                   </item>
+        <item>South Sudan                    </item>
+        <item>Nepal                          </item>
+        <item>Nicaragua                      </item>
+        <item>Niger                          </item>
+        <item>Nigeria                        </item>
+        <item>Norway                         </item>
+        <item>Palau                          </item>
+        <item>Portugal                       </item>
+        <item>Japan                          </item>
+        <item>Sweden                         </item>
+        <item>Switzerland                    </item>
+        <item>El Salvador                    </item>
+        <item>Samoan Islands                 </item>
+        <item>Serbia                         </item>
+        <item>Sierra Leone                   </item>
+        <item>Senegal                        </item>
+        <item>Cyprus                         </item>
+        <item>Seychelles                     </item>
+        <item>Sandi Arabia                   </item>
+        <item>Saint Kitts and Nevis          </item>
+        <item>Saint Lucia                    </item>
+        <item>San Marino                     </item>
+        <item>Saint Vincent  Grenadines      </item>
+        <item>Sri Lanka                      </item>
+        <item>Slovakia                       </item>
+        <item>Slovene                        </item>
+        <item>Swaziland                      </item>
+        <item>Sudan                          </item>
+        <item>Surinam                        </item>
+        <item>Solomon Islands                </item>
+        <item>Somali                         </item>
+        <item>Tsjikistan                     </item>
+        <item>Thailand                       </item>
+        <item>Tanzania                       </item>
+        <item>Tonga                          </item>
+        <item>Turks and Caicos Islands       </item>
+        <item>Trinidad and Tobago            </item>
+        <item>Tunisia                        </item>
+        <item>Turkey                         </item>
+        <item>Turkomanstan                   </item>
+        <item>Turkmenia                      </item>
+        <item>Guatemala                      </item>
+        <item>Venezuela                      </item>
+        <item>Brunei Darussalam              </item>
+        <item>Uganda                         </item>
+        <item>Ukraine                        </item>
+        <item>Uruguay                        </item>
+        <item>Uzbekstan                      </item>
+        <item>Spain                          </item>
+        <item>Greece                         </item>
+        <item>Singapore                      </item>
+        <item>New Caledonia                  </item>
+        <item>New Zealand                    </item>
+        <item>Hungary                        </item>
+        <item>Jamaica                        </item>
+        <item>Armenia                        </item>
+        <item>Democratic Yemen               </item>
+        <item>Iraq                           </item>
+        <item>Iran                           </item>
+        <item>Israel                         </item>
+        <item>Italy                          </item>
+        <item>India                          </item>
+        <item>Indonesia                      </item>
+        <item>United Kingdom(England)        </item>
+        <item>British Virgin Islands         </item>
+        <item>Jordan                         </item>
+        <item>Vietnam                        </item>
+        <item>Zambia                         </item>
+        <item>Chad                           </item>
+        <item>Gibraltar                      </item>
+        <item>Chile                          </item>
+        <item>Central African Republic       </item>
+        <item>China                          </item>
+        <item>Macao, China                   </item>
+        <item>Taiwan, China                  </item>
+        <item>Hong Kong, China               </item>
+    </string-array>
     <string name="Australian">Australian</string>
     <string name="Fill_id_number">Fill In Id Number</string>
     <string name="Lastname">Name</string>
@@ -7,6 +215,7 @@
     <string name="State_overdue">Certificate State:Expired</string>
     <string name="_0">newadd</string>
     <string name="_100k_150k">100k-150k</string>
+    <string name="_1100k">1100k-Unlimitation</string>
     <string name="_150k_200k">150k-200k</string>
     <string name="_200k_250k">200k-250k</string>
     <string name="_2018_01_06">Deadline:2018/01/06</string>
@@ -27,6 +236,7 @@
     <string name="addsuccess">Add success</string>
     <string name="alipay">Alipay</string>
     <string name="all_building">All projects</string>
+    <string name="all_image">All images</string>
     <string name="app_exit">Again according to exit the program</string>
     <string name="app_name">Wingaid</string>
     <string name="apply_contract">Apply Contract</string>
@@ -44,7 +254,7 @@
     <string name="askdate">appointment to apply</string>
     <string name="au_0_00_to_au_0_00">AU$0.00 to AU$0.00</string>
     <string name="available_for_firb">Available For FIRB</string>
-    <string name="bankacc">The bank account</string>
+    <string name="bankacc">Bank account</string>
     <string name="bankhint">Please fill in my bank card information</string>
     <string name="basic_konwledge">Basic konwledge</string>
     <string name="batchnum">Lot Number</string>
@@ -69,6 +279,7 @@
     <string name="cardholder">Cardholder</string>
     <string name="cardnum">Card Number</string>
     <string name="carport">Car Park</string>
+    <string name="cer_type">Certificate type</string>
     <string name="certificate">My certificate</string>
     <string name="certificate_number">Id number</string>
     <string name="certificate_type">Select certificate type</string>
@@ -77,8 +288,8 @@
     <string name="check_results">View Results</string>
     <string name="check_we">Check whether the installation WeChat</string>
     <string name="check_wechat_install">Check to see if WeChat is installed</string>
-    <string name="checkdes">assessment is not completed</string>
-    <string name="checkdes1">you have </string>
+    <string name="checkdes"> assessment is not completed</string>
+    <string name="checkdes1">you have </string>
     <string name="checknum">You have zero unfinished</string>
     <string name="china">China</string>
     <string name="chooseemailapp">Please select a mail application class</string>
@@ -90,7 +301,7 @@
     <string name="closedate">Settlement Date:</string>
     <string name="cncel_line">Cancel line</string>
     <string name="co_people">Co-purchase</string>
-    <string name="codeerror">Recommended code cannot be empty</string>
+    <string name="codeerror">Referral code cannot be empty</string>
     <string name="collection">Favorite</string>
     <string name="com_noe">Company name cannot empty</string>
     <string name="commencement_date">Effective date</string>
@@ -115,9 +326,11 @@
     <string name="complete_user">Improve customer information</string>
     <string name="completel_add">Please complete my address</string>
     <string name="comres">Head cannot empty</string>
+    <string name="con_in">Company Information</string>
     <string name="confirm_content">Please confirm the sales advice</string>
     <string name="confirm_new_password">Please confirm the new password</string>
     <string name="confirm_pay_information">I have been confirmed in the notice of payment information</string>
+    <string name="confirm_to_delete">Confirm the deletion？</string>
     <string name="consent">Agree</string>
     <string name="contact">Contact</string>
     <string name="contact_address">Contact address cannot be empty</string>
@@ -139,7 +352,7 @@
     <string name="customename">"ustomer name</string>
     <string name="customernum">Do you have a zero customer</string>
     <string name="date">Appointment</string>
-    <string name="date_of_final_launch">Date of final launch:</string>
+    <string name="date_of_final_launch">Est.Settlement Date:</string>
     <string name="datetime">Appointment</string>
     <string name="datetimemust">Appointments must be greater than the current time</string>
     <string name="datetimemustlarge">Remind time must be smaller than the appointment time and greater than the current time</string>
@@ -149,6 +362,7 @@
     <string name="declaretitle">Declaration</string>
     <string name="declaretitle_01">Declaration</string>
     <string name="delete">Delete</string>
+    <string name="deleted_a_photo">Delete the picture</string>
     <string name="des">Describe</string>
     <string name="desfive">Describe 5</string>
     <string name="desfour">Describe 4</string>
@@ -158,9 +372,10 @@
     <string name="destwo">Describe 2</string>
     <string name="details">Details</string>
     <string name="dingjin">Please read declaration</string>
-    <string name="direction">Toward</string>
+    <string name="direction">Aspect</string>
     <string name="discount">Discount</string>
     <string name="done">Completed</string>
+    <string name="done_with_count">Complete(%1$d/%2$d)</string>
     <string name="doneinpecifi">Please within a specified time to complete</string>
     <string name="doublezero">0.00</string>
     <string name="editcusinfo">Edit Client Information</string>
@@ -187,11 +402,11 @@
     <string name="evidence">Please upload documents again</string>
     <string name="examination">topic no answer</string>
     <string name="examination_">Passed</string>
-    <string name="exchange_fee">Exchange contract security</string>
+    <string name="exchange_fee">Exchange deposit:</string>
     <string name="exchanged">Exchanged</string>
     <string name="exit_scale">Are you sure you want to end the promotion?</string>
     <string name="expandre">Promotion History</string>
-    <string name="expected_date_of_launch">Expected date of launch:</string>
+    <string name="expected_date_of_launch">Sunset Date:</string>
     <string name="family_email">Relatives Email</string>
     <string name="fangwu">Housing</string>
     <string name="file">Files</string>
@@ -212,9 +427,10 @@
     <string name="foreignInves">Foreign Investment</string>
     <string name="forget_password">Forgot password?</string>
     <string name="gettui">CRM Sales System</string>
+    <string name="good_house">Good room</string>
     <string name="hadsaled">Sold</string>
-    <string name="hashsalenum">Sold Properties</string>
-    <string name="headerphoto">Photo</string>
+    <string name="hashsalenum">Completed</string>
+    <string name="headerphoto">Portrait</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_toas">Prompt</string>
     <string name="hintpass">Enter the password for 6 to 18 digits or letters</string>
@@ -236,15 +452,17 @@
     <string name="home_sure">Confirm</string>
     <string name="homepage">Main Page</string>
     <string name="hot">Hot</string>
-    <string name="hot_sale">Recent hot selling</string>
+    <string name="hot_sale">Hot</string>
     <string name="house_land">House&amp;Land</string>
     <string name="house_suggest">Good house recommendation</string>
     <string name="housepurchase">Purchase history</string>
-    <string name="housetype">Type</string>
+    <string name="housetype">HouseType</string>
     <string name="housetypeimage">Floorplan</string>
     <string name="idcard">ID</string>
     <string name="if_company_cus">  Is it for company clients?</string>
-    <string name="individuaproject">个Project</string>
+    <string name="image">Picture</string>
+    <string name="image_index">%1$d/%2$d</string>
+    <string name="individuaproject"> Project</string>
     <string name="input_new_password">Please enter a new password</string>
     <string name="input_recode">Please enter the six recommended code </string>
     <string name="inputconame">Please enter the name of the company</string>
@@ -254,11 +472,11 @@
     <string name="investigate_list">Survey</string>
     <string name="investment">Investment</string>
     <string name="invite_code">Invite qr code</string>
-    <string name="invitedes">Placeholders invite friends to receive bonus rewards and invite more!</string>
+    <string name="invitedes">Invite friends to receive bonus,the more friends you invited,the more bonus you would receive!</string>
     <string name="invoice">Tax Invoice</string>
     <string name="isno">No</string>
     <string name="issaling">For Sale</string>
-    <string name="issalingnum">The number of saling :</string>
+    <string name="issalingnum"> For saling :</string>
     <string name="isuse">used</string>
     <string name="jieshao">Introduction</string>
     <string name="jinliu">jinliu</string>
@@ -285,7 +503,7 @@
     <string name="login_activity_userName">User Name</string>
     <string name="login_toas">Your account is logged on to another device</string>
     <string name="login_usename">User Name Or Password no empty</string>
-    <string name="map_house">Looking for a house by map</string>
+    <string name="map_house">Map</string>
     <string name="maturity_date">Due date</string>
     <string name="memo">Preview Memo:</string>
     <string name="message">News</string>
@@ -298,13 +516,16 @@
     <string name="money">Amount</string>
     <string name="moneypoint">Amount:</string>
     <string name="more">View more</string>
+    <string name="msg_amount_limit">Number has reached the highest choice</string>
+    <string name="msg_no_camera">Unable to enable camera system</string>
     <string name="multiple_choice">(Multiple Choice)</string>
     <string name="mutilatequestion">(Multiple Choice)</string>
+    <string name="my_invite_code">   My referral Code</string>
     <string name="myaddress">My address</string>
-    <string name="mycertificate">My Certificate</string>
+    <string name="mycertificate">Certificate</string>
     <string name="mycommission">My Commission</string>
-    <string name="mycomp">个人公司</string>
-    <string name="myinfo">My information</string>
+    <string name="mycomp">Company</string>
+    <string name="myinfo">My Profile</string>
     <string name="myteam">My Team</string>
     <string name="name">Name</string>
     <string name="name_empty">Name cannot be empty</string>
@@ -367,7 +588,7 @@
     <string name="paytype">Please Select a Payment Method </string>
     <string name="pcd">Province City Area</string>
     <string name="percent">0.00%</string>
-    <string name="perset">/per set</string>
+    <string name="perset"> per suite</string>
     <string name="person_in_charge">Person in charge (customer)</string>
     <string name="photo">Photo</string>
     <string name="photofromalbum">Select from Album</string>
@@ -382,6 +603,7 @@
     <string name="picpath">Please Upload the Receipt</string>
     <string name="playplatform">Play the platform</string>
     <string name="postcode">Postcode</string>
+    <string name="preview">Preview</string>
     <string name="price">Price</string>
     <string name="price_des">Total price</string>
     <string name="pro_city_area"> Province, urban and areas can not be empty</string>
@@ -391,10 +613,10 @@
     <string name="projectdetail">Project Details</string>
     <string name="projectpropety">Project Attribute:</string>
     <string name="promotematerial">Total be  0 generalize material</string>
-    <string name="promoterecord">Promotion History</string>
+    <string name="promoterecord">Promotion</string>
     <string name="pull_to_refresh">down Refresh</string>
     <string name="pullup_to_load">Load more</string>
-    <string name="purchasehouserecord">Purchase history</string>
+    <string name="purchasehouserecord">Purchase</string>
     <string name="qq">QQ</string>
     <string name="qrdes">Invite friends to scan two-dimensional code to download APP\n TA can obtain exclusive reward, you can get 5% of the amount paid by the order as a bonus reward</string>
     <string name="qu">District</string>
@@ -407,8 +629,8 @@
     <string name="rechargesuccess"> Recharge successful</string>
     <string name="recheck">Cheque</string>
     <string name="recode_hint">Recommended Code</string>
-    <string name="recommendqr">Recommendation code</string>
-    <string name="referral">推荐人</string>
+    <string name="recommendqr">Referral code</string>
+    <string name="referral">Referral</string>
     <string name="refresh_fail">Refresh the failure</string>
     <string name="refresh_succeed">Refresh the success</string>
     <string name="refreshing">Refresh...</string>
@@ -461,7 +683,7 @@
     <string name="sale_pro">Sales Promotion</string>
     <string name="sale_record">Sales Records</string>
     <string name="sale_toas">Please first courses:</string>
-    <string name="saledate">Sale date:</string>
+    <string name="saledate">For Sale Date:</string>
     <string name="saleprice">Sales Price</string>
     <string name="saler_01">Order Cancelling</string>
     <string name="saler_02">Order Cancelled</string>
@@ -506,7 +728,7 @@
     <string name="select_not">Please select the relevant news</string>
     <string name="select_valid_date">Please select valid date</string>
     <string name="selectadd">Select the country or region</string>
-    <string name="selectall">Future generations</string>
+    <string name="selectall">All</string>
     <string name="selectcus">Select Client</string>
     <string name="selectdatetime">Schedule an Appointment</string>
     <string name="selectlawyer">Select Solicitor</string>
@@ -570,13 +792,13 @@
     <string name="streetNum">Street number</string>
     <string name="street_num">Street number</string>
     <string name="study">Learning</string>
-    <string name="studydes1">A total of</string>
-    <string name="studymaterialdes">learning materials,</string>
+    <string name="studydes1">A total of </string>
+    <string name="studymaterialdes"> learning materials,</string>
     <string name="su">Uploaded successfully</string>
     <string name="submit">Submit</string>
     <string name="submitfail">submit failure</string>
-    <string name="successlaw">Success principle</string>
-    <string name="sum">Total</string>
+    <string name="successlaw">Way to Success</string>
+    <string name="sum">Total </string>
     <string name="supplier">Vendor:</string>
     <string name="supplierlaw">Vendor Solicitor:</string>
     <string name="sur">Yes</string>
@@ -610,10 +832,11 @@
     <string name="totaldes">Total:</string>
     <string name="totalmoney">Total Amount</string>
     <string name="totalnum">ombined:0.00/0.00/0.00</string>
-    <string name="totalprice">Total price</string>
-    <string name="totalprojectnum">Total0个Project</string>
+    <string name="totalprice">SP </string>
+    <string name="totalprojectnum">Total 0 Project</string>
     <string name="transfer">Bank Transfer</string>
     <string name="type">Type</string>
+    <string name="undo">Undo</string>
     <string name="unitnum">LOT Number</string>
     <string name="unknow">Unknown</string>
     <string name="unknown">Unknown</string>
@@ -626,6 +849,7 @@
     <string name="updateorder">Change orders</string>
     <string name="updatesuccess">update successful</string>
     <string name="upload_certificate">Upload certificate</string>
+    <string name="upload_wechat">Upload WeChat QR code</string>
     <string name="uploadeevidence">Upload Deposit Receipt</string>
     <string name="uploadeevidencepoint">Upload Deposit Receipt:</string>
     <string name="uploadetime">Credentials to upload time</string>
@@ -635,10 +859,10 @@
     <string name="ver_1_0_0">Ver:1.0.0</string>
     <string name="version_info">Version information</string>
     <string name="video">Video</string>
-    <string name="view_more">View more</string>
+    <string name="view_more">More</string>
     <string name="viewdetail">Details</string>
-    <string name="villa">Villa</string>
-    <string name="visit">Visit History</string>
+    <string name="villa">APT</string>
+    <string name="visit">Visit</string>
     <string name="vp">Introduction</string>
     <string name="wechat_load">WeChat login</string>
     <string name="wechatpay">Wechat</string>

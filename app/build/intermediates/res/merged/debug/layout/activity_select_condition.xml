@@ -11,16 +11,18 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/llBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RadioGroup
-                android:id="@+id/rgType"
+            <LinearLayout
+                android:id="@+id/llType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbArea1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,7 +42,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbArea2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +62,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbArea3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,50 +82,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
-                    android:id="@+id/rbArea4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawableRight="@drawable/checkbox_selector"
-                    android:paddingBottom="@dimen/padding_margin_10"
-                    android:paddingLeft="@dimen/padding_margin_6"
-                    android:paddingRight="@dimen/padding_margin_10"
-                    android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="4"
-                    android:text="@string/areafour"
-                    android:textColor="@drawable/cbtextcolor_select"
-                    android:textSize="@dimen/tv_size_12"
-                    android:visibility="gone" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/shallow_gray"
-                    android:visibility="gone" />
-
-                <RadioButton
-                    android:id="@+id/rbArea5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawableRight="@drawable/checkbox_selector"
-                    android:paddingBottom="@dimen/padding_margin_10"
-                    android:paddingLeft="@dimen/padding_margin_6"
-                    android:paddingRight="@dimen/padding_margin_10"
-                    android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="5"
-                    android:text="@string/areafive"
-                    android:textColor="@drawable/cbtextcolor_select"
-                    android:textSize="@dimen/tv_size_12"
-                    android:visibility="gone" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/shallow_gray"
-                    android:visibility="gone" />
-            </RadioGroup>
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/llHouseType"
@@ -354,12 +313,13 @@
                     android:background="@color/shallow_gray" />
             </RadioGroup>
 
-            <RadioGroup
-                android:id="@+id/rgPrice"
+            <LinearLayout
+                android:id="@+id/llPrice"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -369,8 +329,8 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="50000~100000"
-                    android:text="@string/_50k_100k"
+                    android:tag="0~650000"
+                    android:text="0k~650k"
                     android:textColor="@drawable/cbtextcolor_select"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -379,7 +339,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -389,8 +349,8 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="100000~150000"
-                    android:text="@string/_100k_150k"
+                    android:tag="650000~800000"
+                    android:text="650k~800k"
                     android:textColor="@drawable/cbtextcolor_select"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -399,7 +359,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -409,8 +369,8 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="150000~200000"
-                    android:text="@string/_150k_200k"
+                    android:tag="800000~950000"
+                    android:text="800k~950k"
                     android:textColor="@drawable/cbtextcolor_select"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -419,7 +379,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -429,8 +389,8 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="200000~250000"
-                    android:text="@string/_200k_250k"
+                    android:tag="950000~1100000"
+                    android:text="950k~1100k"
                     android:textColor="@drawable/cbtextcolor_select"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -439,7 +399,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -449,8 +409,8 @@
                     android:paddingLeft="@dimen/padding_margin_6"
                     android:paddingRight="@dimen/padding_margin_10"
                     android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="250000~300000"
-                    android:text="@string/_250k_300k"
+                    android:tag="1100000~300000"
+                    android:text="@string/_1100k"
                     android:textColor="@drawable/cbtextcolor_select"
                     android:textSize="@dimen/tv_size_12" />
 
@@ -459,7 +419,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <!--<CheckBox
                     android:id="@+id/rbPrice6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -479,7 +439,7 @@
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
 
-                <RadioButton
+                <CheckBox
                     android:id="@+id/rbPrice7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -492,8 +452,8 @@
                     android:tag="350000~999999999"
                     android:text="@string/_300k"
                     android:textColor="@drawable/cbtextcolor_select"
-                    android:textSize="@dimen/tv_size_12" />
-            </RadioGroup>
+                    android:textSize="@dimen/tv_size_12" />-->
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
