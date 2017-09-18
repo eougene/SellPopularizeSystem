@@ -1,6 +1,7 @@
 package com.yd.org.sellpopularizesystem.activity;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
@@ -52,7 +53,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btLineup, btCancel;
     private int pos;
     private RelativeLayout rlPop;
-    private TextView tvSelect, tvNoInfo,
+    private TextView tvPrice, tvNoInfo,
             tvIntroduce, tvVideo, tvFloor, tvContract, tvFile;
     private ListView lvHouseDetail;
     private ImageView ivSearch;
@@ -80,6 +81,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private String strNum;
     private List<ImageContent> imgContents = new ArrayList<ImageContent>();
     private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
+    private boolean isSequence=false;
 
     @Override
     protected int setContentView() {
@@ -142,6 +144,8 @@ public class ProductSubunitListActivity extends BaseActivity {
         //tvSelect.setOnClickListener(mOnClickListener);
         //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
+        tvPrice=getViewById(R.id.tvPrice);
+        tvPrice.setOnClickListener(mOnClickListener);
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
         tvIntroduce = getViewById(R.id.tvIntroduce);
         tvIntroduce.setOnClickListener(mOnClickListener);
@@ -300,7 +304,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         ProSubunitListBean pslb = gson.fromJson(s, ProSubunitListBean.class);
         data = pslb.getResult().getProperty();
         //按照集合中元素属性进行排序
-        Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
+        /*Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
             @Override
             public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
                 if (TextUtils.isDigitsOnly(o1.getProduct_childs_unit_number()) && TextUtils.isDigitsOnly(o2.getProduct_childs_unit_number())) {
@@ -335,7 +339,9 @@ public class ProductSubunitListActivity extends BaseActivity {
                 return -1;
             }
         });
-
+*/
+        //按照价格排序
+        sortPriceLowToHigh(data);
         //找出eoi元素
         for (int i = 0; i < data.size(); i++) {
             if (data.get(i).getIf_eoi() == 1) {
@@ -356,6 +362,25 @@ public class ProductSubunitListActivity extends BaseActivity {
             tvNoInfo.setVisibility(View.VISIBLE);
         }
 
+    }
+
+    private void sortPriceLowToHigh(List<ProSubunitListBean.ResultBean.PropertyBean> data) {
+        Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
+            @Override
+            public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
+
+                if (Integer.parseInt(o1.getPrice().split("\\.")[0]) >
+                        Integer.parseInt(o2.getPrice().split("\\.")[0])) {
+                    return 1;
+                }
+
+                if (Integer.parseInt(o1.getPrice().split("\\.")[0]) ==
+                        Integer.parseInt(o2.getPrice().split("\\.")[0])) {
+                    return 0;
+                }
+                return -1;
+            }
+        });
     }
 
     private void setAdapter() {
@@ -456,6 +481,27 @@ public class ProductSubunitListActivity extends BaseActivity {
                         }
                     }
                     break;*/
+                case  R.id.tvPrice:
+                    if (!isSequence){
+                        Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
+                                R.mipmap.trangle);
+                        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
+                        tvPrice.setCompoundDrawables(null,null,drawable,null);
+                        sortPriceHighToLow();
+                        isSequence=true;
+                    }else {
+                        Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
+                                R.mipmap.trangle2);
+                        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
+                        tvPrice.setCompoundDrawables(null,null,drawable,null);
+                        List<ProSubunitListBean.ResultBean.PropertyBean> lists=adapter.getmDatas();
+                        sortPriceLowToHigh(lists);
+                        adapter.notifyDataSetChanged();
+                        isSequence=false;
+                    }
+
+                    break;
+
                 case R.id.rlPop:
                     if (mCustomePopuWindow != null) {
                         mCustomePopuWindow.dismiss();
@@ -530,6 +576,27 @@ public class ProductSubunitListActivity extends BaseActivity {
             }
         }
     };
+
+    private void sortPriceHighToLow() {
+        List<ProSubunitListBean.ResultBean.PropertyBean> lists=adapter.getmDatas();
+        Collections.sort(lists, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
+            @Override
+            public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
+
+                if (Integer.parseInt(o2.getPrice().split("\\.")[0]) >
+                        Integer.parseInt(o1.getPrice().split("\\.")[0])) {
+                    return 1;
+                }
+
+                if (Integer.parseInt(o1.getPrice().split("\\.")[0]) ==
+                        Integer.parseInt(o2.getPrice().split("\\.")[0])) {
+                    return 0;
+                }
+                return -1;
+            }
+        });
+        adapter.notifyDataSetChanged();
+    }
 
     /**
      * 获取充值列表
