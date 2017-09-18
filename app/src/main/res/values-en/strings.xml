@@ -307,7 +307,7 @@
     <string name="homepage">Main Page</string>
     <string name="_99">99</string>
     <string name="settingcenter">My</string>
-    <string name="selectall">Select all</string>
+    <string name="selectall">All</string>
     <string name="order">Order</string>
     <string name="team">Team</string>
     <string name="company">Company</string>
@@ -628,19 +628,19 @@
     <string name="xingming">Name</string>
     <string name="company_add">The company address</string>
     <string name="nameerror">Please fill in real name</string>
-    <string name="map_house">Looking for a house by map</string>
+    <string name="map_house">Map</string>
     <string name="all_building">All projects</string>
-    <string name="hot_sale">Recent hot selling</string>
+    <string name="hot_sale">Hot</string>
     <string name="house_suggest">Good house recommendation</string>
-    <string name="view_more">View more</string>
-    <string name="villa">Villa</string>
+    <string name="view_more">More</string>
+    <string name="villa">APT</string>
     <string name="hot">Hot</string>
     <string name="collection">Favorite</string>
     <string name="discount">Discount</string>
     <string name="price_des">Total price</string>
     <string name="loc_des">Location</string>
-    <string name="totalprice">Total price</string>
-    <string name="perset">/per set</string>
+    <string name="totalprice">SP</string>
+    <string name="perset">&#160;per suite</string>
     <string name="en_hint">Please enter the actual English name</string>
     <string name="select_ele">Please select filter criteria</string>
     <string name="referral">Referral</string>
@@ -659,7 +659,7 @@
     <string name="con_in">Company Information</string>
     <string name="upload_wechat">Upload WeChat QR code</string>
     <string name="cer_type">Certificate type</string>
-    <string name="my_invite_code">My invite QR code</string>
+    <string name="my_invite_code">My referral Code</string>
 
 </resources>
 

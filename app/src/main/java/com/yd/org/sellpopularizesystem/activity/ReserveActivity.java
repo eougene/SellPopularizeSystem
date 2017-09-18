@@ -349,6 +349,7 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.btEditCusInfo:
                     bun.putSerializable("cun", custome);
                     bun.putString("add", "completeinfo");
+                    Log.e("TAG", "customer_id: "+ custome.getCustomer_id());
                     ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
@@ -720,6 +721,8 @@ public class ReserveActivity extends BaseActivity {
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
                     CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
+                    Log.e("TAG", "onActivityResult: "+cun.getCustomer_id());
+                    //custome=cun;
                     tvReCus.setText(cun.getSurname() + getString(R.string.single_blank_space) + cun.getFirst_name());
                     tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
                             + cun.getProvince() + getString(R.string.single_blank_space)

@@ -383,8 +383,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
-                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$" +
-                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
+                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) +getString(R.string.single_blank_space)+ "$" +
+                getString(R.string.single_blank_space)+MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
                                 .split("\\.")[0]) + "k" + getString(R.string.perset));
 
             }
