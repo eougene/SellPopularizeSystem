@@ -181,6 +181,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
                                         public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
                                             for (String permission : deniedPermissionList) {
                                                 showToastCenter(PhotoPickerActivity.this, permission.toString());
+                                                return;
                                             }
                                         }
                                     });
