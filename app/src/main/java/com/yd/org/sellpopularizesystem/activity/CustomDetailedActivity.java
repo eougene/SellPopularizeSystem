@@ -426,9 +426,9 @@ public class CustomDetailedActivity extends BaseActivity {
             String[] country = countryList[i].split("\\*");
 
             String countryName = country[0].trim();
-            String countryNumber = country[1];
+            //String countryNumber = country[1];
             String countrySortKey = characterParserUtil.getSelling(countryName);
-            CountrySortModel countrySortModel = new CountrySortModel(countryName, countryNumber,
+            CountrySortModel countrySortModel = new CountrySortModel(countryName,
                     countrySortKey);
             String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
             if (sortLetter == null) {
