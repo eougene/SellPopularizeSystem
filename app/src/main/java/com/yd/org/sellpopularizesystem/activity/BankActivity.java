@@ -16,6 +16,9 @@ public class BankActivity extends BaseActivity {
     EditText bsbEd;
     private MyUserInfo myUserInfo;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +33,7 @@ public class BankActivity extends BaseActivity {
     @Override
     public void initView() {
         hideRightImagview();
-        setTitle("银行卡信息");
+        setTitle(getString(R.string.bank_info));
 
         myUserInfo = (MyUserInfo) getIntent().getSerializableExtra("userkey");
 
