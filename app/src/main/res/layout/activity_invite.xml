@@ -12,6 +12,7 @@
         android:id="@+id/mainRelat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/saveImage"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -22,7 +23,7 @@
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/invitedes"
             android:textColor="#303030"
-            android:textSize="@dimen/tv_size_20"
+            android:textSize="@dimen/tv_size_18"
             android:textStyle="bold"/>
 
         <TextView
@@ -33,29 +34,19 @@
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/recommendqr"
             android:textColor="#303030"
-            android:textSize="@dimen/tv_size_20"/>
+            android:textSize="@dimen/tv_size_18"/>
 
 
         <ImageView
             android:id="@+id/ivQr"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/padding_margin_100"
             android:layout_marginLeft="@dimen/padding_margin_50"
             android:layout_marginRight="@dimen/padding_margin_50"
             android:layout_marginTop="@dimen/padding_margin_30"
-            android:layout_weight="1"
             android:background="@color/search_edit_bac"/>
 
-        <TextView
-            android:id="@+id/tvDes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="130dp"
-            android:layout_marginTop="@dimen/padding_margin_20"
-            android:gravity="center"
-            android:text="@string/qrdes"
-            android:visibility="invisible"/>
     </LinearLayout>
 
     <TextView
