@@ -33,5 +33,9 @@ public class CountrySortModel extends CountryModel
 	{
 		super(name, number, countrySortKey);
 	}
+	public CountrySortModel(String name, String countrySortKey)
+	{
+		super(name, null, countrySortKey);
+	}
 	
 }
