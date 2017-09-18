@@ -1313,6 +1313,8 @@ public class CustomDetailedActivity extends BaseActivity {
                 });
 
 
+
+
     }
 
     private void setIsSalers() {
