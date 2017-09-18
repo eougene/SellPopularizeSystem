@@ -720,21 +720,21 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
-                    CustomBean.ResultBean cun = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
-                    Log.e("TAG", "onActivityResult: "+cun.getCustomer_id());
+                    custome = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
+                    Log.e("TAG", "onActivityResult: "+custome.getCustomer_id());
                     //custome=cun;
-                    tvReCus.setText(cun.getSurname() + getString(R.string.single_blank_space) + cun.getFirst_name());
-                    tvReCusAdd.setText(cun.getCountry() + getString(R.string.single_blank_space)
-                            + cun.getProvince() + getString(R.string.single_blank_space)
-                            + cun.getAddress() + getString(R.string.single_blank_space) + cun.getZip_code());
-                    customeId = cun.getCustomer_id() + "";
+                    tvReCus.setText(custome.getSurname() + getString(R.string.single_blank_space) + custome.getFirst_name());
+                    tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space)
+                            + custome.getProvince() + getString(R.string.single_blank_space)
+                            + custome.getAddress() + getString(R.string.single_blank_space) + custome.getZip_code());
+                    customeId = custome.getCustomer_id() + "";
 
                     //判断用户信息是否完整
-                    if (!judgeCusInfo(cun)) {
+                    if (!judgeCusInfo(custome)) {
                         tvReCus.setTextColor(Color.RED);
                         Bundle bundle = new Bundle();
                         bundle.putString("add", "completeinfo");
-                        bundle.putSerializable("cun", cun);
+                        bundle.putSerializable("cun", custome);
                         ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bundle);
                     } else {
                         tvReCus.setTextColor(Color.BLUE);

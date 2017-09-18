@@ -106,7 +106,7 @@
     <string name="sale_pro">Sales Promotion</string>
     <string name="message">News</string>
     <string name="recharge">Recharge</string>
-    <string name="visit">Visit History</string>
+    <string name="visit">Visit</string>
     <string name="yuyue">Appointment</string>
     <string name="yuyuerecord">EOI History</string>
     <string name="expandre">Promotion History</string>
@@ -138,7 +138,7 @@
     <string name="moenydes">Commission/tax/combined</string>
     <string name="totalnum">ombined:0.00/0.00/0.00</string>
     <string name="noeoi">Please EOI firstly by click the recharge button on the top right</string>
-    <string name="headerphoto">Photo</string>
+    <string name="headerphoto">Portrait</string>
     <string name="firstname">Surname</string>
     <string name="middlename">Middle name</string>
     <string name="lastname">First Name</string>
@@ -169,8 +169,8 @@
     <string name="relationphone">Contact Mobile</string>
     <string name="eoi">EOI</string>
     <string name="date">Appointment</string>
-    <string name="promoterecord">Promotion History</string>
-    <string name="purchasehouserecord">Purchase history</string>
+    <string name="promoterecord">Promotion</string>
+    <string name="purchasehouserecord">Purchase</string>
     <string name="skip">Ignore</string>
     <string name="area">Area</string>
     <string name="nolimit">Unlimitation</string>
@@ -199,14 +199,14 @@
     <string name="productdes">Good room and tide wait for no man, come and grab the room</string>
     <string name="introduce">The Introduction</string>
     <string name="details">Details</string>
-    <string name="hashsalenum">Sold Properties</string>
+    <string name="hashsalenum">Completed</string>
     <string name="firbnum">FIRB Limitation:</string>
     <string name="eoiopen">EOI Opening Time:</string>
     <string name="starttime">1970/01/01</string>
     <string name="deadtime">Close Sale Date:</string>
     <string name="closedate">Settlement Date:</string>
-    <string name="expected_date_of_launch">Expected date of launch:</string>
-    <string name="date_of_final_launch">Date of final launch:</string>
+    <string name="expected_date_of_launch">Sunset Date:</string>
+    <string name="date_of_final_launch">Est.Settlement Date:</string>
     <string name="memo">Preview Memo:</string>
     <string name="projectpropety">Project Attribute:</string>
     <string name="supplier">Vendor:</string>
@@ -229,7 +229,7 @@
     <string name="floortype">Floor Type</string>
     <string name="floor">Level</string>
     <string name="bathroomnum">Ensuite</string>
-    <string name="direction">Toward</string>
+    <string name="direction">Aspect</string>
     <string name="areanum">Internal Area</string>
     <string name="outsidearea">External Area</string>
     <string name="doublezero">0.00</string>
@@ -442,7 +442,7 @@
     <string name="sales_techniques">Sales techniques</string>
     <string name="exit_scale">Are you sure you want to end the promotion?</string>
     <string name="playplatform">Play the platform</string>
-    <string name="successlaw">Success principle</string>
+    <string name="successlaw">Way to Success</string>
     <string name="checkdes">&#160;assessment is not completed</string>
     <string name="checkdes1">you have&#160;</string>
     <string name="studymaterialdes">&#160;learning materials,</string>
@@ -462,7 +462,7 @@
     <string name="register">Register</string>
     <string name="forget_password">Forgot password?</string>
     <string name="check_wechat_install">Check to see if WeChat is installed</string>
-    <string name="issalingnum">The number of saling :</string>
+    <string name="issalingnum"> For saling :</string>
     <string name="login_toas">Your account is logged on to another device</string>
     <string name="hint_toas">Prompt</string>
     <string name="home_reminder">Your account is logged on to another device. Please verify the situation to ensure security!</string>
@@ -480,7 +480,7 @@
     <string name="cus_address">Customer address</string>
     <string name="landarea">Land area</string>
     <string name="saletime">Selling time:</string>
-    <string name="saledate">Sale date:</string>
+    <string name="saledate">For Sale Date:</string>
     <string name="complete_cusinfo">Customer information is incomplete, please improve customer information</string>
     <string name="complete_user">Improve customer information</string>
     <string name="register_hint">User name|Phone number|mailbox</string>
@@ -512,7 +512,7 @@
     <string name="more">View more</string>
     <string name="order_id">Order number</string>
     <string name="order_detail">Order details</string>
-    <string name="exchange_fee">Exchange contract security</string>
+    <string name="exchange_fee">Exchange deposit:</string>
     <string name="select_birth">The selection time must not exceed the current time</string>
     <string name="firstname_ensure">Surname must begin with a letter</string>
 
@@ -585,16 +585,16 @@
     <string name="separated">separated by a comma</string>
     <string name="Australian">Australian</string>
     <string name="without_full_amount">10% of the house fund without full payment</string>
-    <string name="invitedes">Placeholders invite friends to receive bonus rewards and invite more!</string>
-    <string name="recommendqr">Recommendation code</string>
+    <string name="invitedes">Invite friends to receive bonus,the more friends you invited,the more bonus you would receive!</string>
+    <string name="recommendqr">Referral code</string>
     <string name="qrdes">Invite friends to scan two-dimensional code to download APP\n TA can obtain exclusive reward, you can get 5% of the amount paid by the order as a bonus reward</string>
     <string name="error_">Are you sure you want to give up the order?This operation cannot be revoked!</string>
     <string name="hintpass">Enter the password for 6 to 18 digits or letters</string>
     <string name="regsterid">Please enter the email accounts</string>
     <string name="invite_code">Invite qr code</string>
-    <string name="myinfo">My information</string>
+    <string name="myinfo">My Profile</string>
     <string name="remark_certificate">Note the matters</string>
-    <string name="codeerror">Recommended code cannot be empty</string>
+    <string name="codeerror">Referral code cannot be empty</string>
     <string name="surenameerror">Please fill in real name</string>
     <string name="password">Password</string>
     <string name="emailemptyerror">Email cannot be empty</string>
@@ -614,7 +614,7 @@
     <string name="cardnum">Card Number</string>
     <string name="cardholder">Cardholder</string>
     <string name="bankhint">Please fill in my bank card information</string>
-    <string name="mycertificate">My Certificate</string>
+    <string name="mycertificate">Certificate</string>
     <string name="besale">Become Sales</string>
     <string name="completel_add">Please complete my address</string>
     <string name="complete_bank">Please improve the card information</string>
@@ -623,7 +623,7 @@
     <string name="companyname_empty">The company name cannot be empty</string>
     <string name="telhint">Please enter the phone number</string>
     <string name="myaddress">My address</string>
-    <string name="bankacc">The bank account</string>
+    <string name="bankacc">Bank account</string>
     <string name="inputconame">Please enter the name of the company</string>
     <string name="xingming">Name</string>
     <string name="company_add">The company address</string>
@@ -639,12 +639,12 @@
     <string name="discount">Discount</string>
     <string name="price_des">Total price</string>
     <string name="loc_des">Location</string>
-    <string name="totalprice">SP</string>
+    <string name="totalprice">SP&#160;</string>
     <string name="perset">&#160;per suite</string>
     <string name="en_hint">Please enter the actual English name</string>
     <string name="select_ele">Please select filter criteria</string>
     <string name="referral">Referral</string>
-    <string name="mycomp">Personal company</string>
+    <string name="mycomp">Company</string>
     <string name="image">Picture</string>
     <string name="all_image">All images</string>
     <string name="preview">Preview</string>
@@ -659,7 +659,7 @@
     <string name="con_in">Company Information</string>
     <string name="upload_wechat">Upload WeChat QR code</string>
     <string name="cer_type">Certificate type</string>
-    <string name="my_invite_code">My referral Code</string>
+    <string name="my_invite_code">&#160;&#160;&#160;My referral Code</string>
 
 </resources>
 

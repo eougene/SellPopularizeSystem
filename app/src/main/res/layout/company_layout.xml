@@ -364,7 +364,7 @@
                 android:layout_centerVertical="true"
                 android:drawableRight="@mipmap/right_sm"
                 android:src="@mipmap/settingbt"
-                android:text="公司地址"/>
+                android:text="@string/company_add"/>
 
             <View
                 android:id="@+id/v"
