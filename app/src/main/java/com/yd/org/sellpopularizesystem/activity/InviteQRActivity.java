@@ -51,8 +51,6 @@ public class InviteQRActivity extends BaseActivity {
         saveImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 //截取真个屏幕
                 //View decorView = getWindow().getDecorView();
                 //截取部分view
