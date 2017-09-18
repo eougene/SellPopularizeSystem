@@ -150,7 +150,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity
             android:name=".activity.ScaleDeltaileActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity

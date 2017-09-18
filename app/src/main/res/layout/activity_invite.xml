@@ -22,6 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/padding_margin_30"
             android:text="@string/invitedes"
+            android:gravity="center"
             android:textColor="#303030"
             android:textSize="@dimen/tv_size_18"
             android:textStyle="bold"/>

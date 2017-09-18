@@ -24,12 +24,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\prodet_lvitem_popwindow.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lawyer_listview.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\lawyer_listview.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_promotion_record.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_promotion_record.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_base.xml",
@@ -64,12 +64,12 @@
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\activity_investigation.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item2.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item2.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
         "source": "C:\\Users\\hejin\\.android\\build-cache\\5917a6776cb6208282ac9b68d880c6b83e86d741\\output\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item2.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item2.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\team_listview_item_layout.xml",
@@ -116,16 +116,16 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notific.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_notific.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\product_listview_item_sublay.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\product_listview_item_sublay.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\reserve_activity_setphoto_popwindow.xml",
-        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\reserve_activity_setphoto_popwindow.xml"
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_notific.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\fragment_notific.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\coogame_country_item.xml",
@@ -160,12 +160,12 @@
         "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
-        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
-    },
-    {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\map_maker_view.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\map_maker_view.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\hejin\\.android\\build-cache\\2e7bbcd806d91a4f950480fbba4549702142d6d0\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_home_activiyt.xml",
@@ -610,6 +610,10 @@
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\doa_paymetod_pop.xml",
         "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\doa_paymetod_pop.xml"
+    },
+    {
+        "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_item_layout.xml",
+        "source": "E:\\SellPopularizeSystem\\app\\src\\main\\res\\layout\\select_item_layout.xml"
     },
     {
         "merged": "E:\\SellPopularizeSystem\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",

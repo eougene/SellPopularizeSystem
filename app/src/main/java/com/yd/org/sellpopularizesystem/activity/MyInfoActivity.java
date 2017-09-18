@@ -262,6 +262,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         //头像
         if (!TextUtils.isEmpty(imagePath)) {
+            Log.e("TAG", "updateUserInfo: "+imagePath);
             httpParams.put("head_img", new File(imagePath), mUIProgressResponseCallBack);
         }
 

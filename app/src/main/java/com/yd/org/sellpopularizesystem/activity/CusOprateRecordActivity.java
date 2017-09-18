@@ -33,6 +33,9 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.listener.CustomListener;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
@@ -101,8 +104,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private Button btUnknown, btSure, btFalse;
     private String eoi_ID = "", payMe = "";
     private int type = 0;
-
-
+    private ArrayList<String> imagePaths = new ArrayList<>();
+    private static final int REQUEST_CAMERA_CODE = 10;
 
     @Override
     protected int setContentView() {
@@ -145,17 +148,21 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             setRightTitle(R.string.recharge, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    eoiDialog = new Dialog(CusOprateRecordActivity.this);
-                    eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                    eoiDialog.setContentView(R.layout.eoi_operate_view);
-                    Window dialogWindow = eoiDialog.getWindow();
-                    WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                    lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
-                    dialogWindow.setAttributes(lp);
-                    dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                    dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
-                    eoiDialog.show();
-                    initDialogViews(eoiDialog);
+                    if (eoiDialog==null){
+                        eoiDialog = new Dialog(CusOprateRecordActivity.this);
+                        eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        eoiDialog.setContentView(R.layout.eoi_operate_view);
+                        Window dialogWindow = eoiDialog.getWindow();
+                        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+                        lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
+                        dialogWindow.setAttributes(lp);
+                        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+                        initDialogViews(eoiDialog);
+                        eoiDialog.show();
+                    }else {
+                        eoiDialog.show();
+                    }
                 }
             });
 
@@ -330,29 +337,14 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 case R.id.ivCertificate:
                     //initOptionDialog();
                     //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                    if (Build.VERSION.SDK_INT < 23) {
-                        //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                        takePhoto();
-                    } else {
-                        requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                                        Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                new PermissionListener() {
-                                    @Override
-                                    public void onGranted() {// 全部授权成功回调
-                                        // 执行具体业务
-                                        //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
-                                        takePhoto();
-                                    }
 
-                                    @Override
-                                    public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                        for (String permission : deniedPermissionList) {
-                                            ToasShow.showToastCenter(CusOprateRecordActivity.this, permission.toString());
-                                        }
-                                    }
-                                });
-                    }
+                        PhotoPickerIntent intent = new PhotoPickerIntent(CusOprateRecordActivity.this);
+                        intent.setSelectModel(SelectModel.SINGLE);
+                        intent.setShowCarema(true); // 是否显示拍照
+                        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
                     //BitmapUtil.gotoSysPic(CusOprateRecordActivity.this,ExtraName.ALBUM_PICTURE);
                     break;
                 //提交eoi
@@ -1021,7 +1013,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 //拍照上传
-                case ExtraName.TAKE_PICTURE:
+                /*case ExtraName.TAKE_PICTURE:
                     try {
                         if (null != data && null != data.getData()) {
                             picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
@@ -1044,9 +1036,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             submitEoi_01();
                         }
 
-
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }*/
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    loadAdpater(list);
+                    //重新上传凭证
+                    if (type == 1) {
+                        submitEoi_01();
                     }
                     // Log.e("imgUri2", "onActivityResult: "+imgUri+"\n"+imgUri.getPath()+"\n"+data.getData()+"\n"+data.getData().getPath());
                     break;
@@ -1061,6 +1059,23 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     Picasso.with(this).load(selectedPhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
             }
         }
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths != null && imagePaths.size() > 0) {
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")) {
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        picPath = imagePaths.get(0);
+        if (type==0){
+            Picasso.with(CusOprateRecordActivity.this).load("file://" + picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight())
+                    .centerInside().into(ivCertificate);
+        }
+
     }
 
     @Override

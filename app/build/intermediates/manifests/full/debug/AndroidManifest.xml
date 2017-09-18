@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yd.org.sellpopularizesystem"
-    android:versionCode="20170820"
-    android:versionName="1.7.0" >
+    android:versionCode="20170913"
+    android:versionName="1.9.0" >
 
     <uses-sdk
         android:minSdkVersion="19"
@@ -159,7 +159,7 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
             android:name="com.yd.org.sellpopularizesystem.activity.ScaleDeltaileActivity"
-            android:configChanges="orientation|keyboardHidden"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity
