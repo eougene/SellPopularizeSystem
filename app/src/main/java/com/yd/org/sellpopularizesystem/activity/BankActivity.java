@@ -16,6 +16,9 @@ public class BankActivity extends BaseActivity {
     EditText bsbEd;
     private MyUserInfo myUserInfo;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
