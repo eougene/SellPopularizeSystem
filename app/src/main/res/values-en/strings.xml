@@ -660,6 +660,7 @@
     <string name="upload_wechat">Upload WeChat QR code</string>
     <string name="cer_type">Certificate type</string>
     <string name="my_invite_code">My referral Code</string>
+    <string name="bank_info">Bank Card Information</string>
 
 </resources>
 
