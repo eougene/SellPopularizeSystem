@@ -1,10 +1,8 @@
 package com.lidong.photopicker;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -13,10 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
@@ -33,8 +28,9 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.lidong.photopicker.intent.PhotoPreviewIntent;
-import com.lidong.photopicker.widget.ActivityCollector;
-import com.lidong.photopicker.widget.PermissionListener;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
 
 import java.io.File;
 import java.io.IOException;
@@ -110,10 +106,7 @@ public class PhotoPickerActivity extends AppCompatActivity {
 
     private boolean hasFolderGened = false;
     private boolean mIsShowCamera = false;
-    /**
-     * 回调接口实例
-     */
-    private static PermissionListener mlistener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,29 +156,24 @@ public class PhotoPickerActivity extends AppCompatActivity {
                             }
                         }
 
-                        // 选择相机
-                        if (Build.VERSION.SDK_INT < 23) {
-                            showCameraAction();
-                        } else {
-                            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                    new PermissionListener() {
-                                        @Override
-                                        public void onGranted() {// 全部授权成功回调
-                                            // 执行具体业务
-                                            showCameraAction();
-                                        }
 
-                                        @Override
-                                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                            for (String permission : deniedPermissionList) {
-                                                showToastCenter(PhotoPickerActivity.this, permission.toString());
-                                                return;
-                                            }
-                                        }
-                                    });
-                        }
+                        Acp.getInstance(PhotoPickerActivity.this).request(new AcpOptions.Builder().setPermissions(Manifest.permission.CAMERA
+                                ,Manifest.permission.WRITE_EXTERNAL_STORAGE).build(),
+                                new AcpListener() {
+                                    @Override
+                                    public void onGranted() {
+                                        //注意：不用用带参的构造方法 否则 android studio 环境出错，提示要你检查授权
+                                        Log.e("onGranted**", "onGranted:" + Build.VERSION.SDK_INT);
+                                        showCameraAction();
+
+                                    }
+
+                                    @Override
+                                    public void onDenied(List<String> permissions) {
+                                        Log.e("onDenied**", "onGranted:" + Build.VERSION.SDK_INT);
+                                        showToastCenter(PhotoPickerActivity.this, permissions.toString() + "权限拒绝");
+                                    }
+                                });
 
                     } else {
                         // 正常操作
@@ -642,63 +630,6 @@ public class PhotoPickerActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         captureManager.onRestoreInstanceState(savedInstanceState);
         super.onRestoreInstanceState(savedInstanceState);
-    }
-
-    /**
-     * 运行时权限执行方法（static修饰的必要性--在非Activity类中也可以调用）
-     *
-     * @param permissions 需要授权的权限
-     * @param mlistener   接口回调实例（运行时权限处理结果）
-     */
-    public static void requestPermissions(String[] permissions, PermissionListener mlistener) {
-
-        // 获得栈顶Activity作为授权时的参数
-        Activity topActivity = ActivityCollector.getTopActivity();
-        if (topActivity == null) {
-            return;
-        }
-
-        List<String> unGrantedPermissionsList = new ArrayList<String>(); // 未授权权限的集合
-
-        for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(topActivity, permission) != PackageManager.PERMISSION_GRANTED) {
-                unGrantedPermissionsList.add(permission);
-            }
-        }
-        // 授权业务
-        if (!unGrantedPermissionsList.isEmpty()) {
-            ActivityCompat.requestPermissions(topActivity, unGrantedPermissionsList.
-                    toArray(new String[unGrantedPermissionsList.size()]), 1);
-        } else { // 为空说明已全部授权，执行后续业务
-            // TODO Something
-            mlistener.onGranted();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 1:
-                if (grantResults.length > 0) {
-                    List<String> deniedPermissionList = new ArrayList<>();
-                    for (int i = 0; i < grantResults.length; i++) {
-                        int grantResult = grantResults[i];
-                        String permission = permissions[i];
-                        if (grantResult != PackageManager.PERMISSION_GRANTED) {
-                            deniedPermissionList.add(permission);
-                        }
-                    }
-                    if (deniedPermissionList.isEmpty()) {
-                        mlistener.onGranted();
-                    } else {
-                        mlistener.onDenied(deniedPermissionList);
-                    }
-                }
-                break;
-            default:
-                break;
-        }
     }
 
 
