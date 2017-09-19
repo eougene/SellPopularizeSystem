@@ -29,19 +29,15 @@ public class Contants {
     public static final String REGISTER_REFER = DOMAIN + "/index.php/appv2/Login/register_refer";
 
     //注册销售
-    public static final String REGISTER_USER= DOMAIN + "/index.php/appv2/login/register_user";
+    public static final String REGISTER_USER = DOMAIN + "/index.php/appv2/login/register_user";
     //我的信息
     public static final String USER_INFO = DOMAIN + "/index.php/appv2/user/user_info";
 
     //更新我的信息
-    public static final String UPDATE_USER= DOMAIN + "/index.php/appv2/user/update_user_info";
+    public static final String UPDATE_USER = DOMAIN + "/index.php/appv2/user/update_user_info";
 
     //我的要请吗
-    public static final String REFER= DOMAIN + "/index.php/appv2/user/refer";
-
-
-
-
+    public static final String REFER = DOMAIN + "/index.php/appv2/user/refer";
 
 
     //修改密码
@@ -206,7 +202,7 @@ public class Contants {
     public static final String UPLOAD_LICENCE = DOMAIN + "/index.php/appv2/user/upload_licence";
 
     //升级成为销售
-    public static final String  Upgrade = DOMAIN + "/index.php/appv2/user/upgrade";
+    public static final String Upgrade = DOMAIN + "/index.php/appv2/user/upgrade";
     //获取证书
     public static final String LICENCE_INFO = DOMAIN + "/index.php/appv2/user/licence_info";
     //微信相关
