@@ -251,4 +251,22 @@ public class SharedPreferencesHelps {
 
 
 
+
+    /**
+     * 保存销售推荐人id
+     *
+     * @param ImagePath
+     */
+    public synchronized static final void setImagePath(String ImagePath) {
+        getPreferences().edit().putString("ImagePath", ImagePath).commit();
+    }
+
+
+
+    public synchronized static final String getImagePath() {
+        return getPreferences().getString("ImagePath", "");
+    }
+
+
+
 }
