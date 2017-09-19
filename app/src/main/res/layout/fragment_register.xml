@@ -350,7 +350,7 @@
                     android:layout_weight="1"
                     android:background="@null"
                     android:hint="@string/hintpass"
-                    android:imeOptions="actionDone"
+                    android:imeOptions="actionNext"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:padding="@dimen/padding_margin_20"
@@ -376,6 +376,47 @@
                 android:layout_height="0.5dp"
                 android:layout_marginLeft="@dimen/padding_margin_10"
                 android:background="@color/shallow_gray"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@mipmap/xinghao"
+                    android:padding="@dimen/padding_margin_10"
+                    android:text="@string/sure_password"/>
+
+                <EditText
+                    android:id="@+id/surePasswordEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="@string/sure_password_en"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:padding="@dimen/padding_margin_20"
+                    android:singleLine="true"
+                    android:textColor="@color/gray"
+                    android:textColorHint="@color/setting_bac"
+                    android:textSize="@dimen/tv_size_15"/>
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:background="@color/shallow_gray"/>
+
 
 
             <TextView
