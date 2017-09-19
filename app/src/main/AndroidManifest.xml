@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READER_EXTERNAL_STORAGE"/>
     <!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <!-- 获取运营商信息，用于支持提供运营商信息相关的接口 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位 -->
@@ -84,6 +85,7 @@
     <application
         android:name=".application.BaseApplication"
         android:allowBackup="true"
+        android:exported="true"
         android:icon="@mipmap/app"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -357,10 +359,12 @@
 
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
-            android:theme="@style/PhotoPickerTheme"
-            android:configChanges="orientation|screenSize"/>
-        <activity android:name="com.lidong.photopicker.PhotoPreviewActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/PhotoPickerTheme"/>
+        <activity
+            android:name="com.lidong.photopicker.PhotoPreviewActivity"
+            android:theme="@style/PhotoPickerTheme"/>
+
     </application>
 
 </manifest>
