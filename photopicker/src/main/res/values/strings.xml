@@ -13,4 +13,12 @@
     <string name="yes">确定</string>
     <string name="cancel">取消</string>
     <string name="undo">撤消</string>
+
+
+
+    <string name="DEF_RATIONAL_MESSAGE">此功能需要您授权，否则将不能正常使用</string>
+    <string name="DEF_DENIED_MESSAGE">您拒绝权限申请，此功能将不能正常使用，您可以去设置页面重新授权</string>
+    <string name="DEF_DENIED_CLOSE_BTN_TEXT">关闭</string>
+    <string name="DEF_DENIED_SETTINGS_BTN_TEXT">设置权限</string>
+    <string name="DEF_RATIONAL_BTN_TEXT">我知道了</string>
 </resources>
