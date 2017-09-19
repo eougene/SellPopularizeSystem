@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,14 +16,19 @@ import android.widget.RelativeLayout;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ComPanyActivity extends BaseActivity {
 
@@ -33,7 +39,7 @@ public class ComPanyActivity extends BaseActivity {
     private MyUserInfo myUserInfo;
     private String imagePath = "";
     private static final int REQUEST_CAMERA_CODE = 10;
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
 
     private View.OnClickListener mOnClick = new View.OnClickListener() {
         @Override
@@ -51,12 +57,41 @@ public class ComPanyActivity extends BaseActivity {
 
                 //公司logo
                 case R.id.compaanyRelative:
-                    PhotoPickerIntent intent = new PhotoPickerIntent(ComPanyActivity.this);
-                    intent.setSelectModel(SelectModel.SINGLE);
-                    intent.setShowCarema(true); // 是否显示拍照
-                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+
+                    Acp.getInstance(ComPanyActivity.this).request(new AcpOptions.Builder()
+                                    .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                            , Manifest.permission.READ_EXTERNAL_STORAGE
+                                    )
+                /*以下为自定义提示语、按钮文字
+                .setDeniedMessage()
+                .setDeniedCloseBtn()
+                .setDeniedSettingBtn()
+                .setRationalMessage()
+                .setRationalBtn()*/
+                                    .build(),
+                            new AcpListener() {
+                                @Override
+                                public void onGranted() {
+
+                                    PhotoPickerIntent intent = new PhotoPickerIntent(ComPanyActivity.this);
+                                    intent.setSelectModel(SelectModel.SINGLE);
+                                    intent.setShowCarema(true); // 是否显示拍照
+                                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+                                }
+
+                                @Override
+                                public void onDenied(List<String> permissions) {
+                                    ToasShow.showToastCenter(ComPanyActivity.this,permissions.toString() + "权限拒绝");
+                                }
+                            });
+
+
+
+
                     break;
 
             }
@@ -68,6 +103,7 @@ public class ComPanyActivity extends BaseActivity {
     protected int setContentView() {
         return R.layout.activity_com_pany;
     }
+
 
     @Override
     public void initView() {
@@ -85,6 +121,7 @@ public class ComPanyActivity extends BaseActivity {
         setInfo(myUserInfo);
 
     }
+
 
     private void setInfo(MyUserInfo myUserInfo) {
 
@@ -126,8 +163,6 @@ public class ComPanyActivity extends BaseActivity {
         BaseApplication.getInstance().myUserInfo.getResult().setSales_logo(imagePath);
 
 
-
-
     }
 
     @Override
@@ -142,10 +177,10 @@ public class ComPanyActivity extends BaseActivity {
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_CAMERA_CODE:
-                ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
-                //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
-                Log.d("TAG", "list: " + "list = [" + list.size());
-                loadAdpater(list);
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    Log.d("TAG", "list: " + "list = [" + list.size());
+                    loadAdpater(list);
                     break;
 
             }
@@ -155,17 +190,17 @@ public class ComPanyActivity extends BaseActivity {
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        imagePath=imagePaths.get(0);
+        imagePath = imagePaths.get(0);
 
-        Picasso.with(ComPanyActivity.this).load("file://"+imagePath).fit().into(logoImageView);
+        Picasso.with(ComPanyActivity.this).load("file://" + imagePath).fit().into(logoImageView);
 
     }
 }

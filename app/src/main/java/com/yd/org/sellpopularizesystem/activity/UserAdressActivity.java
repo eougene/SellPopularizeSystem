@@ -130,7 +130,7 @@ public class UserAdressActivity extends BaseActivity {
             //公司地址
         } else {
             //国家
-            userAdressTv.setText((null == myUserInfo.getResult().getCompany_country() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_country())) ? getResources().getString(R.string.Australian)  : myUserInfo.getResult().getCompany_country());
+            userAdressTv.setText((null == myUserInfo.getResult().getCompany_country() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_country())) ? getResources().getString(R.string.Australian) : myUserInfo.getResult().getCompany_country());
             //单元号
             userUnitNumberEd.setText((null == myUserInfo.getResult().getCompany_unit_number() || TextUtils.isEmpty(myUserInfo.getResult().getCompany_unit_number())) ? "" : myUserInfo.getResult().getCompany_unit_number());
             //街道号码
@@ -193,9 +193,6 @@ public class UserAdressActivity extends BaseActivity {
         } else {
 
 
-
-
-
             //国际
             country = userAdressTv.getText().toString().trim();
             BaseApplication.getInstance().myUserInfo.getResult().setCompany_country(country);
@@ -231,7 +228,6 @@ public class UserAdressActivity extends BaseActivity {
             //邮编
             postcode = userPostcodeEd.getText().toString().trim();
             BaseApplication.getInstance().myUserInfo.getResult().setCompany_postcode(postcode);
-
 
 
         }
@@ -342,14 +338,13 @@ public class UserAdressActivity extends BaseActivity {
 
 
         String[] countryList = getResources().getStringArray(R.array.country_code_list_ch);
-
         for (int i = 0, length = countryList.length; i < length; i++) {
             String[] country = countryList[i].split("\\*");
 
             String countryName = country[0].trim();
-            String countryNumber = country[1];
+            //String countryNumber = country[1];
             String countrySortKey = characterParserUtil.getSelling(countryName);
-            CountrySortModel countrySortModel = new CountrySortModel(countryName, countryNumber,
+            CountrySortModel countrySortModel = new CountrySortModel(countryName,
                     countrySortKey);
             String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
             if (sortLetter == null) {
@@ -359,6 +354,7 @@ public class UserAdressActivity extends BaseActivity {
             countrySortModel.sortLetters = sortLetter;
             mAllCountryList.add(countrySortModel);
         }
+
 
         Collections.sort(mAllCountryList, pinyinComparator);
         adapter = new CountrySortAdapter(UserAdressActivity.this, mAllCountryList);

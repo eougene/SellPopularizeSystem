@@ -4,8 +4,6 @@ import android.Manifest;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -36,6 +34,9 @@ import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
@@ -66,7 +67,6 @@ import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -148,7 +148,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             setRightTitle(R.string.recharge, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (eoiDialog==null){
+                    if (eoiDialog == null) {
                         eoiDialog = new Dialog(CusOprateRecordActivity.this);
                         eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                         eoiDialog.setContentView(R.layout.eoi_operate_view);
@@ -160,7 +160,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
                         initDialogViews(eoiDialog);
                         eoiDialog.show();
-                    }else {
+                    } else {
                         eoiDialog.show();
                     }
                 }
@@ -335,17 +335,34 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     payment_method = "7";
                     break;
                 case R.id.ivCertificate:
-                    //initOptionDialog();
-                    //BitmapUtil.startImageCapture(CusOprateRecordActivity.this, ExtraName.TAKE_PICTURE);
+                    Acp.getInstance(CusOprateRecordActivity.this).request(new AcpOptions.Builder()
+                                    .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                            , Manifest.permission.READ_EXTERNAL_STORAGE
+                                    )
+                /*以下为自定义提示语、按钮文字
+                .setDeniedMessage()
+                .setDeniedCloseBtn()
+                .setDeniedSettingBtn()
+                .setRationalMessage()
+                .setRationalBtn()*/
+                                    .build(),
+                            new AcpListener() {
+                                @Override
+                                public void onGranted() {
 
-                        PhotoPickerIntent intent = new PhotoPickerIntent(CusOprateRecordActivity.this);
-                        intent.setSelectModel(SelectModel.SINGLE);
-                        intent.setShowCarema(true); // 是否显示拍照
-                        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-                        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-                        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+                                    PhotoPickerIntent intent = new PhotoPickerIntent(CusOprateRecordActivity.this);
+                                    intent.setSelectModel(SelectModel.SINGLE);
+                                    intent.setShowCarema(true); // 是否显示拍照
+                                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+                                }
 
-                    //BitmapUtil.gotoSysPic(CusOprateRecordActivity.this,ExtraName.ALBUM_PICTURE);
+                                @Override
+                                public void onDenied(List<String> permissions) {
+                                    ToasShow.showToastCenter(CusOprateRecordActivity.this, permissions.toString() + "权限拒绝");
+                                }
+                            });
                     break;
                 //提交eoi
                 case R.id.tvEoiSubmit:
@@ -458,7 +475,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 int progress = (int) (bytesRead * 100 / contentLength);
 
 
-
             }
         };
         HttpParams httpParams = new HttpParams();
@@ -510,7 +526,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
                 int progress = (int) (bytesRead * 100 / contentLength);
-
 
 
             }
@@ -575,7 +590,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName()+"1")
+                .cacheKey(this.getClass().getSimpleName() + "1")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
@@ -720,23 +735,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         if (Build.VERSION.SDK_INT < 23) {
                             takePhoto();
                         } else {
-                            requestPermissions(new String[]{Manifest.permission.CAMERA,
-                                            Manifest.permission.READ_EXTERNAL_STORAGE,
-                                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                                    new PermissionListener() {
-                                        @Override
-                                        public void onGranted() {// 全部授权成功回调
-                                            // 执行具体业务
-                                            takePhoto();
-                                        }
-
-                                        @Override
-                                        public void onDenied(List<String> deniedPermissionList) {// 部分或全部未授权回调
-                                            for (String permission : deniedPermissionList) {
-                                                ToasShow.showToastCenter(CusOprateRecordActivity.this, permission.toString());
-                                            }
-                                        }
-                                    });
+                            takePhoto();
                         }
 
 
@@ -778,7 +777,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
         EasyHttp.get(Contants.VISIT_RECORD_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName()+"2")
+                .cacheKey(this.getClass().getSimpleName() + "2")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -952,7 +951,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getReservertData(int page, final boolean isRel) {
         EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName()+"3")
+                .cacheKey(this.getClass().getSimpleName() + "3")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -1071,7 +1070,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         paths.add("000000");
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
-        if (type==0){
+        if (type == 0) {
             Picasso.with(CusOprateRecordActivity.this).load("file://" + picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight())
                     .centerInside().into(ivCertificate);
         }

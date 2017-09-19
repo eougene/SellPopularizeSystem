@@ -41,6 +41,9 @@ import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
 import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CountrySortAdapter;
@@ -1313,8 +1316,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 });
 
 
-
-
     }
 
     private void setIsSalers() {
@@ -1657,12 +1658,38 @@ public class CustomDetailedActivity extends BaseActivity {
             switch (v.getId()) {
                 case R.id.photoButton:
                     myPopupwindow.dismiss();
-                    PhotoPickerIntent intent = new PhotoPickerIntent(CustomDetailedActivity.this);
-                    intent.setSelectModel(SelectModel.SINGLE);
-                    intent.setShowCarema(true); // 是否显示拍照
-                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+                    Acp.getInstance(CustomDetailedActivity.this).request(new AcpOptions.Builder()
+                                    .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                            , Manifest.permission.READ_EXTERNAL_STORAGE
+                                    )
+                /*以下为自定义提示语、按钮文字
+                .setDeniedMessage()
+                .setDeniedCloseBtn()
+                .setDeniedSettingBtn()
+                .setRationalMessage()
+                .setRationalBtn()*/
+                                    .build(),
+                            new AcpListener() {
+                                @Override
+                                public void onGranted() {
+                                    PhotoPickerIntent intent = new PhotoPickerIntent(CustomDetailedActivity.this);
+                                    intent.setSelectModel(SelectModel.SINGLE);
+                                    intent.setShowCarema(true); // 是否显示拍照
+                                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+
+                                }
+
+                                @Override
+                                public void onDenied(List<String> permissions) {
+                                    ToasShow.showToastCenter(CustomDetailedActivity.this, permissions.toString() + "权限拒绝");
+                                }
+                            });
+
+
                     break;
 
                 case R.id.cancelButton:

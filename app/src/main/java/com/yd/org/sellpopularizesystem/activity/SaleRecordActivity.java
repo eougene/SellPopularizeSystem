@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.SaleRecordAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
@@ -49,7 +53,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private String flag, picPath;
     private SaleOrderBean.ResultBean rBean;
     private static final int REQUEST_CAMERA_CODE = 10;
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
 
     public Handler handler = new Handler() {
         @Override
@@ -74,8 +78,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         ptrlSaleRecord.setOnRefreshListener(this);
         //加载数据
         getSaleData(page, true);
-
-
 
 
     }
@@ -105,7 +107,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("onSuccess","onSuccess:"+json);
+                        Log.e("onSuccess", "onSuccess:" + json);
 
                         closeDialog();
                         parseJson(json, isRefresh);
@@ -145,13 +147,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             lvSaleRecord.setAdapter(saleAdapter);
 
 
-
-
-
-
-
         }
-       // ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        // ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         saleAdapter.addMore(sobRbData);
 
         locatedOrderIdPos();
@@ -173,12 +170,37 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     public void startPhotos(SaleOrderBean.ResultBean resultBeans, String type) {
         rBean = resultBeans;
         flag = type;
-        PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
-        intent.setSelectModel(SelectModel.SINGLE);
-        intent.setShowCarema(true); // 是否显示拍照
-        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+
+        Acp.getInstance(SaleRecordActivity.this).request(new AcpOptions.Builder()
+                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                , Manifest.permission.READ_EXTERNAL_STORAGE
+                        )
+                /*以下为自定义提示语、按钮文字
+                .setDeniedMessage()
+                .setDeniedCloseBtn()
+                .setDeniedSettingBtn()
+                .setRationalMessage()
+                .setRationalBtn()*/
+                        .build(),
+                new AcpListener() {
+                    @Override
+                    public void onGranted() {
+                        PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
+                        intent.setSelectModel(SelectModel.SINGLE);
+                        intent.setShowCarema(true); // 是否显示拍照
+                        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+
+
+                    }
+
+                    @Override
+                    public void onDenied(List<String> permissions) {
+                        ToasShow.showToastCenter(SaleRecordActivity.this, permissions.toString() + "权限拒绝");
+                    }
+                });
 
     }
 
@@ -254,7 +276,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-        page ++;
+        page++;
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         getSaleData(page, false);
     }
@@ -266,8 +288,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case REQUEST_CAMERA_CODE:
-                ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
-                loadAdpater(list);
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    loadAdpater(list);
                     break;
 
             }
@@ -277,15 +299,15 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        String picPath=imagePaths.get(0);
+        String picPath = imagePaths.get(0);
         setPicPath(picPath, rBean);
 
     }
@@ -315,7 +337,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
                 int progress = (int) (bytesRead * 100 / contentLength);
-
 
 
             }
