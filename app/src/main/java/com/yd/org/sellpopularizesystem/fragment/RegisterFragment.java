@@ -1,5 +1,7 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.text.TextUtils;
@@ -36,7 +38,7 @@ import com.zhouyou.http.model.HttpParams;
 
 public class RegisterFragment extends BaseFragmentView {
 
-    private EditText recommendIdEdit, familyNameEdit, lastNameEdit, phoneEdit, regsterEmailEdit, userIdEdit, enNameEdit,
+    private EditText recommendIdEdit, familyNameEdit, lastNameEdit, phoneEdit, regsterEmailEdit, userIdEdit, enNameEdit, surePasswordEdit,
             passwordEdit;
     private TextView regsterText;
     private int temp = 0;
@@ -65,6 +67,7 @@ public class RegisterFragment extends BaseFragmentView {
         regsterText = getViewById(R.id.regsterText);
         userIdEdit = getViewById(R.id.userIdEdit);
         enNameEdit = getViewById(R.id.enNameEdit);
+        surePasswordEdit = getViewById(R.id.surePasswordEdit);
 
         radioId = getViewById(R.id.radioId);
         radio_01 = getViewById(R.id.radio_01);
@@ -111,16 +114,7 @@ public class RegisterFragment extends BaseFragmentView {
             lastNameString = lastNameEdit.getText().toString().trim();
         }
 
-        //手机号码
-        if (TextUtils.isEmpty(phoneEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(getActivity(), getString(R.string.tel_hint));
-            return;
-        } else {
-
-
-            phoneString = phoneEdit.getText().toString().trim();
-
-        }
+        phoneString = phoneEdit.getText().toString().trim();
 
 
         //邮箱
@@ -140,6 +134,17 @@ public class RegisterFragment extends BaseFragmentView {
             return;
         } else {
             passwordString = passwordEdit.getText().toString().trim();
+        }
+
+        //确认密码
+        if (TextUtils.isEmpty(surePasswordEdit.getText().toString().trim())) {
+            ToasShow.showToastCenter(getActivity(), getString(R.string.sure_password_en));
+            return;
+        } else {
+            if (!surePasswordEdit.getText().toString().trim().equals(passwordString)) {
+                ToasShow.showToastCenter(getActivity(), getString(R.string.sure_change));
+                return;
+            }
         }
 
 
@@ -177,8 +182,16 @@ public class RegisterFragment extends BaseFragmentView {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
-                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
+
+                            new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
+
+                                }
+                            }).create().show();
+
                         } else {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
                         }
@@ -189,7 +202,7 @@ public class RegisterFragment extends BaseFragmentView {
     }
 
 
-    //注册推荐人
+    //注册销售
     private void getSalInf() {
         String team_leader_1, first_name, surname, en_name, mobile, e_mail, password;
 
@@ -252,6 +265,17 @@ public class RegisterFragment extends BaseFragmentView {
             return;
         } else {
             password = passwordEdit.getText().toString().trim();
+        }
+
+        //确认密码
+        if (TextUtils.isEmpty(surePasswordEdit.getText().toString().trim())) {
+            ToasShow.showToastCenter(getActivity(), getString(R.string.sure_password_en));
+            return;
+        } else {
+            if (!surePasswordEdit.getText().toString().trim().equals(password)) {
+                ToasShow.showToastCenter(getActivity(), getString(R.string.sure_change));
+                return;
+            }
         }
 
 
@@ -359,6 +383,7 @@ public class RegisterFragment extends BaseFragmentView {
         userIdEdit.setText("");
         enNameEdit.setText("");
         passwordEdit.setText("");
+        surePasswordEdit.setText("");
     }
 
 
