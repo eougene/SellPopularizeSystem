@@ -96,10 +96,6 @@ public class MyCertificateActivity extends BaseActivity {
                 case R.id.srcImageView:
 
 
-
-
-
-
                     Acp.getInstance(MyCertificateActivity.this).request(new AcpOptions.Builder()
                                     .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
                                             , Manifest.permission.READ_EXTERNAL_STORAGE
@@ -120,8 +116,6 @@ public class MyCertificateActivity extends BaseActivity {
                                     // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
                                     intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                                     startActivityForResult(intent, REQUEST_CAMERA_CODE);
-
-
 
 
                                 }
@@ -244,7 +238,8 @@ public class MyCertificateActivity extends BaseActivity {
         paths.add("000000");
         imagePaths.addAll(paths);
         picPath = imagePaths.get(0);
-        Picasso.with(MyCertificateActivity.this).load("file://"+picPath).fit().into(srcImageView);
+        SharedPreferencesHelps.setImagePath(picPath);
+        Picasso.with(MyCertificateActivity.this).load("file://" + picPath).fit().into(srcImageView);
 
     }
 
@@ -376,9 +371,13 @@ public class MyCertificateActivity extends BaseActivity {
         } else {
 
             if (!picPath.contains(Contants.DOMAIN)) {
+
                 file = new File(picPath);
                 httpParams.put("file", file, mUIProgressResponseCallBack);
 
+            } else {
+                file = new File(SharedPreferencesHelps.getImagePath());
+                httpParams.put("file", file, mUIProgressResponseCallBack);
             }
 
         }
