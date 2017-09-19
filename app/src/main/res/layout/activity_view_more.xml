@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
-            android:gravity="center"
+            android:paddingLeft="@dimen/padding_margin_20"
             android:text="@string/housetype"
             android:textColor="@color/white"/>
 
@@ -44,8 +44,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.7"
-            android:gravity="center"
-            android:paddingRight="@dimen/padding_margin_8"
+            android:drawableRight="@mipmap/trangle2"
+            android:paddingRight="@dimen/padding_margin_10"
             android:text="@string/price"
             android:textColor="@color/white"/>
 
@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.8"
             android:gravity="right"
-            android:paddingRight="@dimen/padding_margin_8"
+            android:paddingRight="@dimen/padding_margin_4"
             android:text="@string/housetypeimage"
             android:textColor="@color/white"/>
     </LinearLayout>
