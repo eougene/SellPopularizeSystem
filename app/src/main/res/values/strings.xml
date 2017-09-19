@@ -48,7 +48,7 @@
     <string name="new_password">新密码</string>
     <string name="new_password_ch">新密码不能为空</string>
     <string name="sure_password">确认密码</string>
-    <string name="sure_password_en">请输入确认密码</string>
+    <string name="sure_password_en">请再次输入密码</string>
     <string name="sure">确认修改</string>
     <string name="ok">确认</string>
     <string name="submit">提交</string>
@@ -648,6 +648,7 @@
     <string name="cer_type">证件类型</string>
     <string name="my_invite_code">我的邀请码</string>
     <string name="bank_info">银行卡信息</string>
+    <string name="em_hit">请至注册邮箱查收激活邮件</string>
 
 
 </resources>
