@@ -57,12 +57,17 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private int page = 1;
     private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
     public String strSelect = "", hotsale = "", promote = "";
+    private String strPrice="",strType="",strHouse="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+
+            strPrice=tvPrice.getText().toString();
+            strType=tvType.getText().toString();
+            strHouse=tvHouseType.getText().toString();
 
             switch (view.getId()) {
                 //价格
@@ -167,6 +172,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*newstrPrice=tvPrice.getText().toString();
+                newstrType=tvType.getText().toString();
+                newstrHouse=tvHouseType.getText().toString();*/
                 if (!TextUtils.isEmpty(etSearch.getText().toString())) {
                     search_key = etSearch.getText().toString();
                     getProductListData(true, 1, space, price, house, area);
@@ -331,7 +339,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         } else {
             mCommonAdapter.addMore(productData);
         }
-
+        rightRtitle.setEnabled(false);
     }
 
     private void setAdapter(List<ProductListBean.ResultBean> list) {
@@ -390,6 +398,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             }
         };
         listView.setAdapter(mCommonAdapter);
+
     }
 
     public void goTo(Object bean, Class<?> cls, String str1, String str2) {
@@ -413,6 +422,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
                         Log.e("TAG", "onActivityResult: " + data.getStringExtra("selectextra"));
                         tvType.setText(data.getStringExtra("selectextra") == null ? "" : data.getStringExtra("selectextra"));
+                        if (!strType.equals(data.getStringExtra("selectextra"))){
+                            rightRtitle.setEnabled(true);
+                        }
                         if (data.getStringExtra("selectextra").equals(LAND)) {
                             Log.e("TAG", "land: "+ data.getStringExtra("selectextra"));
                             cate_id = "2";
@@ -425,6 +437,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                     } else {
                         tvType.setText(getString(R.string.nolimit));
+                        if (!strType.equals(getString(R.string.type))){
+                            rightRtitle.setEnabled(true);
+                        }
                         cate_id="";
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
@@ -437,19 +452,31 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                         //area=data.getStringExtra("selectextra");
                         tvHouseType.setText(data.getStringExtra("selectextra"));
+                        if (!strHouse.equals(data.getStringExtra("selectextra"))){
+                            rightRtitle.setEnabled(true);
+                        }
                     } else {
                         tvHouseType.setText(getString(R.string.nolimit));
+                        if (!strHouse.equals(getString(R.string.housetype))){
+                            rightRtitle.setEnabled(true);
+                        }
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
-                    area = selectStrTag;
+                    house = selectStrTag;
                     break;
                 //价格
                 case ExtraName.PRICE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
                         tvPrice.setText(data.getStringExtra("selectextra"));
+                        if (!strPrice.equals(data.getStringExtra("selectextra"))){
+                            rightRtitle.setEnabled(true);
+                        }
                         //price=data.getStringExtra("selectextra");
                     } else {
                         tvPrice.setText(getString(R.string.nolimit));
+                        if (!strPrice.equals(getString(R.string.price))){
+                            rightRtitle.setEnabled(true);
+                        }
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
                     price = selectStrTag;
