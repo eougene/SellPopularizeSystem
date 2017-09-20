@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -82,7 +81,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3 = (TextView) convertView.findViewById(R.id.saleRecorTv3);
             viewHolder.saleRecorTv4 = (TextView) convertView.findViewById(R.id.saleRecorTv4);
 
-            viewHolder.depositImageView = (ImageView) convertView.findViewById(depositImageView);
+            viewHolder.depositImageView = (TextView) convertView.findViewById(depositImageView);
 
             convertView.setTag(viewHolder);
         } else {
@@ -291,14 +290,14 @@ public class SaleRecordAdapter extends BaseAdapter {
 
     public class OnClick implements View.OnClickListener {
         private SaleOrderBean.ResultBean resultBean;
-        private ImageView imageView;
+        private TextView imageView;
 
         public OnClick(SaleOrderBean.ResultBean resultBean) {
             this.resultBean = resultBean;
 
         }
 
-        public OnClick(SaleOrderBean.ResultBean resultBean, ImageView imageView) {
+        public OnClick(SaleOrderBean.ResultBean resultBean, TextView imageView) {
             this.resultBean = resultBean;
             this.imageView = imageView;
 
@@ -365,9 +364,8 @@ public class SaleRecordAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        private ImageView depositImageView;
         public SaleOrderBean.ResultBean resultBean;
-        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4;
+        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4,depositImageView;
 
     }
 }
