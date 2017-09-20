@@ -5,28 +5,33 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.SelectConditionBean;
+import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 public class SelectConditionActivity extends BaseActivity {
     //private RadioGroup rgType, rgPrice;
@@ -53,40 +58,40 @@ public class SelectConditionActivity extends BaseActivity {
         str = getIntent().getExtras().getString("fatosca");
         if (str.equals("area")) {
             setTitle(R.string.type);
-            llHouseType.setVisibility(View.GONE);
-            /*rgType.setVisibility(View.GONE);
-            rgPrice.setVisibility(View.GONE);*/
-            llType.setVisibility(View.GONE);
-            llPrice.setVisibility(View.GONE);
+            //llHouseType.setVisibility(View.GONE);
+            //*rgType.setVisibility(View.GONE);
+            //rgPrice.setVisibility(View.GONE);
+            /*llType.setVisibility(View.GONE);
+            llPrice.setVisibility(View.GONE);*/
         } else if (str.equals("housetype")) {
             setTitle(R.string.housetype);
             //rgArea.setVisibility(View.GONE);
-            /*rgType.setVisibility(View.GONE);
-            rgPrice.setVisibility(View.GONE);*/
-            llType.setVisibility(View.GONE);
+            //*rgType.setVisibility(View.GONE);
+            //rgPrice.setVisibility(View.GONE);
+            /*llType.setVisibility(View.GONE);
             llPrice.setVisibility(View.GONE);
             String string = getIntent().getExtras().getString("selectstatus");
-            setHouseTypeStatus(string, llHouseType);
+            setHouseTypeStatus(string, llHouseType);*/
         } else if (str.equals("type")) {
             setTitle(R.string.type);
             //rgArea.setVisibility(View.GONE);
-            llHouseType.setVisibility(View.GONE);
+            //llHouseType.setVisibility(View.GONE);
             //rgPrice.setVisibility(View.GONE);
-            llPrice.setVisibility(View.GONE);
+           /* llPrice.setVisibility(View.GONE);
             String string = getIntent().getExtras().getString("selectstatus");
             setStatus(string, llType);
-            setListener(llType);
+            setListener(llType);*/
         } else if (str.equals("price")) {
             setTitle(R.string.price);
             // rgArea.setVisibility(View.GONE);
-            llHouseType.setVisibility(View.GONE);
+            //llHouseType.setVisibility(View.GONE);
             //rgType.setVisibility(View.GONE);
-            llType.setVisibility(View.GONE);
-            String string = getIntent().getExtras().getString("selectstatus");
+            //llType.setVisibility(View.GONE);
+            /*String string = getIntent().getExtras().getString("selectstatus");
             setStatus(string, llPrice);
-            setListener(llPrice);
+            setListener(llPrice);*/
         }
-        //getSelectConditionData();
+        getSelectConditionData();
     }
 
     private void getSelectConditionData() {
@@ -121,84 +126,175 @@ public class SelectConditionActivity extends BaseActivity {
     private void jsonParse(String json) {
         productData = new ArrayList<>();
         Gson gson = new Gson();
-        SelectConditionBean scb = gson.fromJson(json, SelectConditionBean.class);
-        if (scb.getCode().equals("1")) {
-            if (str.equals("price")){
-                SelectConditionBean.ResultBean.ProductPriceBean priceBean=scb.getResult().getProduct_price();
-               // Field[] field = priceBean.getClass().getDeclaredFields();
+        //SelectConditionBean scb = gson.fromJson(json, SelectConditionBean.class);
 
-               // int[] priceId=new int[]{R.id.rbPrice1,R.id.rbPrice2,R.id.rbPrice3,R.id.rbPrice4,R.id.rbPrice5,R.id.rbPrice6};
-                //String[] priceTags=new String[]{"0~650000","650000~800000","800000~950000","950000~1100000","1100000~300000"};
-                String[] priceTexts=new String[]{priceBean.getValue1(),priceBean.getValue2(),priceBean.getValue3()
-                ,priceBean.getValue4(),priceBean.getValue5()};
+        JSONObject object = JSON.parseObject(json);
+        if (object.getString("code").equals("1")) {
 
-                int j=0;
-                for (int i = 0; i <llPrice.getChildCount() ; i++) {
-                       /*View view= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
-                        view.setId(priceId[i]);
-                        view.setTag(priceTags[i]);*/
-                       View view=llPrice.getChildAt(i);
-                    if (view instanceof CheckBox){
-                        ((CheckBox) view).setText(priceTexts[j]);
-                        j++;
-                    }
+            for (Map.Entry<String, Object> entry : object.getJSONObject("result").entrySet()) {
+                String keyString = entry.getKey();//提取一级key
+                String valueString = entry.getValue().toString();//提取一级value
+                Log.e("TAG", "jsonParse: " + keyString + "---" + valueString);
 
-                      /*  llBase.addView(view);
-                       String firstLetter = field[i].getName().substring(0, 1).toUpperCase();
-                        String getMethodName = "get" + firstLetter + field[i].getName().substring(1);
-                        Method getMethod = null;
-                    try {
-                        getMethod = priceBean.getClass().getMethod(getMethodName, new Class[] {});
-                        try {
-                            String str= (String) getMethod.invoke(priceBean,new Object[]{});
-                            ((CheckBox)view).setText(priceBean.get_$_065000021());
-                            llBase.addView(view);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
+                if (str.equals("price")) {
+                    if (keyString.equals("product_price")) {
+
+                        JSONObject object2 = JSON.parseObject(valueString);
+                        // int sizes = object2.getJSONObject(keyString).entrySet().size();
+                        int[] priceId = new int[]{R.id.rbPrice1, R.id.rbPrice2, R.id.rbPrice3, R.id.rbPrice4, R.id.rbPrice5,
+                                R.id.rbPrice6};
+                        // String[] priceTags=new String[sizes];
+                        //String[] priceTexts = new String[sizes];
+                        // List<String> priceIds=new ArrayList<>();
+                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
+
+                        List<String> priceTags = new ArrayList<>();
+                        List<String> priceTexts = new ArrayList<>();
+                        // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
+                        for (Map.Entry<String, Object> entry2 : object2.entrySet()) {
+                            String key = entry2.getKey();//提取key
+                            String value = entry2.getValue().toString();//提取value
+                            priceTags.add(key);
+                            priceTexts.add(value);
                         }
-                    } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
-                    }*/
+                        sort(priceTags);
+                        sort(priceTexts);
+                        Log.e("TAG", "priceTag: "+priceTags.toString());
+                        Log.e("TAG", "priceTexts: "+priceTexts.toString());
+                        for (int i = 0; i < priceTags.size(); i++) {
+                            ViewGroup baseView = (ViewGroup) LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout, null);
+                            CheckBox checkBox = (CheckBox) baseView.getChildAt(0);
+                            checkBox.setId(priceId[i]);
+                            checkBox.setTag(priceTags.get(i));
+                            checkBox.setText(priceTexts.get(i));
+                            //View view = llPrice.getChildAt(i);
+                            llBase.addView(baseView);
 
-                }
-
-            }else if (str.equals("type")){
-
-                SelectConditionBean.ResultBean.ProductCateBean cateBean=scb.getResult().getProduct_cate();
-               // String[] typeTags=new String[]{"1","2","3"};
-                String[] typeTexts=new String[]{cateBean.getValue1(),cateBean.getValue2(),cateBean.getValue3()};
-
-                int j=0;
-                for (int i = 0; i <llType.getChildCount() ; i++) {
-                    View view=llType.getChildAt(i);
-                    if (view instanceof CheckBox){
-                        ((CheckBox) view).setText(typeTexts[j]);
-                        j++;
+                        }
+                        String string = getIntent().getExtras().getString("selectstatus");
+                        setStatus(string, llBase);
+                        setListener(llBase);
+                        break;
                     }
+
                 }
 
-            }else {
+                if (str.equals("type")) {
+                    if (keyString.equals("product_cate")) {
+                        Log.e("TAG", "jsonParse: "+ valueString);
+                        JSONObject object2 = JSON.parseObject(valueString);
+                        //int sizes = object2.getJSONObject(keyString).entrySet().size();
+                        int[] priceId = new int[]{R.id.cbType1, R.id.cbType2, R.id.cbType3};
+                        // String[] priceTags=new String[sizes];
+                        //String[] priceTexts = new String[sizes];
+                        // List<String> priceIds=new ArrayList<>();
+                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
 
-                SelectConditionBean.ResultBean.ProductHouseBean houseBean=scb.getResult().getProduct_house();
+                        List<String> typeTags = new ArrayList<>();
+                        List<String> typeTexts = new ArrayList<>();
+                        // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
+                        for (Map.Entry<String, Object> entry2 : object2.entrySet()) {
+                            String key = entry2.getKey();//提取key
+                            String value = entry2.getValue().toString();//提取value
+                            typeTags.add(key);
+                            typeTexts.add(value);
+                        }
 
-                String[] houseTags=new String[]{"1","2","3","4","5","6"};
-                String[] houseTexts=new String[]{houseBean.getValue1(),houseBean.getValue2(),houseBean.getValue3(),
-                        houseBean.getValue4(),houseBean.getValue5(),houseBean.getValue6()};
-                int j=0;
-                for (int i = 0; i <llHouseType.getChildCount() ; i++) {
-                    View view=llHouseType.getChildAt(i);
-                    if (view instanceof CheckBox){
-                        ((CheckBox) view).setText(houseTexts[j]);
-                        j++;
+                        for (int i = 0; i < typeTags.size(); i++) {
+                            ViewGroup baseView = (ViewGroup) LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout, null);
+                            CheckBox checkBox = (CheckBox) baseView.getChildAt(0);
+                            checkBox.setId(priceId[i]);
+                            checkBox.setTag(typeTags.get(i));
+                            checkBox.setText(typeTexts.get(i));
+                            //View view = llPrice.getChildAt(i);
+                            llBase.addView(baseView);
+
+                        }
+                        String string = getIntent().getExtras().getString("selectstatus");
+                        setStatus(string, llBase);
+                        setListener(llBase);
+                        break;
                     }
+
                 }
+
+                if (str.equals("housetype")) {
+                    if (keyString.equals("product_house")) {
+
+                        JSONObject object2 = JSON.parseObject(valueString);
+                        int[] priceId = new int[]{R.id.cbHouseType1, R.id.cbHouseType2, R.id.cbHouseType3,
+                                R.id.cbHouseType4, R.id.cbHouseType5, R.id.cbHouseType6};
+                        // String[] priceTags=new String[sizes];
+                        //String[] priceTexts = new String[sizes];
+                        // List<String> priceIds=new ArrayList<>();
+                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
+
+                        List<String> houseTags = new ArrayList<>();
+                        List<String> houseTexts = new ArrayList<>();
+                        // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
+                        for (Map.Entry<String, Object> entry2 : object2.entrySet()) {
+                            String key = entry2.getKey();//提取key
+                            String value = entry2.getValue().toString();//提取value
+                            houseTags.add(key);
+                            houseTexts.add(value);
+                        }
+                        sort(houseTags);
+                        sort(houseTexts);
+                        Log.e("TAG", "houseTag: "+houseTags.toString());
+                        Log.e("TAG", "houseText: "+houseTexts.toString());
+                        for (int i = 0; i < houseTags.size(); i++) {
+                            ViewGroup baseView = (ViewGroup) LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout, null);
+                            CheckBox checkBox = (CheckBox) baseView.getChildAt(0);
+                            checkBox.setId(priceId[i]);
+                            checkBox.setTag(houseTags.get(i));
+                            checkBox.setText(houseTexts.get(i));
+                            //View view = llPrice.getChildAt(i);
+                            llBase.addView(baseView);
+                        }
+                        String string = getIntent().getExtras().getString("selectstatus");
+                        Log.e("TAG", "jsonParse: "+string );
+                        setHouseTypeStatus(string, llBase);
+                        break;
+                    }
+
+                }
+
             }
 
         }
 
+    }
 
+    private void sort(List<String> typeTags) {
+        Collections.sort(typeTags, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if (o1.length()>1 && o2.length()>1){//长度大于1时
+                    if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))>
+                            Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
+                        return 1;
+                    }
+                    if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))==
+                            Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
+                        return o1.compareTo(o2);
+
+                    }
+                }else {//长度相等时
+                    if (TextUtils.isDigitsOnly(o1) && TextUtils.isDigitsOnly(o2)){
+                        if (Integer.parseInt(o1)>Integer.parseInt(o2)){
+                            return 1;
+                        }
+                        if (Integer.parseInt(o1)==Integer.parseInt(o2)){
+
+                            return 0;
+                        }
+                    }
+                }
+
+                //return o1.compareTo(o2);
+                return -1;
+            }
+        });
     }
 
     private void setHouseTypeStatus(String string, LinearLayout llHouseType) {
@@ -208,6 +304,12 @@ public class SelectConditionActivity extends BaseActivity {
             if (view instanceof CheckBox) {
                 if (string.contains(((CheckBox) view).getText().toString())) {
                     ((CheckBox) view).setChecked(true);
+                    strFlag = string;
+                }
+            }
+            if (view instanceof LinearLayout) {
+                if (string.contains(((CheckBox) (((LinearLayout) view).getChildAt(0))).getText().toString())) {
+                    ((CheckBox)((LinearLayout) view).getChildAt(0)).setChecked(true);
                     strFlag = string;
                 }
             }
@@ -227,6 +329,13 @@ public class SelectConditionActivity extends BaseActivity {
                 }
             }
 
+            if (view instanceof LinearLayout) {
+                if (string.equals(((CheckBox) (((LinearLayout) view).getChildAt(0))).getText().toString())) {
+                    ((CheckBox)((LinearLayout) view).getChildAt(0)).setChecked(true);
+                    strFlag = string;
+                    break;
+                }
+            }
         }
     }
 
@@ -243,6 +352,14 @@ public class SelectConditionActivity extends BaseActivity {
                 if (((CheckBox) view).isChecked()) {
                     sb.append(((CheckBox) view).getText().toString() + ",");
                     sbHouseTypeTag.append(((CheckBox) view).getTag() + ",");
+                }
+            }
+
+            if (view instanceof LinearLayout){
+                CheckBox cb=(CheckBox) ((LinearLayout)view).getChildAt(0);
+                if (cb.isChecked()){
+                    sb.append(cb.getText().toString() + ",");
+                    sbHouseTypeTag.append(cb.getTag() + ",");
                 }
             }
         }
@@ -266,13 +383,13 @@ public class SelectConditionActivity extends BaseActivity {
 
     private void initViews() {
         //rgArea=getViewById(R.id.rgArea);
-        llHouseType = getViewById(R.id.llHouseType);
+        //llHouseType = getViewById(R.id.llHouseType);
         /*rgType = getViewById(R.id.rgType);
         rgPrice = getViewById(R.id.rgPrice);*/
-        llType = getViewById(R.id.llType);
+        /*llType = getViewById(R.id.llType);
         llPrice = getViewById(R.id.llPrice);
-        tvSelect = getViewById(R.id.tvSelect);
-        llBase= getViewById(R.id.llBase);
+        tvSelect = getViewById(R.id.tvSelect);*/
+        llBase = getViewById(R.id.llBase);
     }
 
     private void setListener(final LinearLayout linearLayout) {
@@ -294,9 +411,37 @@ public class SelectConditionActivity extends BaseActivity {
                             selectStr = buttonView.getText().toString();
                             selectStrTag = (String) buttonView.getTag();
                         } else {
+                            buttonView.setChecked(true);
                             temp = -1;
                             selectStr = "";
                             selectStrTag="";
+                        }
+
+                    }
+                });
+
+            }
+
+            if (linearLayout.getChildAt(i) instanceof LinearLayout) {
+                CheckBox c = (CheckBox) ((LinearLayout) linearLayout.getChildAt(i)).getChildAt(0);
+                c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if (isChecked) {
+                            if (temp != -1) {
+                                CheckBox tempButton = (CheckBox) findViewById(temp);
+                                if (tempButton != null) {
+                                    tempButton.setChecked(false);
+                                }
+                            }
+                            //得到当前的position
+                            temp = buttonView.getId();
+                            selectStr = buttonView.getText().toString();
+                            selectStrTag = (String) buttonView.getTag();
+                        } else {
+                            temp = -1;
+                            selectStr = "";
+                            selectStrTag = "";
                         }
 
                     }
@@ -322,7 +467,7 @@ public class SelectConditionActivity extends BaseActivity {
                     setData(intent);
                     break;
                 case R.id.tvSelect:
-                    setData(intent);
+                   // setData(intent);
                     break;
             }
         }

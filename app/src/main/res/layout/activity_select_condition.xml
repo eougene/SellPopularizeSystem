@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:id="@+id/llType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -418,47 +418,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="@color/shallow_gray" />
-
-                <!--<CheckBox
-                    android:id="@+id/rbPrice6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawableRight="@drawable/checkbox_selector"
-                    android:paddingBottom="@dimen/padding_margin_10"
-                    android:paddingLeft="@dimen/padding_margin_6"
-                    android:paddingRight="@dimen/padding_margin_10"
-                    android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="300000~350000"
-                    android:text="@string/_300k_350k"
-                    android:textColor="@drawable/cbtextcolor_select"
-                    android:textSize="@dimen/tv_size_12" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/shallow_gray" />
-
-                <CheckBox
-                    android:id="@+id/rbPrice7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@null"
-                    android:drawableRight="@drawable/checkbox_selector"
-                    android:paddingBottom="@dimen/padding_margin_10"
-                    android:paddingLeft="@dimen/padding_margin_6"
-                    android:paddingRight="@dimen/padding_margin_10"
-                    android:paddingTop="@dimen/padding_margin_10"
-                    android:tag="350000~999999999"
-                    android:text="@string/_300k"
-                    android:textColor="@drawable/cbtextcolor_select"
-                    android:textSize="@dimen/tv_size_12" />-->
-            </LinearLayout>
+            </LinearLayout>-->
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
-                android:background="@color/shallow_gray" />
+                android:background="@color/shallow_gray"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/tvSelect"
