@@ -6,6 +6,9 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
+import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
+
+import java.util.List;
 
 public class OldProjectActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
 
@@ -13,7 +16,8 @@ public class OldProjectActivity extends BaseActivity implements PullToRefreshLay
     private PullToRefreshLayout ptrl;
     private int page = 1;
     private TextView noInfomation;
-
+    private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
+    private List<ProductListBean.ResultBean> productData ;
     @Override
     protected int setContentView() {
         return R.layout.activity_old_project;
@@ -32,8 +36,13 @@ public class OldProjectActivity extends BaseActivity implements PullToRefreshLay
 
 
         noInfomation = getViewById(R.id.noInfomation);
-        noInfomation.setVisibility(View.VISIBLE);
-        ptrl.setVisibility(View.GONE);
+        /*noInfomation.setVisibility(View.VISIBLE);
+        ptrl.setVisibility(View.GONE);*/
+       // getProductListData(true, page, space, price, house, area);
+    }
+
+    private void getProductListData(boolean b, int page, String space, String price, String house, String area) {
+
     }
 
     @Override
