@@ -654,6 +654,7 @@
     <string name="signature">签名</string>
     <string name="download">下载</string>
     <string name="save_suss">保存成功</string>
+    <string name="deposit_hint">请签名或选择日期</string>
 
 
 </resources>
