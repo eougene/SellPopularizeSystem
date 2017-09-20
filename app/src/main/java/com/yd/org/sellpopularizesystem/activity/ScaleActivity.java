@@ -352,6 +352,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 rightRtitle.setEnabled(false);
             }else {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                return;
             }
         } catch (JSONException e) {
             e.printStackTrace();
