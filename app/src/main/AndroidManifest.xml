@@ -123,7 +123,6 @@
             android:name=".activity.LoginActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
-
         <activity
             android:name=".activity.HomeActiviyt"
             android:launchMode="singleTask"
@@ -356,7 +355,6 @@
             android:name=".activity.ComPanyActivity"
             android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
-
         <activity
             android:name="com.lidong.photopicker.PhotoPickerActivity"
             android:configChanges="orientation|screenSize"
@@ -364,6 +362,10 @@
         <activity
             android:name="com.lidong.photopicker.PhotoPreviewActivity"
             android:theme="@style/PhotoPickerTheme"/>
+        <activity android:name=".activity.DepositActivity"
+                  android:screenOrientation="portrait"
+                  android:theme="@style/DialogStyle"
+                  android:windowSoftInputMode="stateHidden|adjustPan"/>
 
     </application>
 
