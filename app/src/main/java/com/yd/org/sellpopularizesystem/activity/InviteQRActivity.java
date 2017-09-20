@@ -62,7 +62,7 @@ public class InviteQRActivity extends BaseActivity {
                 //保存图片的相册
                 String uriString = MediaStore.Images.Media.insertImage(getContentResolver(), screenBitmap, "推荐人截图:" + System.currentTimeMillis(), "推荐人截图");
                 if (!TextUtils.isEmpty(uriString)) {
-                    ToasShow.showToastBottom(InviteQRActivity.this, "保存成功");
+                    ToasShow.showToastBottom(InviteQRActivity.this,getResources().getString(R.string.save_suss));
                 }
 
             }

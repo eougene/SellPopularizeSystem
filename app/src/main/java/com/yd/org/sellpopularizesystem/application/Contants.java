@@ -90,6 +90,11 @@ public class Contants {
     //更新客户信息
     //public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/app/customer/customer_update";
     //public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_update";
+    public static final String RECEIPT_INFO = DOMAIN + "/index.php/appv2/commossion/receipt_info";
+
+
+
+    //定金
     public static final String UPDATE_CUSTOME = DOMAIN + "/index.php/appv2/customer/customer_update";
 
 

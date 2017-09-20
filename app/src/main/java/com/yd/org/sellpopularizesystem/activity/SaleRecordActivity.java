@@ -50,7 +50,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
     private SaleRecordAdapter saleAdapter;
     public static SaleRecordActivity saleRecordActivity;
     //上传合同首页还是首付款标志
-    private String flag, picPath;
+    private String flag;
     private SaleOrderBean.ResultBean rBean;
     private static final int REQUEST_CAMERA_CODE = 10;
     private ArrayList<String> imagePaths = new ArrayList<>();
@@ -148,7 +148,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         }
-        // ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         saleAdapter.addMore(sobRbData);
 
         locatedOrderIdPos();
@@ -336,7 +335,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-                int progress = (int) (bytesRead * 100 / contentLength);
+
 
 
             }
