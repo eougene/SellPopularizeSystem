@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
-import com.yd.org.sellpopularizesystem.javaBean.SelectConditionBean;
+
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.zhouyou.http.EasyHttp;
@@ -26,7 +26,6 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
