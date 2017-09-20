@@ -108,8 +108,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="@dimen/padding_margin_6"
-                android:paddingLeft="@dimen/padding_margin_16"
-                android:paddingRight="@dimen/padding_margin_16"
+                android:paddingLeft="@dimen/padding_margin_10"
+                android:paddingRight="@dimen/padding_margin_10"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:scaleType="centerInside"
                 android:src="@mipmap/deposit"/>
