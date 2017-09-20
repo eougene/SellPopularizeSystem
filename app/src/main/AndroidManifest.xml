@@ -364,6 +364,7 @@
             android:theme="@style/PhotoPickerTheme"/>
         <activity android:name=".activity.DepositActivity"
                   android:screenOrientation="portrait"
+                  android:theme="@style/DialogStyle"
                   android:windowSoftInputMode="stateHidden|adjustPan"/>
 
     </application>
