@@ -663,7 +663,7 @@
     <string name="em_hit">To the registered email, please check your activation email</string>
     <string name="receipt">Receipt</string>
     <string name="property">Property</string>
-    <string name="signature">Signature</string>
+    <string name="signature">Sign</string>
     <string name="download">Download</string>
     <string name="save_suss">Save success</string>
     <string name="deposit_hint">Please sign your name or select a date</string>
