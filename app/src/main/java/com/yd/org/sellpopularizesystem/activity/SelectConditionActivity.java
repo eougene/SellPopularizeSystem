@@ -19,6 +19,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.javaBean.SelectConditionBean;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -96,6 +97,7 @@ public class SelectConditionActivity extends BaseActivity {
 
     private void getSelectConditionData() {
         HttpParams httpParams = new HttpParams();
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         EasyHttp.get(Contants.SCALE_SEARCH)
                 .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
