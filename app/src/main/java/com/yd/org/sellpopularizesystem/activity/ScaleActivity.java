@@ -46,9 +46,9 @@ import java.util.List;
  * 销售推广
  */
 public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.OnRefreshListener {
-    private static final String LAND="Land";
-    private static final String HOUSE_LAND="House&Land";
-    private static final String APT="APT";
+    private static final String LAND = "Land";
+    private static final String HOUSE_LAND = "House&Land";
+    private static final String APT = "APT";
     private String strSearch, selectStrTag;
     public static ScaleActivity scaleActivity;
     public LinearLayout parent_container, llPrice, llType, llHouseType;
@@ -56,11 +56,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
     //代表筛选的范围,0x001表示区域,0x002表示房型,0x003表示面积,0x004表示价格
-    private List<ProductListBean.ResultBean> productData ;
+    private List<ProductListBean.ResultBean> productData;
     private int page = 1;
     private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
-    public String strSelect = "", hotsale = "", promote = "",isOldProject="1";
-    private String strPrice="",strType="",strHouse="";
+    public String strSelect = "", hotsale = "", promote = "", isOldProject = "1";
+    private String strPrice = "", strType = "", strHouse = "";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
 
@@ -68,9 +68,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         @Override
         public void onClick(View view) {
 
-            strPrice=tvPrice.getText().toString();
-            strType=tvType.getText().toString();
-            strHouse=tvHouseType.getText().toString();
+            strPrice = tvPrice.getText().toString();
+            strType = tvType.getText().toString();
+            strHouse = tvHouseType.getText().toString();
 
             switch (view.getId()) {
                 //价格
@@ -159,19 +159,19 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             hotsale = "0";
             promote = "1";
             setTitle(getString(R.string.good_house));
-        }else if (type.equals("all")){
+        } else if (type.equals("all")) {
             hotsale = "";
             promote = "";
-        }else {
+        } else {
             setTitle(getString(R.string.oldproject));
-            isOldProject="2";
+            isOldProject = "2";
         }
         getProductListData(true, 1, space, price, house, area);
 
     }
 
     private void setLayout() {
-        if (type.equals("all")){
+        if (type.equals("all")) {
             setCenterInput();
         }
         hideBaseView();
@@ -184,20 +184,20 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 if (!TextUtils.isEmpty(etSearch.getText().toString())) {
                     search_key = etSearch.getText().toString();
                     getProductListData(true, 1, space, price, house, area);
-                }else {
-                    if (TextUtils.equals(getString(R.string.price),tvPrice.getText().toString()) &&
-                            TextUtils.equals(getString(R.string.type),tvType.getText().toString()) &&
-                            TextUtils.equals(getString(R.string.housetype),tvHouseType.getText().toString())){
-                        if (TextUtils.isEmpty(search_key)){
-                            ToasShow.showToastCenter(ScaleActivity.this,getString(R.string.select_ele));
-                        }else {
-                            search_key="";
+                } else {
+                    if (TextUtils.equals(getString(R.string.price), tvPrice.getText().toString()) &&
+                            TextUtils.equals(getString(R.string.type), tvType.getText().toString()) &&
+                            TextUtils.equals(getString(R.string.housetype), tvHouseType.getText().toString())) {
+                        if (TextUtils.isEmpty(search_key)) {
+                            ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.select_ele));
+                        } else {
+                            search_key = "";
                             getProductListData(true, 1, space, price, house, area);
                         }
 
-                    }else {
-                        Log.e("TAG", "onClick: "+cate_id);
-                        search_key="";
+                    } else {
+                        Log.e("TAG", "onClick: " + cate_id);
+                        search_key = "";
                         getProductListData(true, 1, space, price, house, area);
                     }
                 }
@@ -219,7 +219,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     strSearch = (!TextUtils.isEmpty(etSearch.getText().toString() + "")) ? etSearch.getText().toString() : "";
                     Log.e("strSearch**", "strSearch:" + strSearch);
-                    Log.e("TAG", "onEditorAction: "+cate_id+promote+hotsale);
+                    Log.e("TAG", "onEditorAction: " + cate_id + promote + hotsale);
                     getProductListData(true, 1, space, price, house, area);
                 }
                 return false;
@@ -236,7 +236,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 // is_study  是否关联学习  0：未关联   1：已关联
                 //is_can _sale  是否可推广  0：可推广  1：不可推广
 
-                if ( item.getIs_can_sale()!=null && item.getIs_can_sale().equals("1")) {
+                if (item.getIs_can_sale() != null && item.getIs_can_sale().equals("1")) {
 
                     //对应的学习项目
                     ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.sale_toas) + item.getProduct_name());
@@ -266,8 +266,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         ptrl.refreshFinish(PullToRefreshLayout.SUCCEED);
         // 千万别忘了告诉控件刷新完毕了哦！
         page = 1;
-        search_key="";
-        if (!TextUtils.isEmpty(etSearch.getText().toString())){
+        search_key = "";
+        if (!TextUtils.isEmpty(etSearch.getText().toString())) {
             etSearch.setText("");
         }
         getProductListData(true, page, space, price, house, area);
@@ -297,7 +297,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         httpParams.put("price", price);
         httpParams.put("is_hot_sale", hotsale);
         httpParams.put("is_promote", promote);
-        httpParams.put("is_old_product",isOldProject);
+        httpParams.put("is_old_product", isOldProject);
 
         Log.e("参数***", "params:" + httpParams.toString());
 
@@ -335,13 +335,13 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         productData = new ArrayList<>();
         Gson gson = new Gson();
         try {
-            JSONObject jsonObject=new JSONObject(json);
-            if (!jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))){
+            JSONObject jsonObject = new JSONObject(json);
+            if (!jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))) {
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 ProductListBean product = gson.fromJson(json, ProductListBean.class);
-                if (product.getCode().equals("1") ) {
-                    Log.e("TAG", "jsonParse: "+product.getTotal_number() );
-                    productData=product.getResult();
+                if (product.getCode().equals("1")) {
+                    Log.e("TAG", "jsonParse: " + product.getTotal_number());
+                    productData = product.getResult();
                     tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
                 }
                 if (isRefresh) {
@@ -351,7 +351,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     mCommonAdapter.addMore(productData);
                 }
                 rightRtitle.setEnabled(false);
-            }else {
+            } else {
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 return;
             }
@@ -370,34 +370,36 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     holder.setText(R.id.tvBuildType, HOUSE_LAND);
                 } else if (item.getCate_id() == 2) {
                     holder.setText(R.id.tvBuildType, LAND);
-                } else if (item.getCate_id() == 3){
+                } else if (item.getCate_id() == 3) {
                     holder.setText(R.id.tvBuildType, getString(R.string.villa));
                 }
 
 
-
+                //火爆
                 if (item.getAttr_1() == 1) {
                     holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
+                    holder.visibility(R.id.hotImageView);
                 } else {
                     holder.getView(R.id.tvHot).setVisibility(View.GONE);
+                    holder.goneImageView(R.id.hotImageView);
                 }
 
 
-                if (null!=item.getIs_can_sale()&&item.getIs_can_sale().equals("1")) {
+                if (null != item.getIs_can_sale() && item.getIs_can_sale().equals("1")) {
                     holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.ivIslock).setVisibility(View.GONE);
                 }
 
 
-
+                //新盘
                 if (item.getAttr_2() == 1) {
+                    holder.visibility(R.id.newImageView);
                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
                 } else {
+                    holder.goneImageView(R.id.newImageView);
                     holder.getView(R.id.tvCollection).setVisibility(View.GONE);
                 }
-
-
 
 
                 if (item.getAttr_3() == 1) {
@@ -410,9 +412,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
-                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) +getString(R.string.single_blank_space)+ "$" +
-                getString(R.string.single_blank_space)+MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
-                                .split("\\.")[0]) + "k" + getString(R.string.perset));
+                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + getString(R.string.single_blank_space) + "$" +
+                        getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
+                        .split("\\.")[0]) + "k" + getString(R.string.perset));
 
             }
         };
@@ -433,33 +435,33 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
-            strSelect="";
-            strSelect=data.getStringExtra("selectextra")== null ? "" : data.getStringExtra("selectextra");
+            strSelect = "";
+            strSelect = data.getStringExtra("selectextra") == null ? "" : data.getStringExtra("selectextra");
             switch (requestCode) {
                 //类型
                 case ExtraName.TYPE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
                         Log.e("TAG", "onActivityResult: " + data.getStringExtra("selectextra"));
                         tvType.setText(data.getStringExtra("selectextra") == null ? "" : data.getStringExtra("selectextra"));
-                        if (!strType.equals(data.getStringExtra("selectextra"))){
+                        if (!strType.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
                         if (data.getStringExtra("selectextra").equals(LAND)) {
-                            Log.e("TAG", "land: "+ data.getStringExtra("selectextra"));
+                            Log.e("TAG", "land: " + data.getStringExtra("selectextra"));
                             cate_id = "2";
                         } else if (data.getStringExtra("selectextra").equals(HOUSE_LAND)) {
-                            Log.e("TAG", "house&land: "+ data.getStringExtra("selectextra"));
+                            Log.e("TAG", "house&land: " + data.getStringExtra("selectextra"));
                             cate_id = "1";
-                        } else if (data.getStringExtra("selectextra").equals(APT)){
-                            Log.e("TAG", "APT: "+ data.getStringExtra("selectextra"));
+                        } else if (data.getStringExtra("selectextra").equals(APT)) {
+                            Log.e("TAG", "APT: " + data.getStringExtra("selectextra"));
                             cate_id = "3";
                         }
                     } else {
                         tvType.setText(getString(R.string.nolimit));
-                        if (!strType.equals(getString(R.string.type))){
+                        if (!strType.equals(getString(R.string.type))) {
                             rightRtitle.setEnabled(true);
                         }
-                        cate_id="";
+                        cate_id = "";
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
                     break;
@@ -471,12 +473,12 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                         //area=data.getStringExtra("selectextra");
                         tvHouseType.setText(data.getStringExtra("selectextra"));
-                        if (!strHouse.equals(data.getStringExtra("selectextra"))){
+                        if (!strHouse.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
                     } else {
                         tvHouseType.setText(getString(R.string.nolimit));
-                        if (!strHouse.equals(getString(R.string.housetype))){
+                        if (!strHouse.equals(getString(R.string.housetype))) {
                             rightRtitle.setEnabled(true);
                         }
                     }
@@ -487,13 +489,13 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 case ExtraName.PRICE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
                         tvPrice.setText(data.getStringExtra("selectextra"));
-                        if (!strPrice.equals(data.getStringExtra("selectextra"))){
+                        if (!strPrice.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
                         //price=data.getStringExtra("selectextra");
                     } else {
                         tvPrice.setText(getString(R.string.nolimit));
-                        if (!strPrice.equals(getString(R.string.price))){
+                        if (!strPrice.equals(getString(R.string.price))) {
                             rightRtitle.setEnabled(true);
                         }
                     }
