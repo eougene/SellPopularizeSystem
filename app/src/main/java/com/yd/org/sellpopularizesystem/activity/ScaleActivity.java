@@ -172,9 +172,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*newstrPrice=tvPrice.getText().toString();
-                newstrType=tvType.getText().toString();
-                newstrHouse=tvHouseType.getText().toString();*/
+                /*strPrice=tvPrice.getText().toString();
+                strType=tvType.getText().toString();
+                strHouse=tvHouseType.getText().toString();*/
                 if (!TextUtils.isEmpty(etSearch.getText().toString())) {
                     search_key = etSearch.getText().toString();
                     getProductListData(true, 1, space, price, house, area);
