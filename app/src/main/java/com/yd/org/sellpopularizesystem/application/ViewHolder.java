@@ -93,6 +93,22 @@ public class ViewHolder {
         return this;
     }
 
+    //显示
+    public ViewHolder visibility(int viewId) {
+       ImageView view = getView(viewId);
+        view.setVisibility(View.VISIBLE);
+        return this;
+    }
+
+
+    //隐藏按钮
+    public ViewHolder goneImageView(int viewId) {
+        ImageView view = getView(viewId);
+        view.setVisibility(View.GONE);
+        return this;
+    }
+
+
     /**
      * 为TextView设置字符串
      *
