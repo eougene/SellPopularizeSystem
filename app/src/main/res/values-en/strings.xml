@@ -667,6 +667,7 @@
     <string name="download">Download</string>
     <string name="save_suss">Save success</string>
     <string name="deposit_hint">Please sign your name or select a date</string>
+    <string name="deposit">Deposit Paid</string>
 
 </resources>
 
