@@ -3,9 +3,11 @@ package com.lidong.photopicker;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.util.Date;
  * http://developer.android.com/training/camera/photobasics.html
  */
 public class ImageCaptureManager {
-
+    private static final String FILE_PROVIDER_AUTHORITY = "com.yd.org.sellpopularizesystem" + ".fileprovider";
     private final static String CAPTURED_PHOTO_PATH_KEY = "mCurrentPhotoPath";
     public static final int REQUEST_TAKE_PHOTO = 1;
 
@@ -55,9 +57,18 @@ public class ImageCaptureManager {
             // Create the File where the photo should go
             File photoFile = createImageFile();
             // Continue only if the File was successfully created
+            Uri contentUri=null;
             if (photoFile != null) {
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                        Uri.fromFile(photoFile));
+                if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+                    //添加这一句表示对目标应用临时授权该Uri所代表的文件
+                    takePictureIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    contentUri=FileProvider.getUriForFile(mContext, FILE_PROVIDER_AUTHORITY, photoFile);
+                }else {
+                    contentUri = Uri.fromFile(photoFile);
+                }
+                //将照片放在自定义路径下
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,contentUri);
+
             }
         }
         return takePictureIntent;
@@ -67,7 +78,12 @@ public class ImageCaptureManager {
     public void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
+        Uri contentUri=null;
+        if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.N){
+            contentUri=FileProvider.getUriForFile(mContext, FILE_PROVIDER_AUTHORITY, f);
+        }else {
+            contentUri = Uri.fromFile(f);
+        }
         mediaScanIntent.setData(contentUri);
         mContext.sendBroadcast(mediaScanIntent);
     }
