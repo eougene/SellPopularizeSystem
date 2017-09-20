@@ -163,6 +163,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             hotsale = "";
             promote = "";
         }else {
+            setTitle(getString(R.string.oldproject));
             isOldProject="2";
         }
         getProductListData(true, 1, space, price, house, area);

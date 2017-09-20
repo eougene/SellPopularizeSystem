@@ -345,11 +345,11 @@ public class SelectConditionActivity extends BaseActivity {
 
 
     private void getHouseTypeData() {
-        int count = llHouseType.getChildCount();
+        int count = llBase.getChildCount();
         StringBuffer sb = new StringBuffer();
         StringBuffer sbHouseTypeTag = new StringBuffer();
         for (int i = 0; i < count; i++) {
-            View view = llHouseType.getChildAt(i);
+            View view = llBase.getChildAt(i);
             if (view instanceof CheckBox) {
                 if (((CheckBox) view).isChecked()) {
                     sb.append(((CheckBox) view).getText().toString() + ",");
@@ -555,7 +555,7 @@ public class SelectConditionActivity extends BaseActivity {
         //rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
         /*rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);
         rgPrice.setOnCheckedChangeListener(mOnCheckedChangeListener);*/
-        tvSelect.setOnClickListener(mOnClickListener);
+        //tvSelect.setOnClickListener(mOnClickListener);
 
     }
 }

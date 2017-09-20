@@ -86,7 +86,8 @@ public class MapActivity extends BaseActivity implements AMap.OnMarkerClickListe
     @Override
     public void initView() {
         //setBackImageView(R.mipmap.wback_1);
-        setTitle(R.string.home_scale);
+        //setTitle(R.string.home_scale);
+        setTitle("");
         setColor(Color.BLACK);
         //setBaseLayoutBackground(Color.BLACK);
         parent_container=getViewById(R.id.parent_container);
