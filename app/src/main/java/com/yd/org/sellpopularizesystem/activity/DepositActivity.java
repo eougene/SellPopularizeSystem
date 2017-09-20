@@ -110,11 +110,10 @@ public class DepositActivity extends BaseActivity {
             public void onClick(View v) {
 
 
-
                 //下载之前签名和日期都不能为空
                 if (TextUtils.isEmpty(edDate.getText().toString().trim()) || TextUtils.isEmpty(edSignature.getText().toString().trim())) {
 
-                    ToasShow.showToastCenter(DepositActivity.this,getResources().getString(R.string.deposit_hint) );
+                    ToasShow.showToastCenter(DepositActivity.this, getResources().getString(R.string.deposit_hint));
                     return;
 
                 } else {
@@ -143,6 +142,8 @@ public class DepositActivity extends BaseActivity {
         edDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //隐藏键盘
+                MyUtils.getInstance().setKeyBoardFocusable(DepositActivity.this, edDate);
                 pvTime.show();
             }
         });
