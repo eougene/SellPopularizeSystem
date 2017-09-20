@@ -12,13 +12,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
-import com.yd.org.sellpopularizesystem.javaBean.SelectConditionBean;
+
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.zhouyou.http.EasyHttp;
@@ -26,7 +26,6 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -272,15 +271,28 @@ public class SelectConditionActivity extends BaseActivity {
             @Override
             public int compare(String o1, String o2) {
                 if (o1.length()>1 && o2.length()>1){//长度大于1时
-                    if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))>
-                            Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
-                        return 1;
-                    }
-                    if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))==
-                            Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
-                        return o1.compareTo(o2);
+                    if (o1.contains("Bedroom")){
+                        if (Integer.parseInt(StringUtils.getDigtalFromString(o1))>
+                                Integer.parseInt(StringUtils.getDigtalFromString(o2))){
+                            return 1;
+                        }
+                        if (Integer.parseInt(StringUtils.getDigtalFromString(o1))==
+                                Integer.parseInt(StringUtils.getDigtalFromString(o2))){
+                            return o1.compareTo(o2);
 
+                        }
+                    }else if(o1.contains("~")){
+                        if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))>
+                                Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
+                            return 1;
+                        }
+                        if (Integer.parseInt(StringUtils.getDigtalFromString(o1.split("\\~")[0]))==
+                                Integer.parseInt(StringUtils.getDigtalFromString(o2.split("\\~")[0]))){
+                            return o1.compareTo(o2);
+
+                        }
                     }
+
                 }else {//长度相等时
                     if (TextUtils.isDigitsOnly(o1) && TextUtils.isDigitsOnly(o2)){
                         if (Integer.parseInt(o1)>Integer.parseInt(o2)){
