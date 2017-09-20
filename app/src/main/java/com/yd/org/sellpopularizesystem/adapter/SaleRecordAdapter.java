@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
@@ -82,7 +81,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3 = (TextView) convertView.findViewById(R.id.saleRecorTv3);
             viewHolder.saleRecorTv4 = (TextView) convertView.findViewById(R.id.saleRecorTv4);
 
-            viewHolder.depositImageView = (ImageView) convertView.findViewById(depositImageView);
+            viewHolder.depositImageView = (TextView) convertView.findViewById(depositImageView);
 
             convertView.setTag(viewHolder);
         } else {
@@ -117,9 +116,15 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.tvStatus.setText(mContext.getResources().getString(R.string.nopayintent));
 
+                //查看定金按钮
+                viewHolder.depositImageView.setVisibility(View.GONE);
+
             }
             //意向金是否支付
             else if (viewHolder.resultBean.getOrder_money_status() == 1) {
+
+                //查看定金按钮
+                viewHolder.depositImageView.setVisibility(View.GONE);
 
 
                 if ((viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4)) {
@@ -131,8 +136,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
                     viewHolder.tvStatus.setVisibility(View.VISIBLE);
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
-                    viewHolder.depositImageView.setVisibility(View.GONE);
-
 
                 } else {
                     //意向金未支付,支付意向金,可以取消订单
@@ -142,7 +145,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
                     viewHolder.tvStatus.setVisibility(View.GONE);
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
-                    viewHolder.depositImageView.setVisibility(View.GONE);
+
 
 
                 }
@@ -156,13 +159,17 @@ public class SaleRecordAdapter extends BaseAdapter {
                     && viewHolder.resultBean.getUpload_contract_status() == 2) {
 
 
+                //查看定金按钮
+                viewHolder.depositImageView.setVisibility(View.GONE);
+
+
                 viewHolder.saleRecorTv1.setVisibility(View.GONE);
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
-                viewHolder.depositImageView.setVisibility(View.GONE);
+
 
 
                 //请上传合同首页 ,请上传首付款凭证
@@ -173,16 +180,16 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
-                viewHolder.depositImageView.setVisibility(View.GONE);
-
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.GONE);
-
                 //查看定金
                 viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
                 if (viewHolder.resultBean.getBuy_money_upload_number() == 1) {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                    //查看定金
+                    viewHolder.depositImageView.setVisibility(View.GONE);
+
                 }
 
 
@@ -201,6 +208,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
+            //查看定金
             viewHolder.depositImageView.setVisibility(View.GONE);
 
 
@@ -221,6 +229,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
+            //查看定金
             viewHolder.depositImageView.setVisibility(View.GONE);
 
 
@@ -233,17 +242,20 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
+            //查看定金按钮
             viewHolder.depositImageView.setVisibility(View.GONE);
 
             //未满10%房款
         } else if (viewHolder.resultBean.getStatus() == 14) {
+            //查看定金按钮
+            viewHolder.depositImageView.setVisibility(View.GONE);
 
             if (viewHolder.resultBean.getBuy_money_upload_number() == 1) {
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
-                viewHolder.depositImageView.setVisibility(View.GONE);
+
 
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
 
@@ -258,7 +270,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
-                viewHolder.depositImageView.setVisibility(View.GONE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
             }
 
@@ -279,14 +290,14 @@ public class SaleRecordAdapter extends BaseAdapter {
 
     public class OnClick implements View.OnClickListener {
         private SaleOrderBean.ResultBean resultBean;
-        private ImageView imageView;
+        private TextView imageView;
 
         public OnClick(SaleOrderBean.ResultBean resultBean) {
             this.resultBean = resultBean;
 
         }
 
-        public OnClick(SaleOrderBean.ResultBean resultBean, ImageView imageView) {
+        public OnClick(SaleOrderBean.ResultBean resultBean, TextView imageView) {
             this.resultBean = resultBean;
             this.imageView = imageView;
 
@@ -353,9 +364,8 @@ public class SaleRecordAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        private ImageView depositImageView;
         public SaleOrderBean.ResultBean resultBean;
-        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4;
+        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4,depositImageView;
 
     }
 }
