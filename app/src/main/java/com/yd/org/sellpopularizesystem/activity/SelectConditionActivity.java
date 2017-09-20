@@ -96,7 +96,7 @@ public class SelectConditionActivity extends BaseActivity {
 
     private void getSelectConditionData() {
         HttpParams httpParams = new HttpParams();
-        EasyHttp.get(Contants.PRODUCT_LIST)
+        EasyHttp.get(Contants.SCALE_SEARCH)
                 .cacheMode(CacheMode.DEFAULT)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
