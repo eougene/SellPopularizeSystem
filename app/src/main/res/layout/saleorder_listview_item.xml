@@ -37,6 +37,21 @@
 
 
             <TextView
+                android:visibility="gone"
+                android:id="@+id/depositImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/padding_margin_10"
+                android:layout_toRightOf="@+id/tvSaleNum"
+                android:drawableLeft="@mipmap/deposit"
+                android:drawablePadding="@dimen/padding_margin_2"
+                android:gravity="center"
+                android:text="@string/deposit"
+                android:textColor="@color/scale_tab5"
+                android:textSize="@dimen/tv_size_12"/>
+
+
+            <TextView
                 android:id="@+id/tvSaleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,18 +116,6 @@
             android:layout_height="wrap_content"
             android:gravity="center|right"
             android:orientation="horizontal">
-
-            <ImageView
-                android:visibility="gone"
-                android:id="@+id/depositImageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/padding_margin_6"
-                android:paddingLeft="@dimen/padding_margin_10"
-                android:paddingRight="@dimen/padding_margin_10"
-                android:paddingTop="@dimen/padding_margin_6"
-                android:scaleType="centerInside"
-                android:src="@mipmap/deposit"/>
 
             <TextView
                 android:id="@+id/saleRecorTv1"
