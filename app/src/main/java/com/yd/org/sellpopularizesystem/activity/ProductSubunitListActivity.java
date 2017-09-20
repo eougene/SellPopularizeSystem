@@ -777,8 +777,11 @@ public class ProductSubunitListActivity extends BaseActivity {
 
                 //销售可预订
                 if (SharedPreferencesHelps.getType() == 1) {
-                    btRemain.setVisibility(View.VISIBLE);
-
+                    if (SharedPreferencesHelps.getProjectStatus().equals("new")){
+                        btRemain.setVisibility(View.VISIBLE);
+                    }else {
+                        btRemain.setVisibility(View.GONE);
+                    }
 
                     if (data.get(pos).getIs_lock() == 1) {
                         btRemain.setVisibility(View.GONE);

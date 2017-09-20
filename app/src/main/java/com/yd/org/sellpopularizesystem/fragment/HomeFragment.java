@@ -16,6 +16,7 @@ import com.yd.org.sellpopularizesystem.activity.CustomeActivity;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
 import com.yd.org.sellpopularizesystem.activity.OldProjectActivity;
+import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.HomeDataBean;
@@ -51,6 +52,7 @@ public class HomeFragment extends BaseFragmentView {
             switch (view.getId()) {
                 //销售推广
                 case R.id.saleLinearLayyout:
+                    SharedPreferencesHelps.setProjectStatus("new");
                     Bundle bundle = new Bundle();
                     bundle.putString(ExtraName.SCALETOCUSTOME, ExtraName.SCALETOCUSTOME);
                     ActivitySkip.forward(getActivity(), CustomeActivity.class, bundle);
@@ -75,7 +77,10 @@ public class HomeFragment extends BaseFragmentView {
                     break;
                 //往期项目
                 case R.id.rlBefore:
-                    ActivitySkip.forward(getActivity(), OldProjectActivity.class);
+                    SharedPreferencesHelps.setProjectStatus("old");
+                    Bundle bundle4 = new Bundle();
+                    bundle4.putString("type", "old");
+                    ActivitySkip.forward(getActivity(), ScaleActivity.class,bundle4);
                     break;
             }
         }

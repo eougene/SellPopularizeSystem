@@ -267,6 +267,12 @@ public class SharedPreferencesHelps {
         return getPreferences().getString("ImagePath", "");
     }
 
+    public synchronized static final void setProjectStatus(String name) {
+        getPreferences().edit().putString(ExtraName.PROJECT_STATUS, name).commit();
+    }
 
+    public synchronized static final String getProjectStatus() {
+        return getPreferences().getString(ExtraName.PROJECT_STATUS, "");
+    }
 
 }

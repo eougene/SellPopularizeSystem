@@ -114,8 +114,9 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("house", house);
         httpParams.put("space", space);
         httpParams.put("price", price);
-        httpParams.put("hot_sale", "");
-        httpParams.put("promote", "");
+        httpParams.put("is_hot_sale", "");
+        httpParams.put("is_promote", "");
+        httpParams.put("is_old_product","1");
 
         Log.e("参数***", "params:" + httpParams.toString());
 
