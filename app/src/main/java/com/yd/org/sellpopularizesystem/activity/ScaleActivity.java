@@ -35,6 +35,9 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +59,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private List<ProductListBean.ResultBean> productData ;
     private int page = 1;
     private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
-    public String strSelect = "", hotsale = "", promote = "";
+    public String strSelect = "", hotsale = "", promote = "",isOldProject="1";
     private String strPrice="",strType="",strHouse="";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
@@ -156,9 +159,11 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             hotsale = "0";
             promote = "1";
             setTitle(getString(R.string.good_house));
-        }else {
+        }else if (type.equals("all")){
             hotsale = "";
             promote = "";
+        }else {
+            isOldProject="2";
         }
         getProductListData(true, 1, space, price, house, area);
 
@@ -289,8 +294,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         httpParams.put("house", house);
         httpParams.put("space", space);
         httpParams.put("price", price);
-        httpParams.put("hot_sale", hotsale);
-        httpParams.put("promote", promote);
+        httpParams.put("is_hot_sale", hotsale);
+        httpParams.put("is_promote", promote);
+        httpParams.put("is_old_product",isOldProject);
 
         Log.e("参数***", "params:" + httpParams.toString());
 
@@ -327,19 +333,30 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private void jsonParse(String json, boolean isRefresh) {
         productData = new ArrayList<>();
         Gson gson = new Gson();
-        ProductListBean product = gson.fromJson(json, ProductListBean.class);
-        if (product.getCode().equals("1")) {
-            Log.e("TAG", "jsonParse: "+product.getTotal_number() );
-            productData=product.getResult();
-            tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+        try {
+            JSONObject jsonObject=new JSONObject(json);
+            if (!jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))){
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                ProductListBean product = gson.fromJson(json, ProductListBean.class);
+                if (product.getCode().equals("1") ) {
+                    Log.e("TAG", "jsonParse: "+product.getTotal_number() );
+                    productData=product.getResult();
+                    tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+                }
+                if (isRefresh) {
+                    setAdapter(productData);
+                    listView.setAdapter(mCommonAdapter);
+                } else {
+                    mCommonAdapter.addMore(productData);
+                }
+                rightRtitle.setEnabled(false);
+            }else {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        if (isRefresh) {
-            setAdapter(productData);
-            listView.setAdapter(mCommonAdapter);
-        } else {
-            mCommonAdapter.addMore(productData);
-        }
-        rightRtitle.setEnabled(false);
+
     }
 
     private void setAdapter(List<ProductListBean.ResultBean> list) {
