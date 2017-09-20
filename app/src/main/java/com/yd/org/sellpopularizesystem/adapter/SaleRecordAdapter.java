@@ -115,7 +115,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
-                viewHolder.tvStatus.setText("意向金凭证未上传");
+                viewHolder.tvStatus.setText(mContext.getResources().getString(R.string.nopayintent));
 
             }
             //意向金是否支付
@@ -131,6 +131,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
                     viewHolder.tvStatus.setVisibility(View.VISIBLE);
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_03));
+                    viewHolder.depositImageView.setVisibility(View.GONE);
 
 
                 } else {
@@ -141,6 +142,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
                     viewHolder.tvStatus.setVisibility(View.GONE);
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
+                    viewHolder.depositImageView.setVisibility(View.GONE);
 
 
                 }
@@ -160,6 +162,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
+                viewHolder.depositImageView.setVisibility(View.GONE);
 
 
                 //请上传合同首页 ,请上传首付款凭证
@@ -170,9 +173,13 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv3.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv4.setVisibility(View.VISIBLE);
+                viewHolder.depositImageView.setVisibility(View.GONE);
 
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.GONE);
+
+                //查看定金
+                viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
                 if (viewHolder.resultBean.getBuy_money_upload_number() == 1) {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
@@ -194,6 +201,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
+            viewHolder.depositImageView.setVisibility(View.GONE);
 
 
             if (viewHolder.resultBean.getOrder_money_status() == 3 && viewHolder.resultBean.getCancel_apply_status() == 0) {
@@ -213,6 +221,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
+            viewHolder.depositImageView.setVisibility(View.GONE);
 
 
             //合同已交换
@@ -224,6 +233,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
+            viewHolder.depositImageView.setVisibility(View.GONE);
 
             //未满10%房款
         } else if (viewHolder.resultBean.getStatus() == 14) {
@@ -233,6 +243,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
+                viewHolder.depositImageView.setVisibility(View.GONE);
 
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
 
@@ -247,6 +258,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv2.setVisibility(View.GONE);
                 viewHolder.saleRecorTv3.setVisibility(View.GONE);
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
+                viewHolder.depositImageView.setVisibility(View.GONE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.without_full_amount));
             }
 
