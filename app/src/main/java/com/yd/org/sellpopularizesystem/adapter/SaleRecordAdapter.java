@@ -164,9 +164,6 @@ public class SaleRecordAdapter extends BaseAdapter {
 
                 //请上传合同首页 ,请上传首付款凭证
             } else if (viewHolder.resultBean.getOrder_money_status() == 2
-                    && (viewHolder.resultBean.getContract_apply_status() == 0 || viewHolder.resultBean.getContract_apply_status() == 1 || viewHolder.resultBean.getContract_apply_status() == 2)
-                    && (viewHolder.resultBean.getUpload_contract_status() == 0 || viewHolder.resultBean.getUpload_contract_status() == 1 || viewHolder.resultBean.getUpload_contract_status() == 2 || viewHolder.resultBean.getUpload_contract_status() == 3)
-                    && (viewHolder.resultBean.getBuy_money_status() == 0 || viewHolder.resultBean.getBuy_money_status() == 1 || viewHolder.resultBean.getBuy_money_status() == 2 || viewHolder.resultBean.getBuy_money_status() == 3)
                     && viewHolder.resultBean.getCancel_apply_status() == 0) {
 
 
@@ -208,7 +205,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
         } //订单已完成
         else if (viewHolder.resultBean.getStatus() == 11) {
-            viewHolder.depositImageView.setVisibility(View.VISIBLE);
+
 
             viewHolder.saleRecorTv1.setVisibility(View.GONE);
             viewHolder.saleRecorTv2.setVisibility(View.GONE);
