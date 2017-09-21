@@ -19,7 +19,7 @@ import com.yd.org.sellpopularizesystem.R;
 
 public class InvoiceActivity extends BaseActivity {
     private TextView consentTextView, resoluteTextView, subButton;
-    private EditText reasonEdit;
+    private EditText moneyEdit, memoEdit;
     private RelativeLayout rlFirb;
     private View firbPwView;
     private PopupWindow firbSelectPopWindow;
@@ -32,11 +32,12 @@ public class InvoiceActivity extends BaseActivity {
 
                 //同意
                 case R.id.consentTextView:
+                    firbSelectPopWindow.showAtLocation(InvoiceActivity.this.findViewById(R.id.primaryLinear), Gravity.BOTTOM, 0, 0);
                     break;
 
                 //拒绝
                 case R.id.resoluteTextView:
-                    firbSelectPopWindow.showAtLocation(InvoiceActivity.this.findViewById(R.id.primaryLinear), Gravity.BOTTOM, 0, 0);
+
                     break;
 
             }
@@ -72,8 +73,10 @@ public class InvoiceActivity extends BaseActivity {
         firbPwView = LayoutInflater.from(this).inflate(R.layout.invoce_layout, null);
         rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.mainRelat);
 
-        //拒绝理由
-        reasonEdit = (EditText) firbPwView.findViewById(R.id.reasonEdit);
+        //金额
+        moneyEdit = (EditText) firbPwView.findViewById(R.id.moneyEdit);
+        //备注
+        memoEdit = (EditText) firbPwView.findViewById(R.id.memoEdit);
         subButton = (TextView) firbPwView.findViewById(R.id.subButton);
 
         firbSelectPopWindow = new PopupWindow(firbPwView,
@@ -91,7 +94,8 @@ public class InvoiceActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 firbSelectPopWindow.dismiss();
-                String reasonString = reasonEdit.getText().toString().trim();
+                String moneyString = moneyEdit.getText().toString().trim();
+                String memoString = memoEdit.getText().toString().trim();
 
 
             }

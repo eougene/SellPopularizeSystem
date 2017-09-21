@@ -160,7 +160,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
 
                 //查看定金按钮
-                viewHolder.depositImageView.setVisibility(View.GONE);
+                viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
 
                 viewHolder.saleRecorTv1.setVisibility(View.GONE);
@@ -187,8 +187,6 @@ public class SaleRecordAdapter extends BaseAdapter {
 
                 if (viewHolder.resultBean.getBuy_money_upload_number() == 1) {
                     viewHolder.saleRecorTv4.setVisibility(View.GONE);
-                    //查看定金
-                    viewHolder.depositImageView.setVisibility(View.GONE);
 
                 }
 
@@ -209,7 +207,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             //查看定金
-            viewHolder.depositImageView.setVisibility(View.GONE);
+            viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
 
             if (viewHolder.resultBean.getOrder_money_status() == 3 && viewHolder.resultBean.getCancel_apply_status() == 0) {
@@ -230,7 +228,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.saler_14));
             //查看定金
-            viewHolder.depositImageView.setVisibility(View.GONE);
+            viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
 
             //合同已交换
@@ -243,12 +241,12 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
             viewHolder.tvStatus.setText(mContext.getString(R.string.exchanged));
             //查看定金按钮
-            viewHolder.depositImageView.setVisibility(View.GONE);
+            viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
             //未满10%房款
         } else if (viewHolder.resultBean.getStatus() == 14) {
             //查看定金按钮
-            viewHolder.depositImageView.setVisibility(View.GONE);
+            viewHolder.depositImageView.setVisibility(View.VISIBLE);
 
             if (viewHolder.resultBean.getBuy_money_upload_number() == 1) {
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);

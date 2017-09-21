@@ -95,7 +95,6 @@
             android:name="com.amap.api.v2.apikey"
             android:value="a7b0249d16ed843bfc62d915c4d9d421"/>
 
-
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -367,6 +366,10 @@
             android:name=".activity.DepositActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DialogStyle"
+            android:windowSoftInputMode="stateHidden|adjustPan"/>
+        <activity
+            android:name=".activity.RegistSalersActivity"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan"/>
 
     </application>
