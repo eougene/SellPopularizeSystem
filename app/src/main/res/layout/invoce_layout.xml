@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/mainRelat"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#b0000000"
-                android:orientation="vertical"
-    android:id="@+id/mainRelat">
+                android:orientation="vertical">
 
 
     <LinearLayout
@@ -16,18 +16,62 @@
         android:layout_marginRight="@dimen/padding_margin_20"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/reasonEdit"
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_bac2"
-            android:gravity="start"
-            android:hint="请输入拒绝理由"
-            android:minHeight="100dp"
-            android:padding="@dimen/padding_margin_4"
-            android:textColor="@color/gray"
-            android:textColorHint="@color/search_edit"
-            android:textSize="@dimen/tv_size_12"/>
+            android:layout_height="120dp"
+            android:background="@drawable/button_bac2">
+
+
+            <TextView
+                android:id="@+id/tvMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="金额:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12"/>
+
+            <EditText
+                android:id="@+id/moneyEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/tvMoney"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请输入正确的金额"
+                android:padding="@dimen/padding_margin_10"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/search_edit"
+                android:textSize="@dimen/tv_size_12"/>
+
+
+            <TextView
+                android:id="@+id/tvMemo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvMoney"
+                android:padding="@dimen/padding_margin_10"
+                android:text="备注:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/tv_size_12"/>
+
+            <EditText
+                android:id="@+id/memoEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvMoney"
+                android:layout_toRightOf="@+id/tvMemo"
+                android:background="@null"
+                android:gravity="start"
+                android:hint="请输入拒绝的理由"
+                android:minLines="3"
+                android:padding="@dimen/padding_margin_10"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/search_edit"
+                android:textSize="@dimen/tv_size_12"/>
+
+        </RelativeLayout>
 
 
         <TextView
