@@ -534,7 +534,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     } else {
                         is_first = true;
                         tvHouseType.setText(getString(R.string.nolimit));
-                        is_first = true;
                         if (!strHouse.equals(getString(R.string.housetype))) {
                             rightRtitle.setEnabled(true);
                         }
