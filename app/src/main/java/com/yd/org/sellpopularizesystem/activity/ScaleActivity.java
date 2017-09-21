@@ -479,7 +479,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                             cate_id = "3";
                         }
                     } else {
+                        is_first = true;
                         tvType.setText(getString(R.string.nolimit));
+                        is_first = true;
                         if (!strType.equals(getString(R.string.type))) {
                             rightRtitle.setEnabled(true);
                         }
@@ -506,6 +508,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         }
                     } else {
                         tvHouseType.setText(getString(R.string.nolimit));
+                        is_first = true;
                         if (!strHouse.equals(getString(R.string.housetype))) {
                             rightRtitle.setEnabled(true);
                         }
@@ -530,6 +533,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
                         //price=data.getStringExtra("selectextra");
                     } else {
+                        is_first = true;
                         tvPrice.setText(getString(R.string.nolimit));
                         if (!strPrice.equals(getString(R.string.price))) {
                             rightRtitle.setEnabled(true);
