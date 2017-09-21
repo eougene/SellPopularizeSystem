@@ -392,14 +392,20 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
 
                 //火爆
-                if (item.getAttr_1() == 1) {
-                    holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
+                if (item.getIs_hot_sale() == 1) {
+                    //holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
                     holder.visibility(R.id.hotImageView);
                 } else {
-                    holder.getView(R.id.tvHot).setVisibility(View.GONE);
+                    //holder.getView(R.id.tvHot).setVisibility(View.GONE);
                     holder.goneImageView(R.id.hotImageView);
                 }
 
+                //推广
+                if (item.getIs_promote() == 1) {
+                    holder.getView(R.id.tvPromotion).setVisibility(View.VISIBLE);
+                } else {
+                    holder.getView(R.id.tvPromotion).setVisibility(View.GONE);
+                }
 
                 if (null != item.getIs_can_sale() && item.getIs_can_sale().equals("1")) {
                     holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
@@ -407,23 +413,42 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     holder.getView(R.id.ivIslock).setVisibility(View.GONE);
                 }
 
+                //珍藏
+                if (item.getAttr_1() == 1) {
+                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
+                } else {
+                    holder.getView(R.id.tvCollection).setVisibility(View.GONE);
+                }
 
                 //新盘
                 if (item.getAttr_2() == 1) {
                     holder.visibility(R.id.newImageView);
-                    holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
+                   // holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
                 } else {
                     holder.goneImageView(R.id.newImageView);
-                    holder.getView(R.id.tvCollection).setVisibility(View.GONE);
+                    //holder.getView(R.id.tvCollection).setVisibility(View.GONE);
                 }
 
-
+                //独家
                 if (item.getAttr_3() == 1) {
-                    holder.getView(R.id.tvDiscount).setVisibility(View.VISIBLE);
+                    holder.getView(R.id.tvSole).setVisibility(View.VISIBLE);
                 } else {
-                    holder.getView(R.id.tvDiscount).setVisibility(View.INVISIBLE);
+                    holder.getView(R.id.tvSole).setVisibility(View.INVISIBLE);
                 }
 
+                //全款
+                if (item.getAttr_4() == 1) {
+                    holder.getView(R.id.tvFullPayment).setVisibility(View.VISIBLE);
+                } else {
+                    holder.getView(R.id.tvFullPayment).setVisibility(View.INVISIBLE);
+                }
+
+                //海外
+                if (item.getIs_firb()==1){
+                    holder.getView(R.id.tvFirb).setVisibility(View.VISIBLE);
+                }else {
+                    holder.getView(R.id.tvFirb).setVisibility(View.INVISIBLE);
+                }
 
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
@@ -507,6 +532,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                             is_first = true;
                         }
                     } else {
+                        is_first = true;
                         tvHouseType.setText(getString(R.string.nolimit));
                         is_first = true;
                         if (!strHouse.equals(getString(R.string.housetype))) {
