@@ -32,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private View baseView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
