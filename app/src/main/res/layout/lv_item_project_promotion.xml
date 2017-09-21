@@ -87,7 +87,7 @@
                     android:paddingRight="@dimen/padding_margin_4"
                     android:text="@string/sole"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10"
+                    android:textSize="@dimen/tv_size_08"
                     android:visibility="gone"/>
 
                 <TextView
