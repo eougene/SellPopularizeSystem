@@ -69,6 +69,7 @@ public class InvoiceActivity extends BaseActivity {
         resoluteTextView.setOnClickListener(mOnClick);
     }
 
+
     private void showReasonInfo() {
         firbPwView = LayoutInflater.from(this).inflate(R.layout.invoce_layout, null);
         rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.mainRelat);
