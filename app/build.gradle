@@ -23,7 +23,7 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
+            storeFile file('./keystore/sellpopularizesystem.jks')
             keyAlias 'Wingaid'
             keyPassword '123456'
             storePassword '123456'
