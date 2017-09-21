@@ -25,7 +25,6 @@ import com.yd.org.sellpopularizesystem.custom.PinyinComparator;
 import com.yd.org.sellpopularizesystem.custom.SideBar;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
-import com.yd.org.sellpopularizesystem.javaBean.CountrySortModel;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.myView.SearchEditText;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
@@ -209,7 +208,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "100")
+                .params("number", "500")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
