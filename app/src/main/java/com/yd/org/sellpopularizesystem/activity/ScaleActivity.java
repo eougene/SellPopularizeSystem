@@ -433,14 +433,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 if (item.getAttr_3() == 1) {
                     holder.getView(R.id.tvSole).setVisibility(View.VISIBLE);
                 } else {
-                    holder.getView(R.id.tvSole).setVisibility(View.INVISIBLE);
+                    holder.getView(R.id.tvSole).setVisibility(View.GONE);
                 }
 
                 //全款
                 if (item.getAttr_4() == 1) {
                     holder.getView(R.id.tvFullPayment).setVisibility(View.VISIBLE);
                 } else {
-                    holder.getView(R.id.tvFullPayment).setVisibility(View.INVISIBLE);
+                    holder.getView(R.id.tvFullPayment).setVisibility(View.GONE);
                 }
 
                 //海外
