@@ -353,33 +353,7 @@ public class SelectConditionActivity extends BaseActivity {
         }
     }
 
-    //回显
 
-
-    private void getHouseTypeData() {
-        int count = llBase.getChildCount();
-        StringBuffer sb = new StringBuffer();
-        StringBuffer sbHouseTypeTag = new StringBuffer();
-        for (int i = 0; i < count; i++) {
-            View view = llBase.getChildAt(i);
-            if (view instanceof CheckBox) {
-                if (((CheckBox) view).isChecked()) {
-                    sb.append(((CheckBox) view).getText().toString() + ",");
-                    sbHouseTypeTag.append(((CheckBox) view).getTag() + ",");
-                }
-            }
-
-            if (view instanceof LinearLayout){
-                CheckBox cb=(CheckBox) ((LinearLayout)view).getChildAt(0);
-                if (cb.isChecked()){
-                    sb.append(cb.getText().toString() + ",");
-                    sbHouseTypeTag.append(cb.getTag() + ",");
-                }
-            }
-        }
-        selectStr = sb.toString();
-        selectStrTag = sbHouseTypeTag.toString();
-    }
 
     private void initStting() {
         /*tvSelect=getViewById(R.id.tvSelect);
@@ -413,7 +387,7 @@ public class SelectConditionActivity extends BaseActivity {
                 c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
+                        if (isChecked) {//点击选中
                             if (temp != -1) {
                                 CheckBox tempButton = (CheckBox) findViewById(temp);
                                 if (tempButton != null) {
@@ -424,8 +398,8 @@ public class SelectConditionActivity extends BaseActivity {
                             temp = buttonView.getId();
                             selectStr = buttonView.getText().toString();
                             selectStrTag = (String) buttonView.getTag();
-                        } else {
-                            buttonView.setChecked(true);
+                        } else {//点击不选中
+                            buttonView.setChecked(false);
                             temp = -1;
                             selectStr = "";
                             selectStrTag="";
@@ -441,7 +415,7 @@ public class SelectConditionActivity extends BaseActivity {
                 c.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
+                        if (isChecked) {//点击选中
                             if (temp != -1) {
                                 CheckBox tempButton = (CheckBox) findViewById(temp);
                                 if (tempButton != null) {
@@ -452,7 +426,8 @@ public class SelectConditionActivity extends BaseActivity {
                             temp = buttonView.getId();
                             selectStr = buttonView.getText().toString();
                             selectStrTag = (String) buttonView.getTag();
-                        } else {
+                        } else {//点击不选中
+                            buttonView.setChecked(false);
                             temp = -1;
                             selectStr = "";
                             selectStrTag = "";
@@ -490,12 +465,12 @@ public class SelectConditionActivity extends BaseActivity {
     private void setData(Intent intent) {
         if (!str.equals("housetype")) {
             Log.e("TAG", "setData: " + selectStr);
+            getPriceOrTypeData();
             intent.putExtra("selectextra", selectStr);
             intent.putExtra("selecttagextra", selectStrTag);
             setResult(RESULT_OK, intent);
             finish();
             overridePendingTransition(0, R.anim.out_anim);
-
 
         } else {
             getHouseTypeData();
@@ -522,7 +497,53 @@ public class SelectConditionActivity extends BaseActivity {
 
     }
 
+    //获取价格和类型选中数据
+    private void getPriceOrTypeData() {
+        int count = llBase.getChildCount();
+        for (int i = 0; i < count; i++) {
+            View view = llBase.getChildAt(i);
+            if (view instanceof CheckBox) {
+                if (((CheckBox) view).isChecked()) {
+                    selectStr=((CheckBox) view).getText().toString();
+                    selectStrTag= (String) view.getTag();
+                }
+            }
 
+            if (view instanceof LinearLayout){
+                CheckBox cb=(CheckBox) ((LinearLayout)view).getChildAt(0);
+                if (cb.isChecked()){
+                    selectStr= cb.getText().toString();
+                    selectStrTag= (String) cb.getTag();
+                }
+            }
+        }
+    }
+
+    //获取房型选中数据
+    private void getHouseTypeData() {
+        int count = llBase.getChildCount();
+        StringBuffer sb = new StringBuffer();
+        StringBuffer sbHouseTypeTag = new StringBuffer();
+        for (int i = 0; i < count; i++) {
+            View view = llBase.getChildAt(i);
+            if (view instanceof CheckBox) {
+                if (((CheckBox) view).isChecked()) {
+                    sb.append(((CheckBox) view).getText().toString() + ",");
+                    sbHouseTypeTag.append(((CheckBox) view).getTag() + ",");
+                }
+            }
+
+            if (view instanceof LinearLayout){
+                CheckBox cb=(CheckBox) ((LinearLayout)view).getChildAt(0);
+                if (cb.isChecked()){
+                    sb.append(cb.getText().toString() + ",");
+                    sbHouseTypeTag.append(cb.getTag() + ",");
+                }
+            }
+        }
+        selectStr = sb.toString();
+        selectStrTag = sbHouseTypeTag.toString();
+    }
     /*RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
