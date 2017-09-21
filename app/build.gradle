@@ -23,9 +23,9 @@ android {
     }
     signingConfigs {
         release {
+            storeFile file('/Users/e-dot/Documents/e-dot/Crm/SellPopularizeSystem/app/keystore/sellpopularizesystem.jks')
             keyAlias 'Wingaid'
             keyPassword '123456'
-            storeFile file('./keystore/sellpopularizesystem.jks')
             storePassword '123456'
         }
     }
@@ -46,8 +46,6 @@ android {
             minifyEnabled false
             // 开启ZipAlign优化
             zipAlignEnabled true
-            // 移除无用的resource文件
-            shrinkResources true
             // 混淆文件位置
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -109,7 +107,7 @@ dependencies {
     compile 'com.getui:sdk:2.10.2.0'
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.2@aar'
-    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.android.support:multidex:1.0.1'
     compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
     compile 'com.alibaba:fastjson:1.2.38'
 }
