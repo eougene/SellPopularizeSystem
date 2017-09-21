@@ -94,51 +94,52 @@
                     android:id="@+id/tvCollection"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
                     android:background="#C784DE"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:paddingRight="@dimen/padding_margin_4"
                     android:text="@string/collections"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10"
+                    android:textSize="@dimen/tv_size_08"
                     android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvPromotion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
                     android:background="#EE781F"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:paddingRight="@dimen/padding_margin_4"
-                    android:text="@string/discount"
+                    android:text="@string/promotion"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10"
+                    android:textSize="@dimen/tv_size_08"
                     android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/tvFullPayment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
                     android:background="#70BC46"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:paddingRight="@dimen/padding_margin_4"
                     android:text="@string/full_payment"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10"
+                    android:textSize="@dimen/tv_size_08"
                     android:visibility="gone"/>
+
                 <TextView
                     android:id="@+id/tvFirb"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:layout_marginLeft="@dimen/padding_margin_4"
                     android:background="#F9E38D"
                     android:paddingLeft="@dimen/padding_margin_4"
                     android:paddingRight="@dimen/padding_margin_4"
                     android:text="@string/is_firb"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/tv_size_10"
+                    android:textSize="@dimen/tv_size_08"
                     android:visibility="gone"/>
 
 
