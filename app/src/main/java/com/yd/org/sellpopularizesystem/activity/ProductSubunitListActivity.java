@@ -777,11 +777,6 @@ public class ProductSubunitListActivity extends BaseActivity {
 
                 //销售可预订
                 if (SharedPreferencesHelps.getType() == 1) {
-                    if (SharedPreferencesHelps.getProjectStatus().equals("new")){
-                        btRemain.setVisibility(View.VISIBLE);
-                    }else {
-                        btRemain.setVisibility(View.GONE);
-                    }
 
                     if (data.get(pos).getIs_lock() == 1) {
                         btRemain.setVisibility(View.GONE);
@@ -795,6 +790,12 @@ public class ProductSubunitListActivity extends BaseActivity {
                         btLineup.setVisibility(View.VISIBLE);
                     }
 
+                    if (SharedPreferencesHelps.getProjectStatus().equals("old")){
+                        Log.e("TAG", "onItemClick: "+ SharedPreferencesHelps.getProjectStatus());
+                        btRemain.setVisibility(View.GONE);
+                    }else {
+                        btRemain.setVisibility(View.VISIBLE);
+                    }
                     //推荐人不可预订
                 } else if (SharedPreferencesHelps.getType() == 2) {
                     btRemain.setVisibility(View.GONE);
