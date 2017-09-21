@@ -21,8 +21,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
+import com.yd.org.sellpopularizesystem.activity.RegistSalersActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -78,6 +80,12 @@ public class RegisterFragment extends BaseFragmentView {
         userEnLinaer = getViewById(R.id.userEnLinaer);
         userView = getViewById(R.id.userView);
         userEnView = getViewById(R.id.userEnView);
+
+        if (userType == 1) {
+            regsterText.setText(getResources().getString(R.string.next));
+        } else {
+            regsterText.setText(getResources().getString(R.string.register));
+        }
 
         clearInfo();
 
@@ -204,7 +212,7 @@ public class RegisterFragment extends BaseFragmentView {
 
     //注册销售
     private void getSalInf() {
-        String team_leader_1, first_name, surname, en_name, mobile, e_mail, password;
+        String team_leader_1="", first_name, surname, en_name, mobile, e_mail, password;
 
 
         //推荐码
@@ -279,49 +287,19 @@ public class RegisterFragment extends BaseFragmentView {
         }
 
 
-        HttpParams httpParams = new HttpParams();
-        //推荐码
-        httpParams.put("team_leader_1", team_leader_1);
-        httpParams.put("first_name", first_name);
-        httpParams.put("surname", surname);
-        httpParams.put("en_name", en_name);
-        httpParams.put("e_mail", e_mail);
-        httpParams.put("mobile", mobile);
-        httpParams.put("password", password);
+        Bundle bundle=new Bundle();
+        bundle.putString("team_leader_1",team_leader_1);
+        bundle.putString("first_name",first_name);
+        bundle.putString("surname",surname);
+        bundle.putString("en_name",en_name);
+        bundle.putString("mobile",mobile);
+        bundle.putString("e_mail",e_mail);
+        bundle.putString("password",password);
 
-        EasyHttp.post(Contants.REGISTER_USER)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params(httpParams)
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showLoadingDialog();
-                    }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        dismissLoadingDialog();
-                        ToasShow.showToastCenter(getActivity(), e.getMessage());
 
-                    }
+        ActivitySkip.forward(getActivity(), RegistSalersActivity.class,bundle);
 
-                    @Override
-                    public void onSuccess(String s) {
-                        dismissLoadingDialog();
-                        Log.e("注册销售", "s:" + s);
-
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                        if (errorBean.getCode().equals("1")) {
-                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
-                            ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
-                        } else {
-                            ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
-                        }
-
-                    }
-                });
 
     }
 
