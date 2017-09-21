@@ -39,8 +39,8 @@ public class SelectConditionActivity extends BaseActivity {
     private TextView tvSelect;
     private ImageView ivSearch;
     private String str, strFlag;
-    private String selectStr;
-    private String selectStrTag;
+    private String selectStr="";
+    private String selectStrTag="";
     private StringBuilder sb = new StringBuilder();
     public static int temp = -1;
     private ArrayList<Object> productData;
