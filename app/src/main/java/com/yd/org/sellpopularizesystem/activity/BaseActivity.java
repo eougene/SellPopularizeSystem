@@ -18,12 +18,14 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.NetUtil;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 
 /**
  * Created by bai on 2017/1/10.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements NetBroadcastReceiver.netEventHandler {
     protected ImageView backLinearLayou, rightSearchLinearLayout, ivShare;
     protected TextView tvTitle, rightRtitle;
     protected EditText etSearch;
@@ -63,6 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         }
 
+        NetBroadcastReceiver.mListeners.add(this);
     }
 
     public void hideBaseView() {
@@ -231,6 +234,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
     }
 
     @Override
@@ -272,5 +276,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    public void onNetChange() {
+        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
+        }else {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
+        }
+    }
 }
