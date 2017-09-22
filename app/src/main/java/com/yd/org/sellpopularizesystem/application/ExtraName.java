@@ -37,6 +37,8 @@ public class ExtraName {
     public static final int SUCCESS=0x011;
     //点击销售推广跳转customeactivity标志
     public static final String SCALETOCUSTOME="from_scale_to_custome";
+    //点击往期项目跳转customeactivity标志
+    public static final String OLDPROTOCUSTOME="from_old_to_custome";
     //点击律师列表跳转预约列表
     public static final String RESVERTOLAWYER="from_lawyer_to_resver";
     //点击客户管理跳转customeActivity标志

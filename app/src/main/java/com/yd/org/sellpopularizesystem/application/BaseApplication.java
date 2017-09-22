@@ -26,6 +26,7 @@ import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.fragment.HomeFragment;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
+import com.yd.org.sellpopularizesystem.utils.NetUtil;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.converter.SerializableDiskConverter;
 
@@ -51,6 +52,8 @@ public class BaseApplication extends Application {
     public static final String APP_ID_Test = "2dfe5cbc5e";
     //个推识别码
     public String cid = "";
+    public static int mNetWorkState;//网络状态
+
 
     public static BaseApplication getInstance() {
         return mApp;
@@ -108,7 +111,11 @@ public class BaseApplication extends Application {
         //初始化网络请求
         EasyHttp.init(this);
         initEasyHttp();
+        initData();
+    }
 
+    public void initData() {
+        mNetWorkState = NetUtil.getNetworkState(this);
     }
 
     private void initEasyHttp() {

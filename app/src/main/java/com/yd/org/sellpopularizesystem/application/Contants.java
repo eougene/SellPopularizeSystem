@@ -201,6 +201,8 @@ public class Contants {
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
+    //同意或拒绝发票
+    public static final String APPROVE_OR_REFUSE_INVOICE =DOMAIN +"/index.php/appv2/commossion/submit_invoice/";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
     //上传证书
