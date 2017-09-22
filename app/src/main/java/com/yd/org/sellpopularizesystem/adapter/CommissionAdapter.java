@@ -342,7 +342,7 @@ public class CommissionAdapter extends BaseAdapter {
     private void jsonParse(String json) {
         try {
             JSONObject jsonObject = new JSONObject(json);
-            if (jsonObject.get("code")==0 || jsonObject.get("code").equals("0")){
+            if ((jsonObject.getInt("code"))==0 || jsonObject.get("code").equals("0")){
                 ToasShow.showToastCenter(mContext,jsonObject.getString("msg"));
                 return;
             }else {

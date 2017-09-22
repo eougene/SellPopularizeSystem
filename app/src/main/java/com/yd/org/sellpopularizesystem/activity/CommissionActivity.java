@@ -81,18 +81,6 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
     }
 
-    private void jsonParse(String json) {
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-            if (jsonObject.get("code")==0 || jsonObject.get("code").equals("0")){
-                    ToasShow.showToastCenter(CommissionActivity.this,jsonObject.getString("msg"));
-            }else {
-
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
 
     @Override
     public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
