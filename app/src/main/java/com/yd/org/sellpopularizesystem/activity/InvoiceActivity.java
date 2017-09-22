@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.InvoiceDetailBean;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -24,7 +26,8 @@ import com.zhouyou.http.model.HttpParams;
  */
 
 public class InvoiceActivity extends BaseActivity {
-    private TextView consentTextView, resoluteTextView, subButton;
+    private TextView consentTextView, resoluteTextView, subButton,tvInvoiceId,tvAbn,tvPhone,tvAddress,
+    tvDate,tvBillTO,tvAcn,tvTel,tvFor,tvDescription,tvAmountIncl,tvSubtotal,tvGst,tvAbnRegisterd,tvOther;
     private EditText moneyEdit, memoEdit;
     private RelativeLayout rlFirb;
     private View firbPwView;
@@ -67,6 +70,7 @@ public class InvoiceActivity extends BaseActivity {
             }
         }
     };
+    private InvoiceDetailBean.ResultBean rb;
 
 
     @Override
@@ -81,10 +85,39 @@ public class InvoiceActivity extends BaseActivity {
 
         consentTextView = getViewById(R.id.consentTextView);
         resoluteTextView = getViewById(R.id.resoluteTextView);
-
-
+        tvInvoiceId= getViewById(R.id.tvInvoiceId);
+        tvAbn= getViewById(R.id.tvAbn);
+        tvPhone= getViewById(R.id.tvPhone);
+        tvAddress= getViewById(R.id.tvAddress);
+        tvDate= getViewById(R.id.tvDate);
+        tvBillTO= getViewById(R.id.tvBillTO);
+        tvAcn= getViewById(R.id.tvAcn);
+        tvTel= getViewById(R.id.tvTel);
+        tvFor= getViewById(R.id.tvFor);
+        tvDescription= getViewById(R.id.tvDescription);
+        tvAmountIncl= getViewById(R.id.tvAmountIncl);
+        tvSubtotal= getViewById(R.id.tvSubtotal);
+        tvGst= getViewById(R.id.tvGst);
+        tvAbnRegisterd= getViewById(R.id.tvAbnRegisterd);
+        tvOther= getViewById(R.id.tvOther);
+        rb = (InvoiceDetailBean.ResultBean) getIntent().getExtras().getSerializable("bean");
+        setInfo();
         showReasonInfo();
 
+    }
+
+    private void setInfo() {
+        tvInvoiceId.setText(rb.getInvoice_no());
+        tvAbn.setText(rb.getAbn());
+        tvPhone.setText(rb.getPhone());
+        tvAddress.setText(rb.getAddress());
+        tvDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(String.valueOf(rb.getDate())+"000")));
+        tvFor.setText(rb.getForX());
+        tvDescription.setText(rb.getDescription());
+        tvAmountIncl.setText(rb.getAmount());
+        tvSubtotal.setText(rb.getSubtotal());
+        tvAbnRegisterd.setText(rb.getIs_gst()==1?"Yes":"No");
+        tvOther.setText(rb.getOther());
     }
 
     @Override

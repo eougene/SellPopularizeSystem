@@ -11,12 +11,17 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.internal.PullToRefreshLayout;
 import com.yd.org.sellpopularizesystem.internal.PullableListView;
 import com.yd.org.sellpopularizesystem.javaBean.CommissionBean;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,12 +67,31 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 CommissionAdapter.ViewHoler viewHoler = (CommissionAdapter.ViewHoler) view.getTag();
-                CommissionBean.ResultBean resultBean = viewHoler.resultBean;
-
+                //CommissionBean.ResultBean resultBean = viewHoler.resultBean;
+                CommissionBean.ResultBean resultBean=datas.get(position);
+                getDepositDetails(resultBean);
+                ActivitySkip.forward(CommissionActivity.this,InvoiceActivity.class);
 
             }
         });
 
+    }
+
+    private void getDepositDetails(CommissionBean.ResultBean resultBean) {
+
+    }
+
+    private void jsonParse(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.get("code")==0 || jsonObject.get("code").equals("0")){
+                    ToasShow.showToastCenter(CommissionActivity.this,jsonObject.getString("msg"));
+            }else {
+
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
