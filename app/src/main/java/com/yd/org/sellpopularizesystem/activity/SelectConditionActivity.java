@@ -395,6 +395,7 @@ public class SelectConditionActivity extends BaseActivity {
                                 }
                             }
                             //得到当前的position
+                            buttonView.setChecked(true);
                             temp = buttonView.getId();
                             selectStr = buttonView.getText().toString();
                             selectStrTag = (String) buttonView.getTag();
@@ -423,6 +424,7 @@ public class SelectConditionActivity extends BaseActivity {
                                 }
                             }
                             //得到当前的position
+                            buttonView.setChecked(true);
                             temp = buttonView.getId();
                             selectStr = buttonView.getText().toString();
                             selectStrTag = (String) buttonView.getTag();
