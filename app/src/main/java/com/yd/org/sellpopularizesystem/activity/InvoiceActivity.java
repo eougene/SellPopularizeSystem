@@ -11,6 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
+import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
 
 
 /**
@@ -37,7 +43,25 @@ public class InvoiceActivity extends BaseActivity {
 
                 //拒绝
                 case R.id.resoluteTextView:
+                    HttpParams httpParams=new HttpParams();
+                    httpParams.put("invoice_id","");//发票编号
+                    httpParams.put("status","2");//2：同意  3：拒绝
+                    httpParams.put("sales_submit_amount","2");//销售提交金额
+                    httpParams.put("reject_reason","2");//拒绝原因
+                    EasyHttp.post(Contants.APPROVE_OR_REFUSE_INVOICE)
+                            .timeStamp(true)//是否需要追加时间戳
+                            .params(httpParams)
+                            .execute(new SimpleCallBack<String>() {
+                                @Override
+                                public void onError(ApiException e) {
+                                    ToasShow.showToast(InvoiceActivity.this, getResources().getString(R.string.network_error));
+                                }
 
+                                @Override
+                                public void onSuccess(String s) {
+
+                                }
+                            });
                     break;
 
             }
