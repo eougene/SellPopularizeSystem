@@ -363,12 +363,17 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     ActivitySkip.forward(CustomeActivity.this, ProjectPromotionActivity.class, bundle);
                     finish();
 
+                }else if (str1.equals(ExtraName.OLDPROTOCUSTOME)) {//往期项目选客户
+                    bundle.putString("type", "old");
+                    ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
+                    finish();
 
                 } else if (str1.equals(ExtraName.TORESVER_TOCUSTOME)) {//预约界面选客户
                     Intent i = new Intent();
                     i.putExtra("custome", resultBean);
                     setResult(Activity.RESULT_OK, i);
                     finish();
+
                 } else {//正常选择客户
                     bundle.putSerializable("custome", resultBean);
                     bundle.putString("add", "list");
