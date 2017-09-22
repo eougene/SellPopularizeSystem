@@ -352,11 +352,13 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         Gson gson = new Gson();
         try {
             JSONObject jsonObject = new JSONObject(json);
-            if (!jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))) {
+            String msg=jsonObject.getString("msg");
+            if (!msg.equals(getResources().getString(R.string.nodata))) {
+                Log.e("TAG", "msg: " + jsonObject.getString("msg"));
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 ProductListBean product = gson.fromJson(json, ProductListBean.class);
                 if (product.getCode().equals("1")) {
-                    Log.e("TAG", "jsonParse: " + product.getTotal_number());
+                    Log.e("TAG", "totalNum: " + product.getTotal_number());
                     productData = product.getResult();
                     tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
                 }
@@ -368,6 +370,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 }
                 //rightRtitle.setEnabled(false);
             } else {
+                Log.e("TAG", "jsonParse: "+jsonObject.getString("msg") );
+                mCommonAdapter.getmDatas().clear();
+                mCommonAdapter.notifyDataSetChanged();
+                tvProjectNum.setText(getString(R.string.sum) +0+ getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                 return;
             }
