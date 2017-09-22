@@ -32,18 +32,17 @@ public abstract class BaseActivity extends AppCompatActivity {
     private View baseView;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
-
         baseView = getViewById(R.id.baseView);
 
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
-        etSearch= getViewById(R.id.etSearch);
+        etSearch = getViewById(R.id.etSearch);
         llBaseLayout = getViewById(R.id.titleViewParent_ll);
         rightRtitle = getViewById(R.id.rightTitle);
         //左边图片
@@ -150,8 +149,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         rightRtitle.setText(resId);
         rightRtitle.setOnClickListener(onClickListener);
     }
+
     //设置右上角标题
-    public void setRightTitle(int resId, int colorId,View.OnClickListener onClickListener) {
+    public void setRightTitle(int resId, int colorId, View.OnClickListener onClickListener) {
         rightSearchLinearLayout.setVisibility(View.GONE);
         rightRtitle.setVisibility(View.VISIBLE);
         rightRtitle.setText(resId);
