@@ -133,12 +133,22 @@ public class CommissionBean extends Domine {
         private String exit_commossion;
         private int exit_status;
         private int exit_time;
+        private int first_invoice_status;
+        private int second_invoice_status;
+        private int third_invoice_status;
         private int add_time;
         private String update_time;
         private int is_value;
+        private int is_show;
         private int status;
         private String remark_1;
         private String remark_2;
+        private int is_wait_xingzheng;
+        private int is_wait_caiwu;
+        private int invoice_number;
+        private int one_invoice_status;
+        private int two_invoice_status;
+        private int three_invoice_status;
 
         public int getId() {
             return id;
@@ -428,6 +438,30 @@ public class CommissionBean extends Domine {
             this.exit_time = exit_time;
         }
 
+        public int getFirst_invoice_status() {
+            return first_invoice_status;
+        }
+
+        public void setFirst_invoice_status(int first_invoice_status) {
+            this.first_invoice_status = first_invoice_status;
+        }
+
+        public int getSecond_invoice_status() {
+            return second_invoice_status;
+        }
+
+        public void setSecond_invoice_status(int second_invoice_status) {
+            this.second_invoice_status = second_invoice_status;
+        }
+
+        public int getThird_invoice_status() {
+            return third_invoice_status;
+        }
+
+        public void setThird_invoice_status(int third_invoice_status) {
+            this.third_invoice_status = third_invoice_status;
+        }
+
         public int getAdd_time() {
             return add_time;
         }
@@ -452,6 +486,14 @@ public class CommissionBean extends Domine {
             this.is_value = is_value;
         }
 
+        public int getIs_show() {
+            return is_show;
+        }
+
+        public void setIs_show(int is_show) {
+            this.is_show = is_show;
+        }
+
         public int getStatus() {
             return status;
         }
@@ -474,6 +516,54 @@ public class CommissionBean extends Domine {
 
         public void setRemark_2(String remark_2) {
             this.remark_2 = remark_2;
+        }
+
+        public int getIs_wait_xingzheng() {
+            return is_wait_xingzheng;
+        }
+
+        public void setIs_wait_xingzheng(int is_wait_xingzheng) {
+            this.is_wait_xingzheng = is_wait_xingzheng;
+        }
+
+        public int getIs_wait_caiwu() {
+            return is_wait_caiwu;
+        }
+
+        public void setIs_wait_caiwu(int is_wait_caiwu) {
+            this.is_wait_caiwu = is_wait_caiwu;
+        }
+
+        public int getInvoice_number() {
+            return invoice_number;
+        }
+
+        public void setInvoice_number(int invoice_number) {
+            this.invoice_number = invoice_number;
+        }
+
+        public int getOne_invoice_status() {
+            return one_invoice_status;
+        }
+
+        public void setOne_invoice_status(int one_invoice_status) {
+            this.one_invoice_status = one_invoice_status;
+        }
+
+        public int getTwo_invoice_status() {
+            return two_invoice_status;
+        }
+
+        public void setTwo_invoice_status(int two_invoice_status) {
+            this.two_invoice_status = two_invoice_status;
+        }
+
+        public int getThree_invoice_status() {
+            return three_invoice_status;
+        }
+
+        public void setThree_invoice_status(int three_invoice_status) {
+            this.three_invoice_status = three_invoice_status;
         }
     }
 }
