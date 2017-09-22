@@ -22,7 +22,7 @@ import com.zhouyou.http.exception.ApiException;
 
 public class DepositActivity extends BaseActivity {
     private TextView tvName, tvProperty, tvMoneyy, tvDown;
-    public SaleOrderBean.ResultBean resultBean;
+    public ReceiptBean receiptBean;
 
 
     @Override
@@ -34,7 +34,7 @@ public class DepositActivity extends BaseActivity {
     public void initView() {
         hideRightImagview();
         setTitle(getResources().getString(R.string.sale_list));
-        resultBean = (SaleOrderBean.ResultBean) getIntent().getSerializableExtra("keys");
+        receiptBean = (ReceiptBean) getIntent().getSerializableExtra("keys");
 
 
         tvName = getViewById(R.id.tvName);
@@ -48,7 +48,11 @@ public class DepositActivity extends BaseActivity {
 
     private void getInfo() {
 
-        EasyHttp.get(Contants.RECEIPT_INFO)
+        tvName.setText(receiptBean.getResult().getUser_name());
+        tvProperty.setText(receiptBean.getResult().getProduct());
+        tvMoneyy.setText(receiptBean.getResult().getNumber());
+
+        /*EasyHttp.get(Contants.RECEIPT_INFO)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("order_id", resultBean.getProduct_orders_id() + "")
@@ -82,7 +86,7 @@ public class DepositActivity extends BaseActivity {
 
 
                     }
-                });
+                });*/
 
 
     }

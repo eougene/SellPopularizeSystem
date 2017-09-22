@@ -5,18 +5,28 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.DepositActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
+import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.ReceiptBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -336,15 +346,55 @@ public class SaleRecordAdapter extends BaseAdapter {
 
                 //查看定金
                 case depositImageView:
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("keys", resultBean);
-                    ActivitySkip.forward(SaleRecordActivity.saleRecordActivity, DepositActivity.class, bundle);
+                    getDepositInfo(resultBean);
                     break;
 
 
             }
 
         }
+    }
+
+    /**
+     * 获取定金消息
+     * @param resultBean
+     */
+    private void getDepositInfo(SaleOrderBean.ResultBean resultBean) {
+        EasyHttp.get(Contants.RECEIPT_INFO)
+                .cacheMode(CacheMode.NO_CACHE)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("order_id", resultBean.getProduct_orders_id() + "")
+                .timeStamp(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        SaleRecordActivity.saleRecordActivity.showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        SaleRecordActivity.saleRecordActivity.closeDialog();
+                        ToasShow.showToast(mContext, mContext.getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        Log.e("onSuccess***", "UserBean:" + json);
+                        SaleRecordActivity.saleRecordActivity.closeDialog();
+
+                        Gson gs = new Gson();
+
+                        ReceiptBean receiptBean = gs.fromJson(json, ReceiptBean.class);
+                        if (receiptBean.getCode().equals("1")) {
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("keys", receiptBean);
+                            ActivitySkip.forward(SaleRecordActivity.saleRecordActivity, DepositActivity.class, bundle);
+                        } else {
+                            ToasShow.showToastCenter(mContext, receiptBean.getMsg());
+                        }
+
+                    }
+                });
     }
 
     private HideViewListener mHideViewListener;
