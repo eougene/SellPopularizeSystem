@@ -79,8 +79,9 @@ public class HomeFragment extends BaseFragmentView {
                 case R.id.rlBefore:
                     SharedPreferencesHelps.setProjectStatus("old");
                     Bundle bundle4 = new Bundle();
-                    bundle4.putString("type", "old");
-                    ActivitySkip.forward(getActivity(), ScaleActivity.class,bundle4);
+                    bundle4.putString(ExtraName.SCALETOCUSTOME, ExtraName.OLDPROTOCUSTOME);
+                    ActivitySkip.forward(getActivity(), CustomeActivity.class, bundle4);
+                    getActivity().overridePendingTransition(R.anim.downtoup_in_anim, 0);
                     break;
             }
         }
