@@ -201,6 +201,8 @@ public class Contants {
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
+    //发票详情
+    public static final String DEPOSIT_DETAILS = DOMAIN + "/index.php/appv2/commossion/tax_invoice_info/";
     //同意或拒绝发票
     public static final String APPROVE_OR_REFUSE_INVOICE =DOMAIN +"/index.php/appv2/commossion/submit_invoice/";
     //学习详情
