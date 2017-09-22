@@ -13,8 +13,9 @@
     <string name="load_fail">加载失败</string>
     <!-- 请求数据并返回和加载数据相关提示 -->
     <string name="network_error">网络连接异常</string>
+    <string name="network_right">网络连接正常</string>
     <string name="app_exit">再按一次退出程序</string>
-    <string name="login_activity_userName">用户名</string>
+    <string name="login_activity_userName">邮箱或用户名</string>
     <string name="login_activity_password">密&#160;&#160;码</string>
     <string name="home_sure">确定</string>
     <string name="home_scale">客户推广</string>

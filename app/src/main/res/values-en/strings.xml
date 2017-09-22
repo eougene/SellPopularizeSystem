@@ -13,8 +13,9 @@
     <string name="load_fail">Load failed</string>
     <!-- 请求数据并返回和加载数据相关提示 -->
     <string name="network_error">Abnormal network connection</string>
+    <string name="network_right">Network connection normal</string>
     <string name="app_exit">Again according to exit the program</string>
-    <string name="login_activity_userName">User Name</string>
+    <string name="login_activity_userName">Email or Userame</string>
     <string name="login_activity_password">Password</string>
     <string name="home_sure">Confirm</string>
     <string name="home_scale">Client Promotion</string>
@@ -460,8 +461,8 @@
     <string name="inputoldpassword">Please enter the original password</string>
     <string name="confirm_new_password">Please confirm the new password</string>
     <string name="input_new_password">Please enter a new password</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
+    <string name="login">Sign In</string>
+    <string name="register">Sign Up</string>
     <string name="forget_password">Forgot password?</string>
     <string name="check_wechat_install">Check to see if WeChat is installed</string>
     <string name="issalingnum"> For saling :</string>
