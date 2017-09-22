@@ -12,13 +12,26 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
+import com.yd.org.sellpopularizesystem.activity.InvoiceActivity;
 import com.yd.org.sellpopularizesystem.activity.OrderDetailActivity;
+import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CommissionBean;
+import com.yd.org.sellpopularizesystem.javaBean.InvoiceDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
+import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.callback.SimpleCallBack;
+import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +84,9 @@ public class CommissionAdapter extends BaseAdapter {
 
             viewHolder.commissionRel = (RelativeLayout) convertView.findViewById(R.id.commissionRel);
             viewHolder.commissionLinear = (LinearLayout) convertView.findViewById(R.id.commissionLinear);
-
+            viewHolder.rlFirstCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlFistCommisstion);
+            viewHolder.rlSecondCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlSecondCommisstion);
+            viewHolder.rlThirdCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlThirdCommisstion);
 
             viewHolder.firstCommissionSum = (TextView) convertView.findViewById(R.id.firstCommissionSum);
             viewHolder.firstCommissionDate = (TextView) convertView.findViewById(R.id.firstCommissionDate);
@@ -183,7 +198,7 @@ public class CommissionAdapter extends BaseAdapter {
                 viewHolder.firstCommissionDate.setText("-");
             } else {
                 viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
-
+                viewHolder.rlFirstCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
         } else {
             viewHolder.firstCommissionDate.setText("-");
@@ -199,7 +214,7 @@ public class CommissionAdapter extends BaseAdapter {
                 viewHolder.secondCommissionDate.setText("-");
             } else {
                 viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
-
+                viewHolder.rlSecondCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
 
 
@@ -218,7 +233,7 @@ public class CommissionAdapter extends BaseAdapter {
                 viewHolder.thirdCommissionDate.setText("-");
             } else {
                 viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
-
+                viewHolder.rlThirdCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
 
 
@@ -286,16 +301,67 @@ public class CommissionAdapter extends BaseAdapter {
                         temp = 0;
                     }
 
+                    break;
+                case R.id.rlFistCommisstion:
+                    getDepositDetails(resultBean,"1");
+                    break;
 
+                case R.id.rlSecondCommisstion:
+                    getDepositDetails(resultBean,"2");
+                    break;
+
+                case R.id.rlThirdCommisstion:
+                    getDepositDetails(resultBean,"3");
                     break;
             }
+        }
+    }
+
+    private void getDepositDetails(CommissionBean.ResultBean resultBean, String step) {
+        HttpParams httpParams=new HttpParams();
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("commossion_id",resultBean.getId()+"");
+        httpParams.put("step",step);
+        EasyHttp.get(Contants.APPROVE_OR_REFUSE_INVOICE)
+                .timeStamp(true)//是否需要追加时间戳
+                .params(httpParams)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToasShow.showToast(mContext, mContext.getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        jsonParse(json);
+                    }
+                });
+
+    }
+
+    private void jsonParse(String json) {
+        try {
+            JSONObject jsonObject = new JSONObject(json);
+            if (jsonObject.get("code")==0 || jsonObject.get("code").equals("0")){
+                ToasShow.showToastCenter(mContext,jsonObject.getString("msg"));
+                return;
+            }else {
+                Gson gson=new Gson();
+                InvoiceDetailBean  detailBean=gson.fromJson(json,InvoiceDetailBean.class);
+                InvoiceDetailBean.ResultBean rb=detailBean.getResult();
+                Bundle bun=new Bundle();
+                bun.putSerializable("bean",rb);
+                ActivitySkip.forward(CommissionActivity.commissionActivity, InvoiceActivity.class);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 
     public class ViewHoler {
         private TextView notifText, commissionID, nameCommission,
                 titleCommission, sumCommission, firstCommissionSum, firstCommissionDate, secondCommissionSum, secondCommissionDate, thirdCommissionSum, thirdCommissionDate;
-        private RelativeLayout commissionRel;
+        private RelativeLayout commissionRel,rlFirstCommisstion,rlSecondCommisstion,rlThirdCommisstion;
         private LinearLayout commissionLinear;
         private ImageView commissionRightImageView, moreImageView;
         public CommissionBean.ResultBean resultBean;
