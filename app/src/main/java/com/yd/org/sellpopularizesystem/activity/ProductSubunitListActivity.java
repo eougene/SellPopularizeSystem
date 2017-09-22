@@ -484,14 +484,14 @@ public class ProductSubunitListActivity extends BaseActivity {
                 case  R.id.tvPrice:
                     if (!isSequence){
                         Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
-                                R.mipmap.trangle);
+                                R.mipmap.trangle_down);
                         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
                         tvPrice.setCompoundDrawables(null,null,drawable,null);
                         sortPriceHighToLow();
                         isSequence=true;
                     }else {
                         Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
-                                R.mipmap.trangle2);
+                                R.mipmap.trangle_up);
                         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
                         tvPrice.setCompoundDrawables(null,null,drawable,null);
                         List<ProSubunitListBean.ResultBean.PropertyBean> lists=adapter.getmDatas();

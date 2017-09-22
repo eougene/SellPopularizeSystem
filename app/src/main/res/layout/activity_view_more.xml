@@ -26,8 +26,8 @@
             android:id="@+id/tvHouseType"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:paddingLeft="@dimen/padding_margin_20"
+            android:layout_weight="1.4"
+            android:paddingLeft="@dimen/padding_margin_16"
             android:text="@string/housetype"
             android:textColor="@color/white"/>
 
@@ -42,10 +42,10 @@
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.7"
-            android:drawableRight="@mipmap/trangle2"
-            android:paddingRight="@dimen/padding_margin_10"
+            android:layout_height="18dp"
+            android:layout_weight="0.8"
+            android:drawableRight="@mipmap/trangle_up"
+            android:paddingRight="@dimen/padding_margin_8"
             android:text="@string/price"
             android:textColor="@color/white"/>
 
