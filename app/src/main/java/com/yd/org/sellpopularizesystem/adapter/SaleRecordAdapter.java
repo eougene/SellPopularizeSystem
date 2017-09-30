@@ -216,8 +216,10 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
-            //查看定金
-            viewHolder.depositImageView.setVisibility(View.VISIBLE);
+            if (viewHolder.resultBean.getOrder_money_status()==2){
+                //查看定金
+                viewHolder.depositImageView.setVisibility(View.VISIBLE);
+            }
 
 
             if (viewHolder.resultBean.getOrder_money_status() == 3 && viewHolder.resultBean.getCancel_apply_status() == 0) {
@@ -359,7 +361,7 @@ public class SaleRecordAdapter extends BaseAdapter {
      * 获取定金消息
      * @param resultBean
      */
-    private void getDepositInfo(SaleOrderBean.ResultBean resultBean) {
+    private void getDepositInfo(final SaleOrderBean.ResultBean resultBean) {
         EasyHttp.get(Contants.RECEIPT_INFO)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -388,6 +390,7 @@ public class SaleRecordAdapter extends BaseAdapter {
                         if (receiptBean.getCode().equals("1")) {
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("keys", receiptBean);
+                            bundle.putString("name",resultBean.getCustomer_surname()+mContext.getResources().getString(R.string.single_blank_space)+resultBean.getCustomer_first_name());
                             ActivitySkip.forward(SaleRecordActivity.saleRecordActivity, DepositActivity.class, bundle);
                         } else {
                             ToasShow.showToastCenter(mContext, receiptBean.getMsg());

@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.adapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
@@ -33,6 +35,7 @@ import com.zhouyou.http.model.HttpParams;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,9 +87,9 @@ public class CommissionAdapter extends BaseAdapter {
 
             viewHolder.commissionRel = (RelativeLayout) convertView.findViewById(R.id.commissionRel);
             viewHolder.commissionLinear = (LinearLayout) convertView.findViewById(R.id.commissionLinear);
-            viewHolder.rlFirstCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlFistCommisstion);
-            viewHolder.rlSecondCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlSecondCommisstion);
-            viewHolder.rlThirdCommisstion=(RelativeLayout) convertView.findViewById(R.id.rlThirdCommisstion);
+            viewHolder.rlFirstCommisstion = (RelativeLayout) convertView.findViewById(R.id.rlFistCommisstion);
+            viewHolder.rlSecondCommisstion = (RelativeLayout) convertView.findViewById(R.id.rlSecondCommisstion);
+            viewHolder.rlThirdCommisstion = (RelativeLayout) convertView.findViewById(R.id.rlThirdCommisstion);
 
             viewHolder.firstCommissionSum = (TextView) convertView.findViewById(R.id.firstCommissionSum);
             viewHolder.firstCommissionDate = (TextView) convertView.findViewById(R.id.firstCommissionDate);
@@ -147,8 +150,19 @@ public class CommissionAdapter extends BaseAdapter {
 
         viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + "  / " + datas.get(position).getProduct_childs_unit_number());
         //总金额
-        viewHolder.sumCommission.setText(datas.get(position).getTotal() + "");
+        String total=datas.get(position).getTotal();
+        if(total.contains(".")){
+            viewHolder.sumCommission.setText(MyUtils.addComma(total.split("\\.")[0])+"."+total.split("\\.")[1]);
+        }else {
+            viewHolder.sumCommission.setText(MyUtils.addComma(total));
+        }
 
+        if (viewHolder.resultBean.getInvoice_number() > 0) {
+            viewHolder.notifText.setVisibility(View.VISIBLE);
+            viewHolder.notifText.setText(viewHolder.resultBean.getInvoice_number() + "");
+        } else {
+            viewHolder.notifText.setVisibility(View.GONE);
+        }
 
         //sale_id拿钱的人    user_id下单的人
         if (viewHolder.resultBean.getSale_id() != viewHolder.resultBean.getUser_id()) {
@@ -157,40 +171,78 @@ public class CommissionAdapter extends BaseAdapter {
         } else {
             viewHolder.nameCommission.setVisibility(View.GONE);
         }
+        //佣金1是否显示红点
+        if (viewHolder.resultBean.getFirst_invoice_status() == 1) {
+            viewHolder.firstView.setVisibility(View.VISIBLE);
+            viewHolder.rlFirstCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+        } else {
+            viewHolder.firstView.setVisibility(View.GONE);
+        }
+        //佣金2是否显示红点
+        if (viewHolder.resultBean.getSecond_invoice_status() == 1) {
+            viewHolder.secondView.setVisibility(View.VISIBLE);
+            viewHolder.rlSecondCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+        } else {
+            viewHolder.secondView.setVisibility(View.GONE);
+        }
+        //佣金3是否显示红点
+        if (viewHolder.resultBean.getThird_invoice_status() == 1) {
+            viewHolder.thirdView.setVisibility(View.VISIBLE);
+            viewHolder.rlThirdCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+        } else {
+            viewHolder.thirdView.setVisibility(View.GONE);
+        }
+        //佣金1是否可点击
+        if (!viewHolder.resultBean.getFirst_money().equals("0.00")) {
+            if (viewHolder.resultBean.getOne_invoice_status() != 4) {
+                viewHolder.rlFirstCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+            }
 
-
-        //佣金已发放
+        }
+        //佣金2是否可点击
+        if (!viewHolder.resultBean.getSecond_money().equals("0.00")) {
+            if (viewHolder.resultBean.getTwo_invoice_status() != 4) {
+                viewHolder.rlSecondCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+            }
+        }
+        //佣金3是否可点击
+        if (!viewHolder.resultBean.getThird_money().equals("0.00")) {
+            if (viewHolder.resultBean.getThree_invoice_status() != 4) {
+                viewHolder.rlThirdCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
+            }
+        }
+        //佣金1已发放
         if (viewHolder.resultBean.getFirst_status() == 1) {
             viewHolder.firstCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
-            viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            //viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
         } else {
             viewHolder.firstCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
-            viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+            //viewHolder.firstCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
         }
 
 
-        //佣金已发放
+        //佣金2已发放
         if (viewHolder.resultBean.getSecond_status() == 1) {
             viewHolder.secondCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
-            viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            //viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
         } else {
             viewHolder.secondCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
-            viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+            //viewHolder.secondCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
         }
 
 
-        //佣金已发放
+        //佣金3已发放
         if (viewHolder.resultBean.getThird_status() == 1) {
             viewHolder.thirdCommissionSum.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
-            viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
+            //viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.scale_tab5));
         } else {
             viewHolder.thirdCommissionSum.setTextColor(mContext.getResources().getColor(R.color.gray));
-            viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
+            // viewHolder.thirdCommissionDate.setTextColor(mContext.getResources().getColor(R.color.gray));
         }
 
 
         //佣金1
-        viewHolder.firstCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getFirst_money()) + Double.valueOf(viewHolder.resultBean.getFirst_gst()) + "");
+        viewHolder.firstCommissionSum.setText(add(viewHolder.resultBean.getFirst_money(),viewHolder.resultBean.getFirst_gst()));
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
 
@@ -198,23 +250,21 @@ public class CommissionAdapter extends BaseAdapter {
                 viewHolder.firstCommissionDate.setText("-");
             } else {
                 viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
-                viewHolder.rlFirstCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
         } else {
             viewHolder.firstCommissionDate.setText("-");
         }
         //佣金2
-        viewHolder.secondCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getSecond_money()) + Double.valueOf(viewHolder.resultBean.getSecond_gst()) + "");
+        viewHolder.secondCommissionSum.setText(add(viewHolder.resultBean.getSecond_money(),viewHolder.resultBean.getSecond_gst()));
 
 
-        if (viewHolder.resultBean.getFirst_status() == 1) {
+        if (viewHolder.resultBean.getSecond_status() == 1) {
 
 
             if (null == viewHolder.resultBean.getSecond_time() || TextUtils.isEmpty(viewHolder.resultBean.getSecond_time() + "")) {
                 viewHolder.secondCommissionDate.setText("-");
             } else {
                 viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
-                viewHolder.rlSecondCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
 
 
@@ -223,19 +273,17 @@ public class CommissionAdapter extends BaseAdapter {
         }
 
         //佣金3
-        viewHolder.thirdCommissionSum.setText(Double.valueOf(viewHolder.resultBean.getThird_money()) + Double.valueOf(viewHolder.resultBean.getThird_gst()) + "");
+        viewHolder.thirdCommissionSum.setText(add(viewHolder.resultBean.getThird_money(),viewHolder.resultBean.getThird_gst()));
 
 
-        if (viewHolder.resultBean.getFirst_status() == 1) {
+        if (viewHolder.resultBean.getThird_status() == 1) {
 
 
             if (null == viewHolder.resultBean.getThird_time() || TextUtils.isEmpty(viewHolder.resultBean.getThird_time() + "")) {
                 viewHolder.thirdCommissionDate.setText("-");
             } else {
                 viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
-                viewHolder.rlThirdCommisstion.setOnClickListener(new OnClick(viewHolder.resultBean, viewHolder.moreImageView, viewHolder.commissionLinear));
             }
-
 
         } else {
             viewHolder.thirdCommissionDate.setText("-");
@@ -256,6 +304,19 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         return convertView;
+    }
+
+    private String add(String str1,String str2){
+        BigDecimal bd1=BigDecimal.valueOf(Double.parseDouble(str1));
+        BigDecimal bd2=BigDecimal.valueOf(Double.parseDouble(str2));
+        String value=String.valueOf(bd1.add(bd2).doubleValue());
+
+        if (value.contains(".")){
+            return MyUtils.addComma(value.split("\\.")[0])+"."+value.split("\\.")[1];
+        }else {
+            return MyUtils.addComma(value);
+        }
+
     }
 
     class OnClick implements View.OnClickListener {
@@ -281,7 +342,6 @@ public class CommissionAdapter extends BaseAdapter {
                     SaleOrderBean.ResultBean bean = new SaleOrderBean.ResultBean();
                     bean.setProduct_orders_id(Integer.parseInt(resultBean.getOrder_id() + ""));
 
-
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("order", bean);
                     ActivitySkip.forward(CommissionActivity.commissionActivity, OrderDetailActivity.class, bundle);
@@ -303,27 +363,31 @@ public class CommissionAdapter extends BaseAdapter {
 
                     break;
                 case R.id.rlFistCommisstion:
-                    getDepositDetails(resultBean,"1");
+                    Log.e("TAG", "rlFistCommisstion: ");
+                    getDepositDetails(resultBean, "1");
                     break;
 
                 case R.id.rlSecondCommisstion:
-                    getDepositDetails(resultBean,"2");
+                    Log.e("TAG", "rlSecondCommisstion: ");
+                    getDepositDetails(resultBean, "2");
                     break;
 
                 case R.id.rlThirdCommisstion:
-                    getDepositDetails(resultBean,"3");
+                    Log.e("TAG", "rlSecondCommisstion: ");
+                    getDepositDetails(resultBean, "3");
                     break;
             }
         }
     }
 
-    private void getDepositDetails(CommissionBean.ResultBean resultBean, String step) {
-        HttpParams httpParams=new HttpParams();
+    private void getDepositDetails(final CommissionBean.ResultBean resultBean, final String step) {
+        HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
-        httpParams.put("commossion_id",resultBean.getId()+"");
-        httpParams.put("step",step);
-        EasyHttp.get(Contants.APPROVE_OR_REFUSE_INVOICE)
+        httpParams.put("commossion_id", resultBean.getId() + "");
+        httpParams.put("step", step);
+        EasyHttp.get(Contants.DEPOSIT_DETAILS)
                 .timeStamp(true)//是否需要追加时间戳
+                .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
                     @Override
@@ -333,25 +397,38 @@ public class CommissionAdapter extends BaseAdapter {
 
                     @Override
                     public void onSuccess(String json) {
-                        jsonParse(json);
+                        Log.e("TAG", "onSuccess: " + json);
+                        jsonParse(json, resultBean,step);
                     }
                 });
 
     }
 
-    private void jsonParse(String json) {
+    private void jsonParse(String json, CommissionBean.ResultBean resultBean,String step) {
         try {
             JSONObject jsonObject = new JSONObject(json);
-            if ((jsonObject.getInt("code"))==0 || jsonObject.get("code").equals("0")){
-                ToasShow.showToastCenter(mContext,jsonObject.getString("msg"));
+            if ((jsonObject.getInt("code")) == 0 || jsonObject.get("code").equals("0")) {
+                ToasShow.showToastCenter(mContext, jsonObject.getString("msg"));
                 return;
-            }else {
-                Gson gson=new Gson();
-                InvoiceDetailBean  detailBean=gson.fromJson(json,InvoiceDetailBean.class);
-                InvoiceDetailBean.ResultBean rb=detailBean.getResult();
-                Bundle bun=new Bundle();
-                bun.putSerializable("bean",rb);
-                ActivitySkip.forward(CommissionActivity.commissionActivity, InvoiceActivity.class);
+            } else {
+                Log.e("json", "jsonParse: " + json);
+                if (jsonObject.getString("msg").equals(mContext.getString(R.string.get_success))) {
+                    Gson gson = new Gson();
+                    InvoiceDetailBean detailBean = gson.fromJson(json, InvoiceDetailBean.class);
+                    InvoiceDetailBean.ResultBean rb = detailBean.getResult();
+                    Bundle bun = new Bundle();
+                    bun.putSerializable("bean", rb);
+                    if (step.equals("1")){
+                        bun.putString("status", resultBean.getOne_invoice_status() + "");
+                    }else if (step.equals("2")){
+                        bun.putString("status", resultBean.getTwo_invoice_status() + "");
+                    }else {
+                        bun.putString("status", resultBean.getThree_invoice_status() + "");
+                    }
+
+                    ActivitySkip.forward(CommissionActivity.commissionActivity, InvoiceActivity.class, bun);
+                }
+
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -361,7 +438,7 @@ public class CommissionAdapter extends BaseAdapter {
     public class ViewHoler {
         private TextView notifText, commissionID, nameCommission,
                 titleCommission, sumCommission, firstCommissionSum, firstCommissionDate, secondCommissionSum, secondCommissionDate, thirdCommissionSum, thirdCommissionDate;
-        private RelativeLayout commissionRel,rlFirstCommisstion,rlSecondCommisstion,rlThirdCommisstion;
+        private RelativeLayout commissionRel, rlFirstCommisstion, rlSecondCommisstion, rlThirdCommisstion;
         private LinearLayout commissionLinear;
         private ImageView commissionRightImageView, moreImageView;
         public CommissionBean.ResultBean resultBean;
