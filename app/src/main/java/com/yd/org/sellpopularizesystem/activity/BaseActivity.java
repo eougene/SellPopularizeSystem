@@ -281,13 +281,13 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
     public void onNetChange() {
         if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
             if (NetUtil.isForeground(this)){
-                Log.e("TAG", "onNetChange: "+this.getClass().getName()+"---"+"网络连接异常");
+                Log.e("TAG", "onNetChange***: "+this.getClass().getName()+"---"+"网络连接异常");
                 ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
             }
 
         }else {
             if (NetUtil.isForeground(this)){
-                Log.e("TAG", "onNetChange: "+this.getClass().getName()+"---"+"网络连接正常");
+                Log.e("TAG", "onNetChange*******: "+this.getClass().getName()+"---"+"网络连接正常");
                 ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
             }
         }
