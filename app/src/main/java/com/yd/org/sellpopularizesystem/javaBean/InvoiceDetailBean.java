@@ -44,7 +44,7 @@ public class InvoiceDetailBean extends Domine{
         this.result = result;
     }
 
-    public static class ResultBean implements Serializable{
+    public static class ResultBean extends Domine{
         /**
          * user_name : liao.liao
          * abn : djdjffjf

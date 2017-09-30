@@ -118,7 +118,7 @@ public class EoilistBean {
         private String remark;
         private String old_status;
         private int status;
-        private Object product_name;
+       // private Object product_name;
         private String customer_surname;
         private String customer_first_name;
         private String customer_en_name;
@@ -348,13 +348,13 @@ public class EoilistBean {
             this.status = status;
         }
 
-        public Object getProduct_name() {
+      /*  public Object getProduct_name() {
             return product_name;
         }
 
         public void setProduct_name(Object product_name) {
             this.product_name = product_name;
-        }
+        }*/
 
         public String getCustomer_surname() {
             return customer_surname;
