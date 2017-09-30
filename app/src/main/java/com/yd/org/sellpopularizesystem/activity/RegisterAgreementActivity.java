@@ -97,7 +97,7 @@ public class RegisterAgreementActivity extends BaseActivity {
                 webView.loadUrl("file:///android_asset/AgreementEN.html");
             }
         }
-
+        //webView.loadUrl("file:///android_asset/Agreement.html");
     }
 
     @Override
