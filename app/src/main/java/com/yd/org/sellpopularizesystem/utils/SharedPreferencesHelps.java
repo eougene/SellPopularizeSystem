@@ -275,4 +275,12 @@ public class SharedPreferencesHelps {
         return getPreferences().getString(ExtraName.PROJECT_STATUS, "new");
     }
 
+    public  synchronized static final void setDeposit_num(String name) {
+        getPreferences().edit().putString(ExtraName.DEPOSIT_NUM, name).commit();
+    }
+
+    public synchronized static final String getDeposit_num() {
+        return getPreferences().getString(ExtraName.DEPOSIT_NUM, "0");
+    }
+
 }
