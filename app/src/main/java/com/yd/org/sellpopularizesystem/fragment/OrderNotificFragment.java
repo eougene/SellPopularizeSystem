@@ -57,19 +57,22 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 //全选
                 case 0:
                     //全选,全不选
-                    if (msg.arg1 == 0) {
-                        // 遍历list的长度，将MyAdapter中的map值全部设为true
-                        for (int i = 0; i < informationContents.size(); i++) {
-                            getIsSelected().put(i, true);
-                        }
+                    if (informationContents.size()>0){
+                        if (msg.arg1 == 0) {
+                            // 遍历list的长度，将MyAdapter中的map值全部设为true
+                            for (int i = 0; i < informationContents.size(); i++) {
+                                getIsSelected().put(i, true);
+                            }
 
-                    } else {
-                        // 遍历list的长度，将MyAdapter中的map值全部设为true
-                        for (int i = 0; i < informationContents.size(); i++) {
-                            getIsSelected().put(i, false);
+                        } else {
+                            // 遍历list的长度，将MyAdapter中的map值全部设为true
+                            for (int i = 0; i < informationContents.size(); i++) {
+                                getIsSelected().put(i, false);
+                            }
                         }
+                        adapter.notifyDataSetChanged();
                     }
-                    adapter.notifyDataSetChanged();
+
                     break;
 
 
@@ -93,10 +96,14 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
                 //删除
                 case 2:
                     if (null != isSelected() && !isSelected().equals("")) {
+                        Log.e("TAG", "执行删除操作 " );
                         deleteNoticeLog(isSelected());
                         type = msg.arg2;
                     } else {
-                        ToasShow.showToastCenter(getActivity(), getString(R.string.select_not));
+                        if (isAdded()){
+                            ToasShow.showToastCenter(getActivity(), getString(R.string.select_not));
+                        }
+                        //ToasShow.showToastCenter(getActivity(), getString(R.string.select_not));
                         type = 1;
                     }
 
@@ -369,6 +376,7 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
      * @param notice_id
      */
     private void deleteNoticeLog(String notice_id) {
+        Log.e("TAG", "deleteNoticeLog****: " );
         EasyHttp.get(Contants.DELETE_NOTICE)
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
@@ -430,10 +438,10 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
 
     private String isSelected() {
         StringBuffer stringBuffer = new StringBuffer();
-        if (informationContents.size() > 0) {
-            for (int i = 0; i < informationContents.size(); i++) {
+        if (adapter.getInformationtents().size() > 0) {
+            for (int i = 0; i < adapter.getInformationtents().size(); i++) {
                 if (getIsSelected().get(i)) {
-                    stringBuffer.append(informationContents.get(i).getId() + ",");
+                    stringBuffer.append(adapter.getInformationtents().get(i).getId() + ",");
                 }
             }
             return stringBuffer.toString();

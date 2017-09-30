@@ -25,6 +25,7 @@ import com.yd.org.sellpopularizesystem.activity.RegistSalersActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -52,6 +53,7 @@ public class RegisterFragment extends BaseFragmentView {
     private View userView, userEnView;
 
 
+
     @Override
     protected void initView(Bundle savedInstanceState) {
         setContentView(R.layout.fragment_register);
@@ -67,7 +69,7 @@ public class RegisterFragment extends BaseFragmentView {
         passwordEdit = getViewById(R.id.passwordEdit);
         showPassword = getViewById(R.id.showPassword);
         regsterText = getViewById(R.id.regsterText);
-        userIdEdit = getViewById(R.id.userIdEdit);
+       // userIdEdit = getViewById(R.id.userIdEdit);
         enNameEdit = getViewById(R.id.enNameEdit);
         surePasswordEdit = getViewById(R.id.surePasswordEdit);
 
@@ -76,7 +78,6 @@ public class RegisterFragment extends BaseFragmentView {
         radio_02 = getViewById(R.id.radio_02);
 
         referralLinear = getViewById(R.id.referralLinear);
-        userLinear = getViewById(R.id.userLinear);
         userEnLinaer = getViewById(R.id.userEnLinaer);
         userView = getViewById(R.id.userView);
         userEnView = getViewById(R.id.userEnView);
@@ -97,9 +98,7 @@ public class RegisterFragment extends BaseFragmentView {
     private void getInfo() {
         String recommendIdString, familyNameString, lastNameString, phoneString, regsterEmailString, passwordString;
 
-
         //推荐码
-
         if (TextUtils.isEmpty(recommendIdEdit.getText().toString().trim())) {
             ToasShow.showToastCenter(getActivity(), getString(R.string.codeerror));
             return;
@@ -131,7 +130,13 @@ public class RegisterFragment extends BaseFragmentView {
             ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
             return;
         } else {
-            regsterEmailString = regsterEmailEdit.getText().toString().trim();
+            if (StringUtils.isEmail(regsterEmailEdit.getText().toString().trim())){
+                regsterEmailString = regsterEmailEdit.getText().toString().trim();
+            }else {
+                ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
+                return;
+            }
+
         }
 
 
@@ -144,7 +149,7 @@ public class RegisterFragment extends BaseFragmentView {
             passwordString = passwordEdit.getText().toString().trim();
         }
 
-        //确认密码
+       /* //确认密码
         if (TextUtils.isEmpty(surePasswordEdit.getText().toString().trim())) {
             ToasShow.showToastCenter(getActivity(), getString(R.string.sure_password_en));
             return;
@@ -153,7 +158,7 @@ public class RegisterFragment extends BaseFragmentView {
                 ToasShow.showToastCenter(getActivity(), getString(R.string.sure_change));
                 return;
             }
-        }
+        }*/
 
 
         HttpParams httpParams = new HttpParams();
@@ -192,13 +197,13 @@ public class RegisterFragment extends BaseFragmentView {
                         if (errorBean.getCode().equals("1")) {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
 
-                            new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                            /*new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
 
                                 }
-                            }).create().show();
+                            }).create().show();*/
 
                         } else {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
@@ -212,12 +217,18 @@ public class RegisterFragment extends BaseFragmentView {
 
     //注册销售
     private void getSalInf() {
-        String team_leader_1="", first_name, surname, en_name, mobile, e_mail, password;
 
+        String team_leader_1="", first_name, surname, en_name, mobile, e_mail, password,refer_code;
 
         //推荐码
+        //team_leader_1 = userIdEdit.getText().toString().trim();
 
-        team_leader_1 = userIdEdit.getText().toString().trim();
+        if (TextUtils.isEmpty(recommendIdEdit.getText().toString().trim())) {
+            ToasShow.showToastCenter(getActivity(), getString(R.string.codeerror));
+            return;
+        } else {
+            refer_code = recommendIdEdit.getText().toString().trim();
+        }
 
         //姓氏
         if (TextUtils.isEmpty(familyNameEdit.getText().toString().trim())) {
@@ -262,7 +273,13 @@ public class RegisterFragment extends BaseFragmentView {
             ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
             return;
         } else {
-            e_mail = regsterEmailEdit.getText().toString().trim();
+            if (StringUtils.isEmail(regsterEmailEdit.getText().toString().trim())){
+                e_mail = regsterEmailEdit.getText().toString().trim();
+            }else {
+                ToasShow.showToastCenter(getActivity(), getString(R.string.email_hint));
+                return;
+            }
+
         }
 
 
@@ -289,6 +306,7 @@ public class RegisterFragment extends BaseFragmentView {
 
         Bundle bundle=new Bundle();
         bundle.putString("team_leader_1",team_leader_1);
+        bundle.putString("refer_code",refer_code);
         bundle.putString("first_name",first_name);
         bundle.putString("surname",surname);
         bundle.putString("en_name",en_name);
@@ -317,10 +335,11 @@ public class RegisterFragment extends BaseFragmentView {
                 switch (checkedId) {
                     //Referral人员
                     case R.id.radio_01:
+                        getViewById(R.id.llConfirmpass).setVisibility(View.GONE);
+                        recommendIdEdit.setHint(getResources().getString(R.string.referral_code_hint));
                         clearInfo();
-                        referralLinear.setVisibility(View.VISIBLE);
+                        //referralLinear.setVisibility(View.VISIBLE);
                         userView.setVisibility(View.GONE);
-                        userLinear.setVisibility(View.GONE);
 
                         userEnLinaer.setVisibility(View.GONE);
                         userEnView.setVisibility(View.GONE);
@@ -328,22 +347,24 @@ public class RegisterFragment extends BaseFragmentView {
                         radio_01.setChecked(true);
                         radio_02.setChecked(false);
                         userType = 2;
+                        regsterText.setText(getResources().getString(R.string.register));
                         break;
 
 
                     //销售人员
                     case R.id.radio_02:
+                        getViewById(R.id.llConfirmpass).setVisibility(View.VISIBLE);
+                        recommendIdEdit.setHint(getResources().getString(R.string.input_recode));
                         clearInfo();
-                        referralLinear.setVisibility(View.GONE);
+                       // referralLinear.setVisibility(View.VISIBLE);
                         userView.setVisibility(View.GONE);
-                        userLinear.setVisibility(View.VISIBLE);
                         userEnLinaer.setVisibility(View.VISIBLE);
                         userEnView.setVisibility(View.VISIBLE);
-
 
                         radio_01.setChecked(false);
                         radio_02.setChecked(true);
                         userType = 1;
+                        regsterText.setText(getResources().getString(R.string.next));
                         break;
 
                 }
@@ -358,7 +379,7 @@ public class RegisterFragment extends BaseFragmentView {
         lastNameEdit.setText("");
         phoneEdit.setText("");
         regsterEmailEdit.setText("");
-        userIdEdit.setText("");
+       // userIdEdit.setText("");
         enNameEdit.setText("");
         passwordEdit.setText("");
         surePasswordEdit.setText("");

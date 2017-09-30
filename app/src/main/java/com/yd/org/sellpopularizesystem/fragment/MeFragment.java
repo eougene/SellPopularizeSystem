@@ -5,6 +5,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -38,6 +39,9 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,7 +53,7 @@ import java.util.Map;
 
 public class MeFragment extends BaseFragmentView {
     private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting, relCertificate;
-    private TextView tvUserName,tvQr;
+    private TextView tvUserName, tvQr, tvDepositCount;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
     private RelativeLayout rlCommission;
@@ -84,17 +88,17 @@ public class MeFragment extends BaseFragmentView {
 
                 //我的信息
                 case R.id.relCertificate:
-                   ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
                     break;
 
                 //推荐码
                 case R.id.tvQr:
-                   ActivitySkip.forward(getActivity(), InviteQRActivity.class);
+                    ActivitySkip.forward(getActivity(), InviteQRActivity.class);
                     break;
 
                 //我的信息
                 case R.id.ivCustomePhoto:
-                   ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                    ActivitySkip.forward(getActivity(), MyInfoActivity.class);
                     break;
             }
         }
@@ -137,7 +141,7 @@ public class MeFragment extends BaseFragmentView {
         SharedPreferencesHelps.getCompanyId();
         SharedPreferencesHelps.cleaAccount();
         SharedPreferencesHelps.clearUserPassword();
-        ActivitySkip.forward(getActivity(), LoginActivity.class,Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        ActivitySkip.forward(getActivity(), LoginActivity.class, Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
     UMAuthListener authListener = new UMAuthListener() {
@@ -272,10 +276,13 @@ public class MeFragment extends BaseFragmentView {
     }
 
     private void initWidget() {
+        //注册事件
+        EventBus.getDefault().register(this);
         tvQr = getViewById(R.id.tvQr);
         relCertificate = getViewById(R.id.relCertificate);
 
         rlCommission = getViewById(R.id.rlCommission);
+        tvDepositCount = getViewById(R.id.tvDepositCount);
         rlCommission.setOnClickListener(mOnClickListener);
         rlTeam = getViewById(R.id.rlTeam);
         saleRecord = getViewById(R.id.saleRecord);
@@ -289,6 +296,12 @@ public class MeFragment extends BaseFragmentView {
         tvUserName.setText(SharedPreferencesHelps.getSurName() + "  " + SharedPreferencesHelps.getFirstName());
         acountPopupWindow = new BindAcountPopupWindow(getActivity(), mItemClick);
 
+        if (Integer.parseInt(SharedPreferencesHelps.getDeposit_num()) > 0) {
+            tvDepositCount.setVisibility(View.VISIBLE);
+            tvDepositCount.setText(SharedPreferencesHelps.getDeposit_num());
+        } else {
+            tvDepositCount.setVisibility(View.GONE);
+        }
 
         if (!SharedPreferencesHelps.getUserImage().equals("null")) {
             Picasso.with(getActivity()).load(Contants.DOMAIN + "/" + SharedPreferencesHelps.getUserImage()).
@@ -379,5 +392,25 @@ public class MeFragment extends BaseFragmentView {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //取消注册事件
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onNumEvent(Message message) {
+        Log.e("TAG", "mefragment: " + message.arg1);
+        if (message.arg1 > 0) {
+            Log.e("TAG", "mefragmentnum: " + SharedPreferencesHelps.getDeposit_num());
+            tvDepositCount.setVisibility(View.VISIBLE);
+            tvDepositCount.setText(message.arg1 + "");
+
+        } else {
+            tvDepositCount.setVisibility(View.GONE);
+        }
+
+    }
 
 }

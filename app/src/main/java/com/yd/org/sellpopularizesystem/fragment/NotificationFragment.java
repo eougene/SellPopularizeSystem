@@ -6,6 +6,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
@@ -238,15 +239,17 @@ public class NotificationFragment extends BaseFragmentView {
 
                 //删除
                 case R.id.deleteNotification:
-
+                    Log.e("TAG", "点击了删除 " );
 
                     if (cate_id == 4) {
+                        Log.e("TAG", "orderFragment**** " );
                         Message messages = new Message();
                         messages.what = 2;
                         messages.arg2 = type;
                         orderFragment.mHandle.sendMessage(messages);
 
                     } else if (cate_id == 3) {
+                        Log.e("TAG", "teamFragment**** " );
                         Message messages2 = new Message();
                         messages2.what = 2;
                         messages2.arg2 = type;
@@ -254,12 +257,14 @@ public class NotificationFragment extends BaseFragmentView {
 
 
                     } else if (cate_id == 2) {
+                        Log.e("TAG", "companyFragment**** " );
                         Message messages3 = new Message();
                         messages3.what = 2;
                         messages3.arg2 = type;
                         companyFragment.mHandle.sendMessage(messages3);
 
                     } else if (cate_id == 1) {
+                        Log.e("TAG", "systemFragment**** " );
                         Message messages4 = new Message();
                         messages4.what = 2;
                         messages4.arg2 = type;
@@ -447,9 +452,10 @@ public class NotificationFragment extends BaseFragmentView {
         if (SharedPreferencesHelps.getType() == 1) {
             orderRelat.setVisibility(View.VISIBLE);
             brifeRelat.setVisibility(View.VISIBLE);
-
+            cate_id=4;
             //推荐人
         } else if (SharedPreferencesHelps.getType() == 2) {
+            cate_id=2;
             getViewById(R.id.line).setVisibility(View.GONE);
             getViewById(R.id.line1).setVisibility(View.GONE);
             orderRelat.setVisibility(View.GONE);

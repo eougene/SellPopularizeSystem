@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -29,6 +30,12 @@ import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,7 +76,7 @@ public class HomeFragment extends BaseFragmentView {
                     Bundle bundle3 = new Bundle();
                     if (homeDataBean != null) {
                         bundle3.putString("studynum", homeDataBean.getResult().getTotal_study() + "");
-                        bundle3.putString("unchecknum",homeDataBean.getResult().getUncheck()+"");
+                        bundle3.putString("unchecknum", homeDataBean.getResult().getUncheck() + "");
                     } else {
                         bundle3.putString("studynum", 0 + "");
                     }
@@ -105,8 +112,12 @@ public class HomeFragment extends BaseFragmentView {
         setContentView(R.layout.home_fragment);
         StatusBarUtil.setTranslucentForImageViewInFragment(getActivity(), 0, null);
         homeFragment = this;
+        //注册事件
+        EventBus.getDefault().register(this);
         initWidget();
         getHomeData();
+        getDepositData();
+
     }
 
 
@@ -212,13 +223,68 @@ public class HomeFragment extends BaseFragmentView {
                         }
                     }
                 });
-
-
     }
 
+    public void getDepositData() {
+        EasyHttp.get(Contants.DEPOSIT_DAA)
+                .cacheMode(CacheMode.NO_CACHE)
+                .cacheKey(this.getClass().getSimpleName())
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        super.onStart();
+
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+
+                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+
+                        try {
+                            JSONObject jsonObject=new JSONObject(json);
+                            if (jsonObject.getString("code").equals("1")){
+                                int num=jsonObject.getInt("result");
+                                SharedPreferencesHelps.setDeposit_num(String.valueOf(num));
+                                Message message = new Message();
+                                message.what = 2;
+                                message.arg1 =num;
+                                EventBus.getDefault().post(message);
+                                        //通知主页面显示消息条目
+                                HomeActiviyt.homeActiviyt.handler.sendMessage(message);
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                });
+    }
 
     @Override
     protected void processLogic(Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //取消注册事件
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,priority=100)
+    public void onMoonEvent(String message){
+        Log.e("TAG", "onMoonEvent: "+message);
+        if (message.equals("ok")){
+            getDepositData();
+        }
 
     }
 }
