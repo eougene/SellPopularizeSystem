@@ -25,6 +25,7 @@ import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.NetUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -33,17 +34,21 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.Locale;
 
-public class HomeActiviyt extends FragmentActivity implements View.OnClickListener {
+public class HomeActiviyt extends FragmentActivity implements View.OnClickListener,NetBroadcastReceiver.netEventHandler {
     public static HomeActiviyt homeActiviyt;
     private long mExitTime = 0;
-    private TextView tvHome, tvMessage, tvSetting, tvMessageCount;
+    private TextView tvHome, tvMessage, tvSetting, tvMessageCount,tvMeCount;
     private HomeFragment homeFragment;
     private NotificationFragment notificationFragment;
     private MeFragment meFragment;
-    private LinearLayout tabLinearHome, tabLinearSeeting;
-    private RelativeLayout tabLinearNotific;
+    private LinearLayout tabLinearHome;
+    private RelativeLayout tabLinearNotific,tabLinearSeeting;
     private Class userPushService = PushService.class;
 
 
@@ -57,10 +62,19 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
                     tvMessageCount.setVisibility(View.VISIBLE);
                     tvMessageCount.setText(msg.arg1 + "");
                     //没有有新的消息
-                } else {
+                }else {
                     tvMessageCount.setVisibility(View.GONE);
 
                 }
+            }else if (msg.what == 2){
+                if (msg.arg1 > 0){
+                    tvMeCount.setVisibility(View.VISIBLE);
+                    tvMeCount.setText(msg.arg1+"");
+
+                }else {
+                    tvMeCount.setVisibility(View.GONE);
+                }
+
             }
 
         }
@@ -97,10 +111,9 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         homeActiviyt = this;
-
         // AndroidManifest 对应保留一个即可(如果注册 IntentService, 可以去掉 PushDemoReceiver, 如果注册了
         // IntentService, 必须在 AndroidManifest 中声明)
         PushManager.getInstance().initialize(this.getApplicationContext(), userPushService);
@@ -116,7 +129,7 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         inintView();
         setSelect(0);
 
-
+        NetBroadcastReceiver.mListeners.add(this);
     }
 
     /**
@@ -144,11 +157,12 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         tvMessage = (TextView) findViewById(R.id.tvMessage);
         tvSetting = (TextView) findViewById(R.id.tvSetting);
         tvMessageCount = (TextView) findViewById(R.id.tvMessageCount);
+        tvMeCount = (TextView) findViewById(R.id.tvMeCount);
         tvMessageCount.setVisibility(View.GONE);
 
         tabLinearHome = (LinearLayout) findViewById(R.id.tabLinearHome);
 
-        tabLinearSeeting = (LinearLayout) findViewById(R.id.tabLinearSeeting);
+        tabLinearSeeting = (RelativeLayout) findViewById(R.id.tabLinearSeeting);
 
         tabLinearNotific = (RelativeLayout) findViewById(R.id.tabLinearNotific);
 
@@ -330,6 +344,16 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         SharedPreferencesHelps.clearUserPassword();
         ActivitySkip.forward(HomeActiviyt.this, LoginActivity.class);
         finish();
+    }
+
+    @Override
+    public void onNetChange() {
+        Log.e("TAG", "onNetChange: " );
+        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
+        }else {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
+        }
     }
 
 }

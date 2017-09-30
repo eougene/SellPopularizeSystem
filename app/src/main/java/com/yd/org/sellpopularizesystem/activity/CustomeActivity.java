@@ -241,7 +241,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             SourceDateList = filledData(product.getResult());
         }
 
-
         if (isRefresh) {
 
             if (SourceDateList.size() == 0) {
@@ -260,7 +259,10 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             listView.setAdapter(adapter);
         } else {
             //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
-            adapter.addMore(SourceDateList);
+            if (adapter!=null){
+                adapter.addMore(SourceDateList);
+            }
+
         }
 
     }

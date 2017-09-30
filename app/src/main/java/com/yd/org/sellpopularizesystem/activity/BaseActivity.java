@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -41,7 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
         setContentView(R.layout.activity_base);
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
         baseView = getViewById(R.id.baseView);
-
+        NetBroadcastReceiver.mListeners.add(this);
         // 标题
         tvTitle = getViewById(R.id.tvTitle);
         etSearch = getViewById(R.id.etSearch);
@@ -65,7 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
 
         }
 
-        NetBroadcastReceiver.mListeners.add(this);
+
     }
 
     public void hideBaseView() {
@@ -279,9 +280,16 @@ public abstract class BaseActivity extends AppCompatActivity implements NetBroad
     @Override
     public void onNetChange() {
         if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
+            if (NetUtil.isForeground(this)){
+                Log.e("TAG", "onNetChange: "+this.getClass().getName()+"---"+"网络连接异常");
+                ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
+            }
+
         }else {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
+            if (NetUtil.isForeground(this)){
+                Log.e("TAG", "onNetChange: "+this.getClass().getName()+"---"+"网络连接正常");
+                ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
+            }
         }
     }
 }

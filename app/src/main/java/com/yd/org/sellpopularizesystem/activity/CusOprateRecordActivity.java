@@ -624,10 +624,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         if (isRel) {
 
                             if (eoiList.size() == 0) {
-                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                               // getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                                tvDes.setVisibility(View.VISIBLE);
                                 listView.setVisibility(View.GONE);
                             } else {
-                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                                //getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                                tvDes.setVisibility(View.GONE);
                                 listView.setVisibility(View.VISIBLE);
                             }
 

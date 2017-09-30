@@ -20,6 +20,9 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -48,6 +51,8 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
         commissionActivity = this;
         hideRightImagview();
         setTitle(getString(R.string.commission));
+        //注册事件
+        EventBus.getDefault().register(this);
         //下拉加载
         ptrl = getViewById(R.id.refresh_view);
         ptrl.setOnRefreshListener(this);
@@ -68,16 +73,12 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
 
                 CommissionAdapter.ViewHoler viewHoler = (CommissionAdapter.ViewHoler) view.getTag();
                 //CommissionBean.ResultBean resultBean = viewHoler.resultBean;
-                CommissionBean.ResultBean resultBean=datas.get(position);
-                getDepositDetails(resultBean);
-                ActivitySkip.forward(CommissionActivity.this,InvoiceActivity.class);
+                //CommissionBean.ResultBean resultBean=datas.get(position);
+                //getDepositDetails(resultBean);
+              //  ActivitySkip.forward(CommissionActivity.this,InvoiceActivity.class);
 
             }
         });
-
-    }
-
-    private void getDepositDetails(CommissionBean.ResultBean resultBean) {
 
     }
 
@@ -130,7 +131,6 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
                     }
                 });
 
-
     }
 
     private void paserJSON(String data, boolean isRefresh) {
@@ -151,8 +151,26 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }
-        commissionAdapter.addMore(datas);
+        if (commissionAdapter!=null){
+            commissionAdapter.addMore(datas);
+        }
 
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //取消注册事件
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMoonEvent(String message){
+        Log.e("TAG", "onMoonEvent: "+message);
+        if (message.equals("ok")){
+            getInfo(1, true);
+        }
 
     }
 }

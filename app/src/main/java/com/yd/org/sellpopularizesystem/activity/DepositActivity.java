@@ -11,8 +11,10 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ReceiptBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
+import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -23,6 +25,7 @@ import com.zhouyou.http.exception.ApiException;
 public class DepositActivity extends BaseActivity {
     private TextView tvName, tvProperty, tvMoneyy, tvDown;
     public ReceiptBean receiptBean;
+    private String name;
 
 
     @Override
@@ -34,8 +37,9 @@ public class DepositActivity extends BaseActivity {
     public void initView() {
         hideRightImagview();
         setTitle(getResources().getString(R.string.sale_list));
-        receiptBean = (ReceiptBean) getIntent().getSerializableExtra("keys");
-
+        //receiptBean = (ReceiptBean) getIntent().getSerializableExtra("keys");
+        receiptBean = (ReceiptBean) getIntent().getExtras().getSerializable("keys");
+        name = getIntent().getExtras().getString("name");
 
         tvName = getViewById(R.id.tvName);
         tvProperty = getViewById(R.id.tvProperty);
@@ -47,8 +51,8 @@ public class DepositActivity extends BaseActivity {
     }
 
     private void getInfo() {
-
-        tvName.setText(receiptBean.getResult().getUser_name());
+       // CustomBean.ResultBean custome= (CustomBean.ResultBean) ObjectSaveUtil.readObject(DepositActivity.this, "custome");
+        tvName.setText(name);
         tvProperty.setText(receiptBean.getResult().getProduct());
         tvMoneyy.setText(receiptBean.getResult().getNumber());
 

@@ -1,6 +1,11 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.graphics.ImageFormat;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,58 +25,30 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
+import org.greenrobot.eventbus.EventBus;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 /**
  * 发票
  */
 
 public class InvoiceActivity extends BaseActivity {
-    private TextView consentTextView, resoluteTextView, subButton,tvInvoiceId,tvAbn,tvPhone,tvAddress,
-    tvDate,tvBillTO,tvAcn,tvTel,tvFor,tvDescription,tvAmountIncl,tvSubtotal,tvGst,tvAbnRegisterd,tvOther;
+    private TextView consentTextView, resoluteTextView, subButton, tvInvoiceNo, tvAbn, tvPhone, tvAddress, tvTotal, tvAccountName,
+            tvDate, tvBillTO, tvAcn, tvAbcPtyLtd, tvFor, tvDescription, tvAmountIncl, tvSubtotal, tvGst, tvAbnRegisterd, tvOther, tvFinalDes, tvStatus;
     private EditText moneyEdit, memoEdit;
     private RelativeLayout rlFirb;
     private View firbPwView;
     private PopupWindow firbSelectPopWindow;
 
 
-    private View.OnClickListener mOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()) {
+    private String memoString;
 
-                //同意
-                case R.id.consentTextView:
-                    firbSelectPopWindow.showAtLocation(InvoiceActivity.this.findViewById(R.id.primaryLinear), Gravity.BOTTOM, 0, 0);
-                    break;
 
-                //拒绝
-                case R.id.resoluteTextView:
-                    HttpParams httpParams=new HttpParams();
-                    httpParams.put("invoice_id","");//发票编号
-                    httpParams.put("status","2");//2：同意  3：拒绝
-                    httpParams.put("sales_submit_amount","2");//销售提交金额
-                    httpParams.put("reject_reason","2");//拒绝原因
-                    EasyHttp.post(Contants.APPROVE_OR_REFUSE_INVOICE)
-                            .timeStamp(true)//是否需要追加时间戳
-                            .params(httpParams)
-                            .execute(new SimpleCallBack<String>() {
-                                @Override
-                                public void onError(ApiException e) {
-                                    ToasShow.showToast(InvoiceActivity.this, getResources().getString(R.string.network_error));
-                                }
-
-                                @Override
-                                public void onSuccess(String s) {
-
-                                }
-                            });
-                    break;
-
-            }
-        }
-    };
     private InvoiceDetailBean.ResultBean rb;
-
+    private String status;
+    private String moneyString;
 
     @Override
     protected int setContentView() {
@@ -85,39 +62,66 @@ public class InvoiceActivity extends BaseActivity {
 
         consentTextView = getViewById(R.id.consentTextView);
         resoluteTextView = getViewById(R.id.resoluteTextView);
-        tvInvoiceId= getViewById(R.id.tvInvoiceId);
-        tvAbn= getViewById(R.id.tvAbn);
-        tvPhone= getViewById(R.id.tvPhone);
-        tvAddress= getViewById(R.id.tvAddress);
-        tvDate= getViewById(R.id.tvDate);
-        tvBillTO= getViewById(R.id.tvBillTO);
-        tvAcn= getViewById(R.id.tvAcn);
-        tvTel= getViewById(R.id.tvTel);
-        tvFor= getViewById(R.id.tvFor);
-        tvDescription= getViewById(R.id.tvDescription);
-        tvAmountIncl= getViewById(R.id.tvAmountIncl);
-        tvSubtotal= getViewById(R.id.tvSubtotal);
-        tvGst= getViewById(R.id.tvGst);
-        tvAbnRegisterd= getViewById(R.id.tvAbnRegisterd);
-        tvOther= getViewById(R.id.tvOther);
-        rb = (InvoiceDetailBean.ResultBean) getIntent().getExtras().getSerializable("bean");
-        setInfo();
+        tvInvoiceNo = getViewById(R.id.tvInvoiceNo);
+        tvStatus = getViewById(R.id.tvStatus);
+        tvAbn = getViewById(R.id.tvAbn);
+        tvPhone = getViewById(R.id.tvPhone);
+        tvAddress = getViewById(R.id.tvAddress);
+        tvDate = getViewById(R.id.tvDate);
+        tvBillTO = getViewById(R.id.tvBillTO);
+        tvAcn = getViewById(R.id.tvAcn);
+        tvAbcPtyLtd = getViewById(R.id.tvAbcPtyLtd);
+        tvFor = getViewById(R.id.tvFor);
+        tvDescription = getViewById(R.id.tvDescription);
+        tvAmountIncl = getViewById(R.id.tvAmountIncl);
+        tvSubtotal = getViewById(R.id.tvSubtotal);
+        tvGst = getViewById(R.id.tvGst);
+        tvAbnRegisterd = getViewById(R.id.tvAbnRegisterd);
+        tvOther = getViewById(R.id.tvOther);
+        tvTotal = getViewById(R.id.tvTotal);
+        tvAccountName = getViewById(R.id.accountName);
+        tvFinalDes = getViewById(R.id.tvFinalDes);
+
+        if (getIntent().getExtras() != null) {
+            Bundle bundle = getIntent().getExtras();
+            rb = (InvoiceDetailBean.ResultBean) bundle.getSerializable("bean");
+            status = bundle.getString("status");
+            setInfo();
+        }
+
         showReasonInfo();
 
     }
 
     private void setInfo() {
-        tvInvoiceId.setText(rb.getInvoice_no());
+        tvInvoiceNo.setText(rb.getInvoice_no());
+        tvAbcPtyLtd.setText(rb.getAccount_name());
+        if (rb.getStatus() == 1) {
+            tvStatus.setText("-");
+        } else if (rb.getStatus() == 2) {
+            tvStatus.setText("Accept");
+        } else {
+            tvStatus.setText("Reject");
+        }
+
         tvAbn.setText(rb.getAbn());
         tvPhone.setText(rb.getPhone());
         tvAddress.setText(rb.getAddress());
-        tvDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(String.valueOf(rb.getDate())+"000")));
+        tvDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(String.valueOf(rb.getDate()) + "000")));
         tvFor.setText(rb.getForX());
         tvDescription.setText(rb.getDescription());
         tvAmountIncl.setText(rb.getAmount());
         tvSubtotal.setText(rb.getSubtotal());
-        tvAbnRegisterd.setText(rb.getIs_gst()==1?"Yes":"No");
+        tvAbnRegisterd.setText(rb.getIs_gst() == 1 ? "Yes" : "No");
         tvOther.setText(rb.getOther());
+        tvTotal.setText(rb.getTotal());
+        tvAccountName.setText(rb.getAccount_name());
+        tvFinalDes.setText(Html.fromHtml(getResources().getString(R.string.deposit_declare)));
+        if (!status.equals("1")) {
+            getViewById(R.id.invoiceBottomLinear).setVisibility(View.GONE);
+        } else {
+            getViewById(R.id.invoiceBottomLinear).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -126,6 +130,63 @@ public class InvoiceActivity extends BaseActivity {
         resoluteTextView.setOnClickListener(mOnClick);
     }
 
+    private View.OnClickListener mOnClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+
+                //同意
+                case R.id.consentTextView:
+                    AgreeOrReject("2");
+                    break;
+
+                //拒绝
+                case R.id.resoluteTextView:
+                    firbSelectPopWindow.showAtLocation(InvoiceActivity.this.findViewById(R.id.primaryLinear), Gravity.BOTTOM, 0, 0);
+                    break;
+
+            }
+        }
+    };
+
+    private void AgreeOrReject(final String flag) {
+        showDialog();
+        if (flag.equals("2")) {
+            memoString = "";
+            moneyString = "";
+        }
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("invoice_id", rb.getInvoice_id());//发票编号
+        httpParams.put("status", flag);//2：同意  3：拒绝
+        httpParams.put("sales_submit_amount", moneyString);//销售提交金额
+        httpParams.put("reject_reason", memoString);//拒绝原因
+        EasyHttp.post(Contants.APPROVE_OR_REFUSE_INVOICE)
+                .timeStamp(true)//是否需要追加时间戳
+                .params(httpParams)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        ToasShow.showToast(InvoiceActivity.this, getResources().getString(R.string.network_error));
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+                        closeDialog();
+                        try {
+                            JSONObject jsonObject=new JSONObject(s);
+                            ToasShow.showToastCenter(InvoiceActivity.this,jsonObject.getString("msg"));
+                            if (flag.equals("2")){
+                                EventBus.getDefault().post("ok");
+                            }
+                            finish();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        Log.e("TAG", "onSuccess: " + s);
+                    }
+                });
+    }
 
     private void showReasonInfo() {
         firbPwView = LayoutInflater.from(this).inflate(R.layout.invoce_layout, null);
@@ -151,10 +212,20 @@ public class InvoiceActivity extends BaseActivity {
         subButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                firbSelectPopWindow.dismiss();
-                String moneyString = moneyEdit.getText().toString().trim();
-                String memoString = memoEdit.getText().toString().trim();
+               // firbSelectPopWindow.dismiss();
+                moneyString = moneyEdit.getText().toString().trim();
+                memoString = memoEdit.getText().toString().trim();
+                if (TextUtils.isEmpty(moneyString)) {
+                    ToasShow.showToastCenter(InvoiceActivity.this, getString(R.string.input_money));
+                    return;
+                }
 
+                if (TextUtils.isEmpty(memoString)) {
+                    ToasShow.showToastCenter(InvoiceActivity.this, getString(R.string.reject_reason));
+                    return;
+                }
+                firbSelectPopWindow.dismiss();
+                AgreeOrReject("3");
 
             }
         });
