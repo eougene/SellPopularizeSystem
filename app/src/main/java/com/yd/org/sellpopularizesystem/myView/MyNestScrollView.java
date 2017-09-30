@@ -3,6 +3,7 @@ package com.yd.org.sellpopularizesystem.myView;
 import android.content.Context;
 import android.support.v4.widget.NestedScrollView;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
@@ -13,6 +14,9 @@ import android.widget.LinearLayout;
 
 public class MyNestScrollView extends NestedScrollView {
     private ScrollViewListener scrollViewListener;//提供外部调用的接口
+
+    private OnScrollToBottomListener mOnScrollToBottomListener;
+
     public MyNestScrollView(Context context) {
         super(context);
     }
@@ -40,9 +44,35 @@ public class MyNestScrollView extends NestedScrollView {
         /*if(scrollViewListener != null){
             scrollViewListener.onScrollChanged(l, t, oldl, oldt);
         }*/
+        // 滑动的距离加上本身的高度与子View的高度对比
+        Log.e("TAG", "onScrollChanged: "+ getChildAt(0).getMeasuredHeight());
+        if(t + getHeight() >=  getChildAt(0).getMeasuredHeight()){
+            // ScrollView滑动到底部
+            if(mOnScrollToBottomListener != null) {
+                mOnScrollToBottomListener.onScrollToBottom();
+            }
+        } else {
+            if(mOnScrollToBottomListener != null) {
+                mOnScrollToBottomListener.onNotScrollToBottom();
+            }
+        }
     }
 
-    public void setNestedScrollChild(final View nestedScrollChild) {
+    public void setScrollToBottomListener(OnScrollToBottomListener listener) {
+        this.mOnScrollToBottomListener = listener;
+    }
+
+    public interface OnScrollToBottomListener {
+        void onScrollToBottom();
+        void onNotScrollToBottom();
+    }
+
+    public static int px2dip(Context context, float pxValue) {
+        final float scale = context.getResources().getDisplayMetrics().density;
+        return (int) (pxValue / scale + 0.5f);
+    }
+
+   /* public void setNestedScrollChild(final View nestedScrollChild) {
         getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -50,9 +80,9 @@ public class MyNestScrollView extends NestedScrollView {
                 getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
-    }
+    }*/
 
-    @Override
+  /*  @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
         //super.onNestedPreScroll(target, dx, dy, consumed);
         int[] childLocation = new int[2];
@@ -65,14 +95,14 @@ public class MyNestScrollView extends NestedScrollView {
             scrollBy(0, dy);
             consumed[1] = dy;
         }
-    }
+    }*/
 
-    @Override
+   /* @Override
     public boolean onNestedFling(View target, float velocityX, float velocityY, boolean consumed) {
         return flingWithNestedDispatch((int) velocityY);
-    }
+    }*/
 
-    private boolean flingWithNestedDispatch(int velocityY) {
+    /*private boolean flingWithNestedDispatch(int velocityY) {
         final int scrollY = getScrollY();
         final boolean canFling = (scrollY > 0 || velocityY > 0) &&
                 (scrollY < getScrollRange() || velocityY < 0);
@@ -93,6 +123,6 @@ public class MyNestScrollView extends NestedScrollView {
                     child.getHeight() - (getHeight() - getPaddingBottom() - getPaddingTop()));
         }
         return scrollRange;
-    }
+    }*/
 
 }
