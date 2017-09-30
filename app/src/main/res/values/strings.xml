@@ -527,6 +527,7 @@
     <string name="shareholder">代表股东</string>
     <string name="consent">我已阅读并同意</string>
     <string name="declare"><![CDATA[<<定金支付申明>>]]></string>
+    <string name="register_declare"><![CDATA[<<赢家系统服务协议>>]]></string>
     <string name="dingjin">请阅读定金支付申明</string>
     <string name="declaretitle">用户定金支付申明</string>
     <string name="declaretitle_01">定金申明</string>
@@ -603,7 +604,7 @@
     <string name="realname_hint">请输入真实名字</string>
     <string name="real_urname_hint">请输入真实姓氏</string>
     <string name="recode_hint">推荐码</string>
-    <string name="input_recode">请输入六位推荐码</string>
+    <string name="input_recode">默认推荐码000001</string>
     <string name="xingshi">姓</string>
     <string name="mingzi">名</string>
     <string name="telnum">手机号</string>
@@ -664,5 +665,17 @@
     <string name="promotion">推广</string>
     <string name="full_payment">全款</string>
     <string name="is_firb">海外</string>
+    <string name="deposit_declare"><Data><![CDATA[
+        If you have any questions regarding this tax invoice , please report it to the accounting staff via email
+        <font color="#4898F1">finance@maclandgroup.com.au.</font>
+        Thank you for your support!
+    ]]></Data></string>
+    <string name="get_success">获取成功</string>
+    <string name="reject_reason">请填写拒绝原因</string>
+    <string name="input_money">请输入金额</string>
+    <string name="refusal_reson">the reason for refusal</string>
+    <string name="no_eoi">暂无可用EOI,请充值</string>
+    <string name="referral_code_hint">请输入推荐码</string>
+    <string name="agreement">赢家系统服务协议</string>
 
 </resources>

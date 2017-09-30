@@ -525,6 +525,7 @@
     <string name="shareholder">ehalf Shareholders</string>
     <string name="consent">Agree</string>
     <string name="declare"><![CDATA[<<Declaration>>]]></string>
+    <string name="register_declare"><![CDATA[<<Wingaid system service agreement>>]]></string>
     <string name="dingjin">Please read declaration</string>
     <string name="declaretitle">Declaration</string>
 
@@ -594,7 +595,7 @@
     <string name="error_">Are you sure you want to give up the order?This operation cannot be revoked!</string>
     <string name="hintpass">Enter the password for 6 to 18 digits or letters</string>
     <string name="regsterid">Please enter the email accounts</string>
-    <string name="invite_code">Invite qr code</string>
+    <string name="invite_code">Referral Code</string>
     <string name="myinfo">My Profile</string>
     <string name="remark_certificate">Note the matters</string>
     <string name="codeerror">Referral code cannot be empty</string>
@@ -605,8 +606,8 @@
     <string name="tel_hint">Please enter the phone number</string>
     <string name="realname_hint">Please enter the real name</string>
     <string name="real_urname_hint">Please fill in real name</string>
-    <string name="recode_hint">Recommended Code</string>
-    <string name="input_recode">Please enter the six recommended code </string>
+    <string name="recode_hint">Referral Code</string>
+    <string name="input_recode">Default code 000001</string>
     <string name="xingshi">Surnames</string>
     <string name="mingzi">Name</string>
     <string name="telnum">Mobile</string>
@@ -677,6 +678,14 @@
     <string name="promotion">Promotion</string>
     <string name="full_payment">Pay Off</string>
     <string name="is_firb">FIRB</string>
+    <string name="deposit_declare">If you have any question counceming this invoice,contact ABC at accounts@abc.com.cn   THANK YOU FOR YOUR BUSINESS!</string>
+    <string name="get_success">获取成功</string>
+    <string name="reject_reason">Please fill in the reason for the refusal</string>
+    <string name="input_money">Please enter the amount</string>
+    <string name="refusal_reson">the reason for refusal</string>
+    <string name="no_eoi">No available EOI, please recharge</string>
+    <string name="referral_code_hint">Please enter the referral code</string>
+    <string name="agreement">Wingaid system service agreement</string>
 
 </resources>
 
