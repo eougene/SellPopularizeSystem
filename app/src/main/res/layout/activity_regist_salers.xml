@@ -215,6 +215,49 @@
 
             </RelativeLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="@dimen/padding_margin_20"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/padding_margin_10">
+
+
+                <CheckBox
+                    android:id="@+id/check_box"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_14"
+                    android:background="@drawable/isread"
+                    android:button="@null"
+                    android:checked="true"
+                    android:padding="@dimen/padding_margin_4"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:drawableLeft="@mipmap/xinghao"
+                    android:text="@string/consent"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"/>
+
+
+                <TextView
+                    android:id="@+id/isRead"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/padding_margin_10"
+                    android:text="@string/register_declare"
+                    android:textColor="@color/light_blue"
+                    android:textSize="@dimen/tv_size_12"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

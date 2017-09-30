@@ -10,6 +10,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/invoiceBottomLinear"
         android:background="@color/search_edit_bac"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
@@ -46,13 +47,36 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/tvInvoiceId"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvInvoiceNo"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:layout_marginTop="@dimen/padding_margin_10"
                     android:layout_toRightOf="@+id/tvInvoice"
                     android:text=" 230516"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:layout_marginTop="@dimen/padding_margin_10"
+                    android:text="Accept"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/tv_size_12"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tvStatus"
+                    android:layout_marginRight="@dimen/padding_margin_4"
+                    android:layout_marginTop="@dimen/padding_margin_10"
+                    android:text="Status:"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"
                     android:textStyle="bold"/>
@@ -225,7 +249,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:minLines="2"
-                    android:text="Mactand victoria pty ltd"
+                    android:text="Mactand victoria Pty ltd\nSuite 702/5 Rider Blvd Rhodes NSW 2138"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 
@@ -253,7 +277,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="78 12 34 56 "
+                    android:text="45 604 414 235 "
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 
@@ -281,7 +305,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:text="02-9733-28888"
+                    android:text="02-9736-2888"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 
@@ -460,7 +484,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:gravity="right"
-                    android:text="10.00%"
+                    android:text="10%"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 
@@ -550,7 +574,7 @@
                     android:textSize="@dimen/tv_size_12"/>
 
                 <TextView
-                    android:id="@+id/tvToatl"
+                    android:id="@+id/tvTotal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
@@ -704,10 +728,11 @@
                 android:paddingLeft="@dimen/padding_margin_20">
 
                 <TextView
+                    android:id="@+id/tvFinalDes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.5"
-                    android:text="If you have any question counceming this invoice,contact ABC at accounts@abc.com.cn \n THANK YOU FOR YOUR BUSINESS!"
+                    android:text="@string/deposit_declare"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 

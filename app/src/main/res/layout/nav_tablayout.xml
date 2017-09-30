@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/white">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/tabLinearHome"
@@ -20,7 +20,7 @@
             android:gravity="center"
             android:text="@string/homepage"
             android:textColor="@drawable/tabtextcolor_select"
-            android:textSize="@dimen/tv_size_12"/>
+            android:textSize="@dimen/tv_size_12" />
 
     </LinearLayout>
 
@@ -40,8 +40,7 @@
             android:gravity="center_horizontal"
             android:text="@string/message"
             android:textColor="@drawable/tabtextcolor_select"
-            android:textSize="@dimen/tv_size_12"
-            />
+            android:textSize="@dimen/tv_size_12" />
 
         <TextView
             android:id="@+id/tvMessageCount"
@@ -53,11 +52,11 @@
             android:gravity="center"
             android:text="@string/_99"
             android:textColor="@color/white"
-            android:textSize="@dimen/tv_size_10"/>
+            android:textSize="@dimen/tv_size_10" />
 
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/tabLinearSeeting"
         android:layout_width="0dp"
         android:layout_height="50dp"
@@ -73,9 +72,22 @@
             android:gravity="center"
             android:text="@string/settingcenter"
             android:textColor="@drawable/tabtextcolor_select"
-            android:textSize="@dimen/tv_size_12"/>
+            android:textSize="@dimen/tv_size_12" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/tvMeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/padding_margin_30"
+            android:background="@drawable/circle_shape"
+            android:gravity="center"
+            android:text="@string/_99"
+            android:textColor="@color/white"
+            android:textSize="@dimen/tv_size_10"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
 
 </LinearLayout>

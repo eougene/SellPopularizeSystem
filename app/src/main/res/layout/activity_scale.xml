@@ -106,6 +106,8 @@
                     android:gravity="center|right"
                     android:paddingRight="@dimen/padding_margin_6"
                     android:text="@string/housetype"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"/>
 

@@ -38,11 +38,11 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/tvMoney"
                 android:background="@null"
+                android:inputType="number"
                 android:gravity="start"
-                android:hint="the correct amount"
+                android:hint="@string/input_money"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textColorHint="@color/search_edit"
                 android:textSize="@dimen/tv_size_12"/>
 
 
@@ -64,11 +64,10 @@
                 android:layout_toRightOf="@+id/tvMemo"
                 android:background="@null"
                 android:gravity="start"
-                android:hint="the reason for refusal"
+                android:hint="@string/reject_reason"
                 android:minLines="3"
                 android:padding="@dimen/padding_margin_10"
                 android:textColor="@color/gray"
-                android:textColorHint="@color/search_edit"
                 android:textSize="@dimen/tv_size_12"/>
 
         </RelativeLayout>

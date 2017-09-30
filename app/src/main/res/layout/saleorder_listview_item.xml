@@ -37,7 +37,6 @@
 
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/depositImageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +47,8 @@
                 android:gravity="center"
                 android:text="@string/deposit"
                 android:textColor="@color/scale_tab5"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_12"
+                android:visibility="gone"/>
 
 
             <TextView

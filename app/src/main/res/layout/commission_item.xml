@@ -153,7 +153,8 @@
             android:background="@color/search_edit_bac"
             android:orientation="vertical"
             android:paddingBottom="@dimen/padding_margin_10"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
             <View
                 android:layout_width="match_parent"
@@ -202,7 +203,6 @@
                         android:layout_toRightOf="@+id/firstCommissionSum"
                         android:background="@drawable/circle_shape"
                         android:visibility="gone"/>
-
 
                 </RelativeLayout>
 

@@ -66,12 +66,13 @@
             android:orientation="vertical">
 
 
-            <LinearLayout
+           <!-- <LinearLayout
                 android:id="@+id/userLinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
                     android:textSize="@dimen/tv_size_15"/>
 
 
-            </LinearLayout>
+            </LinearLayout>-->
 
             <View
                 android:id="@+id/userView"
@@ -110,8 +111,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:orientation="horizontal"
-                android:visibility="gone">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -126,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:hint="@string/input_recode"
+                    android:inputType="number"
                     android:imeOptions="actionNext"
                     android:maxLines="1"
                     android:padding="@dimen/padding_margin_20"
@@ -379,6 +380,7 @@
 
 
             <LinearLayout
+                android:id="@+id/llConfirmpass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_20"
