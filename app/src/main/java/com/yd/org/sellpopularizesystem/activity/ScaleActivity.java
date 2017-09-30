@@ -353,7 +353,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         try {
             JSONObject jsonObject = new JSONObject(json);
             String msg=jsonObject.getString("msg");
-            if (!msg.equals(getResources().getString(R.string.nodata))) {
+            if (!msg.equals(getResources().getString(R.string.nodata))) {//有数据时
                 Log.e("TAG", "msg: " + jsonObject.getString("msg"));
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
                 ProductListBean product = gson.fromJson(json, ProductListBean.class);
@@ -369,13 +369,21 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     mCommonAdapter.addMore(productData);
                 }
                 //rightRtitle.setEnabled(false);
-            } else {
+            } else {//无返回数据时
                 Log.e("TAG", "jsonParse: "+jsonObject.getString("msg") );
-                mCommonAdapter.getmDatas().clear();
-                mCommonAdapter.notifyDataSetChanged();
-                tvProjectNum.setText(getString(R.string.sum) +0+ getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                return;
+                if (mCommonAdapter!=null){
+                    if (mCommonAdapter.getmDatas().size()>0){
+                        mCommonAdapter.getmDatas().clear();
+                        mCommonAdapter.notifyDataSetChanged();
+                        tvProjectNum.setText(getString(R.string.sum) +0+ getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                        return;
+                    }
+                }else {
+                    return;
+                }
+
             }
         } catch (JSONException e) {
             e.printStackTrace();

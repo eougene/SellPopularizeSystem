@@ -125,10 +125,11 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName()+"1")
                 .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("user_id", "")
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
-                .params("customer_id", resultBean.getCustomer_id() + "")
+                .params("client", resultBean.getCustomer_id() + "")
                 .params("page", String.valueOf(page))
+                .params("status", "11")
                 .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override

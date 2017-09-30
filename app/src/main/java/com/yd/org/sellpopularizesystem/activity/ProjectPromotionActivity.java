@@ -24,8 +24,10 @@ import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
+import com.yd.org.sellpopularizesystem.utils.NetUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -36,7 +38,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectPromotionActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
+public class ProjectPromotionActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener,NetBroadcastReceiver.netEventHandler {
     private LinearLayout llAll;
     private TextView tvHotSale, tvLookHouse, tvMore, tvTilte, tvBuildingNum;
     private GridView gvHouse;
@@ -62,6 +64,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mAppBarLayout.addOnOffsetChangedListener(this);
 
         initView();
+        NetBroadcastReceiver.mListeners.add(this);
     }
 
     private void initView() {
@@ -257,4 +260,12 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
 
     }
 
+    @Override
+    public void onNetChange() {
+        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
+        }else {
+            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
+        }
+    }
 }

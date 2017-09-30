@@ -148,8 +148,9 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         }
-        saleAdapter.addMore(sobRbData);
-
+        if (saleAdapter!=null){
+            saleAdapter.addMore(sobRbData);
+        }
         locatedOrderIdPos();
     }
 

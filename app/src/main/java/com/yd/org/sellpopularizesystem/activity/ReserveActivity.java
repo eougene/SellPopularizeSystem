@@ -516,11 +516,6 @@ public class ReserveActivity extends BaseActivity {
                 //开启相机
                 case R.id.ivCertificate:
 
-
-
-
-
-
                     Acp.getInstance(ReserveActivity.this).request(new AcpOptions.Builder()
                                     .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
                                             , Manifest.permission.READ_EXTERNAL_STORAGE
@@ -541,9 +536,6 @@ public class ReserveActivity extends BaseActivity {
                                     // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
                                     intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                                     startActivityForResult(intent, REQUEST_CAMERA_CODE);
-
-
-
 
 
 

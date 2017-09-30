@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -40,6 +41,10 @@ import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.model.HttpParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -81,7 +86,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     private String strNum;
     private List<ImageContent> imgContents = new ArrayList<ImageContent>();
     private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
-    private boolean isSequence=false;
+    private boolean isSequence = false;
 
     @Override
     protected int setContentView() {
@@ -144,7 +149,7 @@ public class ProductSubunitListActivity extends BaseActivity {
         //tvSelect.setOnClickListener(mOnClickListener);
         //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
         //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
-        tvPrice=getViewById(R.id.tvPrice);
+        tvPrice = getViewById(R.id.tvPrice);
         tvPrice.setOnClickListener(mOnClickListener);
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
         tvIntroduce = getViewById(R.id.tvIntroduce);
@@ -289,7 +294,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                     @Override
                     public void onSuccess(String json) {
 
-                        Log.e("json***","json:"+json);
+                        Log.e("json***", "json:" + json);
 
                         closeDialog();
                         parseJson(json);
@@ -446,7 +451,13 @@ public class ProductSubunitListActivity extends BaseActivity {
                 holder.setText(R.id.tvBedRoom, item.getBedroom());
                 holder.setText(R.id.tvBathroom, item.getBathroom());
                 holder.setText(R.id.tvCarSquare, item.getCar_space());
-                holder.setText(R.id.tvHouseSquare, MyUtils.addComma(item.getBuilding_area().split("\\.")[0]));
+                if (item.getCate_id() == 2) {
+                    //  holder.setText(R.id.tvHouseSquare, MyUtils.addComma(item.getBuilding_area().split("\\.")[0]));
+                    holder.setText(R.id.tvHouseSquare, item.getLand_size());
+                } else {
+                    holder.setText(R.id.tvHouseSquare, MyUtils.addComma(item.getBuilding_area().split("\\.")[0]));
+                }
+
                 holder.setText(R.id.tvDetailPrice, "$" + getString(R.string.single_blank_space) + MyUtils.addComma(item.getPrice().split("\\.")[0]));
             }
         };
@@ -481,23 +492,24 @@ public class ProductSubunitListActivity extends BaseActivity {
                         }
                     }
                     break;*/
-                case  R.id.tvPrice:
-                    if (!isSequence){
-                        Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
+                //价格排序
+                case R.id.tvPrice:
+                    if (!isSequence) {
+                        Drawable drawable = ContextCompat.getDrawable(ProductSubunitListActivity.this,
                                 R.mipmap.trangle_down);
                         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
-                        tvPrice.setCompoundDrawables(null,null,drawable,null);
+                        tvPrice.setCompoundDrawables(null, null, drawable, null);
                         sortPriceHighToLow();
-                        isSequence=true;
-                    }else {
-                        Drawable drawable=ContextCompat.getDrawable(ProductSubunitListActivity.this,
+                        isSequence = true;
+                    } else {
+                        Drawable drawable = ContextCompat.getDrawable(ProductSubunitListActivity.this,
                                 R.mipmap.trangle_up);
                         drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getMinimumHeight());
-                        tvPrice.setCompoundDrawables(null,null,drawable,null);
-                        List<ProSubunitListBean.ResultBean.PropertyBean> lists=adapter.getmDatas();
+                        tvPrice.setCompoundDrawables(null, null, drawable, null);
+                        List<ProSubunitListBean.ResultBean.PropertyBean> lists = adapter.getmDatas();
                         sortPriceLowToHigh(lists);
                         adapter.notifyDataSetChanged();
-                        isSequence=false;
+                        isSequence = false;
                     }
 
                     break;
@@ -578,7 +590,7 @@ public class ProductSubunitListActivity extends BaseActivity {
     };
 
     private void sortPriceHighToLow() {
-        List<ProSubunitListBean.ResultBean.PropertyBean> lists=adapter.getmDatas();
+        List<ProSubunitListBean.ResultBean.PropertyBean> lists = adapter.getmDatas();
         Collections.sort(lists, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
             @Override
             public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
@@ -608,7 +620,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", "1")
-                .params("number", "1")
+                .params("number", "100")
                 .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCompany_id() + "")
                 .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "")
                 .params("property_id", "")
@@ -629,21 +641,27 @@ public class ProductSubunitListActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String json) {
-
+                        Log.e("TAG", "onSuccess: " + json);
                         closeDialog();
                         Gson gson = new Gson();
-
-                        EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
-                        if (eoilistBean.getCode() == 1) {
-                            eoiList = eoilistBean.getResult();
-                            if (eoilistBean.getMsg().equals("暂无数据")) {
-                                ToasShow.showToastCenter(ProductSubunitListActivity.this, "暂无可用EOI,请充值");
-                            } else {
-                                if (eoiList.size() > 0) {
-                                    eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
+                        try {
+                            JSONObject jsonObject = new JSONObject(json);
+                            if (jsonObject.getInt("code") == 1) {
+                                // EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
+                                if (jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))) {
+                                    ToasShow.showToastCenter(ProductSubunitListActivity.this, getString(R.string.no_eoi));
+                                } else {
+                                    EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
+                                    eoiList = eoilistBean.getResult();
+                                    if (eoiList.size() > 0) {
+                                        eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
+                                    }
                                 }
                             }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
+
                     }
                 });
 
@@ -653,14 +671,16 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     //eoi排队请求
     private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean, String eoi) {
-        EasyHttp.get(Contants.EOI_USE)
+        HttpParams httpParams=new HttpParams();
+        httpParams.put("eoi_id", eoi);
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("product_id", propertyBean.getProduct_id() + "");
+        httpParams.put("product_child_id", propertyBean.getProduct_childs_id()+ "");
+        EasyHttp.post(Contants.EOI_USE)
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
-                .params("eoi_id", eoi)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("product_id", propertyBean.getProduct_id() + "")
-                .params("product_child_id", propertyBean.getProduct_childs_id() + "")
+                .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -676,12 +696,10 @@ public class ProductSubunitListActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(String json) {
-
+                        Log.e("TAG", "onSuccess: " );
                         closeDialog();
-                        Gson gson = new Gson();
-
                         Gson gs = new Gson();
-                        ErrorBean e = gs.fromJson(s, ErrorBean.class);
+                        ErrorBean e = gs.fromJson(json, ErrorBean.class);
                         if (e.getCode().equals("1")) {
                             ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
                         } else {
@@ -783,10 +801,10 @@ public class ProductSubunitListActivity extends BaseActivity {
                         btLineup.setVisibility(View.GONE);
                     } else if (data.get(pos).getIs_lock() == 0) {
 
-                        if (SharedPreferencesHelps.getProjectStatus().equals("old")){
-                            Log.e("TAG", "onItemClick: "+SharedPreferencesHelps.getProjectStatus() );
+                        if (SharedPreferencesHelps.getProjectStatus().equals("old")) {
+                            Log.e("TAG", "onItemClick: " + SharedPreferencesHelps.getProjectStatus());
                             btRemain.setVisibility(View.GONE);
-                        }else {
+                        } else {
                             btRemain.setVisibility(View.VISIBLE);
                         }
                         btLineup.setVisibility(View.GONE);

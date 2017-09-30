@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
@@ -10,6 +12,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +33,7 @@ import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
+import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -42,10 +47,11 @@ import com.zhouyou.http.model.HttpParams;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.IdentityHashMap;
 import java.util.List;
 
 public class RegistSalersActivity extends BaseActivity {
-    private TextView stateTextView, dataTextView_01, dataTextView_02, zhTypeTextView, subButton;
+    private TextView stateTextView, dataTextView_01, dataTextView_02, zhTypeTextView, subButton,tvIsRead;
     private EditText zhEdTextView, remarkEdit;
     private ImageView srcImageView, pointImageView;
     private String picPath = "", licence_type = "1";
@@ -55,6 +61,7 @@ public class RegistSalersActivity extends BaseActivity {
     private Button btUnknown, btSure, btFalse;
     private static final int REQUEST_CAMERA_CODE = 10;
     private ArrayList<String> imagePaths = new ArrayList<>();
+    private CheckBox check_box;
     /**
      * 与日期选择相关
      */
@@ -121,15 +128,35 @@ public class RegistSalersActivity extends BaseActivity {
                                 }
                             });
                     break;
+                case R.id.isRead:
+                    ActivitySkip.forward(RegistSalersActivity.this,RegisterAgreementActivity.class);
+                    break;
                 //提交
                 case R.id.subButton:
+                    if (check_box.isChecked()) {
+                      //  showAlertDialog();
+                        commintInfo();
+                    } else {
+                        ToasShow.showToastCenter(RegistSalersActivity.this, getString(R.string.dingjin));
+                        return;
+                    }
 
-                    commintInfo();
 
                     break;
             }
         }
     };
+
+    private void showAlertDialog() {
+        new AlertDialog.Builder(RegistSalersActivity.this)
+                .setMessage(R.string.order_prompt)
+                .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        commintInfo();
+                    }
+                }).setNegativeButton(R.string.cancel, null).create().show();
+    }
 
 
     @Override
@@ -151,8 +178,8 @@ public class RegistSalersActivity extends BaseActivity {
         pointImageView = getViewById(R.id.pointImageView);
         subButton = getViewById(R.id.subButton);
         remarkEdit = getViewById(R.id.remarkEdit);
-
-
+        check_box = getViewById(R.id.check_box);
+        tvIsRead = getViewById(R.id.isRead);
         setTimePicker();
         showZh();
 
@@ -168,6 +195,21 @@ public class RegistSalersActivity extends BaseActivity {
         subButton.setOnClickListener(mOn);
         srcImageView.setOnClickListener(mOn);
         pointImageView.setOnClickListener(mOn);
+        tvIsRead.setOnClickListener(mOn);
+        check_box.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    subButton.setBackgroundColor(getResources().getColor(R.color.scale_tab5));
+                    subButton.setClickable(true);
+                    subButton.setEnabled(true);
+                } else {
+                    subButton.setBackgroundColor(getResources().getColor(R.color.gray_g));
+                    subButton.setClickable(false);
+                    subButton.setEnabled(false);
+                }
+            }
+        });
 
     }
 
@@ -342,11 +384,11 @@ public class RegistSalersActivity extends BaseActivity {
         httpParams.put("licence_number", licence_number);
         httpParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
         httpParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
-        httpParams.put("licence_name", licence_name);
+        //httpParams.put("licence_name", licence_name);
         httpParams.put("request_notes", remarkString);
-        httpParams.put("abn", "");
+        /*httpParams.put("abn", "");
         httpParams.put("acn", "");
-        httpParams.put("is_gst", "");
+        httpParams.put("is_gst", "");*/
 
 
         //推荐码

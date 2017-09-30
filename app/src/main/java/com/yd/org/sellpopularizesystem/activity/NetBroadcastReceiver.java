@@ -4,6 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.NetworkInfo;
+import android.util.Log;
+
+import com.google.android.gms.playlog.internal.LogEvent;
 
 import java.util.ArrayList;
 
@@ -20,10 +23,13 @@ public class NetBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(CONNECTIVITY_CHANGE_ACTION)) {
            // Application.mNetWorkState = NetUtil.getNetworkState(context);
+            Log.e("TAG", "onReceive: " );
             if (mListeners.size() > 0)// 通知接口完成加载
+                Log.e("TAG", "onReceive***: " );
                 for (netEventHandler handler : mListeners) {
                     handler.onNetChange();
                 }
+
         }
     }
 
