@@ -8,7 +8,7 @@ public class Contants {
     /**
      * 域名
      */
-    public static final String DOMAIN = "http://crm.vxda.cn";
+     public static final String DOMAIN = "http://crm.vxda.cn";
     //public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
@@ -18,6 +18,7 @@ public class Contants {
     //首页数据
     // public static final String HOME_DAA = DOMAIN + "/index.php/app/index/index_data";
     public static final String HOME_DAA = DOMAIN + "/index.php/appv2/index/index_data";
+    public static final String DEPOSIT_DAA="/index.php/appv2/commossion/get_unfirm_number";
     //登录
     public static final String HOME_LOGIN = DOMAIN + "/index.php/appv2/login/index";
     //微信登录
@@ -202,9 +203,9 @@ public class Contants {
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
     //发票详情
-    public static final String DEPOSIT_DETAILS = DOMAIN + "/index.php/appv2/commossion/tax_invoice_info/";
+    public static final String DEPOSIT_DETAILS = DOMAIN + "/index.php/appv2/commossion/tax_invoice_info";
     //同意或拒绝发票
-    public static final String APPROVE_OR_REFUSE_INVOICE =DOMAIN +"/index.php/appv2/commossion/submit_invoice/";
+    public static final String APPROVE_OR_REFUSE_INVOICE =DOMAIN +"/index.php/appv2/commossion/submit_invoice";
     //学习详情
     public static final String STUDY_INFO = DOMAIN + "/index.php/appv2/study/study_info";
     //上传证书

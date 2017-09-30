@@ -55,4 +55,5 @@ public class ExtraName {
     public static final String CALANDEREVENTURL = "content://com.android.calendar/events";
     public static final String CALANDERREMIDERURL = "content://com.android.calendar/reminders";
     public static final String PROJECT_STATUS = "project_status";
+    public static final String DEPOSIT_NUM = "deposit_num";
 }
