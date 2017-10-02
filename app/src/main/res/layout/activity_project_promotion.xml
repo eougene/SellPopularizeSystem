@@ -77,7 +77,8 @@
             android:visibility="gone"
             />-->
 
-        <android.support.v4.widget.NestedScrollView
+        <com.yd.org.sellpopularizesystem.myView.MyNestScrollView
+            android:id="@+id/myNsv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -91,10 +92,10 @@
                     android:id="@+id/scvl"
                     layout="@layout/nest_scrollview_layout" />
 
-                <com.yd.org.sellpopularizesystem.myView.NoScrollGridView
+                <GridView
                     android:id="@+id/gvHouse"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="410dp"
                     android:layout_marginBottom="@dimen/padding_margin_10"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:layout_marginRight="@dimen/padding_margin_10"
@@ -102,10 +103,10 @@
                     android:numColumns="2"
                     android:verticalSpacing="@dimen/padding_margin_10">
 
-                </com.yd.org.sellpopularizesystem.myView.NoScrollGridView>
+                </GridView>
             </LinearLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </com.yd.org.sellpopularizesystem.myView.MyNestScrollView>
 
 
     </android.support.design.widget.CoordinatorLayout>
