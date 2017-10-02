@@ -107,7 +107,7 @@ public class NetUtil {
             }
             return false;
         }else {
-
+            Log.e("TAG", "isForeground执行: " );
            /* UsageStatsManager sUsageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
             if (sUsageStatsManager!=null){
                 long endTime = System.currentTimeMillis();
@@ -132,6 +132,7 @@ public class NetUtil {
             //此处要判断用户的安全权限有没有打开，如果打开了就进行获取栈顶Activity的名字的方法
             //当然，我们的要求是如果没打开就不获取了，要不然跳转会影响用户的体验
             if (isSecurityPermissionOpen(context)) {
+                Log.e("TAG", "isForeground授权成功: " );
                 UsageStatsManager mUsageStatsManager = (UsageStatsManager) context.getSystemService(Context.USAGE_STATS_SERVICE);
                 long endTime = System.currentTimeMillis();
                 long beginTime = endTime - 1000 * 60 * 2;
@@ -148,6 +149,7 @@ public class NetUtil {
                     }
                 }
               String   topActivityPackageName = recentStats.getClass().getName();
+                Log.e("TAG", "isForeground: "+topActivityPackageName );
                 if (context.getClass().getName().equals(topActivityPackageName)){
                     return true;
                 }else {
