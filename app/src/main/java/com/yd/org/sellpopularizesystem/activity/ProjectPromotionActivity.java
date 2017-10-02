@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -22,6 +23,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
+import com.yd.org.sellpopularizesystem.myView.MyNestScrollView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.NetUtil;
@@ -38,7 +40,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectPromotionActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener,NetBroadcastReceiver.netEventHandler {
+public class ProjectPromotionActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener {
     private LinearLayout llAll;
     private TextView tvHotSale, tvLookHouse, tvMore, tvTilte, tvBuildingNum;
     private GridView gvHouse;
@@ -53,6 +55,11 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private String space = "", price = "", house = "", area = "";
     private AppBarLayout mAppBarLayout;
     private ImageView backImageView;
+    private MyNestScrollView myNsv;
+    private boolean isSvToBottom = false;
+
+    private float mLastX;
+    private float mLastY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,10 +71,11 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mAppBarLayout.addOnOffsetChangedListener(this);
 
         initView();
-        NetBroadcastReceiver.mListeners.add(this);
+       // NetBroadcastReceiver.mListeners.add(this);
     }
 
     private void initView() {
+        myNsv= (MyNestScrollView) findViewById(R.id.myNsv);
         backImageView = (ImageView) findViewById(R.id.backImageView);
         tvTilte = (TextView) findViewById(R.id.tvTilte);
         llAll = (LinearLayout) findViewById(R.id.llAll);
@@ -79,6 +87,36 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         loading_Dialog = new CustomProgressDialog(this, R.style.customLoadDialog);
         getProductListData(true, space, price, house, area);
         setListeners();
+        fixSlideConflict();
+    }
+
+    private void fixSlideConflict() {
+        gvHouse.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                int action = event.getAction();
+
+                if(action == MotionEvent.ACTION_DOWN) {
+                    mLastY = event.getY();
+                }
+                if(action == MotionEvent.ACTION_MOVE) {
+                    int top = gvHouse.getChildAt(0).getTop();
+                    float nowY = event.getY();
+                    if(!isSvToBottom) {
+                        // 允许scrollview拦截点击事件, scrollView滑动
+                        myNsv.requestDisallowInterceptTouchEvent(false);
+                    } else if(top == 0 && nowY - mLastY > 20) {
+                        // 允许scrollview拦截点击事件, scrollView滑动
+                        myNsv.requestDisallowInterceptTouchEvent(false);
+                    } else {
+                        // 不允许scrollview拦截点击事件， listView滑动
+                        myNsv.requestDisallowInterceptTouchEvent(true);
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     private void setListeners() {
@@ -102,6 +140,17 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                 bundle.putString("productName", item.getProduct_name());
                 bundle.putString("productId", item.getProduct_id() + "");
                 ActivitySkip.forward(ProjectPromotionActivity.this, ProductItemDetailActivity.class, bundle);
+            }
+        });
+        myNsv.setScrollToBottomListener(new MyNestScrollView.OnScrollToBottomListener() {
+            @Override
+            public void onScrollToBottom() {
+                isSvToBottom=true;
+            }
+
+            @Override
+            public void onNotScrollToBottom() {
+                isSvToBottom=false;
             }
         });
     }
@@ -162,7 +211,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                 if (productData.get(i).getIs_promote()==1){
                     promoteDatas.add(productData.get(i));
                 }
-                if (promoteDatas.size()==4){
+                if (promoteDatas.size()==6){
                     break;
                 }
             }
@@ -260,12 +309,4 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
 
     }
 
-    @Override
-    public void onNetChange() {
-        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
-        }else {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
-        }
-    }
 }
