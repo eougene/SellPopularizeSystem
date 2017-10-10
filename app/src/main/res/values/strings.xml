@@ -666,9 +666,7 @@
     <string name="full_payment">全款</string>
     <string name="is_firb">海外</string>
     <string name="deposit_declare"><Data><![CDATA[
-        If you have any questions regarding this tax invoice , please report it to the accounting staff via email
-        <font color="#4898F1">finance@maclandgroup.com.au.</font>
-        Thank you for your support!
+        If you have any questions regarding this tax invoice , please report it to the accounting staff via email <br> <font color="#4898F1">finance@maclandgroup.com.au.</font> </br> <br>Thank you for your support!</br>
     ]]></Data></string>
     <string name="get_success">获取成功</string>
     <string name="reject_reason">请填写拒绝原因</string>
