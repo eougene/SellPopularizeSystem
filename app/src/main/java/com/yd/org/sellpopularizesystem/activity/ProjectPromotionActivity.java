@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -26,10 +27,8 @@ import com.yd.org.sellpopularizesystem.myView.CustomProgressDialog;
 import com.yd.org.sellpopularizesystem.myView.MyNestScrollView;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.NetUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -48,7 +47,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private CommonAdapter mCommonAdapter;
     private CustomProgressDialog loading_Dialog;
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
-    private List<ProductListBean.ResultBean> promoteDatas=new ArrayList<>();
+    private List<ProductListBean.ResultBean> promoteDatas = new ArrayList<>();
     protected float mTitlePercentage;
     private static final float DEFAULT_PERCENTAGE = 0.95f;
     private float percentageOfShowTitle = DEFAULT_PERCENTAGE;
@@ -71,11 +70,11 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mAppBarLayout.addOnOffsetChangedListener(this);
 
         initView();
-       // NetBroadcastReceiver.mListeners.add(this);
+        // NetBroadcastReceiver.mListeners.add(this);
     }
 
     private void initView() {
-        myNsv= (MyNestScrollView) findViewById(R.id.myNsv);
+        myNsv = (MyNestScrollView) findViewById(R.id.myNsv);
         backImageView = (ImageView) findViewById(R.id.backImageView);
         tvTilte = (TextView) findViewById(R.id.tvTilte);
         llAll = (LinearLayout) findViewById(R.id.llAll);
@@ -97,16 +96,16 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
 
                 int action = event.getAction();
 
-                if(action == MotionEvent.ACTION_DOWN) {
+                if (action == MotionEvent.ACTION_DOWN) {
                     mLastY = event.getY();
                 }
-                if(action == MotionEvent.ACTION_MOVE) {
+                if (action == MotionEvent.ACTION_MOVE) {
                     int top = gvHouse.getChildAt(0).getTop();
                     float nowY = event.getY();
-                    if(!isSvToBottom) {
+                    if (!isSvToBottom) {
                         // 允许scrollview拦截点击事件, scrollView滑动
                         myNsv.requestDisallowInterceptTouchEvent(false);
-                    } else if(top == 0 && nowY - mLastY > 20) {
+                    } else if (top == 0 && nowY - mLastY > 20) {
                         // 允许scrollview拦截点击事件, scrollView滑动
                         myNsv.requestDisallowInterceptTouchEvent(false);
                     } else {
@@ -145,12 +144,12 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         myNsv.setScrollToBottomListener(new MyNestScrollView.OnScrollToBottomListener() {
             @Override
             public void onScrollToBottom() {
-                isSvToBottom=true;
+                isSvToBottom = true;
             }
 
             @Override
             public void onNotScrollToBottom() {
-                isSvToBottom=false;
+                isSvToBottom = false;
             }
         });
     }
@@ -168,7 +167,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("price", price);
         httpParams.put("is_hot_sale", "");
         httpParams.put("is_promote", "");
-        httpParams.put("is_old_product","1");
+        httpParams.put("is_old_product", "1");
 
         Log.e("参数***", "params:" + httpParams.toString());
 
@@ -207,11 +206,11 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         if (product.getCode().equals("1")) {
             productData = product.getResult();
             tvBuildingNum.setText(product.getTotal_number() + "");
-            for (int i = 0; i <productData.size() ; i++) {
-                if (productData.get(i).getIs_promote()==1){
+            for (int i = 0; i < productData.size(); i++) {
+                if (productData.get(i).getIs_promote() == 1) {
                     promoteDatas.add(productData.get(i));
                 }
-                if (promoteDatas.size()==6){
+                if (promoteDatas.size() == 6) {
                     break;
                 }
             }
@@ -227,9 +226,15 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
-                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$" +
-                        MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000).split("\\.")[0]) + "k" +
-                        getString(R.string.perset));
+
+                if (null != item.getChilds().get(0).getMin_price() || !TextUtils.isEmpty(item.getChilds().get(0).getMin_price())) {
+                    holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + "$" +
+
+                            MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000).split("\\.")[0]) + "k" +
+                            getString(R.string.perset));
+                }
+
+
             }
 
         };

@@ -60,8 +60,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private int page = 1;
     private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
     public String strSelect = "", hotsale = "", promote = "", isOldProject = "1";
-    private String strPrice = "", strType = "", strHouse = "",strBacPrice="",
-            strBacType="",strBacHouse="";
+    private String strPrice = "", strType = "", strHouse = "", strBacPrice = "",
+            strBacType = "", strBacHouse = "";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
     private String type;
@@ -153,9 +153,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         tvPrice = getViewById(R.id.tvPrice);
         tvType = getViewById(R.id.tvType);
         tvHouseType = getViewById(R.id.tvHouseType);
-        strBacPrice=getString(R.string.price);
-        strBacType=getString(R.string.type);
-        strBacHouse=getString(R.string.housetype);
+        strBacPrice = getString(R.string.price);
+        strBacType = getString(R.string.type);
+        strBacHouse = getString(R.string.housetype);
         if (type.equals("hot")) {
             hotsale = "1";
             promote = "0";
@@ -187,7 +187,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 strType=tvType.getText().toString();
                 strHouse=tvHouseType.getText().toString();*/
                 if (!TextUtils.isEmpty(etSearch.getText().toString())) {//搜索框有内容时
-                    Log.e("TAG", "onClick: "+etSearch.getText().toString() );
+                    Log.e("TAG", "onClick: " + etSearch.getText().toString());
                     rightRtitle.setEnabled(true);
                     search_key = etSearch.getText().toString();
                     getProductListData(true, 1, space, price, house, area);
@@ -199,9 +199,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                             ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.select_ele));
                         } else {
                             search_key = "";
-                            if (is_first){
+                            if (is_first) {
                                 getProductListData(true, 1, space, price, house, area);//下拉刷新后再点击搜索
-                                is_first=false;
+                                is_first = false;
                             }
 
 
@@ -210,9 +210,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     } else {
                         Log.e("TAG", "onClick: " + cate_id);
                         search_key = "";
-                        if (is_first){
+                        if (is_first) {
                             getProductListData(true, 1, space, price, house, area);
-                            is_first=false;
+                            is_first = false;
                         }
 
                     }
@@ -352,7 +352,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         Gson gson = new Gson();
         try {
             JSONObject jsonObject = new JSONObject(json);
-            String msg=jsonObject.getString("msg");
+            String msg = jsonObject.getString("msg");
             if (!msg.equals(getResources().getString(R.string.nodata))) {//有数据时
                 Log.e("TAG", "msg: " + jsonObject.getString("msg"));
                 getViewById(R.id.noInfomation).setVisibility(View.GONE);
@@ -370,17 +370,17 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 }
                 //rightRtitle.setEnabled(false);
             } else {//无返回数据时
-                Log.e("TAG", "jsonParse: "+jsonObject.getString("msg") );
+                Log.e("TAG", "jsonParse: " + jsonObject.getString("msg"));
                 getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                if (mCommonAdapter!=null){
-                    if (mCommonAdapter.getmDatas().size()>0){
+                if (mCommonAdapter != null) {
+                    if (mCommonAdapter.getmDatas().size() > 0) {
                         mCommonAdapter.getmDatas().clear();
                         mCommonAdapter.notifyDataSetChanged();
-                        tvProjectNum.setText(getString(R.string.sum) +0+ getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+                        tvProjectNum.setText(getString(R.string.sum) + 0 + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
                         getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                         return;
                     }
-                }else {
+                } else {
                     return;
                 }
 
@@ -429,7 +429,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
                 //珍藏
                 if (item.getAttr_1() == 1) {
-                     holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
+                    holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
                 } else {
                     holder.getView(R.id.tvCollection).setVisibility(View.GONE);
                 }
@@ -437,7 +437,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 //新盘
                 if (item.getAttr_2() == 1) {
                     holder.visibility(R.id.newImageView);
-                   // holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
+                    // holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
                 } else {
                     holder.goneImageView(R.id.newImageView);
                     //holder.getView(R.id.tvCollection).setVisibility(View.GONE);
@@ -458,19 +458,23 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 }
 
                 //海外
-                if (item.getIs_firb()==1){
+                if (item.getIs_firb() == 1) {
                     holder.getView(R.id.tvFirb).setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     holder.getView(R.id.tvFirb).setVisibility(View.INVISIBLE);
                 }
 
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
-                holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + getString(R.string.single_blank_space) + "$" +
-                        getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
-                        .split("\\.")[0]) + "k" + getString(R.string.perset));
 
+
+                if (null != item.getChilds().get(0).getMin_price() || !TextUtils.isEmpty(item.getChilds().get(0).getMin_price())) {
+                    holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + getString(R.string.single_blank_space) + "$" +
+                            getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
+                            .split("\\.")[0]) + "k" + getString(R.string.perset));
+
+                }
             }
         };
         listView.setAdapter(mCommonAdapter);
@@ -497,14 +501,14 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 case ExtraName.TYPE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
                         Log.e("TAG", "onActivityResult: " + data.getStringExtra("selectextra"));
-                        strBacType=data.getStringExtra("selectextra");
+                        strBacType = data.getStringExtra("selectextra");
                         tvType.setText(data.getStringExtra("selectextra") == null ? "" : data.getStringExtra("selectextra"));
                         if (!strType.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
-                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)){
+                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)) {
                             is_first = false;
-                        }else {
+                        } else {
                             is_first = true;
                         }
                         if (data.getStringExtra("selectextra").equals(LAND)) {
@@ -531,7 +535,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 //房型
                 case ExtraName.HOURSE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
-                        strBacHouse=data.getStringExtra("selectextra");
+                        strBacHouse = data.getStringExtra("selectextra");
                         if (data.getStringExtra("selectextra").length() > 2) {
                             tvHouseType.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
                         }
@@ -540,9 +544,9 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         if (!strHouse.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
-                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)){
+                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)) {
                             is_first = false;
-                        }else {
+                        } else {
                             is_first = true;
                         }
                     } else {
@@ -558,15 +562,15 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 //价格
                 case ExtraName.PRICE:
                     if (!TextUtils.isEmpty(data.getStringExtra("selectextra"))) {
-                        strBacPrice=data.getStringExtra("selectextra");
+                        strBacPrice = data.getStringExtra("selectextra");
                         tvPrice.setText(data.getStringExtra("selectextra"));
                         if (!strPrice.equals(data.getStringExtra("selectextra"))) {
                             rightRtitle.setEnabled(true);
                         }
 
-                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)){
+                        if (strPrice.equals(strBacPrice) && strType.equals(strBacType) && strHouse.equals(strBacHouse)) {
                             is_first = false;
-                        }else {
+                        } else {
                             is_first = true;
                         }
 
