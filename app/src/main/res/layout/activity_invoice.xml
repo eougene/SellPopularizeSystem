@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/invoiceBottomLinear"
-        android:background="@color/search_edit_bac"
-        android:orientation="vertical"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:background="@color/search_edit_bac"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,9 +73,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toLeftOf="@+id/tvStatus"
                     android:layout_marginRight="@dimen/padding_margin_4"
                     android:layout_marginTop="@dimen/padding_margin_10"
+                    android:layout_toLeftOf="@+id/tvStatus"
                     android:text="Status:"
                     android:textColor="@color/black"
                     android:textSize="@dimen/tv_size_12"
@@ -183,11 +183,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -196,7 +198,6 @@
                 android:layout_marginBottom="@dimen/padding_margin_4"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_4"
-
                 android:orientation="horizontal"
                 android:paddingLeft="@dimen/padding_margin_20">
 
@@ -221,11 +222,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -314,11 +317,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -351,11 +356,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -390,11 +397,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -427,11 +436,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -550,11 +561,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -672,11 +685,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
@@ -710,11 +725,13 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="1.5dp"
+                android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_20"
+                android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"/>
+                android:background="@drawable/stroke"
+                android:layerType="software"/>
 
 
             <LinearLayout
