@@ -1,9 +1,9 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -195,15 +195,15 @@ public class RegisterFragment extends BaseFragmentView {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
-                            ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
+                           // ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
 
-                            /*new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
+                            new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
 
                                 }
-                            }).create().show();*/
+                            }).create().show();
 
                         } else {
                             ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
