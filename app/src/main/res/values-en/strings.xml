@@ -678,8 +678,9 @@
     <string name="promotion">Promotion</string>
     <string name="full_payment">Pay Off</string>
     <string name="is_firb">FIRB</string>
-    <string name="deposit_declare">If you have any question counceming this invoice,contact ABC at accounts@abc.com.cn   THANK YOU FOR YOUR BUSINESS!</string>
-    <string name="get_success">获取成功</string>
+    <string name="deposit_declare"><Data><![CDATA[
+        If you have any questions regarding this tax invoice , please report it to the accounting staff via email <br> <font color="#4898F1">finance@maclandgroup.com.au.</font> </br> <br>Thank you for your support!</br>    ]]></Data></string>
+    <string name="get_success">Success</string>
     <string name="reject_reason">Please fill in the reason for the refusal</string>
     <string name="input_money">Please enter the amount</string>
     <string name="refusal_reson">the reason for refusal</string>
