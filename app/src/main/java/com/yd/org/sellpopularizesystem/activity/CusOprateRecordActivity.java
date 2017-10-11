@@ -573,7 +573,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             handler.sendEmptyMessage(ExtraName.SUCCESS);
                             if (payment_method.equals("6") || payment_method.equals("7")) {
                                 Bundle bundle = new Bundle();
-                                bundle.putString("payurlId", result.getMsg());
+                                bundle.putString("payurlId", result.getTrust_account_id());
                                 bundle.putString("payment_method", payment_method);
                                 ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
                             }
@@ -590,7 +590,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName() + "1")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
@@ -779,7 +778,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
         EasyHttp.get(Contants.VISIT_RECORD_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName() + "2")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -953,7 +951,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getReservertData(int page, final boolean isRel) {
         EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName() + "3")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)

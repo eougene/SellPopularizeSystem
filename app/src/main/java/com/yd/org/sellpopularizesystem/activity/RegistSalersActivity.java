@@ -47,7 +47,6 @@ import com.zhouyou.http.model.HttpParams;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.IdentityHashMap;
 import java.util.List;
 
 public class RegistSalersActivity extends BaseActivity {
@@ -421,7 +420,6 @@ public class RegistSalersActivity extends BaseActivity {
                     public void onSuccess(String s) {
                         closeDialog();
                         Log.e("注册销售", "s:" + s);
-
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
