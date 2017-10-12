@@ -360,7 +360,6 @@
         <activity
             android:name=".activity.DepositActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/DialogStyle"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.RegistSalersActivity"
