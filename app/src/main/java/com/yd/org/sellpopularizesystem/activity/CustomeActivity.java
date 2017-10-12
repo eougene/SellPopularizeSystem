@@ -258,7 +258,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             adapter.addData(SourceDateList);
             listView.setAdapter(adapter);
         } else {
-            //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
             if (adapter!=null){
                 adapter.addMore(SourceDateList);
             }
