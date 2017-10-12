@@ -8,8 +8,8 @@ android {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20171001
-        versionName "1.10.1"
+        versionCode 20171012
+        versionName "1.10.2"
 
         //个推配置文件
         manifestPlaceholders = [
@@ -116,6 +116,4 @@ dependencies {
     compile 'com.github.barteksc:android-pdf-viewer:2.7.0-beta.1'
     compile 'com.alibaba:fastjson:1.2.38'
     compile 'org.greenrobot:eventbus:3.0.0'
-    compile files('libs/poi-3.17.jar')
-    compile files('libs/poi-scratchpad-3.17.jar')
 }
