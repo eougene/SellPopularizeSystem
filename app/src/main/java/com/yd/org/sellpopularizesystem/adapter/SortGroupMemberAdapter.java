@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
-import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 
 import java.util.ArrayList;
@@ -71,8 +70,9 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         ViewHolder viewHolder = null;
 
         if (view == null) {
-            viewHolder = new ViewHolder();
+
             view = LayoutInflater.from(mContext).inflate(R.layout.activity_group_member_item, null);
+            viewHolder = new ViewHolder();
             viewHolder.tvTitle = (TextView) view.findViewById(R.id.customName);
             viewHolder.tvNickName = (TextView) view.findViewById(R.id.tvNickName);
             viewHolder.tvLetter = (TextView) view.findViewById(R.id.catalog);
@@ -121,12 +121,11 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
 
     }
 
-    public class ViewHolder {
-        TextView tvLetter;
-        TextView tvTitle, tvNickName;
-        ImageView imageView;
+    public static class ViewHolder {
+        public TextView tvLetter;
+        public  TextView tvTitle, tvNickName;
+        public  ImageView imageView;
         public CustomBean.ResultBean resultBean;
-        public LawyerBean.ResultBean m;
 
     }
 

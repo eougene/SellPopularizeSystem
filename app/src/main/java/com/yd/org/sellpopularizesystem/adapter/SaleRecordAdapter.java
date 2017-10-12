@@ -5,28 +5,18 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.DepositActivity;
 import com.yd.org.sellpopularizesystem.activity.SaleRecordActivity;
-import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.ReceiptBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.ToasShow;
-import com.zhouyou.http.EasyHttp;
-import com.zhouyou.http.cache.model.CacheMode;
-import com.zhouyou.http.callback.SimpleCallBack;
-import com.zhouyou.http.exception.ApiException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -157,7 +147,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                     viewHolder.tvStatus.setText(mContext.getString(R.string.saler_04));
 
 
-
                 }
 
 
@@ -179,7 +168,6 @@ public class SaleRecordAdapter extends BaseAdapter {
                 viewHolder.saleRecorTv4.setVisibility(View.GONE);
                 viewHolder.tvStatus.setVisibility(View.VISIBLE);
                 viewHolder.tvStatus.setText(mContext.getString(R.string.saler_13));
-
 
 
                 //请上传合同首页 ,请上传首付款凭证
@@ -216,7 +204,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             viewHolder.saleRecorTv3.setVisibility(View.GONE);
             viewHolder.saleRecorTv4.setVisibility(View.GONE);
             viewHolder.tvStatus.setVisibility(View.VISIBLE);
-            if (viewHolder.resultBean.getOrder_money_status()==2){
+            if (viewHolder.resultBean.getOrder_money_status() == 2) {
                 //查看定金
                 viewHolder.depositImageView.setVisibility(View.VISIBLE);
             }
@@ -348,7 +336,10 @@ public class SaleRecordAdapter extends BaseAdapter {
 
                 //查看定金
                 case depositImageView:
-                    getDepositInfo(resultBean);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("keys", resultBean);
+                    ActivitySkip.forward(SaleRecordActivity.saleRecordActivity, DepositActivity.class, bundle);
+
                     break;
 
 
@@ -357,48 +348,6 @@ public class SaleRecordAdapter extends BaseAdapter {
         }
     }
 
-    /**
-     * 获取定金消息
-     * @param resultBean
-     */
-    private void getDepositInfo(final SaleOrderBean.ResultBean resultBean) {
-        EasyHttp.get(Contants.RECEIPT_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("order_id", resultBean.getProduct_orders_id() + "")
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        SaleRecordActivity.saleRecordActivity.showDialog();
-                    }
-
-                    @Override
-                    public void onError(ApiException e) {
-                        SaleRecordActivity.saleRecordActivity.closeDialog();
-                        ToasShow.showToast(mContext, mContext.getResources().getString(R.string.network_error));
-                    }
-
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
-                        SaleRecordActivity.saleRecordActivity.closeDialog();
-
-                        Gson gs = new Gson();
-
-                        ReceiptBean receiptBean = gs.fromJson(json, ReceiptBean.class);
-                        if (receiptBean.getCode().equals("1")) {
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable("keys", receiptBean);
-                            bundle.putString("name",resultBean.getCustomer_surname()+mContext.getResources().getString(R.string.single_blank_space)+resultBean.getCustomer_first_name());
-                            ActivitySkip.forward(SaleRecordActivity.saleRecordActivity, DepositActivity.class, bundle);
-                        } else {
-                            ToasShow.showToastCenter(mContext, receiptBean.getMsg());
-                        }
-
-                    }
-                });
-    }
 
     private HideViewListener mHideViewListener;
 
@@ -416,7 +365,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
     public class ViewHolder {
         public SaleOrderBean.ResultBean resultBean;
-        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4,depositImageView;
+        private TextView tvSaleNum, tvSaleDes, tvSaleName, tvSalePrice, tvStatus, saleRecorTv1, saleRecorTv2, saleRecorTv3, saleRecorTv4, depositImageView;
 
     }
 }
