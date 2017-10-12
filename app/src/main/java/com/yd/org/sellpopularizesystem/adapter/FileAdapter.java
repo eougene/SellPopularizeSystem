@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.yd.org.sellpopularizesystem.R;
-import com.yd.org.sellpopularizesystem.javaBean.FileContent;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,9 +20,9 @@ import java.util.List;
 public class FileAdapter extends BaseAdapter {
     private Context mContext;
     private LayoutInflater inflater;
-    private List<FileContent> file_content = new ArrayList<>();
+    private List<ProductDetailBean.ResultBean.FileContentBean> file_content = new ArrayList<>();
 
-    public FileAdapter(Context mContext, List<FileContent> file_content) {
+    public FileAdapter(Context mContext, List<ProductDetailBean.ResultBean.FileContentBean> file_content) {
         this.mContext = mContext;
         this.file_content = file_content;
         this.inflater = LayoutInflater.from(mContext);
@@ -66,7 +66,7 @@ public class FileAdapter extends BaseAdapter {
     }
 
     public class ViewHolder {
-        public FileContent fileContent;
+        public ProductDetailBean.ResultBean.FileContentBean fileContent;
         private TextView tvFilfeTitle;
     }
 }
