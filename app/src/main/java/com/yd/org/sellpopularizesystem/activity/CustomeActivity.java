@@ -104,7 +104,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         tvNofriends = getViewById(R.id.noInfomation);
         // 实例化汉字转拼音类
         characterParser = CharacterParser.getInstance();
-        nameChangeUtil=new GetCustomerNameSort();
+        nameChangeUtil = new GetCustomerNameSort();
         pinyinComparator = new PinyinComparator();
 
         sideBar = getViewById(R.id.sidrbar);
@@ -208,7 +208,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "500")
+                .params("number", "10000")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -234,12 +234,18 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     }
 
     private void jsonParse(String json, boolean isRefresh) {
+        Log.e("获取数据", "time:" + System.currentTimeMillis() / 1000);
         Gson gson = new Gson();
         //客户信息
         CustomBean product = gson.fromJson(json, CustomBean.class);
+
+
+        Log.e("解析数据", "time:" + System.currentTimeMillis() / 1000);
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
+
+
 
         if (isRefresh) {
 
@@ -254,11 +260,14 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             // 根据a-z进行排序源数据
             Collections.sort(SourceDateList, pinyinComparator);
+            Log.e("适配数据", "time:" + System.currentTimeMillis() / 1000);
             adapter = new SortGroupMemberAdapter(this);
-            adapter.addData(SourceDateList);
             listView.setAdapter(adapter);
+            adapter.addData(SourceDateList);
+
+            Log.e("显示数据", "time:" + System.currentTimeMillis() / 1000);
         } else {
-            if (adapter!=null){
+            if (adapter != null) {
                 adapter.addMore(SourceDateList);
             }
 
@@ -324,7 +333,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 // 这个时候不需要挤压效果 就把他隐藏掉
                 titleLayout.setVisibility(View.GONE);
                 // 当输入框里面的值为空，更新为原来的列表，否则为过滤数据列表
-               // filterData(s.toString());
+                // filterData(s.toString());
             }
 
             @Override
@@ -337,10 +346,10 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void afterTextChanged(Editable s) {
                 String searchContent = searchEditText.getText().toString();
                 if (searchContent.length() > 0) {
-                    ArrayList<CustomBean.ResultBean> fileterList= (ArrayList<CustomBean.ResultBean>)
-                            nameChangeUtil.search(searchContent,SourceDateList);
+                    ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean.ResultBean>)
+                            nameChangeUtil.search(searchContent, SourceDateList);
                     adapter.updateListView(fileterList);
-                }else {
+                } else {
                     adapter.updateListView(SourceDateList);
                 }
                 listView.setSelection(0);
@@ -364,7 +373,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     ActivitySkip.forward(CustomeActivity.this, ProjectPromotionActivity.class, bundle);
                     finish();
 
-                }else if (str1.equals(ExtraName.OLDPROTOCUSTOME)) {//往期项目选客户
+                } else if (str1.equals(ExtraName.OLDPROTOCUSTOME)) {//往期项目选客户
                     bundle.putString("type", "old");
                     ActivitySkip.forward(CustomeActivity.this, ScaleActivity.class, bundle);
                     finish();
@@ -397,7 +406,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-
         page++;
         ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         getCustomeListData(false, page);

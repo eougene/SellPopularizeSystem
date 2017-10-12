@@ -1705,7 +1705,6 @@ public class CustomDetailedActivity extends BaseActivity {
 
         EasyHttp.get(Contants.CUSTOME_DETAILED)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params("customer_id", resultBean.getCustomer_id() + "")
                 .execute(new SimpleCallBack<String>() {

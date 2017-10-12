@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
@@ -35,7 +33,6 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
-import com.yd.org.sellpopularizesystem.utils.StringUtils;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
@@ -51,8 +48,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import static com.igexin.push.core.g.s;
 
 public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btLineup, btCancel;

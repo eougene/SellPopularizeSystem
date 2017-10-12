@@ -4,17 +4,14 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ReceiptBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
-import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -24,8 +21,7 @@ import com.zhouyou.http.exception.ApiException;
 
 public class DepositActivity extends BaseActivity {
     private TextView tvName, tvProperty, tvMoneyy, tvDown;
-    public ReceiptBean receiptBean;
-    private String name;
+    private SaleOrderBean.ResultBean resultBean;
 
 
     @Override
@@ -37,10 +33,7 @@ public class DepositActivity extends BaseActivity {
     public void initView() {
         hideRightImagview();
         setTitle(getResources().getString(R.string.sale_list));
-        //receiptBean = (ReceiptBean) getIntent().getSerializableExtra("keys");
-        receiptBean = (ReceiptBean) getIntent().getExtras().getSerializable("keys");
-        name = getIntent().getExtras().getString("name");
-
+        resultBean = (SaleOrderBean.ResultBean) getIntent().getExtras().getSerializable("keys");
         tvName = getViewById(R.id.tvName);
         tvProperty = getViewById(R.id.tvProperty);
         tvMoneyy = getViewById(R.id.tvMoneyy);
@@ -51,12 +44,8 @@ public class DepositActivity extends BaseActivity {
     }
 
     private void getInfo() {
-       // CustomBean.ResultBean custome= (CustomBean.ResultBean) ObjectSaveUtil.readObject(DepositActivity.this, "custome");
-        tvName.setText(name);
-        tvProperty.setText(receiptBean.getResult().getProduct());
-        tvMoneyy.setText(receiptBean.getResult().getNumber());
 
-        /*EasyHttp.get(Contants.RECEIPT_INFO)
+        EasyHttp.get(Contants.RECEIPT_INFO)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("order_id", resultBean.getProduct_orders_id() + "")
@@ -64,17 +53,17 @@ public class DepositActivity extends BaseActivity {
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
-
+                        showDialog();
                     }
 
                     @Override
                     public void onError(ApiException e) {
+                        closeDialog();
                         ToasShow.showToast(DepositActivity.this, getResources().getString(R.string.network_error));
                     }
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
                         closeDialog();
 
                         Gson gs = new Gson();
@@ -84,13 +73,14 @@ public class DepositActivity extends BaseActivity {
                             tvName.setText(receiptBean.getResult().getUser_name());
                             tvProperty.setText(receiptBean.getResult().getProduct());
                             tvMoneyy.setText(receiptBean.getResult().getNumber());
+
                         } else {
                             ToasShow.showToastCenter(DepositActivity.this, receiptBean.getMsg());
                         }
 
 
                     }
-                });*/
+                });
 
 
     }
