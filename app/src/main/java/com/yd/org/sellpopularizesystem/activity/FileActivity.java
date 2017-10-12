@@ -9,7 +9,6 @@ import com.github.barteksc.pdfviewer.PDFView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.FileAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.FinalDownFile;
@@ -20,8 +19,8 @@ import java.util.List;
 public class FileActivity extends BaseActivity {
     private ListView listView;
     private ProductDetailBean.ResultBean prs;
-    private List<FileContent> file_content = new ArrayList<>();
-    private List<FileContent> fileDate = new ArrayList<>();
+    private List<ProductDetailBean.ResultBean.FileContentBean> file_content = new ArrayList<>();
+    private List<ProductDetailBean.ResultBean.FileContentBean> fileDate = new ArrayList<>();
     private FileAdapter fileAdapter;
     private String key;
     //合同
@@ -73,7 +72,7 @@ public class FileActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 FileAdapter.ViewHolder viewHolder = (FileAdapter.ViewHolder) view.getTag();
-                FileContent fileContent = viewHolder.fileContent;
+                ProductDetailBean.ResultBean.FileContentBean fileContent = viewHolder.fileContent;
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("pdf", fileContent);
                 ActivitySkip.forward(FileActivity.this, PDFActivity.class, bundle);

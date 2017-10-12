@@ -3,15 +3,16 @@ package com.yd.org.sellpopularizesystem.activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.webkit.WebView;
+
 import com.github.barteksc.pdfviewer.PDFView;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.FileContent;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.FinalDownFile;
 
 public class PDFActivity extends BaseActivity {
     private WebView pdfView;
-    private FileContent fileContent;
+    private ProductDetailBean.ResultBean.FileContentBean fileContent;
     private String sale_advice_url, orderId;
     private String fileType;
     private PDFView pView;
@@ -33,7 +34,7 @@ public class PDFActivity extends BaseActivity {
 
         Log.e("", "");
         if (orderId == null || sale_advice_url == null) {
-            fileContent = (FileContent) getIntent().getSerializableExtra("pdf");
+            fileContent = (ProductDetailBean.ResultBean.FileContentBean) getIntent().getSerializableExtra("pdf");
             setTitle(fileContent.getDetail_name());
              new FinalDownFile(this, Contants.DOMAIN + "/" + fileContent.getUrl(), pdfView, pView);
 

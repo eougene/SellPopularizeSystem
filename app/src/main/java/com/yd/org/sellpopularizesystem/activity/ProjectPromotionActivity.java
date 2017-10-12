@@ -70,7 +70,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mAppBarLayout.addOnOffsetChangedListener(this);
 
         initView();
-        // NetBroadcastReceiver.mListeners.add(this);
+
     }
 
     private void initView() {
@@ -168,10 +168,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("is_hot_sale", "");
         httpParams.put("is_promote", "");
         httpParams.put("is_old_product", "1");
-
-        Log.e("参数***", "params:" + httpParams.toString());
-
-
         EasyHttp.get(Contants.PRODUCT_LIST)
                 .cacheMode(CacheMode.NO_CACHE)
                 .cacheKey(this.getClass().getSimpleName())

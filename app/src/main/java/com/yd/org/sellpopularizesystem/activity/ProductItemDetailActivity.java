@@ -2,6 +2,8 @@ package com.yd.org.sellpopularizesystem.activity;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -13,6 +15,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,12 +57,13 @@ import org.json.JSONObject;
 
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
+import java.util.Locale;
 
 public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
             tvSaleDeadTime, tvStartDate, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
             tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
-            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime;
+            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime, agent_notes, proDelAddTv;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
@@ -71,6 +75,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     private String product_id;
     protected ImageView backImageView, imageViewShare;
     private CustomBean.ResultBean custome;
+    private LinearLayout agentsNotesLin;
+    private int temp = 0;
 
 
     @Override
@@ -83,6 +89,16 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     public void initView() {
+
+        //agent notes
+
+        agentsNotesLin = (LinearLayout) findViewById(R.id.agentsNotesLin);
+        agentsNotesLin.setOnClickListener(mOnClickListener);
+
+
+        agent_notes = (TextView) findViewById(R.id.agent_notes);
+
+        proDelAddTv = (TextView) findViewById(R.id.proDelAddTv);
 
         //保存推广开始时间
         SharedPreferencesHelps.setTime((System.currentTimeMillis() / 1000) + "");
@@ -223,13 +239,29 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                             tvIsSalingNum.setText(prs.getSell_number() + "");
                             tvHasSaledNum.setText(prs.getSign_number() + "");
                             tvFirbNum.setText(prs.getFirb_number() + "");
+                            agent_notes.setText(" " + prs.getAgent_notes() + "");
+
+
+                            Locale locale = Locale.getDefault();
+                            String language = locale.getLanguage();
+                            Resources resources = getResources();
+                            Configuration config = resources.getConfiguration();
+                            if (!language.equals("")) {
+                                if (language.equals("zh")) {
+                                    proDelAddTv.setText(prs.getCountry() +" "+ prs.getState() +" "+ prs.getCity() +" "+ prs.getStreet_address_1() +" "+ prs.getStreet_address_2() +" "+ prs.getStreet_number()+" " + prs.getPostcode());
+                                } else if (language.equals("en")) {
+                                    proDelAddTv.setText(prs.getStreet_number()+" " + prs.getStreet_address_1()+" " + prs.getStreet_address_2() +" "+ prs.getAddress_suburb() +" "+ prs.getState() +" "+ prs.getPostcode() +" "+ prs.getCountry());
+
+                                }
+                            }
+
 
                             if (prs.getEoi_open_time() == null || (double) prs.getEoi_open_time() == 0 || String.valueOf(prs.getEoi_open_time()).equals("0")) {
                                 tvEoiTime.setText("1970/01/01");
                             } else {
                                 tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getEoi_open_time()).longValue() + "000")));
                             }
-                            if (prs.getStart_sales_time() == null || (double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
+                            if ((double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
                                 tvSaleTime.setText("1970/01/01");
                             } else {
                                 tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStart_sales_time()).longValue() + "000")));
@@ -244,7 +276,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                             } else {
                                 tvStartDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSunset_time()).longValue() + "000")));
                             }
-                            if (prs.getSettlement_time() == null || (double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
+                            if ((double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
                                 tvCloseDate.setText("1970/01/01");
                             } else {
                                 tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSettlement_time()).longValue() + "000")));
@@ -300,6 +332,23 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             switch (v.getId()) {
+
+                //agent notes
+
+                case R.id.agentsNotesLin:
+
+                    if (temp == 0) {
+                        agent_notes.setVisibility(View.VISIBLE);
+                        temp = 1;
+                    } else {
+                        agent_notes.setVisibility(View.GONE);
+                        temp = 0;
+                    }
+
+
+                    break;
+
+
                 //分享
                 case R.id.imageViewShare:
 

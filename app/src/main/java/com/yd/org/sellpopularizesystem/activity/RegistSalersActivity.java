@@ -127,6 +127,7 @@ public class RegistSalersActivity extends BaseActivity {
                                 }
                             });
                     break;
+                //协议
                 case R.id.isRead:
                     ActivitySkip.forward(RegistSalersActivity.this,RegisterAgreementActivity.class);
                     break;
@@ -383,13 +384,7 @@ public class RegistSalersActivity extends BaseActivity {
         httpParams.put("licence_number", licence_number);
         httpParams.put("effective_date", sTime.substring(0, sTime.length() - 3));
         httpParams.put("expiry_date", endTime.substring(0, endTime.length() - 3));
-        //httpParams.put("licence_name", licence_name);
         httpParams.put("request_notes", remarkString);
-        /*httpParams.put("abn", "");
-        httpParams.put("acn", "");
-        httpParams.put("is_gst", "");*/
-
-
         //推荐码
         httpParams.put("team_leader_1", getIntent().getStringExtra("team_leader_1"));
         httpParams.put("first_name", getIntent().getStringExtra("first_name"));
@@ -423,8 +418,11 @@ public class RegistSalersActivity extends BaseActivity {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
-                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
                             ToasShow.showToastCenter(RegistSalersActivity.this, errorBean.getMsg());
+                            LoginActivity.loginActivity.mHandler.sendEmptyMessage(0);
+                            finish();
+
+
                         } else {
                             ToasShow.showToastCenter(RegistSalersActivity.this, errorBean.getMsg());
                         }

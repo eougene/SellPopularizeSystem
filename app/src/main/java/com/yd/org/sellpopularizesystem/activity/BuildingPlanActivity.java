@@ -9,8 +9,8 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
-import com.yd.org.sellpopularizesystem.javaBean.FileContent;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
+import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 
 import java.io.Serializable;
@@ -20,8 +20,8 @@ import java.util.List;
 
 public class BuildingPlanActivity extends BaseActivity {
     private ListView lvFloorPlan;
-    private List<FileContent> floorListData = new ArrayList<>();
-    private List<FileContent> ListData = new ArrayList<>();
+    private List<ProductDetailBean.ResultBean.FileContentBean> floorListData = new ArrayList<>();
+    private List<ProductDetailBean.ResultBean.FileContentBean> ListData = new ArrayList<>();
     private List<ImageContent> imagetData = new ArrayList<>();
     private CommonAdapter floorListAdapter;
 
@@ -35,7 +35,7 @@ public class BuildingPlanActivity extends BaseActivity {
     @Override
     public void initView() {
         //获取数据
-        floorListData.addAll((Collection<? extends FileContent>) getIntent().getExtras().getSerializable("floorListData"));
+        floorListData.addAll((Collection<? extends ProductDetailBean.ResultBean.FileContentBean>) getIntent().getExtras().getSerializable("floorListData"));
         lvFloorPlan = getViewById(R.id.lvFloorPlan);
 
 
@@ -56,9 +56,9 @@ public class BuildingPlanActivity extends BaseActivity {
     }
 
     private void setAdapter() {
-        floorListAdapter = new CommonAdapter<FileContent>(BuildingPlanActivity.this, ListData, R.layout.floor_listview_iten_layout) {
+        floorListAdapter = new CommonAdapter<ProductDetailBean.ResultBean.FileContentBean>(BuildingPlanActivity.this, ListData, R.layout.floor_listview_iten_layout) {
             @Override
-            public void convert(ViewHolder holder, FileContent item) {
+            public void convert(ViewHolder holder, ProductDetailBean.ResultBean.FileContentBean item) {
                 String strUrl = Contants.DOMAIN + "/" + item.getUrl();
                 holder.setImageByUrl(R.id.ivFloorImage, Contants.DOMAIN + "/" + item.getUrl());
                 holder.setText(R.id.tvTitleName, item.getDetail_name());

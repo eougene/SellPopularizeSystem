@@ -119,7 +119,6 @@ public class ScalListActivity extends BaseActivity implements PullToRefreshLayou
             scaleListItemAdapter = new ScaleListItemAdapter(ScalListActivity.this);
             listView.setAdapter(scaleListItemAdapter);
         }
-        //ptrl.loadmoreFinish(PullToRefreshLayout.SUCCEED);
         scaleListItemAdapter.addData(baseData);
 
     }
