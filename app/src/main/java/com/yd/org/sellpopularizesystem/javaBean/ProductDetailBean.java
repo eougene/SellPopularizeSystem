@@ -8,10 +8,11 @@ import java.util.List;
 
 public class ProductDetailBean extends Domine{
 
+
     /**
      * code : 1
      * msg : 成功获取产品详情
-     * result : {"product_id":16,"company_id":1,"cate_id":1,"thumb":"public/uploads/product_thumb/170120/201701201415092991.jpg","provice":"","city":"","county":"","town":"","address":"","latitude":-33.8788197,"longitude":151.21,"is_firb":0,"firb_number":0,"already_firb_number":0,"sales_method":"","is_promote":0,"eoi_open_time":0,"constr_start_time":0,"constr_end_time":0,"start_sales_time":0,"stop_sales_time":0,"sunset_time":0,"settlement_time":0,"preview_memo":"","product_type":"","vendor":"","land_vendor":"","vendor_lawyer":"","builder":"","is_da":0,"da_number":"","dp_number":"","desposit_holder":"","deposit_holder_others":"","days_to_pay":"","exchange_deposit":"0.00","firb_exchange_deposit":"0.00","min_reservation_fee":"0.00","is_gst_inc":0,"is_gst":1,"sales_commission_type":"1","sales_commission_value":"0.00","first_commission_type":"1","commossion_first":"0.00","second_commission_type":"1","commossion_second":"0.00","third_commission_type":"1","commossion_third":"0.00","sa_vendor_email":"","sa_vendor_names":"","sa_sent_to":"","sa_vs_contact_name":"","sa_vs_contact_phone":"","sa_vs_contact_fax":"","sa_vs_contact_email":"","street_number":"","street_address_1":"","street_address_2":"","address_suburb":"","state":"","postcode":"","country":"","is_study":0,"study_id":"","up_time":1490172393,"up_ip":"116.231.51.223","up_admin":3,"sell_number":0,"sign_number":0,"status":0,"product_name":"123123","description":"请问请问","img_content":[],"description_url":null,"video_url":null,"img_urls":[],"contract_url":null,"file_content":[]}
+     * result : {"product_id":76,"company_id":1,"cate_id":3,"thumb":"public/uploads/product_thumb/170723/20170723/21795e0d40b8e6fb75dd523219b82118.jpg","provice":"","city":"","county":"","town":"","address":"","latitude":0,"longitude":0,"is_firb":0,"firb_number":0,"already_firb_number":0,"sales_method":"sale","is_promote":0,"is_hot_sale":1,"eoi_open_time":null,"constr_start_time":null,"constr_end_time":null,"start_sales_time":1499356800,"stop_sales_time":null,"sunset_time":null,"settlement_time":1540915200,"attr_1":0,"attr_2":0,"attr_3":0,"attr_4":0,"attr_5":1,"attr_6":1,"attr_7":0,"preview_memo":"","agent_notes":"","transfer_account":"","product_type":"Off Plan","vendor":"Urban(Wolli) Pty Ltd","land_vendor":"","house_vendor":"145","vendor_lawyer":"Strathfield.Law","builder":"","is_da":0,"da_number":"","dp_number":"","desposit_holder":"Unknown","deposit_holder_others":"","days_to_pay":"14","exchange_deposit":"10.00","firb_exchange_deposit":"10.00","min_reservation_fee":"5000.00","is_gst":1,"adjust_factor":"1.00","exit_commossion":"","commossion_type":1,"commossion_value":"2","commossion_send_type":1,"module_one_first":50,"module_two_first":0,"module_three_first":0,"sa_vendor_email":"","sa_vendor_names":"","sa_sent_to":"","sa_vs_contact_name":"","sa_vs_contact_phone":"","sa_vs_contact_fax":"","sa_vs_contact_email":"","street_number":"7-13","street_address_1":"Willis St","street_address_2":"","address_suburb":"Wolli Creek","state":"NSW","postcode":"2205","country":"","is_study":0,"study_id":"","up_time":null,"up_ip":null,"up_admin":null,"sell_number":18,"sign_number":2,"share_url":"","product_sort":999,"is_old_product":1,"status":2,"product_name":"APT- Wolli Creek ","description":"","img_content":[{"detail_id":687,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture","description":"","old_name":"image6.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008035615.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008035615_thumb.jpg","extension":"jpg","add_time":1500811683,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":690,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"picture4","description":"","old_name":"image3.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232009074250.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232009074250_thumb.jpg","extension":"jpg","add_time":1500811747,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":689,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture3","description":"","old_name":"image2.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008457442.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008457442_thumb.jpg","extension":"jpg","add_time":1500811726,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":688,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"picture2","description":"","old_name":"image4.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008264415.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008264415_thumb.jpg","extension":"jpg","add_time":1500811706,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":691,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture5","description":"","old_name":"image5.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232009308590.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232009308590_thumb.jpg","extension":"jpg","add_time":1500811770,"add_ip":"210.185.109.19","add_admin":6,"status":0}],"description_url":"public/uploads/product_detail/170727/detail_201707271403382625.pdf","video_url":null,"contract_url":"public/uploads/product_detail/170727/detail_201707271400588071.pdf","file_content":[{"detail_id":1067,"content_type":2,"img_type":2,"file_type":2,"company_id":1,"product_id":76,"detail_name":"finish of schedule","description":"","old_name":"7-13 Willis St Wolli Creek -finish of schedule.pdf","sort":0,"url":"public/uploads/product_detail/170927/detail_201709271607319234.pdf","thumbURL":"public/uploads/product_detail/170927/detail_201709271607319234_thumb.pdf","extension":"pdf","add_time":1506499651,"add_ip":"61.69.80.54","add_admin":21,"status":0},{"detail_id":1065,"content_type":2,"img_type":2,"file_type":2,"company_id":1,"product_id":76,"detail_name":"floor plate","description":"","old_name":"16-020_7-13 Willis Street Wolli Creek_Floor Plates_170710.pdf","sort":0,"url":"public/uploads/product_detail/170927/detail_201709271606166862.pdf","thumbURL":"public/uploads/product_detail/170927/detail_201709271606166862_thumb.pdf","extension":"pdf","add_time":1506499576,"add_ip":"61.69.80.54","add_admin":21,"status":0}]}
      */
 
     private String code;
@@ -42,56 +43,66 @@ public class ProductDetailBean extends Domine{
         this.result = result;
     }
 
-    public static class ResultBean extends Domine{
+    public static class ResultBean  extends Domine{
         /**
-         * product_id : 16
+         * product_id : 76
          * company_id : 1
-         * cate_id : 1
-         * thumb : public/uploads/product_thumb/170120/201701201415092991.jpg
+         * cate_id : 3
+         * thumb : public/uploads/product_thumb/170723/20170723/21795e0d40b8e6fb75dd523219b82118.jpg
          * provice :
          * city :
          * county :
          * town :
          * address :
-         * latitude : -33.8788197
-         * longitude : 151.21
+         * latitude : 0
+         * longitude : 0
          * is_firb : 0
          * firb_number : 0
          * already_firb_number : 0
-         * sales_method :
+         * sales_method : sale
          * is_promote : 0
-         * eoi_open_time : 0
-         * constr_start_time : 0
-         * constr_end_time : 0
-         * start_sales_time : 0
-         * stop_sales_time : 0
-         * sunset_time : 0
-         * settlement_time : 0
+         * is_hot_sale : 1
+         * eoi_open_time : null
+         * constr_start_time : null
+         * constr_end_time : null
+         * start_sales_time : 1499356800
+         * stop_sales_time : null
+         * sunset_time : null
+         * settlement_time : 1540915200
+         * attr_1 : 0
+         * attr_2 : 0
+         * attr_3 : 0
+         * attr_4 : 0
+         * attr_5 : 1
+         * attr_6 : 1
+         * attr_7 : 0
          * preview_memo :
-         * product_type :
-         * vendor :
+         * agent_notes :
+         * transfer_account :
+         * product_type : Off Plan
+         * vendor : Urban(Wolli) Pty Ltd
          * land_vendor :
-         * vendor_lawyer :
+         * house_vendor : 145
+         * vendor_lawyer : Strathfield.Law
          * builder :
          * is_da : 0
          * da_number :
          * dp_number :
-         * desposit_holder :
+         * desposit_holder : Unknown
          * deposit_holder_others :
-         * days_to_pay :
-         * exchange_deposit : 0.00
-         * firb_exchange_deposit : 0.00
-         * min_reservation_fee : 0.00
-         * is_gst_inc : 0
+         * days_to_pay : 14
+         * exchange_deposit : 10.00
+         * firb_exchange_deposit : 10.00
+         * min_reservation_fee : 5000.00
          * is_gst : 1
-         * sales_commission_type : 1
-         * sales_commission_value : 0.00
-         * first_commission_type : 1
-         * commossion_first : 0.00
-         * second_commission_type : 1
-         * commossion_second : 0.00
-         * third_commission_type : 1
-         * commossion_third : 0.00
+         * adjust_factor : 1.00
+         * exit_commossion :
+         * commossion_type : 1
+         * commossion_value : 2
+         * commossion_send_type : 1
+         * module_one_first : 50
+         * module_two_first : 0
+         * module_three_first : 0
          * sa_vendor_email :
          * sa_vendor_names :
          * sa_sent_to :
@@ -99,29 +110,31 @@ public class ProductDetailBean extends Domine{
          * sa_vs_contact_phone :
          * sa_vs_contact_fax :
          * sa_vs_contact_email :
-         * street_number :
-         * street_address_1 :
+         * street_number : 7-13
+         * street_address_1 : Willis St
          * street_address_2 :
-         * address_suburb :
-         * state :
-         * postcode :
+         * address_suburb : Wolli Creek
+         * state : NSW
+         * postcode : 2205
          * country :
          * is_study : 0
          * study_id :
-         * up_time : 1490172393
-         * up_ip : 116.231.51.223
-         * up_admin : 3
-         * sell_number : 0
-         * sign_number : 0
-         * status : 0
-         * product_name : 123123
-         * description : 请问请问
-         * img_content : []
-         * description_url : null
+         * up_time : null
+         * up_ip : null
+         * up_admin : null
+         * sell_number : 18
+         * sign_number : 2
+         * share_url :
+         * product_sort : 999
+         * is_old_product : 1
+         * status : 2
+         * product_name : APT- Wolli Creek
+         * description :
+         * img_content : [{"detail_id":687,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture","description":"","old_name":"image6.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008035615.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008035615_thumb.jpg","extension":"jpg","add_time":1500811683,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":690,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"picture4","description":"","old_name":"image3.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232009074250.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232009074250_thumb.jpg","extension":"jpg","add_time":1500811747,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":689,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture3","description":"","old_name":"image2.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008457442.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008457442_thumb.jpg","extension":"jpg","add_time":1500811726,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":688,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"picture2","description":"","old_name":"image4.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232008264415.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232008264415_thumb.jpg","extension":"jpg","add_time":1500811706,"add_ip":"210.185.109.19","add_admin":6,"status":0},{"detail_id":691,"content_type":1,"img_type":2,"file_type":0,"company_id":1,"product_id":76,"detail_name":"Picture5","description":"","old_name":"image5.jpg","sort":0,"url":"public/uploads/product_detail/170723/detail_201707232009308590.jpg","thumbURL":"public/uploads/product_detail/170723/detail_201707232009308590_thumb.jpg","extension":"jpg","add_time":1500811770,"add_ip":"210.185.109.19","add_admin":6,"status":0}]
+         * description_url : public/uploads/product_detail/170727/detail_201707271403382625.pdf
          * video_url : null
-         * img_urls : []
-         * contract_url : null
-         * file_content : []
+         * contract_url : public/uploads/product_detail/170727/detail_201707271400588071.pdf
+         * file_content : [{"detail_id":1067,"content_type":2,"img_type":2,"file_type":2,"company_id":1,"product_id":76,"detail_name":"finish of schedule","description":"","old_name":"7-13 Willis St Wolli Creek -finish of schedule.pdf","sort":0,"url":"public/uploads/product_detail/170927/detail_201709271607319234.pdf","thumbURL":"public/uploads/product_detail/170927/detail_201709271607319234_thumb.pdf","extension":"pdf","add_time":1506499651,"add_ip":"61.69.80.54","add_admin":21,"status":0},{"detail_id":1065,"content_type":2,"img_type":2,"file_type":2,"company_id":1,"product_id":76,"detail_name":"floor plate","description":"","old_name":"16-020_7-13 Willis Street Wolli Creek_Floor Plates_170710.pdf","sort":0,"url":"public/uploads/product_detail/170927/detail_201709271606166862.pdf","thumbURL":"public/uploads/product_detail/170927/detail_201709271606166862_thumb.pdf","extension":"pdf","add_time":1506499576,"add_ip":"61.69.80.54","add_admin":21,"status":0}]
          */
 
         private int product_id;
@@ -140,17 +153,28 @@ public class ProductDetailBean extends Domine{
         private int already_firb_number;
         private String sales_method;
         private int is_promote;
+        private int is_hot_sale;
         private Object eoi_open_time;
-        private int constr_start_time;
-        private int constr_end_time;
-        private Object start_sales_time;
+        private Object constr_start_time;
+        private Object constr_end_time;
+        private int start_sales_time;
         private Object stop_sales_time;
         private Object sunset_time;
-        private Object settlement_time;
+        private int settlement_time;
+        private int attr_1;
+        private int attr_2;
+        private int attr_3;
+        private int attr_4;
+        private int attr_5;
+        private int attr_6;
+        private int attr_7;
         private String preview_memo;
+        private String agent_notes;
+        private String transfer_account;
         private String product_type;
         private String vendor;
         private String land_vendor;
+        private String house_vendor;
         private String vendor_lawyer;
         private String builder;
         private int is_da;
@@ -162,16 +186,15 @@ public class ProductDetailBean extends Domine{
         private String exchange_deposit;
         private String firb_exchange_deposit;
         private String min_reservation_fee;
-        private int is_gst_inc;
         private int is_gst;
-        private String sales_commission_type;
-        private String sales_commission_value;
-        private String first_commission_type;
-        private String commossion_first;
-        private String second_commission_type;
-        private String commossion_second;
-        private String third_commission_type;
-        private String commossion_third;
+        private String adjust_factor;
+        private String exit_commossion;
+        private int commossion_type;
+        private String commossion_value;
+        private int commossion_send_type;
+        private int module_one_first;
+        private int module_two_first;
+        private int module_three_first;
         private String sa_vendor_email;
         private String sa_vendor_names;
         private String sa_sent_to;
@@ -188,20 +211,22 @@ public class ProductDetailBean extends Domine{
         private String country;
         private int is_study;
         private String study_id;
-        private int up_time;
-        private String up_ip;
-        private int up_admin;
+        private Object up_time;
+        private Object up_ip;
+        private Object up_admin;
         private int sell_number;
         private int sign_number;
+        private String share_url;
+        private int product_sort;
+        private int is_old_product;
         private int status;
         private String product_name;
         private String description;
         private String description_url;
-        private String video_url;
+        private Object video_url;
         private String contract_url;
-        private List<ImageContent> img_content;
-        private List<ImgUrl> img_urls;
-        private List<FileContent> file_content;
+        private List<ImgContentBean> img_content;
+        private List<FileContentBean> file_content;
 
         public int getProduct_id() {
             return product_id;
@@ -331,6 +356,14 @@ public class ProductDetailBean extends Domine{
             this.is_promote = is_promote;
         }
 
+        public int getIs_hot_sale() {
+            return is_hot_sale;
+        }
+
+        public void setIs_hot_sale(int is_hot_sale) {
+            this.is_hot_sale = is_hot_sale;
+        }
+
         public Object getEoi_open_time() {
             return eoi_open_time;
         }
@@ -339,27 +372,27 @@ public class ProductDetailBean extends Domine{
             this.eoi_open_time = eoi_open_time;
         }
 
-        public int getConstr_start_time() {
+        public Object getConstr_start_time() {
             return constr_start_time;
         }
 
-        public void setConstr_start_time(int constr_start_time) {
+        public void setConstr_start_time(Object constr_start_time) {
             this.constr_start_time = constr_start_time;
         }
 
-        public int getConstr_end_time() {
+        public Object getConstr_end_time() {
             return constr_end_time;
         }
 
-        public void setConstr_end_time(int constr_end_time) {
+        public void setConstr_end_time(Object constr_end_time) {
             this.constr_end_time = constr_end_time;
         }
 
-        public Object getStart_sales_time() {
+        public int getStart_sales_time() {
             return start_sales_time;
         }
 
-        public void setStart_sales_time(Object start_sales_time) {
+        public void setStart_sales_time(int start_sales_time) {
             this.start_sales_time = start_sales_time;
         }
 
@@ -379,12 +412,68 @@ public class ProductDetailBean extends Domine{
             this.sunset_time = sunset_time;
         }
 
-        public Object getSettlement_time() {
+        public int getSettlement_time() {
             return settlement_time;
         }
 
-        public void setSettlement_time(Object settlement_time) {
+        public void setSettlement_time(int settlement_time) {
             this.settlement_time = settlement_time;
+        }
+
+        public int getAttr_1() {
+            return attr_1;
+        }
+
+        public void setAttr_1(int attr_1) {
+            this.attr_1 = attr_1;
+        }
+
+        public int getAttr_2() {
+            return attr_2;
+        }
+
+        public void setAttr_2(int attr_2) {
+            this.attr_2 = attr_2;
+        }
+
+        public int getAttr_3() {
+            return attr_3;
+        }
+
+        public void setAttr_3(int attr_3) {
+            this.attr_3 = attr_3;
+        }
+
+        public int getAttr_4() {
+            return attr_4;
+        }
+
+        public void setAttr_4(int attr_4) {
+            this.attr_4 = attr_4;
+        }
+
+        public int getAttr_5() {
+            return attr_5;
+        }
+
+        public void setAttr_5(int attr_5) {
+            this.attr_5 = attr_5;
+        }
+
+        public int getAttr_6() {
+            return attr_6;
+        }
+
+        public void setAttr_6(int attr_6) {
+            this.attr_6 = attr_6;
+        }
+
+        public int getAttr_7() {
+            return attr_7;
+        }
+
+        public void setAttr_7(int attr_7) {
+            this.attr_7 = attr_7;
         }
 
         public String getPreview_memo() {
@@ -393,6 +482,22 @@ public class ProductDetailBean extends Domine{
 
         public void setPreview_memo(String preview_memo) {
             this.preview_memo = preview_memo;
+        }
+
+        public String getAgent_notes() {
+            return agent_notes;
+        }
+
+        public void setAgent_notes(String agent_notes) {
+            this.agent_notes = agent_notes;
+        }
+
+        public String getTransfer_account() {
+            return transfer_account;
+        }
+
+        public void setTransfer_account(String transfer_account) {
+            this.transfer_account = transfer_account;
         }
 
         public String getProduct_type() {
@@ -417,6 +522,14 @@ public class ProductDetailBean extends Domine{
 
         public void setLand_vendor(String land_vendor) {
             this.land_vendor = land_vendor;
+        }
+
+        public String getHouse_vendor() {
+            return house_vendor;
+        }
+
+        public void setHouse_vendor(String house_vendor) {
+            this.house_vendor = house_vendor;
         }
 
         public String getVendor_lawyer() {
@@ -507,14 +620,6 @@ public class ProductDetailBean extends Domine{
             this.min_reservation_fee = min_reservation_fee;
         }
 
-        public int getIs_gst_inc() {
-            return is_gst_inc;
-        }
-
-        public void setIs_gst_inc(int is_gst_inc) {
-            this.is_gst_inc = is_gst_inc;
-        }
-
         public int getIs_gst() {
             return is_gst;
         }
@@ -523,68 +628,68 @@ public class ProductDetailBean extends Domine{
             this.is_gst = is_gst;
         }
 
-        public String getSales_commission_type() {
-            return sales_commission_type;
+        public String getAdjust_factor() {
+            return adjust_factor;
         }
 
-        public void setSales_commission_type(String sales_commission_type) {
-            this.sales_commission_type = sales_commission_type;
+        public void setAdjust_factor(String adjust_factor) {
+            this.adjust_factor = adjust_factor;
         }
 
-        public String getSales_commission_value() {
-            return sales_commission_value;
+        public String getExit_commossion() {
+            return exit_commossion;
         }
 
-        public void setSales_commission_value(String sales_commission_value) {
-            this.sales_commission_value = sales_commission_value;
+        public void setExit_commossion(String exit_commossion) {
+            this.exit_commossion = exit_commossion;
         }
 
-        public String getFirst_commission_type() {
-            return first_commission_type;
+        public int getCommossion_type() {
+            return commossion_type;
         }
 
-        public void setFirst_commission_type(String first_commission_type) {
-            this.first_commission_type = first_commission_type;
+        public void setCommossion_type(int commossion_type) {
+            this.commossion_type = commossion_type;
         }
 
-        public String getCommossion_first() {
-            return commossion_first;
+        public String getCommossion_value() {
+            return commossion_value;
         }
 
-        public void setCommossion_first(String commossion_first) {
-            this.commossion_first = commossion_first;
+        public void setCommossion_value(String commossion_value) {
+            this.commossion_value = commossion_value;
         }
 
-        public String getSecond_commission_type() {
-            return second_commission_type;
+        public int getCommossion_send_type() {
+            return commossion_send_type;
         }
 
-        public void setSecond_commission_type(String second_commission_type) {
-            this.second_commission_type = second_commission_type;
+        public void setCommossion_send_type(int commossion_send_type) {
+            this.commossion_send_type = commossion_send_type;
         }
 
-        public String getCommossion_second() {
-            return commossion_second;
+        public int getModule_one_first() {
+            return module_one_first;
         }
 
-        public void setCommossion_second(String commossion_second) {
-            this.commossion_second = commossion_second;
+        public void setModule_one_first(int module_one_first) {
+            this.module_one_first = module_one_first;
         }
 
-        public String getThird_commission_type() {
-            return third_commission_type;
+        public int getModule_two_first() {
+            return module_two_first;
         }
 
-        public void setThird_commission_type(String third_commission_type) {
-            this.third_commission_type = third_commission_type;
+        public void setModule_two_first(int module_two_first) {
+            this.module_two_first = module_two_first;
         }
 
-        public String getCommossion_third() {
-            return commossion_third;
+        public int getModule_three_first() {
+            return module_three_first;
         }
 
-        public void setCommossion_third(String commossion_third) {
-            this.commossion_third = commossion_third;
+        public void setModule_three_first(int module_three_first) {
+            this.module_three_first = module_three_first;
         }
 
         public String getSa_vendor_email() {
@@ -715,27 +820,27 @@ public class ProductDetailBean extends Domine{
             this.study_id = study_id;
         }
 
-        public int getUp_time() {
+        public Object getUp_time() {
             return up_time;
         }
 
-        public void setUp_time(int up_time) {
+        public void setUp_time(Object up_time) {
             this.up_time = up_time;
         }
 
-        public String getUp_ip() {
+        public Object getUp_ip() {
             return up_ip;
         }
 
-        public void setUp_ip(String up_ip) {
+        public void setUp_ip(Object up_ip) {
             this.up_ip = up_ip;
         }
 
-        public int getUp_admin() {
+        public Object getUp_admin() {
             return up_admin;
         }
 
-        public void setUp_admin(int up_admin) {
+        public void setUp_admin(Object up_admin) {
             this.up_admin = up_admin;
         }
 
@@ -753,6 +858,30 @@ public class ProductDetailBean extends Domine{
 
         public void setSign_number(int sign_number) {
             this.sign_number = sign_number;
+        }
+
+        public String getShare_url() {
+            return share_url;
+        }
+
+        public void setShare_url(String share_url) {
+            this.share_url = share_url;
+        }
+
+        public int getProduct_sort() {
+            return product_sort;
+        }
+
+        public void setProduct_sort(int product_sort) {
+            this.product_sort = product_sort;
+        }
+
+        public int getIs_old_product() {
+            return is_old_product;
+        }
+
+        public void setIs_old_product(int is_old_product) {
+            this.is_old_product = is_old_product;
         }
 
         public int getStatus() {
@@ -779,7 +908,7 @@ public class ProductDetailBean extends Domine{
             this.description = description;
         }
 
-        public Object getDescription_url() {
+        public String getDescription_url() {
             return description_url;
         }
 
@@ -791,11 +920,11 @@ public class ProductDetailBean extends Domine{
             return video_url;
         }
 
-        public void setVideo_url(String video_url) {
+        public void setVideo_url(Object video_url) {
             this.video_url = video_url;
         }
 
-        public Object getContract_url() {
+        public String getContract_url() {
             return contract_url;
         }
 
@@ -803,28 +932,372 @@ public class ProductDetailBean extends Domine{
             this.contract_url = contract_url;
         }
 
-        public List<ImageContent> getImg_content() {
+        public List<ImgContentBean> getImg_content() {
             return img_content;
         }
 
-        public void setImg_content(List<ImageContent> img_content) {
+        public void setImg_content(List<ImgContentBean> img_content) {
             this.img_content = img_content;
         }
 
-        public List<ImgUrl> getImg_urls() {
-            return img_urls;
-        }
-
-        public void setImg_urls(List<ImgUrl> img_urls) {
-            this.img_urls = img_urls;
-        }
-
-        public List<FileContent> getFile_content() {
+        public List<FileContentBean> getFile_content() {
             return file_content;
         }
 
-        public void setFile_content(List<FileContent> file_content) {
+        public void setFile_content(List<FileContentBean> file_content) {
             this.file_content = file_content;
+        }
+
+        public static class ImgContentBean extends Domine{
+            /**
+             * detail_id : 687
+             * content_type : 1
+             * img_type : 2
+             * file_type : 0
+             * company_id : 1
+             * product_id : 76
+             * detail_name : Picture
+             * description :
+             * old_name : image6.jpg
+             * sort : 0
+             * url : public/uploads/product_detail/170723/detail_201707232008035615.jpg
+             * thumbURL : public/uploads/product_detail/170723/detail_201707232008035615_thumb.jpg
+             * extension : jpg
+             * add_time : 1500811683
+             * add_ip : 210.185.109.19
+             * add_admin : 6
+             * status : 0
+             */
+
+            private int detail_id;
+            private int content_type;
+            private int img_type;
+            private int file_type;
+            private int company_id;
+            private int product_id;
+            private String detail_name;
+            private String description;
+            private String old_name;
+            private int sort;
+            private String url;
+            private String thumbURL;
+            private String extension;
+            private int add_time;
+            private String add_ip;
+            private int add_admin;
+            private int status;
+
+            public int getDetail_id() {
+                return detail_id;
+            }
+
+            public void setDetail_id(int detail_id) {
+                this.detail_id = detail_id;
+            }
+
+            public int getContent_type() {
+                return content_type;
+            }
+
+            public void setContent_type(int content_type) {
+                this.content_type = content_type;
+            }
+
+            public int getImg_type() {
+                return img_type;
+            }
+
+            public void setImg_type(int img_type) {
+                this.img_type = img_type;
+            }
+
+            public int getFile_type() {
+                return file_type;
+            }
+
+            public void setFile_type(int file_type) {
+                this.file_type = file_type;
+            }
+
+            public int getCompany_id() {
+                return company_id;
+            }
+
+            public void setCompany_id(int company_id) {
+                this.company_id = company_id;
+            }
+
+            public int getProduct_id() {
+                return product_id;
+            }
+
+            public void setProduct_id(int product_id) {
+                this.product_id = product_id;
+            }
+
+            public String getDetail_name() {
+                return detail_name;
+            }
+
+            public void setDetail_name(String detail_name) {
+                this.detail_name = detail_name;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
+
+            public String getOld_name() {
+                return old_name;
+            }
+
+            public void setOld_name(String old_name) {
+                this.old_name = old_name;
+            }
+
+            public int getSort() {
+                return sort;
+            }
+
+            public void setSort(int sort) {
+                this.sort = sort;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public String getThumbURL() {
+                return thumbURL;
+            }
+
+            public void setThumbURL(String thumbURL) {
+                this.thumbURL = thumbURL;
+            }
+
+            public String getExtension() {
+                return extension;
+            }
+
+            public void setExtension(String extension) {
+                this.extension = extension;
+            }
+
+            public int getAdd_time() {
+                return add_time;
+            }
+
+            public void setAdd_time(int add_time) {
+                this.add_time = add_time;
+            }
+
+            public String getAdd_ip() {
+                return add_ip;
+            }
+
+            public void setAdd_ip(String add_ip) {
+                this.add_ip = add_ip;
+            }
+
+            public int getAdd_admin() {
+                return add_admin;
+            }
+
+            public void setAdd_admin(int add_admin) {
+                this.add_admin = add_admin;
+            }
+
+            public int getStatus() {
+                return status;
+            }
+
+            public void setStatus(int status) {
+                this.status = status;
+            }
+        }
+
+        public static class FileContentBean extends Domine {
+            /**
+             * detail_id : 1067
+             * content_type : 2
+             * img_type : 2
+             * file_type : 2
+             * company_id : 1
+             * product_id : 76
+             * detail_name : finish of schedule
+             * description :
+             * old_name : 7-13 Willis St Wolli Creek -finish of schedule.pdf
+             * sort : 0
+             * url : public/uploads/product_detail/170927/detail_201709271607319234.pdf
+             * thumbURL : public/uploads/product_detail/170927/detail_201709271607319234_thumb.pdf
+             * extension : pdf
+             * add_time : 1506499651
+             * add_ip : 61.69.80.54
+             * add_admin : 21
+             * status : 0
+             */
+
+            private int detail_id;
+            private int content_type;
+            private int img_type;
+            private int file_type;
+            private int company_id;
+            private int product_id;
+            private String detail_name;
+            private String description;
+            private String old_name;
+            private int sort;
+            private String url;
+            private String thumbURL;
+            private String extension;
+            private int add_time;
+            private String add_ip;
+            private int add_admin;
+            private int status;
+
+            public int getDetail_id() {
+                return detail_id;
+            }
+
+            public void setDetail_id(int detail_id) {
+                this.detail_id = detail_id;
+            }
+
+            public int getContent_type() {
+                return content_type;
+            }
+
+            public void setContent_type(int content_type) {
+                this.content_type = content_type;
+            }
+
+            public int getImg_type() {
+                return img_type;
+            }
+
+            public void setImg_type(int img_type) {
+                this.img_type = img_type;
+            }
+
+            public int getFile_type() {
+                return file_type;
+            }
+
+            public void setFile_type(int file_type) {
+                this.file_type = file_type;
+            }
+
+            public int getCompany_id() {
+                return company_id;
+            }
+
+            public void setCompany_id(int company_id) {
+                this.company_id = company_id;
+            }
+
+            public int getProduct_id() {
+                return product_id;
+            }
+
+            public void setProduct_id(int product_id) {
+                this.product_id = product_id;
+            }
+
+            public String getDetail_name() {
+                return detail_name;
+            }
+
+            public void setDetail_name(String detail_name) {
+                this.detail_name = detail_name;
+            }
+
+            public String getDescription() {
+                return description;
+            }
+
+            public void setDescription(String description) {
+                this.description = description;
+            }
+
+            public String getOld_name() {
+                return old_name;
+            }
+
+            public void setOld_name(String old_name) {
+                this.old_name = old_name;
+            }
+
+            public int getSort() {
+                return sort;
+            }
+
+            public void setSort(int sort) {
+                this.sort = sort;
+            }
+
+            public String getUrl() {
+                return url;
+            }
+
+            public void setUrl(String url) {
+                this.url = url;
+            }
+
+            public String getThumbURL() {
+                return thumbURL;
+            }
+
+            public void setThumbURL(String thumbURL) {
+                this.thumbURL = thumbURL;
+            }
+
+            public String getExtension() {
+                return extension;
+            }
+
+            public void setExtension(String extension) {
+                this.extension = extension;
+            }
+
+            public int getAdd_time() {
+                return add_time;
+            }
+
+            public void setAdd_time(int add_time) {
+                this.add_time = add_time;
+            }
+
+            public String getAdd_ip() {
+                return add_ip;
+            }
+
+            public void setAdd_ip(String add_ip) {
+                this.add_ip = add_ip;
+            }
+
+            public int getAdd_admin() {
+                return add_admin;
+            }
+
+            public void setAdd_admin(int add_admin) {
+                this.add_admin = add_admin;
+            }
+
+            public int getStatus() {
+                return status;
+            }
+
+            public void setStatus(int status) {
+                this.status = status;
+            }
         }
     }
 }
