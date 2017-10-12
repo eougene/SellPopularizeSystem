@@ -688,5 +688,7 @@
     <string name="referral_code_hint">Please enter the referral code</string>
     <string name="agreement">Wingaid system service agreement</string>
 
+    <string name="proDelAddress">Address:</string>
+
 </resources>
 
