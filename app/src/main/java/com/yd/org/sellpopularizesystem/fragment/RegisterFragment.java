@@ -182,8 +182,6 @@ public class RegisterFragment extends BaseFragmentView {
                         Gson gson = new Gson();
                         ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
                         if (errorBean.getCode().equals("1")) {
-                           // ToasShow.showToastCenter(getActivity(), errorBean.getMsg());
-
                             new AlertDialog.Builder(getActivity()).setMessage(getResources().getString(R.string.hint_toas)).setMessage(getResources().getString(R.string.em_hit)).setNegativeButton(getResources().getString(R.string.ok), new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
