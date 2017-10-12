@@ -49,8 +49,8 @@ public class RegisterFragment extends BaseFragmentView {
     private RadioGroup radioId;
     private RadioButton radio_01, radio_02;
     private int userType = 1;//1销售人员,2推荐建
-    private LinearLayout userLinear, userEnLinaer, referralLinear;
-    private View userView, userEnView;
+    private LinearLayout  userEnLinaer;
+    private View userEnView;
 
 
 
@@ -76,10 +76,7 @@ public class RegisterFragment extends BaseFragmentView {
         radioId = getViewById(R.id.radioId);
         radio_01 = getViewById(R.id.radio_01);
         radio_02 = getViewById(R.id.radio_02);
-
-        referralLinear = getViewById(R.id.referralLinear);
         userEnLinaer = getViewById(R.id.userEnLinaer);
-        userView = getViewById(R.id.userView);
         userEnView = getViewById(R.id.userEnView);
 
         if (userType == 1) {
@@ -149,16 +146,6 @@ public class RegisterFragment extends BaseFragmentView {
             passwordString = passwordEdit.getText().toString().trim();
         }
 
-       /* //确认密码
-        if (TextUtils.isEmpty(surePasswordEdit.getText().toString().trim())) {
-            ToasShow.showToastCenter(getActivity(), getString(R.string.sure_password_en));
-            return;
-        } else {
-            if (!surePasswordEdit.getText().toString().trim().equals(passwordString)) {
-                ToasShow.showToastCenter(getActivity(), getString(R.string.sure_change));
-                return;
-            }
-        }*/
 
 
         HttpParams httpParams = new HttpParams();
@@ -221,8 +208,6 @@ public class RegisterFragment extends BaseFragmentView {
         String team_leader_1="", first_name, surname, en_name, mobile, e_mail, password,refer_code;
 
         //推荐码
-        //team_leader_1 = userIdEdit.getText().toString().trim();
-
         if (TextUtils.isEmpty(recommendIdEdit.getText().toString().trim())) {
             ToasShow.showToastCenter(getActivity(), getString(R.string.codeerror));
             return;
@@ -338,9 +323,6 @@ public class RegisterFragment extends BaseFragmentView {
                         getViewById(R.id.llConfirmpass).setVisibility(View.GONE);
                         recommendIdEdit.setHint(getResources().getString(R.string.referral_code_hint));
                         clearInfo();
-                        //referralLinear.setVisibility(View.VISIBLE);
-                        userView.setVisibility(View.GONE);
-
                         userEnLinaer.setVisibility(View.GONE);
                         userEnView.setVisibility(View.GONE);
 
@@ -356,8 +338,6 @@ public class RegisterFragment extends BaseFragmentView {
                         getViewById(R.id.llConfirmpass).setVisibility(View.VISIBLE);
                         recommendIdEdit.setHint(getResources().getString(R.string.input_recode));
                         clearInfo();
-                       // referralLinear.setVisibility(View.VISIBLE);
-                        userView.setVisibility(View.GONE);
                         userEnLinaer.setVisibility(View.VISIBLE);
                         userEnView.setVisibility(View.VISIBLE);
 
@@ -379,7 +359,6 @@ public class RegisterFragment extends BaseFragmentView {
         lastNameEdit.setText("");
         phoneEdit.setText("");
         regsterEmailEdit.setText("");
-       // userIdEdit.setText("");
         enNameEdit.setText("");
         passwordEdit.setText("");
         surePasswordEdit.setText("");
