@@ -248,11 +248,29 @@
                     android:layout_marginLeft="@dimen/padding_margin_20"
                     android:orientation="vertical">
 
-
                     <LinearLayout
                         style="@style/MatchWrap"
                         android:orientation="horizontal"
                         android:paddingTop="@dimen/padding_margin_20">
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:text="@string/proDelAddress"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"/>
+
+                        <TextView
+                            android:id="@+id/proDelAddTv"
+                            style="@style/MatchWrap"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/MatchWrap"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/padding_margin_6">
 
                         <TextView
                             android:id="@+id/textView3"
@@ -264,7 +282,7 @@
                         <TextView
                             android:id="@+id/tvFirbNum"
                             style="@style/WrapWrap"
-                            android:text="0"
+                            android:text="-"
                             android:textColor="@color/gray"
                             android:textSize="@dimen/tv_size_15"/>
                     </LinearLayout>
@@ -533,6 +551,28 @@
                             android:text="0.00"
                             android:textColor="@color/gray"
                             android:textSize="@dimen/tv_size_15"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/agentsNotesLin"
+                        style="@style/MatchWrap"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/padding_margin_20"
+                        android:paddingTop="@dimen/padding_margin_6">
+
+                        <TextView
+                            style="@style/WrapWrap"
+                            android:text="Agent Notes:"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"/>
+
+                        <TextView
+                            android:id="@+id/agent_notes"
+                            style="@style/WrapWrap"
+                            android:textColor="@color/gray"
+                            android:textSize="@dimen/tv_size_15"
+                            android:visibility="gone"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -68,15 +68,6 @@
 
         </android.support.design.widget.AppBarLayout>
 
-       <!-- <include
-            android:id="@+id/scv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/nest_scrollview_layout"
-            android:layout_marginTop="60dp"
-            android:visibility="gone"
-            />-->
-
         <com.yd.org.sellpopularizesystem.myView.MyNestScrollView
             android:id="@+id/myNsv"
             android:layout_width="match_parent"
