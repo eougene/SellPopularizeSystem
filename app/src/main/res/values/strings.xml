@@ -676,4 +676,6 @@
     <string name="referral_code_hint">请输入推荐码</string>
     <string name="agreement">赢家系统服务协议</string>
 
+    <string name="proDelAddress">地址:</string>
+
 </resources>
