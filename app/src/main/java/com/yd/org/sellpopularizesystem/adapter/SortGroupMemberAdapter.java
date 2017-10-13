@@ -40,12 +40,6 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         notifyDataSetChanged();
     }
 
-    public void addData(List<CustomBean.ResultBean> list) {
-        this.list.addAll(list);
-
-        notifyDataSetChanged();
-    }
-
     public void addMore(List<CustomBean.ResultBean> datas) {
         this.list.addAll(datas);
         notifyDataSetChanged();

@@ -387,7 +387,8 @@ public class CommissionAdapter extends BaseAdapter {
         httpParams.put("step", step);
         EasyHttp.get(Contants.DEPOSIT_DETAILS)
                 .timeStamp(true)//是否需要追加时间戳
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
                     @Override
