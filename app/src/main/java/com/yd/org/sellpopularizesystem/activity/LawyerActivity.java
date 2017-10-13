@@ -99,8 +99,8 @@ public class LawyerActivity extends BaseActivity implements PullToRefreshLayout.
      */
     private void getLawyerListData(String customeId, final boolean b) {
         EasyHttp.get(Contants.LAWYER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("customer_id", "")
                 .params("law_firm", "")

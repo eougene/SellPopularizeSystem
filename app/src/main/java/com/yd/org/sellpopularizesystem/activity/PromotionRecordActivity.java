@@ -122,8 +122,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
     private void getExpandReData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.SALE_LOG_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName()+"1")
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", "")
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
@@ -210,8 +210,8 @@ public class PromotionRecordActivity extends BaseActivity implements PullToRefre
 
     private void getHouseurchase(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.ORDER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName()+"2")
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("company_id", SharedPreferencesHelps.getCompanyId())

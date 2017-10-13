@@ -48,7 +48,8 @@ public class DepositActivity extends BaseActivity {
     private void getInfo() {
 
         EasyHttp.get(Contants.RECEIPT_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("order_id", resultBean.getProduct_orders_id() + "")
                 .timeStamp(true)

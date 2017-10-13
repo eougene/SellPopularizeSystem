@@ -38,8 +38,8 @@ public class OrderDetailActivity extends BaseActivity {
 
     private void getOrderDetail(int product_orders_id) {
         EasyHttp.get(Contants.ORDER_DETAIL)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("order_id", product_orders_id + "")
                 .execute(new SimpleCallBack<String>() {

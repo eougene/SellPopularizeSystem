@@ -319,8 +319,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
 
         EasyHttp.get(Contants.PRODUCT_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params(httpParams)
 

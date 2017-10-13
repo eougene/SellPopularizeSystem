@@ -182,8 +182,8 @@ public class MySalesActivity extends BaseActivity implements SectionIndexer, Pul
     private void getCustomeListData(final boolean b, int page) {
 
         EasyHttp.get(Contants.REFER_USER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("refer_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))

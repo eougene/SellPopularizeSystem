@@ -58,8 +58,8 @@ public class GradeActivity extends BaseActivity {
 
     private void getData() {
         EasyHttp.get(Contants.GET_TEST_RESULT)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("answer_id", resultBean.getAnswer_id() + "")
                 .execute(new SimpleCallBack<String>() {

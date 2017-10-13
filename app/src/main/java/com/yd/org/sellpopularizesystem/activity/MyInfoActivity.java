@@ -126,8 +126,8 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
                     @Override

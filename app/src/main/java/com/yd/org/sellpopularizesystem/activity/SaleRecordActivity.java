@@ -85,8 +85,8 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
     private void getSaleData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.INQUIRE_ORDER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("company_id", SharedPreferencesHelps.getCompanyId())
                 .params("user_id", SharedPreferencesHelps.getUserID())

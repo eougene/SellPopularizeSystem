@@ -82,8 +82,8 @@ public class ExaminationActivity extends BaseActivity {
 
     private void initData(String paperId) {
         EasyHttp.get(Contants.PAPER_DETAILS)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("paper_id", paperId)
                 .execute(new SimpleCallBack<String>() {

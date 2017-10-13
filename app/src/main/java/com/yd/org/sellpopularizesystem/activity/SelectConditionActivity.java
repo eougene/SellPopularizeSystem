@@ -99,7 +99,7 @@ public class SelectConditionActivity extends BaseActivity {
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         EasyHttp.get(Contants.SCALE_SEARCH)
                 .cacheMode(CacheMode.DEFAULT)
-                .cacheKey(this.getClass().getSimpleName())
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params(httpParams)
 

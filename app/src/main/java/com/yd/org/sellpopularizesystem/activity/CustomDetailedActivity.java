@@ -1129,7 +1129,8 @@ public class CustomDetailedActivity extends BaseActivity {
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .cacheKey(this.getClass().getSimpleName())
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
@@ -1282,7 +1283,6 @@ public class CustomDetailedActivity extends BaseActivity {
                     public void onError(ApiException e) {
                         closeDialog();
                         ToasShow.showToastCenter(CustomDetailedActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
                     }
 
                     @Override
@@ -1293,24 +1293,29 @@ public class CustomDetailedActivity extends BaseActivity {
                         try {
                             json = new JSONObject(s);
                             if (updateOrAdd.equals(ADD)) {//新增
-                                ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
-                                if (!tag.equals("completeinfo") && json.getString("msg").equals(getString(R.string.addsuccess))) {
+
+                                if (json.getInt("code") == 1) {
+                                    ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
                                     CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
                                 }
                             } else {//更新
                                 ToasShow.showToastCenter(CustomDetailedActivity.this, json.getString("msg"));
-                                if (json.getString("msg").equals(getString(R.string.updatesuccess))) {
+                                if (json.getInt("code") == 1) {
                                     if (tag.equals("completeinfo")) {
                                         //重新赋值
                                         setCustomerValue(((CustomBean.ResultBean) ObjectSaveUtil.readObject(CustomDetailedActivity.this, "custome")));
                                         ReserveActivity.reserveActivity.handler.sendEmptyMessage(0);
+                                    } else {
+                                        CustomeActivity.customeActivity.handler.sendEmptyMessage(0);
                                     }
                                 }
                             }
+
+                            finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        finish();
+
 
                     }
                 });
@@ -1704,7 +1709,8 @@ public class CustomDetailedActivity extends BaseActivity {
     private void getCustomInfo(CustomBean.ResultBean resultBean) {
 
         EasyHttp.get(Contants.CUSTOME_DETAILED)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("customer_id", resultBean.getCustomer_id() + "")
                 .execute(new SimpleCallBack<String>() {

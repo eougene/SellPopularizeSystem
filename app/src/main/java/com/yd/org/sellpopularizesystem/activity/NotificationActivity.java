@@ -53,8 +53,8 @@ public class NotificationActivity extends BaseActivity implements PullToRefreshL
     private void getData(int page, final boolean isRefresh) {
 
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))

@@ -204,11 +204,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private void getCustomeListData(final boolean b, int page) {
 
         EasyHttp.get(Contants.CUSTOMER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "10000")
+                .params("number", "300")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -234,17 +235,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     }
 
     private void jsonParse(String json, boolean isRefresh) {
-        Log.e("获取数据", "time:" + System.currentTimeMillis() / 1000);
         Gson gson = new Gson();
         //客户信息
         CustomBean product = gson.fromJson(json, CustomBean.class);
-
-
-        Log.e("解析数据", "time:" + System.currentTimeMillis() / 1000);
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
-
 
 
         if (isRefresh) {
@@ -260,18 +256,10 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             // 根据a-z进行排序源数据
             Collections.sort(SourceDateList, pinyinComparator);
-            Log.e("适配数据", "time:" + System.currentTimeMillis() / 1000);
             adapter = new SortGroupMemberAdapter(this);
             listView.setAdapter(adapter);
-            adapter.addData(SourceDateList);
-
-            Log.e("显示数据", "time:" + System.currentTimeMillis() / 1000);
-        } else {
-            if (adapter != null) {
-                adapter.addMore(SourceDateList);
-            }
-
         }
+        adapter.addMore(SourceDateList);
 
     }
 

@@ -430,8 +430,8 @@ public class MyCertificateActivity extends BaseActivity {
 
     private void getInfo() {
         EasyHttp.get(Contants.LICENCE_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .execute(new SimpleCallBack<String>() {

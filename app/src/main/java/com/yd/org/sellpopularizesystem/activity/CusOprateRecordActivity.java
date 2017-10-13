@@ -589,7 +589,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
@@ -777,7 +778,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void getVisitData(int page, final boolean isRel) {
 
         EasyHttp.get(Contants.VISIT_RECORD_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)
@@ -950,7 +952,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     private void getReservertData(int page, final boolean isRel) {
         EasyHttp.get(Contants.RESERVER_RECORDER_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("customer_id", customeId)

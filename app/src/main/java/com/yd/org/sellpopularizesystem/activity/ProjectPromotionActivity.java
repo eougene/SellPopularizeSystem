@@ -169,8 +169,8 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         httpParams.put("is_promote", "");
         httpParams.put("is_old_product", "1");
         EasyHttp.get(Contants.PRODUCT_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {

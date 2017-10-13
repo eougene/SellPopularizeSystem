@@ -204,8 +204,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
     private void initData() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("product_id", resultBean.getProduct_id() + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())

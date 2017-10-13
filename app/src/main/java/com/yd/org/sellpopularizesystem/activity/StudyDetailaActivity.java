@@ -149,8 +149,8 @@ public class StudyDetailaActivity extends FragmentActivity {
 
 
         EasyHttp.get(Contants.STUDY_INFO)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("study_id", study_id)
 

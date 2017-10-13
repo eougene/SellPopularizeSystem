@@ -74,8 +74,8 @@ public class InviteQRActivity extends BaseActivity {
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
         EasyHttp.get(Contants.REFER)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {

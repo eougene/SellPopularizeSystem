@@ -251,8 +251,8 @@ public class ProductSubunitListActivity extends BaseActivity {
     //获取子单元列表数据
     private void getListData() {
         EasyHttp.get(Contants.PRODUCT_SUBUNIT_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("product_id", product_id == null ? "" : product_id)
@@ -272,7 +272,7 @@ public class ProductSubunitListActivity extends BaseActivity {
                 .params("building_area", "0~100000000")
                 .params("is_lock", "")
                 .params("page", String.valueOf(page))
-                .params("number", String.valueOf(Integer.MAX_VALUE))
+                .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -610,8 +610,8 @@ public class ProductSubunitListActivity extends BaseActivity {
      */
     private void getEoiData(final ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
         EasyHttp.get(Contants.EOI_LIST)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", "1")
@@ -673,7 +673,6 @@ public class ProductSubunitListActivity extends BaseActivity {
         httpParams.put("product_child_id", propertyBean.getProduct_childs_id()+ "");
         EasyHttp.post(Contants.EOI_USE)
                 .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
                 .timeStamp(true)
                 .params(httpParams)
                 .execute(new SimpleCallBack<String>() {
@@ -708,8 +707,8 @@ public class ProductSubunitListActivity extends BaseActivity {
 
     private void getItemProductDetail() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("product_id", product_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
