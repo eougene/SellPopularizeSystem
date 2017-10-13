@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.fragment;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,8 +15,6 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.CustomeActivity;
 import com.yd.org.sellpopularizesystem.activity.HomeActiviyt;
 import com.yd.org.sellpopularizesystem.activity.LearningGardenActivity;
-import com.yd.org.sellpopularizesystem.activity.OldProjectActivity;
-import com.yd.org.sellpopularizesystem.activity.ScaleActivity;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.javaBean.HomeDataBean;
@@ -173,8 +170,8 @@ public class HomeFragment extends BaseFragmentView {
     private void getHomeData() {
 
         EasyHttp.get(Contants.HOME_DAA)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .execute(new SimpleCallBack<String>() {
@@ -227,8 +224,8 @@ public class HomeFragment extends BaseFragmentView {
 
     public void getDepositData() {
         EasyHttp.get(Contants.DEPOSIT_DAA)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .execute(new SimpleCallBack<String>() {

@@ -10,7 +10,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -188,8 +187,8 @@ public class MeFragment extends BaseFragmentView {
     public void getWeiXinInfo(String access_token, final String opendid) {
         EasyHttp.get("https://api.weixin.qq.com/sns/userinfo?" + "access_token=" + access_token + "&openid=" + opendid)
                 .timeStamp(true)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

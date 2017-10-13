@@ -158,8 +158,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private void getData(int pages, final boolean isRefresh, final int cate_id) {
         Log.e("cate_id", "cate_id: "+ cate_id);
         EasyHttp.get(Contants.SYSTEM_ANNOUNCEMENT)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("cate_id", cate_id + "")
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -378,8 +378,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private void deleteNoticeLog(String notice_id) {
         Log.e("TAG", "deleteNoticeLog****: " );
         EasyHttp.get(Contants.DELETE_NOTICE)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("notice_logs_id", notice_id)
                 .params("user_id", SharedPreferencesHelps.getUserID())
@@ -480,8 +480,8 @@ public class OrderNotificFragment extends BaseFragmentView implements PullToRefr
     private void commitNotice(String str) {
         Log.e("notice_log_id", "commitNotice: "+str);
         EasyHttp.get(Contants.SUBMIT_READED)
-                .cacheMode(CacheMode.NO_CACHE)
-                .cacheKey(this.getClass().getSimpleName())
+                .cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("notice_logs_id", str)
                 .params("user_id", SharedPreferencesHelps.getUserID())
