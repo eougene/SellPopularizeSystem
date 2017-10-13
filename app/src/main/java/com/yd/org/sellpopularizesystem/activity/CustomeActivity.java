@@ -206,10 +206,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         EasyHttp.get(Contants.CUSTOMER_LIST)
                 .cacheMode(CacheMode.DEFAULT)
                 .headers("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
+                //.headers("Cache-Control", "no-cache") // 刷新数据
+               // .headers("Cache-Control", "only-if-cached")//强制使用缓存
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .params("page", String.valueOf(page))
-                .params("number", "300")
+                .params("number", "500")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {

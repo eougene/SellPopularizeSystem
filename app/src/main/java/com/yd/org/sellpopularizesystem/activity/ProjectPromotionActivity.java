@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -29,6 +28,7 @@ import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
+import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
@@ -43,7 +43,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private LinearLayout llAll;
     private TextView tvHotSale, tvLookHouse, tvMore, tvTilte, tvBuildingNum;
     private GridView gvHouse;
-    private Toolbar mToolbar;
     private CommonAdapter mCommonAdapter;
     private CustomProgressDialog loading_Dialog;
     private List<ProductListBean.ResultBean> productData = new ArrayList<>();
@@ -56,8 +55,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
     private ImageView backImageView;
     private MyNestScrollView myNsv;
     private boolean isSvToBottom = false;
-
-    private float mLastX;
     private float mLastY;
 
     @Override
@@ -65,7 +62,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_promotion);
         StatusBarUtil.setTranslucentForImageViewInFragment(this, 0, null);
-        mToolbar = (Toolbar) findViewById(R.id.tb);
         mAppBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
         mAppBarLayout.addOnOffsetChangedListener(this);
 
@@ -133,12 +129,27 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         gvHouse.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ProductListBean.ResultBean item = productData.get(position);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("bean", item);
-                bundle.putString("productName", item.getProduct_name());
-                bundle.putString("productId", item.getProduct_id() + "");
-                ActivitySkip.forward(ProjectPromotionActivity.this, ProductItemDetailActivity.class, bundle);
+                ProductListBean.ResultBean item = (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
+
+
+                if (item.getIs_can_sale() != null && item.getIs_can_sale().equals("1")) {
+
+                    //对应的学习项目
+                    ToasShow.showToastCenter(ProjectPromotionActivity.this, getString(R.string.sale_toas) + item.getProduct_name());
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type_id", String.valueOf(item.getStudy_type_id()));
+                    ActivitySkip.forward(ProjectPromotionActivity.this, StudySubitemActivity.class, bundle);
+
+                } else {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("bean", item);
+                    bundle.putString("productName", item.getProduct_name());
+                    bundle.putString("productId", item.getProduct_id() + "");
+                    ActivitySkip.forward(ProjectPromotionActivity.this, ProductItemDetailActivity.class, bundle);
+                }
+
+
             }
         });
         myNsv.setScrollToBottomListener(new MyNestScrollView.OnScrollToBottomListener() {
@@ -158,7 +169,7 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
         httpParams.put("page", String.valueOf(1));
-        httpParams.put("number", "100");
+        httpParams.put("number", "50");
         httpParams.put("cate_id", area);
         httpParams.put("search_key", "");
         httpParams.put("area", "");
@@ -219,6 +230,14 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         mCommonAdapter = new CommonAdapter<ProductListBean.ResultBean>(ProjectPromotionActivity.this, promoteDatas, R.layout.gv_item_house_suggest) {
             @Override
             public void convert(ViewHolder holder, ProductListBean.ResultBean item) {
+
+                if (null != item.getIs_can_sale() && item.getIs_can_sale().equals("1")) {
+                    holder.getView(R.id.ivIslock).setVisibility(View.VISIBLE);
+                } else {
+                    holder.getView(R.id.ivIslock).setVisibility(View.GONE);
+                }
+
+
                 holder.setImageByUrl(R.id.ivHousePic, Contants.DOMAIN + "/" + item.getThumb());
                 holder.setText(R.id.tvName, item.getProduct_name());
                 holder.setText(R.id.tvLocation, item.getState() + "-" + item.getAddress_suburb());
