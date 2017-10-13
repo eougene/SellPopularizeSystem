@@ -37,17 +37,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:background="@mipmap/meqr"
                 android:layout_marginBottom="@dimen/padding_margin_4"
                 android:layout_marginTop="@dimen/padding_margin_6"
-                android:paddingTop="@dimen/padding_margin_4"
+                android:background="@mipmap/meqr"
+                android:gravity="center_vertical"
                 android:paddingBottom="@dimen/padding_margin_4"
                 android:paddingLeft="25dp"
                 android:paddingRight="@dimen/padding_margin_6"
+                android:paddingTop="@dimen/padding_margin_4"
                 android:text="@string/my_invite_code"
-                android:textSize="@dimen/tv_size_12"
                 android:textColor="@color/white"
-                android:gravity="center_vertical"/>
+                android:textSize="@dimen/tv_size_12"/>
         </LinearLayout>
 
 
@@ -210,13 +210,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/padding_margin_30"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/padding_margin_4"
                         android:background="@drawable/circle_shape"
                         android:gravity="center"
                         android:text="@string/_99"
                         android:textColor="@color/white"
                         android:textSize="@dimen/tv_size_10"
-                        android:visibility="gone"/>
+                        android:visibility="gone"
+                        />
 
                 </RelativeLayout>
 

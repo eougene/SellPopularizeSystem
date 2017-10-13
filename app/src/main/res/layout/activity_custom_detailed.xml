@@ -1086,6 +1086,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/padding_margin_10"
                     android:src="@mipmap/xinghao"
+                    android:visibility="gone"
                     />
 
                 <TextView

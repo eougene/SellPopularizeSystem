@@ -7,7 +7,6 @@
 
     <com.yd.org.sellpopularizesystem.myView.BounceScrollView
         android:id="@+id/primaryLinear"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/invoiceBottomLinear"
@@ -19,9 +18,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_10"
+            android:layout_marginLeft="@dimen/padding_margin_6"
+            android:layout_marginRight="@dimen/padding_margin_6"
+            android:layout_marginTop="@dimen/padding_margin_6"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -398,37 +397,162 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1.5dp"
-                android:layout_marginBottom="@dimen/padding_margin_10"
+
                 android:layout_marginLeft="@dimen/padding_margin_20"
                 android:layout_marginRight="@dimen/padding_margin_10"
                 android:layout_marginTop="@dimen/padding_margin_10"
                 android:background="@drawable/stroke"
                 android:layerType="software"/>
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_margin_20">
+                android:background="@color/invoice_back"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/padding_margin_14"
+                android:paddingTop="@dimen/padding_margin_14">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AMOUNT(incl.GST):"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvAmountIncl"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="$5.877.27"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AMOUNT(incl.GST):"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_12"/>
+
+                    <TextView
+                        android:id="@+id/tvAmountIncl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="$5.877.27"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SUBTOTAL:"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_12"/>
+
+                    <TextView
+                        android:id="@+id/tvSubtotal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="$5.99.33"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GST:"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_12"/>
+
+                    <TextView
+                        android:id="@+id/tvGst"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:gravity="right"
+                        android:text="10%"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABN GST registered:"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_12"/>
+
+                    <TextView
+                        android:id="@+id/tvAbnRegisterd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="Yes"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/padding_margin_4"
+                    android:layout_marginRight="@dimen/padding_margin_10"
+                    android:layout_marginTop="@dimen/padding_margin_4"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/padding_margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OTHER:"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_12"/>
+
+                    <TextView
+                        android:id="@+id/tvOther"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:text="$0.00"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/tv_size_12"/>
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -440,132 +564,6 @@
                 android:layout_marginBottom="@dimen/padding_margin_10"
                 android:layout_marginLeft="@dimen/padding_margin_20"
                 android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_10"
-                android:background="@drawable/stroke"
-                android:layerType="software"/>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_margin_20">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="SUBTOTAL:"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvSubtotal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="$5.99.33"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_margin_20">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="GST:"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvGst"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:gravity="right"
-                    android:text="10%"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_margin_20">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ABN GST registered:"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvAbnRegisterd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="Yes"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/padding_margin_4"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_4"
-                android:orientation="horizontal"
-                android:paddingLeft="@dimen/padding_margin_20">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="OTHER:"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/tv_size_12"/>
-
-                <TextView
-                    android:id="@+id/tvOther"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:text="$0.00"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/tv_size_12"/>
-
-
-            </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_marginBottom="@dimen/padding_margin_10"
-                android:layout_marginLeft="@dimen/padding_margin_20"
-                android:layout_marginRight="@dimen/padding_margin_10"
-                android:layout_marginTop="@dimen/padding_margin_10"
                 android:background="@drawable/stroke"
                 android:layerType="software"/>
 
