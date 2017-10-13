@@ -50,6 +50,7 @@ public class ReceiptBean extends Domine {
         private String user_name;
         private String product;
         private String number;
+        private String check_time;
 
         public String getUser_name() {
             return user_name;
@@ -73,6 +74,14 @@ public class ReceiptBean extends Domine {
 
         public void setNumber(String number) {
             this.number = number;
+        }
+
+        public String getCheck_time() {
+            return check_time;
+        }
+
+        public void setCheck_time(String check_time) {
+            this.check_time = check_time;
         }
     }
 }
