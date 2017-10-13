@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
     <LinearLayout
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -13,8 +13,8 @@
             android:id="@+id/ivHousePic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="120dp"
             android:maxHeight="120dp"
+            android:minHeight="120dp"
             android:src="@mipmap/yingjia"/>
 
         <TextView
@@ -49,4 +49,15 @@
             android:textStyle="bold"/>
 
     </LinearLayout>
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivIslock"
+        android:layout_width="match_parent"
+        android:layout_height="184dp"
+        android:background="@color/reansoarent_oneoftwo"
+        android:scaleType="centerInside"
+        android:src="@mipmap/lock"
+       android:visibility="gone"
+
+        />
+</RelativeLayout>
