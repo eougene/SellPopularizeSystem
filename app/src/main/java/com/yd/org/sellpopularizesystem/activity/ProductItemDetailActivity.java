@@ -257,27 +257,27 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
 
                             if (prs.getEoi_open_time() == null || (double) prs.getEoi_open_time() == 0 || String.valueOf(prs.getEoi_open_time()).equals("0")) {
-                                tvEoiTime.setText("1970/01/01");
+                                tvEoiTime.setText("-/-/-");
                             } else {
                                 tvEoiTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getEoi_open_time()).longValue() + "000")));
                             }
                             if ((double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
-                                tvSaleTime.setText("1970/01/01");
+                                tvSaleTime.setText("-/-/-");
                             } else {
                                 tvSaleTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStart_sales_time()).longValue() + "000")));
                             }
                             if (prs.getStop_sales_time() == null || (double) prs.getStop_sales_time() == 0 || String.valueOf(prs.getStop_sales_time()).equals("0")) {
-                                tvSaleDeadTime.setText("1970/01/01");
+                                tvSaleDeadTime.setText("-/-/-");
                             } else {
                                 tvSaleDeadTime.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStop_sales_time()).longValue() + "000")));
                             }
                             if (prs.getSunset_time() == null || (double) prs.getSunset_time() == 0 || String.valueOf(prs.getSunset_time()).equals("0")) {
-                                tvStartDate.setText("1970/01/01");
+                                tvStartDate.setText("-/-/-");
                             } else {
                                 tvStartDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSunset_time()).longValue() + "000")));
                             }
                             if ((double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
-                                tvCloseDate.setText("1970/01/01");
+                                tvCloseDate.setText("-/-/-");
                             } else {
                                 tvCloseDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSettlement_time()).longValue() + "000")));
                             }

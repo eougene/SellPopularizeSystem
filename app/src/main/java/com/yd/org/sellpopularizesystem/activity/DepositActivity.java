@@ -12,6 +12,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.ReceiptBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
+import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -20,7 +21,7 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
 public class DepositActivity extends BaseActivity {
-    private TextView tvName, tvProperty, tvMoneyy, tvDown;
+    private TextView tvName, tvProperty, tvMoneyy, tvDown, edDate;
     private SaleOrderBean.ResultBean resultBean;
 
 
@@ -38,6 +39,7 @@ public class DepositActivity extends BaseActivity {
         tvProperty = getViewById(R.id.tvProperty);
         tvMoneyy = getViewById(R.id.tvMoneyy);
         tvDown = getViewById(R.id.tvDown);
+        edDate = getViewById(R.id.edDate);
         getInfo();
 
 
@@ -73,6 +75,9 @@ public class DepositActivity extends BaseActivity {
                             tvName.setText(receiptBean.getResult().getUser_name());
                             tvProperty.setText(receiptBean.getResult().getProduct());
                             tvMoneyy.setText(receiptBean.getResult().getNumber());
+
+                            //落款时间
+                            edDate.setText(MyUtils.getInstance().date2String("dd/MM/yyyy", Long.parseLong(receiptBean.getResult().getCheck_time()+"000")));
 
                         } else {
                             ToasShow.showToastCenter(DepositActivity.this, receiptBean.getMsg());
