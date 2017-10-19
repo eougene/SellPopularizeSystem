@@ -36,7 +36,6 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
-import com.yd.org.sellpopularizesystem.javaBean.ReferUserBean;
 import com.yd.org.sellpopularizesystem.myView.ShareDialog;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
@@ -137,6 +136,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                 switch (id) {
                     case 1://微信
                         shareToMedia(SHARE_MEDIA.WEIXIN, shareUrl);
+                        Log.e("分享链接", "shareUrl:" + shareUrl);
                         break;
                     case 2://微信朋友圈
                         shareToMedia(SHARE_MEDIA.WEIXIN_CIRCLE, shareUrl);
@@ -248,9 +248,9 @@ public class ProductItemDetailActivity extends AppCompatActivity {
                             Configuration config = resources.getConfiguration();
                             if (!language.equals("")) {
                                 if (language.equals("zh")) {
-                                    proDelAddTv.setText(prs.getCountry() +" "+ prs.getState() +" "+ prs.getCity() +" "+ prs.getStreet_address_1() +" "+ prs.getStreet_address_2() +" "+ prs.getStreet_number()+" " + prs.getPostcode());
+                                    proDelAddTv.setText(prs.getCountry() + " " + prs.getState() + " " + prs.getCity() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getStreet_number() + " " + prs.getPostcode());
                                 } else if (language.equals("en")) {
-                                    proDelAddTv.setText(prs.getStreet_number()+" " + prs.getStreet_address_1()+" " + prs.getStreet_address_2() +" "+ prs.getAddress_suburb() +" "+ prs.getState() +" "+ prs.getPostcode() +" "+ prs.getCountry());
+                                    proDelAddTv.setText(prs.getStreet_number() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getAddress_suburb() + " " + prs.getState() + " " + prs.getPostcode() + " " + prs.getCountry());
 
                                 }
                             }
@@ -351,18 +351,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
                 //分享
                 case R.id.imageViewShare:
-
-                    //销售
-                    if (SharedPreferencesHelps.getType() == 1) {
-                        final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=";
-                        openShareDialog(shareUrl);
-                    } else if (SharedPreferencesHelps.getType() == 2) {
-                        final String shareUrl = Contants.SHURE_URL + "?product_id=" + product_id + "&user_id=" + "&refer_id=" + SharedPreferencesHelps.getUserID();
-                        openShareDialog(shareUrl);
-
-
-                    }
-
+                    final String shareUrl = Contants.SHURE_URL + "?product_id=" + resultBean.getProduct_id() + "&user_id=" + SharedPreferencesHelps.getUserID() + "&refer_id=" + SharedPreferencesHelps.getReferCode();
+                    openShareDialog(shareUrl);
 
                     break;
                 //介绍
@@ -521,8 +511,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
-        Bundle b = data.getExtras(); //data为B中回传的Intent
-        ReferUserBean.ResultBean resultBean = (ReferUserBean.ResultBean) b.getSerializable("custome");
 
     }
 
