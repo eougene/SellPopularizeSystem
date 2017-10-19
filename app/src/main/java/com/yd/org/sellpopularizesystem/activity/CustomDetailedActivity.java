@@ -36,6 +36,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
@@ -83,6 +84,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -117,7 +119,11 @@ public class CustomDetailedActivity extends BaseActivity {
     private LinearLayout llOperate, llComContent;
     private MyPopupwindow myPopupwindow;
     private List<CountrySortModel> mAllCountryList;
+    private List mCountries=new ArrayList();
+    private List mStates=new ArrayList();
     private PopupWindow addrPopWindow, nationSelectPopWindow, firbSelectPopWindow;
+    //州筛选相关
+    private OptionsPickerView optionsPickerView;
     private CustomBean.ResultBean resultBean;
     private String tag, imagePath = "";
     private String strUrl;
@@ -220,12 +226,46 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.edcustmomeDetailedNationality:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 1;
+                    /*if (mCountries.size()>0){
+                        if (!strFlag.equals("1")){
+                            adapter.updateListView(mCountries);
+                            strFlag="2";
+                        }
+
+                    }else {
+                        getCountryOrStateList(1);
+                        initCountrySelectView();
+                        strFlag="1";
+                    }*/
+                    getCountryOrStateList(1);
+                    if (nationSelectPopWindow==null){
+                        initCountrySelectView();
+                    }
+                    strFlag="1";
+                    adapter.updateListView(mCountries);
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 //国家选择2
                 case R.id.tvCountry:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 2;
+                    /*if (mCountries.size()>0){
+                        if (!strFlag.equals("1")){
+                            adapter.updateListView(mCountries);
+                            strFlag="2";
+                        }
+
+                    }else {
+                        getCountryOrStateList(1);
+                        initCountrySelectView();
+                        strFlag="1";
+                    }*/
+                    getCountryOrStateList(1);
+                    if (nationSelectPopWindow==null){
+                        initCountrySelectView();
+                    }
+                    strFlag="1";
+                    adapter.updateListView(mCountries);
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
 
@@ -233,12 +273,71 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.tvCountry_01:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 4;
+                   /* if (mCountries.size()!=0){
+                        if (!strFlag.equals("1")){
+                            adapter.updateListView(mCountries);
+                            strFlag="2";
+                        }
+
+                    }else {
+                        getCountryOrStateList(1);
+                        if (nationSelectPopWindow==null){
+                            initCountrySelectView();
+                        }
+                        strFlag="1";
+                    }*/
+                    getCountryOrStateList(1);
+                    if (nationSelectPopWindow==null){
+                        initCountrySelectView();
+                    }
+                    strFlag="1";
+                    adapter.updateListView(mCountries);
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
+                //州
+                case R.id.etZhou_01:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, etZhou_01);
+                    optionsPickerView.show();
+                    break;
+                //区
+                case R.id.etDistrict_01:
+                    if (TextUtils.isEmpty(etZhou_01.getText().toString())){
+                        ToasShow.showToastCenter(CustomDetailedActivity.this,getResources().getString(R.string.choose_zhou));
+                    }else {
+                        /*if (mStates.size()>0){
+                            if (!strFlag.equals("2")){
+                                adapter.updateListView(mStates);
+                                strFlag="2";
+                            }
+
+                        }else {
+                            getCountryOrStateList(2);
+                            if (nationSelectPopWindow==null){
+                                initCountrySelectView();
+                            }
+
+                            strFlag="2";
+                        }*/
+                        getCountryOrStateList(2);
+                        if (nationSelectPopWindow==null){
+                            initCountrySelectView();
+                        }
+                        strFlag="2";
+                        adapter.updateListView(mStates);
+                        nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                    }
+                    break;
+
                 //国籍选择
                 case R.id.etNation:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 3;
+                    getCountryOrStateList(1);
+                    if (nationSelectPopWindow==null){
+                        initCountrySelectView();
+                    }
+                    strFlag="1";
+                    adapter.updateListView(mCountries);
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
                 case R.id.etFirb:
@@ -271,10 +370,15 @@ public class CustomDetailedActivity extends BaseActivity {
                     bundle.putSerializable("customer_id", resultBean);
                     ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
+                default:
             }
         }
     };
+
     private String push_to = "1";
+    private List states=new ArrayList<>();
+    private String strFlag;
+    private String strZhou;
 
     @Override
     protected int setContentView() {
@@ -326,9 +430,12 @@ public class CustomDetailedActivity extends BaseActivity {
         }
 
 
-        initProviceSelectView();
+        /*initProviceSelectView();
+        setTimePicker();*/
+        initProvincePickerView();
         setTimePicker();
-
+        initStatesOptionData();
+        initStatesOptionsPickerView();
 
     }
 
@@ -400,7 +507,7 @@ public class CustomDetailedActivity extends BaseActivity {
         pinyinComparator = new CountryComparator();
         countryChangeUtil = new GetCountryNameSort();
         characterParserUtil = new CharacterParserUtil();
-        getCountryList();
+        //getCountryList();
 
     }
 
@@ -420,31 +527,107 @@ public class CustomDetailedActivity extends BaseActivity {
         //时间选择器
         pvTime = new TimePickerView(builder);
     }
+    private void initStatesOptionData() {
+        List statesList = Arrays.asList(getResources().getStringArray(R.array.states_list_au));
+        states.addAll(statesList);
+    }
 
-    private void getCountryList() {
+    private void initStatesOptionsPickerView() {
+        OptionsPickerView.Builder builder=new OptionsPickerView.Builder(CustomDetailedActivity.this, new OptionsPickerView.OnOptionsSelectListener() {
+            @Override
+            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+                strZhou = (String) states.get(options1);
+                etZhou_01.setText(strZhou);
+            }
+        }).setTitleColor(R.color.black)
+                .isDialog(true);
+        optionsPickerView = new OptionsPickerView(builder);
+        optionsPickerView.setNPicker(states, null, null);
+    }
 
-        String[] countryList = getResources().getStringArray(R.array.country_code_list_ch);
+    private void getCountryOrStateList(int flag) {
 
+        String[] countryList=null;
+        if (flag==1){
+            countryList = getResources().getStringArray(R.array.country_code_list_ch);
+        } else if (flag==2) {
+            String strState=etZhou_01.getText().toString();
+            if (strState.equals("NSW")){
+                Log.e("TAG", "NSW:"+strState );
+                countryList = getResources().getStringArray(R.array.district_nsw_list_au);
+            }else if(strState.equals("VIC")){
+                Log.e("TAG", "VIC:"+strState );
+                countryList = getResources().getStringArray(R.array.district_vic_list_au);
+            }else if(strState.equals("ACT")){
+                Log.e("TAG", "ACT:"+strState );
+                countryList = getResources().getStringArray(R.array.district_act_list_au);
+            }else if(strState.equals("QLD")){
+                Log.e("TAG", "QLD:"+strState );
+                countryList = getResources().getStringArray(R.array.district_qld_list_au);
+            }else if(strState.equals("SA")){
+                Log.e("TAG", "SA:"+strState );
+                countryList = getResources().getStringArray(R.array.district_sa_list_au);
+            }else if(strState.equals("NT")){
+                Log.e("TAG", "NT:"+strState );
+                countryList = getResources().getStringArray(R.array.district_nt_list_au);
+            }else if(strState.equals("TAS")){
+                Log.e("TAG", "TAS:" +strState);
+                countryList = getResources().getStringArray(R.array.district_tas_list_au);
+            }else {
+                Log.e("TAG", "WA:"+ strState);
+                countryList = getResources().getStringArray(R.array.district_wa_list_au);
+            }
+
+        }
+        mAllCountryList.clear();
         for (int i = 0, length = countryList.length; i < length; i++) {
             String[] country = countryList[i].split("\\*");
 
             String countryName = country[0].trim();
-            //String countryNumber = country[1];
+
             String countrySortKey = characterParserUtil.getSelling(countryName);
-            CountrySortModel countrySortModel = new CountrySortModel(countryName,
-                    countrySortKey);
-            String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
-            if (sortLetter == null) {
-                sortLetter = countryChangeUtil.getSortLetterBySortKey(countryName);
+            Log.e("TAG", "countrySortKey: "+countrySortKey );
+            if (flag==2){
+                String countryNumber = country[1];
+                CountrySortModel countrySortModel = new CountrySortModel(countryName,countryNumber,
+                        countrySortKey);
+                String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
+                Log.e("TAG", "sortLetter: "+sortLetter );
+                if (sortLetter == null) {
+                    sortLetter = countryChangeUtil.getSortLetterBySortKey(countryName);
+                }
+                countrySortModel.sortLetters = sortLetter;
+                mAllCountryList.add(countrySortModel);
+            }else {
+                CountrySortModel countrySortModel = new CountrySortModel(countryName,
+                        countrySortKey);
+                String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
+                if (sortLetter == null) {
+                    sortLetter = countryChangeUtil.getSortLetterBySortKey(countryName);
+                }
+
+                countrySortModel.sortLetters = sortLetter;
+                mAllCountryList.add(countrySortModel);
             }
 
-            countrySortModel.sortLetters = sortLetter;
-            mAllCountryList.add(countrySortModel);
+
         }
 
         Collections.sort(mAllCountryList, pinyinComparator);
-        adapter = new CountrySortAdapter(CustomDetailedActivity.this, mAllCountryList);
-        adapter.updateListView(mAllCountryList);
+        if (flag==1){
+            if (mCountries.size()==0){
+                mCountries.addAll(mAllCountryList);
+            }
+
+        }else if (flag==2){
+            mStates.clear();
+            mStates.addAll(mAllCountryList);
+        }
+        if (adapter==null){
+            adapter = new CountrySortAdapter(CustomDetailedActivity.this, mAllCountryList);
+        }/*else {
+            adapter.updateListView(mAllCountryList);
+        }*/
         Log.e(TAG, "changdu" + mAllCountryList.size());
 
     }
@@ -505,7 +688,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     Log.i(TAG, "setInfo: " + dateStr);
                     edcustmomeDetailedBie.setText(dateStr);
                 } else {
-                    edcustmomeDetailedBie.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
+                    edcustmomeDetailedBie.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(customeDetailedBean.getResult().getBirth_date() + "000")));
                 }
             }
         }
@@ -786,8 +969,7 @@ public class CustomDetailedActivity extends BaseActivity {
 
     }
 
-    private void initProviceSelectView() {
-
+    private void initCountrySelectView() {
 
         //国家选择popWindow视图
         nationPopWindowView = LayoutInflater.from(this).inflate(R.layout.nation_picker, null);
@@ -832,7 +1014,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     // 按照输入内容进行匹配
                     ArrayList<CountrySortModel> fileterList = (ArrayList<CountrySortModel>) countryChangeUtil
                             .search(searchContent, mAllCountryList);
-                    Log.e(TAG, "afterTextChanged: " + fileterList.size());
+                    Log.e("TAG", "afterTextChanged: " + fileterList.size());
                     adapter.updateListView(fileterList);
                 } else {
                     adapter.updateListView(mAllCountryList);
@@ -871,10 +1053,16 @@ public class CustomDetailedActivity extends BaseActivity {
                 } else if (flag == 4) {
                     tvCountry_01.setText(countryName);
                 }
+                if (strFlag!=null && strFlag.equals("2")){
+                    etDistrict_01.setText(countryName);
+                }
                 nationSelectPopWindow.dismiss();
             }
         });
 
+    }
+
+    private void initProvincePickerView(){
         //省市县选择视图
         contentView = LayoutInflater.from(this).inflate(
                 R.layout.addr_picker, null);
@@ -1036,7 +1224,6 @@ public class CustomDetailedActivity extends BaseActivity {
         });
     }
 
-
     @Override
     public void setListener() {
         edcustmomeDetailedCity.setOnClickListener(onClickListener);
@@ -1044,6 +1231,8 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone.setOnClickListener(onClickListener);
         ivEmail.setOnClickListener(onClickListener);
         tvCountry.setOnClickListener(onClickListener);
+        etZhou_01.setOnClickListener(onClickListener);
+        etDistrict_01.setOnClickListener(onClickListener);
         tvCountry_01.setOnClickListener(onClickListener);
         edcustmomeDetailedNationality.setOnClickListener(onClickListener);
         etNation.setOnClickListener(onClickListener);
@@ -1359,7 +1548,7 @@ public class CustomDetailedActivity extends BaseActivity {
                         radio_01.setChecked(false);
                         radio_02.setChecked(true);
                         break;
-
+                    default:
                 }
             }
         });
@@ -1700,6 +1889,7 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.cancelButton:
                     myPopupwindow.dismiss();
                     break;
+                default:
             }
         }
 
@@ -1745,6 +1935,7 @@ public class CustomDetailedActivity extends BaseActivity {
     /**
      * 拍照上传
      */
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -1757,7 +1948,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     Log.d("TAG", "list: " + "list = [" + list.size());
                     loadAdpater(list);
                     break;
-
+                default:
             }
 
         }
