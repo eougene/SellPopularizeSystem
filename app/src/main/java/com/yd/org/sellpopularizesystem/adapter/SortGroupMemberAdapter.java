@@ -1,6 +1,8 @@
 package com.yd.org.sellpopularizesystem.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import java.util.List;
 public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexer {
     private List<CustomBean.ResultBean> list = new ArrayList<>();
     private Context mContext;
+    private Drawable drawable;
 
     public SortGroupMemberAdapter(Context mContext) {
         this.mContext = mContext;
@@ -45,24 +48,27 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
         notifyDataSetChanged();
     }
 
+    @Override
     public int getCount() {
 
         return this.list.size();
 
     }
 
+    @Override
     public Object getItem(int position) {
         return list.get(position);
 
     }
 
+    @Override
     public long getItemId(int position) {
         return position;
     }
 
+    @Override
     public View getView(final int position, View view, ViewGroup arg2) {
         ViewHolder viewHolder = null;
-
         if (view == null) {
 
             view = LayoutInflater.from(mContext).inflate(R.layout.activity_group_member_item, null);
@@ -108,7 +114,10 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
             Log.e("imageview", "tt:" + Contants.DOMAIN + "/" + list.get(position).getHead_img());
 
         } else {
-            viewHolder.imageView.setImageDrawable(mContext.getResources().getDrawable(R.mipmap.settingbt));
+            if (drawable==null){
+                drawable = ContextCompat.getDrawable(mContext,R.mipmap.settingbt);
+            }
+            viewHolder.imageView.setImageDrawable(drawable);
         }
 
         return view;
@@ -136,6 +145,7 @@ public class SortGroupMemberAdapter extends BaseAdapter implements SectionIndexe
     /**
      * 根据分类的首字母的Char ascii值获取其第一次出现该首字母的位置
      */
+    @Override
     public int getPositionForSection(int section) {
         String sortStr;
         for (int i = 0; i < getCount(); i++) {
