@@ -40,8 +40,7 @@
             android:layout_marginRight="20dip"
             android:maxLines="1"
             android:textColor="#333"
-            android:textSize="12sp"
-            android:visibility="gone"/>
+            android:textSize="12sp"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -26,7 +26,7 @@
                 android:text="@string/selectadd"/>
 
             <TextView
-                android:id="@+id/userAdressTv"
+                android:id="@+id/tvUserNation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
@@ -127,27 +127,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_margin_10"
-                android:text="@string/qu"/>
-
-            <EditText
-                android:id="@+id/userSuburbNumberEd"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@null"
-                android:gravity="end"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:padding="@dimen/padding_margin_20"
-                android:singleLine="true"
-                android:textColor="@color/gray"
-                android:textColorHint="@color/setting_bac"
-                android:textSize="@dimen/tv_size_15"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/padding_margin_10"
                 android:text="@string/zhou"/>
 
             <EditText
@@ -159,6 +138,29 @@
                 android:gravity="end"
                 android:imeOptions="actionNext"
                 android:maxLines="1"
+                android:focusable="false"
+                android:padding="@dimen/padding_margin_20"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textColorHint="@color/setting_bac"
+                android:textSize="@dimen/tv_size_15"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_margin_10"
+                android:text="@string/qu"/>
+
+            <EditText
+                android:id="@+id/userSuburbNumberEd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:gravity="end"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:focusable="false"
                 android:padding="@dimen/padding_margin_20"
                 android:singleLine="true"
                 android:textColor="@color/gray"

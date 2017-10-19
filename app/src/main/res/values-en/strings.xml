@@ -687,7 +687,7 @@
     <string name="no_eoi">No available EOI, please recharge</string>
     <string name="referral_code_hint">Please enter the referral code</string>
     <string name="agreement">Wingaid system service agreement</string>
-
+    <string name="choose_zhou">Please choose the state first</string>
     <string name="proDelAddress">Address:</string>
 
 </resources>

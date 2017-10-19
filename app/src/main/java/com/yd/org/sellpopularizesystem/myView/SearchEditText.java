@@ -83,8 +83,8 @@ public class SearchEditText extends android.support.v7.widget.AppCompatEditText 
             super.onDraw(canvas);
         } else {
             // 如果不是默认样式，需要将图标绘制在中间
-            if (drawables == null) drawables = getCompoundDrawables();
-            if (drawableLeft == null) drawableLeft = drawables[0];
+            if (drawables == null) {drawables = getCompoundDrawables();}
+            if (drawableLeft == null) {drawableLeft = drawables[0];}
             float textWidth = getPaint().measureText(getHint().toString());
             int drawablePadding = getCompoundDrawablePadding();
             int drawableWidth = drawableLeft.getIntrinsicWidth();
@@ -120,13 +120,32 @@ public class SearchEditText extends android.support.v7.widget.AppCompatEditText 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // 清空edit内容
+
         if (drawableDel != null && event.getAction() == MotionEvent.ACTION_UP) {
             eventX = (int) event.getRawX();
             eventY = (int) event.getRawY();
-            Log.i(TAG, "eventX = " + eventX + "; eventY = " + eventY);
-            if (rect == null) rect = new Rect();
+            Log.e("TAG", "eventX = " + eventX + "; eventY = " + eventY);
+            if (rect == null) {rect = new Rect();}
+            int[] location=new int[2];
+            this.getLocationOnScreen(location);
+            int x=location[0];
+            int y=location[1];
+            //获取View在屏幕绝对坐标系中的可视区域，坐标以屏幕左上角为原点(0,0)，另一个点为可见区域右下角相对屏幕原点(0,0)点的坐标。
             getGlobalVisibleRect(rect);
-            rect.left = rect.right - drawableDel.getIntrinsicWidth();
+            //获取View自身可见的坐标区域，坐标以自己的左上角为原点(0,0)，另一点为可见区域右下角相对自己(0,0)点的坐标
+            //getLocalVisibleRect(rect)
+           // 坐标是相对整个屏幕而言，X坐标为view左上角到屏幕左边的距离,Y坐标为View左上角到屏幕顶部的距离
+            //getLocationOnScreen(rect)
+            //如果为普通Activity则Y坐标为View左上角到屏幕顶部（此时Window与屏幕一样大）；
+            // 如果为对话框式的Activity则Y坐标为当前Dialog模式Activity的标题栏顶部到View左上角的距离。
+            //getLocationInWindow();
+            rect.left=x;
+            rect.top=y;
+            rect.right=x+getWidth();
+            rect.bottom=y+getHeight();
+            int intrinsicWidth = drawableDel.getIntrinsicWidth();
+            //Log.e("TAG", "onTouchEvent: rect.left"+rect.left+"\\n"+"intrinsicWidth:"+intrinsicWidth+"\n"+"rect:"+rect.right);
+            rect.left = rect.right - intrinsicWidth;
             if (rect.contains(eventX, eventY)) {
                 setText("");
             }
@@ -135,12 +154,22 @@ public class SearchEditText extends android.support.v7.widget.AppCompatEditText 
         if (drawableDel != null && event.getAction() == MotionEvent.ACTION_DOWN) {
             eventX = (int) event.getRawX();
             eventY = (int) event.getRawY();
-            Log.i(TAG, "eventX = " + eventX + "; eventY = " + eventY);
-            if (rect == null) rect = new Rect();
+            Log.e(TAG, "eventX = " + eventX + "; eventY = " + eventY);
+            if (rect == null) {rect = new Rect();}
+            int[] location=new int[2];
+            this.getLocationOnScreen(location);
+            int x=location[0];
+            int y=location[1];
             getGlobalVisibleRect(rect);
-            rect.left = rect.right - drawableDel.getIntrinsicWidth();
+            rect.left=x;
+            rect.top=y;
+            rect.right=x+getWidth();
+            rect.bottom=y+getHeight();
+            int intrinsicWidth = drawableDel.getIntrinsicWidth();
+            //Log.e("TAG", "onTouchEvent: rect.left"+rect.left+"\\n"+"intrinsicWidth:"+intrinsicWidth+"\n"+"rect:"+rect.right);
+            rect.left = rect.right - intrinsicWidth;
             if (rect.contains(eventX, eventY))
-                drawableDel = this.getResources().getDrawable(R.mipmap.edit_delete_pressed);
+            {drawableDel = this.getResources().getDrawable(R.mipmap.edit_delete_pressed);}
         } else {
             drawableDel = this.getResources().getDrawable(R.mipmap.edit_delete);
         }

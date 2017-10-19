@@ -131,7 +131,6 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ProductListBean.ResultBean item = (ProductListBean.ResultBean) mCommonAdapter.getItem(position);
 
-
                 if (item.getIs_can_sale() != null && item.getIs_can_sale().equals("1")) {
 
                     //对应的学习项目

@@ -190,6 +190,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     /**
      * 根据分类的首字母的Char ascii值获取其第一次出现该首字母的位置
      */
+    @Override
     public int getPositionForSection(int section) {
         for (int i = 0; i < SourceDateList.size(); i++) {
             String sortStr = SourceDateList.get(i).getSortLetters();

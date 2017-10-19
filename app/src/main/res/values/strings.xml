@@ -675,7 +675,7 @@
     <string name="no_eoi">暂无可用EOI,请充值</string>
     <string name="referral_code_hint">请输入推荐码</string>
     <string name="agreement">赢家系统服务协议</string>
-
+    <string name="choose_zhou">请先选择州</string>
     <string name="proDelAddress">地址:</string>
 
 </resources>
