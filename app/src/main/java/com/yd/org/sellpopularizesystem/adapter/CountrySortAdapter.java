@@ -79,7 +79,6 @@ public class CountrySortAdapter extends BaseAdapter implements SectionIndexer {
     public View getView(int position, View view, ViewGroup parent) {
         ViewHolder viewHolder = null;
         final CountrySortModel mContent = mList.get(position);
-        Log.e("TAG", "getView执行 " );
         if (view == null) {
             viewHolder = new ViewHolder();
             view = LayoutInflater.from(mContext).inflate(R.layout.coogame_country_item, null);

@@ -322,9 +322,12 @@ public class CustomDetailedActivity extends BaseActivity {
                         if (nationSelectPopWindow==null){
                             initCountrySelectView();
                         }
-                        strFlag="2";
-                        adapter.updateListView(mStates);
-                        nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                        if (isChoose){
+                            strFlag="2";
+                            adapter.updateListView(mStates);
+                            nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                        }
+
                     }
                     break;
 
@@ -371,6 +374,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
                 default:
+                    break;
             }
         }
     };
@@ -379,6 +383,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private List states=new ArrayList<>();
     private String strFlag;
     private String strZhou;
+    private boolean isChoose=true;
 
     @Override
     protected int setContentView() {
@@ -551,6 +556,7 @@ public class CustomDetailedActivity extends BaseActivity {
         if (flag==1){
             countryList = getResources().getStringArray(R.array.country_code_list_ch);
         } else if (flag==2) {
+            isChoose=true;
             String strState=etZhou_01.getText().toString();
             if (strState.equals("NSW")){
                 Log.e("TAG", "NSW:"+strState );
@@ -573,9 +579,13 @@ public class CustomDetailedActivity extends BaseActivity {
             }else if(strState.equals("TAS")){
                 Log.e("TAG", "TAS:" +strState);
                 countryList = getResources().getStringArray(R.array.district_tas_list_au);
-            }else {
+            }else if (strState.equals("WA")){
                 Log.e("TAG", "WA:"+ strState);
                 countryList = getResources().getStringArray(R.array.district_wa_list_au);
+            }else {
+                isChoose = false;
+                ToasShow.showToastCenter(CustomDetailedActivity.this,getResources().getString(R.string.choose_zhou));
+                return;
             }
 
         }
@@ -586,13 +596,11 @@ public class CustomDetailedActivity extends BaseActivity {
             String countryName = country[0].trim();
 
             String countrySortKey = characterParserUtil.getSelling(countryName);
-            Log.e("TAG", "countrySortKey: "+countrySortKey );
             if (flag==2){
                 String countryNumber = country[1];
                 CountrySortModel countrySortModel = new CountrySortModel(countryName,countryNumber,
                         countrySortKey);
                 String sortLetter = countryChangeUtil.getSortLetterBySortKey(countrySortKey);
-                Log.e("TAG", "sortLetter: "+sortLetter );
                 if (sortLetter == null) {
                     sortLetter = countryChangeUtil.getSortLetterBySortKey(countryName);
                 }
@@ -609,7 +617,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 countrySortModel.sortLetters = sortLetter;
                 mAllCountryList.add(countrySortModel);
             }
-
 
         }
 
