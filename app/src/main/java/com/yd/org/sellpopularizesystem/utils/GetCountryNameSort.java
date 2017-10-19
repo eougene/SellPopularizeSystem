@@ -86,11 +86,11 @@ public class GetCountryNameSort {
         List<CountrySortModel> filterList = new ArrayList<CountrySortModel>();// 过滤后的list
         // if (str.matches("^([0-9]|[/+])*$")) {// 正则表达式 匹配号码
         if (str.matches("^([0-9]|[/+]).*")) {// 正则表达式 匹配以数字或者加号开头的字符串(包括了带空格及-分割的号码)
-            String simpleStr = str.replaceAll("\\-|\\s", "");
+            String simpleStr = str.toLowerCase().replaceAll("\\-|\\s", "");
             for (CountrySortModel contact : list) {
-                if (contact.countryName != null && contact.countryName != null) {
+                if (contact.countryName != null) {
                     if (contact.simpleCountryNumber.contains(simpleStr)
-                            || contact.countryName.contains(str)) {
+                            || contact.countryName.toLowerCase().contains(str)) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
@@ -99,9 +99,9 @@ public class GetCountryNameSort {
             }
         } else {
             for (CountrySortModel contact : list) {
-                if (contact.countryNumber != null && contact.countryName != null) {
+                if (contact.countryName != null) {
                     if (contact.countryName.indexOf(str) != -1 ||
-                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str)) {
+                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str.toLowerCase())) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
