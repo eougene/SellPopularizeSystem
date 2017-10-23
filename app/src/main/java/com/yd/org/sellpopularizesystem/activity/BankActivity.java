@@ -19,12 +19,9 @@ public class BankActivity extends BaseActivity {
 
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
 
     }
@@ -73,7 +70,7 @@ public class BankActivity extends BaseActivity {
 
     private void saveAdress() {
 
-        String account_name="", account_number="", bank_name, bsb="";
+        String account_name = "", account_number = "", bank_name, bsb = "";
 
         //持卡人
         account_name = accountNameEd.getText().toString().trim();
@@ -89,8 +86,6 @@ public class BankActivity extends BaseActivity {
         //bsb
         bsb = bsbEd.getText().toString().trim();
         BaseApplication.getInstance().myUserInfo.getResult().setBsb(bsb);
-
-
 
 
     }
