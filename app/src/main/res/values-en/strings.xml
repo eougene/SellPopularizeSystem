@@ -561,7 +561,7 @@
     <string name="effective_date">Effective date</string>
     <string name="commencement_date">Effective date</string>
     <string name="maturity_date">Due date</string>
-    <string name="certificate_number">ID number</string>
+    <string name="certificate_number">Certificate number</string>
     <string name="accurate">Fill In Id Number</string>
     <string name="certificate_type">Select certificate type</string>
     <string name="upload_certificate">Upload certificate</string>
