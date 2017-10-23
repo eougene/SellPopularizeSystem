@@ -294,9 +294,16 @@ public class CustomDetailedActivity extends BaseActivity {
                     adapter.updateListView(mCountries);
                     nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                     break;
+                //州1
+                case R.id.etZhou:
+                    MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, etZhou);
+                    etName = "zhou";
+                    optionsPickerView.show();
+                    break;
                 //州
                 case R.id.etZhou_01:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, etZhou_01);
+                    etName = "zhou1";
                     optionsPickerView.show();
                     break;
                 //区
@@ -324,6 +331,23 @@ public class CustomDetailedActivity extends BaseActivity {
                         }
                         if (isChoose){
                             strFlag="2";
+                            adapter.updateListView(mStates);
+                            nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
+                        }
+
+                    }
+                    break;
+                //区1
+                case R.id.etDistrict:
+                    if (TextUtils.isEmpty(etZhou.getText().toString())){
+                        ToasShow.showToastCenter(CustomDetailedActivity.this,getResources().getString(R.string.choose_zhou));
+                    }else {
+                        getCountryOrStateList(2);
+                        if (nationSelectPopWindow==null){
+                            initCountrySelectView();
+                        }
+                        if (isChoose){
+                            strFlag="3";
                             adapter.updateListView(mStates);
                             nationSelectPopWindow.showAtLocation(CustomDetailedActivity.this.findViewById(R.id.activity_custom_detailed), Gravity.BOTTOM, 0, 0);
                         }
@@ -373,6 +397,7 @@ public class CustomDetailedActivity extends BaseActivity {
                     bundle.putSerializable("customer_id", resultBean);
                     ActivitySkip.forward(CustomDetailedActivity.this, PromotionRecordActivity.class, bundle);
                     break;
+
                 default:
                     break;
             }
@@ -384,6 +409,7 @@ public class CustomDetailedActivity extends BaseActivity {
     private String strFlag;
     private String strZhou;
     private boolean isChoose=true;
+    private String etName;//判断点击的是etZhou还是etZhou1
 
     @Override
     protected int setContentView() {
@@ -542,7 +568,12 @@ public class CustomDetailedActivity extends BaseActivity {
             @Override
             public void onOptionsSelect(int options1, int options2, int options3, View v) {
                 strZhou = (String) states.get(options1);
-                etZhou_01.setText(strZhou);
+                if (etName!=null && etName.equals("zhou")){
+                    etZhou.setText(strZhou);
+                }else {
+                    etZhou_01.setText(strZhou);
+                }
+
             }
         }).setTitleColor(R.color.black)
                 .isDialog(true);
@@ -1063,6 +1094,9 @@ public class CustomDetailedActivity extends BaseActivity {
                 if (strFlag!=null && strFlag.equals("2")){
                     etDistrict_01.setText(countryName);
                 }
+                if (strFlag!=null && strFlag.equals("3")){
+                    etDistrict.setText(countryName);
+                }
                 nationSelectPopWindow.dismiss();
             }
         });
@@ -1238,6 +1272,8 @@ public class CustomDetailedActivity extends BaseActivity {
         ivPhone.setOnClickListener(onClickListener);
         ivEmail.setOnClickListener(onClickListener);
         tvCountry.setOnClickListener(onClickListener);
+        etZhou.setOnClickListener(onClickListener);
+        etDistrict.setOnClickListener(onClickListener);
         etZhou_01.setOnClickListener(onClickListener);
         etDistrict_01.setOnClickListener(onClickListener);
         tvCountry_01.setOnClickListener(onClickListener);
