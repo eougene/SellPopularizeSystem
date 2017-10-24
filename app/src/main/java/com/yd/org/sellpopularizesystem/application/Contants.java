@@ -193,6 +193,8 @@ public class Contants {
     public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
     //使用eoi
     public static final String EOI_USE = DOMAIN + "/index.php/appv2/eoi/use_eoi";
+    //判断是否有Eoi资格
+    public static final String EOI_QUALIFICATION =DOMAIN +"/index.php/appv2/neweoi/if_eoi";
     //取消排队
     public static final String CANCEL_EOI_SORT = DOMAIN + "/index.php/appv2/eoi/cancel_eoi_sort";
     //上传eoi付款凭证
