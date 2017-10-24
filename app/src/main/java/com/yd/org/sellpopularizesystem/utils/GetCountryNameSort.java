@@ -101,7 +101,8 @@ public class GetCountryNameSort {
             for (CountrySortModel contact : list) {
                 if (contact.countryName != null) {
                     if (contact.countryName.indexOf(str) != -1 ||
-                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str.toLowerCase())) {
+                            CharacterParserUtil.getInstance().getSelling(contact.countryName).startsWith(str)
+                            || CharacterParserUtil.getInstance().getSelling(contact.countryName.toLowerCase()).startsWith(str.toLowerCase())) {
                         if (!filterList.contains(contact)) {
                             filterList.add(contact);
                         }
