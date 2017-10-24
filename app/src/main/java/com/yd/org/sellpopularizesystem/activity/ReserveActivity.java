@@ -80,7 +80,7 @@ public class ReserveActivity extends BaseActivity {
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvReCusAdd, tvCompany, tvShareholder, isRead;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private EditText etCopurchase;
-    private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
+    private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay,ivEoiPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
     private ProSubunitListBean.ResultBean.PropertyBean bean;
     private LawyerBean.ResultBean lawBean;
@@ -224,7 +224,7 @@ public class ReserveActivity extends BaseActivity {
         lp.x = MyUtils.getStatusBarHeight(this);
         dialogWindow.setAttributes(lp);
         dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+        dialogWindow.setGravity(Gravity.CENTER | Gravity.CENTER);
         initPayMethodDialogViews();
     }
 
@@ -238,12 +238,14 @@ public class ReserveActivity extends BaseActivity {
         ivIdCard = (ImageView) payMethodDialog.findViewById(R.id.ivIdCard);
         ivAlipay = (ImageView) payMethodDialog.findViewById(R.id.ivAlipay);
         ivWechatPay = (ImageView) payMethodDialog.findViewById(R.id.ivWeixinPay);
+        ivEoiPay= (ImageView) payMethodDialog.findViewById(R.id.ivEoiPay);
         llCertificate = (LinearLayout) payMethodDialog.findViewById(R.id.llCertificate);
         ivCertificate = (ImageView) payMethodDialog.findViewById(R.id.ivCertificate);
         ivCash.setOnClickListener(mOnClickListener);
         ivIdCard.setOnClickListener(mOnClickListener);
         ivAlipay.setOnClickListener(mOnClickListener);
         ivWechatPay.setOnClickListener(mOnClickListener);
+        ivEoiPay.setOnClickListener(mOnClickListener);
         tvEoiSubmit.setOnClickListener(mOnClickListener);
         ivCertificate.setOnClickListener(mOnClickListener);
     }
@@ -513,6 +515,9 @@ public class ReserveActivity extends BaseActivity {
                     }
                     payment_method = "7";
                     break;
+                case R.id.ivEoiPay:
+                    judgeEoiQualification();
+                    break;
                 //开启相机
                 case R.id.ivCertificate:
 
@@ -586,6 +591,8 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.isRead:
                     ActivitySkip.forward(ReserveActivity.this, DeclareActivity.class);
                     break;
+                default:
+                    break;
 
             }
         }
@@ -618,7 +625,39 @@ public class ReserveActivity extends BaseActivity {
             }
         }
 
+    }
 
+    private void judgeEoiQualification() {
+        showDialog();
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("user_id",SharedPreferencesHelps.getUserID());
+        httpParams.put("customer_id",custome.getCustomer_id()+"");
+        httpParams.put("product_id",bean.getProduct_childs_id()+"");
+        EasyHttp.get(Contants.EOI_QUALIFICATION)
+                .cacheMode(CacheMode.NO_CACHE)
+                .timeStamp(true)
+                .params(httpParams)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+                    }
+
+                    @Override
+                    public void onSuccess(String s) {
+                        closeDialog();
+                        try {
+                            JSONObject jsonObject=new JSONObject(s);
+                            if (jsonObject.getString("code").equals("0")){
+                                ToasShow.showToastCenter(ReserveActivity.this,jsonObject.getString("msg"));
+                            }else {
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
     }
 
     private void showAlertDialog() {
