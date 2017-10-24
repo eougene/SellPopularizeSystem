@@ -8,6 +8,8 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 
+import static com.igexin.push.core.g.R;
+
 
 public class BankActivity extends BaseActivity {
     EditText accountNameEd;
@@ -15,12 +17,6 @@ public class BankActivity extends BaseActivity {
     EditText bankNameEd;
     EditText bsbEd;
     private MyUserInfo myUserInfo;
-
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
