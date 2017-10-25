@@ -8,7 +8,7 @@ import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 
-import static com.igexin.push.core.g.R;
+
 
 
 public class BankActivity extends BaseActivity {
