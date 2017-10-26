@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,10 +97,12 @@ public class SaleRecordAdapter extends BaseAdapter {
         viewHolder.tvSaleName.setText(viewHolder.resultBean.getCustomer_surname() + mContext.getString(R.string.single_blank_space) + viewHolder.resultBean.getCustomer_first_name());
 
         //说明
-        if (null != viewHolder.resultBean.getProduct_name() && !TextUtils.isEmpty(viewHolder.resultBean.getProduct_name() + "")) {
-            viewHolder.tvSaleDes.setText(viewHolder.resultBean.getProduct_name().getProduct_name() + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_lot_number() + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
+        if (null != viewHolder.resultBean.getProduct_name()) {
+            //单元号没有添加
+            viewHolder.tvSaleDes.setText(viewHolder.resultBean.getProduct_name().getProduct_name() + "/" + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
         } else {
-            viewHolder.tvSaleDes.setText("Null" + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_lot_number() + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
+            viewHolder.tvSaleDes.setText("-/" + "-/" + "-/");
+
         }
 
 
@@ -121,13 +122,16 @@ public class SaleRecordAdapter extends BaseAdapter {
 
             }
             //意向金是否支付
+
+
+            //支付方式：1、现金   2、信用卡   3、直接存款    4、转账    5、支票  6、支付宝  7、微信          9、其他 10、EOI
             else if (viewHolder.resultBean.getOrder_money_status() == 1) {
 
                 //查看定金按钮
                 viewHolder.depositImageView.setVisibility(View.GONE);
 
 
-                if ((viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4)) {
+                if ((viewHolder.resultBean.getPayment_method() == 1 || viewHolder.resultBean.getPayment_method() == 4 || viewHolder.resultBean.getPayment_method() == 10)) {
                     //意向金凭证已上传,请等待管理员审核,可以取消订单
 
                     viewHolder.saleRecorTv1.setVisibility(View.VISIBLE);
