@@ -5,29 +5,15 @@ package com.yd.org.sellpopularizesystem.javaBean;
  */
 
 public class ErrorBean extends Domine {
+    /**
+     * code : 1
+     * msg : 更新成功
+     * result : public/uploads/contract/171027/201710271607187411.jpg
+     */
+
     private String code;
     private String msg;
-
-    private String trust_account_id;
     private String result;
-
-
-    public String getResult() {
-        return result;
-    }
-
-    public void setResult(String result) {
-        this.result = result;
-    }
-
-    public String getTrust_account_id() {
-        return trust_account_id;
-    }
-
-    public void setTrust_account_id(String trust_account_id) {
-        this.trust_account_id = trust_account_id;
-    }
-
 
     public String getCode() {
         return code;
@@ -37,13 +23,20 @@ public class ErrorBean extends Domine {
         this.code = code;
     }
 
-
     public String getMsg() {
         return msg;
     }
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
     }
 
 
