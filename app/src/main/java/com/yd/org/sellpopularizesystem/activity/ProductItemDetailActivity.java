@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -61,7 +62,7 @@ import java.util.Locale;
 public class ProductItemDetailActivity extends AppCompatActivity {
     private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
             tvSaleDeadTime, tvStartDate, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
-            tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription,
+            tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription, tvhas,
             tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime, agent_notes, proDelAddTv;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
@@ -76,6 +77,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     private CustomBean.ResultBean custome;
     private LinearLayout agentsNotesLin;
     private int temp = 0;
+    private RelativeLayout salingRel;
 
 
     @Override
@@ -88,6 +90,20 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     public void initView() {
+        tvOrder = (TextView) findViewById(R.id.tvOrder);
+        tvhas = (TextView) findViewById(R.id.tvhas);
+        salingRel = (RelativeLayout) findViewById(R.id.salingRel);
+        if (SharedPreferencesHelps.getProjectStatus().equals("old")) {
+
+            salingRel.setVisibility(View.GONE);
+            tvhas.setText(getString(R.string.pdel_));
+            tvOrder.setText(getString(R.string.unit_list));
+
+        } else {
+            salingRel.setVisibility(View.VISIBLE);
+            tvhas.setText(getString(R.string.hashsalenum));
+            tvOrder.setText(getString(R.string.reserver));
+        }
 
         //agent notes
 
@@ -190,7 +206,6 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         tvSubscription = (TextView) findViewById(R.id.tvSubscription);
         tvIntroduce = (TextView) findViewById(R.id.tvIntroduce);
         tvVideo = (TextView) findViewById(R.id.tvVideo);
-        tvOrder = (TextView) findViewById(R.id.tvOrder);
         tvFloor = (TextView) findViewById(R.id.tvFloor);
         tvContract = (TextView) findViewById(R.id.tvContract);
         tvFile = (TextView) findViewById(R.id.tvFile);

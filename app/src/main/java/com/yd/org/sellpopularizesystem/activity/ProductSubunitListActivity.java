@@ -1,53 +1,69 @@
 package com.yd.org.sellpopularizesystem.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.google.gson.Gson;
+import com.lidong.photopicker.PhotoPickerActivity;
+import com.lidong.photopicker.SelectModel;
+import com.lidong.photopicker.intent.PhotoPickerIntent;
+import com.lidong.photopicker.permission.Acp;
+import com.lidong.photopicker.permission.AcpListener;
+import com.lidong.photopicker.permission.AcpOptions;
+import com.squareup.picasso.Picasso;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.adapter.CommonAdapter;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.application.Contants;
+import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.application.ViewHolder;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.EOIPayBean;
 import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
-import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.ImageContent;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProductListBean;
 import com.yd.org.sellpopularizesystem.myView.CommonPopuWindow;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
+import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
+import com.zhouyou.http.body.UIProgressResponseCallBack;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 
 public class ProductSubunitListActivity extends BaseActivity {
     private Button btViewDetail, btRemain, btLineup, btCancel;
@@ -83,6 +99,17 @@ public class ProductSubunitListActivity extends BaseActivity {
     private List<EoilistBean.ResultBean> eoiList = new ArrayList<>();
     private boolean isSequence = false;
 
+    //EOI充值
+
+    private Dialog eoiPayDialog;
+    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit, tvDes, tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
+    private ImageView ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
+    private LinearLayout llCertificate;
+    private String payment_method;
+    private String picPath = "";
+    private ArrayList<String> imagePaths = new ArrayList<>();
+    private static final int REQUEST_CAMERA_CODE = 10;
+
     @Override
     protected int setContentView() {
         return R.layout.activity_view_more;
@@ -115,16 +142,11 @@ public class ProductSubunitListActivity extends BaseActivity {
         }
         if (bean != null) {
             if (bean instanceof List) {//点击查看所有传递过来的集合对象
-            /*data.clear();
-            data.addAll((List)bean);
-            Log.e("TAG", "initView: "+"集合");*/
                 String proName = bundle.getString("productName");
                 setTitle(proName);
                 getListData();
             } else {//点击单个item传递过来的对象
                 childBean = (ProductListBean.ResultBean.ChildsBean) bean;
-            /*data.clear();
-            data.add(childBean);*/
                 bedRoomNum = childBean.getBedroom();
                 product_id = (String) bundle.get("productId");
                 string = bundle.getString("productName");
@@ -135,15 +157,10 @@ public class ProductSubunitListActivity extends BaseActivity {
     }
 
     private void getViews() {
-        /*tvSelect = getViewById(R.id.tvSelect);
-        tvSelect.setVisibility(View.VISIBLE);*/
         rightRtitle.setTextColor(ContextCompat.getColor(this, R.color.redyellow));
         setRightTitle(R.string.select, mOnClickListener);
         ivSearch = getViewById(R.id.rightSearchLinearLayout);
         ivSearch.setVisibility(View.GONE);
-        //tvSelect.setOnClickListener(mOnClickListener);
-        //tvRightDes.setBackgroundColor(Color.parseColor("#e14143"));
-        //tvRightDes.setBackground(ContextCompat.getDrawable(this,R.drawable.button_bac));
         tvPrice = getViewById(R.id.tvPrice);
         tvPrice.setOnClickListener(mOnClickListener);
         lvHouseDetail = getViewById(R.id.lvHouseDetail);
@@ -303,43 +320,6 @@ public class ProductSubunitListActivity extends BaseActivity {
         Gson gson = new Gson();
         ProSubunitListBean pslb = gson.fromJson(s, ProSubunitListBean.class);
         data = pslb.getResult().getProperty();
-        //按照集合中元素属性进行排序
-        /*Collections.sort(data, new Comparator<ProSubunitListBean.ResultBean.PropertyBean>() {
-            @Override
-            public int compare(ProSubunitListBean.ResultBean.PropertyBean o1, ProSubunitListBean.ResultBean.PropertyBean o2) {
-                if (TextUtils.isDigitsOnly(o1.getProduct_childs_unit_number()) && TextUtils.isDigitsOnly(o2.getProduct_childs_unit_number())) {
-                    if (Integer.parseInt(o1.getProduct_childs_unit_number()) >
-                            Integer.parseInt(o2.getProduct_childs_unit_number())) {
-                        return 1;
-                    }
-                    if (Integer.parseInt(o1.getProduct_childs_unit_number()) ==
-                            Integer.parseInt(o2.getProduct_childs_unit_number())) {
-                        return 0;
-                    }
-                } else {
-                    if (StringUtils.containLeter(o1.getProduct_childs_unit_number()) && StringUtils.containLeter(o2.getProduct_childs_unit_number())) {
-                        if (StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
-                                .equals(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()))) {
-                            if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) >
-                                    Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
-                                return 1;
-                            }
-                            if (Integer.parseInt(StringUtils.getDigtalFromString(o1.getProduct_childs_unit_number())) ==
-                                    Integer.parseInt(StringUtils.getDigtalFromString(o2.getProduct_childs_unit_number()))) {
-                                return 0;
-                            }
-                        } else {
-                            return StringUtils.getLetterFromString(o1.getProduct_childs_unit_number())
-                                    .compareTo(StringUtils.getLetterFromString(o2.getProduct_childs_unit_number()));
-                        }
-                    }
-                    return o1.getProduct_childs_unit_number().compareTo(o2.getProduct_childs_unit_number());
-                }
-
-                return -1;
-            }
-        });
-*/
         //按照价格排序
         sortPriceLowToHigh(data);
         //找出eoi元素
@@ -467,26 +447,6 @@ public class ProductSubunitListActivity extends BaseActivity {
                 case R.id.rightTitle:
                     optionsPickerView.show();
                     break;
-
-                /*case R.id.ivHousePic:
-                    if (bund == null) {
-                        bund = new Bundle();
-                    }
-                    if (prs != null && prs.getImg_content().size() > 0) {
-                        bund.putSerializable("img_content", (Serializable) prs.getImg_content());
-                        ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
-                    } else {
-                        if (BaseApplication.getInstance().getPrs() != null && BaseApplication.getInstance().getPrs().getProduct_id() == Integer.parseInt(product_id)) {
-                            prs = BaseApplication.getInstance().getPrs();
-                            if (prs.getImg_content().size() > 0) {
-                                bund.putSerializable("img_content", (Serializable) prs.getImg_content());
-                                ActivitySkip.forward(ProductSubunitListActivity.this, ImageShowActivity.class, bund);
-                            }
-                        } else {
-                            getItemProductDetail();
-                        }
-                    }
-                    break;*/
                 //价格排序
                 case R.id.tvPrice:
                     if (!isSequence) {
@@ -532,11 +492,88 @@ public class ProductSubunitListActivity extends BaseActivity {
                     break;
                 //排队
                 case R.id.btLineup:
-                    getEoiData(data.get(pos));
-                    break;
-                case R.id.btCancel:
                     if (mCustomePopuWindow != null) {
                         mCustomePopuWindow.dismiss();
+                    }
+
+                    showEoiPay();
+                    break;
+
+
+
+                /*case R.id.etUploadTime:
+                    pvCustomTime.show();
+                    break;*/
+                //eoi充值
+                case R.id.ivCash:
+                    if (llCertificate.getVisibility() == View.GONE) {
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.recash));
+                    payment_method = "1";
+                    break;
+                case R.id.ivIdCard:
+                    if (llCertificate.getVisibility() == View.GONE) {
+                        llCertificate.setVisibility(View.VISIBLE);
+                    }
+                    tvMoneyNum.setText("$ 300.00");
+                    tvPayMethod.setText(getString(R.string.transfer));
+                    payment_method = "4";
+                    break;
+                case R.id.ivAlipay:
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        llCertificate.setVisibility(View.GONE);
+                    }
+                    tvPayMethod.setText(R.string.alipay);
+                    tvMoneyNum.setText("￥ 2000.00");
+                    payment_method = "6";
+                    break;
+                case R.id.ivWeixinPay:
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        llCertificate.setVisibility(View.GONE);
+                    }
+                    tvPayMethod.setText(R.string.wechatpay);
+                    tvMoneyNum.setText("￥ 2000.00");
+                    payment_method = "7";
+                    break;
+                case R.id.ivCertificate:
+                    Acp.getInstance(ProductSubunitListActivity.this).request(new AcpOptions.Builder()
+                                    .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
+                                            , Manifest.permission.READ_EXTERNAL_STORAGE)
+                                    .build(),
+                            new AcpListener() {
+                                @Override
+                                public void onGranted() {
+
+                                    PhotoPickerIntent intent = new PhotoPickerIntent(ProductSubunitListActivity.this);
+                                    intent.setSelectModel(SelectModel.SINGLE);
+                                    intent.setShowCarema(true); // 是否显示拍照
+                                    // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                                    intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                                    startActivityForResult(intent, REQUEST_CAMERA_CODE);
+                                }
+
+                                @Override
+                                public void onDenied(List<String> permissions) {
+                                    ToasShow.showToastCenter(ProductSubunitListActivity.this, permissions.toString() + "权限拒绝");
+                                }
+                            });
+                    break;
+                //提交eoi
+                case R.id.tvEoiSubmit:
+                    Log.e("submitEoi", "onClick: " + "submitEoi");
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        if (picPath == "") {
+                            ToasShow.showToastCenter(ProductSubunitListActivity.this, getString(R.string.picpath));
+                        }
+                    }
+                    if (tvMoneyNum.getText().equals("-")) {
+                        ToasShow.showToastCenter(ProductSubunitListActivity.this, getString(R.string.pay_method));
+                    } else {
+                        //提交eoi
+                        Log.e("submitEoi", "onClick: " + "submitEoi");
+                        submitEoi();
                     }
                     break;
                 //视频
@@ -605,105 +642,111 @@ public class ProductSubunitListActivity extends BaseActivity {
         adapter.notifyDataSetChanged();
     }
 
-    /**
-     * 获取充值列表
-     */
-    private void getEoiData(final ProSubunitListBean.ResultBean.PropertyBean propertyBean) {
-        EasyHttp.get(Contants.EOI_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("page", "1")
-                .params("number", "100")
-                .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCompany_id() + "")
-                .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "")
-                .params("property_id", "")
-                .params("is_use", "0")
-                .params("house", "")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+    private void showEoiPay() {
+        if (eoiPayDialog == null) {
+            eoiPayDialog = new Dialog(ProductSubunitListActivity.this);
+            eoiPayDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            eoiPayDialog.setContentView(R.layout.eoi_operate_view);
+            Window dialogWindow = eoiPayDialog.getWindow();
+            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            lp.x = MyUtils.getStatusBarHeight(ProductSubunitListActivity.this);
+            dialogWindow.setAttributes(lp);
+            dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+            dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
+            initDialogViews(eoiPayDialog);
+            eoiPayDialog.show();
+        } else {
+            eoiPayDialog.show();
+        }
+    }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("TAG", "onSuccess: " + json);
-                        closeDialog();
-                        Gson gson = new Gson();
-                        try {
-                            JSONObject jsonObject = new JSONObject(json);
-                            if (jsonObject.getInt("code") == 1) {
-                                // EoilistBean eoilistBean = gson.fromJson(s, EoilistBean.class);
-                                if (jsonObject.getString("msg").equals(getResources().getString(R.string.nodata))) {
-                                    ToasShow.showToastCenter(ProductSubunitListActivity.this, getString(R.string.no_eoi));
-                                } else {
-                                    EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
-                                    eoiList = eoilistBean.getResult();
-                                    if (eoiList.size() > 0) {
-                                        eoiLineUp(propertyBean, eoiList.get(0).getProduct_eois_id() + "");
-                                    }
-                                }
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                });
-
+    private void initDialogViews(Dialog dialog) {
+        tvMoneyNum = (TextView) dialog.findViewById(R.id.tvMoneyNum);
+        tvPayMethod = (TextView) dialog.findViewById(R.id.tvPayMethod);
+        tvEoiSubmit = (TextView) dialog.findViewById(R.id.tvEoiSubmit);
+        ivCash = (ImageView) dialog.findViewById(R.id.ivCash);
+        ivIdCard = (ImageView) dialog.findViewById(R.id.ivIdCard);
+        ivAlipay = (ImageView) dialog.findViewById(R.id.ivAlipay);
+        ivWechatPay = (ImageView) dialog.findViewById(R.id.ivWeixinPay);
+        llCertificate = (LinearLayout) dialog.findViewById(R.id.llCertificate);
+        ivCertificate = (ImageView) dialog.findViewById(R.id.ivCertificate);
+        ivCash.setOnClickListener(mOnClickListener);
+        ivIdCard.setOnClickListener(mOnClickListener);
+        ivAlipay.setOnClickListener(mOnClickListener);
+        ivWechatPay.setOnClickListener(mOnClickListener);
+        tvEoiSubmit.setOnClickListener(mOnClickListener);
+        ivCertificate.setOnClickListener(mOnClickListener);
 
     }
 
 
-    //eoi排队请求
-    private void eoiLineUp(ProSubunitListBean.ResultBean.PropertyBean propertyBean, String eoi) {
-        HttpParams httpParams=new HttpParams();
-        httpParams.put("eoi_id", eoi);
+    /**
+     * 充值EOI
+     */
+    private void submitEoi() {
+        String customer_id = ((CustomBean.ResultBean) ObjectSaveUtil.readObject(ProductSubunitListActivity.this, "custome")).getCustomer_id() + "";
+        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
+            @Override
+            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
+
+
+            }
+        };
+
+        HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
-        httpParams.put("product_id", propertyBean.getProduct_id() + "");
-        httpParams.put("product_child_id", propertyBean.getProduct_childs_id()+ "");
-        EasyHttp.post(Contants.EOI_USE)
+        httpParams.put("customer_id", customer_id);
+        httpParams.put("product_id", data.get(pos).getProduct_id() + "");
+        httpParams.put("product_childs_id", data.get(pos).getProduct_childs_id() + "");
+        httpParams.put("pay_method", payment_method);
+
+
+        if (!picPath.equals("")) {
+            File picFile = new File(picPath);
+            httpParams.put("file", picFile, mUIProgressResponseCallBack);
+        }
+
+
+        Log.e("参数**", "httpParams:" + httpParams.toString());
+        EasyHttp.post(Contants.EOI_RECHARGE_)
                 .cacheMode(CacheMode.NO_CACHE)
-                .timeStamp(true)
                 .params(httpParams)
+                .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
-                        super.onStart();
                         showDialog();
                     }
 
                     @Override
                     public void onError(ApiException e) {
                         closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                        ToasShow.showToast(ProductSubunitListActivity.this, getResources().getString(R.string.network_error));
                     }
 
                     @Override
                     public void onSuccess(String json) {
-                        Log.e("TAG", "onSuccess: " );
+                        Log.e("onSuccess***", "UserBean:" + json);
                         closeDialog();
                         Gson gs = new Gson();
-                        ErrorBean e = gs.fromJson(json, ErrorBean.class);
-                        if (e.getCode().equals("1")) {
-                            ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
-                        } else {
-                            ToasShow.showToastCenter(ProductSubunitListActivity.this, e.getMsg());
+                        EOIPayBean result = gs.fromJson(json, EOIPayBean.class);
+                        ToasShow.showToastCenter(ProductSubunitListActivity.this, result.getMsg());
+                        if (result.getCode().equals("1")) {
+                            eoiPayDialog.dismiss();
+                            if (payment_method.equals("6") || payment_method.equals("7")) {
+                                Bundle bundle = new Bundle();
+                                bundle.putString("payurlId", result.getTrust_account_id());
+                                bundle.putString("payment_method", payment_method);
+                                ActivitySkip.forward(ProductSubunitListActivity.this, PaymentQrActivity.class, bundle);
+                            }
+
                         }
                     }
                 });
 
 
     }
+
 
     private void getItemProductDetail() {
         EasyHttp.get(Contants.PRODUCT_DETAIL)
@@ -841,5 +884,38 @@ public class ProductSubunitListActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CAMERA_CODE:
+                    ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
+                    loadAdpater(list);
+                    break;
+                //从相册选取图片
+                case ExtraName.ALBUM_PICTURE:
+                    Uri selectedPhotoUri = null;
+                    selectedPhotoUri = data.getData();
+                    picPath = BitmapUtil.getImagePath(ProductSubunitListActivity.this, selectedPhotoUri, null, null);
+                    Picasso.with(this).load(selectedPhotoUri).resize(ivCertificate.getWidth(), ivCertificate.getHeight()).into(ivCertificate);
+            }
+        }
+    }
+
+    private void loadAdpater(ArrayList<String> paths) {
+        if (imagePaths != null && imagePaths.size() > 0) {
+            imagePaths.clear();
+        }
+        if (paths.contains("000000")) {
+            paths.remove("000000");
+        }
+        paths.add("000000");
+        imagePaths.addAll(paths);
+        picPath = imagePaths.get(0);
+        Picasso.with(ProductSubunitListActivity.this).load("file://" + picPath).resize(ivCertificate.getWidth(), ivCertificate.getHeight())
+                .centerInside().into(ivCertificate);
+
+    }
 
 }
