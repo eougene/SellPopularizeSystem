@@ -101,7 +101,7 @@ public class SaleRecordAdapter extends BaseAdapter {
             //单元号没有添加
             viewHolder.tvSaleDes.setText(viewHolder.resultBean.getProduct_name().getProduct_name() + "/" + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
         } else {
-            viewHolder.tvSaleDes.setText("-/" + "-/" + "-/");
+            viewHolder.tvSaleDes.setText("None - -");
 
         }
 
