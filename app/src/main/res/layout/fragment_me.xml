@@ -184,6 +184,35 @@
                     android:layout_marginLeft="@dimen/padding_margin_50"
                     android:background="@color/shallow_gray"/>
 
+                <RelativeLayout
+                    android:id="@+id/saleEOI"
+                    style="@style/MatchWrap"
+                    android:padding="@dimen/padding_margin_12">
+
+                    <ImageView
+                        android:id="@+id/eoi"
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/eoi_s"/>
+
+                    <TextView
+                        style="@style/WrapWrap"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/padding_margin_10"
+                        android:layout_toRightOf="@+id/eoi"
+                        android:text="@string/eoi_"
+                        android:textColor="@color/gray"
+                        android:textSize="@dimen/tv_size_15"/>
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginLeft="@dimen/padding_margin_50"
+                    android:background="@color/shallow_gray"/>
+
 
                 <RelativeLayout
                     android:id="@+id/rlCommission"

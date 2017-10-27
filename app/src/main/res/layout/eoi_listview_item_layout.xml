@@ -2,40 +2,49 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:orientation="vertical">
+              android:orientation="horizontal">
 
-    <RelativeLayout
-        android:id="@+id/llLeft"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tvEoiNum"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_margin_10"
+        android:text="@string/bianhao"
+        android:textColor="@color/black"
+        android:textSize="@dimen/tv_size_12"/>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="4"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_margin_10"
+        android:paddingTop="@dimen/padding_margin_10">
 
         <TextView
-            android:id="@+id/tvEoiNum"
-            android:layout_width="wrap_content"
+            android:id="@+id/eoiTitle"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="@dimen/padding_margin_12"
-            android:layout_marginLeft="@dimen/padding_margin_16"
-            android:layout_marginTop="@dimen/padding_margin_12"
+            android:layout_gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
             android:text="@string/bianhao"
-            android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12"/>
+            android:textColor="@color/light_blue"
+            android:textSize="@dimen/tv_size_10"/>
+
 
         <LinearLayout
-            android:visibility="gone"
             android:id="@+id/promtionLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/padding_margin_10"
-            android:layout_marginRight="@dimen/padding_margin_10"
-            android:layout_marginTop="@dimen/padding_margin_12"
-            android:layout_toLeftOf="@+id/tvEoiStatusDes"
-            android:layout_toRightOf="@+id/tvEoiNum"
-            android:orientation="horizontal"
-            >
+            android:layout_marginBottom="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_4"
+            android:orientation="horizontal">
 
 
             <TextView
@@ -44,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_10"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -59,7 +68,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_10"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -74,7 +83,7 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_12"/>
+                android:textSize="@dimen/tv_size_10"/>
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -85,19 +94,36 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/tvEoiStatusDes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
             android:layout_marginRight="@dimen/padding_margin_4"
-            android:layout_marginTop="@dimen/padding_margin_4"
+            android:layout_gravity="right"
             android:text="@string/title"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_12"/>
+            android:textSize="@dimen/tv_size_10"/>
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/salesName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/padding_margin_4"
+            android:layout_marginTop="@dimen/padding_margin_4"
+          android:layout_gravity="right"
+            android:text="@string/title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/tv_size_10"/>
+
+    </LinearLayout>
 
 </LinearLayout>
