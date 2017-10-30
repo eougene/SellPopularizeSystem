@@ -36,7 +36,8 @@ import org.json.JSONObject;
 
 public class InvoiceActivity extends BaseActivity {
     private TextView consentTextView, resoluteTextView, subButton, tvInvoiceNo, tvAbn, tvPhone, tvAddress, tvTotal, tvAccountName,
-            tvDate, tvBillTO, tvAcn, tvAbcPtyLtd, tvFor, tvDescription, tvAmountIncl, tvSubtotal, tvGst, tvAbnRegisterd, tvOther, tvFinalDes, tvStatus;
+            tvDate, tvBillTO, tvAcn, tvAbcPtyLtd, tvFor, tvDescription, tvAmountIncl, tvSubtotal, tvGst, tvAbnRegisterd, tvOther,
+            tvFinalDes, tvStatus,tvBsb,tvAccountNum;
     private EditText moneyEdit, memoEdit;
     private RelativeLayout rlFirb;
     private View firbPwView;
@@ -49,6 +50,7 @@ public class InvoiceActivity extends BaseActivity {
     private InvoiceDetailBean.ResultBean rb;
     private String status;
     private String moneyString;
+    private String forx;
 
     @Override
     protected int setContentView() {
@@ -81,11 +83,13 @@ public class InvoiceActivity extends BaseActivity {
         tvTotal = getViewById(R.id.tvTotal);
         tvAccountName = getViewById(R.id.accountName);
         tvFinalDes = getViewById(R.id.tvFinalDes);
-
+        tvBsb=getViewById(R.id.tvBsb);
+        tvAccountNum=getViewById(R.id.tvAccountNumber);
         if (getIntent().getExtras() != null) {
             Bundle bundle = getIntent().getExtras();
             rb = (InvoiceDetailBean.ResultBean) bundle.getSerializable("bean");
             status = bundle.getString("status");
+            forx = bundle.getString("for");
             setInfo();
         }
 
@@ -107,8 +111,8 @@ public class InvoiceActivity extends BaseActivity {
         tvAbn.setText(rb.getAbn());
         tvPhone.setText(rb.getPhone());
         tvAddress.setText(rb.getAddress());
-        tvDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(String.valueOf(rb.getDate()) + "000")));
-        tvFor.setText(rb.getForX());
+        tvDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(String.valueOf(rb.getDate()) + "000")));
+        tvFor.setText(forx);
         tvDescription.setText(rb.getDescription());
         tvAmountIncl.setText(rb.getAmount());
         tvSubtotal.setText(rb.getSubtotal());
@@ -117,6 +121,8 @@ public class InvoiceActivity extends BaseActivity {
         tvTotal.setText(rb.getTotal());
         tvAccountName.setText(rb.getAccount_name());
         tvFinalDes.setText(Html.fromHtml(getResources().getString(R.string.deposit_declare)));
+        tvBsb.setText(rb.getBsb());
+        tvAccountNum.setText(rb.getAccount_number());
         if (!status.equals("1")) {
             getViewById(R.id.invoiceBottomLinear).setVisibility(View.GONE);
         } else {
@@ -144,6 +150,8 @@ public class InvoiceActivity extends BaseActivity {
                 case R.id.resoluteTextView:
                     firbSelectPopWindow.showAtLocation(InvoiceActivity.this.findViewById(R.id.primaryLinear), Gravity.BOTTOM, 0, 0);
                     break;
+                    default:
+                        break;
 
             }
         }
