@@ -131,7 +131,7 @@ public class CommissionAdapter extends BaseAdapter {
                 viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - " + " / - ");
 
             } else {
-                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + " - / " + MyUtils.date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
 
             }
 
@@ -249,7 +249,7 @@ public class CommissionAdapter extends BaseAdapter {
             if (null == viewHolder.resultBean.getFirst_time() || TextUtils.isEmpty(viewHolder.resultBean.getFirst_time() + "")) {
                 viewHolder.firstCommissionDate.setText("-");
             } else {
-                viewHolder.firstCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
+                viewHolder.firstCommissionDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getFirst_time() + "000")));
             }
         } else {
             viewHolder.firstCommissionDate.setText("-");
@@ -264,7 +264,7 @@ public class CommissionAdapter extends BaseAdapter {
             if (null == viewHolder.resultBean.getSecond_time() || TextUtils.isEmpty(viewHolder.resultBean.getSecond_time() + "")) {
                 viewHolder.secondCommissionDate.setText("-");
             } else {
-                viewHolder.secondCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
+                viewHolder.secondCommissionDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getSecond_time() + "000")));
             }
 
 
@@ -282,7 +282,7 @@ public class CommissionAdapter extends BaseAdapter {
             if (null == viewHolder.resultBean.getThird_time() || TextUtils.isEmpty(viewHolder.resultBean.getThird_time() + "")) {
                 viewHolder.thirdCommissionDate.setText("-");
             } else {
-                viewHolder.thirdCommissionDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
+                viewHolder.thirdCommissionDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getThird_time() + "000")));
             }
 
         } else {
@@ -419,6 +419,7 @@ public class CommissionAdapter extends BaseAdapter {
                     InvoiceDetailBean.ResultBean rb = detailBean.getResult();
                     Bundle bun = new Bundle();
                     bun.putSerializable("bean", rb);
+                    bun.putString("for",jsonObject.getJSONObject("result").getString("for"));
                     if (step.equals("1")){
                         bun.putString("status", resultBean.getOne_invoice_status() + "");
                     }else if (step.equals("2")){
