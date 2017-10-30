@@ -98,8 +98,7 @@ public class SaleRecordAdapter extends BaseAdapter {
 
         //说明
         if (null != viewHolder.resultBean.getProduct_name()) {
-            //单元号没有添加
-            viewHolder.tvSaleDes.setText(viewHolder.resultBean.getProduct_name().getProduct_name() + "/" + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
+            viewHolder.tvSaleDes.setText(viewHolder.resultBean.getProduct_name().getProduct_name() + "-" + viewHolder.resultBean.getProduct_info().getProduct_childs_lot_number() +"-" + viewHolder.resultBean.getProduct_info().getProduct_childs_unit_number());
         } else {
             viewHolder.tvSaleDes.setText("None - -");
 
