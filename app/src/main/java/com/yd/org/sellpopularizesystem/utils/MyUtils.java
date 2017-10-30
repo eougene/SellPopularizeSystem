@@ -1,5 +1,6 @@
 package com.yd.org.sellpopularizesystem.utils;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentUris;
@@ -16,6 +17,7 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.CalendarContract;
 import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -31,6 +33,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -62,7 +65,7 @@ public class MyUtils {
 
     public static MyUtils getInstance() {
         if (utils == null)
-            utils = new MyUtils();
+        {utils = new MyUtils();}
         return utils;
     }
 
@@ -298,10 +301,22 @@ public class MyUtils {
                 .getSystemService(Context.TELEPHONY_SERVICE);
         String dwc = null;
         try {
-            dwc = tm.getDeviceId();
+            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                dwc = tm.getDeviceId();
+                dwc = getSN(context);
+                return dwc;
+            }
+
         } catch (Exception e) {
             // TODO: handle exception
-            dwc = getSN(context);
+
         }
         return dwc;
     }
@@ -349,7 +364,7 @@ public class MyUtils {
         if (time != null && !"".equals(time)) {
             Date date = stringToDate(format, time);
             if (date == null)
-                return time;
+            {return time;}
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
             int years = calendar.get(Calendar.YEAR);
@@ -919,7 +934,7 @@ public class MyUtils {
         if (dates == null || dates.length < 3) {
             return 0;
         }
-        String today = utils.date2String("yyyy/MM/dd", System.currentTimeMillis());
+        String today = MyUtils.date2String("yyyy/MM/dd", System.currentTimeMillis());
         int year = Parse.getInstance().parseInt(today.substring(0, 4));
         int month = Parse.getInstance().parseInt(today.substring(5, 7));
         int day = Parse.getInstance().parseInt(today.substring(8, 10));
@@ -963,11 +978,17 @@ public class MyUtils {
                 context.getResources().getDisplayMetrics());
     }
 
+    /**
+     * 根据手机的分辨率从 dp 的单位 转成为 px(像素)
+     */
     public static int dip2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
 
+    /**
+     * 根据手机的分辨率从 px(像素) 的单位 转成为 dp
+     */
     public static int px2dip(Context context, float pxValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f);
