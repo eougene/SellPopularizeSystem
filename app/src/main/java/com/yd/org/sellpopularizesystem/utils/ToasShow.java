@@ -71,7 +71,7 @@ public class ToasShow {
      */
     public static void showToastBottom(Context context, String msg) {
         Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, 0, 0);
+        toast.setGravity(Gravity.CENTER, 0, 0);
         toast.show();
     }
 
@@ -85,7 +85,7 @@ public class ToasShow {
      */
     public static void showToastBottom(Context context, String msg, int x, int y) {
         Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.BOTTOM, x, y);
+        toast.setGravity(Gravity.CENTER, x, y);
         toast.show();
     }
 

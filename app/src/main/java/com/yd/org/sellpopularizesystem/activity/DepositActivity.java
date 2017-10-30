@@ -40,7 +40,15 @@ public class DepositActivity extends BaseActivity {
         tvMoneyy = getViewById(R.id.tvMoneyy);
         tvDown = getViewById(R.id.tvDown);
         edDate = getViewById(R.id.edDate);
-        getInfo();
+       // getInfo();
+
+        tvName.setText(resultBean.getCustomer_surname() + getString(R.string.single_blank_space) + resultBean.getCustomer_first_name());
+        tvProperty.setText(resultBean.getProduct_name().getProduct_name() + "-" + resultBean.getProduct_info().getProduct_childs_lot_number() +"-" + resultBean.getProduct_info().getProduct_childs_unit_number());
+        tvMoneyy.setText("$" + getString(R.string.single_blank_space)+ "300.00");
+
+        //落款时间
+        edDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(resultBean.getBuy_money_check_time()+"000")));
+
 
 
     }
