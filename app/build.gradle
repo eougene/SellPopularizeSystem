@@ -3,13 +3,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.yd.org.sellpopularizesystem"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 20171012
-        versionName "1.10.2"
+        versionCode 20171026
+        versionName "1.10.4"
 
         //个推配置文件
         manifestPlaceholders = [
