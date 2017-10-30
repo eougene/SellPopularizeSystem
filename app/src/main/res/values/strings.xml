@@ -679,7 +679,7 @@
     <string name="proDelAddress">地址:</string>
     <string name="eoi_">EOI记录</string>
     <string name="done_re">已退款</string>
-    <string name="eoi_cancel">退款申请已绝经</string>
+    <string name="eoi_cancel">退款申请已拒绝</string>
     <string name="pdel_">套数</string>
     <string name="unit_list">单元列表</string>
 
