@@ -44,6 +44,7 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
     private String eoi_ID = "";
 
 
+
     @Override
     protected int setContentView() {
         return R.layout.activity_eoi;
