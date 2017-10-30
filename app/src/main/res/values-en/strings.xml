@@ -689,11 +689,11 @@
     <string name="agreement">Wingaid system service agreement</string>
     <string name="choose_zhou">Please choose the state first</string>
     <string name="proDelAddress">Address:</string>
-    <string name="eoi_">EOI记录</string>
-    <string name="done_re">已退款</string>
-    <string name="eoi_cancel">退款申请已绝经</string>
-    <string name="pdel_">套数</string>
-    <string name="unit_list">单元列表</string>
+    <string name="eoi_">EOI List</string>
+    <string name="done_re">Refund</string>
+    <string name="eoi_cancel">Refund rejected</string>
+    <string name="pdel_">Number</string>
+    <string name="unit_list">Unit List</string>
 
 </resources>
 
