@@ -8,7 +8,7 @@ public class Contants {
     /**
      * 域名
      */
-     public static final String DOMAIN = "http://crm.vxda.cn";
+     public static final String DOMAIN = "http://wingaid.vxda.cn";
     //public static final String DOMAIN = "https://www.wingaid.com";
 
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
@@ -128,6 +128,19 @@ public class Contants {
     //创建订单
     //public  static final String CREAT_ORDER =DOMAIN +"/index.php/app/order/create_order";
     public static final String CREAT_ORDER = DOMAIN + "/index.php/appv2/order/create_order";
+
+
+    //使用EOI下单
+    public static final String CREAT_ORDER_EOI = DOMAIN + "/index.php/appv2/neweoi/create_eoi_order";
+    //eoi充值
+    public static final String EOI_RECHARGE_ = DOMAIN + "/index.php/appv2/neweoi/create_eoi";
+    //是否具有EOI购房
+    public static final String IF_EOI = DOMAIN + "/index.php/appv2/neweoi/if_eoi";
+    //eoi列表
+    public static final String EOI_LIST = DOMAIN + "/index.php/appv2/neweoi/eoi_list";
+
+    //eoi退款
+    public static final String EOI_REFUND = DOMAIN + "/index.php/appv2/neweoi/refund_eoi";
     //支付宝支付接口
     public static final String ALIPAY_INTERFACE = DOMAIN + "/index.php/api/index/alipay";
     public static final String AIL_APPPAY = DOMAIN + "/index.php/api/apppay/ali_apppay";
@@ -187,20 +200,6 @@ public class Contants {
 
     //购房记录
     public static final String ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
-    //eoi充值
-    public static final String EOI_RECHARGE = DOMAIN + "/index.php/appv2/eoi/create_eoi";
-    //eoi列表
-    public static final String EOI_LIST = DOMAIN + "/index.php/appv2/eoi/eoi_list";
-    //使用eoi
-    public static final String EOI_USE = DOMAIN + "/index.php/appv2/eoi/use_eoi";
-    //判断是否有Eoi资格
-    public static final String EOI_QUALIFICATION =DOMAIN +"/index.php/appv2/neweoi/if_eoi";
-    //取消排队
-    public static final String CANCEL_EOI_SORT = DOMAIN + "/index.php/appv2/eoi/cancel_eoi_sort";
-    //上传eoi付款凭证
-    public static final String UPLOAD_EOI_MONEY = DOMAIN + "/index.php/appv2/eoi/upload_eoi_money";
-    //退款
-    public static final String CANCEL_EOI = DOMAIN + "/index.php/appv2/eoi/cancel_eoi";
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
     public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
