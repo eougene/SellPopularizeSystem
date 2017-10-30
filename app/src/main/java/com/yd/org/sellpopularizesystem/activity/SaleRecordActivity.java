@@ -148,7 +148,7 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
         }
-        if (saleAdapter!=null){
+        if (saleAdapter != null) {
             saleAdapter.addMore(sobRbData);
         }
         locatedOrderIdPos();
@@ -336,7 +336,6 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-
 
 
             }

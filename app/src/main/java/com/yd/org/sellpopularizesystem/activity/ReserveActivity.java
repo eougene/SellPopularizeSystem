@@ -29,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
@@ -42,6 +43,7 @@ import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
 import com.yd.org.sellpopularizesystem.clippicture.ClipPictureActivity;
 import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
+import com.yd.org.sellpopularizesystem.javaBean.IfEoiBean;
 import com.yd.org.sellpopularizesystem.javaBean.Lawyer;
 import com.yd.org.sellpopularizesystem.javaBean.LawyerBean;
 import com.yd.org.sellpopularizesystem.javaBean.ProSubunitListBean;
@@ -80,7 +82,7 @@ public class ReserveActivity extends BaseActivity {
             tvReCus, tvReLawyer, tvReGoal, tvRePay, tvRePayType, tvReCusAdd, tvCompany, tvShareholder, isRead;
     private TextView tvTitleDes, tvMoneyNum, tvPayMethod, tvEoiSubmit;
     private EditText etCopurchase;
-    private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay,ivEoiPay;
+    private ImageView ivReLawyer, ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay, ivEoiPay;
     private RelativeLayout rlReGoal, rlPayType, rlPop, rlPayTypePop, rlReLawyer, rlRecus;
     private ProSubunitListBean.ResultBean.PropertyBean bean;
     private LawyerBean.ResultBean lawBean;
@@ -101,6 +103,8 @@ public class ReserveActivity extends BaseActivity {
     public static ReserveActivity reserveActivity;
     private CustomBean.ResultBean custome;
     private CheckBox check_box;
+    private boolean isEOI = false;
+    private IfEoiBean errorBean = new IfEoiBean();
 
     public Handler mHan = new Handler() {
         @Override
@@ -202,6 +206,7 @@ public class ReserveActivity extends BaseActivity {
         btFromAlbum = (Button) msetPhotoView.findViewById(R.id.btFromAlbum);
         btPhotoCancel = (Button) msetPhotoView.findViewById(R.id.btPhotoCancel);
         initData();
+        ifEOI();
     }
 
     //接受来自客户详情页发送过来的消息
@@ -215,6 +220,59 @@ public class ReserveActivity extends BaseActivity {
         }
     };
 
+
+    /**
+     * 是否具有EOI预定的资格
+     */
+    private void ifEOI() {
+
+
+        HttpParams httpParams = new HttpParams();
+        httpParams.put("user_id", SharedPreferencesHelps.getUserID());
+        httpParams.put("customer_id", custome.getCustomer_id() + "");
+        httpParams.put("product_id", bean.getProduct_id() + "");
+        EasyHttp.get(Contants.IF_EOI)
+                .cacheMode(CacheMode.NO_CACHE)
+                .params(httpParams)
+                .timeStamp(true)
+                .execute(new SimpleCallBack<String>() {
+                    @Override
+                    public void onStart() {
+                        showDialog();
+                    }
+
+                    @Override
+                    public void onError(ApiException e) {
+                        closeDialog();
+
+                    }
+
+                    @Override
+                    public void onSuccess(String json) {
+                        closeDialog();
+                        Log.e("onSuccess***", "UserBean:" + json);
+
+                        Gson gson = new Gson();
+                        errorBean = gson.fromJson(json, IfEoiBean.class);
+
+                        Log.e("json", "json:" + errorBean.getMsg());
+                        if (errorBean.getCode().equals("1")) {
+                            isEOI = true;
+                            ivEoiPay.setVisibility(View.VISIBLE);
+
+                        } else {
+                            isEOI = false;
+                            ivEoiPay.setVisibility(View.GONE);
+                        }
+
+
+                    }
+                });
+
+
+    }
+
+
     private void initPayMethodDialog() {
         payMethodDialog = new Dialog(this);
         payMethodDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -224,7 +282,7 @@ public class ReserveActivity extends BaseActivity {
         lp.x = MyUtils.getStatusBarHeight(this);
         dialogWindow.setAttributes(lp);
         dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-        dialogWindow.setGravity(Gravity.CENTER | Gravity.CENTER);
+        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
         initPayMethodDialogViews();
     }
 
@@ -238,7 +296,7 @@ public class ReserveActivity extends BaseActivity {
         ivIdCard = (ImageView) payMethodDialog.findViewById(R.id.ivIdCard);
         ivAlipay = (ImageView) payMethodDialog.findViewById(R.id.ivAlipay);
         ivWechatPay = (ImageView) payMethodDialog.findViewById(R.id.ivWeixinPay);
-        ivEoiPay= (ImageView) payMethodDialog.findViewById(R.id.ivEoiPay);
+        ivEoiPay = (ImageView) payMethodDialog.findViewById(R.id.ivEoiPay);
         llCertificate = (LinearLayout) payMethodDialog.findViewById(R.id.llCertificate);
         ivCertificate = (ImageView) payMethodDialog.findViewById(R.id.ivCertificate);
         ivCash.setOnClickListener(mOnClickListener);
@@ -356,7 +414,7 @@ public class ReserveActivity extends BaseActivity {
                 case R.id.btEditCusInfo:
                     bun.putSerializable("cun", custome);
                     bun.putString("add", "completeinfo");
-                    Log.e("TAG", "customer_id: "+ custome.getCustomer_id());
+                    Log.e("TAG", "customer_id: " + custome.getCustomer_id());
                     ActivitySkip.forward(ReserveActivity.this, CustomDetailedActivity.class, bun);
                     overridePendingTransition(R.anim.enter_anim, 0);
                     cusSelectPop.dismiss();
@@ -390,7 +448,6 @@ public class ReserveActivity extends BaseActivity {
                     break;
                 //支付方式
                 case R.id.rlPayType:
-                    // rePayTypePopuWindow.showAtLocation(ReserveActivity.this.getViewById(R.id.rlReserver), Gravity.BOTTOM, 0, 0);
                     payMethodDialog.show();
                     break;
                 case R.id.rlPop:
@@ -516,7 +573,18 @@ public class ReserveActivity extends BaseActivity {
                     payment_method = "7";
                     break;
                 case R.id.ivEoiPay:
-                    judgeEoiQualification();
+
+                    if (llCertificate.getVisibility() == View.VISIBLE) {
+                        llCertificate.setVisibility(View.GONE);
+                    }
+                    tvPayMethod.setText("EOI");
+                    if (bean.getCate_id() == 1) {
+                        tvMoneyNum.setText("￥ 300.00");
+                    } else {
+                        tvMoneyNum.setText("￥ 300.00");
+                    }
+                    payment_method = "10";
+
                     break;
                 //开启相机
                 case R.id.ivCertificate:
@@ -525,12 +593,6 @@ public class ReserveActivity extends BaseActivity {
                                     .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
                                             , Manifest.permission.READ_EXTERNAL_STORAGE
                                     )
-                /*以下为自定义提示语、按钮文字
-                .setDeniedMessage()
-                .setDeniedCloseBtn()
-                .setDeniedSettingBtn()
-                .setRationalMessage()
-                .setRationalBtn()*/
                                     .build(),
                             new AcpListener() {
                                 @Override
@@ -541,7 +603,6 @@ public class ReserveActivity extends BaseActivity {
                                     // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
                                     intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
                                     startActivityForResult(intent, REQUEST_CAMERA_CODE);
-
 
 
                                 }
@@ -605,7 +666,7 @@ public class ReserveActivity extends BaseActivity {
         } else if (tvRePayType.getText().equals(getString(R.string.pay_method))) {
             ToasShow.showToastBottom(this, getString(R.string.pay_method));
             return;
-        } else if (TextUtils.isEmpty(picPath) && !payment_method.equals("6") && !payment_method.equals("7")) {
+        } else if (TextUtils.isEmpty(picPath) && !payment_method.equals("6") && !payment_method.equals("7") && !payment_method.equals("10")) {
             ToasShow.showToastBottom(this, getString(R.string.picpath));
             return;
         } else {
@@ -627,38 +688,6 @@ public class ReserveActivity extends BaseActivity {
 
     }
 
-    private void judgeEoiQualification() {
-        showDialog();
-        HttpParams httpParams = new HttpParams();
-        httpParams.put("user_id",SharedPreferencesHelps.getUserID());
-        httpParams.put("customer_id",custome.getCustomer_id()+"");
-        httpParams.put("product_id",bean.getProduct_childs_id()+"");
-        EasyHttp.get(Contants.EOI_QUALIFICATION)
-                .cacheMode(CacheMode.NO_CACHE)
-                .timeStamp(true)
-                .params(httpParams)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        closeDialog();
-                        try {
-                            JSONObject jsonObject=new JSONObject(s);
-                            if (jsonObject.getString("code").equals("0")){
-                                ToasShow.showToastCenter(ReserveActivity.this,jsonObject.getString("msg"));
-                            }else {
-
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-    }
 
     private void showAlertDialog() {
         new AlertDialog.Builder(ReserveActivity.this)
@@ -666,19 +695,32 @@ public class ReserveActivity extends BaseActivity {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //下单
                         commit(payment_method);
+
                     }
                 }).setNegativeButton(R.string.cancel, null).create().show();
     }
 
     private void commit(final String payment_method) {
+        String eoi_id = "";
+        if (isEOI) {
+            for (int i = 0; i < errorBean.getResult().size(); i++) {
+                if (errorBean.getResult().get(i).getStatus() == 1) {
+                    eoi_id = errorBean.getResult().get(i).getStatus() + "";
+                    Log.e("i:", "i:" + i);
+                    break;
+
+                }
+
+            }
+        }
+
 
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
                 int progress = (int) (bytesRead * 100 / contentLength);
-
-
             }
         };
 
@@ -694,7 +736,7 @@ public class ReserveActivity extends BaseActivity {
         httpParams.put("pay_time", "");
         httpParams.put("currency", bean.getCurrency());
         httpParams.put("purchaseReason", tvReGoal.getText().toString().trim());
-        httpParams.put("eoi_id", bean.getIs_eoi() + "");
+        httpParams.put("eoi_id", eoi_id);
 
 
         if (null != picPath && !picPath.equals("")) {
@@ -752,6 +794,72 @@ public class ReserveActivity extends BaseActivity {
 
     }
 
+
+//    /**
+//     * 使用EOI下单
+//     *
+//     * @param payment_method
+//     */
+//    private void eoiPay(final String payment_method) {
+//        HttpParams httpParams = new HttpParams();
+//        httpParams.put("eoi_id", errorBean.getResult().get(0).getEoi_id() + "");
+//        httpParams.put("user_id", SharedPreferencesHelps.getUserID() + "");
+//        httpParams.put("customer_id", customeId);
+//        httpParams.put("product_id", bean.getProduct_id() + "");
+//        httpParams.put("product_childs_id", bean.getProduct_childs_id() + "");
+//        httpParams.put("lawyer_id", lawyer_id + "");
+//        httpParams.put("payment_method", payment_method);
+//        httpParams.put("purchaseReason", tvReGoal.getText().toString().trim());
+//        httpParams.put("co_purchaser", etCopurchase.getText().toString() + "");
+//
+//
+//        Log.e("参数***", "httpParams:" + httpParams.toString());
+//
+//
+//        EasyHttp.post(Contants.CREAT_ORDER_EOI)
+//                .cacheMode(CacheMode.NO_CACHE)
+//                .timeStamp(true)
+//                .params(httpParams)
+//                .execute(new SimpleCallBack<String>() {
+//                    @Override
+//                    public void onStart() {
+//                        showDialog();
+//                    }
+//
+//                    @Override
+//                    public void onError(ApiException e) {
+//                        closeDialog();
+//                        ToasShow.showToastCenter(ReserveActivity.this, e.getMessage());
+//                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(String s) {
+//                        closeDialog();
+//
+//                        Log.e("onSuccess***", "onSuccess:" + s);
+//
+//                        try {
+//                            JSONObject json = new JSONObject(s);
+//                            if (json.getString("code").equals("1")) {
+//                                ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
+//                                finish();
+//                            } else {
+//                                ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
+//
+//                            }
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//
+//
+//                    }
+//                });
+//
+//
+//    }
+
     private String getDigitalFromString(String s) {
         String regEx = "[^0-9]";
         Pattern p = Pattern.compile(regEx);
@@ -790,7 +898,7 @@ public class ReserveActivity extends BaseActivity {
                 //选择客户
                 case ExtraName.RESERVE_TO_CUSTOME:
                     custome = (CustomBean.ResultBean) data.getExtras().getSerializable("custome");
-                    Log.e("TAG", "onActivityResult: "+custome.getCustomer_id());
+                    Log.e("TAG", "onActivityResult: " + custome.getCustomer_id());
                     //custome=cun;
                     tvReCus.setText(custome.getSurname() + getString(R.string.single_blank_space) + custome.getFirst_name());
                     tvReCusAdd.setText(custome.getCountry() + getString(R.string.single_blank_space)

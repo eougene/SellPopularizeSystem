@@ -20,8 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:paddingBottom="@dimen/padding_margin_4"
-            android:paddingTop="@dimen/padding_margin_4"
+            android:paddingBottom="@dimen/padding_margin_6"
+            android:paddingTop="@dimen/padding_margin_6"
             android:text="@string/recharge"
             android:textColor="@color/black"
             android:textSize="@dimen/tv_size_12"/>
@@ -34,8 +34,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/padding_margin_4"
-            android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/padding_margin_6"
+            android:layout_marginTop="@dimen/padding_margin_6">
 
             <TextView
                 android:id="@+id/tvNum"
@@ -65,10 +65,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="@dimen/padding_margin_6"
-                android:layout_weight="0.1"
                 android:gravity="center_vertical|right"
                 android:paddingBottom="@dimen/padding_margin_6"
-                android:paddingRight="@dimen/padding_margin_4"
+                android:paddingRight="@dimen/padding_margin_6"
                 android:paddingTop="@dimen/padding_margin_6"
                 android:text="@string/pay_method"
                 android:textColor="@color/black"
@@ -82,7 +81,7 @@
 
             <ImageView
                 android:id="@+id/ivCash"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
@@ -90,7 +89,7 @@
 
             <ImageView
                 android:id="@+id/ivIdCard"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
@@ -98,7 +97,7 @@
 
             <ImageView
                 android:id="@+id/ivAlipay"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
@@ -106,7 +105,7 @@
 
             <ImageView
                 android:id="@+id/ivWeixinPay"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:scaleType="centerInside"
@@ -114,12 +113,13 @@
 
             <ImageView
                 android:id="@+id/ivEoiPay"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_margin_6"
                 android:layout_weight="1"
+                android:paddingTop="@dimen/padding_margin_6"
                 android:scaleType="centerInside"
-                android:src="@mipmap/eoiorder"/>
+                android:src="@mipmap/eoiorder"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -128,7 +128,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="gone"
+            >
 
             <TextView
                 android:id="@+id/tvUploadTime"
@@ -136,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:layout_marginRight="@dimen/padding_margin_4"
-                android:layout_marginTop="@dimen/padding_margin_4"
+                android:layout_marginTop="@dimen/padding_margin_6"
                 android:paddingBottom="@dimen/padding_margin_4"
                 android:paddingLeft="@dimen/padding_margin_4"
                 android:paddingTop="@dimen/padding_margin_4"

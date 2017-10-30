@@ -20,6 +20,7 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.activity.ChangePassWordActivity;
 import com.yd.org.sellpopularizesystem.activity.CommissionActivity;
+import com.yd.org.sellpopularizesystem.activity.EOIActivity;
 import com.yd.org.sellpopularizesystem.activity.InviteQRActivity;
 import com.yd.org.sellpopularizesystem.activity.LoginActivity;
 import com.yd.org.sellpopularizesystem.activity.MyInfoActivity;
@@ -51,7 +52,7 @@ import java.util.Map;
  */
 
 public class MeFragment extends BaseFragmentView {
-    private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting, relCertificate;
+    private RelativeLayout changePassWordRel, bindAccountRel, saleRecord, rlTeam, rlSetting, relCertificate, saleEOI;
     private TextView tvUserName, tvQr, tvDepositCount;
     private BindAcountPopupWindow acountPopupWindow;
     private CircleImageView ivCustomePhoto;
@@ -98,6 +99,11 @@ public class MeFragment extends BaseFragmentView {
                 //我的信息
                 case R.id.ivCustomePhoto:
                     ActivitySkip.forward(getActivity(), MyInfoActivity.class);
+                    break;
+
+                //EOI记录
+                case R.id.saleEOI:
+                    ActivitySkip.forward(getActivity(), EOIActivity.class);
                     break;
             }
         }
@@ -275,6 +281,7 @@ public class MeFragment extends BaseFragmentView {
     }
 
     private void initWidget() {
+
         //注册事件
         EventBus.getDefault().register(this);
         tvQr = getViewById(R.id.tvQr);
@@ -321,6 +328,9 @@ public class MeFragment extends BaseFragmentView {
             rlTeam.setVisibility(View.GONE);
 
         }
+
+        saleEOI = getViewById(R.id.saleEOI);
+        saleEOI.setOnClickListener(mOnClickListener);
 
     }
 

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -48,7 +47,6 @@ import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenu;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuCreator;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuItem;
 import com.yd.org.sellpopularizesystem.internal.SwipeListview.SwipeMenuListView;
-import com.yd.org.sellpopularizesystem.javaBean.CustomBean;
 import com.yd.org.sellpopularizesystem.javaBean.EoilistBean;
 import com.yd.org.sellpopularizesystem.javaBean.ErrorBean;
 import com.yd.org.sellpopularizesystem.javaBean.SubscribeListBean;
@@ -56,7 +54,6 @@ import com.yd.org.sellpopularizesystem.javaBean.VisitRecord;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
 import com.yd.org.sellpopularizesystem.utils.BitmapUtil;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
-import com.yd.org.sellpopularizesystem.utils.ObjectSaveUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
 import com.zhouyou.http.EasyHttp;
@@ -76,7 +73,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private String customeId;
     private Bundle bundle;
     private String flag;
-    private TextView tvMoneyNum, tvPayMethod, tvEoiSubmit, tvDes, tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
+    private TextView tvMoneyNum, tvPayMethod, tvDes, tvNoMessage, tvVisitTile, tvVisitSubmit, tvVisitTime;
     private EditText etCertificateTime, etVistTitle, etVistContent;
     private Button btDoacash, btDoaTransfer, btDoaCancel, btFromCamera, btFromAlbum, btPhotoCancel;
     private ImageView ivCertificate, ivCash, ivIdCard, ivAlipay, ivWechatPay;
@@ -120,7 +117,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         customeId = (String) bundle.get("customeId");
         initWidgets();
         showZh();
-        cancelEOI();
         if (flag.equals("custovisit") || flag.equals("custoreser")) {
             if (flag.equals("custovisit")) {
                 setTitle(getString(R.string.visit));
@@ -144,27 +140,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             });
         } else {
             setTitle("EOI");
+            hideRightImagview();
             getEoiData(page, true);
-            setRightTitle(R.string.recharge, new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (eoiDialog == null) {
-                        eoiDialog = new Dialog(CusOprateRecordActivity.this);
-                        eoiDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                        eoiDialog.setContentView(R.layout.eoi_operate_view);
-                        Window dialogWindow = eoiDialog.getWindow();
-                        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-                        lp.x = MyUtils.getStatusBarHeight(CusOprateRecordActivity.this);
-                        dialogWindow.setAttributes(lp);
-                        dialogWindow.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                        dialogWindow.setGravity(Gravity.CENTER | Gravity.TOP);
-                        initDialogViews(eoiDialog);
-                        eoiDialog.show();
-                    } else {
-                        eoiDialog.show();
-                    }
-                }
-            });
 
         }
     }
@@ -195,7 +172,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     private void initDialogViews(Dialog dialog) {
         tvMoneyNum = (TextView) dialog.findViewById(R.id.tvMoneyNum);
         tvPayMethod = (TextView) dialog.findViewById(R.id.tvPayMethod);
-        tvEoiSubmit = (TextView) dialog.findViewById(R.id.tvEoiSubmit);
         ivCash = (ImageView) dialog.findViewById(R.id.ivCash);
         ivIdCard = (ImageView) dialog.findViewById(R.id.ivIdCard);
         ivAlipay = (ImageView) dialog.findViewById(R.id.ivAlipay);
@@ -208,7 +184,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         ivAlipay.setOnClickListener(mOnClickListener);
         ivWechatPay.setOnClickListener(mOnClickListener);
         //tvPayMethod.setOnClickListener(mOnClickListener);
-        tvEoiSubmit.setOnClickListener(mOnClickListener);
         //etCertificateTime.setOnClickListener(mOnClickListener);
         ivCertificate.setOnClickListener(mOnClickListener);
         //初始化自定义选择器的数据
@@ -364,23 +339,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 }
                             });
                     break;
-                //提交eoi
-                case R.id.tvEoiSubmit:
-                    Log.e("submitEoi", "onClick: " + "submitEoi");
-                    if (llCertificate.getVisibility() == View.VISIBLE) {
-                        if (picPath == "") {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.picpath));
-                        }
-                    }
-                    if (tvMoneyNum.getText().equals("-")) {
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, getString(R.string.pay_method));
-                    } else {
-                        //提交eoi
-                        Log.e("submitEoi", "onClick: " + "submitEoi");
-                        submitEoi();
-                    }
-                    break;
-
 
                 case R.id.btPhotoCancel:
                     optionDialog.dismiss();
@@ -487,7 +445,7 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
-        EasyHttp.post(Contants.UPLOAD_EOI_MONEY)
+        EasyHttp.post("")
                 .cacheMode(CacheMode.NO_CACHE)
                 .params(httpParams)
                 .timeStamp(true)
@@ -519,73 +477,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
     }
 
-    private void submitEoi() {
-
-
-        UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
-            @Override
-            public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-                int progress = (int) (bytesRead * 100 / contentLength);
-
-
-            }
-        };
-
-        HttpParams httpParams = new HttpParams();
-        httpParams.put("client", customeId);
-        httpParams.put("sales_id", SharedPreferencesHelps.getUserID());
-        httpParams.put("payment_method", payment_method);
-        httpParams.put("payment_amount", tvMoneyNum.getText().toString());
-        httpParams.put("pay_time", "");
-        httpParams.put("currency", tvMoneyNum.getText().toString().startsWith("$") ? "au" : "RMB");
-
-
-        if (!picPath.equals("")) {
-            File picFile = new File(picPath);
-            httpParams.put("file", picFile, mUIProgressResponseCallBack);
-        }
-
-        EasyHttp.post(Contants.EOI_RECHARGE)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params(httpParams)
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showDialog();
-                    }
-
-                    @Override
-                    public void onError(ApiException e) {
-
-                        closeDialog();
-                        ToasShow.showToast(CusOprateRecordActivity.this, getResources().getString(R.string.network_error));
-                    }
-
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
-                        closeDialog();
-                        Gson gs = new Gson();
-                        ErrorBean result = gs.fromJson(json, ErrorBean.class);
-                        if (result.getCode().equals("1")) {
-                            eoiDialog.dismiss();
-                            handler.sendEmptyMessage(ExtraName.SUCCESS);
-                            if (payment_method.equals("6") || payment_method.equals("7")) {
-                                Bundle bundle = new Bundle();
-                                bundle.putString("payurlId", result.getTrust_account_id());
-                                bundle.putString("payment_method", payment_method);
-                                ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
-                            }
-
-                        } else {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, result.getMsg());
-                        }
-                    }
-                });
-
-
-    }
 
     private void getEoiData(int page, final boolean isRel) {
         EasyHttp.get(Contants.EOI_LIST)
@@ -593,13 +484,10 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                 .headers("Cache-Control", "max-age=0")
                 .timeStamp(true)
                 .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("page", String.valueOf(page))
+                .params("company_id", "")
+                .params("product_id", "")
+                .params("page", page + "")
                 .params("number", "100")
-                .params("company_id", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCompany_id() + "")
-                .params("client", ((CustomBean.ResultBean) ObjectSaveUtil.readObject(CusOprateRecordActivity.this, "custome")).getCustomer_id() + "")
-                .params("property_id", "")
-                .params("is_use", "")
-                .params("house", "")
                 .execute(new SimpleCallBack<String>() {
                     @Override
                     public void onStart() {
@@ -615,6 +503,8 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
                     @Override
                     public void onSuccess(String json) {
+                        Log.e("onSuccess", "onSuccess:" + json);
+
                         closeDialog();
                         Gson gson = new Gson();
                         EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
@@ -624,59 +514,51 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                         if (isRel) {
 
                             if (eoiList.size() == 0) {
-                               // getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                                tvDes.setVisibility(View.VISIBLE);
+                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
                                 listView.setVisibility(View.GONE);
                             } else {
-                                //getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                                tvDes.setVisibility(View.GONE);
+                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
                                 listView.setVisibility(View.VISIBLE);
                             }
+
 
                             eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(CusOprateRecordActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
                                 @Override
                                 public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
-                                    holder.setText(R.id.tvEoiNum, item.getProduct_eois_id() + " - ");
+                                    //编号
+                                    holder.setText(R.id.tvEoiNum, item.getEoi_id() + "");
+                                    //销售名
+                                    holder.setText(R.id.salesName, item.getCustomer_info().getSurname() + " " + item.getCustomer_info().getFirst_name());
+                                    //标题
+                                    holder.setText(R.id.eoiTitle, item.getProduct_info().getProduct_name() + "/" + item.getProduct_childs_info().getProduct_childs_unit_number());
+
+                                    holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
+                                    holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
+                                    holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
+
+                                    //未使用
+                                    if (item.getPay_info().getIs_use().equals("0")) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
 
 
-                                    //尚未付款,未使用
-                                    if (item.getEoi_money_status() == 1 && item.getIs_use() != 1) {
-
-
-                                        //凭证已上传
-                                        if (item.getEoi_moneycheck_time().equals("") && (item.getPayment_method() == 1 || item.getPayment_method() == 4)) {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.stillneedcheck));
-                                            //未付款
-                                        } else {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.nopay));
-                                        }
-
-                                        //已付款,是否使用
-                                    } else if (item.getEoi_money_status() == 2 || item.getEoi_money_status() == 1) {
-
-                                        //未使用
-                                        if (item.getIs_use() == 0) {
-                                            holder.setLinear_Gone(R.id.promtionLinear);
+                                        //退款申请正在审核
+                                        if (item.getPay_info().getCancel_apply_status().equals("1")) {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
+                                            //已退款
+                                        } else if (item.getPay_info().getCancel_apply_status().equals("2")) {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.done_re));
+                                            //退款已拒绝
+                                        } else if (item.getPay_info().getCancel_apply_status().equals("3")) {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_cancel));
+                                            //未使用未退款
+                                        } else if (item.getPay_info().getCancel_apply_status().equals("0")) {
                                             holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
-
-                                            //已使用
-                                        } else {
-                                            holder.setLinear(R.id.promtionLinear);
-                                            holder.setText(R.id.tvProm01, "0");
-                                            holder.setText(R.id.tvProm02, "0");
-                                            holder.setText(R.id.tvProm03, "0");
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
                                         }
 
-                                        //请重新上传凭证
-                                    } else if (item.getEoi_money_status() == 3) {
-                                        type = 1;
-                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.evidence));
-
+                                    } else {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
                                     }
-
-
                                 }
                             };
 
@@ -718,33 +600,12 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
                     EoilistBean.ResultBean eoilistBean = (EoilistBean.ResultBean) eoiAdapter.getItem(position);
-                    eoi_ID = eoilistBean.getProduct_eois_id() + "";
-                    payMe = eoilistBean.getPayment_method() + "";
-                    if (eoilistBean.getEoi_money_status() == 1 && eoilistBean.getPayment_method() == 6 || eoilistBean.getPayment_method() == 7) {
-                        Bundle bundle = new Bundle();
-                        bundle.putString("payurlId", eoilistBean.getEoi_money_url());
-                        bundle.putString("payment_method", eoilistBean.getPayment_method() + "");
-                        ActivitySkip.forward(CusOprateRecordActivity.this, PaymentQrActivity.class, bundle);
+                    eoi_ID = eoilistBean.getEoi_id() + "";
 
-                        //申请退款
-                    } else if (eoilistBean.getEoi_money_status() == 2 && eoilistBean.getIs_use() == 0) {
 
+                    //如果是未使用可以退款
+                    if (eoilistBean.getPay_info().getCancel_apply_status().equals("0") && eoilistBean.getPay_info().getIs_use().equals("0")) {
                         firbSelectPopWindow.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
-
-                        //重新上传凭证
-                    } else if (eoilistBean.getEoi_money_status() == 3) {
-                        type = 1;
-                        if (Build.VERSION.SDK_INT < 23) {
-                            takePhoto();
-                        } else {
-                            takePhoto();
-                        }
-
-
-                        //已使用,申请取消
-                    } else if (eoilistBean.getEoi_money_status() == 2 && eoilistBean.getIs_use() == 1) {
-                        firbSelectPopWindowCancel.showAtLocation(CusOprateRecordActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
-
                     }
                 }
             }
@@ -1013,33 +874,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
-                //拍照上传
-                /*case ExtraName.TAKE_PICTURE:
-                    try {
-                        if (null != data && null != data.getData()) {
-                            picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, data.getData(), null, null);
-                            if (type == 0) {
-                                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), data.getData());
-                                ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
-                            }
-
-                        } else {
-                            Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imgUri));
-                            picPath = BitmapUtil.getImagePath(CusOprateRecordActivity.this, imgUri, null, null);
-                            if (type == 0) {
-                                ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
-
-                            }
-                        }
-
-                        //重新上传凭证
-                        if (type == 1) {
-                            submitEoi_01();
-                        }
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }*/
                 case REQUEST_CAMERA_CODE:
                     ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
                     loadAdpater(list);
@@ -1160,51 +994,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
 
-    /**
-     * 取消排队
-     */
-    private void cancelEOI() {
-
-
-        firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
-        RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
-        btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
-        btUnknown.setVisibility(View.GONE);
-        btSure = (Button) firbPwView.findViewById(R.id.btSure);
-        btSure.setText(R.string.cncel_line);
-        btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
-        btFalse.setText(getString(R.string.cancel));
-        firbSelectPopWindowCancel = new PopupWindow(firbPwView,
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
-        //设置SelectPicPopupWindow弹出窗体动画效果
-        firbSelectPopWindowCancel.setAnimationStyle(R.style.Animation);
-        //实例化一个ColorDrawable颜色为半透明
-        ColorDrawable firb = new ColorDrawable(0xb0000000);
-        //设置SelectPicPopupWindow弹出窗体的背景
-        firbSelectPopWindowCancel.setBackgroundDrawable(firb);
-        rlFirb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firbSelectPopWindowCancel.dismiss();
-            }
-        });
-
-        btSure.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firbSelectPopWindowCancel.dismiss();
-                quxioaEOI(eoi_ID);
-            }
-        });
-
-        btFalse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                firbSelectPopWindowCancel.dismiss();
-            }
-        });
-
-    }
 
 
     /**
@@ -1214,10 +1003,9 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
      */
     private void cancel_eoi(String eoi_id) {
 
-        EasyHttp.post(Contants.CANCEL_EOI)
+        EasyHttp.get(Contants.EOI_REFUND)
                 .cacheMode(CacheMode.NO_CACHE)
                 .params("eoi_id", eoi_id)
-                .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
                     @Override
@@ -1251,47 +1039,5 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
     }
 
 
-    /**
-     * 取消排队
-     */
-    private void quxioaEOI(String eoi) {
-
-        EasyHttp.post(Contants.CANCEL_EOI_SORT)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params("eoi_id", eoi)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showDialog();
-                    }
-
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(CusOprateRecordActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
-                    }
-
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
-
-                        closeDialog();
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
-                        if (errorBean.getCode().equals("1")) {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
-                        } else {
-                            ToasShow.showToastCenter(CusOprateRecordActivity.this, errorBean.getMsg());
-                        }
-
-
-                    }
-                });
-
-
-    }
 
 }

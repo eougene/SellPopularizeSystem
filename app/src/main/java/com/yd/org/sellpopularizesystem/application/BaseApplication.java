@@ -274,7 +274,7 @@ public class BaseApplication extends Application {
 
 
         //测试版
-        if (Contants.DOMAIN.contains("http://crm.vxda.cn")) {
+        if (Contants.DOMAIN.contains("http://wingaid.vxda.cn")) {
             Bugly.init(getApplicationContext(), APP_ID_Test, true);
         } else {
             Bugly.init(getApplicationContext(), APP_ID, true);
