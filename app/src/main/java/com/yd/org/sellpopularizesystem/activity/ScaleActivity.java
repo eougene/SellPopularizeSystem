@@ -33,6 +33,7 @@ import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
+import com.zhouyou.http.interceptor.HeadersInterceptor;
 import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONException;
@@ -180,45 +181,52 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
             setCenterInput();
         }
         hideBaseView();
-        setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        hideRightImagview();
+        if (!type.equals("hot")) {
+            setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                 /*strPrice=tvPrice.getText().toString();
                 strType=tvType.getText().toString();
                 strHouse=tvHouseType.getText().toString();*/
-                if (!TextUtils.isEmpty(etSearch.getText().toString())) {//搜索框有内容时
-                    Log.e("TAG", "onClick: " + etSearch.getText().toString());
-                    rightRtitle.setEnabled(true);
-                    search_key = etSearch.getText().toString();
-                    getProductListData(true, 1, space, price, house, area);
-                } else {//搜索框无内容时
-                    if (TextUtils.equals(getString(R.string.price), tvPrice.getText().toString()) &&
-                            TextUtils.equals(getString(R.string.type), tvType.getText().toString()) &&
-                            TextUtils.equals(getString(R.string.housetype), tvHouseType.getText().toString())) {
-                        if (TextUtils.isEmpty(search_key)) {
-                            ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.select_ele));
-                        } else {
-                            search_key = "";
-                            if (is_first) {
-                                getProductListData(true, 1, space, price, house, area);//下拉刷新后再点击搜索
-                                is_first = false;
-                            }
-
-
-                        }
-
-                    } else {
-                        Log.e("TAG", "onClick: " + cate_id);
-                        search_key = "";
-                        if (is_first) {
-                            getProductListData(true, 1, space, price, house, area);
-                            is_first = false;
-                        }
-
+                    if (!TextUtils.isEmpty(etSearch.getText().toString())) {//搜索框有内容时
+                        Log.e("TAG", "onClick: " + etSearch.getText().toString());
+                        rightRtitle.setEnabled(true);
+                        search_key = etSearch.getText().toString();
+                        getProductListData(true, 1, space, price, house, area);
+                    } else {//搜索框无内容时
+                        searchResult();
                     }
                 }
+            });
+        }
+
+    }
+
+    private void searchResult() {
+        if (TextUtils.equals(getString(R.string.price), tvPrice.getText().toString()) &&
+                TextUtils.equals(getString(R.string.type), tvType.getText().toString()) &&
+                TextUtils.equals(getString(R.string.housetype), tvHouseType.getText().toString())) {
+            if (TextUtils.isEmpty(search_key)) {
+                ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.select_ele));
+            } else {
+                search_key = "";
+                if (is_first) {
+                    getProductListData(true, 1, space, price, house, area);//下拉刷新后再点击搜索
+                    is_first = false;
+                }
+
             }
-        });
+
+        } else {
+            Log.e("TAG", "onClick: " + cate_id);
+            search_key = "";
+            if (is_first) {
+                getProductListData(true, 1, space, price, house, area);
+                is_first = false;
+            }
+
+        }
     }
 
 
@@ -531,6 +539,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                         cate_id = "";
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
+                    searchResult();
                     break;
                 //房型
                 case ExtraName.HOURSE:
@@ -558,6 +567,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
                     house = selectStrTag;
+                    searchResult();
                     break;
                 //价格
                 case ExtraName.PRICE:
@@ -584,6 +594,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                     }
                     selectStrTag = TextUtils.isEmpty(data.getStringExtra("selecttagextra")) ? "" : data.getStringExtra("selecttagextra");
                     price = selectStrTag;
+                    searchResult();
                     break;
             }
             //getProductListData(true, page, space, price, house, area);
