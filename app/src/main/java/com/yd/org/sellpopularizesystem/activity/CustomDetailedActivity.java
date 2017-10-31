@@ -533,6 +533,11 @@ public class CustomDetailedActivity extends BaseActivity {
         tvVisit = getViewById(R.id.tvVisit);
         tvReserver = getViewById(R.id.tvReserve);
         tvExpandRe = getViewById(R.id.tvExpandRe);
+        if (SharedPreferencesHelps.getType()==2){
+            tvVisit.setVisibility(View.GONE);
+            tvReserver.setVisibility(View.GONE);
+            tvExpandRe.setVisibility(View.GONE);
+        }
         tvPurchase = getViewById(R.id.tvPurchaseRe);
         mAllCountryList = new ArrayList<CountrySortModel>();
         pinyinComparator = new CountryComparator();

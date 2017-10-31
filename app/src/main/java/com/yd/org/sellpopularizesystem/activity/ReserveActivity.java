@@ -572,6 +572,7 @@ public class ReserveActivity extends BaseActivity {
                     }
                     payment_method = "7";
                     break;
+                    //EOI
                 case R.id.ivEoiPay:
 
                     if (llCertificate.getVisibility() == View.VISIBLE) {
@@ -579,9 +580,9 @@ public class ReserveActivity extends BaseActivity {
                     }
                     tvPayMethod.setText("EOI");
                     if (bean.getCate_id() == 1) {
-                        tvMoneyNum.setText("￥ 300.00");
+                        tvMoneyNum.setText("$ 300.00");
                     } else {
-                        tvMoneyNum.setText("￥ 300.00");
+                        tvMoneyNum.setText("$ 300.00");
                     }
                     payment_method = "10";
 

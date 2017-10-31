@@ -116,7 +116,7 @@ public class InvoiceActivity extends BaseActivity {
         tvDescription.setText(rb.getDescription());
         tvAmountIncl.setText(rb.getAmount());
         tvSubtotal.setText(rb.getSubtotal());
-        tvAbnRegisterd.setText(rb.getIs_gst() == 1 ? "Yes" : "No");
+        tvAbnRegisterd.setText(rb.getIs_gst() == 1 ? "No" : "Yes");
         tvOther.setText(rb.getOther());
         tvTotal.setText(rb.getTotal());
         tvAccountName.setText(rb.getAccount_name());
