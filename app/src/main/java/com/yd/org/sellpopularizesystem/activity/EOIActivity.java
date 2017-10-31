@@ -189,8 +189,8 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
 
     @Override
     public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
-        page++;
         ptrlSaleRecord.loadmoreFinish(PullToRefreshLayout.SUCCEED);
+        page++;
         getEOIData(page, false);
     }
 
