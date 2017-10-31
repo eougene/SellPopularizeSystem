@@ -124,18 +124,20 @@ public class ComPanyActivity extends BaseActivity {
 
 
     private void setInfo(MyUserInfo myUserInfo) {
+        if (myUserInfo!=null){
+            //公司名称
+            companyEdit.setText((null == myUserInfo.getResult().getBusiness_name() || TextUtils.isEmpty(myUserInfo.getResult().getBusiness_name())) ? "" : myUserInfo.getResult().getBusiness_name());
+            abnEdit.setText((null == myUserInfo.getResult().getAbn() || TextUtils.isEmpty(myUserInfo.getResult().getAbn())) ? "" : myUserInfo.getResult().getAbn());
+            acnEdit.setText((null == myUserInfo.getResult().getAcn() || TextUtils.isEmpty(myUserInfo.getResult().getAcn())) ? "" : myUserInfo.getResult().getAcn());
 
-        //公司名称
-        companyEdit.setText((null == myUserInfo.getResult().getBusiness_name() || TextUtils.isEmpty(myUserInfo.getResult().getBusiness_name())) ? "" : myUserInfo.getResult().getBusiness_name());
-        abnEdit.setText((null == myUserInfo.getResult().getAbn() || TextUtils.isEmpty(myUserInfo.getResult().getAbn())) ? "" : myUserInfo.getResult().getAbn());
-        acnEdit.setText((null == myUserInfo.getResult().getAcn() || TextUtils.isEmpty(myUserInfo.getResult().getAcn())) ? "" : myUserInfo.getResult().getAcn());
 
-
-        //公司logo
-        if (!TextUtils.isEmpty(myUserInfo.getResult().getSales_logo())) {
-            Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getSales_logo()).
-                    config(Bitmap.Config.RGB_565).fit().into(logoImageView);
+            //公司logo
+            if (!TextUtils.isEmpty(myUserInfo.getResult().getSales_logo())) {
+                Picasso.with(this).load(Contants.DOMAIN + "/" + myUserInfo.getResult().getSales_logo()).
+                        config(Bitmap.Config.RGB_565).fit().into(logoImageView);
+            }
         }
+
 
     }
 
@@ -152,16 +154,17 @@ public class ComPanyActivity extends BaseActivity {
 
         //公司名称
         business_name = companyEdit.getText().toString();
-        BaseApplication.getInstance().myUserInfo.getResult().setBusiness_name(business_name);
-        //abn
-        abn = abnEdit.getText().toString();
-        BaseApplication.getInstance().myUserInfo.getResult().setAbn(abn);
-        //acn
-        acn = acnEdit.getText().toString();
-        BaseApplication.getInstance().myUserInfo.getResult().setAcn(acn);
-        //logo
-        BaseApplication.getInstance().myUserInfo.getResult().setSales_logo(imagePath);
-
+        if( BaseApplication.getInstance().myUserInfo.getResult()!=null){
+            BaseApplication.getInstance().myUserInfo.getResult().setBusiness_name(business_name);
+            //abn
+            abn = abnEdit.getText().toString();
+            BaseApplication.getInstance().myUserInfo.getResult().setAbn(abn);
+            //acn
+            acn = acnEdit.getText().toString();
+            BaseApplication.getInstance().myUserInfo.getResult().setAcn(acn);
+            //logo
+            BaseApplication.getInstance().myUserInfo.getResult().setSales_logo(imagePath);
+        }
 
     }
 
@@ -171,6 +174,7 @@ public class ComPanyActivity extends BaseActivity {
         getInfo();
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
