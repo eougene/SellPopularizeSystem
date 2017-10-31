@@ -44,10 +44,16 @@ public class DepositActivity extends BaseActivity {
 
         tvName.setText(resultBean.getCustomer_surname() + getString(R.string.single_blank_space) + resultBean.getCustomer_first_name());
         tvProperty.setText(resultBean.getProduct_name().getProduct_name() + "-" + resultBean.getProduct_info().getProduct_childs_lot_number() +"-" + resultBean.getProduct_info().getProduct_childs_unit_number());
-        tvMoneyy.setText("$" + getString(R.string.single_blank_space)+ "300.00");
+
+        if (resultBean.getPayment_method()==6||resultBean.getPayment_method()==7){
+            tvMoneyy.setText("￥" + getString(R.string.single_blank_space)+ "2000.00");
+        }else {
+            tvMoneyy.setText("$" + getString(R.string.single_blank_space)+ "300.00");
+        }
+
 
         //落款时间
-        edDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(resultBean.getBuy_money_check_time()+"000")));
+        edDate.setText(MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(resultBean.getAdd_time()+"000")));
 
 
 
