@@ -155,6 +155,7 @@ public class PaymentQrActivity extends BaseActivity {
                             if (json.getString("code").equals("1")) {
                                 qrcodeUrl = json.getString("qrcode");
                                 MyUtils.getInstance().showWebView(PaymentQrActivity.this, wvQr, qrcodeUrl);
+                                Log.e("WebViewe*","qrcodeUrl:"+qrcodeUrl);
                             } else {
                                 ToasShow.showToastCenter(PaymentQrActivity.this, json.getString("msg"));
                             }

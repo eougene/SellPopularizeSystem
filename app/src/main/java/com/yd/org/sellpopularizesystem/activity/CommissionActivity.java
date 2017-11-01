@@ -71,7 +71,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
                 //CommissionBean.ResultBean resultBean = viewHoler.resultBean;
                 //CommissionBean.ResultBean resultBean=datas.get(position);
                 //getDepositDetails(resultBean);
-              //  ActivitySkip.forward(CommissionActivity.this,InvoiceActivity.class);
+                //  ActivitySkip.forward(CommissionActivity.this,InvoiceActivity.class);
 
             }
         });
@@ -97,35 +97,27 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
     }
 
     private void getInfo(int page, final boolean isRefresh) {
-        EasyHttp.get(Contants.COMMOSSION_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("customer_id", "")
-                .params("page", page+"")
-                .params("number", "100")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+        EasyHttp.get(Contants.COMMOSSION_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("customer_id", "").params("page", page + "").params("number", "100").execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                        ToasShow.showToastCenter(CommissionActivity.this, e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                ToasShow.showToastCenter(CommissionActivity.this, e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
+            @Override
+            public void onSuccess(String json) {
 
-                        closeDialog();
-                        paserJSON(json, isRefresh);
-                    }
-                });
+                closeDialog();
+                paserJSON(json, isRefresh);
+            }
+        });
 
     }
 
@@ -147,7 +139,7 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
             commissionAdapter = new CommissionAdapter(CommissionActivity.this);
             listView.setAdapter(commissionAdapter);
         }
-        if (commissionAdapter!=null){
+        if (commissionAdapter != null) {
             commissionAdapter.addMore(datas);
         }
 
@@ -162,9 +154,9 @@ public class CommissionActivity extends BaseActivity implements PullToRefreshLay
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMoonEvent(String message){
-        Log.e("TAG", "onMoonEvent: "+message);
-        if (message.equals("ok")){
+    public void onMoonEvent(String message) {
+        Log.e("TAG", "onMoonEvent: " + message);
+        if (message.equals("ok")) {
             getInfo(1, true);
         }
 
