@@ -44,7 +44,6 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
     private String eoi_ID = "";
 
 
-
     @Override
     protected int setContentView() {
         return R.layout.activity_eoi;
@@ -123,29 +122,36 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
                                     holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
                                     holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
 
-                                    //未使用
-                                    if (item.getPay_info().getIs_use().equals("0")) {
 
-
-                                        //退款申请正在审核
-                                        if (item.getPay_info().getCancel_apply_status().equals("1")) {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
-                                            //已退款
-                                        } else if (item.getPay_info().getCancel_apply_status().equals("2")) {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.done_re));
-                                            //退款已拒绝
-                                        } else if (item.getPay_info().getCancel_apply_status().equals("3")) {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_cancel));
-
-                                            //未使用,未退款
-                                        } else if (item.getPay_info().getCancel_apply_status().equals("0")) {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
-                                        }
-
-
+                                    if (item.getStatus() == 1) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_eoi));
                                     } else {
-                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
+                                        //未使用
+                                        if (item.getPay_info().getIs_use().equals("0")) {
+
+
+                                            //退款申请正在审核
+                                            if (item.getPay_info().getCancel_apply_status().equals("1")) {
+                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
+                                                //已退款
+                                            } else if (item.getPay_info().getCancel_apply_status().equals("2")) {
+                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.done_re));
+                                                //退款已拒绝
+                                            } else if (item.getPay_info().getCancel_apply_status().equals("3")) {
+                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_cancel));
+
+                                                //未使用,未退款
+                                            } else if (item.getPay_info().getCancel_apply_status().equals("0")) {
+                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
+                                            }
+
+
+                                        } else {
+                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
+                                        }
                                     }
+
+
                                 }
                             };
 
@@ -172,7 +178,7 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
 
 
                 //如果是未使用可以退款
-                if (eoilistBean.getPay_info().getCancel_apply_status().equals("0") && eoilistBean.getPay_info().getIs_use().equals("0")) {
+                if (eoilistBean.getStatus()!=1&&eoilistBean.getPay_info().getCancel_apply_status().equals("0") && eoilistBean.getPay_info().getIs_use().equals("0")) {
                     firbSelectPopWindow.showAtLocation(EOIActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
                 }
             }

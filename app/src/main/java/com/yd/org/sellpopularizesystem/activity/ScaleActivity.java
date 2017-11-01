@@ -33,7 +33,6 @@ import com.zhouyou.http.EasyHttp;
 import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
-import com.zhouyou.http.interceptor.HeadersInterceptor;
 import com.zhouyou.http.model.HttpParams;
 
 import org.json.JSONException;
@@ -182,13 +181,10 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         }
         hideBaseView();
         hideRightImagview();
-        if (!type.equals("hot")) {
+        if (!type.equals("hot") && type.equals("all")) {
             setRightTitle(R.string.search, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                /*strPrice=tvPrice.getText().toString();
-                strType=tvType.getText().toString();
-                strHouse=tvHouseType.getText().toString();*/
                     if (!TextUtils.isEmpty(etSearch.getText().toString())) {//搜索框有内容时
                         Log.e("TAG", "onClick: " + etSearch.getText().toString());
                         rightRtitle.setEnabled(true);
@@ -236,7 +232,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         llType.setOnClickListener(mOnClickListener);
         llHouseType.setOnClickListener(mOnClickListener);
         //地图
-
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {

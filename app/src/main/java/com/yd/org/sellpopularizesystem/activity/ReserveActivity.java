@@ -106,6 +106,9 @@ public class ReserveActivity extends BaseActivity {
     private boolean isEOI = false;
     private IfEoiBean errorBean = new IfEoiBean();
 
+    private  String eoi_id = "";
+    private int pay_method=-1;
+
     public Handler mHan = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -580,9 +583,25 @@ public class ReserveActivity extends BaseActivity {
                     }
                     tvPayMethod.setText("EOI");
                     if (bean.getCate_id() == 1) {
-                        tvMoneyNum.setText("$ 300.00");
+
+
+                        //微信或支付宝支付
+                       if (pay_method!=-1&&(pay_method==6||pay_method==7)){
+                           tvMoneyNum.setText("¥ 2000.00");
+                       }else {
+                           tvMoneyNum.setText("$ 300.00");
+                       }
+
+
+
                     } else {
-                        tvMoneyNum.setText("$ 300.00");
+
+                        //微信或支付宝支付
+                        if (pay_method!=-1&&(pay_method==6||pay_method==7)){
+                            tvMoneyNum.setText("¥ 2000.00");
+                        }else {
+                            tvMoneyNum.setText("$ 300.00");
+                        }
                     }
                     payment_method = "10";
 
@@ -704,11 +723,12 @@ public class ReserveActivity extends BaseActivity {
     }
 
     private void commit(final String payment_method) {
-        String eoi_id = "";
+
         if (isEOI) {
             for (int i = 0; i < errorBean.getResult().size(); i++) {
                 if (errorBean.getResult().get(i).getStatus() == 1) {
                     eoi_id = errorBean.getResult().get(i).getStatus() + "";
+                    pay_method=errorBean.getResult().get(i).getPay_method();
                     Log.e("i:", "i:" + i);
                     break;
 
@@ -795,71 +815,6 @@ public class ReserveActivity extends BaseActivity {
 
     }
 
-
-//    /**
-//     * 使用EOI下单
-//     *
-//     * @param payment_method
-//     */
-//    private void eoiPay(final String payment_method) {
-//        HttpParams httpParams = new HttpParams();
-//        httpParams.put("eoi_id", errorBean.getResult().get(0).getEoi_id() + "");
-//        httpParams.put("user_id", SharedPreferencesHelps.getUserID() + "");
-//        httpParams.put("customer_id", customeId);
-//        httpParams.put("product_id", bean.getProduct_id() + "");
-//        httpParams.put("product_childs_id", bean.getProduct_childs_id() + "");
-//        httpParams.put("lawyer_id", lawyer_id + "");
-//        httpParams.put("payment_method", payment_method);
-//        httpParams.put("purchaseReason", tvReGoal.getText().toString().trim());
-//        httpParams.put("co_purchaser", etCopurchase.getText().toString() + "");
-//
-//
-//        Log.e("参数***", "httpParams:" + httpParams.toString());
-//
-//
-//        EasyHttp.post(Contants.CREAT_ORDER_EOI)
-//                .cacheMode(CacheMode.NO_CACHE)
-//                .timeStamp(true)
-//                .params(httpParams)
-//                .execute(new SimpleCallBack<String>() {
-//                    @Override
-//                    public void onStart() {
-//                        showDialog();
-//                    }
-//
-//                    @Override
-//                    public void onError(ApiException e) {
-//                        closeDialog();
-//                        ToasShow.showToastCenter(ReserveActivity.this, e.getMessage());
-//                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(String s) {
-//                        closeDialog();
-//
-//                        Log.e("onSuccess***", "onSuccess:" + s);
-//
-//                        try {
-//                            JSONObject json = new JSONObject(s);
-//                            if (json.getString("code").equals("1")) {
-//                                ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
-//                                finish();
-//                            } else {
-//                                ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-//
-//                            }
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//
-//                    }
-//                });
-//
-//
-//    }
 
     private String getDigitalFromString(String s) {
         String regEx = "[^0-9]";
