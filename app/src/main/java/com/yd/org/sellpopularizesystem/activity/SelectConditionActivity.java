@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.Map;
 
 public class SelectConditionActivity extends BaseActivity {
-    //private RadioGroup rgType, rgPrice;
     private LinearLayout llHouseType, llType, llPrice,llBase;
     private TextView tvSelect;
     private ImageView ivSearch;
@@ -58,38 +57,12 @@ public class SelectConditionActivity extends BaseActivity {
         str = getIntent().getExtras().getString("fatosca");
         if (str.equals("area")) {
             setTitle(R.string.type);
-            //llHouseType.setVisibility(View.GONE);
-            //*rgType.setVisibility(View.GONE);
-            //rgPrice.setVisibility(View.GONE);
-            /*llType.setVisibility(View.GONE);
-            llPrice.setVisibility(View.GONE);*/
         } else if (str.equals("housetype")) {
             setTitle(R.string.housetype);
-            //rgArea.setVisibility(View.GONE);
-            //*rgType.setVisibility(View.GONE);
-            //rgPrice.setVisibility(View.GONE);
-            /*llType.setVisibility(View.GONE);
-            llPrice.setVisibility(View.GONE);
-            String string = getIntent().getExtras().getString("selectstatus");
-            setHouseTypeStatus(string, llHouseType);*/
         } else if (str.equals("type")) {
             setTitle(R.string.type);
-            //rgArea.setVisibility(View.GONE);
-            //llHouseType.setVisibility(View.GONE);
-            //rgPrice.setVisibility(View.GONE);
-           /* llPrice.setVisibility(View.GONE);
-            String string = getIntent().getExtras().getString("selectstatus");
-            setStatus(string, llType);
-            setListener(llType);*/
         } else if (str.equals("price")) {
             setTitle(R.string.price);
-            // rgArea.setVisibility(View.GONE);
-            //llHouseType.setVisibility(View.GONE);
-            //rgType.setVisibility(View.GONE);
-            //llType.setVisibility(View.GONE);
-            /*String string = getIntent().getExtras().getString("selectstatus");
-            setStatus(string, llPrice);
-            setListener(llPrice);*/
         }
         getSelectConditionData();
     }
@@ -144,11 +117,6 @@ public class SelectConditionActivity extends BaseActivity {
                         // int sizes = object2.getJSONObject(keyString).entrySet().size();
                         int[] priceId = new int[]{R.id.rbPrice1, R.id.rbPrice2, R.id.rbPrice3, R.id.rbPrice4, R.id.rbPrice5,
                                 R.id.rbPrice6};
-                        // String[] priceTags=new String[sizes];
-                        //String[] priceTexts = new String[sizes];
-                        // List<String> priceIds=new ArrayList<>();
-                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
-
                         List<String> priceTags = new ArrayList<>();
                         List<String> priceTexts = new ArrayList<>();
                         // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
@@ -186,11 +154,6 @@ public class SelectConditionActivity extends BaseActivity {
                         JSONObject object2 = JSON.parseObject(valueString);
                         //int sizes = object2.getJSONObject(keyString).entrySet().size();
                         int[] priceId = new int[]{R.id.cbType1, R.id.cbType2, R.id.cbType3};
-                        // String[] priceTags=new String[sizes];
-                        //String[] priceTexts = new String[sizes];
-                        // List<String> priceIds=new ArrayList<>();
-                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
-
                         List<String> typeTags = new ArrayList<>();
                         List<String> typeTexts = new ArrayList<>();
                         // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
@@ -225,11 +188,6 @@ public class SelectConditionActivity extends BaseActivity {
                         JSONObject object2 = JSON.parseObject(valueString);
                         int[] priceId = new int[]{R.id.cbHouseType1, R.id.cbHouseType2, R.id.cbHouseType3,
                                 R.id.cbHouseType4, R.id.cbHouseType5, R.id.cbHouseType6};
-                        // String[] priceTags=new String[sizes];
-                        //String[] priceTexts = new String[sizes];
-                        // List<String> priceIds=new ArrayList<>();
-                        //priceIds= Arrays.asList(getResources().getStringArray(R.array.price_id_list));
-
                         List<String> houseTags = new ArrayList<>();
                         List<String> houseTexts = new ArrayList<>();
                         // View baseView= LayoutInflater.from(SelectConditionActivity.this).inflate(R.layout.select_item_layout,null);
@@ -356,9 +314,6 @@ public class SelectConditionActivity extends BaseActivity {
 
 
     private void initStting() {
-        /*tvSelect=getViewById(R.id.tvSelect);
-        tvSelect.setText(getString(R.string.home_sure));
-        tvSelect.setVisibility(View.VISIBLE);*/
         // setRightTitleBackground(new ColorDrawable(Color.WHITE), Color.parseColor("#ee781f"));
         if (getIntent().getExtras().getString("ss") != null) {
             setRightTitle(R.string.ok, getResources().getColor(R.color.scale_tab5), mOnClickListener);
@@ -370,13 +325,6 @@ public class SelectConditionActivity extends BaseActivity {
     }
 
     private void initViews() {
-        //rgArea=getViewById(R.id.rgArea);
-        //llHouseType = getViewById(R.id.llHouseType);
-        /*rgType = getViewById(R.id.rgType);
-        rgPrice = getViewById(R.id.rgPrice);*/
-        /*llType = getViewById(R.id.llType);
-        llPrice = getViewById(R.id.llPrice);
-        tvSelect = getViewById(R.id.tvSelect);*/
         llBase = getViewById(R.id.llBase);
     }
 
@@ -546,34 +494,6 @@ public class SelectConditionActivity extends BaseActivity {
         selectStr = sb.toString();
         selectStrTag = sbHouseTypeTag.toString();
     }
-    /*RadioGroup.OnCheckedChangeListener mOnCheckedChangeListener = new RadioGroup.OnCheckedChangeListener() {
-        @Override
-        public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-            switch (group.getId()) {
-                //区域
-                *//*case R.id.rgArea:
-                    RadioButton rbArea= (RadioButton) findViewById(group.getCheckedRadioButtonId());
-                    selectStrTag = (String) rbArea.getTag();
-                    selectStr=rbArea.getText().toString();
-
-                    Log.e("选择***","selectStr:"+selectStr);
-                    break;*//*
-                //类型
-                case R.id.rgType:
-                    RadioButton rbType = (RadioButton) findViewById(group.getCheckedRadioButtonId());
-                    rbType.setOnClickListener(mOnClickListener);
-                    selectStrTag = (String) rbType.getTag();
-                    selectStr = rbType.getText().toString();
-                    break;
-                //价格
-                case R.id.rgPrice:
-                    RadioButton rbPrice = (RadioButton) findViewById(group.getCheckedRadioButtonId());
-                    selectStrTag = (String) rbPrice.getTag();
-                    selectStr = rbPrice.getText().toString();
-                    break;
-            }
-        }
-    };*/
 
     @Override
     public void setListener() {
@@ -585,12 +505,7 @@ public class SelectConditionActivity extends BaseActivity {
             }
         });
 
-        //tvSelect.setOnClickListener(mOnClickListener);
         backLinearLayou.setOnClickListener(mOnClickListener);
-        //rgArea.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        /*rgType.setOnCheckedChangeListener(mOnCheckedChangeListener);
-        rgPrice.setOnCheckedChangeListener(mOnCheckedChangeListener);*/
-        //tvSelect.setOnClickListener(mOnClickListener);
 
     }
 }

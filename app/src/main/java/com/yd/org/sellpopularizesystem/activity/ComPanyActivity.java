@@ -63,12 +63,6 @@ public class ComPanyActivity extends BaseActivity {
                                     .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
                                             , Manifest.permission.READ_EXTERNAL_STORAGE
                                     )
-                /*以下为自定义提示语、按钮文字
-                .setDeniedMessage()
-                .setDeniedCloseBtn()
-                .setDeniedSettingBtn()
-                .setRationalMessage()
-                .setRationalBtn()*/
                                     .build(),
                             new AcpListener() {
                                 @Override

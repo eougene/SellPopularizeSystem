@@ -9,13 +9,14 @@ import com.yd.org.sellpopularizesystem.application.BaseApplication;
 import com.yd.org.sellpopularizesystem.javaBean.MyUserInfo;
 
 
-
-
+/**
+ * 银行卡信息
+ */
 public class BankActivity extends BaseActivity {
-    EditText accountNameEd;
-    EditText accountNumberEd;
-    EditText bankNameEd;
-    EditText bsbEd;
+    private EditText accountNameEd;
+    private EditText accountNumberEd;
+    private EditText bankNameEd;
+    private EditText bsbEd;
     private MyUserInfo myUserInfo;
 
     @Override
@@ -71,20 +72,24 @@ public class BankActivity extends BaseActivity {
 
         String account_name = "", account_number = "", bank_name, bsb = "";
 
-        //持卡人
-        account_name = accountNameEd.getText().toString().trim();
-        BaseApplication.getInstance().myUserInfo.getResult().setAccount_name(account_name);
-        //卡号
-        account_number = accountNumberEd.getText().toString().trim();
-        BaseApplication.getInstance().myUserInfo.getResult().setAccount_number(account_number);
 
-        //开户行
-        bank_name = bankNameEd.getText().toString().trim();
-        BaseApplication.getInstance().myUserInfo.getResult().setBank_name(bank_name);
+        if ( BaseApplication.getInstance().myUserInfo.getResult()!=null){
+            //持卡人
+            account_name = accountNameEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setAccount_name(account_name);
+            //卡号
+            account_number = accountNumberEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setAccount_number(account_number);
 
-        //bsb
-        bsb = bsbEd.getText().toString().trim();
-        BaseApplication.getInstance().myUserInfo.getResult().setBsb(bsb);
+            //开户行
+            bank_name = bankNameEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setBank_name(bank_name);
+
+            //bsb
+            bsb = bsbEd.getText().toString().trim();
+            BaseApplication.getInstance().myUserInfo.getResult().setBsb(bsb);
+
+        }
 
 
     }
