@@ -155,9 +155,6 @@
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity
-            android:name=".activity.SearchActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".activity.ScalListActivity"
             android:screenOrientation="portrait"/>
         <activity
