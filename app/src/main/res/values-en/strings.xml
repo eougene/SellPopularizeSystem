@@ -691,9 +691,10 @@
     <string name="proDelAddress">Address:</string>
     <string name="eoi_">EOI List</string>
     <string name="done_re">Refund</string>
-    <string name="eoi_cancel">Refund rejected</string>
+    <string name="eoi_cancel"> Rejected</string>
     <string name="pdel_">Number</string>
     <string name="unit_list">Unit List</string>
+    <string name="eoi_eoi">凭证已上传,正在审核</string>
 
 </resources>
 
