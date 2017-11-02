@@ -64,106 +64,96 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
     }
 
     private void getEOIData(int page, final boolean isRefresh) {
-        EasyHttp.get(Contants.EOI_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("company_id", "")
-                .params("product_id", "")
-                .params("page", page + "")
-                .params("number", "100")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
+        EasyHttp.get(Contants.EOI_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("company_id", "").params("product_id", "").params("page", page + "").params("number", "100").execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
+
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+            }
+
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess", "onSuccess:" + json);
+
+                closeDialog();
+                Gson gson = new Gson();
+                EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
+                eoiList = eoilistBean.getResult();
+
+
+                if (isRefresh) {
+
+                    if (eoiList.size() == 0) {
+                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                        lvSaleRecord.setVisibility(View.GONE);
+                    } else {
+                        getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                        lvSaleRecord.setVisibility(View.VISIBLE);
                     }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                    }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess", "onSuccess:" + json);
+                    eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(EOIActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
 
-                        closeDialog();
-                        Gson gson = new Gson();
-                        EoilistBean eoilistBean = gson.fromJson(json, EoilistBean.class);
-                        eoiList = eoilistBean.getResult();
+                        @Override
+                        public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
+                            //编号
+                            holder.setText(R.id.tvEoiNum, item.getEoi_id() + "");
+                            //销售名
+                            holder.setText(R.id.salesName, item.getCustomer_info().getSurname() + " " + item.getCustomer_info().getFirst_name());
+                            if (item.getProduct_childs_info() != null) {
+                                //标题
+                                holder.setText(R.id.eoiTitle, item.getProduct_info().getProduct_name() + "/" + item.getProduct_childs_info().getProduct_childs_unit_number());
+                                holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
+                                holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
+                                holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
 
-
-                        if (isRefresh) {
-
-                            if (eoiList.size() == 0) {
-                                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                                lvSaleRecord.setVisibility(View.GONE);
-                            } else {
-                                getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                                lvSaleRecord.setVisibility(View.VISIBLE);
                             }
 
 
-                            eoiAdapter = new CommonAdapter<EoilistBean.ResultBean>(EOIActivity.this, eoiList, R.layout.eoi_listview_item_layout) {
-
-                                @Override
-                                public void convert(ViewHolder holder, EoilistBean.ResultBean item) {
-                                    //编号
-                                    holder.setText(R.id.tvEoiNum, item.getEoi_id() + "");
-                                    //销售名
-                                    holder.setText(R.id.salesName, item.getCustomer_info().getSurname() + " " + item.getCustomer_info().getFirst_name());
-                                    if (item.getProduct_info()!=null){
-                                        //标题
-                                        holder.setText(R.id.eoiTitle, item.getProduct_info().getProduct_name() + "/" + item.getProduct_childs_info().getProduct_childs_unit_number());
-
-                                    }
-
-                                    holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
-                                    holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
-                                    holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
+                            if (item.getStatus() == 1) {
+                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_eoi));
+                            } else {
+                                //未使用
+                                if (item.getPay_info().getIs_use().equals("0")) {
 
 
-                                    if (item.getStatus() == 1) {
-                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_eoi));
-                                    } else {
-                                        //未使用
-                                        if (item.getPay_info().getIs_use().equals("0")) {
+                                    //退款申请正在审核
+                                    if (item.getPay_info().getCancel_apply_status().equals("1")) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
+                                        //已退款
+                                    } else if (item.getPay_info().getCancel_apply_status().equals("2")) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.done_re));
+                                        //退款已拒绝
+                                    } else if (item.getPay_info().getCancel_apply_status().equals("3")) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_cancel));
 
-
-                                            //退款申请正在审核
-                                            if (item.getPay_info().getCancel_apply_status().equals("1")) {
-                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.refund));
-                                                //已退款
-                                            } else if (item.getPay_info().getCancel_apply_status().equals("2")) {
-                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.done_re));
-                                                //退款已拒绝
-                                            } else if (item.getPay_info().getCancel_apply_status().equals("3")) {
-                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_cancel));
-
-                                                //未使用,未退款
-                                            } else if (item.getPay_info().getCancel_apply_status().equals("0")) {
-                                                holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
-                                            }
-
-
-                                        } else {
-                                            holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
-                                        }
+                                        //未使用,未退款
+                                    } else if (item.getPay_info().getCancel_apply_status().equals("0")) {
+                                        holder.setText(R.id.tvEoiStatusDes, getString(R.string.nouse));
                                     }
 
 
+                                } else {
+                                    holder.setText(R.id.tvEoiStatusDes, getString(R.string.isuse));
                                 }
-                            };
+                            }
 
-                            lvSaleRecord.setAdapter(eoiAdapter);
-                        } else {
-                            eoiAdapter.addMore(eoiList);
+
                         }
-                    }
-                });
+                    };
+
+                    lvSaleRecord.setAdapter(eoiAdapter);
+                } else {
+                    eoiAdapter.addMore(eoiList);
+                }
+            }
+        });
 
 
     }
@@ -181,7 +171,7 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
 
 
                 //如果是未使用可以退款
-                if (eoilistBean.getStatus()!=1&&eoilistBean.getPay_info().getCancel_apply_status().equals("0") && eoilistBean.getPay_info().getIs_use().equals("0")) {
+                if (eoilistBean.getStatus() != 1 && eoilistBean.getPay_info().getCancel_apply_status().equals("0") && eoilistBean.getPay_info().getIs_use().equals("0")) {
                     firbSelectPopWindow.showAtLocation(EOIActivity.this.findViewById(R.id.flContent), Gravity.BOTTOM, 0, 0);
                 }
             }
@@ -215,8 +205,7 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
         btSure.setText(getString(R.string.eoi_refund));
         btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
         btFalse.setText(getString(R.string.cancel));
-        firbSelectPopWindow = new PopupWindow(firbPwView,
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        firbSelectPopWindow = new PopupWindow(firbPwView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
         //设置SelectPicPopupWindow弹出窗体动画效果
         firbSelectPopWindow.setAnimationStyle(R.style.Animation);
         //实例化一个ColorDrawable颜色为半透明
@@ -256,37 +245,33 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
      */
     private void cancel_eoi(String eoi_id) {
 
-        EasyHttp.get(Contants.EOI_REFUND)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params("eoi_id", eoi_id)
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showDialog();
-                    }
+        EasyHttp.get(Contants.EOI_REFUND).cacheMode(CacheMode.NO_CACHE).params("eoi_id", eoi_id).timeStamp(true).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(EOIActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                ToasShow.showToastCenter(EOIActivity.this, e.getMessage());
+                Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess***", "UserBean:" + json);
 
-                        closeDialog();
-                        if (!TextUtils.isEmpty(json)) {
-                            Gson gson = new Gson();
-                            ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
-                            ToasShow.showToastCenter(EOIActivity.this, userBean.getMsg());
-                        }
+                closeDialog();
+                if (!TextUtils.isEmpty(json)) {
+                    Gson gson = new Gson();
+                    ErrorBean userBean = gson.fromJson(json, ErrorBean.class);
+                    ToasShow.showToastCenter(EOIActivity.this, userBean.getMsg());
+                }
 
 
-                    }
-                });
+            }
+        });
 
 
     }
