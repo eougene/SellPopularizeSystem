@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
 
     <TextView
@@ -11,9 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="@dimen/padding_margin_10"
-        android:text="@string/bianhao"
         android:textColor="@color/black"
-        android:textSize="@dimen/tv_size_12"/>
+        android:textSize="@dimen/tv_size_12" />
 
 
     <LinearLayout
@@ -32,9 +31,8 @@
             android:layout_gravity="center"
             android:maxLines="1"
             android:singleLine="true"
-            android:text="@string/bianhao"
             android:textColor="@color/light_blue"
-            android:textSize="@dimen/tv_size_10"/>
+            android:textSize="@dimen/tv_size_10" />
 
 
         <LinearLayout
@@ -53,13 +51,13 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_4"
-                android:src="@mipmap/bedroom"/>
+                android:src="@mipmap/bedroom" />
 
             <TextView
                 android:id="@+id/tvProm02"
@@ -68,13 +66,13 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_4"
-                android:src="@mipmap/shower"/>
+                android:src="@mipmap/shower" />
 
             <TextView
                 android:id="@+id/tvProm03"
@@ -83,13 +81,13 @@
                 android:layout_marginLeft="@dimen/padding_margin_4"
                 android:text="0"
                 android:textColor="@color/light_blue"
-                android:textSize="@dimen/tv_size_10"/>
+                android:textSize="@dimen/tv_size_10" />
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/padding_margin_4"
-                android:src="@mipmap/car"/>
+                android:src="@mipmap/car" />
 
 
         </LinearLayout>
@@ -107,22 +105,20 @@
             android:id="@+id/tvEoiStatusDes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/padding_margin_4"
             android:layout_gravity="right"
-            android:text="@string/title"
+            android:layout_marginRight="@dimen/padding_margin_4"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_10"/>
+            android:textSize="@dimen/tv_size_10" />
 
         <TextView
             android:id="@+id/salesName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_marginRight="@dimen/padding_margin_4"
             android:layout_marginTop="@dimen/padding_margin_4"
-          android:layout_gravity="right"
-            android:text="@string/title"
             android:textColor="@color/black"
-            android:textSize="@dimen/tv_size_10"/>
+            android:textSize="@dimen/tv_size_10" />
 
     </LinearLayout>
 
