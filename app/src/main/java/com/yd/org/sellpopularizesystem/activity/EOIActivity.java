@@ -63,6 +63,8 @@ public class EOIActivity extends BaseActivity implements PullToRefreshLayout.OnR
 
     }
 
+
+
     private void getEOIData(int page, final boolean isRefresh) {
         EasyHttp.get(Contants.EOI_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("company_id", "").params("product_id", "").params("page", page + "").params("number", "100").execute(new SimpleCallBack<String>() {
             @Override
