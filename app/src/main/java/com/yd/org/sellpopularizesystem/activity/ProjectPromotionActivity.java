@@ -261,24 +261,27 @@ public class ProjectPromotionActivity extends AppCompatActivity implements AppBa
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-
+                //所有楼盘
                 case R.id.llAll:
                     Bundle bundle = new Bundle();
                     bundle.putString("type", "all");
                     bundle.putSerializable("data", (Serializable) productData);
                     ActivitySkip.forward(ProjectPromotionActivity.this, ScaleActivity.class, bundle);
                     break;
+                    //热销
                 case R.id.tvHotSale:
                     Bundle bundle1 = new Bundle();
                     bundle1.putString("type", "hot");
                     bundle1.putSerializable("data", (Serializable) productData);
                     ActivitySkip.forward(ProjectPromotionActivity.this, ScaleActivity.class, bundle1);
                     break;
+                    //地图找房
                 case R.id.tvLookHouse:
                     Bundle bundle2 = new Bundle();
                     bundle2.putSerializable("data", (Serializable) productData);
                     ActivitySkip.forward(ProjectPromotionActivity.this, MapActivity.class, bundle2);
                     break;
+                    //更多
                 case R.id.tvMore:
                     Bundle bundle3 = new Bundle();
                     bundle3.putString("type", "promote");

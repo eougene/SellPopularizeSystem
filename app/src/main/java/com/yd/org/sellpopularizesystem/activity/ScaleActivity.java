@@ -353,44 +353,27 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private void jsonParse(String json, boolean isRefresh) {
         productData = new ArrayList<>();
         Gson gson = new Gson();
-        try {
-            JSONObject jsonObject = new JSONObject(json);
-            String msg = jsonObject.getString("msg");
-            if (!msg.equals(getResources().getString(R.string.nodata))) {//有数据时
-                Log.e("TAG", "msg: " + jsonObject.getString("msg"));
-                getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                ProductListBean product = gson.fromJson(json, ProductListBean.class);
-                if (product.getCode().equals("1")) {
-                    Log.e("TAG", "totalNum: " + product.getTotal_number());
-                    productData = product.getResult();
-                    tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
-                }
-                if (isRefresh) {
-                    setAdapter(productData);
-                    listView.setAdapter(mCommonAdapter);
-                } else {
-                    mCommonAdapter.addMore(productData);
-                }
-                //rightRtitle.setEnabled(false);
-            } else {//无返回数据时
-                Log.e("TAG", "jsonParse: " + jsonObject.getString("msg"));
-                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                if (mCommonAdapter != null) {
-                    if (mCommonAdapter.getmDatas().size() > 0) {
-                        mCommonAdapter.getmDatas().clear();
-                        mCommonAdapter.notifyDataSetChanged();
-                        tvProjectNum.setText(getString(R.string.sum) + 0 + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
-                        getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                        return;
-                    }
-                } else {
-                    return;
-                }
 
+            //有数据时
+            ProductListBean product = gson.fromJson(json, ProductListBean.class);
+            if (product.getCode().equals("1")) {
+                Log.e("TAG", "totalNum: " + product.getTotal_number());
+                productData = product.getResult();
+                tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
             }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+            if (isRefresh) {
+                if (productData.size() == 0) {
+                    getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                    listView.setVisibility(View.GONE);
+                } else {
+                    getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                    listView.setVisibility(View.VISIBLE);
+                }
+                setAdapter(productData);
+                listView.setAdapter(mCommonAdapter);
+            } else {
+                mCommonAdapter.addMore(productData);
+            }
 
     }
 

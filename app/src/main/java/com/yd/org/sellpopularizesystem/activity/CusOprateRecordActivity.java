@@ -502,17 +502,13 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                             //销售名
                             holder.setText(R.id.salesName, item.getCustomer_info().getSurname() + " " + item.getCustomer_info().getFirst_name());
 
-                            if (item.getProduct_info() != null) {
+                            if (item.getProduct_childs_info() != null) {
                                 //标题
                                 holder.setText(R.id.eoiTitle, item.getProduct_info().getProduct_name() + "/" + item.getProduct_childs_info().getProduct_childs_unit_number());
-
+                                holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
+                                holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
+                                holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
                             }
-
-
-                            holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
-                            holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
-                            holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
-
                             if (item.getStatus() == 1) {
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_eoi));
                             } else {
