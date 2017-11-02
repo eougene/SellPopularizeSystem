@@ -352,6 +352,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
     private void jsonParse(String json, boolean isRefresh) {
         productData = new ArrayList<>();
+
         Gson gson = new Gson();
         try {
             JSONObject jsonObject = new JSONObject(json);
