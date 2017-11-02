@@ -508,7 +508,11 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                                 holder.setText(R.id.tvProm01, item.getProduct_childs_info().getBedroom());
                                 holder.setText(R.id.tvProm02, item.getProduct_childs_info().getBathroom());
                                 holder.setText(R.id.tvProm03, item.getProduct_childs_info().getCar_space());
+
                             }
+
+
+
                             if (item.getStatus() == 1) {
                                 holder.setText(R.id.tvEoiStatusDes, getString(R.string.eoi_eoi));
                             } else {
