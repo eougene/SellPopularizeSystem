@@ -4,12 +4,19 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -51,13 +58,20 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     EditText myLastNameEdit;
     EditText myPhoneEdit;
     EditText myEmailEdit;
+    EditText registeredGST;
     TextView myAdressTv;
     TextView myBankTV;
     TextView myCompanyAdressTV;
     TextView myCertificate;
     TextView myCertificateTV;
+    TextView companyTV;
     RelativeLayout wechatRelative;
     ImageView wechatImageView;
+
+    View firbPwView;
+    //firb选择相关
+    private Button btUnknown, btSure, btFalse;
+    private PopupWindow firbSelectPopWindow;
 
 
     private String imagePath = "", wechat_qrcode = "";
@@ -74,6 +88,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void initView() {
         setTitle(getString(R.string.myinfo));
+        companyTV=getViewById(R.id.companyTV);
 
         myHeadIm = getViewById(R.id.myHeadIm);
         myFirstNameEdit = getViewById(R.id.myFirstNameEdit);
@@ -90,13 +105,95 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         wechatImageView = getViewById(R.id.wechatImageView);
 
 
+        registeredGST = getViewById(R.id.registeredGST);
+
+
         if (SharedPreferencesHelps.getType() == 1) {
             myCertificate.setText(R.string.mycertificate);
         } else if (SharedPreferencesHelps.getType() == 2) {
             myCertificate.setText(R.string.besale);
 
         }
+        getView();
         getInfo();
+    }
+
+    private void getView() {
+
+        //FIRB选择视图
+        firbPwView = LayoutInflater.from(this).inflate(R.layout.firb_popuwindow, null);
+        RelativeLayout rlFirb = (RelativeLayout) firbPwView.findViewById(R.id.rlFirb);
+        btUnknown = (Button) firbPwView.findViewById(R.id.btUnknown);
+        btSure = (Button) firbPwView.findViewById(R.id.btSure);
+        btFalse = (Button) firbPwView.findViewById(R.id.btFalse);
+        firbSelectPopWindow = new PopupWindow(firbPwView, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, true);
+        //设置SelectPicPopupWindow弹出窗体动画效果
+        firbSelectPopWindow.setAnimationStyle(R.style.Animation);
+        //实例化一个ColorDrawable颜色为半透明
+        ColorDrawable firb = new ColorDrawable(0xb0000000);
+        //设置SelectPicPopupWindow弹出窗体的背景
+        firbSelectPopWindow.setBackgroundDrawable(firb);
+
+        btUnknown.setText("YES");
+        btSure.setText("NO");
+        btFalse.setText("Cancel");
+
+
+        rlFirb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindow.dismiss();
+            }
+        });
+
+
+        btUnknown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+                registeredGST.setText("YES");
+                firbSelectPopWindow.dismiss();
+
+
+
+                Drawable drawable = getResources().getDrawable(R.mipmap.xinghao);
+                drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//对图片进行压缩
+                companyTV.setCompoundDrawables(null, null, drawable, null);
+
+
+
+            }
+        });
+
+        btSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+
+                registeredGST.setText("NO");
+                firbSelectPopWindow.dismiss();
+
+
+                // Drawable drawable = getResources().getDrawable(R.mipmap.xinghao);
+                //drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());//对图片进行压缩
+                companyTV.setCompoundDrawables(null, null, null, null);
+
+            }
+        });
+
+        btFalse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firbSelectPopWindow.dismiss();
+            }
+        });
+
+
+
     }
 
 
@@ -108,6 +205,7 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         myCompanyAdressTV.setOnClickListener(this);
         myCertificateTV.setOnClickListener(this);
         wechatRelative.setOnClickListener(this);
+        registeredGST.setOnClickListener(this);
 
 
         setRightTitle(R.string.customdetaild_save, getResources().getColor(R.color.scale_tab5), new View.OnClickListener() {
@@ -125,49 +223,44 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         HttpParams httpParams = new HttpParams();
         httpParams.put("user_id", SharedPreferencesHelps.getUserID());
 
-        EasyHttp.get(Contants.USER_INFO)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .params(httpParams)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
+        EasyHttp.get(Contants.USER_INFO).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").params(httpParams).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
+
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                ToasShow.showToastCenter(MyInfoActivity.this, e.getMessage());
+                Log.e("onError***", "onError:" + e.getMessage());
+
+            }
+
+            @Override
+            public void onSuccess(String s) {
+                Log.e("onSuccess***", "onSuccess:" + s);
+                closeDialog();
+                Gson gson = new Gson();
+                myUserInfo = gson.fromJson(s, MyUserInfo.class);
+                if (myUserInfo.getCode().equals("1")) {
+                    if (myUserInfo.getResult() != null) {
+                        setUseInfo(myUserInfo);
                     }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(MyInfoActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getMessage());
-
-                    }
-
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.e("onSuccess***", "onSuccess:" + s);
-                        closeDialog();
-                        Gson gson = new Gson();
-                        myUserInfo = gson.fromJson(s, MyUserInfo.class);
-                        if (myUserInfo.getCode().equals("1")) {
-                            if (myUserInfo.getResult() != null) {
-                                setUseInfo(myUserInfo);
-                            }
-
-                        } else {
-                            ToasShow.showToastCenter(MyInfoActivity.this, myUserInfo.getMsg());
-                        }
+                } else {
+                    ToasShow.showToastCenter(MyInfoActivity.this, myUserInfo.getMsg());
+                }
 
 
-                    }
-                });
+            }
+        });
     }
 
     //设置信息
     private void setUseInfo(MyUserInfo myUserInfo) {
         BaseApplication.getInstance().myUserInfo = myUserInfo;
-
 
 
         //更新头像
@@ -209,6 +302,16 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         myPhoneEdit.setText(myUserInfo.getResult().getMobile());
         //邮箱
         myEmailEdit.setText(myUserInfo.getResult().getE_mail());
+
+
+        if (myUserInfo.getResult().getIs_gst() == 0) {
+            registeredGST.setText("Unknown");
+        } else if (myUserInfo.getResult().getIs_gst() == 1) {
+            registeredGST.setText("NO");
+        } else if (myUserInfo.getResult().getIs_gst() == 2) {
+            registeredGST.setText("YES");
+        }
+
 
     }
 
@@ -263,11 +366,12 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         httpParams.put("surname", surname);
         httpParams.put("mobile", mobile);
         httpParams.put("e_mail", e_mail);
+        // httpParams.put("is_gst", registeredGST.getText().toString().trim());
 
 
         //头像
         if (!TextUtils.isEmpty(imagePath)) {
-            Log.e("TAG", "updateUserInfo: "+imagePath);
+            Log.e("TAG", "updateUserInfo: " + imagePath);
             httpParams.put("head_img", new File(imagePath), mUIProgressResponseCallBack);
         }
 
@@ -317,38 +421,34 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
         httpParams.put("bank_name", BaseApplication.getInstance().myUserInfo.getResult().getBank_name());
         httpParams.put("bsb", BaseApplication.getInstance().myUserInfo.getResult().getBsb());
 
-        EasyHttp.post(Contants.UPDATE_USER)
-                .params(httpParams)
-                .timeStamp(true)
-                .cacheMode(CacheMode.NO_CACHE)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+        EasyHttp.post(Contants.UPDATE_USER).params(httpParams).timeStamp(true).cacheMode(CacheMode.NO_CACHE).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(MyInfoActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                ToasShow.showToastCenter(MyInfoActivity.this, e.getMessage());
+                Log.e("onError***", "onError:" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String s) {
-                        closeDialog();
-                        Log.e("onSuccess***", "onSuccess:" + s);
+            @Override
+            public void onSuccess(String s) {
+                closeDialog();
+                Log.e("onSuccess***", "onSuccess:" + s);
 
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
-                        ToasShow.showToastCenter(MyInfoActivity.this, errorBean.getMsg());
-                        if (errorBean.getCode().equals("1")) {
-                            finish();
-                        }
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(s, ErrorBean.class);
+                ToasShow.showToastCenter(MyInfoActivity.this, errorBean.getMsg());
+                if (errorBean.getCode().equals("1")) {
+                    finish();
+                }
 
-                    }
-                });
+            }
+        });
 
     }
 
@@ -361,48 +461,6 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
 
         if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
-                //拍照
-                /*case ExtraName.TAKE_PICTURE:
-                    Uri photoUri = BitmapUtil.imgUri;
-                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-
-
-                        if (photoUri != null) {
-                            if (type == 0) {
-                                imagePath = BitmapUtil.getImagePath(MyInfoActivity.this, photoUri, null, null);
-                            } else {
-                                wechat_qrcode = BitmapUtil.getImagePath(MyInfoActivity.this, photoUri, null, null);
-                            }
-
-                            Bitmap bitmap = null;
-                            try {
-                                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                            if (type == 0) {
-                                myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, imagePath)));
-
-                            } else {
-                                wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, wechat_qrcode)));
-
-                            }
-                        }
-
-                    } else {
-                        Uri imgUri = Uri.parse(BitmapUtil.imgPath);
-                        if (imgUri != null) {
-                            if (type == 0) {
-                                imagePath = imgUri.getPath();
-                                myHeadIm.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(imagePath)));
-                            } else {
-                                wechat_qrcode = imgUri.getPath();
-                                wechatImageView.setImageBitmap(BitmapUtil.compressBitmap(BitmapFactory.decodeFile(wechat_qrcode)));
-                            }
-
-                        }
-
-                    }*/
                 case REQUEST_CAMERA_CODE:
                     ArrayList<String> list = data.getStringArrayListExtra(PhotoPickerActivity.EXTRA_RESULT);
                     //String string=data.getStringExtra(PhotoPickerActivity.EXTRA_RESULT);
@@ -417,19 +475,19 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
     }
 
     private void loadAdpater(ArrayList<String> paths) {
-        if (imagePaths!=null&& imagePaths.size()>0){
+        if (imagePaths != null && imagePaths.size() > 0) {
             imagePaths.clear();
         }
-        if (paths.contains("000000")){
+        if (paths.contains("000000")) {
             paths.remove("000000");
         }
         paths.add("000000");
         imagePaths.addAll(paths);
-        if (type==0){
-            imagePath=imagePaths.get(0);
+        if (type == 0) {
+            imagePath = imagePaths.get(0);
             Picasso.with(MyInfoActivity.this).load("file://" + imagePath).fit().into(myHeadIm);
-        }else if (type==1){
-            wechat_qrcode=imagePaths.get(0);
+        } else if (type == 1) {
+            wechat_qrcode = imagePaths.get(0);
             Picasso.with(MyInfoActivity.this).load("file://" + wechat_qrcode).fit().into(wechatImageView);
         }
 
@@ -477,47 +535,42 @@ public class MyInfoActivity extends BaseActivity implements View.OnClickListener
                 type = 1;
                 getImagePath();
                 break;
+
+            case R.id.registeredGST:
+                firbSelectPopWindow.showAtLocation(MyInfoActivity.this.findViewById(R.id.myInfoCon), Gravity.BOTTOM, 0, 0);
+                break;
         }
     }
 
     private static final int REQUEST_CAMERA_CODE = 10;
-    private ArrayList<String> imagePaths=new ArrayList<>();
+    private ArrayList<String> imagePaths = new ArrayList<>();
+
     private void getImagePath() {
 
 
-
-
-
-        Acp.getInstance(MyInfoActivity.this).request(new AcpOptions.Builder()
-                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                , Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
+        Acp.getInstance(MyInfoActivity.this).request(new AcpOptions.Builder().setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 /*以下为自定义提示语、按钮文字
                 .setDeniedMessage()
                 .setDeniedCloseBtn()
                 .setDeniedSettingBtn()
                 .setRationalMessage()
-                .setRationalBtn()*/
-                        .build(),
-                new AcpListener() {
-                    @Override
-                    public void onGranted() {
-                        PhotoPickerIntent intent = new PhotoPickerIntent(MyInfoActivity.this);
-                        intent.setSelectModel(SelectModel.SINGLE);
-                        intent.setShowCarema(true); // 是否显示拍照
-                        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-                        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-                        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+                .setRationalBtn()*/.build(), new AcpListener() {
+            @Override
+            public void onGranted() {
+                PhotoPickerIntent intent = new PhotoPickerIntent(MyInfoActivity.this);
+                intent.setSelectModel(SelectModel.SINGLE);
+                intent.setShowCarema(true); // 是否显示拍照
+                // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                startActivityForResult(intent, REQUEST_CAMERA_CODE);
 
 
+            }
 
-
-                    }
-
-                    @Override
-                    public void onDenied(List<String> permissions) {
-                        ToasShow.showToastCenter(MyInfoActivity.this, permissions.toString() + "权限拒绝");
-                    }
-                });
+            @Override
+            public void onDenied(List<String> permissions) {
+                ToasShow.showToastCenter(MyInfoActivity.this, permissions.toString() + "权限拒绝");
+            }
+        });
     }
 }

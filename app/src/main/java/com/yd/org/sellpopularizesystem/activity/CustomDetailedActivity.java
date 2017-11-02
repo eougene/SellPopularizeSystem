@@ -226,17 +226,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.edcustmomeDetailedNationality:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 1;
-                    /*if (mCountries.size()>0){
-                        if (!strFlag.equals("1")){
-                            adapter.updateListView(mCountries);
-                            strFlag="2";
-                        }
-
-                    }else {
-                        getCountryOrStateList(1);
-                        initCountrySelectView();
-                        strFlag="1";
-                    }*/
                     getCountryOrStateList(1);
                     if (nationSelectPopWindow==null){
                         initCountrySelectView();
@@ -249,17 +238,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.tvCountry:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 2;
-                    /*if (mCountries.size()>0){
-                        if (!strFlag.equals("1")){
-                            adapter.updateListView(mCountries);
-                            strFlag="2";
-                        }
-
-                    }else {
-                        getCountryOrStateList(1);
-                        initCountrySelectView();
-                        strFlag="1";
-                    }*/
                     getCountryOrStateList(1);
                     if (nationSelectPopWindow==null){
                         initCountrySelectView();
@@ -273,19 +251,6 @@ public class CustomDetailedActivity extends BaseActivity {
                 case R.id.tvCountry_01:
                     MyUtils.getInstance().setKeyBoardFocusable(CustomDetailedActivity.this, edcustmomeDetailedBie);
                     flag = 4;
-                   /* if (mCountries.size()!=0){
-                        if (!strFlag.equals("1")){
-                            adapter.updateListView(mCountries);
-                            strFlag="2";
-                        }
-
-                    }else {
-                        getCountryOrStateList(1);
-                        if (nationSelectPopWindow==null){
-                            initCountrySelectView();
-                        }
-                        strFlag="1";
-                    }*/
                     getCountryOrStateList(1);
                     if (nationSelectPopWindow==null){
                         initCountrySelectView();
@@ -311,20 +276,6 @@ public class CustomDetailedActivity extends BaseActivity {
                     if (TextUtils.isEmpty(etZhou_01.getText().toString())){
                         ToasShow.showToastCenter(CustomDetailedActivity.this,getResources().getString(R.string.choose_zhou));
                     }else {
-                        /*if (mStates.size()>0){
-                            if (!strFlag.equals("2")){
-                                adapter.updateListView(mStates);
-                                strFlag="2";
-                            }
-
-                        }else {
-                            getCountryOrStateList(2);
-                            if (nationSelectPopWindow==null){
-                                initCountrySelectView();
-                            }
-
-                            strFlag="2";
-                        }*/
                         getCountryOrStateList(2);
                         if (nationSelectPopWindow==null){
                             initCountrySelectView();
