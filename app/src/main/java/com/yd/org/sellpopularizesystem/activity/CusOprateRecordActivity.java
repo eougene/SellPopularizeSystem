@@ -233,10 +233,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
         String str1 = weeks.get(options1);
         String str2 = hours.get(options2);
         String str3 = minutes.get(options3);
-                /*Pattern p = Pattern.compile("\\d+");
-                Matcher m = p.matcher(str);
-                m.find();
-                String newStr = m.group();*/
         String[] nums = new String[2];
         if (str1.equals(getString(R.string.today))) {
             nums[0] = String.format("%02d", cal.get(Calendar.MONTH) + 1);
@@ -269,9 +265,6 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
                     }
                     methodDialog.dismiss();
                     break;
-                /*case R.id.etUploadTime:
-                    pvCustomTime.show();
-                    break;*/
                 //eoi充值
                 case R.id.ivCash:
                     if (llCertificate.getVisibility() == View.GONE) {
@@ -459,7 +452,15 @@ public class CusOprateRecordActivity extends BaseActivity implements PullToRefre
 
 
     private void getEoiData(int page, final boolean isRel) {
-        EasyHttp.get(Contants.EOI_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("company_id", "").params("product_id", "").params("page", page + "").params("number", "100").execute(new SimpleCallBack<String>() {
+        EasyHttp.get(Contants.EOI_LIST).cacheMode(CacheMode.DEFAULT)
+                .headers("Cache-Control", "max-age=0")
+                .timeStamp(true)
+                .params("user_id", SharedPreferencesHelps.getUserID())
+                .params("customer_id", customeId)
+                .params("product_id", "")
+                .params("page", page + "")
+                .params("number", "100")
+                .execute(new SimpleCallBack<String>() {
             @Override
             public void onStart() {
                 super.onStart();

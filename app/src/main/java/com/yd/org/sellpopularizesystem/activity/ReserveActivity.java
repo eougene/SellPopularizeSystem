@@ -727,9 +727,8 @@ public class ReserveActivity extends BaseActivity {
         if (isEOI) {
             for (int i = 0; i < errorBean.getResult().size(); i++) {
                 if (errorBean.getResult().get(i).getStatus() == 1) {
-                    eoi_id = errorBean.getResult().get(i).getStatus() + "";
+                    eoi_id = errorBean.getResult().get(i).getEoi_id() + "";
                     pay_method=errorBean.getResult().get(i).getPay_method();
-                    Log.e("i:", "i:" + i);
                     break;
 
                 }
@@ -887,16 +886,12 @@ public class ReserveActivity extends BaseActivity {
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                         if (photoUri != null) {
                             picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                            Log.e("imgPath", "onActivityResult: " + picPath);
-                            //picPath=BitmapUtil.imgPath;
                             Bitmap bitmap = null;
                             try {
-                                //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
                                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
-                            //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
                             ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
 
