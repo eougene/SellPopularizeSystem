@@ -88,7 +88,7 @@ public class OrderDetailActivity extends BaseActivity {
             tvReason.setText(result.getCo_purchaser() + "");
             tvCusAdd.setText(result.getCustomer_info().getCountry() + getString(R.string.single_blank_space) + result.getCustomer_info().getProvince() + getString(R.string.single_blank_space) + result.getCustomer_info().getAddress() + getString(R.string.single_blank_space) + result.getCustomer_info().getZip_code());
             tvLawyer.setText(result.getLawyer_name() + "");
-            tvGoal.setText(result.getPurchaseReason() + "");
+            tvGoal.setText(String.valueOf(result.getPurchaseReason() + ""));
             tvPrice.setText("$ " + MyUtils.addComma(result.getPrice().split("\\.")[0]));
         }
     }

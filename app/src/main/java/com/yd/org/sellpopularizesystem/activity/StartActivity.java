@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
     private static final int GO_HOME = 1000;
     private static final int GO_GUIDE = 1001;
     // 延迟3秒
-    private static final long SPLASH_DELAY_MILLIS = 1500;
+    private static final long SPLASH_DELAY_MILLIS = 1000;
     private RelativeLayout iv_launcher;
     private Animation mAnimation = null;
 

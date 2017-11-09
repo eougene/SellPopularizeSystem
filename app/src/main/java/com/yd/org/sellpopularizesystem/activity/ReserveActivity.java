@@ -740,7 +740,6 @@ public class ReserveActivity extends BaseActivity {
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-                int progress = (int) (bytesRead * 100 / contentLength);
             }
         };
 
@@ -764,6 +763,9 @@ public class ReserveActivity extends BaseActivity {
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
+
+
+        Log.e("httpParams**","httpParams:"+httpParams.toString());
         EasyHttp.post(Contants.CREAT_ORDER)
                 .cacheMode(CacheMode.NO_CACHE)
                 .timeStamp(true)
@@ -789,6 +791,7 @@ public class ReserveActivity extends BaseActivity {
 
                         try {
                             JSONObject json = new JSONObject(s);
+                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
                             if (json.getString("code").equals("1")) {
                                 ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
                                 if (payment_method.equals("6") || payment_method.equals("7")) {
@@ -798,9 +801,6 @@ public class ReserveActivity extends BaseActivity {
                                     ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
                                 }
                                 finish();
-                            } else {
-                                ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-
                             }
 
                         } catch (JSONException e) {
