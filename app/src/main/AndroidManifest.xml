@@ -54,7 +54,8 @@
     <!-- 更改配置权限 -->
     <uses-permission android:name="andorid.permission.CHANGE_CONFIGURATION"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK"/>
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
     <!-- 个推 -->
 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
