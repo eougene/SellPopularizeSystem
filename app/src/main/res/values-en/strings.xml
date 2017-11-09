@@ -694,7 +694,7 @@
     <string name="eoi_cancel"> Rejected</string>
     <string name="pdel_">Number</string>
     <string name="unit_list">Unit List</string>
-    <string name="eoi_eoi">凭证已上传,正在审核</string>
+    <string name="eoi_eoi"> Credentials Uploaded,Reviewing</string>
 
 </resources>
 
