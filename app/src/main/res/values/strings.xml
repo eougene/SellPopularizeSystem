@@ -683,5 +683,9 @@
     <string name="pdel_">套数</string>
     <string name="unit_list">单元列表</string>
     <string name="eoi_eoi">凭证已上传,正在审核</string>
+    <string name="contacts_title">通讯录朋友</string>
+    <string name="contact_add">添加手机联系人</string>
+    <string name="contacts_add">添加</string>
+    <string name="add_done">已添加</string>
 
 </resources>
