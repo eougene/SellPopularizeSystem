@@ -35,9 +35,6 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 import com.zhouyou.http.model.HttpParams;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +57,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private int page = 1;
     private String space = "", search_key = "", price = "", house = "", area = "", cate_id = "";
     public String strSelect = "", hotsale = "", promote = "", isOldProject = "1";
-    private String strPrice = "", strType = "", strHouse = "", strBacPrice = "",
-            strBacType = "", strBacHouse = "";
+    private String strPrice = "", strType = "", strHouse = "", strBacPrice = "", strBacType = "", strBacHouse = "";
     public ProductSearchUrl psu = new ProductSearchUrl();
     private CommonAdapter mCommonAdapter;
     private String type;
@@ -200,9 +196,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     }
 
     private void searchResult() {
-        if (TextUtils.equals(getString(R.string.price), tvPrice.getText().toString()) &&
-                TextUtils.equals(getString(R.string.type), tvType.getText().toString()) &&
-                TextUtils.equals(getString(R.string.housetype), tvHouseType.getText().toString())) {
+        if (TextUtils.equals(getString(R.string.price), tvPrice.getText().toString()) && TextUtils.equals(getString(R.string.type), tvType.getText().toString()) && TextUtils.equals(getString(R.string.housetype), tvHouseType.getText().toString())) {
             if (TextUtils.isEmpty(search_key)) {
                 ToasShow.showToastCenter(ScaleActivity.this, getString(R.string.select_ele));
             } else {
@@ -321,11 +315,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
         Log.e("参数***", "params:" + httpParams.toString());
 
 
-        EasyHttp.get(Contants.PRODUCT_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params(httpParams)
+        EasyHttp.get(Contants.PRODUCT_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params(httpParams)
 
                 .execute(new SimpleCallBack<String>() {
                     @Override
@@ -353,27 +343,26 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
     private void jsonParse(String json, boolean isRefresh) {
         productData = new ArrayList<>();
         Gson gson = new Gson();
+        ProductListBean product = gson.fromJson(json, ProductListBean.class);
+        if (product.getCode().equals("1")) {
+            productData = product.getResult();
+            tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
+        }
+        if (isRefresh) {
 
-            //有数据时
-            ProductListBean product = gson.fromJson(json, ProductListBean.class);
-            if (product.getCode().equals("1")) {
-                Log.e("TAG", "totalNum: " + product.getTotal_number());
-                productData = product.getResult();
-                tvProjectNum.setText(getString(R.string.sum) + product.getTotal_number() + getString(R.string.individuaproject) + getString(R.string.single_blank_space) + strSelect);
-            }
-            if (isRefresh) {
-                if (productData.size() == 0) {
-                    getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                    listView.setVisibility(View.GONE);
-                } else {
-                    getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                    listView.setVisibility(View.VISIBLE);
-                }
-                setAdapter(productData);
-                listView.setAdapter(mCommonAdapter);
+            if (productData.size() == 0) {
+                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                listView.setVisibility(View.GONE);
             } else {
-                mCommonAdapter.addMore(productData);
+                getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                listView.setVisibility(View.VISIBLE);
             }
+            setAdapter(productData);
+            listView.setAdapter(mCommonAdapter);
+        } else {
+            mCommonAdapter.addMore(productData);
+        }
+
 
     }
 
@@ -393,10 +382,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
                 //火爆
                 if (item.getIs_hot_sale() == 1) {
-                    //holder.getView(R.id.tvHot).setVisibility(View.VISIBLE);
                     holder.visibility(R.id.hotImageView);
                 } else {
-                    //holder.getView(R.id.tvHot).setVisibility(View.GONE);
                     holder.goneImageView(R.id.hotImageView);
                 }
 
@@ -423,10 +410,8 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                 //新盘
                 if (item.getAttr_2() == 1) {
                     holder.visibility(R.id.newImageView);
-                    // holder.getView(R.id.tvCollection).setVisibility(View.VISIBLE);
                 } else {
                     holder.goneImageView(R.id.newImageView);
-                    //holder.getView(R.id.tvCollection).setVisibility(View.GONE);
                 }
 
                 //独家
@@ -456,9 +441,7 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
 
 
                 if (null != item.getChilds().get(0).getMin_price() || !TextUtils.isEmpty(item.getChilds().get(0).getMin_price())) {
-                    holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + getString(R.string.single_blank_space) + "$" +
-                            getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000)
-                            .split("\\.")[0]) + "k" + getString(R.string.perset));
+                    holder.setText(R.id.tvHousePrice, getString(R.string.totalprice) + getString(R.string.single_blank_space) + "$" + getString(R.string.single_blank_space) + MyUtils.addComma(String.valueOf(Math.ceil(Double.parseDouble(item.getChilds().get(0).getMin_price())) / 1000).split("\\.")[0]) + "k" + getString(R.string.perset));
 
                 }
             }
@@ -562,7 +545,6 @@ public class ScaleActivity extends BaseActivity implements PullToRefreshLayout.O
                             is_first = true;
                         }
 
-                        //price=data.getStringExtra("selectextra");
                     } else {
                         is_first = true;
                         tvPrice.setText(getString(R.string.nolimit));

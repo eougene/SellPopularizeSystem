@@ -7,12 +7,10 @@ import java.util.List;
  */
 
 public class OrderDetailBean extends Domine{
-
-
     /**
      * code : 1
      * msg : 成功获取订单信息
-     * result : {"product_orders_id":2165,"company_id":"1","order_type":1,"product_id":"68","eoi_id":"","purchaseReason":"Investment","property_id":2034,"product_childs_type":3,"price":"702000.00","currency":"au","client":4260,"is_firb":0,"client_type":1,"sales_id":391,"lawyer_id":2,"lawyer_name":"0","lawyer_tel":"0","lawyer_email":"0","payment_method":4,"payment_amount":"0.01","add_time":"1500358802","order_money_url":"678","pay_time":"522051602.","order_money_upload_time":"1500358802","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":1500358835,"cancel_time":"1500358835","who_cancel":1,"cancel_apply_status":2,"complete_time":"","remark":"","days_to_pay":"1500963602","sale_advice_status":0,"old_status":"0","status":10,"product_name":null,"customer_surname":"andr","customer_first_name":"andr001","customer_en_name":"","product_info":{"product_childs_id":2034,"product_id":68,"product_childs_lot_number":"1032","product_childs_unit_number":"1032","company_id":2,"cate_id":1,"cate_type":3,"area":"","bedroom":"4","bathroom":"2","car_space":"1","has_study":"0","ensuite":"0","level":"0","floor_type":"0","aspect":"0","internal":"0.00","external":"0.00","building_area":"171.00","land_size":"318.00","price":"702000.00","vendor_price":"702000.00","discount_amount":"0.00","land_vendor_price":"406000.00","land_discount_amount":"0.00","house_vendor_price":"296000.00","house_discount_amount":"0.00","is_gst":1,"exit_commossion":"","adjust_factor":"1.00","is_special_commossion":0,"commossion_type":1,"commossion_value":"2.00","commossion_send_type":1,"module_one_first":0,"module_two_first":0,"module_three_first":0,"currency":"au","thumb":"public/uploads/product_childs_thumb/170627/201706271546591413.jpg","agent_notes":"","up_time":null,"up_ip":null,"up_admin":null,"is_lock":0,"is_eoi":0,"if_eoi":0,"recind_number":0,"old_status":0,"status":7},"customer_info":{"customer_id":4260,"company_id":1,"customer_nick":null,"head_img":"public/uploads/head_img/170713/201707131544544827.jpg","true_name":null,"surname":"andr","first_name":"andr001","en_name":"","sex":0,"title":"","gender":"","birth_date":"1500220800","mid_name":"","ext_id":"","customer_type":2,"company_name":"ssss","select_self":"1","client_id":"391","client":"w","abn":"1234567889","acn":"zxxxx1234","age":0,"mobile":"18786653033","unit_number":"2","street_number":"38","street_address_line_1":"zzz","street_address_line_2":"add","suburb":"","state":"","postcode":"asdfg","country":"中非共和国","company_mobile":"0212169948","company_e_mail":"","company_fax":"","company_unit_number":"","company_street_number":"","company_street_address_line_1":"街道1","company_street_address_line_2":"街道2","company_suburb":"","company_state":"","company_postcode":"234555","company_country":"安哥拉","province":"","city":"","area":"","address":null,"zip_code":"","openid":null,"wechat_number":"wv ","wechat_nick":"","wechat_img":"","qq_number":"qq ","e_mail":"187@qq.com","fax":"","job":"自由","income":100000000,"family_name":"ui","family_first_name":"ui","family_relationship":"ui","family_mobile":"147258","family_email":"","sign_number":0,"card_id":"11111111111111111","passport_id":"zxxxd","passport_country":"中国","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1499931867,"update_time":1500274324,"add_ip":"116.226.190.44","add_admin":null,"add_user":391,"is_del":0,"is_firb":2,"registe_number":1,"status":0,"memo":""}}
+     * result : {"product_orders_id":2869,"company_id":"1","order_type":1,"product_id":"5","eoi_id":"","purchaseReason":"未知","is_two_order":0,"another_order_id":"0","property_id":24,"product_childs_type":3,"price":"652000.00","currency":"au","client":6899,"co_purchaser":"","is_firb":0,"client_type":1,"sales_id":1070,"lawyer_id":6,"lawyer_name":"Aydin","lawyer_tel":"9676 2664","lawyer_email":"aydin.acar@ailegal.com.au","payment_method":1,"payment_amount":"300.00","add_time":"1509691694","order_money_url":"1103","pay_time":"","order_money_upload_time":"1509691694","order_moneycheck_time":"","order_money_status":1,"sales_advice_is_true":0,"sales_advice_status":0,"contract_apply_time":0,"contract_unsigned_url":"","unsign_upload_time":"","contract_apply_check_time":0,"contract_apply_status":0,"buy_money_url":"","buy_money_account_paid":"0.00","buy_money_upload_number":0,"buy_money_add_time":"","buy_money_check_time":"","buy_money_status":0,"contract_url":"","contract_add_time":"","contract_check_time":"","upload_contract_status":0,"cancel_apply_time":0,"cancel_time":"","who_cancel":0,"cancel_apply_status":0,"complete_time":"","remark":"","days_to_pay":"1510296494","vendor_id":130,"vendor_lawyer_id":361,"sale_advice_status":0,"sale_advice_check_time":"","old_status":"","exchanged_time":0,"is_wait_send_contract":0,"is_confirm_user_cancel":0,"create_type":1,"status":0,"product_name":"APT-Parramatta Skyrise (Exclusive)","customer_surname":"lliao","customer_first_name":"liao","customer_en_name":"","product_info":{"product_childs_id":24,"product_id":5,"product_childs_lot_number":"168","product_childs_unit_number":"2906","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"1","bathroom":"1","car_space":"0","has_study":"0","ensuite":"0","level":"29","floor_type":"Single Level","aspect":"N","internal":"50.00","external":"5.00","building_area":"55.00","land_size":"0.00","price":"652000.00","vendor_price":"652000.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"652000.00","house_discount_amount":"0.00","is_gst":1,"exit_commossion":"","adjust_factor":"1.00","is_special_commossion":0,"commossion_type":1,"commossion_value":"2.00","commossion_send_type":1,"module_one_first":0,"module_two_first":0,"module_three_first":0,"currency":"au","thumb":"public/uploads/product_childs_thumb/170628/201706281344455629.jpg","agent_notes":"","up_time":null,"up_ip":null,"up_admin":null,"is_lock":1,"is_eoi":0,"if_eoi":0,"recind_number":0,"old_status":0,"status":5},"buy_money_info":[],"customer_info":{"customer_id":6899,"company_id":1,"customer_nick":null,"head_img":"public/uploads/head_img/171026/201710261138111092.jpg","true_name":null,"surname":"lliao","first_name":"liao","en_name":"","sex":0,"title":"","gender":"","birth_date":"","mid_name":"","ext_id":"","customer_type":1,"company_name":"","select_self":"1","client_id":"1070","client":"","abn":"","acn":"","age":null,"mobile":"5454545","unit_number":"","street_number":"","street_address_line_1":"bdbsb","street_address_line_2":"","suburb":"","state":"","postcode":"578484","country":"澳大利亚","company_mobile":"","company_e_mail":"","company_fax":"","company_unit_number":"","company_street_number":"","company_street_address_line_1":"","company_street_address_line_2":"","company_suburb":"","company_state":"","company_postcode":"","company_country":"澳大利亚","province":"","city":"","area":"","address":null,"zip_code":"","openid":null,"wechat_number":"","wechat_nick":"","wechat_img":"","qq_number":"","e_mail":"gxgxhxbb@qq.com","fax":"","job":"","income":0,"family_name":"","family_first_name":"","family_relationship":"","family_mobile":"","family_email":"","sign_number":0,"card_id":"","passport_id":"","passport_country":"澳大利亚","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1508987943,"update_time":1508989091,"add_ip":"114.91.119.226","add_admin":null,"add_user":521,"is_del":0,"is_firb":2,"is_wait":0,"from_type":1,"registe_number":1,"is_first_user":1,"status":0,"memo":"","remark":""}}
      */
 
     private String code;
@@ -45,30 +43,33 @@ public class OrderDetailBean extends Domine{
 
     public static class ResultBean {
         /**
-         * product_orders_id : 2165
+         * product_orders_id : 2869
          * company_id : 1
          * order_type : 1
-         * product_id : 68
+         * product_id : 5
          * eoi_id :
-         * purchaseReason : Investment
-         * property_id : 2034
+         * purchaseReason : 未知
+         * is_two_order : 0
+         * another_order_id : 0
+         * property_id : 24
          * product_childs_type : 3
-         * price : 702000.00
+         * price : 652000.00
          * currency : au
-         * client : 4260
+         * client : 6899
+         * co_purchaser :
          * is_firb : 0
          * client_type : 1
-         * sales_id : 391
-         * lawyer_id : 2
-         * lawyer_name : 0
-         * lawyer_tel : 0
-         * lawyer_email : 0
-         * payment_method : 4
-         * payment_amount : 0.01
-         * add_time : 1500358802
-         * order_money_url : 678
-         * pay_time : 522051602.
-         * order_money_upload_time : 1500358802
+         * sales_id : 1070
+         * lawyer_id : 6
+         * lawyer_name : Aydin
+         * lawyer_tel : 9676 2664
+         * lawyer_email : aydin.acar@ailegal.com.au
+         * payment_method : 1
+         * payment_amount : 300.00
+         * add_time : 1509691694
+         * order_money_url : 1103
+         * pay_time :
+         * order_money_upload_time : 1509691694
          * order_moneycheck_time :
          * order_money_status : 1
          * sales_advice_is_true : 0
@@ -80,6 +81,7 @@ public class OrderDetailBean extends Domine{
          * contract_apply_status : 0
          * buy_money_url :
          * buy_money_account_paid : 0.00
+         * buy_money_upload_number : 0
          * buy_money_add_time :
          * buy_money_check_time :
          * buy_money_status : 0
@@ -87,22 +89,30 @@ public class OrderDetailBean extends Domine{
          * contract_add_time :
          * contract_check_time :
          * upload_contract_status : 0
-         * cancel_apply_time : 1500358835
-         * cancel_time : 1500358835
-         * who_cancel : 1
-         * cancel_apply_status : 2
+         * cancel_apply_time : 0
+         * cancel_time :
+         * who_cancel : 0
+         * cancel_apply_status : 0
          * complete_time :
          * remark :
-         * days_to_pay : 1500963602
+         * days_to_pay : 1510296494
+         * vendor_id : 130
+         * vendor_lawyer_id : 361
          * sale_advice_status : 0
-         * old_status : 0
-         * status : 10
-         * product_name : null
-         * customer_surname : andr
-         * customer_first_name : andr001
+         * sale_advice_check_time :
+         * old_status :
+         * exchanged_time : 0
+         * is_wait_send_contract : 0
+         * is_confirm_user_cancel : 0
+         * create_type : 1
+         * status : 0
+         * product_name : APT-Parramatta Skyrise (Exclusive)
+         * customer_surname : lliao
+         * customer_first_name : liao
          * customer_en_name :
-         * product_info : {"product_childs_id":2034,"product_id":68,"product_childs_lot_number":"1032","product_childs_unit_number":"1032","company_id":2,"cate_id":1,"cate_type":3,"area":"","bedroom":"4","bathroom":"2","car_space":"1","has_study":"0","ensuite":"0","level":"0","floor_type":"0","aspect":"0","internal":"0.00","external":"0.00","building_area":"171.00","land_size":"318.00","price":"702000.00","vendor_price":"702000.00","discount_amount":"0.00","land_vendor_price":"406000.00","land_discount_amount":"0.00","house_vendor_price":"296000.00","house_discount_amount":"0.00","is_gst":1,"exit_commossion":"","adjust_factor":"1.00","is_special_commossion":0,"commossion_type":1,"commossion_value":"2.00","commossion_send_type":1,"module_one_first":0,"module_two_first":0,"module_three_first":0,"currency":"au","thumb":"public/uploads/product_childs_thumb/170627/201706271546591413.jpg","agent_notes":"","up_time":null,"up_ip":null,"up_admin":null,"is_lock":0,"is_eoi":0,"if_eoi":0,"recind_number":0,"old_status":0,"status":7}
-         * customer_info : {"customer_id":4260,"company_id":1,"customer_nick":null,"head_img":"public/uploads/head_img/170713/201707131544544827.jpg","true_name":null,"surname":"andr","first_name":"andr001","en_name":"","sex":0,"title":"","gender":"","birth_date":"1500220800","mid_name":"","ext_id":"","customer_type":2,"company_name":"ssss","select_self":"1","client_id":"391","client":"w","abn":"1234567889","acn":"zxxxx1234","age":0,"mobile":"18786653033","unit_number":"2","street_number":"38","street_address_line_1":"zzz","street_address_line_2":"add","suburb":"","state":"","postcode":"asdfg","country":"中非共和国","company_mobile":"0212169948","company_e_mail":"","company_fax":"","company_unit_number":"","company_street_number":"","company_street_address_line_1":"街道1","company_street_address_line_2":"街道2","company_suburb":"","company_state":"","company_postcode":"234555","company_country":"安哥拉","province":"","city":"","area":"","address":null,"zip_code":"","openid":null,"wechat_number":"wv ","wechat_nick":"","wechat_img":"","qq_number":"qq ","e_mail":"187@qq.com","fax":"","job":"自由","income":100000000,"family_name":"ui","family_first_name":"ui","family_relationship":"ui","family_mobile":"147258","family_email":"","sign_number":0,"card_id":"11111111111111111","passport_id":"zxxxd","passport_country":"中国","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1499931867,"update_time":1500274324,"add_ip":"116.226.190.44","add_admin":null,"add_user":391,"is_del":0,"is_firb":2,"registe_number":1,"status":0,"memo":""}
+         * product_info : {"product_childs_id":24,"product_id":5,"product_childs_lot_number":"168","product_childs_unit_number":"2906","company_id":1,"cate_id":3,"cate_type":3,"area":"","bedroom":"1","bathroom":"1","car_space":"0","has_study":"0","ensuite":"0","level":"29","floor_type":"Single Level","aspect":"N","internal":"50.00","external":"5.00","building_area":"55.00","land_size":"0.00","price":"652000.00","vendor_price":"652000.00","discount_amount":"0.00","land_vendor_price":"0.00","land_discount_amount":"0.00","house_vendor_price":"652000.00","house_discount_amount":"0.00","is_gst":1,"exit_commossion":"","adjust_factor":"1.00","is_special_commossion":0,"commossion_type":1,"commossion_value":"2.00","commossion_send_type":1,"module_one_first":0,"module_two_first":0,"module_three_first":0,"currency":"au","thumb":"public/uploads/product_childs_thumb/170628/201706281344455629.jpg","agent_notes":"","up_time":null,"up_ip":null,"up_admin":null,"is_lock":1,"is_eoi":0,"if_eoi":0,"recind_number":0,"old_status":0,"status":5}
+         * buy_money_info : []
+         * customer_info : {"customer_id":6899,"company_id":1,"customer_nick":null,"head_img":"public/uploads/head_img/171026/201710261138111092.jpg","true_name":null,"surname":"lliao","first_name":"liao","en_name":"","sex":0,"title":"","gender":"","birth_date":"","mid_name":"","ext_id":"","customer_type":1,"company_name":"","select_self":"1","client_id":"1070","client":"","abn":"","acn":"","age":null,"mobile":"5454545","unit_number":"","street_number":"","street_address_line_1":"bdbsb","street_address_line_2":"","suburb":"","state":"","postcode":"578484","country":"澳大利亚","company_mobile":"","company_e_mail":"","company_fax":"","company_unit_number":"","company_street_number":"","company_street_address_line_1":"","company_street_address_line_2":"","company_suburb":"","company_state":"","company_postcode":"","company_country":"澳大利亚","province":"","city":"","area":"","address":null,"zip_code":"","openid":null,"wechat_number":"","wechat_nick":"","wechat_img":"","qq_number":"","e_mail":"gxgxhxbb@qq.com","fax":"","job":"","income":0,"family_name":"","family_first_name":"","family_relationship":"","family_mobile":"","family_email":"","sign_number":0,"card_id":"","passport_id":"","passport_country":"澳大利亚","card_validity":null,"is_experience":0,"flight_date":null,"flight_number":null,"add_time":1508987943,"update_time":1508989091,"add_ip":"114.91.119.226","add_admin":null,"add_user":521,"is_del":0,"is_firb":2,"is_wait":0,"from_type":1,"registe_number":1,"is_first_user":1,"status":0,"memo":"","remark":""}
          */
 
         private int product_orders_id;
@@ -112,11 +122,13 @@ public class OrderDetailBean extends Domine{
         private String eoi_id;
         private String purchaseReason;
         private int is_two_order;
+        private String another_order_id;
         private int property_id;
         private int product_childs_type;
         private String price;
         private String currency;
         private int client;
+        private String co_purchaser;
         private int is_firb;
         private int client_type;
         private int sales_id;
@@ -141,6 +153,7 @@ public class OrderDetailBean extends Domine{
         private int contract_apply_status;
         private String buy_money_url;
         private String buy_money_account_paid;
+        private int buy_money_upload_number;
         private String buy_money_add_time;
         private String buy_money_check_time;
         private int buy_money_status;
@@ -155,16 +168,24 @@ public class OrderDetailBean extends Domine{
         private String complete_time;
         private String remark;
         private String days_to_pay;
+        private int vendor_id;
+        private int vendor_lawyer_id;
         private int sale_advice_status;
+        private String sale_advice_check_time;
         private String old_status;
+        private int exchanged_time;
+        private int is_wait_send_contract;
+        private int is_confirm_user_cancel;
+        private int create_type;
         private int status;
-        private Object product_name;
+        private String product_name;
         private String customer_surname;
         private String customer_first_name;
         private String customer_en_name;
         private ProductInfoBean product_info;
         private CustomerInfoBean customer_info;
-        private Buy_money_info  buy_money_info;
+        private List<?> buy_money_info;
+
         public int getProduct_orders_id() {
             return product_orders_id;
         }
@@ -213,6 +234,22 @@ public class OrderDetailBean extends Domine{
             this.purchaseReason = purchaseReason;
         }
 
+        public int getIs_two_order() {
+            return is_two_order;
+        }
+
+        public void setIs_two_order(int is_two_order) {
+            this.is_two_order = is_two_order;
+        }
+
+        public String getAnother_order_id() {
+            return another_order_id;
+        }
+
+        public void setAnother_order_id(String another_order_id) {
+            this.another_order_id = another_order_id;
+        }
+
         public int getProperty_id() {
             return property_id;
         }
@@ -251,6 +288,14 @@ public class OrderDetailBean extends Domine{
 
         public void setClient(int client) {
             this.client = client;
+        }
+
+        public String getCo_purchaser() {
+            return co_purchaser;
+        }
+
+        public void setCo_purchaser(String co_purchaser) {
+            this.co_purchaser = co_purchaser;
         }
 
         public int getIs_firb() {
@@ -445,6 +490,14 @@ public class OrderDetailBean extends Domine{
             this.buy_money_account_paid = buy_money_account_paid;
         }
 
+        public int getBuy_money_upload_number() {
+            return buy_money_upload_number;
+        }
+
+        public void setBuy_money_upload_number(int buy_money_upload_number) {
+            this.buy_money_upload_number = buy_money_upload_number;
+        }
+
         public String getBuy_money_add_time() {
             return buy_money_add_time;
         }
@@ -557,12 +610,36 @@ public class OrderDetailBean extends Domine{
             this.days_to_pay = days_to_pay;
         }
 
+        public int getVendor_id() {
+            return vendor_id;
+        }
+
+        public void setVendor_id(int vendor_id) {
+            this.vendor_id = vendor_id;
+        }
+
+        public int getVendor_lawyer_id() {
+            return vendor_lawyer_id;
+        }
+
+        public void setVendor_lawyer_id(int vendor_lawyer_id) {
+            this.vendor_lawyer_id = vendor_lawyer_id;
+        }
+
         public int getSale_advice_status() {
             return sale_advice_status;
         }
 
         public void setSale_advice_status(int sale_advice_status) {
             this.sale_advice_status = sale_advice_status;
+        }
+
+        public String getSale_advice_check_time() {
+            return sale_advice_check_time;
+        }
+
+        public void setSale_advice_check_time(String sale_advice_check_time) {
+            this.sale_advice_check_time = sale_advice_check_time;
         }
 
         public String getOld_status() {
@@ -573,6 +650,38 @@ public class OrderDetailBean extends Domine{
             this.old_status = old_status;
         }
 
+        public int getExchanged_time() {
+            return exchanged_time;
+        }
+
+        public void setExchanged_time(int exchanged_time) {
+            this.exchanged_time = exchanged_time;
+        }
+
+        public int getIs_wait_send_contract() {
+            return is_wait_send_contract;
+        }
+
+        public void setIs_wait_send_contract(int is_wait_send_contract) {
+            this.is_wait_send_contract = is_wait_send_contract;
+        }
+
+        public int getIs_confirm_user_cancel() {
+            return is_confirm_user_cancel;
+        }
+
+        public void setIs_confirm_user_cancel(int is_confirm_user_cancel) {
+            this.is_confirm_user_cancel = is_confirm_user_cancel;
+        }
+
+        public int getCreate_type() {
+            return create_type;
+        }
+
+        public void setCreate_type(int create_type) {
+            this.create_type = create_type;
+        }
+
         public int getStatus() {
             return status;
         }
@@ -581,11 +690,11 @@ public class OrderDetailBean extends Domine{
             this.status = status;
         }
 
-        public Object getProduct_name() {
+        public String getProduct_name() {
             return product_name;
         }
 
-        public void setProduct_name(Object product_name) {
+        public void setProduct_name(String product_name) {
             this.product_name = product_name;
         }
 
@@ -629,34 +738,42 @@ public class OrderDetailBean extends Domine{
             this.customer_info = customer_info;
         }
 
+        public List<?> getBuy_money_info() {
+            return buy_money_info;
+        }
+
+        public void setBuy_money_info(List<?> buy_money_info) {
+            this.buy_money_info = buy_money_info;
+        }
+
         public static class ProductInfoBean {
             /**
-             * product_childs_id : 2034
-             * product_id : 68
-             * product_childs_lot_number : 1032
-             * product_childs_unit_number : 1032
-             * company_id : 2
-             * cate_id : 1
+             * product_childs_id : 24
+             * product_id : 5
+             * product_childs_lot_number : 168
+             * product_childs_unit_number : 2906
+             * company_id : 1
+             * cate_id : 3
              * cate_type : 3
              * area :
-             * bedroom : 4
-             * bathroom : 2
-             * car_space : 1
+             * bedroom : 1
+             * bathroom : 1
+             * car_space : 0
              * has_study : 0
              * ensuite : 0
-             * level : 0
-             * floor_type : 0
-             * aspect : 0
-             * internal : 0.00
-             * external : 0.00
-             * building_area : 171.00
-             * land_size : 318.00
-             * price : 702000.00
-             * vendor_price : 702000.00
+             * level : 29
+             * floor_type : Single Level
+             * aspect : N
+             * internal : 50.00
+             * external : 5.00
+             * building_area : 55.00
+             * land_size : 0.00
+             * price : 652000.00
+             * vendor_price : 652000.00
              * discount_amount : 0.00
-             * land_vendor_price : 406000.00
+             * land_vendor_price : 0.00
              * land_discount_amount : 0.00
-             * house_vendor_price : 296000.00
+             * house_vendor_price : 652000.00
              * house_discount_amount : 0.00
              * is_gst : 1
              * exit_commossion :
@@ -669,17 +786,17 @@ public class OrderDetailBean extends Domine{
              * module_two_first : 0
              * module_three_first : 0
              * currency : au
-             * thumb : public/uploads/product_childs_thumb/170627/201706271546591413.jpg
+             * thumb : public/uploads/product_childs_thumb/170628/201706281344455629.jpg
              * agent_notes :
              * up_time : null
              * up_ip : null
              * up_admin : null
-             * is_lock : 0
+             * is_lock : 1
              * is_eoi : 0
              * if_eoi : 0
              * recind_number : 0
              * old_status : 0
-             * status : 7
+             * status : 5
              */
 
             private int product_childs_id;
@@ -1127,85 +1244,89 @@ public class OrderDetailBean extends Domine{
 
         public static class CustomerInfoBean {
             /**
-             * customer_id : 4260
+             * customer_id : 6899
              * company_id : 1
              * customer_nick : null
-             * head_img : public/uploads/head_img/170713/201707131544544827.jpg
+             * head_img : public/uploads/head_img/171026/201710261138111092.jpg
              * true_name : null
-             * surname : andr
-             * first_name : andr001
+             * surname : lliao
+             * first_name : liao
              * en_name :
              * sex : 0
              * title :
              * gender :
-             * birth_date : 1500220800
+             * birth_date :
              * mid_name :
              * ext_id :
-             * customer_type : 2
-             * company_name : ssss
+             * customer_type : 1
+             * company_name :
              * select_self : 1
-             * client_id : 391
-             * client : w
-             * abn : 1234567889
-             * acn : zxxxx1234
-             * age : 0
-             * mobile : 18786653033
-             * unit_number : 2
-             * street_number : 38
-             * street_address_line_1 : zzz
-             * street_address_line_2 : add
+             * client_id : 1070
+             * client :
+             * abn :
+             * acn :
+             * age : null
+             * mobile : 5454545
+             * unit_number :
+             * street_number :
+             * street_address_line_1 : bdbsb
+             * street_address_line_2 :
              * suburb :
              * state :
-             * postcode : asdfg
-             * country : 中非共和国
-             * company_mobile : 0212169948
+             * postcode : 578484
+             * country : 澳大利亚
+             * company_mobile :
              * company_e_mail :
              * company_fax :
              * company_unit_number :
              * company_street_number :
-             * company_street_address_line_1 : 街道1
-             * company_street_address_line_2 : 街道2
+             * company_street_address_line_1 :
+             * company_street_address_line_2 :
              * company_suburb :
              * company_state :
-             * company_postcode : 234555
-             * company_country : 安哥拉
+             * company_postcode :
+             * company_country : 澳大利亚
              * province :
              * city :
              * area :
              * address : null
              * zip_code :
              * openid : null
-             * wechat_number : wv
+             * wechat_number :
              * wechat_nick :
              * wechat_img :
-             * qq_number : qq
-             * e_mail : 187@qq.com
+             * qq_number :
+             * e_mail : gxgxhxbb@qq.com
              * fax :
-             * job : 自由
-             * income : 100000000
-             * family_name : ui
-             * family_first_name : ui
-             * family_relationship : ui
-             * family_mobile : 147258
+             * job :
+             * income : 0
+             * family_name :
+             * family_first_name :
+             * family_relationship :
+             * family_mobile :
              * family_email :
              * sign_number : 0
-             * card_id : 11111111111111111
-             * passport_id : zxxxd
-             * passport_country : 中国
+             * card_id :
+             * passport_id :
+             * passport_country : 澳大利亚
              * card_validity : null
              * is_experience : 0
              * flight_date : null
              * flight_number : null
-             * add_time : 1499931867
-             * update_time : 1500274324
-             * add_ip : 116.226.190.44
+             * add_time : 1508987943
+             * update_time : 1508989091
+             * add_ip : 114.91.119.226
              * add_admin : null
-             * add_user : 391
+             * add_user : 521
              * is_del : 0
              * is_firb : 2
+             * is_wait : 0
+             * from_type : 1
              * registe_number : 1
+             * is_first_user : 1
              * status : 0
              * memo :
+             * remark :
              */
 
             private int customer_id;
@@ -1229,7 +1350,7 @@ public class OrderDetailBean extends Domine{
             private String client;
             private String abn;
             private String acn;
-            private int age;
+            private Object age;
             private String mobile;
             private String unit_number;
             private String street_number;
@@ -1284,9 +1405,13 @@ public class OrderDetailBean extends Domine{
             private int add_user;
             private int is_del;
             private int is_firb;
+            private int is_wait;
+            private int from_type;
             private int registe_number;
+            private int is_first_user;
             private int status;
             private String memo;
+            private String remark;
 
             public int getCustomer_id() {
                 return customer_id;
@@ -1456,11 +1581,11 @@ public class OrderDetailBean extends Domine{
                 this.acn = acn;
             }
 
-            public int getAge() {
+            public Object getAge() {
                 return age;
             }
 
-            public void setAge(int age) {
+            public void setAge(Object age) {
                 this.age = age;
             }
 
@@ -1896,12 +2021,36 @@ public class OrderDetailBean extends Domine{
                 this.is_firb = is_firb;
             }
 
+            public int getIs_wait() {
+                return is_wait;
+            }
+
+            public void setIs_wait(int is_wait) {
+                this.is_wait = is_wait;
+            }
+
+            public int getFrom_type() {
+                return from_type;
+            }
+
+            public void setFrom_type(int from_type) {
+                this.from_type = from_type;
+            }
+
             public int getRegiste_number() {
                 return registe_number;
             }
 
             public void setRegiste_number(int registe_number) {
                 this.registe_number = registe_number;
+            }
+
+            public int getIs_first_user() {
+                return is_first_user;
+            }
+
+            public void setIs_first_user(int is_first_user) {
+                this.is_first_user = is_first_user;
             }
 
             public int getStatus() {
@@ -1919,17 +2068,13 @@ public class OrderDetailBean extends Domine{
             public void setMemo(String memo) {
                 this.memo = memo;
             }
-        }
 
-        public static class Buy_money_info{
-            public List<String> evidences;
-
-            public List<String> getEvidences() {
-                return evidences;
+            public String getRemark() {
+                return remark;
             }
 
-            public void setEvidences(List<String> evidences) {
-                this.evidences = evidences;
+            public void setRemark(String remark) {
+                this.remark = remark;
             }
         }
     }

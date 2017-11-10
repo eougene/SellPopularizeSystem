@@ -184,6 +184,16 @@ public class CustomBean implements Serializable {
         private int status;
         private String memo;
 
+        public boolean isAdd() {
+            return isAdd;
+        }
+
+        public void setAdd(boolean add) {
+            isAdd = add;
+        }
+
+        private  boolean  isAdd;
+
         public String getSortLetters() {
             return sortLetters;
         }

@@ -727,9 +727,8 @@ public class ReserveActivity extends BaseActivity {
         if (isEOI) {
             for (int i = 0; i < errorBean.getResult().size(); i++) {
                 if (errorBean.getResult().get(i).getStatus() == 1) {
-                    eoi_id = errorBean.getResult().get(i).getStatus() + "";
+                    eoi_id = errorBean.getResult().get(i).getEoi_id() + "";
                     pay_method=errorBean.getResult().get(i).getPay_method();
-                    Log.e("i:", "i:" + i);
                     break;
 
                 }
@@ -741,7 +740,6 @@ public class ReserveActivity extends BaseActivity {
         UIProgressResponseCallBack mUIProgressResponseCallBack = new UIProgressResponseCallBack() {
             @Override
             public void onUIResponseProgress(long bytesRead, long contentLength, boolean done) {
-                int progress = (int) (bytesRead * 100 / contentLength);
             }
         };
 
@@ -765,6 +763,9 @@ public class ReserveActivity extends BaseActivity {
             httpParams.put("file", picFile, mUIProgressResponseCallBack);
         }
 
+
+
+        Log.e("httpParams**","httpParams:"+httpParams.toString());
         EasyHttp.post(Contants.CREAT_ORDER)
                 .cacheMode(CacheMode.NO_CACHE)
                 .timeStamp(true)
@@ -790,6 +791,7 @@ public class ReserveActivity extends BaseActivity {
 
                         try {
                             JSONObject json = new JSONObject(s);
+                            ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
                             if (json.getString("code").equals("1")) {
                                 ToasShow.showToastCenter(ReserveActivity.this, json.getString("msg"));
                                 if (payment_method.equals("6") || payment_method.equals("7")) {
@@ -799,9 +801,6 @@ public class ReserveActivity extends BaseActivity {
                                     ActivitySkip.forward(ReserveActivity.this, PaymentQrActivity.class, bundle);
                                 }
                                 finish();
-                            } else {
-                                ToasShow.showToastBottom(ReserveActivity.this, json.getString("msg"));
-
                             }
 
                         } catch (JSONException e) {
@@ -887,16 +886,12 @@ public class ReserveActivity extends BaseActivity {
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                         if (photoUri != null) {
                             picPath = BitmapUtil.getImagePath(ReserveActivity.this, photoUri, null, null);
-                            Log.e("imgPath", "onActivityResult: " + picPath);
-                            //picPath=BitmapUtil.imgPath;
                             Bitmap bitmap = null;
                             try {
-                                //picPath: onActivityResult: /storage/emulated/0/Pictures/1497846519571.jpg
                                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(photoUri));
                             } catch (FileNotFoundException e) {
                                 e.printStackTrace();
                             }
-                            //Picasso.with(this).load("file://"+BitmapUtil.imgPath)./*resize(ivCertificate.getWidth(), ivCertificate.getHeight()).*/into(ivCertificate);
                             ivCertificate.setImageBitmap(BitmapUtil.compressBitmap(BitmapUtil.reviewPicRotate(bitmap, picPath)));
                         }
 

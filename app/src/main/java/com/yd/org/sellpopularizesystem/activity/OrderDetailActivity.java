@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
-import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean2;
+import com.yd.org.sellpopularizesystem.javaBean.OrderDetailBean;
 import com.yd.org.sellpopularizesystem.javaBean.SaleOrderBean;
 import com.yd.org.sellpopularizesystem.utils.MyUtils;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
@@ -17,8 +17,7 @@ import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
 public class OrderDetailActivity extends BaseActivity {
-    TextView tvOrderDes, tvOrderNum, tvtype, tvFirb, tvSale, tvCus, tvCusAdd, tvLawyer, tvGoal, tvPrice, tvComplete;
-    //private CustomBean.ResultBean custome;
+    TextView tvOrderDes, tvOrderNum, tvtype, tvFirb, tvSale, tvCus, tvCusAdd, tvLawyer, tvGoal, tvPrice, tvComplete, tvReason;
 
     @Override
     protected int setContentView() {
@@ -37,49 +36,35 @@ public class OrderDetailActivity extends BaseActivity {
     }
 
     private void getOrderDetail(int product_orders_id) {
-        EasyHttp.get(Contants.ORDER_DETAIL)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("order_id", product_orders_id + "")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+        EasyHttp.get(Contants.ORDER_DETAIL).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("order_id", product_orders_id + "").execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
+            @Override
+            public void onSuccess(String json) {
 
-                        closeDialog();
-                        Gson gson = new Gson();
-                        OrderDetailBean2 orderDetailBean2 = gson.fromJson(json, OrderDetailBean2.class);
-                        if (orderDetailBean2.getCode().equals("1") && orderDetailBean2.getMsg().equals(getString(R.string.order_success_info))) {
-                            initData(orderDetailBean2.getResult());
-                        }
-                    }
-                });
-
-
-
-
-
-
-
-
-
+                closeDialog();
+                Gson gson = new Gson();
+                OrderDetailBean orderDetailBean = gson.fromJson(json, OrderDetailBean.class);
+                if (orderDetailBean.getCode().equals("1")) {
+                    initData(orderDetailBean.getResult());
+                }
+            }
+        });
 
 
     }
 
-    private void initData(OrderDetailBean2.ResultBean result) {
+    private void initData(OrderDetailBean.ResultBean result) {
         tvOrderNum.setText(result.getProduct_orders_id() + "");
         if (result.getProduct_info() != null) {
             if (result.getProduct_info().getCate_id() != 0) {
@@ -98,12 +83,13 @@ public class OrderDetailActivity extends BaseActivity {
 
 
             tvFirb.setText(result.getIs_firb() == 0 ? getString(R.string.yes) : getString(R.string.bushi));
-            tvSale.setText(SharedPreferencesHelps.getSurName() + " " + SharedPreferencesHelps.getFirstName());
-            tvCus.setText(result.getCustomer_surname() + " " + result.getCustomer_first_name());
-            //tvCusAdd.setText(result.getCustomer_info().getCountry() + " " + result.getCustomer_info().getStreet_address_line_1() + " " + result.getCustomer_info().getStreet_address_line_2());
-            tvLawyer.setText(result.getLawyer_name());
-            tvGoal.setText(result.getPurchaseReason());
-            tvPrice.setText("$" + MyUtils.addComma(result.getPrice().split("\\.")[0]));
+            tvSale.setText(SharedPreferencesHelps.getSurName() + " " + SharedPreferencesHelps.getFirstName() + "");
+            tvCus.setText(result.getCustomer_surname() + " " + result.getCustomer_first_name() + "");
+            tvReason.setText(result.getCo_purchaser() + "");
+            tvCusAdd.setText(result.getCustomer_info().getCountry() + getString(R.string.single_blank_space) + result.getCustomer_info().getProvince() + getString(R.string.single_blank_space) + result.getCustomer_info().getAddress() + getString(R.string.single_blank_space) + result.getCustomer_info().getZip_code());
+            tvLawyer.setText(result.getLawyer_name() + "");
+            tvGoal.setText(String.valueOf(result.getPurchaseReason() + ""));
+            tvPrice.setText("$ " + MyUtils.addComma(result.getPrice().split("\\.")[0]));
         }
     }
 
@@ -119,6 +105,7 @@ public class OrderDetailActivity extends BaseActivity {
         tvGoal = getViewById(R.id.tvGoal);
         tvPrice = getViewById(R.id.tvPrice);
         tvComplete = getViewById(R.id.tvComplete);
+        tvReason = getViewById(R.id.tvReason);
     }
 
     @Override

@@ -10,7 +10,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
-import android.graphics.Rect;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -33,7 +32,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.EditText;
 import android.widget.Toast;
-
 
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.BaseApplication;
@@ -64,8 +62,9 @@ public class MyUtils {
     }
 
     public static MyUtils getInstance() {
-        if (utils == null)
-        {utils = new MyUtils();}
+        if (utils == null) {
+            utils = new MyUtils();
+        }
         return utils;
     }
 
@@ -77,10 +76,8 @@ public class MyUtils {
      */
     public boolean isNetworkConnected(Context context) {
         if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo mNetworkInfo = mConnectivityManager
-                    .getActiveNetworkInfo();
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
             if (mNetworkInfo != null) {
                 return mNetworkInfo.isAvailable();
             }
@@ -98,11 +95,9 @@ public class MyUtils {
         if (!isNetworkConnected(mContext)) {
             return 0;
         }
-        ConnectivityManager connectivityManager = (ConnectivityManager) mContext
-                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetInfo = connectivityManager.getActiveNetworkInfo();
-        if (activeNetInfo != null
-                && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+        if (activeNetInfo != null && activeNetInfo.getType() == ConnectivityManager.TYPE_WIFI) {
             return 1;
         }
         return 2;
@@ -203,13 +198,10 @@ public class MyUtils {
      * @param isMD5    文件名是否加密
      * @return File
      */
-    public File getCache(Context context, String path, String fileName,
-                         boolean isMD5) {
+    public File getCache(Context context, String path, String fileName, boolean isMD5) {
         File file = null;
-        if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED)) {
-            file = new File(context.getExternalCacheDir().getPath() + "/"
-                    + path);
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            file = new File(context.getExternalCacheDir().getPath() + "/" + path);
         } else {
             file = new File(context.getCacheDir() + "/" + path);
         }
@@ -219,10 +211,8 @@ public class MyUtils {
         if (!file.exists()) {
             file.mkdirs();
         }
-        if (isMD5)
-            file = new File(file.getPath() + "/" + MD5(fileName));
-        else
-            file = new File(file.getPath() + "/" + fileName);
+        if (isMD5) file = new File(file.getPath() + "/" + MD5(fileName));
+        else file = new File(file.getPath() + "/" + fileName);
         return file;
     }
 
@@ -235,15 +225,12 @@ public class MyUtils {
      */
     public File getCache(Context context, String path) {
         File file = null;
-        if (Environment.getExternalStorageState().equals(
-                Environment.MEDIA_MOUNTED)) {
-            file = new File(context.getExternalCacheDir().getPath() + "/"
-                    + path);
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            file = new File(context.getExternalCacheDir().getPath() + "/" + path);
         } else {
             file = new File(context.getCacheDir() + "/" + path);
         }
-        if (file == null)
-            return null;
+        if (file == null) return null;
         if (!file.exists()) {
             file.mkdirs();
         }
@@ -259,9 +246,7 @@ public class MyUtils {
     public String getVersionCode(Context context) {
         String versionCode = null;
         try {
-            PackageInfo pi = context.getPackageManager()
-                    .getPackageInfo(context.getPackageName(),
-                            PackageManager.GET_CONFIGURATIONS);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
             versionCode = String.valueOf(pi.versionCode);
         } catch (PackageManager.NameNotFoundException e) {
             // TODO Auto-generated catch block
@@ -279,9 +264,7 @@ public class MyUtils {
     public String getVersionName(Context context) {
         String versionName = null;
         try {
-            PackageInfo pi = context.getPackageManager()
-                    .getPackageInfo(context.getPackageName(),
-                            PackageManager.GET_CONFIGURATIONS);
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_CONFIGURATIONS);
             versionName = pi.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             // TODO Auto-generated catch block
@@ -297,8 +280,7 @@ public class MyUtils {
      * @return String 设备号
      */
     public String getDeviceId(Context context) {
-        TelephonyManager tm = (TelephonyManager) context
-                .getSystemService(Context.TELEPHONY_SERVICE);
+        TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String dwc = null;
         try {
             if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
@@ -328,8 +310,7 @@ public class MyUtils {
      * @return String
      */
     public String getSN(Context context) {
-        return Settings.Secure
-                .getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
     }
 
     /**
@@ -363,8 +344,9 @@ public class MyUtils {
     public String parseTime(String format, String time, boolean isTime) {
         if (time != null && !"".equals(time)) {
             Date date = stringToDate(format, time);
-            if (date == null)
-            {return time;}
+            if (date == null) {
+                return time;
+            }
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
             int years = calendar.get(Calendar.YEAR);
@@ -394,8 +376,7 @@ public class MyUtils {
     public String parseTime(String format, String time) {
         if (!"".equals(time)) {
             Date date = stringToDate(format, time);
-            if (date == null)
-                return time;
+            if (date == null) return time;
             Calendar calendar = new GregorianCalendar();
             calendar.setTime(date);
             int years = calendar.get(Calendar.YEAR);
@@ -650,9 +631,7 @@ public class MyUtils {
      * @return 返回hh:mm Am/Pm.没有秒
      */
     public String parseTime24To12(String time, String format) {
-        if (time == null || time.length() < 5
-                || format == null || format.length() == 0 ||
-                (!time.contains(format))) {
+        if (time == null || time.length() < 5 || format == null || format.length() == 0 || (!time.contains(format))) {
             return time;
         }
         time = time.substring(0, 5);
@@ -668,8 +647,7 @@ public class MyUtils {
             h = 12;
         } else if (h >= 12) {
             p = "Pm";
-            if (h > 12)
-                h -= 12;
+            if (h > 12) h -= 12;
         }
         time12 = String.format("%02d:%02d ", h, m) + p;
         return time12;
@@ -739,8 +717,7 @@ public class MyUtils {
      * @param isJiaHao 正数前是否加＋号
      * @return
      */
-    public SpannableString formatText(Context context, double text, double dou,
-                                      int num, boolean isJiaHao) {
+    public SpannableString formatText(Context context, double text, double dou, int num, boolean isJiaHao) {
         String str = String.format("%." + num + "f", text);
         int color;
         String n = "#.";
@@ -755,18 +732,14 @@ public class MyUtils {
         } else {
             dou = Parse.getInstance().parseDouble(dou, n);
             if (d > dou) {
-                if (isJiaHao)
-                    str = "+" + str;
+                if (isJiaHao) str = "+" + str;
                 color = Color.RED;
-            } else if (d < dou)
-                color = Color.GREEN;
-            else
-                color = Color.GRAY;
+            } else if (d < dou) color = Color.GREEN;
+            else color = Color.GRAY;
         }
 
         SpannableString spa = new SpannableString(str);
-        spa.setSpan(new ForegroundColorSpan(color), 0, str.length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spa.setSpan(new ForegroundColorSpan(color), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spa;
     }
 
@@ -779,8 +752,7 @@ public class MyUtils {
      * @param isJiaHao 正数前是否加＋号
      * @return
      */
-    public SpannableString formatText1(Context context, double text,
-                                       double dou, boolean isJiaHao) {
+    public SpannableString formatText1(Context context, double text, double dou, boolean isJiaHao) {
         String str = String.format("%.2f", text);
         int color;
         double d = Parse.getInstance().parseDouble(str, "#.##");
@@ -790,23 +762,19 @@ public class MyUtils {
         } else {
             dou = Parse.getInstance().parseDouble(dou, "#.##");
             if (d > dou) {
-                if (isJiaHao)
-                    str = "+" + str;
+                if (isJiaHao) str = "+" + str;
                 color = Color.RED;
-            } else if (d < dou)
-                color = Color.GREEN;
-            else
-                color = Color.GRAY;
+            } else if (d < dou) color = Color.GREEN;
+            else color = Color.GRAY;
         }
 
         str = str.substring(0, str.length() - 3);
         SpannableString spa = new SpannableString(str);
-        spa.setSpan(new ForegroundColorSpan(color), 0, str.length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spa.setSpan(new ForegroundColorSpan(color), 0, str.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         return spa;
     }
 
-    public static String getTime(String fort,Date date) {
+    public static String getTime(String fort, Date date) {
         SimpleDateFormat format = new SimpleDateFormat(fort);
         return format.format(date);
     }
@@ -851,8 +819,7 @@ public class MyUtils {
         for (int i = 0; i < editTexts.length; i++) {
             editTexts[i].setFocusable(false);
             editTexts[i].setFocusableInTouchMode(false);
-            InputMethodManager imm = (InputMethodManager) context
-                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editTexts[i].getWindowToken(), 0);
         }
     }
@@ -865,8 +832,7 @@ public class MyUtils {
      */
     public void setKeyBoardGone(Context context, View... views) {
         for (int i = 0; i < views.length; i++) {
-            InputMethodManager imm = (InputMethodManager) context
-                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(views[i].getWindowToken(), 0);
         }
     }
@@ -888,8 +854,7 @@ public class MyUtils {
      */
     public void setKeyBoardVisibility(Context context, EditText... editTexts) {
         for (int i = 0; i < editTexts.length; i++) {
-            InputMethodManager imm = (InputMethodManager) context
-                    .getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.showSoftInput(editTexts[i], InputMethodManager.SHOW_FORCED);
         }
     }
@@ -925,8 +890,7 @@ public class MyUtils {
      */
     public int getAge(String format, String date) {
         date = parseTime(format, date, false);
-        if (date == null || date.length() < 10
-                || !date.contains("-")) {
+        if (date == null || date.length() < 10 || !date.contains("-")) {
             return 0;
         }
         date = date.substring(0, 10);
@@ -951,8 +915,7 @@ public class MyUtils {
                 age -= 1;
             }
         }
-        if (age < 0)
-            age = 0;
+        if (age < 0) age = 0;
         return age;
     }
 
@@ -964,8 +927,7 @@ public class MyUtils {
      */
     public static int getStatusBarHeight(Context context) {
         int result = 0;
-        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen",
-                "android");
+        int resourceId = context.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
             result = context.getResources().getDimensionPixelSize(resourceId);
         }
@@ -974,8 +936,7 @@ public class MyUtils {
 
     //将dp转化为px
     public static int dp2px(Context context, int dp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
-                context.getResources().getDisplayMetrics());
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
     /**
@@ -999,6 +960,7 @@ public class MyUtils {
         int height = wm.getDefaultDisplay().getHeight();
         return height;
     }
+
     /**
      * 得到上下文
      *
@@ -1007,6 +969,7 @@ public class MyUtils {
     public static Context getContext() {
         return BaseApplication.getContext();
     }
+
     /**
      * 得到应用程序的包名
      *
@@ -1015,14 +978,7 @@ public class MyUtils {
     public static String getPackageName() {
         return getContext().getPackageName();
     }
-    //获取状态栏高度
-    public static int getStatusHeight(Activity context) {
-        Rect rectangle = new Rect();
-        context.getWindow().getDecorView().getWindowVisibleDisplayFrame(rectangle);
-        //高度为rectangle.top-0仍为rectangle.top
-        // Log.e("WangJ", "状态栏-方法3:" + rectangle.top);
-        return rectangle.top;
-    }
+
 
     public void showWebView(Activity activity, WebView view, String url) {
         WebSettings webSettings = view.getSettings();
@@ -1045,15 +1001,6 @@ public class MyUtils {
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
         webSettings.setDomStorageEnabled(true);
         view.setWebViewClient(new WebViewClientBase(activity));
-        if (url.contains("qrcode")){
-            String html="<html><head><style type='text/css'>body{margin:auto auto;margin-top:150px;text-align:center;} " +
-                    "img{width:80%;height:50%} </style></head><body><center><img src='"+url+"'/></center></body></html>";
-            view.loadData( html,"text/html",  "UTF-8");
-        }else {
-            view.loadUrl(url);
-        }
-
-        //view.loadDataWithBaseURL();
-
+        view.loadUrl(url);
     }
 }
