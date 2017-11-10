@@ -695,6 +695,10 @@
     <string name="pdel_">Number</string>
     <string name="unit_list">Unit List</string>
     <string name="eoi_eoi"> Credentials Uploaded,Reviewing</string>
+    <string name="contacts_title">通讯录朋友</string>
+    <string name="contact_add">添加手机联系人</string>
+    <string name="contacts_add">添加</string>
+    <string name="add_done">已添加</string>
 
 </resources>
 
