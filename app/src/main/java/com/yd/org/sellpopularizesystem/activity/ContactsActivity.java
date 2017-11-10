@@ -80,6 +80,7 @@ public class ContactsActivity extends BaseActivity implements SectionIndexer, Pu
     private static final String[] PHONES_PROJECTION = new String[]{ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.Contacts.Photo.PHOTO_ID, ContactsContract.CommonDataKinds.Phone.CONTACT_ID};
     private String push_to = "1";
     private CustomBean mCustomBean = new CustomBean();
+    private List<String> contacts = new ArrayList<>();
 
     @Override
     protected int setContentView() {
@@ -90,6 +91,13 @@ public class ContactsActivity extends BaseActivity implements SectionIndexer, Pu
     @Override
     public void initView() {
         mCustomBean = (CustomBean) getIntent().getSerializableExtra("key");
+
+
+        for (int i = 0; i < mCustomBean.getResult().size(); i++) {
+            contacts.add(mCustomBean.getResult().get(i).getMobile());
+        }
+
+
         hideRightImagview();
         setTitle(getString(R.string.contacts_title));
         initViews();
@@ -180,17 +188,14 @@ public class ContactsActivity extends BaseActivity implements SectionIndexer, Pu
 
                 sort = new CustomBean.ResultBean();
 
-                sort.setMobile(phoneNumber);
-                sort.setSurname(phoneName);
-
-                for (int i=0;i<mCustomBean.getResult().size();i++){
-                    if (mCustomBean.getResult().get(0).getMobile().contains(phoneNumber)) {
-                        sort.setAdd(true);
-                    } else {
-                        sort.setAdd(false);
-                    }
+                if (contacts.contains(phoneNumber)) {
+                    sort.setAdd(true);
+                } else {
+                    sort.setAdd(false);
                 }
 
+                sort.setMobile(phoneNumber);
+                sort.setSurname(phoneName);
 
 
                 // 汉字转换成拼音
