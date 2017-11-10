@@ -96,19 +96,16 @@ UI更换
 1.10.5
 1、前台个人信息里添加 is registered gst 必需项
 2、is_gst 0：unknown  1: no  2:yes
-3、用户如果是gst的话，就说明
-用户一定需要添公司信息 company name/company address/company logo
-ABN和ACN必有其一
+3、用户如果是gst的话，就说明用户一定需要添公司信息 company name/company address/company logo ABN和ACN必有其一
 4、用户更新is registered gst 后，后台要触发证书审核，管理员通过abn来审核is gst
 5、现在接口获取佣金的逻辑有错误
-a、如果用户不是is gst,调用appv2/commossion/commossion_list 的时候就要提示用户完善abn/acn
-b、点击佣金详情后，当用户不是is_gst的时候还是提示完善abn
+   a、如果用户不是is gst,调用appv2/commossion/commossion_list 的时候就要提示用户完善abn/acn
+   b、点击佣金详情后，当用户不是is_gst的时候还是提示完善abn
 
-
-1.10.6
-1、我的佣金界面优化
-2、前台客户增加导入功能，导入姓名、手机号信息，并标记。
-3、子单元列表，加一列“是否有书房”
-4、我的团队－点击组员显示个人信息，新增客户数量和销售
-5、sales team进行排名
+6、我的佣金界面优化(个人销售佣金,销售领导奖励,如果没有销售领导奖励,则显示灰色,点击item直接跳转到订单页面,取消后面...图标)
+7、前台客户增加导入功能，导入姓名、手机号信息，并标记。
+8、子单元列表，加一列“是否有书房”
+9、我的团队－点击组员显示个人信息，新增客户数量和销售
+10、sales team进行排名
+11、我的EOI,未使用,已使用,已退款
 
