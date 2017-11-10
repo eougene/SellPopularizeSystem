@@ -52,7 +52,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private TextView dialog;
     private SortGroupMemberAdapter adapter;
     private LinearLayout titleLayout;
-    private TextView tvNofriends;
+    private TextView tvNofriends, contactAdd;
     private SearchEditText searchEditText;
     /**
      * 汉字转换成拼音的类
@@ -66,7 +66,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private PinyinComparator pinyinComparator;
     //用以判断跳转不同界面
     String str1 = "default";
-    private List filterDateList;
+    private CustomBean mCustomBean=new CustomBean();
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -116,6 +116,9 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         listView = getViewById(R.id.content_view);
 
 
+        contactAdd = getViewById(R.id.contactAdd);
+
+
     }
 
     /**
@@ -148,30 +151,6 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     }
 
-    /**
-     * 根据输入框中的值来过滤数据并更新ListView
-     *
-     * @param filterStr
-     */
-    private void filterData(String filterStr) {
-        if (TextUtils.isEmpty(filterStr)) {
-            tvNofriends.setVisibility(View.GONE);
-            adapter.updateListView(SourceDateList);
-        } else {
-            filterDateList = new ArrayList<>();
-            for (CustomBean.ResultBean sortModel : SourceDateList) {
-                String name = sortModel.getSurname();
-                if (name.indexOf(filterStr.toString()) != -1 || characterParser.getSelling(name).startsWith(filterStr)
-                        || characterParser.getSelling(name).startsWith(filterStr.toUpperCase())) {
-                    filterDateList.add(sortModel);
-                }
-            }
-        }
-
-        // 根据a-z进行排序
-        // Collections.sort(filterDateList, pinyinComparator);
-        adapter.updateListView(filterDateList);
-    }
 
     @Override
     public Object[] getSections() {
@@ -204,35 +183,29 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     private void getCustomeListData(final boolean b, int page) {
 
-        EasyHttp.get(Contants.CUSTOMER_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
+        EasyHttp.get(Contants.CUSTOMER_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
                 //.headers("Cache-Control", "no-cache") // 刷新数据
-               // .headers("Cache-Control", "only-if-cached")//强制使用缓存
-                .timeStamp(true)
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("page", String.valueOf(page))
-                .params("number", "500")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+                // .headers("Cache-Control", "only-if-cached")//强制使用缓存
+                .timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("page", String.valueOf(page)).params("number", "500").execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess", "onSuccess:" + json);
-                        closeDialog();
-                        jsonParse(json, b);
-                    }
-                });
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess", "onSuccess:" + json);
+                closeDialog();
+                jsonParse(json, b);
+            }
+        });
 
 
     }
@@ -241,6 +214,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Gson gson = new Gson();
         //客户信息
         CustomBean product = gson.fromJson(json, CustomBean.class);
+        mCustomBean=product;
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
@@ -319,8 +293,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         searchEditText.addTextChangedListener(new TextWatcher() {
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // 这个时候不需要挤压效果 就把他隐藏掉
                 titleLayout.setVisibility(View.GONE);
                 // 当输入框里面的值为空，更新为原来的列表，否则为过滤数据列表
@@ -328,8 +301,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             }
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
             }
 
@@ -337,8 +309,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void afterTextChanged(Editable s) {
                 String searchContent = searchEditText.getText().toString();
                 if (searchContent.length() > 0) {
-                    ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean.ResultBean>)
-                            nameChangeUtil.search(searchContent, SourceDateList);
+                    ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean.ResultBean>) nameChangeUtil.search(searchContent, SourceDateList);
                     adapter.updateListView(fileterList);
                 } else {
                     adapter.updateListView(SourceDateList);
@@ -350,8 +321,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
                 SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
                 CustomBean.ResultBean resultBean = viewHolder.resultBean;
@@ -380,6 +350,16 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                     bundle.putString("add", "list");
                     ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
                 }
+            }
+        });
+
+
+        contactAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle mBundle=new Bundle();
+                mBundle.putSerializable("key",mCustomBean);
+                ActivitySkip.forward(CustomeActivity.this, ContactsActivity.class,mBundle);
             }
         });
 
