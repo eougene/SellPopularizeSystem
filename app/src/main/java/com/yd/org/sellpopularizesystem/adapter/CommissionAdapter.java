@@ -143,17 +143,17 @@ public class CommissionAdapter extends BaseAdapter {
 
                 //时间不为空
             } else {
-                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
+                viewHolder.commissionID.setText(mContext.getString(R.string.order_id) + ":" + datas.get(position).getOrder_id() + " / " + MyUtils.date2String("yyyy/MM/dd", Long.parseLong(viewHolder.resultBean.getUpdate_time() + "000")));
 
             }
         }
 
         viewHolder.titleCommission.setText(datas.get(position).getProduct_name() + "  / " + datas.get(position).getProduct_childs_unit_number());
         //总金额
-        String total=datas.get(position).getTotal();
-        if(total.contains(".")){
-            viewHolder.sumCommission.setText(MyUtils.addComma(total.split("\\.")[0])+"."+total.split("\\.")[1]);
-        }else {
+        String total = datas.get(position).getTotal();
+        if (total.contains(".")) {
+            viewHolder.sumCommission.setText(MyUtils.addComma(total.split("\\.")[0]) + "." + total.split("\\.")[1]);
+        } else {
             viewHolder.sumCommission.setText(MyUtils.addComma(total));
         }
 
@@ -242,7 +242,7 @@ public class CommissionAdapter extends BaseAdapter {
 
 
         //佣金1
-        viewHolder.firstCommissionSum.setText(add(viewHolder.resultBean.getFirst_money(),viewHolder.resultBean.getFirst_gst()));
+        viewHolder.firstCommissionSum.setText(add(viewHolder.resultBean.getFirst_money(), viewHolder.resultBean.getFirst_gst()));
 
         if (viewHolder.resultBean.getFirst_status() == 1) {
 
@@ -255,7 +255,7 @@ public class CommissionAdapter extends BaseAdapter {
             viewHolder.firstCommissionDate.setText("-");
         }
         //佣金2
-        viewHolder.secondCommissionSum.setText(add(viewHolder.resultBean.getSecond_money(),viewHolder.resultBean.getSecond_gst()));
+        viewHolder.secondCommissionSum.setText(add(viewHolder.resultBean.getSecond_money(), viewHolder.resultBean.getSecond_gst()));
 
 
         if (viewHolder.resultBean.getSecond_status() == 1) {
@@ -273,7 +273,7 @@ public class CommissionAdapter extends BaseAdapter {
         }
 
         //佣金3
-        viewHolder.thirdCommissionSum.setText(add(viewHolder.resultBean.getThird_money(),viewHolder.resultBean.getThird_gst()));
+        viewHolder.thirdCommissionSum.setText(add(viewHolder.resultBean.getThird_money(), viewHolder.resultBean.getThird_gst()));
 
 
         if (viewHolder.resultBean.getThird_status() == 1) {
@@ -306,14 +306,14 @@ public class CommissionAdapter extends BaseAdapter {
         return convertView;
     }
 
-    private String add(String str1,String str2){
-        BigDecimal bd1=BigDecimal.valueOf(Double.parseDouble(str1));
-        BigDecimal bd2=BigDecimal.valueOf(Double.parseDouble(str2));
-        String value=String.valueOf(bd1.add(bd2).doubleValue());
+    private String add(String str1, String str2) {
+        BigDecimal bd1 = BigDecimal.valueOf(Double.parseDouble(str1));
+        BigDecimal bd2 = BigDecimal.valueOf(Double.parseDouble(str2));
+        String value = String.valueOf(bd1.add(bd2).doubleValue());
 
-        if (value.contains(".")){
-            return MyUtils.addComma(value.split("\\.")[0])+"."+value.split("\\.")[1];
-        }else {
+        if (value.contains(".")) {
+            return MyUtils.addComma(value.split("\\.")[0]) + "." + value.split("\\.")[1];
+        } else {
             return MyUtils.addComma(value);
         }
 
@@ -362,16 +362,17 @@ public class CommissionAdapter extends BaseAdapter {
                     }
 
                     break;
+                //第一笔佣金
                 case R.id.rlFistCommisstion:
                     Log.e("TAG", "rlFistCommisstion: ");
                     getDepositDetails(resultBean, "1");
                     break;
-
+                //第二笔佣金
                 case R.id.rlSecondCommisstion:
                     Log.e("TAG", "rlSecondCommisstion: ");
                     getDepositDetails(resultBean, "2");
                     break;
-
+                //第三笔佣金
                 case R.id.rlThirdCommisstion:
                     Log.e("TAG", "rlSecondCommisstion: ");
                     getDepositDetails(resultBean, "3");
@@ -399,13 +400,13 @@ public class CommissionAdapter extends BaseAdapter {
                     @Override
                     public void onSuccess(String json) {
                         Log.e("TAG", "onSuccess: " + json);
-                        jsonParse(json, resultBean,step);
+                        jsonParse(json, resultBean, step);
                     }
                 });
 
     }
 
-    private void jsonParse(String json, CommissionBean.ResultBean resultBean,String step) {
+    private void jsonParse(String json, CommissionBean.ResultBean resultBean, String step) {
         try {
             JSONObject jsonObject = new JSONObject(json);
             if ((jsonObject.getInt("code")) == 0 || jsonObject.get("code").equals("0")) {
@@ -413,23 +414,22 @@ public class CommissionAdapter extends BaseAdapter {
                 return;
             } else {
                 Log.e("json", "jsonParse: " + json);
-                if (jsonObject.getString("msg").equals(mContext.getString(R.string.get_success))) {
-                    Gson gson = new Gson();
-                    InvoiceDetailBean detailBean = gson.fromJson(json, InvoiceDetailBean.class);
-                    InvoiceDetailBean.ResultBean rb = detailBean.getResult();
-                    Bundle bun = new Bundle();
-                    bun.putSerializable("bean", rb);
-                    bun.putString("for",jsonObject.getJSONObject("result").getString("for"));
-                    if (step.equals("1")){
-                        bun.putString("status", resultBean.getOne_invoice_status() + "");
-                    }else if (step.equals("2")){
-                        bun.putString("status", resultBean.getTwo_invoice_status() + "");
-                    }else {
-                        bun.putString("status", resultBean.getThree_invoice_status() + "");
-                    }
-
-                    ActivitySkip.forward(CommissionActivity.commissionActivity, InvoiceActivity.class, bun);
+                Gson gson = new Gson();
+                InvoiceDetailBean detailBean = gson.fromJson(json, InvoiceDetailBean.class);
+                InvoiceDetailBean.ResultBean rb = detailBean.getResult();
+                Bundle bun = new Bundle();
+                bun.putSerializable("bean", rb);
+                bun.putString("for", jsonObject.getJSONObject("result").getString("for"));
+                if (step.equals("1")) {
+                    bun.putString("status", resultBean.getOne_invoice_status() + "");
+                } else if (step.equals("2")) {
+                    bun.putString("status", resultBean.getTwo_invoice_status() + "");
+                } else {
+                    bun.putString("status", resultBean.getThree_invoice_status() + "");
                 }
+
+                ActivitySkip.forward(CommissionActivity.commissionActivity, InvoiceActivity.class, bun);
+
 
             }
         } catch (JSONException e) {
