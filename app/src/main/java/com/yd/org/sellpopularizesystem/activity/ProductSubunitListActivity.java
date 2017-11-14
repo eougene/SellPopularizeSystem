@@ -490,6 +490,11 @@ public class ProductSubunitListActivity extends BaseActivity {
                         mCustomePopuWindow.dismiss();
                     }
                     break;
+                case R.id.btCancel:
+                    if (mCustomePopuWindow != null) {
+                        mCustomePopuWindow.dismiss();
+                    }
+                    break;
                 //排队
                 case R.id.btLineup:
                     if (mCustomePopuWindow != null) {

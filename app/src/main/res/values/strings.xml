@@ -687,5 +687,11 @@
     <string name="contact_add">添加手机联系人</string>
     <string name="contacts_add">添加</string>
     <string name="add_done">已添加</string>
+    <string name="sale_leader">销售领导奖励</string>
+    <string name="personal_commission">个人销售金</string>
+    <string name="confirm_money">已确认金额</string>
+    <string name="Unconfirm_money">未确认金额</string>
+    <string name="not_used">未使用</string>
+    <string name="my_eoi">我的EOI</string>
 
 </resources>

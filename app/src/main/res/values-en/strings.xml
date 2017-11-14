@@ -695,10 +695,16 @@
     <string name="pdel_">Number</string>
     <string name="unit_list">Unit List</string>
     <string name="eoi_eoi"> Credentials Uploaded,Reviewing</string>
-    <string name="contacts_title">通讯录朋友</string>
-    <string name="contact_add">添加手机联系人</string>
-    <string name="contacts_add">添加</string>
-    <string name="add_done">已添加</string>
+    <string name="contacts_title">Address book friend</string>
+    <string name="contact_add">Add mobile contact</string>
+    <string name="contacts_add">Add</string>
+    <string name="add_done">added</string>
+    <string name="sale_leader">Sales Leadership Award</string>
+    <string name="personal_commission">Personal sales commission</string>
+    <string name="confirm_money">Confirmed amount</string>
+    <string name="Unconfirm_money">Unconfirmed amount</string>
+    <string name="not_used">Not use</string>
+    <string name="my_eoi">我的EOI</string>
 
 </resources>
 
