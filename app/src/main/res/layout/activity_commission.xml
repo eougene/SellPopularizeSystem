@@ -139,12 +139,13 @@
 
             </RelativeLayout>
 
-            <!--<View
+            <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height=
-                android:layout_weight="1"
-                android:background="@drawable/vertical_stroke"
-                android:layerType="software" />-->
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/padding_margin_16"
+                android:layout_marginBottom="@dimen/padding_margin_14"
+                android:src="@mipmap/dotline"
+                android:scaleType="fitXY"/>
 
             <RelativeLayout
                 android:layout_width="0dp"
