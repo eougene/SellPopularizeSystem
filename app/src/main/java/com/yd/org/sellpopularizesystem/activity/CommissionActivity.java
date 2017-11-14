@@ -103,6 +103,8 @@ public class CommissionActivity extends FragmentActivity {
         List<Fragment> fragments = new ArrayList<Fragment>();
         saleFragment = CommissionFragment.getInstnce(0);
         leaderFragment = CommissionFragment.getInstnce(1);
+        fragments.add(saleFragment);
+        fragments.add(leaderFragment);
         adapter = new FragAdapter(getSupportFragmentManager(), fragments);
         vpCommission.setAdapter(adapter);
         vpCommission.setCurrentItem(0);

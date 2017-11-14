@@ -57,7 +57,7 @@ public class EOIActivity extends FragmentActivity  {
     private Button btUnknown, btSure, btFalse;
     private String eoi_ID = "";
     private ViewPager vpEoi;
-    private EoiFragment notUseFragment,alreadyUsedFragment,RefundedFragment;
+    private EoiFragment notUseFragment,alreadyUsedFragment,refundedFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,7 +89,10 @@ public class EOIActivity extends FragmentActivity  {
         List<Fragment> fragments = new ArrayList<Fragment>();
         notUseFragment = EoiFragment.getInstnce(0);
         alreadyUsedFragment = EoiFragment.getInstnce(1);
-        RefundedFragment = EoiFragment.getInstnce(2);
+        refundedFragment = EoiFragment.getInstnce(2);
+        fragments.add(notUseFragment);
+        fragments.add(alreadyUsedFragment);
+        fragments.add(refundedFragment);
         adapter = new FragAdapter(getSupportFragmentManager(), fragments);
         vpEoi.setAdapter(adapter);
         vpEoi.setCurrentItem(0);
