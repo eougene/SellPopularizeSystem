@@ -43,7 +43,8 @@ import java.util.List;
 /**
  * 客户管理
  */
-public class CustomeActivity extends BaseActivity implements SectionIndexer, PullToRefreshLayout.OnRefreshListener {
+public class CustomeActivity extends BaseActivity implements SectionIndexer, PullToRefreshLayout
+        .OnRefreshListener {
     public static CustomeActivity customeActivity;
     private PullableListView listView;
     private PullToRefreshLayout ptrl;
@@ -66,7 +67,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
     private PinyinComparator pinyinComparator;
     //用以判断跳转不同界面
     String str1 = "default";
-    private CustomBean mCustomBean=new CustomBean();
+    private CustomBean mCustomBean = new CustomBean();
     public Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -183,10 +184,12 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
     private void getCustomeListData(final boolean b, int page) {
 
-        EasyHttp.get(Contants.CUSTOMER_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
+        EasyHttp.get(Contants.CUSTOMER_LIST).cacheMode(CacheMode.DEFAULT).headers
+                ("Cache-Control", "max-age=0")//通过服务器验证缓存是否有效
                 //.headers("Cache-Control", "no-cache") // 刷新数据
                 // .headers("Cache-Control", "only-if-cached")//强制使用缓存
-                .timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params("page", String.valueOf(page)).params("number", "500").execute(new SimpleCallBack<String>() {
+                .timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID()).params
+                ("page", String.valueOf(page)).params("number", "500").execute(new SimpleCallBack<String>() {
             @Override
             public void onStart() {
                 super.onStart();
@@ -214,7 +217,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         Gson gson = new Gson();
         //客户信息
         CustomBean product = gson.fromJson(json, CustomBean.class);
-        mCustomBean=product;
+        mCustomBean = product;
         if (product.getCode() == 1) {
             SourceDateList = filledData(product.getResult());
         }
@@ -257,7 +260,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
                     Bundle bundle = new Bundle();
                     bundle.putString("add", "add");
-                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
+                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class,
+                            bundle);
 
                 }
             });
@@ -268,7 +272,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
                     Bundle bundle = new Bundle();
                     bundle.putString("add", "add");
-                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
+                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class,
+                            bundle);
 
                 }
             });
@@ -309,10 +314,19 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             public void afterTextChanged(Editable s) {
                 String searchContent = searchEditText.getText().toString().trim();
                 if (searchContent.length() > 0) {
-                    ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean.ResultBean>) nameChangeUtil.search(searchContent, SourceDateList);
-                    adapter.updateListView(fileterList);
+                    ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean
+                            .ResultBean>) nameChangeUtil.search(searchContent, SourceDateList);
+
+                    if (null != adapter) {
+                        adapter.updateListView(fileterList);
+                    }
+
+
                 } else {
-                    adapter.updateListView(SourceDateList);
+                    if (null != adapter) {
+                        adapter.updateListView(SourceDateList);
+                    }
+
                 }
                 listView.setSelection(0);
             }
@@ -323,7 +337,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // 这里要利用adapter.getItem(position)来获取当前position所对应的对象
-                SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter.ViewHolder) view.getTag();
+                SortGroupMemberAdapter.ViewHolder viewHolder = (SortGroupMemberAdapter
+                        .ViewHolder) view.getTag();
                 CustomBean.ResultBean resultBean = viewHolder.resultBean;
                 ObjectSaveUtil.saveObject(CustomeActivity.this, "custome", resultBean);
 
@@ -331,7 +346,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 //产品选择客户
                 if (str1.equals(ExtraName.SCALETOCUSTOME)) {
                     bundle.putString("add", "list");
-                    ActivitySkip.forward(CustomeActivity.this, ProjectPromotionActivity.class, bundle);
+                    ActivitySkip.forward(CustomeActivity.this, ProjectPromotionActivity.class,
+                            bundle);
                     finish();
 
                 } else if (str1.equals(ExtraName.OLDPROTOCUSTOME)) {//往期项目选客户
@@ -348,7 +364,8 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
                 } else {//正常选择客户
                     bundle.putSerializable("custome", resultBean);
                     bundle.putString("add", "list");
-                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class, bundle);
+                    ActivitySkip.forward(CustomeActivity.this, CustomDetailedActivity.class,
+                            bundle);
                 }
             }
         });
@@ -357,9 +374,9 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
         contactAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle mBundle=new Bundle();
-                mBundle.putSerializable("key",mCustomBean);
-                ActivitySkip.forward(CustomeActivity.this, ContactsActivity.class,mBundle);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("key", mCustomBean);
+                ActivitySkip.forward(CustomeActivity.this, ContactsActivity.class, mBundle);
             }
         });
 
