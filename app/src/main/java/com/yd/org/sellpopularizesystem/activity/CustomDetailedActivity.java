@@ -1049,9 +1049,11 @@ public class CustomDetailedActivity extends BaseActivity {
                 }
                 if (strFlag!=null && strFlag.equals("2")){
                     etDistrict_01.setText(countryName);
+                    etEma_01.setText(countryNumber);
                 }
                 if (strFlag!=null && strFlag.equals("3")){
                     etDistrict.setText(countryName);
+                    etEma.setText(countryNumber);
                 }
                 nationSelectPopWindow.dismiss();
             }
