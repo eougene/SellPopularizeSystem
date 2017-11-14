@@ -8,9 +8,9 @@ public class Contants {
     /**
      * 域名
      */
-     public static final String DOMAIN = "http://wingaid.vxda.cn";
-    //public static final String DOMAIN = "https://www.wingaid.com";
-
+     //public static final String DOMAIN = "http://wingaid.vxda.cn";
+   // public static final String DOMAIN = "https://www.wingaid.com";
+    public static final String DOMAIN = "https://b017a3b3-81c6-4903-994d-4271157fc073.mock.pstmn.io";
     //加载PDF,正式//https://view.officeapps.live.com/op/view.aspx?src=
     // public static final String PDF = "http://dcsapi.com?k=140337680&url=";
     //public static final String PDF_TEST = "http://dcsapi.com?k=140387567&url=";
@@ -137,7 +137,8 @@ public class Contants {
     //是否具有EOI购房
     public static final String IF_EOI = DOMAIN + "/index.php/appv2/neweoi/if_eoi";
     //eoi列表
-    public static final String EOI_LIST = DOMAIN + "/index.php/appv2/neweoi/eoi_list";
+    //public static final String EOI_LIST = DOMAIN + "/index.php/appv2/neweoi/eoi_list";
+    public static final String EOI_LIST = DOMAIN + "/index.php/app/v1_12_0/eoi_list";
 
     //eoi退款
     public static final String EOI_REFUND = DOMAIN + "/index.php/appv2/neweoi/refund_eoi";
@@ -202,7 +203,8 @@ public class Contants {
     public static final String ORDER_LIST = DOMAIN + "/index.php/appv2/order/order_list";
     //佣金
     // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/commossion/commossion_list";
-    public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
+   // public static final String COMMOSSION_LIST = DOMAIN + "/index.php/appv2/commossion/commossion_list";
+    public static final String COMMOSSION_LIST = DOMAIN + "/index.php/app/v1_12_0/commossion";
     //发票详情
     public static final String DEPOSIT_DETAILS = DOMAIN + "/index.php/appv2/commossion/tax_invoice_info";
     //同意或拒绝发票
