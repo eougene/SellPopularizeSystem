@@ -1,7 +1,6 @@
 package com.yd.org.sellpopularizesystem.viewpage;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -37,7 +36,6 @@ public class PhotoViewFragment extends BaseFragmentView {
         pView = getViewById(R.id.pView);//pdf
         url = getArguments().getString("url");
 
-        Log.e("url***", "url:" + url);
 
         if (url.endsWith(".pdf") || url.endsWith(".ppt") || url.endsWith(".pptx") || url.endsWith(".PDF") || url.endsWith(".PPT") || url.endsWith(".PPTX")) {
             title = getArguments().getString("title");
@@ -49,7 +47,6 @@ public class PhotoViewFragment extends BaseFragmentView {
 
 
         } else if (url.endsWith(".png") || url.endsWith(".jpg")) {
-            Log.e("TAG", "png**jpg: ");
             photoIm.setVisibility(View.VISIBLE);
             pdfView.setVisibility(View.GONE);
             pView.setVisibility(View.GONE);
@@ -71,7 +68,6 @@ public class PhotoViewFragment extends BaseFragmentView {
     }
 
     private void init() {
-        Log.e("图片地址**", "url:" + url);
         BitmapUtil.loadImageView(getActivity(), url, photoIm);
 
     }
