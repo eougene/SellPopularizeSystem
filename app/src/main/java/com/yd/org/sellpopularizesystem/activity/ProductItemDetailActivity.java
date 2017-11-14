@@ -60,10 +60,7 @@ import java.lang.ref.WeakReference;
 import java.util.Locale;
 
 public class ProductItemDetailActivity extends AppCompatActivity {
-    private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime,
-            tvSaleDeadTime, tvStartDate, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer,
-            tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription, tvhas,
-            tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime, agent_notes, proDelAddTv;
+    private TextView tvId, tvProdes, tvIsSalingNum, tvHasSaledNum, tvFirbNum, tvEoiTime, tvSaleDeadTime, tvStartDate, tvCloseDate, tvMemo, tvProjectPro, tvSupplier, tvLawyer, tvBuilder, tvDespositHolder, tvForeignMoney, tvCashDesposit, tvSubscription, tvhas, tvIntroduce, tvVideo, tvOrder, tvFloor, tvContract, tvFile, tvrojectDe, tvSaleTime, agent_notes, proDelAddTv;
     private RollPagerView rpv;
     private ProductListBean.ResultBean resultBean;
     private ProductDetailBean.ResultBean prs;
@@ -141,10 +138,7 @@ public class ProductItemDetailActivity extends AppCompatActivity {
         Bitmap bitmap = ZXingUtils.createQRImage(shareUrl, 200, 200);
 
         if (Build.VERSION.SDK_INT >= 23) {
-            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW,
-                    Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
+            String[] mPermissionList = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE, Manifest.permission.READ_LOGS, Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.SET_DEBUG_APP, Manifest.permission.SYSTEM_ALERT_WINDOW, Manifest.permission.GET_ACCOUNTS, Manifest.permission.WRITE_APN_SETTINGS};
         }
         new ShareDialog(ProductItemDetailActivity.this, new ShareDialog.onClickback() {
             @Override
@@ -218,102 +212,96 @@ public class ProductItemDetailActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        EasyHttp.get(Contants.PRODUCT_DETAIL)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("product_id", resultBean.getProduct_id() + "")
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
+        EasyHttp.get(Contants.PRODUCT_DETAIL).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("product_id", resultBean.getProduct_id() + "").params("user_id", SharedPreferencesHelps.getUserID()).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
 
+            }
+
+            @Override
+            public void onError(ApiException e) {
+
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+            }
+
+            @Override
+            public void onSuccess(String json) {
+                Log.e("json***", "json:" + json);
+
+                Gson gson = new Gson();
+                ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
+                if (pdb.getCode().equals("1")) {
+                    prs = pdb.getResult();
+                    BaseApplication.getInstance().setPrs(prs);
+                    //轮播控件适配器
+                    rpv.setAdapter(new NormalAdapter(rpv));
+
+                    tvId.setText(prs.getProduct_id() + "");
+                    tvProdes.setText(prs.getDescription());
+                    tvIsSalingNum.setText(prs.getSell_number() + "");
+                    tvHasSaledNum.setText(prs.getSign_number() + "");
+                    tvFirbNum.setText(prs.getFirb_number() + "");
+                    agent_notes.setText(" " + prs.getAgent_notes() + "");
+
+
+                    Locale locale = Locale.getDefault();
+                    String language = locale.getLanguage();
+                    Resources resources = getResources();
+                    Configuration config = resources.getConfiguration();
+                    if (!language.equals("")) {
+                        if (language.equals("zh")) {
+                            proDelAddTv.setText(prs.getCountry() + " " + prs.getState() + " " + prs.getCity() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getStreet_number() + " " + prs.getPostcode());
+                        } else if (language.equals("en")) {
+                            proDelAddTv.setText(prs.getStreet_number() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getAddress_suburb() + " " + prs.getState() + " " + prs.getPostcode() + " " + prs.getCountry());
+
+                        }
                     }
 
-                    @Override
-                    public void onError(ApiException e) {
 
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+                    if (prs.getEoi_open_time() == null || (double) prs.getEoi_open_time() == 0 || String.valueOf(prs.getEoi_open_time()).equals("0")) {
+                        tvEoiTime.setText("-/-/-");
+                    } else {
+                        tvEoiTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getEoi_open_time()).longValue() + "000")));
                     }
-
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("json***", "json:" + json);
-
-                        Gson gson = new Gson();
-                        ProductDetailBean pdb = gson.fromJson(json, ProductDetailBean.class);
-                        if (pdb.getCode().equals("1")) {
-                            prs = pdb.getResult();
-                            BaseApplication.getInstance().setPrs(prs);
-                            //轮播控件适配器
-                            rpv.setAdapter(new NormalAdapter(rpv));
-
-                            tvId.setText(prs.getProduct_id() + "");
-                            tvProdes.setText(prs.getDescription());
-                            tvIsSalingNum.setText(prs.getSell_number() + "");
-                            tvHasSaledNum.setText(prs.getSign_number() + "");
-                            tvFirbNum.setText(prs.getFirb_number() + "");
-                            agent_notes.setText(" " + prs.getAgent_notes() + "");
-
-
-                            Locale locale = Locale.getDefault();
-                            String language = locale.getLanguage();
-                            Resources resources = getResources();
-                            Configuration config = resources.getConfiguration();
-                            if (!language.equals("")) {
-                                if (language.equals("zh")) {
-                                    proDelAddTv.setText(prs.getCountry() + " " + prs.getState() + " " + prs.getCity() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getStreet_number() + " " + prs.getPostcode());
-                                } else if (language.equals("en")) {
-                                    proDelAddTv.setText(prs.getStreet_number() + " " + prs.getStreet_address_1() + " " + prs.getStreet_address_2() + " " + prs.getAddress_suburb() + " " + prs.getState() + " " + prs.getPostcode() + " " + prs.getCountry());
-
-                                }
-                            }
-
-
-                            if (prs.getEoi_open_time() == null || (double) prs.getEoi_open_time() == 0 || String.valueOf(prs.getEoi_open_time()).equals("0")) {
-                                tvEoiTime.setText("-/-/-");
-                            } else {
-                                tvEoiTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getEoi_open_time()).longValue() + "000")));
-                            }
-                            if ((double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
-                                tvSaleTime.setText("-/-/-");
-                            } else {
-                                tvSaleTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStart_sales_time()).longValue() + "000")));
-                            }
-                            if (prs.getStop_sales_time() == null || (double) prs.getStop_sales_time() == 0 || String.valueOf(prs.getStop_sales_time()).equals("0")) {
-                                tvSaleDeadTime.setText("-/-/-");
-                            } else {
-                                tvSaleDeadTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStop_sales_time()).longValue() + "000")));
-                            }
-                            if (prs.getSunset_time() == null || (double) prs.getSunset_time() == 0 || String.valueOf(prs.getSunset_time()).equals("0")) {
-                                tvStartDate.setText("-/-/-");
-                            } else {
-                                tvStartDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSunset_time()).longValue() + "000")));
-                            }
-                            if ((double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
-                                tvCloseDate.setText("-/-/-");
-                            } else {
-                                tvCloseDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSettlement_time()).longValue() + "000")));
-                            }
+                    if ((double) prs.getStart_sales_time() == 0 || String.valueOf(prs.getStart_sales_time()).equals("0")) {
+                        tvSaleTime.setText("-/-/-");
+                    } else {
+                        tvSaleTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStart_sales_time()).longValue() + "000")));
+                    }
+                    if (prs.getStop_sales_time() == null || (double) prs.getStop_sales_time() == 0 || String.valueOf(prs.getStop_sales_time()).equals("0")) {
+                        tvSaleDeadTime.setText("-/-/-");
+                    } else {
+                        tvSaleDeadTime.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getStop_sales_time()).longValue() + "000")));
+                    }
+                    if (prs.getSunset_time() == null || (double) prs.getSunset_time() == 0 || String.valueOf(prs.getSunset_time()).equals("0")) {
+                        tvStartDate.setText("-/-/-");
+                    } else {
+                        tvStartDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSunset_time()).longValue() + "000")));
+                    }
+                    if ((double) prs.getSettlement_time() == 0 || String.valueOf(prs.getSettlement_time()).equals("0")) {
+                        tvCloseDate.setText("-/-/-");
+                    } else {
+                        tvCloseDate.setText(MyUtils.date2String("yyyy/MM/dd", Long.parseLong(Double.valueOf((double) prs.getSettlement_time()).longValue() + "000")));
+                    }
 
                     /*tvSaleTime.setText(prs.getStart_sales_time()==null || (long)prs.getStart_sales_time()==0 || String.valueOf(prs.getStart_sales_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getStart_sales_time() + "000")));
                     tvSaleDeadTime.setText(prs.getStop_sales_time()==null || (long)prs.getStop_sales_time()==0 ||String.valueOf(prs.getStop_sales_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getStop_sales_time() + "000")));
                     tvStartDate.setText(prs.getSunset_time()==null || (long)prs.getSunset_time()==0 || String.valueOf(prs.getSunset_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getSunset_time() + "000")));
                     tvCloseDate.setText(prs.getSettlement_time()==null || (long)prs.getSettlement_time()==0 || String.valueOf(prs.getSettlement_time()).equals("0")?1970/01/01+"":MyUtils.getInstance().date2String("yyyy/MM/dd", Long.parseLong((int)prs.getSettlement_time() + "000")));*/
-                            tvMemo.setText(prs.getPreview_memo());
-                            tvProjectPro.setText(prs.getProduct_type());
-                            tvSupplier.setText(prs.getVendor());
-                            tvLawyer.setText(prs.getVendor_lawyer());
-                            tvBuilder.setText(prs.getBuilder());
-                            tvDespositHolder.setText(prs.getDesposit_holder());
-                            tvForeignMoney.setText(prs.getExchange_deposit() + "%");
-                            tvCashDesposit.setText(prs.getFirb_exchange_deposit() + "%");
-                            tvSubscription.setText(prs.getMin_reservation_fee());
-                            controlColor();
-                        }
-                    }
-                });
+                    tvMemo.setText(prs.getPreview_memo());
+                    tvProjectPro.setText(prs.getProduct_type());
+                    tvSupplier.setText(prs.getVendor());
+                    tvLawyer.setText(prs.getVendor_lawyer());
+                    tvBuilder.setText(prs.getBuilder());
+                    tvDespositHolder.setText(prs.getDesposit_holder());
+                    tvForeignMoney.setText(prs.getExchange_deposit() + "%");
+                    tvCashDesposit.setText(prs.getFirb_exchange_deposit() + "%");
+                    tvSubscription.setText(prs.getMin_reservation_fee());
+                    controlColor();
+                }
+            }
+        });
 
 
     }
@@ -507,12 +495,8 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
         @Override
         public View getView(ViewGroup container, int position) {
-
-            Log.e("hhh**", "Url:" + Contants.DOMAIN + "/" + ProductItemDetailActivity.this.prs.getImg_content().get(position).getThumbURL());
             ImageView view = new ImageView(container.getContext());
             BitmapUtil.loadImageView(ProductItemDetailActivity.this, Contants.DOMAIN + "/" + prs.getImg_content().get(position).getThumbURL(), view);
-
-
             view.setScaleType(ImageView.ScaleType.FIT_XY);
             view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return view;
@@ -566,7 +550,11 @@ public class ProductItemDetailActivity extends AppCompatActivity {
 
             SharedPreferencesHelps.setData(jsonarray.toString());
 
-            HomeActiviyt.homeActiviyt.recordHandler.sendEmptyMessage(0x001);
+
+            if (null != HomeActiviyt.homeActiviyt && null != HomeActiviyt.homeActiviyt.recordHandler) {
+                HomeActiviyt.homeActiviyt.recordHandler.sendEmptyMessage(0x001);
+
+            }
 
 
         } catch (JSONException e) {

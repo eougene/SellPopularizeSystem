@@ -307,7 +307,7 @@ public class CustomeActivity extends BaseActivity implements SectionIndexer, Pul
 
             @Override
             public void afterTextChanged(Editable s) {
-                String searchContent = searchEditText.getText().toString();
+                String searchContent = searchEditText.getText().toString().trim();
                 if (searchContent.length() > 0) {
                     ArrayList<CustomBean.ResultBean> fileterList = (ArrayList<CustomBean.ResultBean>) nameChangeUtil.search(searchContent, SourceDateList);
                     adapter.updateListView(fileterList);

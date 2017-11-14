@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.yd.org.sellpopularizesystem.R;
 import com.yd.org.sellpopularizesystem.application.Contants;
 import com.yd.org.sellpopularizesystem.application.ExtraName;
@@ -40,6 +41,7 @@ public class StudyDetailaActivity extends FragmentActivity {
     private ViewpagerAdapter vpAdapter;
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
     private ImageView[] tips;
+    private ViewGroup group;
 
 
     private View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -72,40 +74,22 @@ public class StudyDetailaActivity extends FragmentActivity {
         prs = (ProductDetailBean.ResultBean) bundle.getSerializable("prs");
 
 
-        getInfo(resultBean.getStudy_id());
-
-
-    }
-
-    private void setViewPager(List<Fragment> fragmentLists) {
 
         backImageView = (ImageView) findViewById(R.id.backImageView);
         backImageView.setOnClickListener(onClickListener);
         //
         viewPager = (HackyViewPager) findViewById(R.id.viewPager);
-        vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentLists, null);
-
+        vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentList, null);
         viewPager.setAdapter(vpAdapter);
         viewPager.setCurrentItem(0);
 
-        //设置小圆点
+        group = (ViewGroup) findViewById(R.id.viewGroup);
 
-        ViewGroup group = (ViewGroup) findViewById(R.id.viewGroup);
-        tips = new ImageView[fragmentLists.size()];
-        for (int i = 0; i < tips.length; i++) {
-            ImageView imageView = new ImageView(this);
-            tips[i] = imageView;
-            if (i == 0) {
-                tips[i].setBackgroundResource(R.mipmap.dian_true);
-            } else {
-                tips[i].setBackgroundResource(R.mipmap.dian_false);
-            }
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            layoutParams.leftMargin = 5;
-            layoutParams.rightMargin = 5;
-            group.addView(imageView, layoutParams);
-        }
+
+        getInfo(resultBean.getStudy_id());
+
+
 
 
         //事件
@@ -128,6 +112,38 @@ public class StudyDetailaActivity extends FragmentActivity {
 
             }
         });
+
+
+    }
+
+    private void setViewPager(List<Fragment> fragmentLists) {
+
+
+
+        vpAdapter = new ViewpagerAdapter(getSupportFragmentManager(), fragmentLists, null);
+        viewPager.setAdapter(vpAdapter);
+        viewPager.setCurrentItem(0);
+
+        //设置小圆点
+        tips = new ImageView[fragmentLists.size()];
+        for (int i = 0; i < tips.length; i++) {
+            ImageView imageView = new ImageView(this);
+            tips[i] = imageView;
+            if (i == 0) {
+                tips[i].setBackgroundResource(R.mipmap.dian_true);
+            } else {
+                tips[i].setBackgroundResource(R.mipmap.dian_false);
+            }
+
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            layoutParams.leftMargin = 5;
+            layoutParams.rightMargin = 5;
+            group.addView(imageView, layoutParams);
+        }
+
+
+
+
     }
 
     /**
@@ -148,19 +164,9 @@ public class StudyDetailaActivity extends FragmentActivity {
     private void getInfo(String study_id) {
 
 
-        EasyHttp.get(Contants.STUDY_INFO)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("study_id", study_id)
+        EasyHttp.get(Contants.STUDY_INFO).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("study_id", study_id)
 
                 .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-
-                    }
-
                     @Override
                     public void onError(ApiException e) {
 
@@ -170,26 +176,33 @@ public class StudyDetailaActivity extends FragmentActivity {
                     @Override
                     public void onSuccess(String json) {
 
-                        Gson gson = new Gson();
-                        StudyInfoBean studyBean = gson.fromJson(json, StudyInfoBean.class);
+                        try {
 
-                        if (studyBean.getCode().equals("1")) {
-                            picList = studyBean.getResult();
-                            //
-                            for (int i = 0; i < picList.size() + 1; i++) {
-                                if (i == picList.size()) {
-                                    if (resultBean != null) {
-                                        fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
-                                    } else if (prs != null) {
-                                        fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
+                            Gson gson = new Gson();
+                            StudyInfoBean studyBean = gson.fromJson(json, StudyInfoBean.class);
+
+                            if (studyBean.getCode().equals("1")) {
+                                picList = studyBean.getResult();
+                                for (int i = 0; i < picList.size() + 1; i++) {
+                                    if (i == picList.size()) {
+                                        if (resultBean != null) {
+                                            fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.INVISIBILITY, resultBean.getStudy_id()));
+                                        } else if (prs != null) {
+                                            fragmentList.add(i, LastFragmentView.getInstnce(ExtraName.VISIBILITY, prs.getStudy_id()));
+                                        }
+                                    } else {
+                                        fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl(), studyBean.getResult().get(i).getDetail_title()));
                                     }
-                                } else {
-                                    fragmentList.add(PhotoViewFragment.getInstnce(Contants.DOMAIN + "/" + picList.get(i).getUrl(), studyBean.getResult().get(i).getDetail_title()));
                                 }
+
+                                setViewPager(fragmentList);
                             }
 
-                            setViewPager(fragmentList);
+                        } catch (JsonIOException e) {
+                            Log.e("解析异常", "e:" + e.getMessage());
                         }
+
+
                     }
                 });
 

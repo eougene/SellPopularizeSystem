@@ -1,6 +1,5 @@
 package com.yd.org.sellpopularizesystem.activity;
 
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.EditText;
 
@@ -19,13 +18,6 @@ public class BankActivity extends BaseActivity {
     private EditText bankNameEd;
     private EditText bsbEd;
     private MyUserInfo myUserInfo;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-
-    }
 
     @Override
     protected int setContentView() {

@@ -25,7 +25,6 @@ import com.yd.org.sellpopularizesystem.fragment.NotificationFragment;
 import com.yd.org.sellpopularizesystem.getui.IntentService;
 import com.yd.org.sellpopularizesystem.getui.PushService;
 import com.yd.org.sellpopularizesystem.utils.ActivitySkip;
-import com.yd.org.sellpopularizesystem.utils.NetUtil;
 import com.yd.org.sellpopularizesystem.utils.SharedPreferencesHelps;
 import com.yd.org.sellpopularizesystem.utils.StatusBarUtil;
 import com.yd.org.sellpopularizesystem.utils.ToasShow;
@@ -34,13 +33,9 @@ import com.zhouyou.http.cache.model.CacheMode;
 import com.zhouyou.http.callback.SimpleCallBack;
 import com.zhouyou.http.exception.ApiException;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.Locale;
 
-public class HomeActiviyt extends FragmentActivity implements View.OnClickListener,NetBroadcastReceiver.netEventHandler {
+public class HomeActiviyt extends FragmentActivity implements View.OnClickListener{
     public static HomeActiviyt homeActiviyt;
     private long mExitTime = 0;
     private TextView tvHome, tvMessage, tvSetting, tvMessageCount,tvMeCount;
@@ -129,7 +124,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         inintView();
         setSelect(0);
 
-        NetBroadcastReceiver.mListeners.add(this);
     }
 
     /**
@@ -346,14 +340,6 @@ public class HomeActiviyt extends FragmentActivity implements View.OnClickListen
         finish();
     }
 
-    @Override
-    public void onNetChange() {
-        Log.e("TAG", "onNetChange: " );
-        if (NetUtil.getNetworkState(this) == NetUtil.NETWORN_NONE) {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_error));
-        }else {
-            ToasShow.showToastCenter(this,getResources().getString(R.string.network_right));
-        }
-    }
+
 
 }

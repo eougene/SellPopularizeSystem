@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
 import com.lidong.photopicker.PhotoPickerActivity;
 import com.lidong.photopicker.SelectModel;
 import com.lidong.photopicker.intent.PhotoPickerIntent;
@@ -84,35 +85,27 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
 
 
     private void getSaleData(int page, final boolean isRefresh) {
-        EasyHttp.get(Contants.INQUIRE_ORDER_LIST)
-                .cacheMode(CacheMode.DEFAULT)
-                .headers("Cache-Control", "max-age=0")
-                .timeStamp(true)
-                .params("company_id", SharedPreferencesHelps.getCompanyId())
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .params("page", page + "")
-                .params("number", "100")
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        super.onStart();
-                        showDialog();
-                    }
+        EasyHttp.get(Contants.INQUIRE_ORDER_LIST).cacheMode(CacheMode.DEFAULT).headers("Cache-Control", "max-age=0").timeStamp(true).params("company_id", SharedPreferencesHelps.getCompanyId()).params("user_id", SharedPreferencesHelps.getUserID()).params("page", page + "").params("number", "100").execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                Log.e("onError", "onError:" + e.getCode() + ";;" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess", "onSuccess:" + json);
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess", "onSuccess:" + json);
 
-                        closeDialog();
-                        parseJson(json, isRefresh);
-                    }
-                });
+                closeDialog();
+                parseJson(json, isRefresh);
+            }
+        });
 
 
     }
@@ -126,32 +119,41 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      */
     private void parseJson(String json, boolean isRefresh) {
 
-        Gson gson = new Gson();
-        SaleOrderBean saleOrderBean = gson.fromJson(json, SaleOrderBean.class);
+        try {
 
-        if (saleOrderBean.getCode() == 1) {
-            sobRbData = saleOrderBean.getResult();
+            Gson gson = new Gson();
+            SaleOrderBean saleOrderBean = gson.fromJson(json, SaleOrderBean.class);
 
-        }
+            if (saleOrderBean.getCode() == 1) {
+                sobRbData = saleOrderBean.getResult();
 
-        if (isRefresh) {
-            if (sobRbData.size() == 0) {
-                getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
-                lvSaleRecord.setVisibility(View.GONE);
-            } else {
-                getViewById(R.id.noInfomation).setVisibility(View.GONE);
-                lvSaleRecord.setVisibility(View.VISIBLE);
             }
 
-            saleAdapter = new SaleRecordAdapter(this);
-            lvSaleRecord.setAdapter(saleAdapter);
+            if (isRefresh) {
+                if (sobRbData.size() == 0) {
+                    getViewById(R.id.noInfomation).setVisibility(View.VISIBLE);
+                    lvSaleRecord.setVisibility(View.GONE);
+                } else {
+                    getViewById(R.id.noInfomation).setVisibility(View.GONE);
+                    lvSaleRecord.setVisibility(View.VISIBLE);
+                }
+
+                saleAdapter = new SaleRecordAdapter(this);
+                lvSaleRecord.setAdapter(saleAdapter);
 
 
+            }
+            if (saleAdapter != null) {
+                saleAdapter.addMore(sobRbData);
+            }
+            locatedOrderIdPos();
+
+        } catch (JsonIOException e) {
+
+            Log.e("解析异常", "e:" + e.getMessage());
         }
-        if (saleAdapter != null) {
-            saleAdapter.addMore(sobRbData);
-        }
-        locatedOrderIdPos();
+
+
     }
 
     private void locatedOrderIdPos() {
@@ -172,35 +174,30 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         flag = type;
 
 
-        Acp.getInstance(SaleRecordActivity.this).request(new AcpOptions.Builder()
-                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE
-                                , Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
+        Acp.getInstance(SaleRecordActivity.this).request(new AcpOptions.Builder().setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                 /*以下为自定义提示语、按钮文字
                 .setDeniedMessage()
                 .setDeniedCloseBtn()
                 .setDeniedSettingBtn()
                 .setRationalMessage()
-                .setRationalBtn()*/
-                        .build(),
-                new AcpListener() {
-                    @Override
-                    public void onGranted() {
-                        PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
-                        intent.setSelectModel(SelectModel.SINGLE);
-                        intent.setShowCarema(true); // 是否显示拍照
-                        // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
-                        intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
-                        startActivityForResult(intent, REQUEST_CAMERA_CODE);
+                .setRationalBtn()*/.build(), new AcpListener() {
+            @Override
+            public void onGranted() {
+                PhotoPickerIntent intent = new PhotoPickerIntent(SaleRecordActivity.this);
+                intent.setSelectModel(SelectModel.SINGLE);
+                intent.setShowCarema(true); // 是否显示拍照
+                // intent.setMaxTotal(6); // 最多选择照片数量，默认为6
+                intent.setSelectedPaths(imagePaths); // 已选中的照片地址， 用于回显选中状态
+                startActivityForResult(intent, REQUEST_CAMERA_CODE);
 
 
-                    }
+            }
 
-                    @Override
-                    public void onDenied(List<String> permissions) {
-                        ToasShow.showToastCenter(SaleRecordActivity.this, permissions.toString() + "权限拒绝");
-                    }
-                });
+            @Override
+            public void onDenied(List<String> permissions) {
+                ToasShow.showToastCenter(SaleRecordActivity.this, permissions.toString() + "权限拒绝");
+            }
+        });
 
     }
 
@@ -211,40 +208,35 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
      */
     public void canceOrder(int orderId) {
 
-        EasyHttp.post(Contants.ORDER_CANCEL)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params("order_id", orderId + "")
-                .params("user_id", SharedPreferencesHelps.getUserID())
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showDialog();
-                    }
+        EasyHttp.post(Contants.ORDER_CANCEL).cacheMode(CacheMode.NO_CACHE).params("order_id", orderId + "").params("user_id", SharedPreferencesHelps.getUserID()).timeStamp(true).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
+                Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
-                        closeDialog();
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess***", "UserBean:" + json);
+                closeDialog();
 
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
-                        if (errorBean.getCode().equals("1")) {
-                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                        } else {
-                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                        }
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                if (errorBean.getCode().equals("1")) {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                } else {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                }
 
 
-                    }
-                });
+            }
+        });
 
 
     }
@@ -367,41 +359,36 @@ public class SaleRecordActivity extends BaseActivity implements PullToRefreshLay
         }
 
 
-        EasyHttp.post(strUrl)
-                .params(httpParams)
-                .cacheMode(CacheMode.NO_CACHE)
-                .params(httpParams)
-                .timeStamp(true)
-                .execute(new SimpleCallBack<String>() {
-                    @Override
-                    public void onStart() {
-                        showDialog();
-                    }
+        EasyHttp.post(strUrl).params(httpParams).cacheMode(CacheMode.NO_CACHE).params(httpParams).timeStamp(true).execute(new SimpleCallBack<String>() {
+            @Override
+            public void onStart() {
+                showDialog();
+            }
 
-                    @Override
-                    public void onError(ApiException e) {
-                        closeDialog();
-                        ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
-                        Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
-                    }
+            @Override
+            public void onError(ApiException e) {
+                closeDialog();
+                ToasShow.showToastCenter(SaleRecordActivity.this, e.getMessage());
+                Log.e("onError***", "onError:" + e.getCode() + ":" + e.getMessage());
+            }
 
-                    @Override
-                    public void onSuccess(String json) {
-                        Log.e("onSuccess***", "UserBean:" + json);
-                        closeDialog();
+            @Override
+            public void onSuccess(String json) {
+                Log.e("onSuccess***", "UserBean:" + json);
+                closeDialog();
 
 
-                        Gson gson = new Gson();
-                        ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
-                        if (errorBean.getCode().equals("1")) {
-                            ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
-                        } else {
-                            ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
-                        }
+                Gson gson = new Gson();
+                ErrorBean errorBean = gson.fromJson(json, ErrorBean.class);
+                if (errorBean.getCode().equals("1")) {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, getResources().getString(R.string.su));
+                } else {
+                    ToasShow.showToastCenter(SaleRecordActivity.this, errorBean.getMsg());
+                }
 
 
-                    }
-                });
+            }
+        });
 
 
     }
