@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * 平面图
+ */
+
 public class BuildingPlanActivity extends BaseActivity {
     private ListView lvFloorPlan;
     private List<ProductDetailBean.ResultBean.FileContentBean> floorListData = new ArrayList<>();
