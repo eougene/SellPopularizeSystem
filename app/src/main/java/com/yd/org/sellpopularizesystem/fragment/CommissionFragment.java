@@ -50,8 +50,8 @@ public class CommissionFragment extends BaseFragmentView implements PullToRefres
         EasyHttp.get(Contants.COMMOSSION_LIST)
                 .cacheMode(CacheMode.DEFAULT)
                 .headers("Cache-Control", "max-age=0")
-                .timeStamp(true).params("user_id", SharedPreferencesHelps.getUserID())
-                .params("customer_id", "").params("page", page + "")
+                .timeStamp(true).params("sale_id", SharedPreferencesHelps.getUserID())
+                .params("page", page + "").params("type",cate_id+"")
                 .params("number", "100")
                 .execute(new SimpleCallBack<String>() {
             @Override
