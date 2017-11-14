@@ -90,7 +90,7 @@ public class LastFragmentView extends BaseFragmentView {
         EasyHttp.post(Contants.STUDY_COMPLETE)
                 .cacheMode(CacheMode.NO_CACHE)
                 .headers("Content-Type", "application/x-www-form-urlencoded")
-                .params("study_id", studyId.equals("") ? "" : studyId)
+                .params("study_id", studyId+"" )
                 .params("user_id", SharedPreferencesHelps.getUserID())
                 .timeStamp(true)
                 .execute(new SimpleCallBack<String>() {
@@ -114,8 +114,6 @@ public class LastFragmentView extends BaseFragmentView {
                             JSONObject json = new JSONObject(s);
                             if (json.getString("code").equals("1")) {
                                 ToasShow.showToastBottom(getActivity(), json.getString("msg"));
-                        /*intent = new Intent(getActivity(), LearningGardenActivity.class);
-                        getActivity().startActivity(intent);*/
                                 getActivity().finish();
                             } else {
                                 ToasShow.showToastBottom(getActivity(), json.getString("msg"));
@@ -136,24 +134,6 @@ public class LastFragmentView extends BaseFragmentView {
 
     }
 
-
-//    private void setListener() {
-//        tvStart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), InvestigationActivity.class);
-//                getActivity().startActivity(intent);
-//            }
-//        });
-//        tvEnd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), ScaleActivity.class);
-//                getActivity().startActivity(intent);
-//                getActivity().finish();
-//            }
-//        });
-//    }
 
     public void controlViewVisibility() {
         if (tvEnd != null && tvStart != null) {
